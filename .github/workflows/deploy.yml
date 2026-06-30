@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  build-and-deploy:
+  deploy-backend:
     runs-on: ubuntu-latest
     
     steps:
@@ -15,17 +15,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      # Install frontend deps
-      - name: Install frontend deps
-        run: cd frontend && npm install --legacy-peer-deps
-
-      - name: Build frontend
-        run: cd frontend && npm run build
-
-      # Copy frontend dist to backend/dist
-      - name: Copy frontend build to backend
-        run: cp -r frontend/dist backend/dist
 
       # Install backend deps
       - name: Install backend deps

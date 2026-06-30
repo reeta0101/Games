@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: '20'
 
-      # Install frontend deps and build
+      # Install frontend deps
       - name: Install frontend deps
-        run: cd frontend && npm install
+        run: cd frontend && npm install --legacy-peer-deps
 
       - name: Build frontend
         run: cd frontend && npm run build

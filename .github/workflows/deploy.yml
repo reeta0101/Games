@@ -16,6 +16,10 @@ jobs:
         with:
           node-version: '20'
 
+      # Clear any cached data
+      - name: Clean npm cache
+        run: npm cache clean --force
+
       # Install frontend deps
       - name: Install frontend deps
         run: cd frontend && npm install --legacy-peer-deps

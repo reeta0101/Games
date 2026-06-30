@@ -23,6 +23,10 @@ jobs:
       - name: Build frontend
         run: cd frontend && npm run build
 
+      # Copy frontend dist to backend
+      - name: Copy frontend build to backend
+        run: cp -r frontend/dist backend/
+
       # Install backend deps
       - name: Install backend deps
         run: cd backend && npm ci --only=production

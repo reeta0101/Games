@@ -16,14 +16,7 @@ jobs:
         with:
           node-version: '20'
 
-      # Install and build frontend
-      - name: Install frontend deps
-        run: cd frontend && npm ci
-
-      - name: Build frontend
-        run: cd frontend && npm run build
-
-      # Install backend deps
+      # Install backend deps only
       - name: Install backend deps
         run: cd backend && npm ci --only=production
 

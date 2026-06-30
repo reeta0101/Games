@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '22'
 
       # Install and build frontend
       - name: Install frontend deps
@@ -29,7 +29,15 @@ jobs:
 
       # Install backend deps
       - name: Install backend deps
-        run: cd backend && npm install
+        run: cd backend && npm install --production
+
+      # Verify deployment contents
+      - name: Verify deployment contents
+        run: |
+          echo "=== Backend contents ==="
+          ls -la backend/
+          echo "=== Dist contents ==="
+          ls -la backend/dist/
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -41,4 +49,4 @@ jobs:
         with:
           app-name: 'gamesstore'
           package: ./backend
-          startup-command: 'npm start'
+          startup-command: 'node server.js'

@@ -16,19 +16,16 @@ jobs:
         with:
           node-version: '20'
 
-      # Install backend deps
-      - name: Install backend deps
-        working-directory: ./backend
-        run: npm ci --only=production
-
-      # Install frontend deps and build
+      # Install and build frontend
       - name: Install frontend deps
-        working-directory: ./frontend
-        run: npm ci
+        run: cd frontend && npm ci
 
       - name: Build frontend
-        working-directory: ./frontend
-        run: npm run build
+        run: cd frontend && npm run build
+
+      # Install backend deps
+      - name: Install backend deps
+        run: cd backend && npm ci --only=production
 
       - name: Login to Azure
         uses: azure/login@v2

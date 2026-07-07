@@ -115,7 +115,7 @@ export default function Navbar({
               ARCADE
             </span>
             <span className="text-sm uppercase tracking-[0.35em] text-slate-400">
-              My React
+              {NAV_ITEMS.find((item) => item.path === location.pathname)?.title || "Games Portal"}
             </span>
           </Link>
         </div>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import GameReader from "./GameReader";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
@@ -464,11 +465,43 @@ export default function QuizGame({ game }) {
               Play Again
             </button>
             <button
+              onClick={() => setScreen("read")}
+              className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#40e0f0] transition hover:bg-white/10 hover:text-white"
+            >
+              Read
+            </button>
+            <button
               onClick={() => navigate("/")}
               className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-slate-300 transition hover:bg-white/10"
             >
               Menu
             </button>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  // ════════════════════════════════════════
+  //  READ SCREEN
+  // ════════════════════════════════════════
+  if (screen === "read") {
+    return (
+      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <section className="w-full max-h-[85vh] flex flex-col rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
+          <div className="mb-6 flex items-center justify-between shrink-0">
+             <h2 className="text-xl sm:text-2xl font-black uppercase tracking-[0.15em] text-white" style={{ color: game.accent }}>
+               {game.title} Reference
+             </h2>
+             <button
+               onClick={() => setScreen("end")}
+               className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-slate-300 transition hover:bg-white/10"
+             >
+               Back
+             </button>
+          </div>
+          <div className="overflow-y-auto pr-2 custom-scrollbar">
+            <GameReader gameKey={game.key} />
           </div>
         </section>
       </main>

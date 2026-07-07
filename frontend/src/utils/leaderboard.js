@@ -1,6 +1,7 @@
 // Leaderboard utility — stores scores in localStorage, auto-cleans entries > 7 days
 
 const STORAGE_KEY = 'arcade_leaderboard';
+const HIGH_SCORES_KEY = 'arcade_high_scores';
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 export function getLeaderboard() {
@@ -13,17 +14,50 @@ export function getLeaderboard() {
   }
 }
 
+export function getUserHighScores(name) {
+  try {
+    const all = JSON.parse(localStorage.getItem(HIGH_SCORES_KEY) || '{}');
+    return all[name] || {};
+  } catch {
+    return {};
+  }
+}
+
+function updateUserHighScore(name, mode, difficulty, score) {
+  try {
+    const all = JSON.parse(localStorage.getItem(HIGH_SCORES_KEY) || '{}');
+    if (!all[name]) all[name] = {};
+    const key = `${mode}__${difficulty}`;
+    if (!all[name][key] || score > all[name][key]) {
+      all[name][key] = score;
+      localStorage.setItem(HIGH_SCORES_KEY, JSON.stringify(all));
+    }
+  } catch { /* ignore */ }
+}
+
 export function saveScore({ name, score, mode, difficulty, questions }) {
+  // Update per-user high score
+  updateUserHighScore(name, mode, difficulty, score);
+
   const lb = getLeaderboard();
-  lb.push({
-    name,
-    score,
-    mode,
-    difficulty,
-    questions,
-    timestamp: Date.now(),
-  });
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(lb));
+  lb.push({ name, score, mode, difficulty, questions, timestamp: Date.now() });
+
+  // Keep top 20 per mode+difficulty (best score per player, then top 20 overall)
+  const grouped = {};
+  for (const entry of lb) {
+    const key = `${entry.mode}__${entry.difficulty}`;
+    if (!grouped[key]) grouped[key] = {};
+    const prev = grouped[key][entry.name];
+    if (!prev || entry.score > prev.score) grouped[key][entry.name] = entry;
+  }
+  const pruned = [];
+  for (const key of Object.keys(grouped)) {
+    const top20 = Object.values(grouped[key])
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 20);
+    pruned.push(...top20);
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(pruned));
 }
 
 export function clearLeaderboard() {
@@ -44,6 +78,7 @@ export function getTimeAgo(ts) {
 export const MODE_LABELS = {
   alphabet: 'Alpha',
   square: 'Square',
+  cube: 'Cube',
   periodicTable: 'Periodic',
   stateCapital: 'States',
   worldCapital: 'World',

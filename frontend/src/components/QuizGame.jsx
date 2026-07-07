@@ -5,6 +5,7 @@ import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import {
   getLeaderboard,
   saveScore,
+  getUserHighScores,
   getTimeAgo,
   DIFFICULTIES,
   MODE_LABELS,
@@ -370,73 +371,92 @@ export default function QuizGame({ game }) {
     const diffInfo = DIFFICULTIES[difficulty];
     const answeredQs = gameEndReason === "wrong" || gameEndReason === "timeout" ? questionNum - 1 : questionNum;
 
-    // Get leaderboard for this mode + difficulty
-    const lbEntries = getLeaderboard()
+    const top5 = getLeaderboard()
       .filter((e) => e.mode === game.key && e.difficulty === difficulty)
       .sort((a, b) => b.score - a.score)
-      .slice(0, 10);
+      .slice(0, 5);
+
+    const myRank = top5.findIndex((e) => e.name === guestName && e.score === score);
+
+    const highScores = getUserHighScores(guestName);
+    const personalBest = highScores[`${game.key}__${difficulty}`] || 0;
+    const isNewBest = score > 0 && score >= personalBest;
 
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
         <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
-          <h1 className="text-3xl font-black text-white sm:text-5xl">
-            Finished!
-          </h1>
+
+          {/* Result */}
+          <h1 className="text-3xl font-black text-white sm:text-5xl">Game Over!</h1>
           <p className="mt-4 text-lg text-slate-300">Your score</p>
-          <div className="my-5 text-6xl font-black text-[#40e0f0] drop-shadow-[0_0_24px_rgba(64,224,240,0.35)]">
+          <div className="my-4 text-6xl font-black text-[#40e0f0] drop-shadow-[0_0_24px_rgba(64,224,240,0.35)]">
             {score}
           </div>
-          <p className="text-lg text-slate-200">{finalMessage}</p>
-          <p className="mt-2 text-sm text-slate-500 uppercase tracking-[0.2em]">
+
+          {/* Personal best */}
+          <div className="flex items-center justify-center gap-3">
+            {isNewBest && (
+              <span className="rounded-full border border-[#f0e040]/50 bg-[#f0e040]/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#f0e040]">
+                ★ New Best!
+              </span>
+            )}
+            {personalBest > 0 && (
+              <span className="text-xs uppercase tracking-[0.2em] text-slate-500">
+                Best: <span className="font-bold text-slate-300">{personalBest}</span>
+              </span>
+            )}
+          </div>
+
+          <p className="mt-3 text-lg text-slate-200">{finalMessage}</p>
+          <p className="mt-1 text-sm text-slate-500 uppercase tracking-[0.2em]">
             {diffInfo.icon} {diffInfo.label} · {answeredQs} correct
           </p>
 
-          {/* Leaderboard */}
-          <div className="mt-8 rounded-2xl border border-white/10 bg-black/20 p-5">
-            <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#f0e040]">
-              🏆 Leaderboard — {MODE_LABELS[game.key] || game.key} · {diffInfo.label}
+          {/* Top 5 */}
+          <div className="mt-7 rounded-2xl border border-white/10 bg-black/20 p-4">
+            <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#f0e040]">
+              🏆 Top 5 — {MODE_LABELS[game.key] || game.key} · {diffInfo.label}
             </p>
-            {lbEntries.length === 0 ? (
-              <p className="py-4 text-sm text-slate-500 tracking-[0.15em]">
-                No scores yet. Be the first!
-              </p>
+            {top5.length === 0 ? (
+              <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">No scores yet. Be the first!</p>
             ) : (
-              <div className="max-h-60 overflow-y-auto">
-                <table className="w-full text-left text-xs">
-                  <thead>
-                    <tr className="border-b border-white/10 text-slate-500 uppercase tracking-[0.2em]">
-                      <th className="pb-2 pr-2">#</th>
-                      <th className="pb-2 pr-2">Player</th>
-                      <th className="pb-2 pr-2">Info</th>
-                      <th className="pb-2 text-right">Score</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {lbEntries.map((entry, i) => (
-                      <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02]">
-                        <td className="py-2 pr-2 text-lg font-black" style={{
-                          color: i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '#6060a0'
-                        }}>
-                          {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
-                        </td>
-                        <td className="py-2 pr-2 font-bold text-white max-w-[100px] truncate">
-                          {entry.name}
-                        </td>
-                        <td className="py-2 pr-2 text-slate-500">
-                          {entry.questions || "?"}Q · {getTimeAgo(entry.timestamp)}
-                        </td>
-                        <td className="py-2 text-right text-lg font-black text-[#40e0f0]">
-                          {entry.score}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="space-y-2">
+                {top5.map((entry, i) => {
+                  const isMe = i === myRank;
+                  const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : null;
+                  return (
+                    <div
+                      key={i}
+                      className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 transition ${
+                        isMe
+                          ? 'border-[#40e0f0]/40 bg-[#40e0f0]/8 shadow-[0_0_16px_rgba(64,224,240,0.1)]'
+                          : 'border-white/8 bg-white/[0.03]'
+                      }`}
+                    >
+                      <span className="w-7 text-center text-base font-black" style={{
+                        color: i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '#6060a0'
+                      }}>
+                        {medal ?? i + 1}
+                      </span>
+                      <div className="min-w-0 text-left">
+                        <div className={`truncate text-sm font-bold ${isMe ? 'text-[#40e0f0]' : 'text-white'}`}>
+                          {entry.name}{isMe && ' ← you'}
+                        </div>
+                        <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500">
+                          {entry.questions || '?'}Q · {getTimeAgo(entry.timestamp)}
+                        </div>
+                      </div>
+                      <div className={`text-xl font-black ${isMe ? 'text-[#40e0f0]' : 'text-slate-200'}`}>
+                        {entry.score}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setScreen("difficulty")}
               className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"

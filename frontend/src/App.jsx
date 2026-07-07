@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter,
@@ -19,6 +19,13 @@ import CubeQuiz from "./pages/CubeQuiz";
 import PeriodicTableQuiz from "./pages/PeriodicTableQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Leaderboard from "./pages/Leaderboard";
+import {
+  DIFF_LABELS,
+  MODE_LABELS,
+  getLeaderboard,
+  getTimeAgo,
+} from "./utils/leaderboard";
 
 const GAME_MODES = [
   {
@@ -110,6 +117,112 @@ function ArcadeBackground() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(240,224,64,0.08),_transparent_34%),radial-gradient(circle_at_top_right,_rgba(64,224,240,0.08),_transparent_30%),radial-gradient(circle_at_bottom_left,_rgba(251,113,133,0.08),_transparent_30%),linear-gradient(180deg,_#080812,_#0a0a0f)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(240,224,64,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(240,224,64,0.035)_1px,transparent_1px)] bg-[size:40px_40px] opacity-70" />
     </div>
+  );
+}
+
+const DIFF_TABS = [
+  { key: 'beginner', label: 'Beginner', icon: '🌱' },
+  { key: 'intermediate', label: 'Intermediate', icon: '⚡' },
+  { key: 'advanced', label: 'Advanced', icon: '🔥' },
+];
+
+function AllGameLeaderboards() {
+  const leaderboard = getLeaderboard();
+  const [activeDiff, setActiveDiff] = useState('intermediate');
+
+  return (
+    <section className="mt-8 sm:mt-10">
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#f0e040]/90">
+            Leaderboards
+          </p>
+          <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+            Top 20 scores for every quiz
+          </h2>
+        </div>
+        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Best per player</p>
+      </div>
+
+      {/* Difficulty tabs */}
+      <div className="mb-5 flex gap-2">
+        {DIFF_TABS.map((d) => (
+          <button
+            key={d.key}
+            onClick={() => setActiveDiff(d.key)}
+            className={`rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] transition ${
+              activeDiff === d.key
+                ? 'border-[#f0e040]/60 bg-[#f0e040]/10 text-[#f0e040]'
+                : 'border-white/10 bg-white/5 text-slate-400 hover:bg-white/10'
+            }`}
+          >
+            {d.icon} {d.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {GAME_MODES.map((game) => {
+          const entries = leaderboard
+            .filter((e) => e.mode === game.id && e.difficulty === activeDiff)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 20);
+
+          return (
+            <div
+              key={game.id}
+              className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: game.accent }}>
+                    {MODE_LABELS[game.id] || game.title}
+                  </p>
+                  <h3 className="mt-1 text-lg font-black text-white">{game.title}</h3>
+                </div>
+                <Link
+                  to={game.path}
+                  className="shrink-0 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 transition hover:bg-white/10"
+                >
+                  Play
+                </Link>
+              </div>
+
+              <div className="mt-3 max-h-72 overflow-y-auto space-y-1.5 pr-1">
+                {entries.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-white/10 bg-black/10 px-3 py-4 text-center text-xs uppercase tracking-[0.18em] text-slate-500">
+                    No scores yet
+                  </div>
+                ) : (
+                  entries.map((entry, index) => (
+                    <div
+                      key={`${entry.name}-${entry.timestamp}-${index}`}
+                      className="grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-3 py-2"
+                    >
+                      <span
+                        className="w-6 text-center text-sm font-black"
+                        style={{ color: index === 0 ? '#ffd700' : index === 1 ? '#c0c0c0' : index === 2 ? '#cd7f32' : game.accent }}
+                      >
+                        {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
+                      </span>
+                      <div className="min-w-0">
+                        <div className="truncate text-sm font-bold text-white">{entry.name}</div>
+                        <div className="truncate text-[10px] uppercase tracking-[0.16em] text-slate-500">
+                          {entry.questions || '?'}Q · {getTimeAgo(entry.timestamp)}
+                        </div>
+                      </div>
+                      <div className="text-lg font-black" style={{ color: game.accent }}>
+                        {entry.score}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -260,6 +373,7 @@ function HomePage({ darkMode, currentUser }) {
           </div>
         </aside>
       </section>
+      <AllGameLeaderboards />
     </main>
   );
 }
@@ -321,6 +435,7 @@ function ArcadeLayout() {
           <Route path="/state-capital" element={<StateCapitalQuiz />} />
           <Route path="/world-capital" element={<WorldCapitalQuiz />} />
           <Route path="/periodic-table" element={<PeriodicTableQuiz />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="*"
             element={

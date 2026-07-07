@@ -31,6 +31,12 @@ const NAV_ITEMS = [
     title: "Football",
     accent: "#39ff14",
   },
+  {
+    id: "leaderboard",
+    path: "/leaderboard",
+    title: "🏆 Leaderboard",
+    accent: "#f0e040",
+  },
 ];
 
 export default function Navbar({

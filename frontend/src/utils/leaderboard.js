@@ -44,6 +44,7 @@ export function getTimeAgo(ts) {
 export const MODE_LABELS = {
   alphabet: 'Alpha',
   square: 'Square',
+  periodicTable: 'Periodic',
   stateCapital: 'States',
   worldCapital: 'World',
 };

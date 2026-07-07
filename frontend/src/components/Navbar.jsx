@@ -14,6 +14,12 @@ const NAV_ITEMS = [
     accent: "#40e0f0",
   },
   {
+    id: "periodicTable",
+    path: "/periodic-table",
+    title: "Periodic Table",
+    accent: "#f59e0b",
+  },
+  {
     id: "stateCapital",
     path: "/state-capital",
     title: "State Capital Quiz",
@@ -36,7 +42,7 @@ export default function Navbar({
 }) {
   return (
     <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0a0a0f]/85 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8 xl:flex-row xl:items-center xl:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-3 py-3 sm:px-6 sm:py-4 lg:px-8 xl:flex-row xl:items-center xl:justify-between">
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="group inline-flex items-center gap-3">
             <span className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-black tracking-[0.45em] text-[#f0e040] shadow-[0_0_18px_rgba(240,224,64,0.14)] transition group-hover:border-[#f0e040]/40">
@@ -48,10 +54,10 @@ export default function Navbar({
           </Link>
         </div>
 
-        <nav className="flex flex-wrap items-center gap-2">
+        <nav className="-mx-3 flex max-w-[100vw] flex-nowrap items-center gap-2 overflow-x-auto px-3 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
           <Link
             to="/"
-            className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 ${location.pathname === "/" ? "border-[#f0e040]/60 bg-[#f0e040]/10 text-[#f0e040]" : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:bg-white/10"}`}
+            className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${location.pathname === "/" ? "border-[#f0e040]/60 bg-[#f0e040]/10 text-[#f0e040]" : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:bg-white/10"}`}
           >
             Home
           </Link>
@@ -62,7 +68,7 @@ export default function Navbar({
               <Link
                 key={item.id}
                 to={item.path}
-                className="group rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300"
+                className="group shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm"
                 style={{
                   borderColor: active
                     ? `${item.accent}66`
@@ -82,7 +88,7 @@ export default function Navbar({
           })}
         </nav>
 
-        <div className="flex items-center gap-3 self-start xl:self-auto">
+        <div className="flex w-full flex-wrap items-center gap-2 self-start sm:w-auto sm:gap-3 xl:self-auto">
           {currentUser ? (
             <div className="hidden items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 sm:flex">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.8)]" />
@@ -92,13 +98,13 @@ export default function Navbar({
             <>
               <Link
                 to="/login"
-                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10"
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-slate-200 transition hover:border-white/20 hover:bg-white/10 sm:px-4 sm:text-sm"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="rounded-full border border-[#40e0f0]/40 bg-[#40e0f0]/10 px-4 py-2 text-sm font-medium text-[#40e0f0] transition hover:border-[#40e0f0]/60 hover:bg-[#40e0f0]/15"
+                className="rounded-full border border-[#40e0f0]/40 bg-[#40e0f0]/10 px-3 py-2 text-xs font-medium text-[#40e0f0] transition hover:border-[#40e0f0]/60 hover:bg-[#40e0f0]/15 sm:px-4 sm:text-sm"
               >
                 Signup
               </Link>
@@ -106,14 +112,14 @@ export default function Navbar({
           )}
           <button
             onClick={onToggleTheme}
-            className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-300 ${darkMode ? "border-[#f0e040]/40 bg-[#f0e040]/10 text-[#f0e040] hover:border-[#f0e040]/60" : "border-white/10 bg-white/5 text-slate-200 hover:border-white/20 hover:bg-white/10"}`}
+            className={`rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${darkMode ? "border-[#f0e040]/40 bg-[#f0e040]/10 text-[#f0e040] hover:border-[#f0e040]/60" : "border-white/10 bg-white/5 text-slate-200 hover:border-white/20 hover:bg-white/10"}`}
           >
             {darkMode ? "☀ Light" : "🌙 Dark"}
           </button>
           {currentUser && (
             <button
               onClick={onLogout}
-              className="rounded-full border border-rose-500/30 bg-rose-500/10 px-4 py-2 text-sm font-medium text-rose-100 transition hover:border-rose-500/50 hover:bg-rose-500/15"
+              className="rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-xs font-medium text-rose-100 transition hover:border-rose-500/50 hover:bg-rose-500/15 sm:px-4 sm:text-sm"
             >
               Logout
             </button>

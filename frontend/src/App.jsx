@@ -17,6 +17,7 @@ import SquareQuiz from "./pages/SquareQuiz";
 import StateCapitalQuiz from "./pages/StateCapitalQuiz";
 import WorldCapitalQuiz from "./pages/WorldCapitalQuiz";
 import CubeQuiz from "./pages/CubeQuiz";
+import PeriodicTableQuiz from "./pages/PeriodicTableQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -86,6 +87,19 @@ const GAME_MODES = [
     summary: "Name the capital of every country on Earth.",
     details: "A comprehensive world geography quiz with an emerald accent.",
   },
+  {
+    id: "periodicTable",
+    path: "/periodic-table",
+    title: "Periodic Table Quiz",
+    badge: "Chemistry",
+    hero: "PT",
+    intro: "Atomic number and weight for all elements.",
+    rules: "wrong = game over",
+    reference: "Elements 1-118 with rounded atomic weights.",
+    accent: "#f59e0b",
+    summary: "Choose the element's atomic number and atomic weight.",
+    details: "A chemistry recall drill for periodic table facts.",
+  },
 ];
 
 const NAV_ITEMS = [];
@@ -102,9 +116,9 @@ function ArcadeBackground() {
 
 function HomePage({ darkMode, currentUser, message }) {
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
-      <section className="grid gap-8 xl:grid-cols-[1.08fr_0.92fr]">
-        <div className="space-y-8">
+    <main className="mx-auto max-w-7xl px-3 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
+      <section className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr] xl:gap-8">
+        <div className="space-y-6 sm:space-y-8">
           <div className="inline-flex w-fit items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 backdrop-blur">
             <span className="h-2.5 w-2.5 rounded-full bg-[#40e0f0] shadow-[0_0_16px_rgba(64,224,240,0.8)]" />
             Games portal
@@ -114,12 +128,12 @@ function HomePage({ darkMode, currentUser, message }) {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-[#f0e040]/90">
               ARCADE
             </p>
-            <h1 className="max-w-2xl text-5xl font-black leading-tight text-white sm:text-6xl">
+            <h1 className="max-w-2xl text-4xl font-black leading-tight text-white sm:text-6xl">
               Choose Quiz.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              The standalone Game.html menu now lives inside React with the same
-              dark arcade palette, neon accents, and quick-entry game cards.
+            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:mt-6 sm:text-lg sm:leading-8">
+              Pick a quiz, choose a difficulty, and play from the same
+              responsive arcade menu on desktop or mobile.
             </p>
           </div>
 
@@ -128,7 +142,7 @@ function HomePage({ darkMode, currentUser, message }) {
               <Link
                 key={game.id}
                 to={game.path}
-                className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 p-6 text-left transition duration-300 hover:-translate-y-1 hover:bg-white/[0.08]"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition duration-300 hover:-translate-y-1 hover:bg-white/[0.08] sm:rounded-[1.75rem] sm:p-6"
                 style={{
                   boxShadow: `0 0 0 1px ${game.accent}18, 0 20px 45px rgba(0,0,0,0.22)`,
                 }}
@@ -143,7 +157,7 @@ function HomePage({ darkMode, currentUser, message }) {
                 >
                   {game.badge}
                 </div>
-                <h2 className="text-2xl font-black uppercase tracking-[0.12em] text-white">
+                <h2 className="text-xl font-black uppercase tracking-[0.1em] text-white sm:text-2xl sm:tracking-[0.12em]">
                   {game.title}
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -160,13 +174,13 @@ function HomePage({ darkMode, currentUser, message }) {
           </div>
         </div>
 
-        <aside className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(15,23,42,0.4)] backdrop-blur-xl sm:p-8">
+        <aside className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.4)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#40e0f0]">
                 Session
               </p>
-              <h2 className="mt-2 text-3xl font-bold text-white">
+              <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
                 Ready to play
               </h2>
             </div>
@@ -186,7 +200,7 @@ function HomePage({ darkMode, currentUser, message }) {
               <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
                 Logged in
               </p>
-              <div className="mt-3 text-2xl font-bold text-white">
+              <div className="mt-3 text-xl font-bold text-white sm:text-2xl">
                 Welcome back, {currentUser.name}
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -199,7 +213,7 @@ function HomePage({ darkMode, currentUser, message }) {
               <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
                 Guest mode
               </p>
-              <div className="mt-3 text-2xl font-bold text-white">
+              <div className="mt-3 text-xl font-bold text-white sm:text-2xl">
                 Login or create an account
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-400">
@@ -236,7 +250,7 @@ function HomePage({ darkMode, currentUser, message }) {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {[
-              { label: "Modes", value: "5 + football", accent: "#f0e040" },
+              { label: "Modes", value: "6 + football", accent: "#f0e040" },
               { label: "Palette", value: "Neon arc", accent: "#40e0f0" },
               { label: "Storage", value: "Local auth", accent: "#fb7185" },
             ].map((item) => (
@@ -299,7 +313,7 @@ function ArcadeLayout() {
   }
 
   return (
-    <div className="min-h-screen overflow-hidden text-slate-100 font-mono">
+    <div className="min-h-screen overflow-x-hidden text-slate-100 font-mono">
       <ArcadeBackground />
       <div className="relative z-10">
         <Navbar
@@ -326,6 +340,7 @@ function ArcadeLayout() {
           <Route path="/cube" element={<CubeQuiz />} />
           <Route path="/state-capital" element={<StateCapitalQuiz />} />
           <Route path="/world-capital" element={<WorldCapitalQuiz />} />
+          <Route path="/periodic-table" element={<PeriodicTableQuiz />} />
           <Route
             path="*"
             element={

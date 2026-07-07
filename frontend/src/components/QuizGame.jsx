@@ -236,11 +236,11 @@ export default function QuizGame({ game }) {
   // ════════════════════════════════════════
   if (screen === "guest") {
     return (
-      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-4 py-10 sm:px-6 lg:px-8">
-        <section className="w-full rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:p-8">
+      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
           <div className="text-center">
             <div className="mb-4 text-6xl">🎮</div>
-            <div className="mb-4 text-5xl font-black uppercase tracking-[0.2em] text-white">
+            <div className="mb-4 text-4xl font-black uppercase tracking-[0.16em] text-white sm:text-5xl sm:tracking-[0.2em]">
               {game.bigLetter}
             </div>
             <h1 className="text-3xl font-black text-white sm:text-4xl">
@@ -297,19 +297,19 @@ export default function QuizGame({ game }) {
     ];
 
     return (
-      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-4 py-10 sm:px-6 lg:px-8">
-        <section className="w-full rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:p-8">
+      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
           <div className="text-center">
             <div className="mb-2 text-xs uppercase tracking-[0.3em] text-slate-500">
               Player: <span className="text-[#f0e040]">{guestName}</span>
             </div>
-            <div className="mb-4 text-5xl font-black uppercase tracking-[0.2em] text-white sm:text-6xl">
+            <div className="mb-4 text-4xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl sm:tracking-[0.2em]">
               {game.bigLetter}
             </div>
-            <h1 className="text-4xl font-black text-white sm:text-5xl">
+            <h1 className="text-3xl font-black text-white sm:text-5xl">
               {game.title}
             </h1>
-            <p className="mt-4 text-lg text-slate-300">{game.intro}</p>
+            <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">{game.intro}</p>
 
             <p className="mt-6 text-sm uppercase tracking-[0.3em] text-slate-500">
               Select Difficulty
@@ -377,9 +377,9 @@ export default function QuizGame({ game }) {
       .slice(0, 10);
 
     return (
-      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-4 py-10 sm:px-6 lg:px-8">
-        <section className="w-full rounded-[2rem] border border-white/10 bg-white/5 p-6 text-center shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:p-8">
-          <h1 className="text-4xl font-black text-white sm:text-5xl">
+      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
+          <h1 className="text-3xl font-black text-white sm:text-5xl">
             Finished!
           </h1>
           <p className="mt-4 text-lg text-slate-300">Your score</p>
@@ -459,17 +459,17 @@ export default function QuizGame({ game }) {
   //  GAME SCREEN
   // ════════════════════════════════════════
   return (
-    <main className="mx-auto max-w-5xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
-      <section className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:p-8">
-        <div className="flex items-center justify-between gap-4">
-          <div className="text-sm uppercase tracking-[0.35em] text-[#f0e040]">
+    <main className="mx-auto max-w-5xl px-3 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
+      <section className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-xs uppercase tracking-[0.28em] text-[#f0e040] sm:text-sm sm:tracking-[0.35em]">
             {game.title}
           </div>
-          <div className="text-right">
+          <div className="text-left sm:text-right">
             <div className="mb-1 text-[10px] uppercase tracking-[0.2em] text-slate-500">
               {guestName} · {DIFFICULTIES[difficulty].icon} {DIFF_LABELS[difficulty]}
             </div>
-            <div className="flex gap-6 text-sm uppercase tracking-[0.25em] text-slate-400">
+            <div className="flex gap-4 text-xs uppercase tracking-[0.18em] text-slate-400 sm:gap-6 sm:text-sm sm:tracking-[0.25em]">
               <div>
                 Score <span className="text-white">{score}</span>
               </div>
@@ -498,18 +498,18 @@ export default function QuizGame({ game }) {
         </div>
 
         {/* Question */}
-        <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/20 p-8 text-center">
-          <div className="text-xs uppercase tracking-[0.35em] text-slate-500">
+        <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5 text-center sm:mt-8 sm:rounded-[1.5rem] sm:p-8">
+          <div className="text-[10px] uppercase tracking-[0.28em] text-slate-500 sm:text-xs sm:tracking-[0.35em]">
             {game.prompt}
           </div>
           <div className={`mt-4 font-black text-white ${
-            game.key === 'worldCapital' || game.key === 'stateCapital'
-              ? 'text-3xl sm:text-4xl leading-tight'
-              : 'text-7xl sm:text-8xl'
+            game.key === 'worldCapital' || game.key === 'stateCapital' || game.key === 'periodicTable'
+              ? 'break-words text-2xl leading-tight sm:text-4xl'
+              : 'text-6xl sm:text-8xl'
           }`}>
             {currentQuestion?.display}
           </div>
-          <div className="mt-4 text-sm uppercase tracking-[0.3em] text-slate-400">
+          <div className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-400 sm:text-sm sm:tracking-[0.3em]">
             {game.subtext}
           </div>
         </div>
@@ -525,7 +525,7 @@ export default function QuizGame({ game }) {
                 data-key={OPTION_KEYS[index]}
                 disabled={isAnswered}
                 onClick={() => handleChoice(choice)}
-                className={`relative overflow-hidden rounded-[1rem] border border-white/10 bg-white/5 px-5 py-5 text-center text-2xl font-black tracking-[0.18em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed ${statusClass}`}
+                className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center text-lg font-black tracking-[0.08em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed sm:px-5 sm:py-5 sm:text-2xl sm:tracking-[0.18em] ${statusClass}`}
               >
                 <span className="absolute left-3 top-2 text-[10px] uppercase tracking-[0.25em] text-slate-500">
                   {OPTION_KEYS[index]}

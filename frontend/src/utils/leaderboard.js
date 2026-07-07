@@ -79,9 +79,16 @@ export const MODE_LABELS = {
   alphabet: 'Alpha',
   square: 'Square',
   cube: 'Cube',
-  periodicTable: 'Periodic',
+  periodicTable: 'Element',
   stateCapital: 'States',
   worldCapital: 'World',
+  multiplication: 'Multiply',
+  reverseAlphabet: 'Rev Alpha',
+  prime: 'Prime',
+  roman: 'Roman',
+  countryCurrency: 'Currency',
+  elementSymbol: 'Symbol',
+  oneWordSub: 'OWS',
 };
 
 export const DIFF_LABELS = {

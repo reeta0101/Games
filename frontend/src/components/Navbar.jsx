@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   {
     id: "periodicTable",
     path: "/periodic-table",
-    title: "Periodic Table",
+    title: "Element → (Z, W)",
     accent: "#f59e0b",
   },
   {
@@ -36,6 +36,12 @@ const NAV_ITEMS = [
     path: "/leaderboard",
     title: "🏆 Leaderboard",
     accent: "#f0e040",
+  },
+  {
+    id: "oneWordSub",
+    path: "/one-word-sub",
+    title: "OWS",
+    accent: "#c084fc",
   },
 ];
 

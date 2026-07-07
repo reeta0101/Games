@@ -17,6 +17,13 @@ import StateCapitalQuiz from "./pages/StateCapitalQuiz";
 import WorldCapitalQuiz from "./pages/WorldCapitalQuiz";
 import CubeQuiz from "./pages/CubeQuiz";
 import PeriodicTableQuiz from "./pages/PeriodicTableQuiz";
+import MultiplicationQuiz from "./pages/MultiplicationQuiz";
+import ReverseAlphabetQuiz from "./pages/ReverseAlphabetQuiz";
+import PrimeQuiz from "./pages/PrimeQuiz";
+import RomanQuiz from "./pages/RomanQuiz";
+import CountryCurrencyQuiz from "./pages/CountryCurrencyQuiz";
+import ElementSymbolQuiz from "./pages/ElementSymbolQuiz";
+import OneWordSubstitutionQuiz from "./pages/OneWordSubstitutionQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
@@ -96,15 +103,106 @@ const GAME_MODES = [
   {
     id: "periodicTable",
     path: "/periodic-table",
-    title: "Periodic Table Quiz",
+    title: "Element → (Atomic Number, Atomic Weight)",
     badge: "Chemistry",
-    hero: "PT",
-    intro: "Atomic number and weight for all elements.",
+    hero: "Z|W",
+    intro: "Match each element to its atomic number and atomic weight.",
     rules: "wrong = game over",
     reference: "Elements 1-118 with rounded atomic weights.",
     accent: "#f59e0b",
-    summary: "Choose the element's atomic number and atomic weight.",
-    details: "A chemistry recall drill for periodic table facts.",
+    summary: "Pick the correct atomic number and atomic weight.",
+    details: "A chemistry recall drill — element to (Z, W) pairs.",
+  },
+  {
+    id: "multiplication",
+    path: "/multiplication",
+    title: "Multiplication Quiz",
+    badge: "Quant",
+    hero: "A×B",
+    intro: "Times tables from 2 to 15 — speed counts.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Products of two numbers between 2 and 15.",
+    accent: "#22d3ee",
+    summary: "What is the product?",
+    details: "A fast times-table drill with a cyan accent.",
+  },
+  {
+    id: "reverseAlphabet",
+    path: "/reverse-alphabet",
+    title: "Reverse Alphabet Quiz",
+    badge: "Memory",
+    hero: "Z←A",
+    intro: "Given a position, name the letter.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "A=1 · B=2 · … · Z=26",
+    accent: "#e879f9",
+    summary: "Which letter is at this position?",
+    details: "The flip side of Alpha Quiz — position to letter recall.",
+  },
+  {
+    id: "prime",
+    path: "/prime",
+    title: "Prime Number Quiz",
+    badge: "Quant",
+    hero: "P#",
+    intro: "Spot the prime among four numbers.",
+    rules: "wrong = game over",
+    reference: "Primes between 2 and 100.",
+    accent: "#f97316",
+    summary: "Pick the only prime number.",
+    details: "A number theory challenge with an orange accent.",
+  },
+  {
+    id: "roman",
+    path: "/roman",
+    title: "Roman Numerals Quiz",
+    badge: "Classics",
+    hero: "IV",
+    intro: "Convert Roman numerals to decimal values.",
+    rules: "wrong = game over",
+    reference: "Numbers 1–100 in standard Roman notation.",
+    accent: "#84cc16",
+    summary: "What is the value of the numeral?",
+    details: "Decode numerals from I to C with a lime accent.",
+  },
+  {
+    id: "countryCurrency",
+    path: "/country-currency",
+    title: "Country → Currency",
+    badge: "🌍 World GK",
+    hero: "💱",
+    intro: "Match each country to its official currency.",
+    rules: "wrong = game over",
+    reference: "All 195 countries — from Afghanistan to Zimbabwe.",
+    accent: "#2dd4bf",
+    summary: "What currency does this country use?",
+    details: "A world economics and geography quiz with a teal accent.",
+  },
+  {
+    id: "elementSymbol",
+    path: "/element-symbol",
+    title: "Element Name → Element Symbol",
+    badge: "Chemistry",
+    hero: "C·Fe",
+    intro: "Match each element name to its chemical symbol.",
+    rules: "wrong = game over",
+    reference: "Elements 1-118 — from H to Og.",
+    accent: "#eab308",
+    summary: "What is the symbol for this element?",
+    details: "Name to symbol recall — C, Fe, Au, and all 118 elements.",
+  },
+  {
+    id: "oneWordSub",
+    path: "/one-word-sub",
+    title: "One Word Substitution",
+    badge: "Vocabulary",
+    hero: "OWS",
+    intro: "One word for the given phrase.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "100 common one-word substitutions.",
+    accent: "#c084fc",
+    summary: "Pick the one-word substitution for the phrase.",
+    details: "A vocabulary quiz covering 100 common OWS entries.",
   },
 ];
 
@@ -351,7 +449,7 @@ function HomePage({ darkMode, currentUser }) {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {[
-              { label: "Modes", value: "6 + football", accent: "#f0e040" },
+              { label: "Modes", value: "12 + football", accent: "#f0e040" },
               { label: "Palette", value: "Neon arc", accent: "#40e0f0" },
               { label: "Storage", value: "Local auth", accent: "#fb7185" },
             ].map((item) => (
@@ -435,6 +533,13 @@ function ArcadeLayout() {
           <Route path="/state-capital" element={<StateCapitalQuiz />} />
           <Route path="/world-capital" element={<WorldCapitalQuiz />} />
           <Route path="/periodic-table" element={<PeriodicTableQuiz />} />
+          <Route path="/multiplication" element={<MultiplicationQuiz />} />
+          <Route path="/reverse-alphabet" element={<ReverseAlphabetQuiz />} />
+          <Route path="/prime" element={<PrimeQuiz />} />
+          <Route path="/roman" element={<RomanQuiz />} />
+          <Route path="/country-currency" element={<CountryCurrencyQuiz />} />
+          <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
+          <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="*"

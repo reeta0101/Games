@@ -227,6 +227,204 @@ export const worldCapitals = [
   { country: "Zimbabwe", capital: "Harare" },
 ];
 
+export const countryCurrencies = [
+  { country: "Afghanistan", currency: "Afghan afghani" },
+  { country: "Albania", currency: "Albanian lek" },
+  { country: "Algeria", currency: "Algerian dinar" },
+  { country: "Andorra", currency: "Euro" },
+  { country: "Angola", currency: "Angolan kwanza" },
+  { country: "Antigua and Barbuda", currency: "East Caribbean dollar" },
+  { country: "Argentina", currency: "Argentine peso" },
+  { country: "Armenia", currency: "Armenian dram" },
+  { country: "Australia", currency: "Australian dollar" },
+  { country: "Austria", currency: "Euro" },
+  { country: "Azerbaijan", currency: "Azerbaijani manat" },
+  { country: "Bahamas", currency: "Bahamian dollar" },
+  { country: "Bahrain", currency: "Bahraini dinar" },
+  { country: "Bangladesh", currency: "Bangladeshi taka" },
+  { country: "Barbados", currency: "Barbadian dollar" },
+  { country: "Belarus", currency: "Belarusian ruble" },
+  { country: "Belgium", currency: "Euro" },
+  { country: "Belize", currency: "Belize dollar" },
+  { country: "Benin", currency: "West African CFA franc" },
+  { country: "Bhutan", currency: "Bhutanese ngultrum" },
+  { country: "Bolivia", currency: "Bolivian boliviano" },
+  { country: "Bosnia and Herzegovina", currency: "Convertible mark" },
+  { country: "Botswana", currency: "Botswana pula" },
+  { country: "Brazil", currency: "Brazilian real" },
+  { country: "Brunei", currency: "Brunei dollar" },
+  { country: "Bulgaria", currency: "Bulgarian lev" },
+  { country: "Burkina Faso", currency: "West African CFA franc" },
+  { country: "Burundi", currency: "Burundian franc" },
+  { country: "Cabo Verde", currency: "Cape Verdean escudo" },
+  { country: "Cambodia", currency: "Cambodian riel" },
+  { country: "Cameroon", currency: "Central African CFA franc" },
+  { country: "Canada", currency: "Canadian dollar" },
+  { country: "Central African Republic", currency: "Central African CFA franc" },
+  { country: "Chad", currency: "Central African CFA franc" },
+  { country: "Chile", currency: "Chilean peso" },
+  { country: "China", currency: "Chinese yuan" },
+  { country: "Colombia", currency: "Colombian peso" },
+  { country: "Comoros", currency: "Comorian franc" },
+  { country: "Congo (Congo-Brazzaville)", currency: "Central African CFA franc" },
+  { country: "Costa Rica", currency: "Costa Rican colón" },
+  { country: "Croatia", currency: "Euro" },
+  { country: "Cuba", currency: "Cuban peso" },
+  { country: "Cyprus", currency: "Euro" },
+  { country: "Czechia (Czech Republic)", currency: "Czech koruna" },
+  { country: "Democratic Republic of the Congo", currency: "Congolese franc" },
+  { country: "Denmark", currency: "Danish krone" },
+  { country: "Djibouti", currency: "Djiboutian franc" },
+  { country: "Dominica", currency: "East Caribbean dollar" },
+  { country: "Dominican Republic", currency: "Dominican peso" },
+  { country: "Ecuador", currency: "United States dollar" },
+  { country: "Egypt", currency: "Egyptian pound" },
+  { country: "El Salvador", currency: "United States dollar" },
+  { country: "Equatorial Guinea", currency: "Central African CFA franc" },
+  { country: "Eritrea", currency: "Eritrean nakfa" },
+  { country: "Estonia", currency: "Euro" },
+  { country: "Eswatini (fmr. Swaziland)", currency: "Swazi lilangeni" },
+  { country: "Ethiopia", currency: "Ethiopian birr" },
+  { country: "Fiji", currency: "Fijian dollar" },
+  { country: "Finland", currency: "Euro" },
+  { country: "France", currency: "Euro" },
+  { country: "Gabon", currency: "Central African CFA franc" },
+  { country: "Gambia", currency: "Gambian dalasi" },
+  { country: "Georgia", currency: "Georgian lari" },
+  { country: "Germany", currency: "Euro" },
+  { country: "Ghana", currency: "Ghanaian cedi" },
+  { country: "Greece", currency: "Euro" },
+  { country: "Grenada", currency: "East Caribbean dollar" },
+  { country: "Guatemala", currency: "Guatemalan quetzal" },
+  { country: "Guinea", currency: "Guinean franc" },
+  { country: "Guinea-Bissau", currency: "West African CFA franc" },
+  { country: "Guyana", currency: "Guyanese dollar" },
+  { country: "Haiti", currency: "Haitian gourde" },
+  { country: "Holy See (Vatican City)", currency: "Euro" },
+  { country: "Honduras", currency: "Honduran lempira" },
+  { country: "Hungary", currency: "Hungarian forint" },
+  { country: "Iceland", currency: "Icelandic króna" },
+  { country: "India", currency: "Indian rupee" },
+  { country: "Indonesia", currency: "Indonesian rupiah" },
+  { country: "Iran", currency: "Iranian rial" },
+  { country: "Iraq", currency: "Iraqi dinar" },
+  { country: "Ireland", currency: "Euro" },
+  { country: "Israel", currency: "Israeli new shekel" },
+  { country: "Italy", currency: "Euro" },
+  { country: "Jamaica", currency: "Jamaican dollar" },
+  { country: "Japan", currency: "Japanese yen" },
+  { country: "Jordan", currency: "Jordanian dinar" },
+  { country: "Kazakhstan", currency: "Kazakhstani tenge" },
+  { country: "Kenya", currency: "Kenyan shilling" },
+  { country: "Kiribati", currency: "Australian dollar" },
+  { country: "Kuwait", currency: "Kuwaiti dinar" },
+  { country: "Kyrgyzstan", currency: "Kyrgyzstani som" },
+  { country: "Laos", currency: "Lao kip" },
+  { country: "Latvia", currency: "Euro" },
+  { country: "Lebanon", currency: "Lebanese pound" },
+  { country: "Lesotho", currency: "Lesotho loti" },
+  { country: "Liberia", currency: "Liberian dollar" },
+  { country: "Libya", currency: "Libyan dinar" },
+  { country: "Liechtenstein", currency: "Swiss franc" },
+  { country: "Lithuania", currency: "Euro" },
+  { country: "Luxembourg", currency: "Euro" },
+  { country: "Madagascar", currency: "Malagasy ariary" },
+  { country: "Malawi", currency: "Malawian kwacha" },
+  { country: "Malaysia", currency: "Malaysian ringgit" },
+  { country: "Maldives", currency: "Maldivian rufiyaa" },
+  { country: "Mali", currency: "West African CFA franc" },
+  { country: "Malta", currency: "Euro" },
+  { country: "Marshall Islands", currency: "United States dollar" },
+  { country: "Mauritania", currency: "Mauritanian ouguiya" },
+  { country: "Mauritius", currency: "Mauritian rupee" },
+  { country: "Mexico", currency: "Mexican peso" },
+  { country: "Micronesia", currency: "United States dollar" },
+  { country: "Moldova", currency: "Moldovan leu" },
+  { country: "Monaco", currency: "Euro" },
+  { country: "Mongolia", currency: "Mongolian tögrög" },
+  { country: "Montenegro", currency: "Euro" },
+  { country: "Morocco", currency: "Moroccan dirham" },
+  { country: "Mozambique", currency: "Mozambican metical" },
+  { country: "Myanmar (Burma)", currency: "Myanmar kyat" },
+  { country: "Namibia", currency: "Namibian dollar" },
+  { country: "Nauru", currency: "Australian dollar" },
+  { country: "Nepal", currency: "Nepalese rupee" },
+  { country: "Netherlands", currency: "Euro" },
+  { country: "New Zealand", currency: "New Zealand dollar" },
+  { country: "Nicaragua", currency: "Nicaraguan córdoba" },
+  { country: "Niger", currency: "West African CFA franc" },
+  { country: "Nigeria", currency: "Nigerian naira" },
+  { country: "North Korea", currency: "North Korean won" },
+  { country: "North Macedonia", currency: "Macedonian denar" },
+  { country: "Norway", currency: "Norwegian krone" },
+  { country: "Oman", currency: "Omani rial" },
+  { country: "Pakistan", currency: "Pakistani rupee" },
+  { country: "Palau", currency: "United States dollar" },
+  { country: "Palestine State", currency: "Israeli new shekel" },
+  { country: "Panama", currency: "Panamanian balboa" },
+  { country: "Papua New Guinea", currency: "Papua New Guinean kina" },
+  { country: "Paraguay", currency: "Paraguayan guaraní" },
+  { country: "Peru", currency: "Peruvian sol" },
+  { country: "Philippines", currency: "Philippine peso" },
+  { country: "Poland", currency: "Polish złoty" },
+  { country: "Portugal", currency: "Euro" },
+  { country: "Qatar", currency: "Qatari riyal" },
+  { country: "Romania", currency: "Romanian leu" },
+  { country: "Russia", currency: "Russian ruble" },
+  { country: "Rwanda", currency: "Rwandan franc" },
+  { country: "Saint Kitts and Nevis", currency: "East Caribbean dollar" },
+  { country: "Saint Lucia", currency: "East Caribbean dollar" },
+  { country: "Saint Vincent and the Grenadines", currency: "East Caribbean dollar" },
+  { country: "Samoa", currency: "Samoan tālā" },
+  { country: "San Marino", currency: "Euro" },
+  { country: "Sao Tome and Principe", currency: "São Tomé and Príncipe dobra" },
+  { country: "Saudi Arabia", currency: "Saudi riyal" },
+  { country: "Senegal", currency: "West African CFA franc" },
+  { country: "Serbia", currency: "Serbian dinar" },
+  { country: "Seychelles", currency: "Seychellois rupee" },
+  { country: "Sierra Leone", currency: "Sierra Leonean leone" },
+  { country: "Singapore", currency: "Singapore dollar" },
+  { country: "Slovakia", currency: "Euro" },
+  { country: "Slovenia", currency: "Euro" },
+  { country: "Solomon Islands", currency: "Solomon Islands dollar" },
+  { country: "Somalia", currency: "Somali shilling" },
+  { country: "South Africa", currency: "South African rand" },
+  { country: "South Korea", currency: "South Korean won" },
+  { country: "South Sudan", currency: "South Sudanese pound" },
+  { country: "Spain", currency: "Euro" },
+  { country: "Sri Lanka", currency: "Sri Lankan rupee" },
+  { country: "Sudan", currency: "Sudanese pound" },
+  { country: "Suriname", currency: "Surinamese dollar" },
+  { country: "Sweden", currency: "Swedish krona" },
+  { country: "Switzerland", currency: "Swiss franc" },
+  { country: "Syria", currency: "Syrian pound" },
+  { country: "Taiwan", currency: "New Taiwan dollar" },
+  { country: "Tajikistan", currency: "Tajikistani somoni" },
+  { country: "Tanzania", currency: "Tanzanian shilling" },
+  { country: "Thailand", currency: "Thai baht" },
+  { country: "Timor-Leste", currency: "United States dollar" },
+  { country: "Togo", currency: "West African CFA franc" },
+  { country: "Tonga", currency: "Tongan paʻanga" },
+  { country: "Trinidad and Tobago", currency: "Trinidad and Tobago dollar" },
+  { country: "Tunisia", currency: "Tunisian dinar" },
+  { country: "Turkey", currency: "Turkish lira" },
+  { country: "Turkmenistan", currency: "Turkmenistani manat" },
+  { country: "Tuvalu", currency: "Australian dollar" },
+  { country: "Uganda", currency: "Ugandan shilling" },
+  { country: "Ukraine", currency: "Ukrainian hryvnia" },
+  { country: "United Arab Emirates", currency: "UAE dirham" },
+  { country: "United Kingdom", currency: "Pound sterling" },
+  { country: "United States", currency: "United States dollar" },
+  { country: "Uruguay", currency: "Uruguayan peso" },
+  { country: "Uzbekistan", currency: "Uzbekistani som" },
+  { country: "Vanuatu", currency: "Vanuatu vatu" },
+  { country: "Venezuela", currency: "Venezuelan bolívar" },
+  { country: "Vietnam", currency: "Vietnamese dong" },
+  { country: "Yemen", currency: "Yemeni rial" },
+  { country: "Zambia", currency: "Zambian kwacha" },
+  { country: "Zimbabwe", currency: "Zimbabwean dollar" },
+];
+
 export const periodicElements = [
   { atomicNumber: 1, symbol: "H", name: "Hydrogen", atomicWeight: "1.008" },
   { atomicNumber: 2, symbol: "He", name: "Helium", atomicWeight: "4.0026" },
@@ -346,6 +544,108 @@ export const periodicElements = [
   { atomicNumber: 116, symbol: "Lv", name: "Livermorium", atomicWeight: "293" },
   { atomicNumber: 117, symbol: "Ts", name: "Tennessine", atomicWeight: "294" },
   { atomicNumber: 118, symbol: "Og", name: "Oganesson", atomicWeight: "294" },
+];
+
+export const owsData = [
+  { phrase: "A person who cannot be corrected", word: "Incorrigible" },
+  { phrase: "A person who knows many languages", word: "Polyglot" },
+  { phrase: "One who eats everything", word: "Omnivore" },
+  { phrase: "Fear of water", word: "Hydrophobia" },
+  { phrase: "A place where bees are kept", word: "Apiary" },
+  { phrase: "One who walks in sleep", word: "Somnambulist" },
+  { phrase: "A doctor who treats children", word: "Pediatrician" },
+  { phrase: "A person who hates mankind", word: "Misanthrope" },
+  { phrase: "One who loves books", word: "Bibliophile" },
+  { phrase: "A story that cannot be believed", word: "Incredible" },
+  { phrase: "One who is present everywhere", word: "Omnipresent" },
+  { phrase: "A person who is always optimistic", word: "Optimist" },
+  { phrase: "Fear of heights", word: "Acrophobia" },
+  { phrase: "One who looks on the bright side", word: "Optimist" },
+  { phrase: "A place where animals are kept", word: "Zoo" },
+  { phrase: "One who cannot read or write", word: "Illiterate" },
+  { phrase: "A person who travels to a holy place", word: "Pilgrim" },
+  { phrase: "One who is all-powerful", word: "Omnipotent" },
+  { phrase: "Fear of fire", word: "Pyrophobia" },
+  { phrase: "A person who is new to a job", word: "Novice" },
+  { phrase: "One who studies the stars", word: "Astronomer" },
+  { phrase: "A place where bread is baked", word: "Bakery" },
+  { phrase: "One who is fond of fighting", word: "Bellicose" },
+  { phrase: "A person who speaks two languages", word: "Bilingual" },
+  { phrase: "Fear of darkness", word: "Nyctophobia" },
+  { phrase: "One who collects stamps", word: "Philatelist" },
+  { phrase: "A person who lives alone", word: "Recluse" },
+  { phrase: "One who is easily deceived", word: "Gullible" },
+  { phrase: "A place where coins are made", word: "Mint" },
+  { phrase: "One who studies insects", word: "Entomologist" },
+  { phrase: "A person who is against war", word: "Pacifist" },
+  { phrase: "Fear of spiders", word: "Arachnophobia" },
+  { phrase: "One who studies the mind", word: "Psychologist" },
+  { phrase: "A place where wine is made", word: "Winery" },
+  { phrase: "One who is indifferent to pleasure or pain", word: "Stoic" },
+  { phrase: "A person who pretends to be ill", word: "Malingerer" },
+  { phrase: "Fear of crowds", word: "Agoraphobia" },
+  { phrase: "One who studies birds", word: "Ornithologist" },
+  { phrase: "A place where fish are kept", word: "Aquarium" },
+  { phrase: "One who is very talkative", word: "Loquacious" },
+  { phrase: "A person who donates blood", word: "Donor" },
+  { phrase: "Fear of enclosed spaces", word: "Claustrophobia" },
+  { phrase: "One who studies earthquakes", word: "Seismologist" },
+  { phrase: "A place where monks live", word: "Monastery" },
+  { phrase: "One who is greedy for money", word: "Miser" },
+  { phrase: "A person who is excessively proud", word: "Narcissist" },
+  { phrase: "Fear of snakes", word: "Ophidiophobia" },
+  { phrase: "One who studies fossils", word: "Paleontologist" },
+  { phrase: "A place where planes are kept", word: "Hangar" },
+  { phrase: "One who is unable to pay debts", word: "Insolvent" },
+  { phrase: "A person who works for free", word: "Volunteer" },
+  { phrase: "Fear of flying", word: "Aviophobia" },
+  { phrase: "One who studies the weather", word: "Meteorologist" },
+  { phrase: "A place where soldiers live", word: "Barracks" },
+  { phrase: "One who is skilled in many arts", word: "Versatile" },
+  { phrase: "A person who is very wise", word: "Sage" },
+  { phrase: "Fear of death", word: "Thanatophobia" },
+  { phrase: "One who studies the origin of words", word: "Etymologist" },
+  { phrase: "A place where ships are built", word: "Shipyard" },
+  { phrase: "One who is beyond correction", word: "Incorrigible" },
+  { phrase: "A person who believes in no god", word: "Atheist" },
+  { phrase: "Fear of germs", word: "Mysophobia" },
+  { phrase: "One who studies the structure of the body", word: "Anatomist" },
+  { phrase: "A place where books are kept", word: "Library" },
+  { phrase: "One who is very cruel", word: "Sadist" },
+  { phrase: "A person who is always doubting", word: "Skeptic" },
+  { phrase: "Fear of open spaces", word: "Agoraphobia" },
+  { phrase: "One who studies the history of mankind", word: "Historian" },
+  { phrase: "A place where medicines are sold", word: "Pharmacy" },
+  { phrase: "One who is very lazy", word: "Indolent" },
+  { phrase: "A person who is very brave", word: "Valiant" },
+  { phrase: "Fear of blood", word: "Hemophobia" },
+  { phrase: "One who studies the earth", word: "Geologist" },
+  { phrase: "A place where cars are repaired", word: "Garage" },
+  { phrase: "One who is very generous", word: "Philanthropist" },
+  { phrase: "A person who is very shy", word: "Introvert" },
+  { phrase: "Fear of the number 13", word: "Triskaidekaphobia" },
+  { phrase: "One who studies the universe", word: "Cosmologist" },
+  { phrase: "A place where paintings are displayed", word: "Gallery" },
+  { phrase: "One who is very tidy", word: "Meticulous" },
+  { phrase: "A person who is very curious", word: "Inquisitive" },
+  { phrase: "Fear of thunder", word: "Astraphobia" },
+  { phrase: "One who studies languages", word: "Linguist" },
+  { phrase: "A place where dead bodies are kept", word: "Mortuary" },
+  { phrase: "One who is very stubborn", word: "Obstinate" },
+  { phrase: "A person who is very humble", word: "Meek" },
+  { phrase: "Fear of the dark", word: "Scotophobia" },
+  { phrase: "One who studies plants", word: "Botanist" },
+  { phrase: "A place where orphans live", word: "Orphanage" },
+  { phrase: "One who is very ambitious", word: "Aspiring" },
+  { phrase: "A person who is very forgetful", word: "Amnesiac" },
+  { phrase: "Fear of being alone", word: "Autophobia" },
+  { phrase: "One who studies the sea", word: "Oceanographer" },
+  { phrase: "A place where old people live", word: "Nursing home" },
+  { phrase: "One who is very punctual", word: "Punctilious" },
+  { phrase: "A person who is very honest", word: "Upright" },
+  { phrase: "Fear of mirrors", word: "Spectrophobia" },
+  { phrase: "One who studies animals", word: "Zoologist" },
+  { phrase: "A place where criminals are kept", word: "Prison" },
 ];
 
 export const quizGames = {
@@ -473,18 +773,18 @@ export const quizGames = {
   },
   periodicTable: {
     key: "periodicTable",
-    title: "Periodic Table Quiz",
-    bigLetter: "PT",
+    title: "Element → (Atomic Number, Atomic Weight)",
+    bigLetter: "Z|W",
     intro: "Match each element to its atomic number and atomic weight.",
     rules: "wrong = game over",
     reference: "Elements 1-118. Synthetic elements use common mass numbers.",
     accent: "#f59e0b",
     timeLimit: 6000,
     prompt: "Element",
-    subtext: "Choose atomic number | atomic weight",
+    subtext: "Choose (atomic number, atomic weight)",
     cardBadge: "Chemistry",
-    cardTitle: "Periodic Table Quiz",
-    cardDescription: "Atomic number and weight with four options.",
+    cardTitle: "Element → (Atomic Number, Atomic Weight)",
+    cardDescription: "Match elements to their atomic number and weight.",
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 6000) / 3000;
       if (elapsedSec < third) return 12;
@@ -499,6 +799,36 @@ export const quizGames = {
         display: `${element.name} (${element.symbol})`,
         correctValue: correct,
         options: generatePeriodicOptions(element),
+      };
+    },
+  },
+  elementSymbol: {
+    key: "elementSymbol",
+    title: "Element Name → Element Symbol",
+    bigLetter: "C·Fe",
+    intro: "Match each element name to its chemical symbol.",
+    rules: "wrong = game over",
+    reference: "Elements 1-118 — from H to Og.",
+    accent: "#eab308",
+    timeLimit: 6000,
+    prompt: "Symbol of",
+    subtext: "Choose the correct element symbol",
+    cardBadge: "Chemistry",
+    cardTitle: "Element Name → Element Symbol",
+    cardDescription: "Name to symbol — C, Fe, Au, and more.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const element = periodicElements[Math.floor(Math.random() * periodicElements.length)];
+
+      return {
+        display: element.name,
+        correctValue: element.symbol,
+        options: generateElementSymbolOptions(element),
       };
     },
   },
@@ -530,6 +860,198 @@ export const quizGames = {
         display: num,
         correctValue: correct,
         options: generateCubeOptions(correct, num),
+      };
+    },
+  },
+  multiplication: {
+    key: "multiplication",
+    title: "Multiplication Quiz",
+    bigLetter: "A×B",
+    intro: "Times tables from 2 to 15 — speed counts.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Products of two numbers between 2 and 15.",
+    accent: "#22d3ee",
+    timeLimit: 5000,
+    prompt: "What is",
+    subtext: "?",
+    cardBadge: "Quant",
+    cardTitle: "Multiplication Quiz",
+    cardDescription: "Fast times-table recall from 2 to 15.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 5000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const a = Math.floor(Math.random() * 14) + 2;
+      const b = Math.floor(Math.random() * 14) + 2;
+      const correct = a * b;
+
+      return {
+        display: `${a} × ${b}`,
+        correctValue: correct,
+        options: generateMultiplicationOptions(correct, a, b),
+      };
+    },
+  },
+  reverseAlphabet: {
+    key: "reverseAlphabet",
+    title: "Reverse Alphabet Quiz",
+    bigLetter: "Z←A",
+    intro: "Given a position, name the letter.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "A=1 · B=2 · … · Z=26",
+    accent: "#e879f9",
+    timeLimit: 4000,
+    prompt: "Which letter is at position",
+    subtext: "?",
+    cardBadge: "Memory",
+    cardTitle: "Reverse Alphabet Quiz",
+    cardDescription: "Position to letter — the flip side of Alpha Quiz.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 4000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const position = Math.floor(Math.random() * 26) + 1;
+      const correct = String.fromCharCode(64 + position);
+
+      return {
+        display: position,
+        correctValue: correct,
+        options: generateReverseAlphabetOptions(correct, position),
+      };
+    },
+  },
+  prime: {
+    key: "prime",
+    title: "Prime Number Quiz",
+    bigLetter: "P#",
+    intro: "Spot the prime among four numbers.",
+    rules: "wrong = game over",
+    reference: "Primes between 2 and 100.",
+    accent: "#f97316",
+    timeLimit: 6000,
+    prompt: "Which number is prime?",
+    subtext: "Pick the only prime",
+    cardBadge: "Quant",
+    cardTitle: "Prime Number Quiz",
+    cardDescription: "Find the prime number in each set.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const prime = getRandomPrime(2, 100);
+      const composites = new Set();
+
+      while (composites.size < 3) {
+        const candidate = Math.floor(Math.random() * 98) + 2;
+        if (!isPrime(candidate) && candidate !== prime) {
+          composites.add(candidate);
+        }
+      }
+
+      return {
+        display: "?",
+        correctValue: prime,
+        options: shuffleArray([prime, ...composites]),
+      };
+    },
+  },
+  roman: {
+    key: "roman",
+    title: "Roman Numerals Quiz",
+    bigLetter: "IV",
+    intro: "Convert Roman numerals to decimal values.",
+    rules: "wrong = game over",
+    reference: "Numbers 1–100 in standard Roman notation.",
+    accent: "#84cc16",
+    timeLimit: 6000,
+    prompt: "What is the value of",
+    subtext: "?",
+    cardBadge: "Classics",
+    cardTitle: "Roman Numerals Quiz",
+    cardDescription: "Decode numerals from I to C.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const value = Math.floor(Math.random() * 100) + 1;
+      const correct = value;
+      const roman = toRoman(value);
+
+      return {
+        display: roman,
+        correctValue: correct,
+        options: generateRomanOptions(correct),
+      };
+    },
+  },
+  oneWordSub: {
+    key: "oneWordSub",
+    title: "One Word Substitution",
+    bigLetter: "OWS",
+    intro: "One word for the given phrase — test your vocabulary.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "100 common one-word substitutions from English vocabulary.",
+    accent: "#c084fc",
+    timeLimit: 6000,
+    prompt: "",
+    subtext: "Choose the one-word substitution",
+    cardBadge: "Vocabulary",
+    cardTitle: "One Word Substitution",
+    cardDescription: "One word for the given phrase.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const item = owsData[Math.floor(Math.random() * owsData.length)];
+      return {
+        display: item.phrase,
+        correctValue: item.word,
+        options: generateOwsOptions(item.word),
+      };
+    },
+  },
+  countryCurrency: {
+    key: "countryCurrency",
+    title: "Country → Currency",
+    bigLetter: "💱",
+    intro: "Match each country to its official currency.",
+    rules: "wrong = game over",
+    reference: "All 195 countries — from Afghanistan to Zimbabwe.",
+    accent: "#2dd4bf",
+    timeLimit: 6000,
+    prompt: "Currency of",
+    subtext: "Choose the correct currency",
+    cardBadge: "🌍 World GK",
+    cardTitle: "Country → Currency",
+    cardDescription: "Match countries to their official currencies.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const question = countryCurrencies[Math.floor(Math.random() * countryCurrencies.length)];
+
+      return {
+        display: question.country,
+        correctValue: question.currency,
+        options: generateCurrencyOptions(question.currency),
       };
     },
   },
@@ -621,8 +1143,44 @@ function generateWorldCapitalOptions(correctCapital) {
   return shuffleArray([...options]);
 }
 
+function generateCurrencyOptions(correctCurrency) {
+  const options = new Set([correctCurrency]);
+  const currencies = shuffleArray(countryCurrencies.map((item) => item.currency));
+
+  for (const currency of currencies) {
+    if (options.size >= 4) break;
+    options.add(currency);
+  }
+
+  return shuffleArray([...options]);
+}
+
+function generateElementSymbolOptions(correctElement) {
+  const options = new Set([correctElement.symbol]);
+  const nearbyElements = periodicElements.filter(
+    (element) =>
+      element.symbol !== correctElement.symbol &&
+      Math.abs(element.atomicNumber - correctElement.atomicNumber) <= 10,
+  );
+  const fallbackElements = periodicElements.filter(
+    (element) => element.symbol !== correctElement.symbol,
+  );
+
+  for (const element of shuffleArray(nearbyElements)) {
+    if (options.size >= 4) break;
+    options.add(element.symbol);
+  }
+
+  for (const element of shuffleArray(fallbackElements)) {
+    if (options.size >= 4) break;
+    options.add(element.symbol);
+  }
+
+  return shuffleArray([...options]);
+}
+
 function formatPeriodicOption(element) {
-  return `Z ${element.atomicNumber} | W ${element.atomicWeight}`;
+  return `(${element.atomicNumber}, ${element.atomicWeight})`;
 }
 
 function generatePeriodicOptions(correctElement) {
@@ -644,6 +1202,122 @@ function generatePeriodicOptions(correctElement) {
   for (const element of shuffleArray(fallbackElements)) {
     if (options.size >= 4) break;
     options.add(formatPeriodicOption(element));
+  }
+
+  return shuffleArray([...options]);
+}
+
+function isPrime(value) {
+  if (value < 2) return false;
+  if (value === 2) return true;
+  if (value % 2 === 0) return false;
+
+  for (let divisor = 3; divisor <= Math.sqrt(value); divisor += 2) {
+    if (value % divisor === 0) return false;
+  }
+
+  return true;
+}
+
+function getRandomPrime(min, max) {
+  const primes = [];
+
+  for (let value = min; value <= max; value += 1) {
+    if (isPrime(value)) {
+      primes.push(value);
+    }
+  }
+
+  return primes[Math.floor(Math.random() * primes.length)];
+}
+
+function toRoman(value) {
+  const values = [100, 90, 50, 40, 10, 9, 5, 4, 1];
+  const symbols = ["C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+  let remaining = value;
+  let result = "";
+
+  for (let index = 0; index < values.length; index += 1) {
+    while (remaining >= values[index]) {
+      result += symbols[index];
+      remaining -= values[index];
+    }
+  }
+
+  return result;
+}
+
+function generateMultiplicationOptions(correct, a, b) {
+  const options = new Set([correct]);
+  const wrongAnswers = [
+    correct + a,
+    correct - a,
+    correct + b,
+    correct - b,
+    (a - 1) * b,
+    (a + 1) * b,
+    a * (b - 1),
+    a * (b + 1),
+    correct + 10,
+    correct - 10,
+  ].filter((value) => value > 0 && value !== correct);
+
+  for (const wrongAnswer of shuffleArray(wrongAnswers)) {
+    if (options.size >= 4) break;
+    options.add(wrongAnswer);
+  }
+
+  while (options.size < 4) {
+    const fallback = correct + Math.floor(Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
+    options.add(fallback > 0 ? fallback : correct + 5);
+  }
+
+  return shuffleArray([...options]);
+}
+
+function generateReverseAlphabetOptions(correctLetter, position) {
+  const options = new Set([correctLetter]);
+  const offsets = shuffleArray([-1, 1, -2, 2, -3, 3]);
+
+  for (const offset of offsets) {
+    if (options.size >= 4) break;
+    const candidatePosition = position + offset;
+    if (candidatePosition >= 1 && candidatePosition <= 26) {
+      options.add(String.fromCharCode(64 + candidatePosition));
+    }
+  }
+
+  while (options.size < 4) {
+    options.add(String.fromCharCode(Math.floor(Math.random() * 26) + 65));
+  }
+
+  return shuffleArray([...options]);
+}
+
+function generateRomanOptions(correct) {
+  const options = new Set([correct]);
+  const wrongAnswers = [
+    correct + 1,
+    correct - 1,
+    correct + 5,
+    correct - 5,
+    correct + 10,
+    correct - 10,
+    correct + 100,
+    correct - 100,
+  ].filter((value) => value >= 1 && value <= 100 && value !== correct);
+
+  for (const wrongAnswer of shuffleArray(wrongAnswers)) {
+    if (options.size >= 4) break;
+    options.add(wrongAnswer);
+  }
+
+  while (options.size < 4) {
+    let fallback = correct + Math.floor(Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
+    if (fallback < 1 || fallback > 100) {
+      fallback = Math.min(100, Math.max(1, correct + 4));
+    }
+    options.add(fallback);
   }
 
   return shuffleArray([...options]);
@@ -680,6 +1354,16 @@ function generateCubeOptions(correct, originalNum) {
     options.add(fallback);
   }
 
+  return shuffleArray([...options]);
+}
+
+function generateOwsOptions(correctWord) {
+  const options = new Set([correctWord]);
+  const allWords = shuffleArray(owsData.map((item) => item.word).filter((w) => w !== correctWord));
+  for (const word of allWords) {
+    if (options.size >= 4) break;
+    options.add(word);
+  }
   return shuffleArray([...options]);
 }
 

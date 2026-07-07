@@ -523,8 +523,10 @@ export default function QuizGame({ game }) {
             {game.prompt}
           </div>
           <div className={`mt-4 font-black text-white ${
-            game.key === 'worldCapital' || game.key === 'stateCapital' || game.key === 'periodicTable'
+            game.key === 'worldCapital' || game.key === 'stateCapital' || game.key === 'periodicTable' || game.key === 'elementSymbol' || game.key === 'multiplication' || game.key === 'roman' || game.key === 'countryCurrency'
               ? 'break-words text-2xl leading-tight sm:text-4xl'
+              : game.key === 'prime'
+                ? 'text-4xl sm:text-6xl'
               : 'text-6xl sm:text-8xl'
           }`}>
             {currentQuestion?.display}

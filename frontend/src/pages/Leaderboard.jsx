@@ -9,12 +9,19 @@ import {
 } from "../utils/leaderboard";
 
 const GAMES = [
-  { key: "alphabet",     label: "Alphabet Quiz",       accent: "#f0e040", icon: "A→Z" },
-  { key: "square",       label: "Square Quiz",          accent: "#40e0f0", icon: "X²" },
-  { key: "cube",         label: "Cube Quiz",            accent: "#a78bfa", icon: "X³" },
-  { key: "stateCapital", label: "State Capital Quiz",   accent: "#fb7185", icon: "IND" },
-  { key: "worldCapital", label: "World Capital Quiz",   accent: "#34d399", icon: "🌍" },
-  { key: "periodicTable",label: "Periodic Table Quiz",  accent: "#f59e0b", icon: "PT"  },
+  { key: "alphabet",     label: "Alphabet Quiz",       accent: "#f0e040", icon: "A→Z", path: "/alphabet" },
+  { key: "square",       label: "Square Quiz",          accent: "#40e0f0", icon: "X²", path: "/square" },
+  { key: "cube",         label: "Cube Quiz",            accent: "#a78bfa", icon: "X³", path: "/cube" },
+  { key: "stateCapital", label: "State Capital Quiz",   accent: "#fb7185", icon: "IND", path: "/state-capital" },
+  { key: "worldCapital", label: "World Capital Quiz",   accent: "#34d399", icon: "🌍", path: "/world-capital" },
+  { key: "periodicTable",label: "Element → (Atomic Number, Atomic Weight)", accent: "#f59e0b", icon: "Z|W", path: "/periodic-table" },
+  { key: "multiplication", label: "Multiplication Quiz", accent: "#22d3ee", icon: "A×B", path: "/multiplication" },
+  { key: "reverseAlphabet", label: "Reverse Alphabet Quiz", accent: "#e879f9", icon: "Z←A", path: "/reverse-alphabet" },
+  { key: "prime",        label: "Prime Number Quiz",    accent: "#f97316", icon: "P#", path: "/prime" },
+  { key: "roman",        label: "Roman Numerals Quiz",  accent: "#84cc16", icon: "IV", path: "/roman" },
+  { key: "countryCurrency", label: "Country → Currency", accent: "#2dd4bf", icon: "💱", path: "/country-currency" },
+  { key: "elementSymbol", label: "Element Name → Symbol", accent: "#eab308", icon: "C·Fe", path: "/element-symbol" },
+  { key: "oneWordSub",    label: "One Word Substitution",  accent: "#c084fc", icon: "OWS",  path: "/one-word-sub" },
 ];
 
 const LEVELS = [
@@ -120,7 +127,7 @@ export default function Leaderboard() {
             </p>
           </div>
           <Link
-            to={GAMES.find((g) => g.key === selectedGame) ? `/${selectedGame === "stateCapital" ? "state-capital" : selectedGame === "worldCapital" ? "world-capital" : selectedGame === "periodicTable" ? "periodic-table" : selectedGame}` : "/"}
+            to={game.path}
             className="rounded-full border px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] transition hover:opacity-80"
             style={{ borderColor: `${game.accent}50`, color: game.accent, background: `${game.accent}12` }}
           >

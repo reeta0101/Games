@@ -24,6 +24,7 @@ import RomanQuiz from "./pages/RomanQuiz";
 import CountryCurrencyQuiz from "./pages/CountryCurrencyQuiz";
 import ElementSymbolQuiz from "./pages/ElementSymbolQuiz";
 import OneWordSubstitutionQuiz from "./pages/OneWordSubstitutionQuiz";
+import IndianPresidentQuiz from "./pages/IndianPresidentQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
@@ -203,6 +204,19 @@ const GAME_MODES = [
     accent: "#c084fc",
     summary: "Pick the one-word substitution for the phrase.",
     details: "A vocabulary quiz covering 100 common OWS entries.",
+  },
+  {
+    id: "indianPresident",
+    path: "/indian-president",
+    title: "Indian Presidents",
+    badge: "India GK",
+    hero: "IND",
+    intro: "Order → President name.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "1st to 15th President of India.",
+    accent: "#f97316",
+    summary: "Who was the Nth President of India?",
+    details: "From Rajendra Prasad (1st) to Droupadi Murmu (15th).",
   },
 ];
 
@@ -540,6 +554,7 @@ function ArcadeLayout() {
           <Route path="/country-currency" element={<CountryCurrencyQuiz />} />
           <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
           <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
+          <Route path="/indian-president" element={<IndianPresidentQuiz />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="*"

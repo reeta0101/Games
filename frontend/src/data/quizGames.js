@@ -1025,6 +1025,35 @@ export const quizGames = {
       };
     },
   },
+  indianPresident: {
+    key: "indianPresident",
+    title: "Indian Presidents",
+    bigLetter: "IND",
+    intro: "Which president held the given order of office?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "1st (1950) to 15th (2022–present) President of India.",
+    accent: "#f97316",
+    timeLimit: 6000,
+    prompt: "Who was the",
+    subtext: "President of India?",
+    cardBadge: "India GK",
+    cardTitle: "Indian Presidents",
+    cardDescription: "Order → President name, from Rajendra Prasad to Droupadi Murmu.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const p = indianPresidents[Math.floor(Math.random() * indianPresidents.length)];
+      return {
+        display: `${p.ordinal} President`,
+        correctValue: p.name,
+        options: generatePresidentOptions(p.name),
+      };
+    },
+  },
   countryCurrency: {
     key: "countryCurrency",
     title: "Country → Currency",
@@ -1354,6 +1383,34 @@ function generateCubeOptions(correct, originalNum) {
     options.add(fallback);
   }
 
+  return shuffleArray([...options]);
+}
+
+export const indianPresidents = [
+  { order: 1,  ordinal: "1st",  name: "Dr. Rajendra Prasad",        term: "1950–1962" },
+  { order: 2,  ordinal: "2nd",  name: "Dr. S. Radhakrishnan",       term: "1962–1967" },
+  { order: 3,  ordinal: "3rd",  name: "Dr. Zakir Husain",           term: "1967–1969" },
+  { order: 4,  ordinal: "4th",  name: "V. V. Giri",                 term: "1969–1974" },
+  { order: 5,  ordinal: "5th",  name: "Fakhruddin Ali Ahmed",       term: "1974–1977" },
+  { order: 6,  ordinal: "6th",  name: "Neelam Sanjiva Reddy",       term: "1977–1982" },
+  { order: 7,  ordinal: "7th",  name: "Giani Zail Singh",           term: "1982–1987" },
+  { order: 8,  ordinal: "8th",  name: "R. Venkataraman",            term: "1987–1992" },
+  { order: 9,  ordinal: "9th",  name: "Dr. Shankar Dayal Sharma",   term: "1992–1997" },
+  { order: 10, ordinal: "10th", name: "K. R. Narayanan",            term: "1997–2002" },
+  { order: 11, ordinal: "11th", name: "Dr. A. P. J. Abdul Kalam",   term: "2002–2007" },
+  { order: 12, ordinal: "12th", name: "Pratibha Patil",             term: "2007–2012" },
+  { order: 13, ordinal: "13th", name: "Pranab Mukherjee",           term: "2012–2017" },
+  { order: 14, ordinal: "14th", name: "Ram Nath Kovind",            term: "2017–2022" },
+  { order: 15, ordinal: "15th", name: "Droupadi Murmu",             term: "2022–present" },
+];
+
+function generatePresidentOptions(correctName) {
+  const options = new Set([correctName]);
+  const others = shuffleArray(indianPresidents.map((p) => p.name).filter((n) => n !== correctName));
+  for (const name of others) {
+    if (options.size >= 4) break;
+    options.add(name);
+  }
   return shuffleArray([...options]);
 }
 

@@ -89,6 +89,7 @@ export const MODE_LABELS = {
   countryCurrency: 'Currency',
   elementSymbol: 'Symbol',
   oneWordSub: 'OWS',
+  indianPresident: 'IND Pres',
 };
 
 export const DIFF_LABELS = {

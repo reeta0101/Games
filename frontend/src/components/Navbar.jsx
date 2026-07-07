@@ -43,6 +43,12 @@ const NAV_ITEMS = [
     title: "OWS",
     accent: "#c084fc",
   },
+  {
+    id: "indianPresident",
+    path: "/indian-president",
+    title: "IND Presidents",
+    accent: "#f97316",
+  },
 ];
 
 export default function Navbar({

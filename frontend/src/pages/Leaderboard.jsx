@@ -21,7 +21,8 @@ const GAMES = [
   { key: "roman",        label: "Roman Numerals Quiz",  accent: "#84cc16", icon: "IV", path: "/roman" },
   { key: "countryCurrency", label: "Country → Currency", accent: "#2dd4bf", icon: "💱", path: "/country-currency" },
   { key: "elementSymbol", label: "Element Name → Symbol", accent: "#eab308", icon: "C·Fe", path: "/element-symbol" },
-  { key: "oneWordSub",    label: "One Word Substitution",  accent: "#c084fc", icon: "OWS",  path: "/one-word-sub" },
+  { key: "oneWordSub",       label: "One Word Substitution",  accent: "#c084fc", icon: "OWS",  path: "/one-word-sub" },
+  { key: "indianPresident",  label: "Indian Presidents",       accent: "#f97316", icon: "IND",  path: "/indian-president" },
 ];
 
 const LEVELS = [

@@ -28,8 +28,11 @@ export default function AuthPage({ mode = "login" }) {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.currentUser);
 
+  const [loginMethod, setLoginMethod] = useState("email"); // "email" | "username"
+
   const [formData, setFormData] = useState({
     name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -58,62 +61,62 @@ export default function AuthPage({ mode = "login" }) {
 
     try {
       const users = loadUsers();
-      const email = formData.email.trim().toLowerCase();
       const password = formData.password.trim();
 
-      if (!email || !password) {
-        setError("Email and password are required.");
-        return;
-      }
-
       if (isSignup) {
+        const email = formData.email.trim().toLowerCase();
         const name = formData.name.trim();
+        const username = formData.username.trim().toLowerCase();
 
-        if (!name) {
-          setError("Please enter your name.");
+        if (!name || !email || !username || !password) {
+          setError("All fields are required.");
           return;
         }
-
         if (password.length < 6) {
           setError("Use at least 6 characters for your password.");
           return;
         }
-
         if (formData.password !== formData.confirmPassword) {
           setError("Passwords do not match.");
           return;
         }
-
-        if (users.some((user) => user.email === email)) {
+        if (users.some((u) => u.email === email)) {
           setError("An account with this email already exists.");
           return;
         }
+        if (users.some((u) => u.username === username)) {
+          setError("Username already taken.");
+          return;
+        }
 
-        const newUser = {
-          name,
-          email,
-          password,
-        };
-
-        const nextUsers = [...users, newUser];
-        saveUsers(nextUsers);
-        dispatch(loginSuccess({ name, email }));
+        const newUser = { name, username, email, password };
+        saveUsers([...users, newUser]);
+        dispatch(loginSuccess({ name, username, email }));
         navigate("/");
         return;
       }
 
-      const matchedUser = users.find(
-        (user) => user.email === email && user.password === password,
-      );
-
-      if (!matchedUser) {
-        setError("Incorrect email or password.");
+      // Login
+      if (!formData[loginMethod === "email" ? "email" : "username"] || !password) {
+        setError(`${loginMethod === "email" ? "Email" : "Username"} and password are required.`);
         return;
       }
 
-      dispatch(
-        loginSuccess({ name: matchedUser.name, email: matchedUser.email }),
-      );
+      let matchedUser;
+      if (loginMethod === "email") {
+        const email = formData.email.trim().toLowerCase();
+        matchedUser = users.find((u) => u.email === email && u.password === password);
+      } else {
+        const username = formData.username.trim().toLowerCase();
+        matchedUser = users.find((u) => u.username === username && u.password === password);
+      }
+
+      if (!matchedUser) {
+        setError(`Incorrect ${loginMethod === "email" ? "email" : "username"} or password.`);
+        return;
+      }
+
+      dispatch(loginSuccess({ name: matchedUser.name, username: matchedUser.username, email: matchedUser.email }));
       navigate("/");
     } finally {
       setIsSubmitting(false);
@@ -196,9 +199,7 @@ export default function AuthPage({ mode = "login" }) {
             <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
               {isSignup && (
                 <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-slate-300">
-                    Full name
-                  </span>
+                  <span className="mb-2 block text-sm font-medium text-slate-300">Full name</span>
                   <input
                     name="name"
                     value={formData.name}
@@ -209,19 +210,69 @@ export default function AuthPage({ mode = "login" }) {
                 </label>
               )}
 
-              <label className="block">
-                <span className="mb-2 block text-sm font-medium text-slate-300">
-                  Email address
-                </span>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-white/8"
-                />
-              </label>
+              {isSignup && (
+                <label className="block">
+                  <span className="mb-2 block text-sm font-medium text-slate-300">Username</span>
+                  <input
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder="alexmorgan99"
+                    autoComplete="username"
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-white/8"
+                  />
+                </label>
+              )}
+
+              {/* Login method toggle — only on login */}
+              {!isSignup && (
+                <div className="flex rounded-2xl border border-white/10 bg-white/5 p-1">
+                  {["email", "username"].map((method) => (
+                    <button
+                      key={method}
+                      type="button"
+                      onClick={() => { setLoginMethod(method); setError(""); }}
+                      className={`flex-1 rounded-xl py-2.5 text-xs font-bold uppercase tracking-[0.2em] transition ${
+                        loginMethod === method
+                          ? "bg-cyan-400/20 text-cyan-300 shadow-[0_0_12px_rgba(34,211,238,0.15)]"
+                          : "text-slate-500 hover:text-slate-300"
+                      }`}
+                    >
+                      {method === "email" ? "📧 Email" : "👤 Username"}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Email field — signup always, login only when email method */}
+              {(isSignup || loginMethod === "email") && (
+                <label className="block">
+                  <span className="mb-2 block text-sm font-medium text-slate-300">Email address</span>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-white/8"
+                  />
+                </label>
+              )}
+
+              {/* Username field — login only when username method */}
+              {!isSignup && loginMethod === "username" && (
+                <label className="block">
+                  <span className="mb-2 block text-sm font-medium text-slate-300">Username</span>
+                  <input
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder="alexmorgan99"
+                    autoComplete="username"
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-white/8"
+                  />
+                </label>
+              )}
 
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-slate-300">

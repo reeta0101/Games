@@ -120,38 +120,23 @@ export default function Navbar({
           </Link>
         </div>
 
-        <nav className="-mx-3 flex max-w-[100vw] flex-nowrap items-center gap-2 overflow-x-auto px-3 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
+        <nav className="-mx-3 flex max-w-[100vw] flex-nowrap items-center gap-3 overflow-x-auto px-3 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
           <Link
             to="/"
             className={`shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${location.pathname === "/" ? "border-[#f0e040]/60 bg-[#f0e040]/10 text-[#f0e040]" : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:bg-white/10"}`}
           >
             Home
           </Link>
-          {NAV_ITEMS.map((item) => {
-            const active = location.pathname === item.path;
-
-            return (
-              <Link
-                key={item.id}
-                to={item.path}
-                className="group shrink-0 whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm"
-                style={{
-                  borderColor: active
-                    ? `${item.accent}66`
-                    : "rgba(255,255,255,0.1)",
-                  color: active ? item.accent : "#cbd5e1",
-                  background: active
-                    ? `${item.accent}12`
-                    : "rgba(255,255,255,0.05)",
-                  boxShadow: active
-                    ? `0 0 0 1px ${item.accent}20, 0 14px 30px rgba(0,0,0,0.18)`
-                    : "none",
-                }}
-              >
-                {item.title}
-              </Link>
-            );
-          })}
+          <div className="relative shrink-0">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-32 sm:w-48 rounded-full border border-white/10 bg-black/20 py-2 pl-9 pr-4 text-xs text-slate-200 outline-none transition focus:border-[#40e0f0]/40 focus:bg-white/10 sm:text-sm"
+            />
+          </div>
         </nav>
 
         <div className="flex w-full flex-wrap items-center gap-2 self-start sm:w-auto sm:gap-3 xl:self-auto">

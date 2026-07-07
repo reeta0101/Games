@@ -1,0 +1,1227 @@
+/* =====================================================
+   FOOTBALL PENALTY SHOOTOUT – Scoped styles (fb- prefix)
+   ===================================================== */
+
+/* ---------- Page wrapper ---------- */
+.fb-game-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: linear-gradient(160deg, #0a1628 0%, #0d2b1a 40%, #0a1628 100%);
+  color: #fff;
+  user-select: none;
+}
+
+/* ---------- Particles ---------- */
+.fb-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.fb-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: fb-float-up linear infinite;
+}
+@keyframes fb-float-up {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ---------- Game wrapper ---------- */
+.fb-game-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 16px 16px 0;
+  overflow: hidden;
+}
+
+/* ===================== SCOREBOARD ===================== */
+.fb-scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 36px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(57, 255, 20, 0.08);
+  animation: fb-slideDown 0.6s ease-out;
+}
+@keyframes fb-slideDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.fb-score-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.fb-score-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.fb-score-value {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #fff 30%, #39ff14);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: transform 0.3s;
+}
+.fb-score-value.fb-pop { animation: fb-scorePop 0.4s ease; }
+@keyframes fb-scorePop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+.fb-score-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.fb-round-info {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #39ff14;
+  text-transform: uppercase;
+}
+.fb-vs-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===================== STADIUM ===================== */
+.fb-stadium {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  --fb-goal-lift: clamp(104px, 15vh, 126px);
+  --fb-keeper-dive-x: clamp(94px, 18vw, 132px);
+  --fb-keeper-dive-mid-x: clamp(62px, 12vw, 88px);
+  --fb-shot-wide-x: clamp(122px, 25vw, 178px);
+  --fb-ball-start-y: 10px;
+  --fb-catch-side-y: calc(var(--fb-goal-lift) + 58px);
+  --fb-catch-center-y: calc(var(--fb-goal-lift) + 75px);
+  --fb-shot-side-y: calc(var(--fb-goal-lift) + 104px);
+  --fb-shot-center-y: calc(var(--fb-goal-lift) + 125px);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: visible;
+}
+/* Pitch gradient */
+.fb-stadium::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 210px;
+  background: linear-gradient(to top, #1a7a3a 0%, #0f5c28 60%, transparent 100%);
+  border-radius: 50% 50% 0 0 / 30px;
+  z-index: 1;
+}
+.fb-stadium::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 122px;
+  background: repeating-linear-gradient(90deg,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 35px,
+    transparent 35px,
+    transparent 70px);
+  z-index: 1;
+  border-radius: 50% 50% 0 0 / 20px;
+}
+
+/* Floodlights */
+.fb-floodlight {
+  position: absolute;
+  top: -20px;
+  width: 6px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(255, 255, 200, 0.9), transparent);
+  border-radius: 3px;
+  z-index: 0;
+}
+.fb-fl-left  { left: 10%; transform: rotate(-8deg); }
+.fb-fl-right { right: 10%; transform: rotate(8deg); }
+.fb-floodlight::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle, rgba(255, 255, 200, 1), rgba(255, 255, 200, 0.3));
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 200, 0.6);
+}
+
+/* ===================== GOAL FRAME ===================== */
+.fb-goal-frame {
+  position: relative;
+  width: 85%;
+  max-width: 500px;
+  height: 200px;
+  margin-bottom: var(--fb-goal-lift);
+  z-index: 2;
+}
+
+/* Net */
+.fb-goal-net {
+  position: absolute;
+  inset: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.fb-net-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.fb-net-line-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Posts */
+.fb-post {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: linear-gradient(to right, #e0e0e0, #fff, #c0c0c0);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+.fb-post-left  { left: -4px; }
+.fb-post-right { right: -4px; }
+.fb-crossbar {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  height: 8px;
+  background: linear-gradient(to bottom, #fff, #e0e0e0, #c0c0c0);
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  z-index: 5;
+}
+
+/* Goal Zones */
+.fb-goal-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 33.33%;
+  z-index: 3;
+  transition: background 0.2s;
+}
+.fb-zone-left   { left: 0; }
+.fb-zone-center { left: 33.33%; }
+.fb-zone-right  { left: 66.66%; }
+.fb-highlight-goal {
+  background: rgba(57, 255, 20, 0.25);
+  box-shadow: inset 0 0 40px rgba(57, 255, 20, 0.15);
+}
+.fb-highlight-save {
+  background: rgba(255, 61, 90, 0.25);
+  box-shadow: inset 0 0 40px rgba(255, 61, 90, 0.15);
+}
+
+/* ===================== GOALKEEPER ===================== */
+.fb-goalkeeper {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  transform-origin: 50% 90%;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fb-gk-idle {
+  animation: fb-gkBounce 1.2s ease-in-out infinite;
+}
+@keyframes fb-gkBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-6px); }
+}
+.fb-gk-ready {
+  transform: translateX(-50%) translateY(5px) scaleY(0.94);
+  animation: fb-gkReadySet 0.42s ease-out both;
+}
+.fb-gk-ready .fb-gk-arm-left  { transform: translateX(2px) rotate(48deg) scaleY(0.92); }
+.fb-gk-ready .fb-gk-arm-right { transform: translateX(-2px) rotate(-48deg) scaleY(0.92); }
+.fb-gk-ready .fb-gk-leg-left  { transform: rotate(10deg) translateX(-2px); }
+.fb-gk-ready .fb-gk-leg-right { transform: rotate(-10deg) translateX(2px); }
+@keyframes fb-gkReadySet {
+  0%   { transform: translateX(-50%) translateY(0) scaleY(1); }
+  58%  { transform: translateX(-50%) translateY(7px) scaleY(0.9); }
+  100% { transform: translateX(-50%) translateY(5px) scaleY(0.94); }
+}
+.fb-dive-left {
+  transform: translateX(calc(-50% - var(--fb-keeper-dive-x))) translateY(8px) rotate(-27deg);
+  animation: fb-gkDiveLeft 0.52s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+}
+.fb-dive-right {
+  transform: translateX(calc(-50% + var(--fb-keeper-dive-x))) translateY(8px) rotate(27deg);
+  animation: fb-gkDiveRight 0.52s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+}
+.fb-dive-center {
+  transform: translateX(-50%) translateY(-28px) scaleY(1.08);
+  animation: fb-gkDiveCenter 0.46s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+}
+@keyframes fb-gkDiveLeft {
+  0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  45%  { transform: translateX(calc(-50% - var(--fb-keeper-dive-mid-x))) translateY(-32px) rotate(-18deg); }
+  100% { transform: translateX(calc(-50% - var(--fb-keeper-dive-x))) translateY(8px) rotate(-27deg); }
+}
+@keyframes fb-gkDiveRight {
+  0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
+  45%  { transform: translateX(calc(-50% + var(--fb-keeper-dive-mid-x))) translateY(-32px) rotate(18deg); }
+  100% { transform: translateX(calc(-50% + var(--fb-keeper-dive-x))) translateY(8px) rotate(27deg); }
+}
+@keyframes fb-gkDiveCenter {
+  0%   { transform: translateX(-50%) translateY(0) scaleY(1); }
+  55%  { transform: translateX(-50%) translateY(-38px) scaleY(1.14); }
+  100% { transform: translateX(-50%) translateY(-28px) scaleY(1.08); }
+}
+
+.fb-gk-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fb-gk-head {
+  width: 22px;
+  height: 22px;
+  background: #ffd5b0;
+  border-radius: 50%;
+  border: 2px solid #ff6b2b;
+  position: relative;
+  z-index: 5;
+}
+.fb-gk-head::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -2px;
+  right: -2px;
+  height: 12px;
+  background: #ff6b2b;
+  border-radius: 10px 10px 0 0;
+}
+.fb-gk-torso {
+  width: 30px;
+  height: 32px;
+  background: linear-gradient(135deg, #ff6b2b, #ff8f5a);
+  border-radius: 6px 6px 4px 4px;
+  margin-top: -4px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.fb-gk-torso::after {
+  content: '1';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Arms */
+.fb-gk-arm {
+  position: absolute;
+  top: 24px;
+  width: 10px;
+  height: 28px;
+  background: linear-gradient(to bottom, #ff6b2b, #ff8f5a);
+  border-radius: 5px;
+  transform-origin: top center;
+  z-index: 4;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fb-gk-arm-left  { left: -8px; transform: rotate(15deg); }
+.fb-gk-arm-right { right: -8px; transform: rotate(-15deg); }
+
+/* Gloves */
+.fb-gk-arm::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 10px;
+  background: #4ade80;
+  border-radius: 4px;
+}
+
+/* Dive arm animations */
+.fb-dive-left .fb-gk-arm-left   { transform: rotate(-80deg) scaleY(1.2); }
+.fb-dive-left .fb-gk-arm-right  { transform: rotate(-40deg); }
+.fb-dive-right .fb-gk-arm-right { transform: rotate(80deg) scaleY(1.2); }
+.fb-dive-right .fb-gk-arm-left  { transform: rotate(40deg); }
+.fb-dive-center .fb-gk-arm-left  { transform: rotate(-60deg) scaleY(1.15); }
+.fb-dive-center .fb-gk-arm-right { transform: rotate(60deg) scaleY(1.15); }
+
+/* ---- Holding / catch arms ---- */
+.fb-holding .fb-gk-body {
+  animation: fb-gkSecureBall 0.52s ease-out;
+}
+.fb-holding .fb-gk-arm-left  { transform: translate(7px, 3px) rotate(-48deg) scaleY(0.74); transition: transform 0.24s ease-in; }
+.fb-holding .fb-gk-arm-right { transform: translate(-7px, 3px) rotate(48deg) scaleY(0.74); transition: transform 0.24s ease-in; }
+.fb-holding.fb-dive-left .fb-gk-arm-left  { transform: translate(9px, 1px) rotate(-88deg) scaleY(0.78); }
+.fb-holding.fb-dive-left .fb-gk-arm-right { transform: translate(-5px, 5px) rotate(-24deg) scaleY(0.78); }
+.fb-holding.fb-dive-right .fb-gk-arm-right { transform: translate(-9px, 1px) rotate(88deg) scaleY(0.78); }
+.fb-holding.fb-dive-right .fb-gk-arm-left  { transform: translate(5px, 5px) rotate(24deg) scaleY(0.78); }
+.fb-holding.fb-dive-center .fb-gk-arm-left  { transform: translate(9px, 1px) rotate(-52deg) scaleY(0.76); }
+.fb-holding.fb-dive-center .fb-gk-arm-right { transform: translate(-9px, 1px) rotate(52deg) scaleY(0.76); }
+@keyframes fb-gkSecureBall {
+  0%   { transform: scale(1.06) translateY(-1px); }
+  45%  { transform: scale(0.93) translateY(2px); }
+  100% { transform: scale(1); }
+}
+
+/* Glove pulse on catch */
+.fb-holding .fb-gk-arm::after {
+  opacity: 0;
+  background: #86efac;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
+  transition: all 0.2s;
+}
+
+/* Ball and gloves shown together after a save */
+.fb-gk-catch-pocket {
+  position: absolute;
+  top: 27px;
+  left: 50%;
+  width: 54px;
+  height: 30px;
+  z-index: 7;
+  pointer-events: none;
+  --fb-catch-rotate: 0deg;
+  transform: translateX(-50%) rotate(var(--fb-catch-rotate));
+  animation: fb-catchPocketClamp 0.5s cubic-bezier(0.18, 0.82, 0.22, 1) both;
+}
+.fb-gk-catch-pocket-left {
+  left: 18%;
+  top: 25px;
+  --fb-catch-rotate: -8deg;
+}
+.fb-gk-catch-pocket-right {
+  left: 82%;
+  top: 25px;
+  --fb-catch-rotate: 8deg;
+}
+.fb-gk-catch-pocket-center {
+  left: 50%;
+  top: 26px;
+}
+.fb-held-ball {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 19px;
+  height: 19px;
+  z-index: 2;
+  transform: translateX(-50%) scale(1);
+  animation: fb-heldBallPop 0.36s ease-out both;
+}
+.fb-gk-catch-glove {
+  position: absolute;
+  top: 7px;
+  width: 18px;
+  height: 16px;
+  z-index: 3;
+  background: linear-gradient(145deg, #bbf7d0 0%, #4ade80 52%, #16a34a 100%);
+  border: 1px solid rgba(20, 83, 45, 0.4);
+  border-radius: 7px 7px 9px 9px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), 0 0 12px rgba(74, 222, 128, 0.3);
+}
+.fb-gk-catch-glove::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  right: 4px;
+  height: 6px;
+  border-top: 2px solid rgba(20, 83, 45, 0.32);
+  border-radius: 50%;
+}
+.fb-gk-catch-glove-left {
+  left: 8px;
+  transform: rotate(-20deg) translateX(2px);
+  animation: fb-leftGloveClamp 0.46s cubic-bezier(0.18, 0.82, 0.22, 1) both;
+}
+.fb-gk-catch-glove-right {
+  right: 8px;
+  transform: rotate(20deg) translateX(-2px);
+  animation: fb-rightGloveClamp 0.46s cubic-bezier(0.18, 0.82, 0.22, 1) both;
+}
+.fb-held-ball .fb-ball-inner {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), 0 0 12px rgba(255, 255, 255, 0.24);
+  animation: fb-heldBallSettle 0.48s ease-out;
+}
+@keyframes fb-heldBallPop {
+  0%   { transform: translateX(-50%) scale(0.3); opacity: 0; }
+  55%  { transform: translateX(-50%) scale(1.18); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+@keyframes fb-heldBallSettle {
+  0%   { transform: rotate(-90deg) scale(0.85); }
+  48%  { transform: rotate(14deg) scale(1.1, 0.9); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+@keyframes fb-catchPocketClamp {
+  0%   { opacity: 0; transform: translateX(-50%) rotate(var(--fb-catch-rotate)) scale(1.35); }
+  42%  { opacity: 1; transform: translateX(-50%) rotate(var(--fb-catch-rotate)) scale(0.9); }
+  100% { opacity: 1; transform: translateX(-50%) rotate(var(--fb-catch-rotate)) scale(1); }
+}
+@keyframes fb-leftGloveClamp {
+  0%   { transform: rotate(-52deg) translate(-10px, -3px); }
+  65%  { transform: rotate(-11deg) translate(5px, 1px); }
+  100% { transform: rotate(-20deg) translateX(2px); }
+}
+@keyframes fb-rightGloveClamp {
+  0%   { transform: rotate(52deg) translate(10px, -3px); }
+  65%  { transform: rotate(11deg) translate(-5px, 1px); }
+  100% { transform: rotate(20deg) translateX(-2px); }
+}
+
+/* Legs */
+.fb-gk-legs {
+  display: flex;
+  gap: 4px;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+.fb-gk-leg {
+  width: 10px;
+  height: 28px;
+  background: linear-gradient(to bottom, #222, #111);
+  border-radius: 4px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fb-dive-left .fb-gk-leg-left   { transform: rotate(20deg) translateX(-8px); }
+.fb-dive-left .fb-gk-leg-right  { transform: rotate(30deg) translateX(-4px); }
+.fb-dive-right .fb-gk-leg-right { transform: rotate(-20deg) translateX(8px); }
+.fb-dive-right .fb-gk-leg-left  { transform: rotate(-30deg) translateX(4px); }
+
+/* ===================== BALL ===================== */
+.fb-ball {
+  position: absolute;
+  bottom: var(--fb-ball-start-y);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  z-index: 10;
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fb-ball-inner {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 35% 35%, #fff, #e8e8e8 50%, #ccc);
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+.fb-ball-pattern {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 65% 30%, rgba(0,0,0,0.15) 8px, transparent 8px),
+    radial-gradient(circle at 35% 70%, rgba(0,0,0,0.15) 6px, transparent 6px),
+    radial-gradient(circle at 75% 70%, rgba(0,0,0,0.12) 5px, transparent 5px);
+  border-radius: 50%;
+}
+.fb-ball::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scaleX(0.25);
+  z-index: -1;
+}
+
+/* Ball shot positions */
+.fb-ball.shot-left {
+  bottom: var(--fb-shot-side-y);
+  left: calc(50% - var(--fb-shot-wide-x));
+  transform: translateX(-50%) scale(0.7);
+}
+.fb-ball.shot-center {
+  bottom: var(--fb-shot-center-y);
+  left: 50%;
+  transform: translateX(-50%) scale(0.6);
+}
+.fb-ball.shot-right {
+  bottom: var(--fb-shot-side-y);
+  left: calc(50% + var(--fb-shot-wide-x));
+  transform: translateX(-50%) scale(0.7);
+}
+.fb-ball.goal-scored {
+  opacity: 0.82;
+  filter: drop-shadow(0 0 16px rgba(57, 255, 20, 0.35));
+}
+
+/* Ball spin during flight */
+.fb-ball.fb-shooting .fb-ball-inner {
+  animation: fb-ballSpin 0.45s linear;
+}
+.fb-ball.fb-shooting::after {
+  opacity: 1;
+  animation: fb-ballTrail 0.42s ease-out forwards;
+}
+.fb-ball.fb-shooting.shot-left::after {
+  transform-origin: right center;
+  rotate: -20deg;
+}
+.fb-ball.fb-shooting.shot-center::after {
+  rotate: 90deg;
+}
+.fb-ball.fb-shooting.shot-right::after {
+  transform-origin: left center;
+  rotate: 20deg;
+}
+@keyframes fb-ballSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(720deg); }
+}
+@keyframes fb-ballTrail {
+  0%   { opacity: 0.9; transform: translate(-50%, -50%) scaleX(1.2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scaleX(0.2); }
+}
+
+/* ---- Ball caught positions (snaps to keeper's body) ---- */
+.fb-ball.fb-caught {
+  transition: all 0.32s cubic-bezier(0.18, 0.82, 0.22, 1);
+  z-index: 7;
+  animation: fb-ballCollect 0.38s ease-out forwards;
+}
+.fb-ball.fb-caught.caught-left {
+  bottom: var(--fb-catch-side-y);
+  left: calc(50% - var(--fb-keeper-dive-x));
+  transform: translateX(-50%) scale(0.52);
+}
+.fb-ball.fb-caught.caught-center {
+  bottom: var(--fb-catch-center-y);
+  left: 50%;
+  transform: translateX(-50%) scale(0.48);
+}
+.fb-ball.fb-caught.caught-right {
+  bottom: var(--fb-catch-side-y);
+  left: calc(50% + var(--fb-keeper-dive-x));
+  transform: translateX(-50%) scale(0.52);
+}
+
+/* Catch squeeze */
+.fb-ball.fb-caught .fb-ball-inner {
+  animation: fb-catchSqueeze 0.3s ease-out;
+}
+@keyframes fb-catchSqueeze {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.75, 1.15); }
+  70%  { transform: scale(1.1, 0.9); }
+  100% { transform: scale(1); }
+}
+@keyframes fb-ballCollect {
+  0%, 58% { opacity: 1; }
+  100%    { opacity: 0; }
+}
+
+/* ---- Catch flash ring ---- */
+.fb-catch-flash {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid rgba(74, 222, 128, 0.8);
+  pointer-events: none;
+  z-index: 11;
+  animation: fb-flashRing 0.5s ease-out forwards;
+}
+@keyframes fb-flashRing {
+  0%   { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+/* ===================== KICKER ===================== */
+.fb-kicker {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1.05);
+  transform-origin: 50% 100%;
+  z-index: 6;
+  transition: transform 0.32s;
+}
+.fb-kicker.fb-run-up {
+  animation: fb-runUp 0.46s ease-out forwards;
+}
+.fb-kicker.fb-kick {
+  animation: fb-kickStep 0.42s ease-out forwards;
+}
+@keyframes fb-runUp {
+  0%   { transform: translateX(-50%) scale(1.05) translateY(0) rotate(-1deg); }
+  34%  { transform: translateX(calc(-50% - 5px)) scale(1.05) translateY(-18px) rotate(2deg); }
+  72%  { transform: translateX(calc(-50% + 4px)) scale(1.05) translateY(-42px) rotate(-4deg); }
+  100% { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
+}
+@keyframes fb-kickStep {
+  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
+  46%  { transform: translateX(calc(-50% + 5px)) scale(1.05) translateY(-44px) rotate(8deg); }
+  100% { transform: translateX(-50%) scale(1.05) translateY(-34px) rotate(3deg); }
+}
+.fb-kicker-shot-left.fb-kick {
+  animation: fb-kickStepLeft 0.44s ease-out forwards;
+}
+.fb-kicker-shot-center.fb-kick {
+  animation: fb-kickStepCenter 0.44s ease-out forwards;
+}
+.fb-kicker-shot-right.fb-kick {
+  animation: fb-kickStepRight 0.44s ease-out forwards;
+}
+@keyframes fb-kickStepLeft {
+  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
+  44%  { transform: translateX(calc(-50% - 9px)) scale(1.05) translateY(-45px) rotate(-11deg); }
+  100% { transform: translateX(calc(-50% - 4px)) scale(1.05) translateY(-34px) rotate(-7deg); }
+}
+@keyframes fb-kickStepCenter {
+  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
+  44%  { transform: translateX(calc(-50% + 2px)) scale(1.05) translateY(-47px) rotate(5deg); }
+  100% { transform: translateX(-50%) scale(1.05) translateY(-34px) rotate(1deg); }
+}
+@keyframes fb-kickStepRight {
+  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
+  44%  { transform: translateX(calc(-50% + 10px)) scale(1.05) translateY(-45px) rotate(13deg); }
+  100% { transform: translateX(calc(-50% + 4px)) scale(1.05) translateY(-34px) rotate(7deg); }
+}
+.fb-kicker-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fb-run-up .fb-kicker-body {
+  animation: fb-kickerRunLean 0.46s ease-out forwards;
+}
+.fb-kick .fb-kicker-body {
+  animation: fb-kickerStrikeLean 0.42s ease-out forwards;
+}
+@keyframes fb-kickerRunLean {
+  0%   { transform: rotate(0deg); }
+  55%  { transform: rotate(-7deg); }
+  100% { transform: rotate(-10deg); }
+}
+@keyframes fb-kickerStrikeLean {
+  0%   { transform: rotate(-10deg); }
+  48%  { transform: rotate(13deg); }
+  100% { transform: rotate(4deg); }
+}
+.fb-kicker-shot-left.fb-kick .fb-kicker-body {
+  animation: fb-kickerStrikeLeft 0.44s ease-out forwards;
+}
+.fb-kicker-shot-center.fb-kick .fb-kicker-body {
+  animation: fb-kickerStrikeCenter 0.44s ease-out forwards;
+}
+.fb-kicker-shot-right.fb-kick .fb-kicker-body {
+  animation: fb-kickerStrikeRight 0.44s ease-out forwards;
+}
+@keyframes fb-kickerStrikeLeft {
+  0%   { transform: rotate(-10deg); }
+  52%  { transform: rotate(-18deg) translateX(-2px); }
+  100% { transform: rotate(-8deg); }
+}
+@keyframes fb-kickerStrikeCenter {
+  0%   { transform: rotate(-10deg); }
+  52%  { transform: rotate(6deg) translateY(-1px); }
+  100% { transform: rotate(2deg); }
+}
+@keyframes fb-kickerStrikeRight {
+  0%   { transform: rotate(-10deg); }
+  52%  { transform: rotate(20deg) translateX(2px); }
+  100% { transform: rotate(8deg); }
+}
+.fb-kicker-head {
+  width: 20px;
+  height: 20px;
+  background: #d4a574;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+.fb-kicker-head::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -1px;
+  right: -1px;
+  height: 10px;
+  background: #333;
+  border-radius: 10px 10px 0 0;
+}
+.fb-kicker-torso {
+  width: 26px;
+  height: 30px;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  border-radius: 5px 5px 3px 3px;
+  margin-top: -3px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.fb-kicker-torso::after {
+  content: '10';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Kicker arms */
+.fb-kicker-arm {
+  position: absolute;
+  top: 22px;
+  width: 8px;
+  height: 24px;
+  background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+  border-radius: 4px;
+  transform-origin: top center;
+}
+.fb-kicker-arm-left  { left: -6px; transform: rotate(10deg); }
+.fb-kicker-arm-right { right: -6px; transform: rotate(-10deg); }
+.fb-run-up .fb-kicker-arm-left  { transform: rotate(-34deg); transition: 0.3s; }
+.fb-run-up .fb-kicker-arm-right { transform: rotate(34deg); transition: 0.3s; }
+.fb-kick .fb-kicker-arm-left  { transform: rotate(-58deg); transition: 0.18s; }
+.fb-kick .fb-kicker-arm-right { transform: rotate(54deg); transition: 0.18s; }
+
+/* Kicker legs */
+.fb-kicker-legs {
+  display: flex;
+  gap: 3px;
+  margin-top: -2px;
+}
+.fb-kicker-leg {
+  width: 9px;
+  height: 26px;
+  background: linear-gradient(to bottom, #1e3a5f, #0f1f33);
+  border-radius: 4px;
+  transform-origin: top center;
+  transition: transform 0.3s;
+}
+.fb-kicker-leg::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 6px;
+  background: #222;
+  border-radius: 3px;
+}
+.fb-kick .fb-kicker-leg-right {
+  animation: fb-kickLeg 0.42s ease-out;
+}
+.fb-kick .fb-kicker-leg-left {
+  transform: rotate(12deg) translateX(-3px);
+}
+.fb-kicker-shot-left.fb-kick .fb-kicker-leg-right {
+  animation: fb-kickLegLeft 0.44s ease-out;
+}
+.fb-kicker-shot-center.fb-kick .fb-kicker-leg-right {
+  animation: fb-kickLegCenter 0.44s ease-out;
+}
+.fb-kicker-shot-right.fb-kick .fb-kicker-leg-right {
+  animation: fb-kickLegRight 0.44s ease-out;
+}
+@keyframes fb-kickLeg {
+  0%   { transform: rotate(16deg) translateX(2px); }
+  34%  { transform: rotate(-68deg) translateX(-2px); }
+  66%  { transform: rotate(42deg) translateX(8px); }
+  100% { transform: rotate(10deg) translateX(2px); }
+}
+@keyframes fb-kickLegLeft {
+  0%   { transform: rotate(16deg) translateX(1px); }
+  34%  { transform: rotate(-78deg) translateX(-6px); }
+  66%  { transform: rotate(28deg) translateX(-8px); }
+  100% { transform: rotate(4deg) translateX(-4px); }
+}
+@keyframes fb-kickLegCenter {
+  0%   { transform: rotate(14deg) translateX(1px); }
+  34%  { transform: rotate(-72deg) translateX(-2px); }
+  66%  { transform: rotate(34deg) translateX(2px); }
+  100% { transform: rotate(8deg) translateX(1px); }
+}
+@keyframes fb-kickLegRight {
+  0%   { transform: rotate(16deg) translateX(2px); }
+  34%  { transform: rotate(-62deg) translateX(2px); }
+  66%  { transform: rotate(52deg) translateX(10px); }
+  100% { transform: rotate(12deg) translateX(4px); }
+}
+
+/* ===================== PITCH LINES ===================== */
+.fb-pitch-lines {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  pointer-events: none;
+}
+.fb-penalty-spot {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.fb-penalty-arc {
+  position: absolute;
+  bottom: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 260px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+/* ===================== RESULT OVERLAY ===================== */
+.fb-result-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.fb-result-overlay.fb-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.fb-result-content {
+  text-align: center;
+  animation: fb-resultBounce 0.5s ease-out;
+}
+@keyframes fb-resultBounce {
+  0%   { transform: scale(0.3) translateY(30px); opacity: 0; }
+  60%  { transform: scale(1.1) translateY(-5px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.fb-result-icon {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+}
+.fb-result-text {
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 30px currentColor;
+  margin: 0;
+}
+.fb-result-text.fb-goal { color: #39ff14; }
+.fb-result-text.fb-save { color: #ff3d5a; }
+.fb-result-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+/* ===================== CONTROLS ===================== */
+.fb-controls {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  padding-bottom: 24px;
+  animation: fb-fadeUp 0.6s ease-out 0.3s both;
+}
+@keyframes fb-fadeUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.fb-instruction {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 14px;
+}
+.fb-direction-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+.fb-dir-btn {
+  position: relative;
+  flex: 1;
+  max-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  color: #fff;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+.fb-dir-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.05));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.fb-dir-btn:hover::before { opacity: 1; }
+.fb-dir-btn svg {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.25s;
+}
+.fb-dir-btn:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(57, 255, 20, 0.1);
+}
+.fb-dir-btn:hover svg { transform: scale(1.15); }
+.fb-dir-btn:active { transform: translateY(-1px) scale(0.97); }
+.fb-dir-btn.fb-dir-left:hover   { box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 25px rgba(59,130,246,0.3); border-color: rgba(59,130,246,0.5); }
+.fb-dir-btn.fb-dir-center:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 25px rgba(57,255,20,0.3); border-color: rgba(57,255,20,0.5); }
+.fb-dir-btn.fb-dir-right:hover  { box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 25px rgba(255,61,90,0.3); border-color: rgba(255,61,90,0.5); }
+.fb-dir-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===================== GAME OVER ===================== */
+.fb-gameover-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+.fb-gameover-overlay.fb-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.fb-gameover-content {
+  text-align: center;
+  animation: fb-gameoverIn 0.6s ease-out;
+}
+@keyframes fb-gameoverIn {
+  from { transform: scale(0.7) translateY(40px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+.fb-trophy {
+  font-size: 80px;
+  margin-bottom: 16px;
+  animation: fb-trophyBounce 1s ease-in-out infinite;
+}
+@keyframes fb-trophyBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-10px) rotate(-3deg); }
+  75%      { transform: translateY(-10px) rotate(3deg); }
+}
+.fb-gameover-title {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.fb-gameover-title.fb-win {
+  background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+}
+.fb-gameover-title.fb-lose {
+  color: #ff3d5a;
+  text-shadow: 0 0 30px rgba(255, 61, 90, 0.4);
+}
+.fb-gameover-title.fb-draw {
+  color: #00e5ff;
+  text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+}
+.fb-gameover-score {
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 32px;
+}
+.fb-play-again-btn {
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #39ff14, #22c55e);
+  color: #0a1628;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(57, 255, 20, 0.3);
+}
+.fb-play-again-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(57, 255, 20, 0.5);
+}
+.fb-play-again-btn:active { transform: translateY(0) scale(0.98); }
+
+/* ===================== CROWD BAR ===================== */
+.fb-crowd-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  display: flex;
+  z-index: 60;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.fb-crowd-bar.fb-crowd-active { opacity: 1; }
+.fb-crowd-segment {
+  flex: 1;
+  background: #39ff14;
+  animation: fb-crowdPulse 0.3s ease-in-out infinite alternate;
+}
+.fb-crowd-segment:nth-child(odd) {
+  animation-delay: 0.1s;
+  background: #ffd700;
+}
+@keyframes fb-crowdPulse {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(3); }
+}
+
+/* ===================== CONFETTI ===================== */
+.fb-confetti {
+  position: fixed;
+  top: -10px;
+  z-index: 200;
+  pointer-events: none;
+  animation: fb-confettiFall linear forwards;
+}
+@keyframes fb-confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 500px) {
+  .fb-stadium {
+    --fb-goal-lift: 88px;
+    --fb-keeper-dive-x: clamp(74px, 22vw, 96px);
+    --fb-keeper-dive-mid-x: clamp(50px, 15vw, 64px);
+    --fb-shot-wide-x: clamp(100px, 30vw, 132px);
+  }
+  .fb-scoreboard { padding: 10px 20px; gap: 16px; }
+  .fb-score-value { font-size: 32px; }
+  .fb-goal-frame { height: 160px; width: 90%; }
+  .fb-kicker { bottom: 0; }
+  .fb-dir-btn { padding: 12px 8px; }
+  .fb-result-text { font-size: 28px; }
+  .fb-gameover-title { font-size: 36px; }
+}
+@media (max-height: 700px) {
+  .fb-stadium {
+    --fb-goal-lift: 72px;
+    --fb-keeper-dive-x: clamp(78px, 16vw, 108px);
+    --fb-keeper-dive-mid-x: clamp(52px, 11vw, 72px);
+    --fb-shot-wide-x: clamp(104px, 22vw, 146px);
+    margin-top: 5px;
+  }
+  .fb-goal-frame { height: 150px; margin-bottom: var(--fb-goal-lift); }
+  .fb-kicker { bottom: 0; }
+  .fb-controls { padding-bottom: 12px; }
+}

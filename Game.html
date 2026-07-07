@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alphabet Position Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131f;
+    --border: #2a2a3f;
+    --accent: #f0e040;
+    --accent2: #40e0f0;
+    --danger: #f04060;
+    --success: #40f080;
+    --text: #e8e8f0;
+    --muted: #6060a0;
+
+    /* Mode Accents */
+    --alphabet-accent: #f0e040;
+    --square-accent: #40e0f0;
+    --capital-accent: #fb7185;
+  }
+
+  body {
+    font-family: 'Space Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 16px 0;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(240,224,64,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,224,64,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 520px;
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(240,224,64,0.4);
+  }
+
+  .score-box {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .score-box span { color: var(--text); font-weight: 700; }
+
+  /* Timer bar */
+  .timer-wrap {
+    position: relative;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .timer-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.1s linear, background 0.3s;
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .timer-bar.danger { background: var(--danger); box-shadow: 0 0 12px var(--danger); }
+
+  .timer-label {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  /* Question card */
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .question-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .question-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .letter-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    line-height: 1;
+    color: var(--accent);
+    text-shadow: 0 0 40px rgba(240,224,64,0.5);
+    animation: pop 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes pop {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .question-text {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Options grid */
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .option {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 2px;
+  }
+
+  .option::before {
+    content: attr(data-key);
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .option:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 20px rgba(240,224,64,0.15);
+    transform: translateY(-2px);
+  }
+
+  .option.correct {
+    border-color: var(--success);
+    background: rgba(64, 240, 128, 0.1);
+    color: var(--success);
+    box-shadow: 0 0 20px rgba(64,240,128,0.2);
+  }
+
+  .option.wrong {
+    border-color: var(--danger);
+    background: rgba(240, 64, 96, 0.1);
+    color: var(--danger);
+    box-shadow: 0 0 20px rgba(240,64,96,0.2);
+  }
+
+  .option:disabled { cursor: not-allowed; }
+
+  /* Streak */
+  .streak {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    height: 16px;
+  }
+
+  .streak.active { color: var(--accent); }
+
+  /* Screen overlays */
+  .screen {
+    text-align: center;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .big-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    line-height: 1;
+    letter-spacing: 8px;
+    color: var(--accent);
+    text-shadow: 0 0 40px rgba(240,224,64,0.4);
+    margin-bottom: 8px;
+  }
+
+  .screen h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+  }
+
+  .screen p {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .final-score {
+    font-size: 72px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--accent2);
+    text-shadow: 0 0 30px rgba(64,224,240,0.4);
+    margin: 20px 0;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 48px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 30px rgba(240,224,64,0.3);
+  }
+
+  .hidden { display: none; }
+
+  /* Shake animation for wrong */
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-6px)}
+    40%{transform:translateX(6px)}
+    60%{transform:translateX(-4px)}
+    80%{transform:translateX(4px)}
+  }
+  .shake { animation: shake 0.4s ease; }
+
+  /* Alphabet reference small */
+  .ref {
+    margin-top: 24px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Main Menu Dashboard Styles */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .menu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    text-align: left;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: var(--border);
+    transition: background 0.25s;
+  }
+
+  .menu-card:nth-child(1):hover::before { background: var(--alphabet-accent); }
+  .menu-card:nth-child(2):hover::before { background: var(--square-accent); }
+  .menu-card:nth-child(3):hover::before { background: var(--capital-accent); }
+
+  .menu-card:hover {
+    border-color: var(--muted);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .menu-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .menu-card p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .card-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .card-action {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--muted);
+    transition: color 0.25s;
+  }
+
+  .menu-card:hover .card-action {
+    color: var(--text);
+  }
+
+  /* Responsive Design Tweaks */
+  @media (max-width: 480px) {
+    #app {
+      padding: 16px;
+    }
+    .logo {
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+    .score-box {
+      font-size: 10px;
+      gap: 10px;
+    }
+    .timer-wrap {
+      margin-bottom: 24px;
+    }
+    .question-card {
+      padding: 24px 16px;
+      margin-bottom: 20px;
+    }
+    .letter-display {
+      font-size: 80px;
+    }
+    .options {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .option {
+      padding: 16px;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+    .big-letter {
+      font-size: 60px;
+      letter-spacing: 4px;
+    }
+    .screen h2 {
+      font-size: 36px;
+      letter-spacing: 4px;
+    }
+    .final-score {
+      font-size: 56px;
+      margin: 12px 0;
+    }
+    .btn {
+      padding: 12px 32px;
+      font-size: 11px;
+    }
+    .menu-card {
+      padding: 16px;
+    }
+    .menu-card h3 {
+      font-size: 18px;
+    }
+    .ref {
+      font-size: 9px;
+      line-height: 1.6;
+    }
+  }
+
+  /* Height-constrained landscape devices */
+  @media (max-height: 600px) {
+    body {
+      align-items: flex-start;
+      padding: 8px 0;
+    }
+    .header {
+      margin-bottom: 12px;
+    }
+    .timer-wrap {
+      margin-bottom: 16px;
+    }
+    .question-card {
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .letter-display {
+      font-size: 52px;
+    }
+    .question-label {
+      margin-bottom: 10px;
+    }
+    .question-text {
+      margin-top: 10px;
+    }
+    .options {
+      gap: 8px;
+    }
+    .option {
+      padding: 12px;
+      font-size: 15px;
+    }
+    .big-letter {
+      font-size: 48px;
+      margin-bottom: 4px;
+    }
+    .screen h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    .screen p {
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+    .btn {
+      margin-top: 12px;
+      padding: 10px 24px;
+    }
+    .menu-grid {
+      margin-top: 16px;
+      gap: 10px;
+    }
+    .menu-card {
+      padding: 12px;
+    }
+    .ref {
+      margin-top: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Menu Screen -->
+  <div id="menuScreen" class="screen">
+    <div class="big-letter">ARCADE</div>
+    <h2>Choose Quiz</h2>
+    <div class="menu-grid">
+      <div class="menu-card" onclick="selectGame('alphabet')">
+        <div class="card-badge" style="color: var(--alphabet-accent)">Memory</div>
+        <h3>Alphabet Quiz</h3>
+        <p>Identify letter positions instantly.</p>
+        <span class="card-action">PLAY →</span>
+      </div>
+      <div class="menu-card" onclick="selectGame('square')">
+        <div class="card-badge" style="color: var(--square-accent)">Quant</div>
+        <h3>Square Quiz</h3>
+        <p>Squares of numbers from 1 to 100.</p>
+        <span class="card-action">PLAY →</span>
+      </div>
+      <div class="menu-card" onclick="selectGame('stateCapital')">
+        <div class="card-badge" style="color: var(--capital-accent)">GK Memory</div>
+        <h3>State Capital Quiz</h3>
+        <p>Indian state capitals at exam speed.</p>
+        <span class="card-action">PLAY →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="startScreen" class="hidden screen">
+    <div class="big-letter" id="startScreenBigLetter">A→Z</div>
+    <h2 id="startScreenTitle">Alpha Quiz</h2>
+    <p id="startScreenIntro">What position is the letter?</p>
+    <p id="startScreenRules" style="color:#404070; margin-top:8px;"><1s=12pts · <2s=8pts · <3s=4pts · wrong=over</p>
+    <div style="display:flex; justify-content:center; gap:16px; margin-top: 16px;">
+      <button class="btn" style="margin-top:0;" onclick="startGame()">Start</button>
+      <button class="btn" style="margin-top:0; border-color:var(--muted); color:var(--muted);" onclick="showMainMenu()">Menu</button>
+    </div>
+    <div class="ref" id="startScreenRef">A·B·C·D·E·F·G·H·I·J·K·L·M·N·O·P·Q·R·S·T·U·V·W·X·Y·Z</div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="gameScreen" class="hidden">
+    <div class="header">
+      <div class="logo" id="gameLogo">Alpha Quiz</div>
+      <div class="score-box">
+        <div>Score <span id="scoreVal">0</span></div>
+        <div>Q <span id="qNum">1</span></div>
+      </div>
+    </div>
+
+    <div class="timer-wrap">
+      <div class="timer-label" id="timerLabel">3.0s</div>
+      <div class="timer-bar" id="timerBar"></div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-label" id="gamePromptLabel">What position is</div>
+      <div class="letter-display" id="letterDisplay">A</div>
+      <div class="question-text" id="gamePromptSubtext">in the alphabet?</div>
+    </div>
+
+    <div class="options" id="optionsGrid"></div>
+    <div class="streak" id="streakDisplay"></div>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="btn" style="padding:8px 28px; font-size:11px; border-color:var(--muted); color:var(--muted);" onclick="gameEndReason='quit'; clearInterval(timerInterval); endGame()">QUIT</button>
+    </div>
+  </div>
+
+  <!-- End Screen -->
+  <div id="endScreen" class="hidden screen">
+    <h2>Finished!</h2>
+    <p>Your score</p>
+    <div class="final-score" id="finalScore">0</div>
+    <p id="finalMsg"></p>
+    <div style="display:flex; justify-content:center; gap:16px; margin-top:24px;">
+      <button class="btn" style="margin-top:0;" onclick="startGame()">Play Again</button>
+      <button class="btn" style="margin-top:0; border-color:var(--muted); color:var(--muted);" onclick="showMainMenu()">Menu</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const stateCapitals = [
+  { state: "Andhra Pradesh", capital: "Amaravati" },
+  { state: "Arunachal Pradesh", capital: "Itanagar" },
+  { state: "Assam", capital: "Dispur" },
+  { state: "Bihar", capital: "Patna" },
+  { state: "Chhattisgarh", capital: "Raipur" },
+  { state: "Goa", capital: "Panaji" },
+  { state: "Gujarat", capital: "Gandhinagar" },
+  { state: "Haryana", capital: "Chandigarh" },
+  { state: "Himachal Pradesh", capital: "Shimla" },
+  { state: "Jharkhand", capital: "Ranchi" },
+  { state: "Karnataka", capital: "Bengaluru" },
+  { state: "Kerala", capital: "Thiruvananthapuram" },
+  { state: "Madhya Pradesh", capital: "Bhopal" },
+  { state: "Maharashtra", capital: "Mumbai" },
+  { state: "Manipur", capital: "Imphal" },
+  { state: "Meghalaya", capital: "Shillong" },
+  { state: "Mizoram", capital: "Aizawl" },
+  { state: "Nagaland", capital: "Kohima" },
+  { state: "Odisha", capital: "Bhubaneswar" },
+  { state: "Punjab", capital: "Chandigarh" },
+  { state: "Rajasthan", capital: "Jaipur" },
+  { state: "Sikkim", capital: "Gangtok" },
+  { state: "Tamil Nadu", capital: "Chennai" },
+  { state: "Telangana", capital: "Hyderabad" },
+  { state: "Tripura", capital: "Agartala" },
+  { state: "Uttarakhand", capital: "Dehradun" },
+  { state: "Uttar Pradesh", capital: "Lucknow" },
+  { state: "West Bengal", capital: "Kolkata" },
+];
+
+function shuffleArray(arr) {
+  const newArr = [...arr];
+  for (let i = newArr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+  }
+  return newArr;
+}
+
+function generateAlphabetOptions(correct) {
+  const opts = new Set([correct]);
+  const offsets = shuffleArray([-1, 1, -2, 2, -3, 3, -4, 4]);
+  for (const offset of offsets) {
+    if (opts.size >= 4) break;
+    const candidate = correct + offset;
+    if (candidate >= 1 && candidate <= 26) opts.add(candidate);
+  }
+  while (opts.size < 4) {
+    const r = Math.floor(Math.random() * 26) + 1;
+    opts.add(r);
+  }
+  return shuffleArray([...opts]);
+}
+
+function generateSquareOptions(correct, originalNum) {
+  const opts = new Set([correct]);
+  const possibleWrongs = [
+    (originalNum - 1) * (originalNum - 1),
+    (originalNum + 1) * (originalNum + 1),
+    correct + 10,
+    correct - 10,
+    correct + 100,
+    correct - 100,
+    originalNum * originalNum + originalNum,
+    correct + Math.floor(Math.random() * 20),
+    correct - Math.floor(Math.random() * 20)
+  ].filter(x => x > 0 && x !== correct);
+
+  const shuffledWrongs = shuffleArray(possibleWrongs);
+  for (const w of shuffledWrongs) {
+    if (opts.size >= 4) break;
+    opts.add(w);
+  }
+
+  while (opts.size < 4) {
+    let fallback = correct + Math.floor(Math.random() * 50) * (Math.random() > 0.5 ? 1 : -1);
+    if (fallback <= 0) fallback = correct + 10;
+    opts.add(fallback);
+  }
+  return shuffleArray([...opts]);
+}
+
+function generateCapitalOptions(correctCapital) {
+  const opts = new Set([correctCapital]);
+  const capitals = shuffleArray(stateCapitals.map(item => item.capital));
+  for (const capital of capitals) {
+    if (opts.size >= 4) break;
+    opts.add(capital);
+  }
+  return shuffleArray([...opts]);
+}
+
+const GAMES = {
+  alphabet: {
+    title: 'Alpha Quiz',
+    bigLetter: 'A→Z',
+    intro: 'What position is the letter?',
+    rules: '<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over',
+    reference: 'A·B·C·D·E·F·G·H·I·J·K·L·M·N·O·P·Q·R·S·T·U·V·W·X·Y·Z',
+    accent: '#f0e040',
+    timeLimit: 3000,
+    prompt: 'What position is',
+    subtext: 'in the alphabet?',
+    getScorePoints: (elapsedSec) => {
+      if (elapsedSec < 1) return 12;
+      if (elapsedSec < 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const letter = String.fromCharCode(64 + Math.floor(Math.random() * 26) + 1);
+      const correct = letter.charCodeAt(0) - 64;
+      return {
+        display: letter,
+        correctValue: correct,
+        options: generateAlphabetOptions(correct)
+      };
+    }
+  },
+  square: {
+    title: 'Square Quiz',
+    bigLetter: 'X²',
+    intro: 'What is the square of the number?',
+    rules: '<1.5s = 12pts · <3s = 8pts · <5s = 4pts · wrong = over',
+    reference: 'Practice squares of numbers from 1 to 100.',
+    accent: '#40e0f0',
+    timeLimit: 5000,
+    prompt: 'What is the square of',
+    subtext: '?',
+    getScorePoints: (elapsedSec) => {
+      if (elapsedSec < 1.5) return 12;
+      if (elapsedSec < 3.0) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const num = Math.floor(Math.random() * 100) + 1; // 1 to 100
+      const correct = num * num;
+      return {
+        display: num,
+        correctValue: correct,
+        options: generateSquareOptions(correct, num)
+      };
+    }
+  },
+  stateCapital: {
+    title: 'State Capital Quiz',
+    bigLetter: 'IND',
+    intro: 'Recall Indian state capitals at exam speed.',
+    rules: '<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over',
+    reference: 'Covers the 28 Indian states only, not union territories.',
+    accent: '#fb7185',
+    timeLimit: 3000,
+    prompt: 'Find the capital of',
+    subtext: 'Choose the correct capital',
+    getScorePoints: (elapsedSec) => {
+      if (elapsedSec < 1) return 12;
+      if (elapsedSec < 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const q = stateCapitals[Math.floor(Math.random() * stateCapitals.length)];
+      return {
+        display: q.state,
+        correctValue: q.capital,
+        options: generateCapitalOptions(q.capital)
+      };
+    }
+  }
+};
+
+let currentMode = 'alphabet';
+let score = 0, questionNum = 0, streak = 0;
+let timerInterval = null, startTime = null;
+let gameEndReason = 'complete';
+let answered = false;
+let currentCorrect = null;
+
+function setAccentColor(color) {
+  document.documentElement.style.setProperty('--accent', color);
+}
+
+function selectGame(mode) {
+  currentMode = mode;
+  const config = GAMES[mode];
+  setAccentColor(config.accent);
+  
+  document.getElementById('startScreenBigLetter').textContent = config.bigLetter;
+  document.getElementById('startScreenTitle').textContent = config.title;
+  document.getElementById('startScreenIntro').textContent = config.intro;
+  document.getElementById('startScreenRules').textContent = config.rules;
+  document.getElementById('startScreenRef').textContent = config.reference;
+
+  show('startScreen');
+}
+
+function showMainMenu() {
+  clearInterval(timerInterval);
+  setAccentColor('#f0e040');
+  show('menuScreen');
+}
+
+function startGame() {
+  score = 0; questionNum = 0; streak = 0; gameEndReason = 'complete';
+  show('gameScreen');
+  nextQuestion();
+}
+
+function nextQuestion() {
+  questionNum++;
+  answered = false;
+
+  const config = GAMES[currentMode];
+  const question = config.generateQuestion();
+  currentCorrect = question.correctValue;
+
+  document.getElementById('gameLogo').textContent = config.title;
+  document.getElementById('gamePromptLabel').textContent = config.prompt;
+  document.getElementById('gamePromptSubtext').textContent = config.subtext;
+
+  const displayEl = document.getElementById('letterDisplay');
+  displayEl.textContent = question.display;
+  displayEl.style.animation = 'none';
+  requestAnimationFrame(() => {
+    displayEl.style.animation = 'pop 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+  });
+
+  document.getElementById('scoreVal').textContent = score;
+  document.getElementById('qNum').textContent = questionNum;
+  document.getElementById('streakDisplay').textContent = '';
+  document.getElementById('streakDisplay').className = 'streak';
+  document.getElementById('streakDisplay').style.color = '';
+
+  const grid = document.getElementById('optionsGrid');
+  const keys = ['A', 'B', 'C', 'D'];
+  grid.innerHTML = '';
+  question.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.dataset.key = keys[i];
+    btn.textContent = opt;
+    btn.onclick = () => selectAnswer(btn, opt, question.correctValue);
+    grid.appendChild(btn);
+  });
+
+  document.onkeydown = (e) => {
+    if (document.getElementById('gameScreen').classList.contains('hidden')) return;
+    const idx = ['a','b','c','d'].indexOf(e.key.toLowerCase());
+    if (idx !== -1) {
+      const btns = grid.querySelectorAll('.option');
+      if (btns[idx] && !answered) btns[idx].click();
+    }
+  };
+
+  startTimer();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  startTime = Date.now();
+  const bar = document.getElementById('timerBar');
+  const label = document.getElementById('timerLabel');
+  bar.className = 'timer-bar';
+  bar.style.width = '100%';
+
+  const config = GAMES[currentMode];
+
+  timerInterval = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const pct = Math.max(0, 1 - elapsed / config.timeLimit);
+    bar.style.width = (pct * 100) + '%';
+    const remaining = Math.max(0, (config.timeLimit - elapsed) / 1000);
+    label.textContent = remaining.toFixed(1) + 's';
+    if (pct < 0.33) bar.className = 'timer-bar danger';
+
+    if (elapsed >= config.timeLimit && !answered) {
+      clearInterval(timerInterval);
+      timeUp();
+    }
+  }, 50);
+}
+
+function timeUp() {
+  answered = true;
+  streak = 0;
+  document.querySelectorAll('.option').forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent == currentCorrect) {
+      btn.classList.add('correct');
+    }
+  });
+  gameEndReason = 'timeout';
+  document.getElementById('streakDisplay').textContent = '⏱ Time\'s up — Game Over!';
+  document.getElementById('streakDisplay').style.color = 'var(--danger)';
+  setTimeout(endGame, 1400);
+}
+
+function selectAnswer(btn, chosen, correct) {
+  if (answered) return;
+  answered = true;
+  clearInterval(timerInterval);
+
+  document.querySelectorAll('.option').forEach(b => b.disabled = true);
+
+  const elapsed = Date.now() - startTime;
+  const secElapsed = elapsed / 1000;
+  const config = GAMES[currentMode];
+
+  if (chosen == correct) {
+    let pts = config.getScorePoints(secElapsed);
+    score += pts;
+    streak++;
+    btn.classList.add('correct');
+    const streakEl = document.getElementById('streakDisplay');
+    streakEl.style.color = '';
+    if (streak >= 3) {
+      streakEl.textContent = `🔥 ${streak}x streak! +${pts}pts`;
+      streakEl.className = 'streak active';
+    } else {
+      streakEl.textContent = `+${pts} pts`;
+      streakEl.className = 'streak active';
+    }
+    setTimeout(nextQuestion, 1200);
+  } else {
+    streak = 0;
+    btn.classList.add('wrong');
+    btn.classList.add('shake');
+    document.querySelectorAll('.option').forEach(b => {
+      if (b.textContent == correct) b.classList.add('correct');
+    });
+    gameEndReason = 'wrong';
+    document.getElementById('streakDisplay').textContent = `✗ It was ${correct} — Game Over!`;
+    document.getElementById('streakDisplay').style.color = 'var(--danger)';
+    setTimeout(endGame, 1400);
+  }
+}
+
+function endGame() {
+  clearInterval(timerInterval);
+  answered = true;
+  show('endScreen');
+  document.getElementById('finalScore').textContent = score;
+  let msg = '';
+  if (gameEndReason === 'quit') msg = 'You quit. 🏳️';
+  else if (gameEndReason === 'wrong') msg = 'Wrong answer! 💥';
+  else if (gameEndReason === 'timeout') msg = 'Time ran out! ⏱';
+  else msg = score >= 150 ? 'Quiz Master! 🏆' : score >= 100 ? 'Great job! 🎯' : score >= 50 ? 'Keep practicing! 📚' : 'You\'ll get better! 💪';
+  document.getElementById('finalMsg').textContent = msg;
+}
+
+function show(id) {
+  ['menuScreen', 'startScreen', 'gameScreen', 'endScreen'].forEach(s => {
+    const el = document.getElementById(s);
+    if (el) {
+      el.className = s === id ? 'screen' : 'screen hidden';
+    }
+  });
+}
+</script>
+</body>
+</html>

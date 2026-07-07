@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter,
@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { toggleTheme } from "./features/theme/themeSlice";
 import { logout } from "./features/auth/authSlice";
-import API from "./api/API";
 import FootBall from "./pages/FootBall";
 import AuthPage from "./pages/AuthPage";
 import AlphabetQuiz from "./pages/AlphabetQuiz";
@@ -114,7 +113,7 @@ function ArcadeBackground() {
   );
 }
 
-function HomePage({ darkMode, currentUser, message }) {
+function HomePage({ darkMode, currentUser }) {
   return (
     <main className="mx-auto max-w-7xl px-3 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
       <section className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr] xl:gap-8">
@@ -237,17 +236,6 @@ function HomePage({ darkMode, currentUser, message }) {
             </div>
           )}
 
-          <div className="mt-6 rounded-3xl border border-white/10 bg-black/20 p-5">
-            <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
-              Backend status
-            </p>
-            <div
-              className={`mt-3 text-lg font-semibold ${message.includes("success") ? "text-emerald-400" : "text-slate-300"}`}
-            >
-              {message || "Loading..."}
-            </div>
-          </div>
-
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {[
               { label: "Modes", value: "6 + football", accent: "#f0e040" },
@@ -280,7 +268,6 @@ function ArcadeLayout() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const [message, setMessage] = useState("");
   const location = useLocation();
 
   useEffect(() => {
@@ -290,12 +277,6 @@ function ArcadeLayout() {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
-
-  useEffect(() => {
-    API.get("/test")
-      .then((res) => setMessage(res.data.message))
-      .catch(() => setMessage("Backend not connected"));
-  }, []);
 
   useEffect(() => {
     if (currentUser) {
@@ -331,7 +312,6 @@ function ArcadeLayout() {
               <HomePage
                 darkMode={darkMode}
                 currentUser={currentUser}
-                message={message}
               />
             }
           />
@@ -347,7 +327,6 @@ function ArcadeLayout() {
               <HomePage
                 darkMode={darkMode}
                 currentUser={currentUser}
-                message={message}
               />
             }
           />
@@ -362,7 +341,6 @@ function Layout() {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const [message, setMessage] = useState("");
   const location = useLocation();
 
   useEffect(() => {
@@ -372,12 +350,6 @@ function Layout() {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
-
-  useEffect(() => {
-    API.get("/test")
-      .then((res) => setMessage(res.data.message))
-      .catch(() => setMessage("Backend not connected"));
-  }, []);
 
   useEffect(() => {
     if (currentUser) {
@@ -529,21 +501,6 @@ function Layout() {
           ))}
         </div>
 
-        {/* Backend Status */}
-        <div
-          className={`p-6 rounded-xl text-center transition-colors duration-300 ${
-            darkMode ? "bg-gray-800" : "bg-gray-50"
-          }`}
-        >
-          <h3 className="text-lg font-semibold mb-2">Backend Status</h3>
-          <p
-            className={
-              message.includes("success") ? "text-green-500" : "text-gray-500"
-            }
-          >
-            {message || "Loading..."}
-          </p>
-        </div>
       </main>
 
       {/* Footer */}

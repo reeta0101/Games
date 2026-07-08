@@ -26,6 +26,8 @@ import ElementSymbolQuiz from "./pages/ElementSymbolQuiz";
 import OneWordSubstitutionQuiz from "./pages/OneWordSubstitutionQuiz";
 import IndianPresidentQuiz from "./pages/IndianPresidentQuiz";
 import IndianVicePresidentQuiz from "./pages/IndianVicePresidentQuiz";
+import NationalOfficialsQuiz from "./pages/NationalOfficialsQuiz";
+import StateOfficialsQuiz from "./pages/StateOfficialsQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
@@ -36,6 +38,34 @@ import {
 } from "./utils/leaderboard";
 
 const GAME_MODES = [
+  {
+    id: "nationalOfficials",
+    path: "/national-officials",
+    title: "National Officials",
+    badge: "General Knowledge",
+    category: "General Knowledge",
+    hero: "GOV",
+    intro: "Who currently holds this important national office?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Current Indian constitutional and national officials.",
+    accent: "#f59e0b",
+    summary: "Who is the...",
+    details: "Important office holders in India.",
+  },
+  {
+    id: "stateOfficials",
+    path: "/state-officials",
+    title: "State Chief Ministers",
+    badge: "General Knowledge",
+    category: "General Knowledge",
+    hero: "CM",
+    intro: "Who is the current Chief Minister of this state?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Current Chief Ministers of all 28 states.",
+    accent: "#ef4444",
+    summary: "Who is the Chief Minister of...",
+    details: "Match the state to its current CM.",
+  },
   {
     id: "alphabet",
     path: "/alphabet",
@@ -639,6 +669,9 @@ function ArcadeLayout() {
           <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
           <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
           <Route path="/indian-president" element={<IndianPresidentQuiz />} />
+          <Route path="/national-officials" element={<NationalOfficialsQuiz />} />
+          <Route path="/state-officials" element={<StateOfficialsQuiz />} />
+
           <Route
             path="/indian-vice-president"
             element={<IndianVicePresidentQuiz />}

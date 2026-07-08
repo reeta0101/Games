@@ -648,6 +648,23 @@ export const owsData = [
   { phrase: "A place where criminals are kept", word: "Prison" },
 ];
 
+
+export const generateNationalOfficialOptions = (correct) => {
+  const options = new Set([correct]);
+  while (options.size < 4) {
+    options.add(nationalOfficials[Math.floor(Math.random() * nationalOfficials.length)].name);
+  }
+  return shuffleArray(Array.from(options));
+};
+
+export const generateStateCmOptions = (correct) => {
+  const options = new Set([correct]);
+  while (options.size < 4) {
+    options.add(stateOfficials[Math.floor(Math.random() * stateOfficials.length)].cm);
+  }
+  return shuffleArray(Array.from(options));
+};
+
 export const quizGames = {
   alphabet: {
     key: "alphabet",
@@ -1113,6 +1130,65 @@ export const quizGames = {
       };
     },
   },
+
+  nationalOfficials: {
+    key: "nationalOfficials",
+    title: "National Officials",
+    bigLetter: "GOV",
+    intro: "Who currently holds this important national office?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Current Indian constitutional and national officials.",
+    accent: "#f59e0b",
+    timeLimit: 6000,
+    prompt: "Who is the",
+    subtext: "?",
+    cardBadge: "General Knowledge",
+    cardTitle: "National Officials",
+    cardDescription: "Important office holders in India.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const off = nationalOfficials[Math.floor(Math.random() * nationalOfficials.length)];
+      return {
+        display: off.office,
+        correctValue: off.name,
+        options: generateNationalOfficialOptions(off.name),
+      };
+    },
+  },
+  stateOfficials: {
+    key: "stateOfficials",
+    title: "State Chief Ministers",
+    bigLetter: "CM",
+    intro: "Who is the current Chief Minister of this state?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Current Chief Ministers of all 28 states.",
+    accent: "#ef4444",
+    timeLimit: 6000,
+    prompt: "Who is the Chief Minister of",
+    subtext: "?",
+    cardBadge: "General Knowledge",
+    cardTitle: "State Chief Ministers",
+    cardDescription: "Match the state to its current CM.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const state = stateOfficials[Math.floor(Math.random() * stateOfficials.length)];
+      return {
+        display: state.state,
+        correctValue: state.cm,
+        options: generateStateCmOptions(state.cm),
+      };
+    },
+  },
 };
 
 function shuffleArray(array) {
@@ -1480,3 +1556,54 @@ function generateOwsOptions(correctWord) {
   return shuffleArray([...options]);
 }
 
+
+export const nationalOfficials = [
+  { office: "Prime Minister of India", name: "Narendra Modi" },
+  { office: "President of India", name: "Droupadi Murmu" },
+  { office: "Vice President of India", name: "Jagdeep Dhankhar" },
+  { office: "Chief Justice of India", name: "Sanjiv Khanna" },
+  { office: "Governor of Reserve Bank of India (RBI)", name: "Shaktikanta Das" },
+  { office: "Chief Election Commissioner", name: "Rajiv Kumar" },
+  { office: "Comptroller and Auditor General (CAG)", name: "K. Sanjay Murthy" },
+  { office: "Attorney General for India", name: "R. Venkataramani" },
+  { office: "National Security Advisor", name: "Ajit Doval" },
+  { office: "ISRO Chairman", name: "S. Somanath" },
+  { office: "DRDO Chairman", name: "Samir V Kamat" },
+  { office: "Chief of Defence Staff", name: "Gen Anil Chauhan" },
+  { office: "Chief of Army Staff", name: "Gen Upendra Dwivedi" },
+  { office: "Chief of Naval Staff", name: "Adm Dinesh K Tripathi" },
+  { office: "Chief of Air Staff", name: "ACM Amar Preet Singh" },
+  { office: "UPSC Chairman", name: "Preeti Sudan" },
+  { office: "Finance Commission Chairman", name: "Arvind Panagariya" }
+];
+
+export const stateOfficials = [
+  { state: "Andhra Pradesh", cm: "N. Chandrababu Naidu", governor: "S. Abdul Nazeer" },
+  { state: "Arunachal Pradesh", cm: "Pema Khandu", governor: "K. T. Parnaik" },
+  { state: "Assam", cm: "Himanta Biswa Sarma", governor: "Gulab Chand Kataria" },
+  { state: "Bihar", cm: "Nitish Kumar", governor: "Rajendra Arlekar" },
+  { state: "Chhattisgarh", cm: "Vishnu Deo Sai", governor: "Biswabhusan Harichandan" },
+  { state: "Goa", cm: "Pramod Sawant", governor: "P. S. Sreedharan Pillai" },
+  { state: "Gujarat", cm: "Bhupendrabhai Patel", governor: "Acharya Devvrat" },
+  { state: "Haryana", cm: "Nayab Singh Saini", governor: "Bandaru Dattatreya" },
+  { state: "Himachal Pradesh", cm: "Sukhvinder Singh Sukhu", governor: "Shiv Pratap Shukla" },
+  { state: "Jharkhand", cm: "Hemant Soren", governor: "Santosh Kumar Gangwar" },
+  { state: "Karnataka", cm: "Siddaramaiah", governor: "Thawar Chand Gehlot" },
+  { state: "Kerala", cm: "Pinarayi Vijayan", governor: "Arif Mohammad Khan" },
+  { state: "Madhya Pradesh", cm: "Mohan Yadav", governor: "Mangubhai C. Patel" },
+  { state: "Maharashtra", cm: "Devendra Fadnavis", governor: "C. P. Radhakrishnan" },
+  { state: "Manipur", cm: "N. Biren Singh", governor: "Anusuiya Uikey" },
+  { state: "Meghalaya", cm: "Conrad Sangma", governor: "Phagu Chauhan" },
+  { state: "Mizoram", cm: "Lalduhoma", governor: "Kambhampati Hari Babu" },
+  { state: "Nagaland", cm: "Neiphiu Rio", governor: "La. Ganesan" },
+  { state: "Odisha", cm: "Mohan Charan Majhi", governor: "Raghubar Das" },
+  { state: "Punjab", cm: "Bhagwant Mann", governor: "Gulab Chand Kataria" },
+  { state: "Rajasthan", cm: "Bhajan Lal Sharma", governor: "Haribhau Bagade" },
+  { state: "Sikkim", cm: "Prem Singh Tamang", governor: "Om Prakash Mathur" },
+  { state: "Tamil Nadu", cm: "M. K. Stalin", governor: "R. N. Ravi" },
+  { state: "Telangana", cm: "A. Revanth Reddy", governor: "Jishnu Dev Varma" },
+  { state: "Tripura", cm: "Manik Saha", governor: "Indrasena Reddy Nallu" },
+  { state: "Uttar Pradesh", cm: "Yogi Adityanath", governor: "Anandiben Patel" },
+  { state: "Uttarakhand", cm: "Pushkar Singh Dhami", governor: "Gurmit Singh" },
+  { state: "West Bengal", cm: "Mamata Banerjee", governor: "C. V. Ananda Bose" }
+];

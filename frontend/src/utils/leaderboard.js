@@ -91,6 +91,8 @@ export const MODE_LABELS = {
   oneWordSub: 'OWS',
   indianPresident: 'IND Pres',
   indianVicePresident: 'IND VP',
+  nationalOfficials: 'Nat Off',
+  stateOfficials: 'State CM',
 };
 
 export const DIFF_LABELS = {

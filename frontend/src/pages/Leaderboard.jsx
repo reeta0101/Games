@@ -23,6 +23,10 @@ const GAMES = [
   { key: "elementSymbol", label: "Element Name → Symbol", accent: "#eab308", icon: "C·Fe", path: "/element-symbol" },
   { key: "oneWordSub",       label: "One Word Substitution",  accent: "#c084fc", icon: "OWS",  path: "/one-word-sub" },
   { key: "indianPresident",  label: "Indian Presidents",       accent: "#f97316", icon: "IND",  path: "/indian-president" },
+  { key: "indianVicePresident", label: "Indian Vice Presidents", accent: "#fb7185", icon: "IVP", path: "/indian-vice-president" },
+  { key: "nationalOfficials", label: "National Officials", accent: "#f59e0b", icon: "GOV", path: "/national-officials" },
+  { key: "stateOfficials", label: "State Chief Ministers", accent: "#ef4444", icon: "CM", path: "/state-officials" },
+  { key: "diseaseCause", label: "Disease → Cause", accent: "#10b981", icon: "BIO", path: "/disease-cause" },
 ];
 
 const LEVELS = [

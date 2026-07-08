@@ -32,6 +32,28 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select {
+  min-height: 44px;
+}
+
+::selection {
+  background: rgba(64, 224, 240, 0.28);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(64, 224, 240, 0.9);
+  outline-offset: 3px;
+}
+
 #root {
   min-height: 100vh;
 }
@@ -114,6 +136,37 @@ a {
   animation: borderGlow 2s ease-in-out infinite;
 }
 
+@keyframes softPop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes timerWarning {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scaleX(0.985);
+  }
+}
+
+.animate-soft-pop {
+  animation: softPop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.animate-timer-warning {
+  transform-origin: left center;
+  animation: timerWarning 0.55s ease-in-out infinite;
+}
+
 /* ── Staggered animation delays ── */
 .delay-1 { animation-delay: 0.05s; }
 .delay-2 { animation-delay: 0.1s; }
@@ -130,6 +183,33 @@ a {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.surface {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+    rgba(8, 13, 24, 0.72);
+  box-shadow: 0 24px 80px rgba(2, 6, 23, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.interactive-lift {
+  transition:
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    background-color 0.24s ease,
+    box-shadow 0.24s ease,
+    color 0.24s ease;
+}
+
+.interactive-lift:hover {
+  transform: translateY(-3px);
+}
+
+.touch-target {
+  min-height: 44px;
 }
 
 /* ── Card hover lift ── */
@@ -170,4 +250,20 @@ a {
 }
 .animate-sparkle {
   animation: sparkle 0.35s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .card-hover:hover,
+  .interactive-lift:hover {
+    transform: none;
+  }
 }

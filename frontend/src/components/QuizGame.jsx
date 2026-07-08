@@ -14,6 +14,29 @@ import {
 } from "../utils/leaderboard";
 
 const OPTION_KEYS = ["A", "B", "C", "D"];
+const DIFFICULTY_OPTIONS = [
+  {
+    key: "beginner",
+    icon: "🌱",
+    label: "Beginner",
+    time: "9 sec",
+    note: "Warm up and build accuracy.",
+  },
+  {
+    key: "intermediate",
+    icon: "⚡",
+    label: "Intermediate",
+    time: "6 sec",
+    note: "Balanced speed practice.",
+  },
+  {
+    key: "advanced",
+    icon: "🔥",
+    label: "Advanced",
+    time: "3 sec",
+    note: "Exam-pressure recall.",
+  },
+];
 
 export default function QuizGame({ game }) {
   const navigate = useNavigate();
@@ -39,6 +62,7 @@ export default function QuizGame({ game }) {
     if (getCookie(GUEST_COOKIE_NAME)) return "difficulty";
     return "guest";
   });
+  const [readReturnScreen, setReadReturnScreen] = useState("difficulty");
 
   const [score, setScore] = useState(0);
   const [questionNum, setQuestionNum] = useState(0);
@@ -214,6 +238,13 @@ export default function QuizGame({ game }) {
   }, [screen, isAnswered, currentQuestion, handleChoice]);
 
   const timerPercent = Math.max(0, (timeLeft / (activeTimeLimit / 1000)) * 100);
+  const isTimerDanger = timerPercent < 33;
+  const progressItems = [
+    { key: "guest", label: "Player" },
+    { key: "difficulty", label: "Setup" },
+    { key: "game", label: "Play" },
+    { key: "end", label: "Result" },
+  ];
 
   const feedbackClass =
     feedbackTone === "success"
@@ -239,49 +270,79 @@ export default function QuizGame({ game }) {
   if (screen === "guest") {
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
-          <div className="text-center">
-            <div className="mb-4 text-6xl">🎮</div>
-            <div className="mb-4 text-4xl font-black uppercase tracking-[0.16em] text-white sm:text-5xl sm:tracking-[0.2em]">
-              {game.bigLetter}
+        <section className="surface w-full overflow-hidden rounded-3xl p-5 animate-soft-pop sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+            <div>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#f0e040]/25 bg-[#f0e040]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#f0e040]">
+                Quick setup
+              </div>
+              <div className="text-5xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl">
+                {game.bigLetter}
+              </div>
+              <h1 className="mt-4 text-3xl font-black text-white sm:text-5xl">
+                Start {game.title}
+              </h1>
+              <p className="mt-4 max-w-xl text-base leading-7 text-slate-300">
+                Enter a display name so your score can appear on this device's leaderboard.
+              </p>
+
+              <div className="mt-6 grid gap-2 sm:grid-cols-3">
+                {progressItems.slice(0, 3).map((item, index) => (
+                  <div
+                    key={item.key}
+                    className={`rounded-2xl border px-3 py-3 text-center text-xs font-bold uppercase tracking-[0.16em] ${
+                      index === 0
+                        ? "border-[#f0e040]/35 bg-[#f0e040]/10 text-[#f0e040]"
+                        : "border-white/8 bg-white/[0.03] text-slate-500"
+                    }`}
+                  >
+                    {index + 1}. {item.label}
+                  </div>
+                ))}
+              </div>
             </div>
-            <h1 className="text-3xl font-black text-white sm:text-4xl">
-              Play as Guest
-            </h1>
-            <p className="mt-4 text-sm text-slate-400 uppercase tracking-[0.2em]">
-              Enter a name to track your scores
-            </p>
 
-            <div className="mx-auto mt-8 max-w-xs">
-              <input
-                type="text"
-                value={guestInput}
-                onChange={(e) => setGuestInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleGuestLogin()}
-                placeholder="Your name..."
-                maxLength={16}
-                autoFocus
-                className="w-full rounded-xl border border-white/15 bg-black/30 px-5 py-4 text-center font-mono text-lg text-white tracking-[0.15em] placeholder-slate-500 outline-none transition focus:border-[#f0e040]/60 focus:shadow-[0_0_20px_rgba(240,224,64,0.12)]"
-              />
-            </div>
-
-            <button
-              onClick={handleGuestLogin}
-              className="mt-6 rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-8 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
+            <form
+              className="rounded-3xl border border-white/10 bg-black/22 p-5 sm:p-6"
+              onSubmit={(event) => {
+                event.preventDefault();
+                handleGuestLogin();
+              }}
             >
-              Play as Guest
-            </button>
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-slate-200">
+                  Display name
+                </span>
+                <input
+                  type="text"
+                  value={guestInput}
+                  onChange={(e) => setGuestInput(e.target.value)}
+                  placeholder="Your name"
+                  maxLength={16}
+                  autoFocus
+                  className="touch-target w-full rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-4 text-center text-lg font-bold text-white tracking-[0.08em] placeholder:text-slate-500 outline-none transition focus:border-[#f0e040]/60 focus:bg-white/[0.07]"
+                />
+              </label>
 
-            <p className="mt-4 text-xs text-slate-500 tracking-[0.15em]">
-              Your name is saved for 7 days via cookie
-            </p>
+              <button
+                type="submit"
+                className="touch-target mt-5 w-full rounded-2xl border border-[#f0e040]/60 bg-[#f0e040]/12 px-6 py-3 text-sm font-black uppercase tracking-[0.22em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
+              >
+                Continue
+              </button>
 
-            <button
-              onClick={() => navigate("/")}
-              className="mt-4 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-slate-400 transition hover:bg-white/10"
-            >
-              ← Back to Menu
-            </button>
+              <p className="mt-4 text-center text-xs leading-5 text-slate-500">
+                Guest names are saved for 7 days in a cookie.
+              </p>
+
+              <button
+                type="button"
+                onClick={() => navigate("/")}
+                className="touch-target mt-4 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-400 transition hover:bg-white/10 hover:text-white"
+              >
+                Back to menu
+              </button>
+            </form>
           </div>
         </section>
       </main>
@@ -292,72 +353,106 @@ export default function QuizGame({ game }) {
   //  DIFFICULTY SELECTION SCREEN
   // ════════════════════════════════════════
   if (screen === "difficulty") {
-    const diffOptions = [
-      { key: "beginner", icon: "🌱", label: "Beginner", time: "9 sec" },
-      { key: "intermediate", icon: "⚡", label: "Intermediate", time: "6 sec" },
-      { key: "advanced", icon: "🔥", label: "Advanced", time: "3 sec" },
-    ];
-
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
-          <div className="text-center">
-            <div className="mb-2 text-xs uppercase tracking-[0.3em] text-slate-500">
-              Player: <span className="text-[#f0e040]">{guestName}</span>
-            </div>
-            <div className="mb-4 text-4xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl sm:tracking-[0.2em]">
-              {game.bigLetter}
-            </div>
-            <h1 className="text-3xl font-black text-white sm:text-5xl">
-              {game.title}
-            </h1>
-            <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">{game.intro}</p>
+        <section className="surface w-full overflow-hidden rounded-3xl p-5 animate-soft-pop sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <div className="mb-3 text-xs uppercase tracking-[0.24em] text-slate-500">
+                Player <span className="text-[#f0e040]">{guestName}</span>
+              </div>
+              <div className="text-5xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl">
+                {game.bigLetter}
+              </div>
+              <h1 className="mt-4 text-3xl font-black text-white sm:text-5xl">
+                {game.title}
+              </h1>
+              <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+                {game.intro}
+              </p>
 
-            <p className="mt-6 text-sm uppercase tracking-[0.3em] text-slate-500">
-              Select Difficulty
-            </p>
+              <div className="mt-5 rounded-2xl border border-white/8 bg-black/20 p-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-slate-500">
+                  Scoring
+                </p>
+                <p className="mt-2 text-sm leading-6 text-slate-300">
+                  {game.rules}
+                </p>
+                <p className="mt-2 text-xs leading-5 text-slate-500">
+                  {game.reference}
+                </p>
+              </div>
+            </div>
 
-            <div className="mx-auto mt-4 grid max-w-md gap-3 sm:grid-cols-3">
-              {diffOptions.map((d) => (
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">
+                Select difficulty
+              </p>
+
+              <div className="mt-4 grid gap-3">
+                {DIFFICULTY_OPTIONS.map((d) => {
+                  const active = difficulty === d.key;
+
+                  return (
+                    <button
+                      key={d.key}
+                      onClick={() => setDifficulty(d.key)}
+                      aria-pressed={active}
+                      className={`interactive-lift rounded-2xl border p-4 text-left transition duration-200 ${
+                        active
+                          ? "border-[#f0e040]/60 bg-[#f0e040]/12 shadow-[0_0_22px_rgba(240,224,64,0.13)]"
+                          : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.06]"
+                      }`}
+                      type="button"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="text-3xl">{d.icon}</div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="text-sm font-black uppercase tracking-[0.2em] text-white">
+                              {d.label}
+                            </span>
+                            <span className="rounded-full bg-black/24 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">
+                              {d.time}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-xs leading-5 text-slate-500">
+                            {d.note}
+                          </p>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 <button
-                  key={d.key}
-                  onClick={() => setDifficulty(d.key)}
-                  className={`rounded-xl border p-5 text-center transition duration-200 hover:-translate-y-1 ${
-                    difficulty === d.key
-                      ? "border-[#f0e040]/60 bg-[#f0e040]/10 shadow-[0_0_20px_rgba(240,224,64,0.12)]"
-                      : "border-white/10 bg-white/5 hover:border-white/20"
-                  }`}
+                  onClick={startGame}
+                  className="touch-target rounded-2xl border border-[#f0e040]/60 bg-[#f0e040]/12 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#f0e040] transition hover:bg-[#f0e040]/22 sm:col-span-2"
+                  type="button"
                 >
-                  <div className="text-3xl">{d.icon}</div>
-                  <div className="mt-2 text-sm font-bold uppercase tracking-[0.2em] text-white">
-                    {d.label}
-                  </div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
-                    {d.time}
-                  </div>
+                  Start quiz
                 </button>
-              ))}
-            </div>
+                <button
+                  onClick={() => {
+                    setReadReturnScreen("difficulty");
+                    setScreen("read");
+                  }}
+                  className="touch-target rounded-2xl border border-[#40e0f0]/35 bg-[#40e0f0]/10 px-5 py-3 text-sm font-bold uppercase tracking-[0.2em] text-[#40e0f0] transition hover:bg-[#40e0f0]/18"
+                  type="button"
+                >
+                  Read
+                </button>
+              </div>
 
-            <p className="mt-5 text-sm uppercase tracking-[0.3em] text-[#404070]">
-              {game.rules}
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <button
-                onClick={startGame}
-                className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-8 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
-              >
-                Start
-              </button>
               <button
                 onClick={() => navigate("/")}
-                className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-slate-300 transition hover:bg-white/10"
+                className="touch-target mt-3 w-full rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400 transition hover:bg-white/10 hover:text-white"
+                type="button"
               >
-                Menu
+                Back to library
               </button>
-            </div>
-            <div className="mt-6 text-xs uppercase tracking-[0.15em] text-slate-600">
-              {game.reference}
             </div>
           </div>
         </section>
@@ -465,7 +560,10 @@ export default function QuizGame({ game }) {
               Play Again
             </button>
             <button
-              onClick={() => setScreen("read")}
+              onClick={() => {
+                setReadReturnScreen("end");
+                setScreen("read");
+              }}
               className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#40e0f0] transition hover:bg-white/10 hover:text-white"
             >
               Read
@@ -488,14 +586,15 @@ export default function QuizGame({ game }) {
   if (screen === "read") {
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <section className="w-full max-h-[85vh] flex flex-col rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
+        <section className="surface w-full max-h-[85vh] flex flex-col rounded-3xl p-4 animate-soft-pop sm:p-8">
           <div className="mb-6 flex items-center justify-between shrink-0">
              <h2 className="text-xl sm:text-2xl font-black uppercase tracking-[0.15em] text-white" style={{ color: game.accent }}>
                {game.title} Reference
              </h2>
              <button
-               onClick={() => setScreen("end")}
-               className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-xs font-bold uppercase tracking-[0.25em] text-slate-300 transition hover:bg-white/10"
+               onClick={() => setScreen(readReturnScreen)}
+               className="touch-target rounded-2xl border border-white/15 bg-white/[0.04] px-5 py-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-300 transition hover:bg-white/10"
+               type="button"
              >
                Back
              </button>
@@ -523,12 +622,15 @@ export default function QuizGame({ game }) {
             <div className="mb-1 text-[10px] uppercase tracking-[0.2em] text-slate-500">
               {guestName} · {DIFFICULTIES[difficulty].icon} {DIFF_LABELS[difficulty]}
             </div>
-            <div className="flex gap-4 text-xs uppercase tracking-[0.18em] text-slate-400 sm:gap-6 sm:text-sm sm:tracking-[0.25em]">
+            <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.18em] text-slate-400 sm:justify-end sm:gap-6 sm:text-sm sm:tracking-[0.25em]">
               <div>
                 Score <span className="text-white">{score}</span>
               </div>
               <div>
                 Q <span className="text-white">{questionNum}</span>
+              </div>
+              <div>
+                Streak <span className="text-white">{streak}</span>
               </div>
             </div>
           </div>
@@ -536,18 +638,31 @@ export default function QuizGame({ game }) {
 
         {/* Timer */}
         <div className="mt-3 shrink-0">
-          <div className="relative h-1.5 overflow-hidden rounded-full bg-white/10">
+          <div
+            className="relative h-2 overflow-hidden rounded-full bg-white/10"
+            role="progressbar"
+            aria-label="Time remaining"
+            aria-valuemin={0}
+            aria-valuemax={activeTimeLimit / 1000}
+            aria-valuenow={Number(timeLeft.toFixed(1))}
+          >
             <div
-              className="h-full rounded-full transition-[width] duration-75"
+              className={`h-full rounded-full transition-[width] duration-75 ${
+                isTimerDanger ? "animate-timer-warning" : ""
+              }`}
               style={{
                 width: `${timerPercent}%`,
-                background: timerPercent < 33 ? '#f04060' : game.accent,
-                boxShadow: `0 0 12px ${timerPercent < 33 ? '#f04060' : game.accent}`,
+                background: isTimerDanger ? '#f04060' : game.accent,
+                boxShadow: `0 0 12px ${isTimerDanger ? '#f04060' : game.accent}`,
               }}
             />
           </div>
-          <div className="mt-1 text-right text-[10px] uppercase tracking-[0.2em] text-slate-500">
-            {timeLeft.toFixed(1)}s
+          <div
+            className={`mt-1 text-right text-[10px] uppercase tracking-[0.2em] ${
+              isTimerDanger ? "text-[#f04060]" : "text-slate-500"
+            }`}
+          >
+            {timeLeft.toFixed(1)}s remaining
           </div>
         </div>
 
@@ -581,6 +696,8 @@ export default function QuizGame({ game }) {
                 data-key={OPTION_KEYS[index]}
                 disabled={isAnswered}
                 onClick={() => handleChoice(choice)}
+                type="button"
+                aria-label={`Option ${OPTION_KEYS[index]}: ${choice}`}
                 className={`relative flex min-h-[3rem] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-center font-black tracking-[0.08em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed sm:min-h-[3.5rem] sm:rounded-2xl sm:px-5 sm:py-3 sm:tracking-[0.18em] ${
                   ['alphabet', 'square', 'cube', 'reverseAlphabet', 'prime'].includes(game.key)
                     ? 'text-base sm:text-xl'
@@ -598,12 +715,16 @@ export default function QuizGame({ game }) {
 
         {/* Feedback + Quit */}
         <div className="mt-2 shrink-0 text-center">
-          <div className={`min-h-5 text-xs uppercase tracking-[0.3em] sm:text-sm ${feedbackClass}`}>
+          <div
+            className={`min-h-5 text-xs uppercase tracking-[0.3em] sm:text-sm ${feedbackClass}`}
+            aria-live="polite"
+          >
             {feedbackText}
           </div>
           <button
             onClick={() => endGame("quit")}
-            className="mt-1 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 transition hover:bg-white/10 sm:px-5 sm:py-2 sm:text-xs"
+            className="touch-target mt-1 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 transition hover:bg-white/10 sm:px-5 sm:py-2 sm:text-xs"
+            type="button"
           >
             Quit
           </button>

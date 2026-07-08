@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   BrowserRouter,
@@ -473,164 +473,321 @@ function getPersonalBest(gameId) {
   }
 }
 
+const STUDY_STEPS = [
+  { label: "Pick", detail: "Choose a topic or search by goal." },
+  { label: "Read", detail: "Review the quick reference first." },
+  { label: "Play", detail: "Answer fast and learn from feedback." },
+];
+
 function HomePage({ currentUser }) {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
   const stats = getStudyStats();
 
-  const filteredGames = activeCategory === "All" 
-    ? GAME_MODES 
-    : GAME_MODES.filter(game => game.category === activeCategory);
+  const categoryCounts = useMemo(() => {
+    return GAME_MODES.reduce((counts, game) => {
+      counts[game.category] = (counts[game.category] || 0) + 1;
+      return counts;
+    }, {});
+  }, []);
+
+  const filteredGames = useMemo(() => {
+    const query = searchTerm.trim().toLowerCase();
+
+    return GAME_MODES.filter((game) => {
+      const matchesCategory =
+        activeCategory === "All" || game.category === activeCategory;
+      const matchesSearch =
+        !query ||
+        [game.title, game.badge, game.category, game.summary, game.details]
+          .join(" ")
+          .toLowerCase()
+          .includes(query);
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [activeCategory, searchTerm]);
+
+  const featuredGame = filteredGames[0] || GAME_MODES[0];
 
   return (
-    <main className="mx-auto max-w-7xl px-3 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
-      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr] xl:gap-10">
+    <main className="mx-auto max-w-7xl px-3 pb-12 pt-5 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
+      <section className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr] xl:gap-10">
         <div className="space-y-6">
-          {/* Hero */}
-          <div className="animate-fade-in-up">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/20 bg-[#40e0f0]/5 px-4 py-1.5 text-xs font-semibold tracking-[0.15em] text-[#40e0f0]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#40e0f0] shadow-[0_0_8px_rgba(64,224,240,0.8)]" />
-              {GAME_MODES.length} quizzes available
-            </div>
-            <h1 className="max-w-xl text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl">
-              Master Every
-              <span className="bg-gradient-to-r from-[#40e0f0] to-[#a78bfa] bg-clip-text text-transparent"> Topic</span>
-            </h1>
-            <p className="mt-4 max-w-lg text-base leading-7 text-slate-400 sm:text-lg">
-              Practice daily. Track your progress. Ace your exams.
-            </p>
-          </div>
+          <div className="surface relative overflow-hidden rounded-3xl p-5 animate-fade-in-up sm:p-7 lg:p-8">
+            <div className="relative">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0]">
+                <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
+                {GAME_MODES.length} focused quizzes
+              </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            {CATEGORIES.map(cat => (
-              <button
-                key={cat.label}
-                onClick={() => setActiveCategory(cat.label)}
-                className={`rounded-xl border px-3.5 py-2 text-xs font-semibold transition-all duration-200 ${
-                  activeCategory === cat.label
-                    ? "border-[#40e0f0]/40 bg-[#40e0f0]/10 text-[#40e0f0] shadow-[0_0_16px_rgba(64,224,240,0.08)]"
-                    : "border-white/8 bg-white/3 text-slate-400 hover:border-white/15 hover:bg-white/6 hover:text-slate-200"
-                }`}
-              >
-                <span className="mr-1.5">{cat.icon}</span>
-                {cat.label}
-              </button>
-            ))}
-          </div>
+              <h1 className="max-w-2xl text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Study smarter with quick,
+                <span className="bg-gradient-to-r from-[#40e0f0] to-[#a78bfa] bg-clip-text text-transparent">
+                  {" "}playable drills
+                </span>
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+                Pick a topic, read the reference, then practice under time pressure with instant feedback and local progress tracking.
+              </p>
 
-          {/* Game Cards */}
-          {filteredGames.length === 0 ? (
-            <div className="animate-fade-in rounded-2xl border border-dashed border-white/10 bg-white/3 p-10 text-center">
-              <div className="text-4xl mb-3">🚀</div>
-              <p className="text-lg font-bold text-white mb-1">Coming Soon!</p>
-              <p className="text-sm text-slate-400">We're adding {activeCategory} quizzes. Stay tuned.</p>
-            </div>
-          ) : (
-            <div className="grid gap-3 sm:grid-cols-2">
-              {filteredGames.map((game, i) => {
-                const best = getPersonalBest(game.id);
-                return (
-                  <Link
-                    key={game.id}
-                    to={game.path}
-                    className={`card-hover group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-5 text-left animate-fade-in-up delay-${Math.min(i + 1, 8)}`}
-                    style={{ animationDelay: `${0.05 * (i + 1)}s` }}
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  to={featuredGame.path}
+                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22"
+                >
+                  Start {featuredGame.title}
+                </Link>
+                <a
+                  href="#quiz-library"
+                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8"
+                >
+                  Browse quizzes
+                </a>
+              </div>
+
+              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                {[
+                  { label: "Read first", value: "Reference tables" },
+                  { label: "Fast feedback", value: "Correct or game over" },
+                  { label: "Keyboard ready", value: "Use A, B, C, D" },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-2xl border border-white/8 bg-black/18 p-4"
                   >
-                    {/* Left accent bar */}
-                    <div
-                      className="absolute left-0 top-0 h-full w-1 rounded-l-2xl transition-all duration-300 group-hover:w-1.5"
-                      style={{ background: `linear-gradient(180deg, ${game.accent}, ${game.accent}44)` }}
-                    />
-                    <div className="pl-3">
-                      <div className="flex items-center justify-between">
-                        <span
-                          className="inline-flex rounded-lg px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em]"
+                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
+                      {item.label}
+                    </p>
+                    <p className="mt-1 text-sm font-bold text-white">
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <section
+            id="quiz-library"
+            className="surface rounded-3xl p-4 animate-fade-in-up sm:p-5"
+            style={{ animationDelay: "0.08s" }}
+          >
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f0e040]/80">
+                  Quiz library
+                </p>
+                <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+                  Find your next drill
+                </h2>
+              </div>
+
+              <label className="block lg:w-80">
+                <span className="sr-only">Search quizzes</span>
+                <input
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  placeholder="Search math, capitals, biology..."
+                  className="touch-target w-full rounded-2xl border border-white/10 bg-black/24 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-[#40e0f0]/60 focus:bg-black/30"
+                />
+              </label>
+            </div>
+
+            <div className="mt-5 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible sm:pb-0">
+              {CATEGORIES.map((cat) => {
+                const active = activeCategory === cat.label;
+                const count =
+                  cat.label === "All"
+                    ? GAME_MODES.length
+                    : categoryCounts[cat.label] || 0;
+
+                return (
+                  <button
+                    key={cat.label}
+                    onClick={() => setActiveCategory(cat.label)}
+                    aria-pressed={active}
+                    className={`interactive-lift touch-target shrink-0 rounded-2xl border px-3.5 py-2 text-xs font-semibold transition-all duration-200 ${
+                      active
+                        ? "border-[#40e0f0]/45 bg-[#40e0f0]/12 text-[#40e0f0] shadow-[0_0_18px_rgba(64,224,240,0.1)]"
+                        : "border-white/8 bg-white/[0.03] text-slate-400 hover:border-white/15 hover:bg-white/[0.06] hover:text-slate-200"
+                    }`}
+                    type="button"
+                  >
+                    <span className="mr-1.5">{cat.icon}</span>
+                    {cat.label}
+                    <span className="ml-2 rounded-full bg-white/8 px-2 py-0.5 text-[10px] text-slate-400">
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {filteredGames.length === 0 ? (
+              <div className="mt-5 animate-fade-in rounded-2xl border border-dashed border-white/10 bg-white/[0.03] p-10 text-center">
+                <div className="text-4xl mb-3">🔎</div>
+                <p className="mb-1 text-lg font-bold text-white">No quiz found</p>
+                <p className="text-sm text-slate-400">
+                  Try a different search term or switch back to All.
+                </p>
+              </div>
+            ) : (
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                {filteredGames.map((game, i) => {
+                  const best = getPersonalBest(game.id);
+                  return (
+                    <Link
+                      key={game.id}
+                      to={game.path}
+                      className="interactive-lift group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.035] p-5 text-left animate-fade-in-up"
+                      style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}
+                    >
+                      <div
+                        className="absolute inset-x-0 top-0 h-1"
+                        style={{ background: game.accent }}
+                      />
+                      <div
+                        className="absolute right-0 top-0 h-28 w-28 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                        style={{ background: `${game.accent}33` }}
+                      />
+
+                      <div className="relative flex items-start gap-4">
+                        <div
+                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-black"
                           style={{
+                            borderColor: `${game.accent}55`,
                             color: game.accent,
                             background: `${game.accent}12`,
                           }}
                         >
-                          {game.badge}
-                        </span>
-                        {best > 0 && (
-                          <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500">
-                            Best: <span className="text-white">{best}</span>
+                          {game.hero}
+                        </div>
+
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span
+                              className="inline-flex rounded-lg px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em]"
+                              style={{
+                                color: game.accent,
+                                background: `${game.accent}12`,
+                              }}
+                            >
+                              {game.badge}
+                            </span>
+                            {best > 0 && (
+                              <span className="rounded-lg bg-white/[0.04] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                                Best <span className="text-white">{best}</span>
+                              </span>
+                            )}
+                          </div>
+
+                          <h3 className="mt-3 text-lg font-extrabold tracking-tight text-white">
+                            {game.title}
+                          </h3>
+                          <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-slate-400">
+                            {game.details}
+                          </p>
+
+                          <div className="mt-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">
+                            <span>{game.category}</span>
+                            <span>•</span>
+                            <span>{game.rules}</span>
+                          </div>
+
+                          <span
+                            className="mt-4 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] opacity-70 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
+                            style={{ color: game.accent }}
+                          >
+                            Study and play <span aria-hidden="true">→</span>
                           </span>
-                        )}
+                        </div>
                       </div>
-                      <h2 className="mt-2.5 text-base font-extrabold tracking-tight text-white sm:text-lg">
-                        {game.title}
-                      </h2>
-                      <p className="mt-1.5 text-xs leading-5 text-slate-500">
-                        {game.summary}
-                      </p>
-                      <span
-                        className="mt-3 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[0.2em] opacity-60 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1"
-                        style={{ color: game.accent }}
-                      >
-                        Play <span className="text-sm">→</span>
-                      </span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </section>
         </div>
 
-        {/* Sidebar */}
-        <aside className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
-          {/* Study Stats */}
-          <div className="glass rounded-2xl p-5">
+        <aside className="space-y-4 animate-fade-in-up" style={{ animationDelay: "0.14s" }}>
+          <div className="surface rounded-3xl p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80">
-              Study Dashboard
+              Study dashboard
             </p>
-            <h2 className="mt-2 text-xl font-extrabold text-white">
-              {currentUser ? `Welcome, ${currentUser.name}` : 'Start Practicing'}
+            <h2 className="mt-2 text-2xl font-extrabold text-white">
+              {currentUser ? `Welcome, ${currentUser.name}` : "Start practicing"}
             </h2>
-            <div className="mt-4 grid grid-cols-3 gap-3">
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              Your scores are stored locally, so you can keep practicing without setup friction.
+            </p>
+
+            <div className="mt-5 grid grid-cols-3 gap-3">
               {[
                 { label: "Today", value: stats.todayGames, accent: "#40e0f0" },
                 { label: "Total", value: stats.totalGames, accent: "#a78bfa" },
                 { label: "Quizzes", value: stats.quizCount, accent: "#f59e0b" },
-              ].map(s => (
-                <div key={s.label} className="rounded-xl border border-white/6 bg-white/3 p-3 text-center">
-                  <div className="text-2xl font-black" style={{ color: s.accent }}>{s.value}</div>
-                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">{s.label}</div>
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-2xl border border-white/8 bg-white/[0.035] p-3 text-center"
+                >
+                  <div className="text-2xl font-black tabular-nums" style={{ color: s.accent }}>
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    {s.label}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Auth Card */}
+          <div className="surface rounded-3xl p-5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f0e040]/80">
+              Better study flow
+            </p>
+            <div className="mt-4 space-y-3">
+              {STUDY_STEPS.map((step, index) => (
+                <div key={step.label} className="flex gap-3">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#f0e040]/25 bg-[#f0e040]/10 text-xs font-black text-[#f0e040]">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">{step.label}</p>
+                    <p className="mt-0.5 text-xs leading-5 text-slate-500">
+                      {step.detail}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {currentUser ? (
-            <div className="glass rounded-2xl p-5">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 text-lg">
-                  ✅
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-white">{currentUser.name}</p>
-                  <p className="text-xs text-slate-500">Logged in · scores saved locally</p>
-                </div>
-              </div>
+            <div className="surface rounded-3xl p-5">
+              <p className="text-sm font-bold text-white">Progress is active</p>
+              <p className="mt-1 text-xs leading-5 text-slate-500">
+                Logged in as {currentUser.name}. Your local leaderboard entries will use this name.
+              </p>
             </div>
           ) : (
-            <div className="glass rounded-2xl p-5">
-              <p className="text-sm font-bold text-white">Track your progress</p>
+            <div className="surface rounded-3xl p-5">
+              <p className="text-sm font-bold text-white">Want named scores?</p>
               <p className="mt-1 text-xs leading-5 text-slate-500">
-                Create an account to save scores and compete on the leaderboard.
+                Create a local account or play as a guest inside any quiz.
               </p>
               <div className="mt-4 flex gap-2">
                 <Link
                   to="/login"
-                  className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-slate-200 transition hover:bg-white/10"
+                  className="touch-target inline-flex items-center rounded-xl border border-white/10 bg-white/[0.04] px-4 text-xs font-semibold text-slate-200 transition hover:bg-white/10"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="rounded-lg border border-[#40e0f0]/30 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold text-[#40e0f0] transition hover:bg-[#40e0f0]/15"
+                  className="touch-target inline-flex items-center rounded-xl border border-[#40e0f0]/30 bg-[#40e0f0]/10 px-4 text-xs font-semibold text-[#40e0f0] transition hover:bg-[#40e0f0]/18"
                 >
                   Sign up
                 </Link>
@@ -638,11 +795,12 @@ function HomePage({ currentUser }) {
             </div>
           )}
 
-          {/* Quick Tips */}
-          <div className="glass rounded-2xl p-5">
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f59e0b]/70">💡 Study Tip</p>
+          <div className="surface rounded-3xl p-5">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f59e0b]/80">
+              Tip
+            </p>
             <p className="mt-2 text-sm leading-6 text-slate-300">
-              Play each quiz on <span className="font-bold text-white">Advanced (3s)</span> difficulty to simulate real exam pressure. Speed + accuracy wins!
+              Start on Beginner, review the reference after misses, then move to Advanced when recall feels automatic.
             </p>
           </div>
         </aside>

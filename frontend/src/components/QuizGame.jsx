@@ -556,11 +556,11 @@ export default function QuizGame({ game }) {
             {game.prompt}
           </div>
           <div className={`mt-4 font-black text-white ${
-            game.key === 'worldCapital' || game.key === 'stateCapital' || game.key === 'periodicTable' || game.key === 'elementSymbol' || game.key === 'multiplication' || game.key === 'roman' || game.key === 'countryCurrency'
-              ? 'break-words text-2xl leading-tight sm:text-4xl'
-              : game.key === 'prime'
-                ? 'text-4xl sm:text-6xl'
-              : 'text-6xl sm:text-8xl'
+            ['prime'].includes(game.key)
+              ? 'text-4xl sm:text-6xl'
+              : ['alphabet', 'square', 'cube', 'reverseAlphabet'].includes(game.key)
+                ? 'text-6xl sm:text-8xl'
+                : 'break-words text-2xl leading-tight sm:text-3xl'
           }`}>
             {currentQuestion?.display}
           </div>
@@ -580,7 +580,11 @@ export default function QuizGame({ game }) {
                 data-key={OPTION_KEYS[index]}
                 disabled={isAnswered}
                 onClick={() => handleChoice(choice)}
-                className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center text-lg font-black tracking-[0.08em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed sm:px-5 sm:py-5 sm:text-2xl sm:tracking-[0.18em] ${statusClass}`}
+                className={`relative flex min-h-[4rem] items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center font-black tracking-[0.08em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed sm:min-h-[5rem] sm:px-5 sm:py-5 sm:tracking-[0.18em] ${
+                  ['alphabet', 'square', 'cube', 'reverseAlphabet', 'prime'].includes(game.key)
+                    ? 'text-lg sm:text-2xl'
+                    : 'text-sm sm:text-lg leading-tight'
+                } ${statusClass}`}
               >
                 <span className="absolute left-3 top-2 text-[10px] uppercase tracking-[0.25em] text-slate-500">
                   {OPTION_KEYS[index]}

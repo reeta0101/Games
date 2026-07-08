@@ -512,9 +512,10 @@ export default function QuizGame({ game }) {
   //  GAME SCREEN
   // ════════════════════════════════════════
   return (
-    <main className="mx-auto max-w-5xl px-3 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
-      <section className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <main className="mx-auto flex max-w-5xl flex-col px-3 pb-4 pt-4 sm:px-6 sm:pb-6 sm:pt-6 lg:px-8" style={{ minHeight: 'calc(100vh - 100px)', maxHeight: 'calc(100vh - 80px)' }}>
+      <section className="flex flex-1 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-3 shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-5">
+        {/* Header row */}
+        <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-xs uppercase tracking-[0.28em] text-[#f0e040] sm:text-sm sm:tracking-[0.35em]">
             {game.title}
           </div>
@@ -534,8 +535,8 @@ export default function QuizGame({ game }) {
         </div>
 
         {/* Timer */}
-        <div className="mt-5">
-          <div className="relative h-2 overflow-hidden rounded-full bg-white/10">
+        <div className="mt-3 shrink-0">
+          <div className="relative h-1.5 overflow-hidden rounded-full bg-white/10">
             <div
               className="h-full rounded-full transition-[width] duration-75"
               style={{
@@ -545,32 +546,32 @@ export default function QuizGame({ game }) {
               }}
             />
           </div>
-          <div className="mt-2 text-right text-xs uppercase tracking-[0.2em] text-slate-500">
+          <div className="mt-1 text-right text-[10px] uppercase tracking-[0.2em] text-slate-500">
             {timeLeft.toFixed(1)}s
           </div>
         </div>
 
-        {/* Question */}
-        <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5 text-center sm:mt-8 sm:rounded-[1.5rem] sm:p-8">
+        {/* Question — shrinks to fit */}
+        <div className="mt-3 shrink overflow-hidden rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-center sm:rounded-2xl sm:px-6 sm:py-4">
           <div className="text-[10px] uppercase tracking-[0.28em] text-slate-500 sm:text-xs sm:tracking-[0.35em]">
             {game.prompt}
           </div>
-          <div className={`mt-4 font-black text-white ${
+          <div className={`mt-2 font-black text-white ${
             ['prime'].includes(game.key)
-              ? 'text-4xl sm:text-6xl'
+              ? 'text-3xl sm:text-5xl'
               : ['alphabet', 'square', 'cube', 'reverseAlphabet'].includes(game.key)
-                ? 'text-6xl sm:text-8xl'
-                : 'break-words text-2xl leading-tight sm:text-3xl'
+                ? 'text-4xl sm:text-6xl'
+                : 'break-words text-lg leading-snug sm:text-2xl'
           }`}>
             {currentQuestion?.display}
           </div>
-          <div className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-400 sm:text-sm sm:tracking-[0.3em]">
+          <div className="mt-2 text-[10px] uppercase tracking-[0.2em] text-slate-400 sm:text-xs sm:tracking-[0.3em]">
             {game.subtext}
           </div>
         </div>
 
-        {/* Options */}
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        {/* Options — always visible */}
+        <div className="mt-3 grid shrink-0 gap-2 sm:grid-cols-2 sm:gap-3">
           {currentQuestion?.options.map((choice, index) => {
             const statusClass = selectedClass(choice);
 
@@ -580,13 +581,13 @@ export default function QuizGame({ game }) {
                 data-key={OPTION_KEYS[index]}
                 disabled={isAnswered}
                 onClick={() => handleChoice(choice)}
-                className={`relative flex min-h-[4rem] items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-center font-black tracking-[0.08em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed sm:min-h-[5rem] sm:px-5 sm:py-5 sm:tracking-[0.18em] ${
+                className={`relative flex min-h-[3rem] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-center font-black tracking-[0.08em] text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#f0e040] hover:text-[#f0e040] disabled:cursor-not-allowed sm:min-h-[3.5rem] sm:rounded-2xl sm:px-5 sm:py-3 sm:tracking-[0.18em] ${
                   ['alphabet', 'square', 'cube', 'reverseAlphabet', 'prime'].includes(game.key)
-                    ? 'text-lg sm:text-2xl'
-                    : 'text-sm sm:text-lg leading-tight'
+                    ? 'text-base sm:text-xl'
+                    : 'text-xs sm:text-base leading-tight'
                 } ${statusClass}`}
               >
-                <span className="absolute left-3 top-2 text-[10px] uppercase tracking-[0.25em] text-slate-500">
+                <span className="absolute left-2 top-1.5 text-[9px] uppercase tracking-[0.25em] text-slate-500">
                   {OPTION_KEYS[index]}
                 </span>
                 {choice}
@@ -595,16 +596,14 @@ export default function QuizGame({ game }) {
           })}
         </div>
 
-        {/* Feedback */}
-        <div className={`mt-6 min-h-6 text-center text-sm uppercase tracking-[0.3em] ${feedbackClass}`}>
-          {feedbackText}
-        </div>
-
-        {/* Quit */}
-        <div className="mt-5 flex justify-center">
+        {/* Feedback + Quit */}
+        <div className="mt-2 shrink-0 text-center">
+          <div className={`min-h-5 text-xs uppercase tracking-[0.3em] sm:text-sm ${feedbackClass}`}>
+            {feedbackText}
+          </div>
           <button
             onClick={() => endGame("quit")}
-            className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-xs font-bold uppercase tracking-[0.3em] text-slate-400 transition hover:bg-white/10"
+            className="mt-1 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 transition hover:bg-white/10 sm:px-5 sm:py-2 sm:text-xs"
           >
             Quit
           </button>

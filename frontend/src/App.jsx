@@ -25,11 +25,11 @@ import CountryCurrencyQuiz from "./pages/CountryCurrencyQuiz";
 import ElementSymbolQuiz from "./pages/ElementSymbolQuiz";
 import OneWordSubstitutionQuiz from "./pages/OneWordSubstitutionQuiz";
 import IndianPresidentQuiz from "./pages/IndianPresidentQuiz";
+import IndianVicePresidentQuiz from "./pages/IndianVicePresidentQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
 import {
-  DIFF_LABELS,
   MODE_LABELS,
   getLeaderboard,
   getTimeAgo,
@@ -41,6 +41,7 @@ const GAME_MODES = [
     path: "/alphabet",
     title: "Alphabet Quiz",
     badge: "Memory",
+    category: "Memory & Logic",
     hero: "A→Z",
     intro: "Identify letter positions instantly.",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
@@ -54,6 +55,7 @@ const GAME_MODES = [
     path: "/square",
     title: "Square Quiz",
     badge: "Quant",
+    category: "Mathematics",
     hero: "X²",
     intro: "Squares of numbers from 1 to 100.",
     rules: "<1.5s = 12pts · <3s = 8pts · <5s = 4pts · wrong = over",
@@ -67,19 +69,22 @@ const GAME_MODES = [
     path: "/cube",
     title: "Cube Quiz",
     badge: "Quant",
+    category: "Mathematics",
     hero: "X³",
     intro: "Cubes of numbers from 1 to 30.",
     rules: "wrong = game over",
     reference: "Practice cubes of numbers from 1 to 30.",
     accent: "#a78bfa",
     summary: "What is the cube of the number?",
-    details: "A challenging cube calculations mode with a purple arcade accent.",
+    details:
+      "A challenging cube calculations mode with a purple arcade accent.",
   },
   {
     id: "stateCapital",
     path: "/state-capital",
     title: "State Capital Quiz",
     badge: "GK Memory",
+    category: "General Knowledge",
     hero: "IND",
     intro: "Indian state capitals at exam speed.",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
@@ -93,6 +98,7 @@ const GAME_MODES = [
     path: "/world-capital",
     title: "World Capital Quiz",
     badge: "🌍 World GK",
+    category: "General Knowledge",
     hero: "🌍",
     intro: "All 195 countries — test your world knowledge.",
     rules: "wrong = game over",
@@ -106,6 +112,7 @@ const GAME_MODES = [
     path: "/periodic-table",
     title: "Element → (Atomic Number, Atomic Weight)",
     badge: "Chemistry",
+    category: "Chemistry",
     hero: "Z|W",
     intro: "Match each element to its atomic number and atomic weight.",
     rules: "wrong = game over",
@@ -119,6 +126,7 @@ const GAME_MODES = [
     path: "/multiplication",
     title: "Multiplication Quiz",
     badge: "Quant",
+    category: "Mathematics",
     hero: "A×B",
     intro: "Times tables from 2 to 15 — speed counts.",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
@@ -132,6 +140,7 @@ const GAME_MODES = [
     path: "/reverse-alphabet",
     title: "Reverse Alphabet Quiz",
     badge: "Memory",
+    category: "Memory & Logic",
     hero: "Z←A",
     intro: "Given a position, name the letter.",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
@@ -145,6 +154,7 @@ const GAME_MODES = [
     path: "/prime",
     title: "Prime Number Quiz",
     badge: "Quant",
+    category: "Mathematics",
     hero: "P#",
     intro: "Spot the prime among four numbers.",
     rules: "wrong = game over",
@@ -158,6 +168,7 @@ const GAME_MODES = [
     path: "/roman",
     title: "Roman Numerals Quiz",
     badge: "Classics",
+    category: "Miscellaneous",
     hero: "IV",
     intro: "Convert Roman numerals to decimal values.",
     rules: "wrong = game over",
@@ -171,6 +182,7 @@ const GAME_MODES = [
     path: "/country-currency",
     title: "Country → Currency",
     badge: "🌍 World GK",
+    category: "General Knowledge",
     hero: "💱",
     intro: "Match each country to its official currency.",
     rules: "wrong = game over",
@@ -184,6 +196,7 @@ const GAME_MODES = [
     path: "/element-symbol",
     title: "Element Name → Element Symbol",
     badge: "Chemistry",
+    category: "Chemistry",
     hero: "C·Fe",
     intro: "Match each element name to its chemical symbol.",
     rules: "wrong = game over",
@@ -197,6 +210,7 @@ const GAME_MODES = [
     path: "/one-word-sub",
     title: "One Word Substitution",
     badge: "Vocabulary",
+    category: "English",
     hero: "OWS",
     intro: "One word for the given phrase.",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
@@ -210,6 +224,7 @@ const GAME_MODES = [
     path: "/indian-president",
     title: "Indian Presidents",
     badge: "India GK",
+    category: "General Knowledge",
     hero: "IND",
     intro: "Order → President name.",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
@@ -217,6 +232,20 @@ const GAME_MODES = [
     accent: "#f97316",
     summary: "Who was the Nth President of India?",
     details: "From Rajendra Prasad (1st) to Droupadi Murmu (15th).",
+  },
+  {
+    id: "indianVicePresident",
+    path: "/indian-vice-president",
+    title: "Indian Vice Presidents",
+    badge: "India GK",
+    category: "General Knowledge",
+    hero: "IVP",
+    intro: "Order → Vice President name.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "1st to 14th Vice President of India.",
+    accent: "#fb7185",
+    summary: "Who was the Nth Vice President of India?",
+    details: "From S. Radhakrishnan (1st) to Jagdeep Dhankhar (14th).",
   },
 ];
 
@@ -233,14 +262,14 @@ function ArcadeBackground() {
 }
 
 const DIFF_TABS = [
-  { key: 'beginner', label: 'Beginner', icon: '🌱' },
-  { key: 'intermediate', label: 'Intermediate', icon: '⚡' },
-  { key: 'advanced', label: 'Advanced', icon: '🔥' },
+  { key: "beginner", label: "Beginner", icon: "🌱" },
+  { key: "intermediate", label: "Intermediate", icon: "⚡" },
+  { key: "advanced", label: "Advanced", icon: "🔥" },
 ];
 
 function AllGameLeaderboards() {
   const leaderboard = getLeaderboard();
-  const [activeDiff, setActiveDiff] = useState('intermediate');
+  const [activeDiff, setActiveDiff] = useState("intermediate");
 
   return (
     <section className="mt-8 sm:mt-10">
@@ -253,7 +282,9 @@ function AllGameLeaderboards() {
             Top 20 scores for every quiz
           </h2>
         </div>
-        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Best per player</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+          Best per player
+        </p>
       </div>
 
       {/* Difficulty tabs */}
@@ -264,8 +295,8 @@ function AllGameLeaderboards() {
             onClick={() => setActiveDiff(d.key)}
             className={`rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] transition ${
               activeDiff === d.key
-                ? 'border-[#f0e040]/60 bg-[#f0e040]/10 text-[#f0e040]'
-                : 'border-white/10 bg-white/5 text-slate-400 hover:bg-white/10'
+                ? "border-[#f0e040]/60 bg-[#f0e040]/10 text-[#f0e040]"
+                : "border-white/10 bg-white/5 text-slate-400 hover:bg-white/10"
             }`}
           >
             {d.icon} {d.label}
@@ -287,10 +318,15 @@ function AllGameLeaderboards() {
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: game.accent }}>
+                  <p
+                    className="text-[10px] font-bold uppercase tracking-[0.25em]"
+                    style={{ color: game.accent }}
+                  >
                     {MODE_LABELS[game.id] || game.title}
                   </p>
-                  <h3 className="mt-1 text-lg font-black text-white">{game.title}</h3>
+                  <h3 className="mt-1 text-lg font-black text-white">
+                    {game.title}
+                  </h3>
                 </div>
                 <Link
                   to={game.path}
@@ -313,17 +349,38 @@ function AllGameLeaderboards() {
                     >
                       <span
                         className="w-6 text-center text-sm font-black"
-                        style={{ color: index === 0 ? '#ffd700' : index === 1 ? '#c0c0c0' : index === 2 ? '#cd7f32' : game.accent }}
+                        style={{
+                          color:
+                            index === 0
+                              ? "#ffd700"
+                              : index === 1
+                                ? "#c0c0c0"
+                                : index === 2
+                                  ? "#cd7f32"
+                                  : game.accent,
+                        }}
                       >
-                        {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
+                        {index === 0
+                          ? "🥇"
+                          : index === 1
+                            ? "🥈"
+                            : index === 2
+                              ? "🥉"
+                              : index + 1}
                       </span>
                       <div className="min-w-0">
-                        <div className="truncate text-sm font-bold text-white">{entry.name}</div>
+                        <div className="truncate text-sm font-bold text-white">
+                          {entry.name}
+                        </div>
                         <div className="truncate text-[10px] uppercase tracking-[0.16em] text-slate-500">
-                          {entry.questions || '?'}Q · {getTimeAgo(entry.timestamp)}
+                          {entry.questions || "?"}Q ·{" "}
+                          {getTimeAgo(entry.timestamp)}
                         </div>
                       </div>
-                      <div className="text-lg font-black" style={{ color: game.accent }}>
+                      <div
+                        className="text-lg font-black"
+                        style={{ color: game.accent }}
+                      >
                         {entry.score}
                       </div>
                     </div>
@@ -338,7 +395,15 @@ function AllGameLeaderboards() {
   );
 }
 
+const CATEGORIES = ["All", "Mathematics", "Biology", "Chemistry", "General Knowledge", "Memory & Logic", "English", "Miscellaneous"];
+
 function HomePage({ darkMode, currentUser }) {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredGames = activeCategory === "All" 
+    ? GAME_MODES 
+    : GAME_MODES.filter(game => game.category === activeCategory);
+
   return (
     <main className="mx-auto max-w-7xl px-3 pb-12 pt-6 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
       <section className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr] xl:gap-8">
@@ -361,41 +426,65 @@ function HomePage({ darkMode, currentUser }) {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {GAME_MODES.map((game) => (
-              <Link
-                key={game.id}
-                to={game.path}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition duration-300 hover:-translate-y-1 hover:bg-white/[0.08] sm:rounded-[1.75rem] sm:p-6"
-                style={{
-                  boxShadow: `0 0 0 1px ${game.accent}18, 0 20px 45px rgba(0,0,0,0.22)`,
-                }}
+          {/* Categories Filter */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {CATEGORIES.map(category => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.1em] transition ${
+                  activeCategory === category
+                    ? "border-[#40e0f0]/60 bg-[#40e0f0]/10 text-[#40e0f0]"
+                    : "border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
+                }`}
               >
-                <div
-                  className="mb-4 inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]"
-                  style={{
-                    borderColor: `${game.accent}55`,
-                    color: game.accent,
-                    background: `${game.accent}10`,
-                  }}
-                >
-                  {game.badge}
-                </div>
-                <h2 className="text-xl font-black uppercase tracking-[0.1em] text-white sm:text-2xl sm:tracking-[0.12em]">
-                  {game.title}
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-400">
-                  {game.summary}
-                </p>
-                <span
-                  className="mt-5 inline-flex text-sm font-bold uppercase tracking-[0.3em] transition group-hover:translate-x-1"
-                  style={{ color: game.accent }}
-                >
-                  Play →
-                </span>
-              </Link>
+                {category}
+              </button>
             ))}
           </div>
+
+          {filteredGames.length === 0 ? (
+             <div className="rounded-2xl border border-dashed border-white/10 bg-white/5 p-8 text-center sm:p-12">
+               <p className="text-xl font-bold text-white mb-2">Coming Soon!</p>
+               <p className="text-slate-400">We are working on adding amazing {activeCategory} games. Stay tuned.</p>
+             </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {filteredGames.map((game) => (
+                <Link
+                  key={game.id}
+                  to={game.path}
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 text-left transition duration-300 hover:-translate-y-1 hover:bg-white/[0.08] sm:rounded-[1.75rem] sm:p-6"
+                  style={{
+                    boxShadow: `0 0 0 1px ${game.accent}18, 0 20px 45px rgba(0,0,0,0.22)`,
+                  }}
+                >
+                  <div
+                    className="mb-4 inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em]"
+                    style={{
+                      borderColor: `${game.accent}55`,
+                      color: game.accent,
+                      background: `${game.accent}10`,
+                    }}
+                  >
+                    {game.badge}
+                  </div>
+                  <h2 className="text-xl font-black uppercase tracking-[0.1em] text-white sm:text-2xl sm:tracking-[0.12em]">
+                    {game.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">
+                    {game.summary}
+                  </p>
+                  <span
+                    className="mt-5 inline-flex text-sm font-bold uppercase tracking-[0.3em] transition group-hover:translate-x-1"
+                    style={{ color: game.accent }}
+                  >
+                    Play →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <aside className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_30px_120px_rgba(15,23,42,0.4)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
@@ -534,12 +623,7 @@ function ArcadeLayout() {
         <Routes>
           <Route
             path="/"
-            element={
-              <HomePage
-                darkMode={darkMode}
-                currentUser={currentUser}
-              />
-            }
+            element={<HomePage darkMode={darkMode} currentUser={currentUser} />}
           />
           <Route path="/alphabet" element={<AlphabetQuiz />} />
           <Route path="/square" element={<SquareQuiz />} />
@@ -555,15 +639,14 @@ function ArcadeLayout() {
           <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
           <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
           <Route path="/indian-president" element={<IndianPresidentQuiz />} />
+          <Route
+            path="/indian-vice-president"
+            element={<IndianVicePresidentQuiz />}
+          />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="*"
-            element={
-              <HomePage
-                darkMode={darkMode}
-                currentUser={currentUser}
-              />
-            }
+            element={<HomePage darkMode={darkMode} currentUser={currentUser} />}
           />
         </Routes>
         <Footer darkMode={darkMode} />
@@ -735,7 +818,6 @@ function Layout() {
             </div>
           ))}
         </div>
-
       </main>
 
       {/* Footer */}

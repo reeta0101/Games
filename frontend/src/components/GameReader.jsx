@@ -5,6 +5,7 @@ import {
   owsData,
   countryCurrencies,
   indianPresidents,
+  indianVicePresidents,
 } from "../data/quizGames";
 
 // Helper for prime
@@ -39,13 +40,13 @@ const TableWrapper = ({ columns, children }) => (
       <thead className="bg-white/5 text-[10px] sm:text-xs uppercase tracking-widest text-slate-400">
         <tr>
           {columns.map((col, i) => (
-            <th key={i} className="px-4 py-3 font-bold">{col}</th>
+            <th key={i} className="px-4 py-3 font-bold">
+              {col}
+            </th>
           ))}
         </tr>
       </thead>
-      <tbody className="divide-y divide-white/5">
-        {children}
-      </tbody>
+      <tbody className="divide-y divide-white/5">{children}</tbody>
     </table>
   </div>
 );
@@ -56,53 +57,69 @@ export default function GameReader({ gameKey }) {
       <TableWrapper columns={["Letter", "Position"]}>
         {Array.from({ length: 26 }, (_, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 text-lg font-black text-[#f0e040] w-1/2">{String.fromCharCode(65 + i)}</td>
-            <td className="px-4 py-2.5 font-mono text-slate-400 w-1/2">{i + 1}</td>
+            <td className="px-4 py-2.5 text-lg font-black text-[#f0e040] w-1/2">
+              {String.fromCharCode(65 + i)}
+            </td>
+            <td className="px-4 py-2.5 font-mono text-slate-400 w-1/2">
+              {i + 1}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "reverseAlphabet") {
     return (
       <TableWrapper columns={["Letter", "Reverse Position"]}>
         {Array.from({ length: 26 }, (_, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 text-lg font-black text-[#e879f9] w-1/2">{String.fromCharCode(65 + i)}</td>
-            <td className="px-4 py-2.5 font-mono text-slate-400 w-1/2">{26 - i}</td>
+            <td className="px-4 py-2.5 text-lg font-black text-[#e879f9] w-1/2">
+              {String.fromCharCode(65 + i)}
+            </td>
+            <td className="px-4 py-2.5 font-mono text-slate-400 w-1/2">
+              {26 - i}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "square") {
     return (
       <TableWrapper columns={["Number", "Square (X²)"]}>
         {Array.from({ length: 100 }, (_, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2 font-mono text-slate-400 w-1/2">{i + 1}</td>
-            <td className="px-4 py-2 text-base font-black text-[#40e0f0] w-1/2">{(i + 1) ** 2}</td>
+            <td className="px-4 py-2 font-mono text-slate-400 w-1/2">
+              {i + 1}
+            </td>
+            <td className="px-4 py-2 text-base font-black text-[#40e0f0] w-1/2">
+              {(i + 1) ** 2}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "cube") {
     return (
       <TableWrapper columns={["Number", "Cube (X³)"]}>
         {Array.from({ length: 30 }, (_, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 font-mono text-slate-400 w-1/2">{i + 1}</td>
-            <td className="px-4 py-2.5 text-base font-black text-[#a78bfa] w-1/2">{(i + 1) ** 3}</td>
+            <td className="px-4 py-2.5 font-mono text-slate-400 w-1/2">
+              {i + 1}
+            </td>
+            <td className="px-4 py-2.5 text-base font-black text-[#a78bfa] w-1/2">
+              {(i + 1) ** 3}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "multiplication") {
     return (
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -110,8 +127,12 @@ export default function GameReader({ gameKey }) {
           <TableWrapper key={table} columns={[`Table of ${table}`, "Result"]}>
             {Array.from({ length: 10 }, (_, j) => j + 1).map((mult) => (
               <tr key={mult} className="transition hover:bg-white/5">
-                <td className="px-4 py-2 font-mono text-slate-400 w-1/2">{table} × {mult}</td>
-                <td className="px-4 py-2 text-base font-bold text-[#22d3ee] w-1/2">{table * mult}</td>
+                <td className="px-4 py-2 font-mono text-slate-400 w-1/2">
+                  {table} × {mult}
+                </td>
+                <td className="px-4 py-2 text-base font-bold text-[#22d3ee] w-1/2">
+                  {table * mult}
+                </td>
               </tr>
             ))}
           </TableWrapper>
@@ -119,7 +140,7 @@ export default function GameReader({ gameKey }) {
       </div>
     );
   }
-  
+
   if (gameKey === "prime") {
     const primes = [];
     for (let i = 2; i <= 100; i++) {
@@ -129,102 +150,160 @@ export default function GameReader({ gameKey }) {
       <TableWrapper columns={["#", "Prime Number"]}>
         {primes.map((p, index) => (
           <tr key={p} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 font-mono text-slate-500 w-1/3">{index + 1}</td>
-            <td className="px-4 py-2.5 text-base font-black text-[#f97316] w-2/3">{p}</td>
+            <td className="px-4 py-2.5 font-mono text-slate-500 w-1/3">
+              {index + 1}
+            </td>
+            <td className="px-4 py-2.5 text-base font-black text-[#f97316] w-2/3">
+              {p}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "roman") {
     return (
       <TableWrapper columns={["Number", "Roman Numeral"]}>
         {Array.from({ length: 100 }, (_, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2 font-mono text-slate-400 w-1/2">{i + 1}</td>
-            <td className="px-4 py-2 text-base font-bold text-[#84cc16] w-1/2">{toRoman(i + 1)}</td>
+            <td className="px-4 py-2 font-mono text-slate-400 w-1/2">
+              {i + 1}
+            </td>
+            <td className="px-4 py-2 text-base font-bold text-[#84cc16] w-1/2">
+              {toRoman(i + 1)}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "stateCapital") {
     return (
       <TableWrapper columns={["Indian State", "Capital City"]}>
         {stateCapitals.map((item, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-3 font-medium text-slate-200 w-1/2">{item.state}</td>
-            <td className="px-4 py-3 text-sm font-bold text-[#fb7185] w-1/2">{item.capital}</td>
+            <td className="px-4 py-3 font-medium text-slate-200 w-1/2">
+              {item.state}
+            </td>
+            <td className="px-4 py-3 text-sm font-bold text-[#fb7185] w-1/2">
+              {item.capital}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "worldCapital") {
     return (
       <TableWrapper columns={["Country", "Capital City"]}>
         {worldCapitals.map((item, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 font-medium text-slate-200 w-1/2">{item.country}</td>
-            <td className="px-4 py-2.5 text-sm font-bold text-[#34d399] w-1/2">{item.capital}</td>
+            <td className="px-4 py-2.5 font-medium text-slate-200 w-1/2">
+              {item.country}
+            </td>
+            <td className="px-4 py-2.5 text-sm font-bold text-[#34d399] w-1/2">
+              {item.capital}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "countryCurrency") {
     return (
       <TableWrapper columns={["Country", "Currency"]}>
         {countryCurrencies.map((item, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 font-medium text-slate-200 w-1/2">{item.country}</td>
-            <td className="px-4 py-2.5 text-sm font-bold text-[#2dd4bf] w-1/2">{item.currency}</td>
+            <td className="px-4 py-2.5 font-medium text-slate-200 w-1/2">
+              {item.country}
+            </td>
+            <td className="px-4 py-2.5 text-sm font-bold text-[#2dd4bf] w-1/2">
+              {item.currency}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "periodicTable" || gameKey === "elementSymbol") {
     return (
       <TableWrapper columns={["Z", "Symbol", "Element Name", "Weight"]}>
         {periodicElements.map((item, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-2.5 font-mono text-slate-400">{item.atomicNumber}</td>
-            <td className="px-4 py-2.5 text-base font-black text-[#f59e0b]">{item.symbol}</td>
-            <td className="px-4 py-2.5 font-bold text-slate-200">{item.name}</td>
-            <td className="px-4 py-2.5 font-mono text-slate-400">{item.atomicWeight}</td>
+            <td className="px-4 py-2.5 font-mono text-slate-400">
+              {item.atomicNumber}
+            </td>
+            <td className="px-4 py-2.5 text-base font-black text-[#f59e0b]">
+              {item.symbol}
+            </td>
+            <td className="px-4 py-2.5 font-bold text-slate-200">
+              {item.name}
+            </td>
+            <td className="px-4 py-2.5 font-mono text-slate-400">
+              {item.atomicWeight}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "oneWordSub") {
     return (
       <TableWrapper columns={["One Word", "Phrase"]}>
         {owsData.map((item, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-3 text-base font-black text-[#c084fc] w-1/3 align-top">{item.word}</td>
-            <td className="px-4 py-3 text-sm leading-6 text-slate-300 w-2/3">{item.phrase}</td>
+            <td className="px-4 py-3 text-base font-black text-[#c084fc] w-1/3 align-top">
+              {item.word}
+            </td>
+            <td className="px-4 py-3 text-sm leading-6 text-slate-300 w-2/3">
+              {item.phrase}
+            </td>
           </tr>
         ))}
       </TableWrapper>
     );
   }
-  
+
   if (gameKey === "indianPresident") {
     return (
       <TableWrapper columns={["Order", "President Name", "Term"]}>
         {indianPresidents.map((item, i) => (
           <tr key={i} className="transition hover:bg-white/5">
-            <td className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-500">{item.ordinal}</td>
-            <td className="px-4 py-3 text-sm font-black text-[#f97316]">{item.name}</td>
-            <td className="px-4 py-3 font-mono text-xs text-slate-400">{item.term}</td>
+            <td className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-500">
+              {item.ordinal}
+            </td>
+            <td className="px-4 py-3 text-sm font-black text-[#f97316]">
+              {item.name}
+            </td>
+            <td className="px-4 py-3 font-mono text-xs text-slate-400">
+              {item.term}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "indianVicePresident") {
+    return (
+      <TableWrapper columns={["Order", "Vice President Name", "Term"]}>
+        {indianVicePresidents.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-500">
+              {item.ordinal}
+            </td>
+            <td className="px-4 py-3 text-sm font-black text-[#fb7185]">
+              {item.name}
+            </td>
+            <td className="px-4 py-3 font-mono text-xs text-slate-400">
+              {item.term}
+            </td>
           </tr>
         ))}
       </TableWrapper>

@@ -1054,6 +1054,35 @@ export const quizGames = {
       };
     },
   },
+  indianVicePresident: {
+    key: "indianVicePresident",
+    title: "Indian Vice Presidents",
+    bigLetter: "IVP",
+    intro: "Which vice president held the given order of office?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "1st (1952) to 14th (2022–present) Vice President of India.",
+    accent: "#fb7185",
+    timeLimit: 6000,
+    prompt: "Who was the",
+    subtext: "Vice President of India?",
+    cardBadge: "India GK",
+    cardTitle: "Indian Vice Presidents",
+    cardDescription: "Order → Vice President name, from S. Radhakrishnan to Jagdeep Dhankhar.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const vp = indianVicePresidents[Math.floor(Math.random() * indianVicePresidents.length)];
+      return {
+        display: `${vp.ordinal} Vice President`,
+        correctValue: vp.name,
+        options: generateVicePresidentOptions(vp.name),
+      };
+    },
+  },
   countryCurrency: {
     key: "countryCurrency",
     title: "Country → Currency",
@@ -1404,9 +1433,36 @@ export const indianPresidents = [
   { order: 15, ordinal: "15th", name: "Droupadi Murmu",             term: "2022–present" },
 ];
 
+export const indianVicePresidents = [
+  { order: 1,  ordinal: "1st",  name: "Dr. S. Radhakrishnan",     term: "1952–1962" },
+  { order: 2,  ordinal: "2nd",  name: "Dr. Zakir Husain",         term: "1962–1967" },
+  { order: 3,  ordinal: "3rd",  name: "Varahagiri Venkata Giri",  term: "1967–1969" },
+  { order: 4,  ordinal: "4th",  name: "Gopal Swarup Pathak",      term: "1969–1974" },
+  { order: 5,  ordinal: "5th",  name: "Basappa Danappa Jatti",    term: "1974–1979" },
+  { order: 6,  ordinal: "6th",  name: "Mohammad Hidayatullah",    term: "1979–1984" },
+  { order: 7,  ordinal: "7th",  name: "Ramaswamy Venkataraman",   term: "1984–1987" },
+  { order: 8,  ordinal: "8th",  name: "Dr. Shankar Dayal Sharma", term: "1987–1992" },
+  { order: 9,  ordinal: "9th",  name: "K. R. Narayanan",          term: "1992–1997" },
+  { order: 10, ordinal: "10th", name: "Krishan Kant",             term: "1997–2002" },
+  { order: 11, ordinal: "11th", name: "Bhairon Singh Shekhawat",  term: "2002–2007" },
+  { order: 12, ordinal: "12th", name: "Mohammad Hamid Ansari",    term: "2007–2017" },
+  { order: 13, ordinal: "13th", name: "M. Venkaiah Naidu",        term: "2017–2022" },
+  { order: 14, ordinal: "14th", name: "Jagdeep Dhankhar",         term: "2022–present" },
+];
+
 function generatePresidentOptions(correctName) {
   const options = new Set([correctName]);
   const others = shuffleArray(indianPresidents.map((p) => p.name).filter((n) => n !== correctName));
+  for (const name of others) {
+    if (options.size >= 4) break;
+    options.add(name);
+  }
+  return shuffleArray([...options]);
+}
+
+function generateVicePresidentOptions(correctName) {
+  const options = new Set([correctName]);
+  const others = shuffleArray(indianVicePresidents.map((vp) => vp.name).filter((n) => n !== correctName));
   for (const name of others) {
     if (options.size >= 4) break;
     options.add(name);

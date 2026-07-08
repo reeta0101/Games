@@ -90,6 +90,7 @@ export const MODE_LABELS = {
   elementSymbol: 'Symbol',
   oneWordSub: 'OWS',
   indianPresident: 'IND Pres',
+  indianVicePresident: 'IND VP',
 };
 
 export const DIFF_LABELS = {

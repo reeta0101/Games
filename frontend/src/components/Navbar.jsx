@@ -95,20 +95,21 @@ export default function Navbar({
                 <span className="max-w-32 truncate">{currentUser.name}</span>
                 <span className="text-[10px] text-emerald-400/50">▼</span>
               </button>
-              
-              <div className="absolute right-0 top-full mt-2 hidden w-48 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#07101d] shadow-xl group-hover:flex backdrop-blur-2xl">
-                <button
-                  onClick={() => setShowPasswordModal(true)}
-                  className="px-4 py-3 text-left text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
-                >
-                  Change Password
-                </button>
-                <button
-                  onClick={onLogout}
-                  className="px-4 py-3 text-left text-sm text-rose-400 transition hover:bg-rose-500/10"
-                >
-                  Logout
-                </button>
+              <div className="absolute right-0 top-full pt-2 hidden group-hover:block">
+                <div className="flex w-48 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#07101d] shadow-xl backdrop-blur-2xl">
+                  <button
+                    onClick={() => setShowPasswordModal(true)}
+                    className="px-4 py-3 text-left text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                  >
+                    Change Password
+                  </button>
+                  <button
+                    onClick={onLogout}
+                    className="px-4 py-3 text-left text-sm text-rose-400 transition hover:bg-rose-500/10"
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
             </div>
           ) : (

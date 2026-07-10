@@ -46,9 +46,17 @@ router.get('/leaderboard/:mode/:difficulty', async (req, res) => {
       return res.status(503).json({ error: 'Database not connected.', scores: [] });
     }
 
-    const topScores = await Score.find({ mode, difficulty })
-      .sort({ score: -1, updatedAt: 1 })
-      .limit(limit);
+    const allScores = await Score.find({ mode, difficulty });
+    
+    // Sort in memory to avoid Cosmos DB index errors
+    allScores.sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return new Date(a.updatedAt) - new Date(b.updatedAt);
+    });
+    
+    const topScores = allScores.slice(0, limit);
 
     res.json({ scores: topScores });
   } catch (err) {

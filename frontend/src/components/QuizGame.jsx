@@ -125,16 +125,16 @@ export default function QuizGame({ game }) {
   }, []);
 
   const endGame = useCallback(
-    (reason) => {
+    async (reason) => {
       clearTimers();
       setIsAnswered(true);
       setGameEndReason(reason);
       setFinalMessage(buildFinalMessage(reason, score));
 
-      // Save to leaderboard
+      // Save to leaderboard and wait for it to finish
       const answeredQs = reason === "wrong" || reason === "timeout" ? questionNum - 1 : questionNum;
       if (score > 0) {
-        saveScore({
+        await saveScore({
           name: guestName,
           score,
           mode: game.key,

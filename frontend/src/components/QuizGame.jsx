@@ -242,6 +242,24 @@ export default function QuizGame({ game }) {
     return () => window.removeEventListener("keydown", handler);
   }, [screen, isAnswered, currentQuestion, handleChoice]);
 
+  // Fetch scores when end screen mounts
+  useEffect(() => {
+    if (screen === "end") {
+      setLoadingScores(true);
+      Promise.all([
+        getLeaderboard(game.key, difficulty, 5),
+        getUserHighScores(guestName)
+      ]).then(([leaderboardData, highScoresData]) => {
+        setTop5(leaderboardData);
+        setPersonalBest(highScoresData[`${game.key}__${difficulty}`] || 0);
+      }).catch(err => {
+        console.error("Failed to fetch scores", err);
+      }).finally(() => {
+        setLoadingScores(false);
+      });
+    }
+  }, [screen, game.key, difficulty, guestName]);
+
   const timerPercent = Math.max(0, (timeLeft / (activeTimeLimit / 1000)) * 100);
   const isTimerDanger = timerPercent < 33;
   const progressItems = [
@@ -468,23 +486,6 @@ export default function QuizGame({ game }) {
   // ════════════════════════════════════════
   //  END SCREEN + LEADERBOARD
   // ════════════════════════════════════════
-  // Fetch scores when end screen mounts
-  useEffect(() => {
-    if (screen === "end") {
-      setLoadingScores(true);
-      Promise.all([
-        getLeaderboard(game.key, difficulty, 5),
-        getUserHighScores(guestName)
-      ]).then(([leaderboardData, highScoresData]) => {
-        setTop5(leaderboardData);
-        setPersonalBest(highScoresData[`${game.key}__${difficulty}`] || 0);
-      }).catch(err => {
-        console.error("Failed to fetch scores", err);
-      }).finally(() => {
-        setLoadingScores(false);
-      });
-    }
-  }, [screen, game.key, difficulty, guestName]);
 
   if (screen === "end") {
     const diffInfo = DIFFICULTIES[difficulty];

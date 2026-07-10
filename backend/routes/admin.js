@@ -96,7 +96,7 @@ router.post('/change-password', async (req, res) => {
 // GET /api/admin/users — fetch all users
 router.get('/users', async (req, res) => {
   try {
-    const users = await User.find({}).sort({ createdAt: -1 });
+    const users = await User.find({});
     res.json({ users });
   } catch (err) {
     console.error('Fetch users error:', err.message);

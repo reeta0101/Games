@@ -3,10 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { adminLogin } from "../features/auth/authSlice";
 
-const ADMIN_CREDENTIALS = {
-  username: "admin",
-  password: "admin123",
-};
 
 export default function AdminLoginPage() {
   const navigate = useNavigate();
@@ -24,23 +20,32 @@ export default function AdminLoginPage() {
     }
   }, [isAdmin, navigate]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      if (
-        username.trim().toLowerCase() === ADMIN_CREDENTIALS.username &&
-        password === ADMIN_CREDENTIALS.password
-      ) {
-        dispatch(adminLogin({ name: "Administrator", username: "admin" }));
-        navigate("/admin");
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Invalid admin credentials.");
       } else {
-        setError("Invalid admin credentials.");
+        // Redux expects an object with 'token' or we can just pass the data
+        dispatch(adminLogin({ name: data.name, token: data.token }));
+        navigate("/admin");
       }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to connect to the server.");
+    } finally {
       setIsSubmitting(false);
-    }, 400);
+    }
   };
 
   return (

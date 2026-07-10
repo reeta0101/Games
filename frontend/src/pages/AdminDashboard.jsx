@@ -109,6 +109,12 @@ export default function AdminDashboard() {
   const [toast, setToast] = useState(null);
   const [error, setError] = useState("");
 
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+
   // Guard — redirect if not admin
   useEffect(() => {
     if (!isAdmin) {
@@ -123,7 +129,7 @@ export default function AdminDashboard() {
       setError("");
       const res = await fetch(`${API_BASE}/admin/users`, {
         headers: {
-          'Authorization': 'Bearer admin123'
+          'Authorization': `Bearer ${adminUser?.token}`
         }
       });
       if (!res.ok) {
@@ -148,6 +154,38 @@ export default function AdminDashboard() {
       fetchUsers();
     }
   }, [isAdmin, fetchUsers]);
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    setPasswordError("");
+    setIsChangingPassword(true);
+
+    try {
+      const res = await fetch(`${API_BASE}/admin/change-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${adminUser?.token}`,
+        },
+        body: JSON.stringify({ currentPassword, newPassword, confirmPassword }),
+      });
+      const data = await res.json();
+      
+      if (!res.ok) {
+        setPasswordError(data.error || "Failed to change password");
+      } else {
+        setToast("Password changed successfully!");
+        setCurrentPassword("");
+        setNewPassword("");
+        setConfirmPassword("");
+      }
+    } catch (err) {
+      console.error(err);
+      setPasswordError("Failed to connect to server");
+    } finally {
+      setIsChangingPassword(false);
+    }
+  };
 
   const lbStats = useMemo(() => getLeaderboardStats(), []);
 
@@ -183,7 +221,7 @@ export default function AdminDashboard() {
       const res = await fetch(`${API_BASE}/admin/users/${deleteTarget._id}`, {
         method: "DELETE",
         headers: {
-          'Authorization': 'Bearer admin123'
+          'Authorization': `Bearer ${adminUser?.token}`
         }
       });
       if (!res.ok) throw new Error('Failed to delete user');
@@ -637,6 +675,59 @@ export default function AdminDashboard() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div
+            className="animate-fade-in-up rounded-3xl border border-white/10 p-5 md:col-span-2"
+            style={{
+              animationDelay: "0.2s",
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)), rgba(8,13,24,0.72)",
+              boxShadow: "0 24px 80px rgba(2,6,23,0.35)",
+              backdropFilter: "blur(20px)",
+            }}
+          >
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-amber-400/80">
+              Security
+            </p>
+            <h3 className="mt-2 text-lg font-bold text-white">Change Admin Password</h3>
+            <form className="mt-5 grid gap-4 sm:grid-cols-3" onSubmit={handleChangePassword}>
+              <input
+                type="password"
+                placeholder="Current Password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-black/24 px-4 py-2 text-sm text-white outline-none transition focus:border-amber-400/60 focus:bg-black/40"
+              />
+              <input
+                type="password"
+                placeholder="New Password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-black/24 px-4 py-2 text-sm text-white outline-none transition focus:border-amber-400/60 focus:bg-black/40"
+              />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full rounded-xl border border-white/10 bg-black/24 px-4 py-2 text-sm text-white outline-none transition focus:border-amber-400/60 focus:bg-black/40"
+              />
+              {passwordError && (
+                <div className="sm:col-span-3 text-sm text-rose-400 font-medium">
+                  {passwordError}
+                </div>
+              )}
+              <div className="sm:col-span-3 text-right">
+                <button
+                  type="submit"
+                  disabled={isChangingPassword}
+                  className="rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-900 px-6 py-2.5 text-sm font-bold transition disabled:opacity-50"
+                >
+                  {isChangingPassword ? "Saving..." : "Update Password"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </main>

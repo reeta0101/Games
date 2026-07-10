@@ -6,7 +6,11 @@ import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-admin-key-games';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error('FATAL: JWT_SECRET env variable is not set.');
+  process.exit(1);
+}
 
 // POST /api/admin/login
 router.post('/login', async (req, res) => {

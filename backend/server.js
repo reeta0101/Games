@@ -16,7 +16,10 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Middleware
-app.use(cors());
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : ['http://localhost:5173'];
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 // MongoDB Connection
@@ -30,7 +33,8 @@ if (process.env.MONGODB_URI) {
       const adminSetting = await AdminSettings.findOne();
       if (!adminSetting) {
         const salt = await bcrypt.genSalt(10);
-        const passwordHash = await bcrypt.hash('admin123', salt);
+        const defaultPassword = process.env.ADMIN_DEFAULT_PASSWORD || 'admin123';
+        const passwordHash = await bcrypt.hash(defaultPassword, salt);
         await AdminSettings.create({ passwordHash });
         console.log('Seeded default admin password.');
       }
@@ -48,7 +52,7 @@ import adminRoutes from './routes/admin.js';
 import scoreRoutes from './routes/score.js';
 
 // Serve frontend static files from dist folder
-const distPath = path.join(__dirname, 'dist');
+const distPath = path.resolve(__dirname, 'dist');
 console.log('Serving static files from:', distPath);
 app.use(express.static(distPath));
 
@@ -67,7 +71,7 @@ app.get('/api/test', (req, res) => {
 
 // Serve index.html for all other routes (SPA support)
 app.get('{*path}', (req, res) => {
-  res.sendFile(path.join(distPath, 'index.html'));
+  res.sendFile(path.resolve(distPath, 'index.html'));
 });
 
 app.listen(PORT, () => {

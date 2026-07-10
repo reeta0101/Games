@@ -54,13 +54,14 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, username, password, loginMethod } = req.body;
+    const method = loginMethod === 'username' ? 'username' : 'email';
 
     if (!password) {
       return res.status(400).json({ error: 'Password is required.' });
     }
 
     let user;
-    if (loginMethod === 'username') {
+    if (method === 'username') {
       if (!username) {
         return res.status(400).json({ error: 'Username is required.' });
       }
@@ -73,12 +74,12 @@ router.post('/login', async (req, res) => {
     }
 
     if (!user) {
-      return res.status(401).json({ error: `Incorrect ${loginMethod === 'username' ? 'username' : 'email'} or password.` });
+      return res.status(401).json({ error: `Incorrect ${method === 'username' ? 'username' : 'email'} or password.` });
     }
 
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
-      return res.status(401).json({ error: `Incorrect ${loginMethod === 'username' ? 'username' : 'email'} or password.` });
+      return res.status(401).json({ error: `Incorrect ${method === 'username' ? 'username' : 'email'} or password.` });
     }
 
     res.json({

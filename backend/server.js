@@ -26,12 +26,20 @@ if (process.env.MONGODB_URI) {
   console.warn('MONGODB_URI not set - skipping database connection');
 }
 
+import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin.js';
+import scoreRoutes from './routes/score.js';
+
 // Serve frontend static files from dist folder
 const distPath = path.join(__dirname, 'dist');
 console.log('Serving static files from:', distPath);
 app.use(express.static(distPath));
 
 // API Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/score', scoreRoutes);
+
 app.get('/api/test', (req, res) => {
   res.json({ message: 'Backend connected successfully!' });
 });

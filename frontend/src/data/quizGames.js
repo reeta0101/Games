@@ -1227,6 +1227,35 @@ export const quizGames = {
       };
     },
   },
+  animalKingdom: {
+    key: "animalKingdom",
+    title: "Animal Kingdom",
+    bigLetter: "🐾",
+    intro: "What class does this animal belong to?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "65 animals across 9 phyla — Chordata, Arthropoda, Mollusca, Echinodermata, Annelida, Cnidaria, Porifera, Platyhelminthes, Nematoda.",
+    accent: "#22d3ee",
+    timeLimit: 6000,
+    prompt: "What class is",
+    subtext: "Choose the correct biological class",
+    cardBadge: "Biology",
+    cardTitle: "Animal Kingdom",
+    cardDescription: "Match animals to their biological class.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 6000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const item = animalKingdom[Math.floor(Math.random() * animalKingdom.length)];
+      return {
+        display: item.animal,
+        correctValue: item.class,
+        options: generateAnimalKingdomOptions(item.class),
+      };
+    },
+  },
 };
 
 function shuffleArray(array) {
@@ -1698,3 +1727,80 @@ export const diseaseCauses = [
   { disease: "Leptospirosis", cause: "Bacteria (Leptospira)" },
   { disease: "Scabies", cause: "Parasite (Sarcoptes scabiei)" },
 ];
+
+export const animalKingdom = [
+  { animal: "Lion", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Tiger", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Elephant", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Blue Whale", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Dolphin", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Bat", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Kangaroo", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Platypus", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Human", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Giraffe", phylum: "Chordata", class: "Mammalia" },
+  { animal: "Eagle", phylum: "Chordata", class: "Aves" },
+  { animal: "Penguin", phylum: "Chordata", class: "Aves" },
+  { animal: "Ostrich", phylum: "Chordata", class: "Aves" },
+  { animal: "Peacock", phylum: "Chordata", class: "Aves" },
+  { animal: "Parrot", phylum: "Chordata", class: "Aves" },
+  { animal: "Sparrow", phylum: "Chordata", class: "Aves" },
+  { animal: "Crow", phylum: "Chordata", class: "Aves" },
+  { animal: "Owl", phylum: "Chordata", class: "Aves" },
+  { animal: "Kingfisher", phylum: "Chordata", class: "Aves" },
+  { animal: "Flamingo", phylum: "Chordata", class: "Aves" },
+  { animal: "Crocodile", phylum: "Chordata", class: "Reptilia" },
+  { animal: "Snake (Cobra)", phylum: "Chordata", class: "Reptilia" },
+  { animal: "Lizard", phylum: "Chordata", class: "Reptilia" },
+  { animal: "Turtle", phylum: "Chordata", class: "Reptilia" },
+  { animal: "Chameleon", phylum: "Chordata", class: "Reptilia" },
+  { animal: "Komodo Dragon", phylum: "Chordata", class: "Reptilia" },
+  { animal: "Frog", phylum: "Chordata", class: "Amphibia" },
+  { animal: "Toad", phylum: "Chordata", class: "Amphibia" },
+  { animal: "Salamander", phylum: "Chordata", class: "Amphibia" },
+  { animal: "Newt", phylum: "Chordata", class: "Amphibia" },
+  { animal: "Shark", phylum: "Chordata", class: "Chondrichthyes" },
+  { animal: "Ray (Stingray)", phylum: "Chordata", class: "Chondrichthyes" },
+  { animal: "Goldfish", phylum: "Chordata", class: "Osteichthyes" },
+  { animal: "Salmon", phylum: "Chordata", class: "Osteichthyes" },
+  { animal: "Tuna", phylum: "Chordata", class: "Osteichthyes" },
+  { animal: "Clownfish", phylum: "Chordata", class: "Osteichthyes" },
+  { animal: "Seahorse", phylum: "Chordata", class: "Osteichthyes" },
+  { animal: "Butterfly", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Honeybee", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Ant", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Mosquito", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Housefly", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Grasshopper", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Dragonfly", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Ladybug", phylum: "Arthropoda", class: "Insecta" },
+  { animal: "Spider", phylum: "Arthropoda", class: "Arachnida" },
+  { animal: "Scorpion", phylum: "Arthropoda", class: "Arachnida" },
+  { animal: "Crab", phylum: "Arthropoda", class: "Crustacea" },
+  { animal: "Lobster", phylum: "Arthropoda", class: "Crustacea" },
+  { animal: "Shrimp", phylum: "Arthropoda", class: "Crustacea" },
+  { animal: "Octopus", phylum: "Mollusca", class: "Cephalopoda" },
+  { animal: "Squid", phylum: "Mollusca", class: "Cephalopoda" },
+  { animal: "Snail", phylum: "Mollusca", class: "Gastropoda" },
+  { animal: "Oyster", phylum: "Mollusca", class: "Bivalvia" },
+  { animal: "Clam", phylum: "Mollusca", class: "Bivalvia" },
+  { animal: "Starfish", phylum: "Echinodermata", class: "Asteroidea" },
+  { animal: "Sea Urchin", phylum: "Echinodermata", class: "Echinoidea" },
+  { animal: "Sea Cucumber", phylum: "Echinodermata", class: "Holothuroidea" },
+  { animal: "Earthworm", phylum: "Annelida", class: "Clitellata" },
+  { animal: "Leech", phylum: "Annelida", class: "Clitellata" },
+  { animal: "Jellyfish", phylum: "Cnidaria", class: "Scyphozoa" },
+  { animal: "Coral", phylum: "Cnidaria", class: "Anthozoa" },
+  { animal: "Sea Anemone", phylum: "Cnidaria", class: "Anthozoa" },
+  { animal: "Sponge", phylum: "Porifera", class: "Demospongiae" },
+  { animal: "Tapeworm", phylum: "Platyhelminthes", class: "Cestoda" },
+  { animal: "Roundworm", phylum: "Nematoda", class: "Chromadorea" },
+];
+
+export const generateAnimalKingdomOptions = (correct) => {
+  const options = new Set([correct]);
+  while (options.size < 4) {
+    options.add(animalKingdom[Math.floor(Math.random() * animalKingdom.length)].class);
+  }
+  return shuffleArray(Array.from(options));
+};

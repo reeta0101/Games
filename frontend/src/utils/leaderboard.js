@@ -1,71 +1,47 @@
-// Leaderboard utility — stores scores in localStorage, auto-cleans entries > 7 days
+// Leaderboard utility — fetches from and saves to the MongoDB backend
 
-const STORAGE_KEY = 'arcade_leaderboard';
-const HIGH_SCORES_KEY = 'arcade_high_scores';
-const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+const API_BASE = '/api/score';
 
-export function getLeaderboard() {
+export async function getLeaderboard(mode, difficulty, limit = 20) {
   try {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    const cutoff = Date.now() - MAX_AGE_MS;
-    return data.filter((e) => e.timestamp > cutoff);
-  } catch {
+    const res = await fetch(`${API_BASE}/leaderboard/${mode}/${difficulty}?limit=${limit}`);
+    if (!res.ok) throw new Error('Failed to fetch leaderboard');
+    const data = await res.json();
+    return data.scores || [];
+  } catch (err) {
+    console.error(err);
     return [];
   }
 }
 
-export function getUserHighScores(name) {
+export async function getUserHighScores(name) {
   try {
-    const all = JSON.parse(localStorage.getItem(HIGH_SCORES_KEY) || '{}');
-    return all[name] || {};
-  } catch {
+    const res = await fetch(`${API_BASE}/personal/${name}`);
+    if (!res.ok) throw new Error('Failed to fetch high scores');
+    const data = await res.json();
+    return data.highScores || {};
+  } catch (err) {
+    console.error(err);
     return {};
   }
 }
 
-function updateUserHighScore(name, mode, difficulty, score) {
+export async function saveScore({ name, score, mode, difficulty, questions }) {
   try {
-    const all = JSON.parse(localStorage.getItem(HIGH_SCORES_KEY) || '{}');
-    if (!all[name]) all[name] = {};
-    const key = `${mode}__${difficulty}`;
-    if (!all[name][key] || score > all[name][key]) {
-      all[name][key] = score;
-      localStorage.setItem(HIGH_SCORES_KEY, JSON.stringify(all));
-    }
-  } catch { /* ignore */ }
-}
-
-export function saveScore({ name, score, mode, difficulty, questions }) {
-  // Update per-user high score
-  updateUserHighScore(name, mode, difficulty, score);
-
-  const lb = getLeaderboard();
-  lb.push({ name, score, mode, difficulty, questions, timestamp: Date.now() });
-
-  // Keep top 20 per mode+difficulty (best score per player, then top 20 overall)
-  const grouped = {};
-  for (const entry of lb) {
-    const key = `${entry.mode}__${entry.difficulty}`;
-    if (!grouped[key]) grouped[key] = {};
-    const prev = grouped[key][entry.name];
-    if (!prev || entry.score > prev.score) grouped[key][entry.name] = entry;
+    const res = await fetch(API_BASE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, score, mode, difficulty, questions }),
+    });
+    if (!res.ok) throw new Error('Failed to save score');
+    return await res.json();
+  } catch (err) {
+    console.error(err);
   }
-  const pruned = [];
-  for (const key of Object.keys(grouped)) {
-    const top20 = Object.values(grouped[key])
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 20);
-    pruned.push(...top20);
-  }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(pruned));
-}
-
-export function clearLeaderboard() {
-  localStorage.removeItem(STORAGE_KEY);
 }
 
 export function getTimeAgo(ts) {
-  const diff = Date.now() - ts;
+  const diff = Date.now() - new Date(ts).getTime();
   const mins = Math.floor(diff / 60000);
   if (mins < 1) return 'just now';
   if (mins < 60) return `${mins}m ago`;
@@ -94,6 +70,7 @@ export const MODE_LABELS = {
   nationalOfficials: 'Nat Off',
   stateOfficials: 'State CM',
   diseaseCause: 'Disease',
+  animalKingdom: 'Animals',
 };
 
 export const DIFF_LABELS = {

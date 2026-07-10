@@ -78,6 +78,11 @@ export default function QuizGame({ game }) {
   });
   const [finalMessage, setFinalMessage] = useState("");
   const [gameEndReason, setGameEndReason] = useState("");
+  
+  // Async leaderboard state for end screen
+  const [top5, setTop5] = useState([]);
+  const [personalBest, setPersonalBest] = useState(0);
+  const [loadingScores, setLoadingScores] = useState(false);
 
   const activeTimeLimit = DIFFICULTIES[difficulty].timeMs;
 
@@ -463,19 +468,29 @@ export default function QuizGame({ game }) {
   // ════════════════════════════════════════
   //  END SCREEN + LEADERBOARD
   // ════════════════════════════════════════
+  // Fetch scores when end screen mounts
+  useEffect(() => {
+    if (screen === "end") {
+      setLoadingScores(true);
+      Promise.all([
+        getLeaderboard(game.key, difficulty, 5),
+        getUserHighScores(guestName)
+      ]).then(([leaderboardData, highScoresData]) => {
+        setTop5(leaderboardData);
+        setPersonalBest(highScoresData[`${game.key}__${difficulty}`] || 0);
+      }).catch(err => {
+        console.error("Failed to fetch scores", err);
+      }).finally(() => {
+        setLoadingScores(false);
+      });
+    }
+  }, [screen, game.key, difficulty, guestName]);
+
   if (screen === "end") {
     const diffInfo = DIFFICULTIES[difficulty];
     const answeredQs = gameEndReason === "wrong" || gameEndReason === "timeout" ? questionNum - 1 : questionNum;
 
-    const top5 = getLeaderboard()
-      .filter((e) => e.mode === game.key && e.difficulty === difficulty)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5);
-
     const myRank = top5.findIndex((e) => e.name === guestName && e.score === score);
-
-    const highScores = getUserHighScores(guestName);
-    const personalBest = highScores[`${game.key}__${difficulty}`] || 0;
     const isNewBest = score > 0 && score >= personalBest;
 
     return (
@@ -513,7 +528,9 @@ export default function QuizGame({ game }) {
             <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#f0e040]">
               🏆 Top 5 — {MODE_LABELS[game.key] || game.key} · {diffInfo.label}
             </p>
-            {top5.length === 0 ? (
+            {loadingScores ? (
+              <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">Loading scores...</p>
+            ) : top5.length === 0 ? (
               <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">No scores yet. Be the first!</p>
             ) : (
               <div className="space-y-2">
@@ -539,7 +556,7 @@ export default function QuizGame({ game }) {
                           {entry.name}{isMe && ' ← you'}
                         </div>
                         <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500">
-                          {entry.questions || '?'}Q · {getTimeAgo(entry.timestamp)}
+                          {entry.questions || '?'}Q · {getTimeAgo(entry.createdAt || entry.timestamp || Date.now())}
                         </div>
                       </div>
                       <div className={`text-xl font-black ${isMe ? 'text-[#40e0f0]' : 'text-slate-200'}`}>

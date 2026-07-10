@@ -11,6 +11,9 @@ import { toggleTheme } from "./features/theme/themeSlice";
 import { logout } from "./features/auth/authSlice";
 import FootBall from "./pages/FootBall";
 import AuthPage from "./pages/AuthPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import NotFoundPage from "./pages/NotFoundPage";
 import AlphabetQuiz from "./pages/AlphabetQuiz";
 import SquareQuiz from "./pages/SquareQuiz";
 import StateCapitalQuiz from "./pages/StateCapitalQuiz";
@@ -29,14 +32,11 @@ import IndianVicePresidentQuiz from "./pages/IndianVicePresidentQuiz";
 import NationalOfficialsQuiz from "./pages/NationalOfficialsQuiz";
 import StateOfficialsQuiz from "./pages/StateOfficialsQuiz";
 import DiseaseCauseQuiz from "./pages/DiseaseCauseQuiz";
+import AnimalKingdomQuiz from "./pages/AnimalKingdomQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
-import {
-  MODE_LABELS,
-  getLeaderboard,
-  getTimeAgo,
-} from "./utils/leaderboard";
+import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 
 const GAME_MODES = [
   {
@@ -80,6 +80,21 @@ const GAME_MODES = [
     accent: "#10b981",
     summary: "What causes...",
     details: "Match diseases to their causative organisms.",
+  },
+  {
+    id: "animalKingdom",
+    path: "/animal-kingdom",
+    title: "Animal Kingdom",
+    badge: "Biology",
+    category: "Biology",
+    hero: "🐾",
+    intro: "What class does this animal belong to?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference:
+      "65 animals across 9 phyla — Chordata, Arthropoda, Mollusca, Echinodermata, Annelida, Cnidaria, Porifera, Platyhelminthes, Nematoda.",
+    accent: "#22d3ee",
+    summary: "What class is this animal?",
+    details: "Match animals to their biological class.",
   },
   {
     id: "alphabet",
@@ -309,8 +324,79 @@ const DIFF_TABS = [
   { key: "advanced", label: "Advanced", icon: "🔥" },
 ];
 
+function GameLeaderboardCard({ game, activeDiff }) {
+  const [entries, setEntries] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    getLeaderboard(game.id, activeDiff, 5)
+      .then(data => {
+        if (mounted) setEntries(data);
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+    return () => { mounted = false; };
+  }, [game.id, activeDiff]);
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p
+            className="text-[10px] font-bold uppercase tracking-[0.25em]"
+            style={{ color: game.accent }}
+          >
+            {MODE_LABELS[game.id] || game.title}
+          </p>
+          <h3 className="mt-1 text-lg font-black text-white">
+            {game.title}
+          </h3>
+        </div>
+        <Link
+          to={game.path}
+          className="shrink-0 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 transition hover:bg-white/10"
+        >
+          Play
+        </Link>
+      </div>
+
+      <div className="mt-3 max-h-72 overflow-y-auto space-y-1.5 pr-1">
+        {loading ? (
+          <div className="rounded-xl border border-dashed border-white/10 bg-black/10 px-3 py-4 text-center text-xs uppercase tracking-[0.18em] text-slate-500">
+            Loading...
+          </div>
+        ) : entries.length === 0 ? (
+          <div className="rounded-xl border border-dashed border-white/10 bg-black/10 px-3 py-4 text-center text-xs uppercase tracking-[0.18em] text-slate-500">
+            No scores yet
+          </div>
+        ) : (
+          entries.map((entry, index) => (
+            <div
+              key={index}
+              className="flex justify-between items-center bg-white/[0.03] px-3 py-2 rounded-xl text-sm border border-white/[0.05]"
+            >
+              <div className="min-w-0">
+                <p className="truncate font-bold text-slate-200">
+                  <span className="text-slate-500 mr-2">{index + 1}</span>
+                  {entry.name}
+                </p>
+              </div>
+              <div className="font-black" style={{ color: game.accent }}>
+                {entry.score}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
+
 function AllGameLeaderboards() {
-  const leaderboard = getLeaderboard();
   const [activeDiff, setActiveDiff] = useState("intermediate");
 
   return (
@@ -347,91 +433,9 @@ function AllGameLeaderboards() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {GAME_MODES.map((game) => {
-          const entries = leaderboard
-            .filter((e) => e.mode === game.id && e.difficulty === activeDiff)
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 20);
-
-          return (
-            <div
-              key={game.id}
-              className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p
-                    className="text-[10px] font-bold uppercase tracking-[0.25em]"
-                    style={{ color: game.accent }}
-                  >
-                    {MODE_LABELS[game.id] || game.title}
-                  </p>
-                  <h3 className="mt-1 text-lg font-black text-white">
-                    {game.title}
-                  </h3>
-                </div>
-                <Link
-                  to={game.path}
-                  className="shrink-0 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 transition hover:bg-white/10"
-                >
-                  Play
-                </Link>
-              </div>
-
-              <div className="mt-3 max-h-72 overflow-y-auto space-y-1.5 pr-1">
-                {entries.length === 0 ? (
-                  <div className="rounded-xl border border-dashed border-white/10 bg-black/10 px-3 py-4 text-center text-xs uppercase tracking-[0.18em] text-slate-500">
-                    No scores yet
-                  </div>
-                ) : (
-                  entries.map((entry, index) => (
-                    <div
-                      key={`${entry.name}-${entry.timestamp}-${index}`}
-                      className="grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border border-white/10 bg-black/20 px-3 py-2"
-                    >
-                      <span
-                        className="w-6 text-center text-sm font-black"
-                        style={{
-                          color:
-                            index === 0
-                              ? "#ffd700"
-                              : index === 1
-                                ? "#c0c0c0"
-                                : index === 2
-                                  ? "#cd7f32"
-                                  : game.accent,
-                        }}
-                      >
-                        {index === 0
-                          ? "🥇"
-                          : index === 1
-                            ? "🥈"
-                            : index === 2
-                              ? "🥉"
-                              : index + 1}
-                      </span>
-                      <div className="min-w-0">
-                        <div className="truncate text-sm font-bold text-white">
-                          {entry.name}
-                        </div>
-                        <div className="truncate text-[10px] uppercase tracking-[0.16em] text-slate-500">
-                          {entry.questions || "?"}Q ·{" "}
-                          {getTimeAgo(entry.timestamp)}
-                        </div>
-                      </div>
-                      <div
-                        className="text-lg font-black"
-                        style={{ color: game.accent }}
-                      >
-                        {entry.score}
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-          );
-        })}
+        {GAME_MODES.map((game) => (
+          <GameLeaderboardCard key={game.id} game={game} activeDiff={activeDiff} />
+        ))}
       </div>
     </section>
   );
@@ -450,10 +454,16 @@ const CATEGORIES = [
 
 function getStudyStats() {
   try {
-    const lb = JSON.parse(localStorage.getItem('arcade_leaderboard') || '[]');
+    const lb = JSON.parse(localStorage.getItem("arcade_leaderboard") || "[]");
     const today = new Date().toDateString();
-    const todayCount = lb.filter(e => new Date(e.timestamp).toDateString() === today).length;
-    return { totalGames: lb.length, todayGames: todayCount, quizCount: GAME_MODES.length };
+    const todayCount = lb.filter(
+      (e) => new Date(e.timestamp).toDateString() === today,
+    ).length;
+    return {
+      totalGames: lb.length,
+      todayGames: todayCount,
+      quizCount: GAME_MODES.length,
+    };
   } catch {
     return { totalGames: 0, todayGames: 0, quizCount: GAME_MODES.length };
   }
@@ -461,10 +471,10 @@ function getStudyStats() {
 
 function getPersonalBest(gameId) {
   try {
-    const hs = JSON.parse(localStorage.getItem('arcade_high_scores') || '{}');
+    const hs = JSON.parse(localStorage.getItem("arcade_high_scores") || "{}");
     for (const user of Object.values(hs)) {
       for (const key of Object.keys(user)) {
-        if (key.startsWith(gameId + '__')) return user[key];
+        if (key.startsWith(gameId + "__")) return user[key];
       }
     }
     return 0;
@@ -534,11 +544,13 @@ function HomePage({ currentUser }) {
               <h1 className="max-w-2xl text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Study smarter with quick,
                 <span className="bg-gradient-to-r from-[#40e0f0] to-[#a78bfa] bg-clip-text text-transparent">
-                  {" "}playable drills
+                  {" "}
+                  playable drills
                 </span>
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-                Pick a topic, read the reference, then practice under time pressure with instant feedback and local progress tracking.
+                Pick a topic, read the reference, then practice under time
+                pressure with instant feedback and local progress tracking.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -636,16 +648,22 @@ function HomePage({ currentUser }) {
           </div>
         </div>
 
-        <aside className="space-y-4 animate-fade-in-up" style={{ animationDelay: "0.14s" }}>
+        <aside
+          className="space-y-4 animate-fade-in-up"
+          style={{ animationDelay: "0.14s" }}
+        >
           <div className="surface rounded-3xl p-5">
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80">
               Study dashboard
             </p>
             <h2 className="mt-2 text-2xl font-extrabold text-white">
-              {currentUser ? `Welcome, ${currentUser.name}` : "Start practicing"}
+              {currentUser
+                ? `Welcome, ${currentUser.name}`
+                : "Start practicing"}
             </h2>
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              Your scores are stored locally, so you can keep practicing without setup friction.
+              Your scores are stored locally, so you can keep practicing without
+              setup friction.
             </p>
 
             <div className="mt-5 grid grid-cols-3 gap-3">
@@ -658,7 +676,10 @@ function HomePage({ currentUser }) {
                   key={s.label}
                   className="rounded-2xl border border-white/8 bg-white/[0.035] p-3 text-center"
                 >
-                  <div className="text-2xl font-black tabular-nums" style={{ color: s.accent }}>
+                  <div
+                    className="text-2xl font-black tabular-nums"
+                    style={{ color: s.accent }}
+                  >
                     {s.value}
                   </div>
                   <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -694,7 +715,8 @@ function HomePage({ currentUser }) {
             <div className="surface rounded-3xl p-5">
               <p className="text-sm font-bold text-white">Progress is active</p>
               <p className="mt-1 text-xs leading-5 text-slate-500">
-                Logged in as {currentUser.name}. Your local leaderboard entries will use this name.
+                Logged in as {currentUser.name}. Your local leaderboard entries
+                will use this name.
               </p>
             </div>
           ) : (
@@ -725,7 +747,8 @@ function HomePage({ currentUser }) {
               Tip
             </p>
             <p className="mt-2 text-sm leading-6 text-slate-300">
-              Start on Beginner, review the reference after misses, then move to Advanced when recall feels automatic.
+              Start on Beginner, review the reference after misses, then move to
+              Advanced when recall feels automatic.
             </p>
           </div>
         </aside>
@@ -919,12 +942,7 @@ function ArcadeLayout() {
         />
 
         <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage currentUser={currentUser} />
-            }
-          />
+          <Route path="/" element={<HomePage currentUser={currentUser} />} />
           <Route path="/alphabet" element={<AlphabetQuiz />} />
           <Route path="/square" element={<SquareQuiz />} />
           <Route path="/cube" element={<CubeQuiz />} />
@@ -939,19 +957,20 @@ function ArcadeLayout() {
           <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
           <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
           <Route path="/indian-president" element={<IndianPresidentQuiz />} />
-          <Route path="/national-officials" element={<NationalOfficialsQuiz />} />
+          <Route
+            path="/national-officials"
+            element={<NationalOfficialsQuiz />}
+          />
           <Route path="/state-officials" element={<StateOfficialsQuiz />} />
           <Route path="/disease-cause" element={<DiseaseCauseQuiz />} />
+          <Route path="/animal-kingdom" element={<AnimalKingdomQuiz />} />
 
           <Route
             path="/indian-vice-president"
             element={<IndianVicePresidentQuiz />}
           />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route
-            path="*"
-            element={<HomePage currentUser={currentUser} />}
-          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </div>
@@ -959,14 +978,14 @@ function ArcadeLayout() {
   );
 }
 
-
-
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/signup" element={<AuthPage mode="signup" />} />
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/*" element={<ArcadeLayout />} />
       </Routes>
     </BrowserRouter>

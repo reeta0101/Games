@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   getLeaderboard,
@@ -42,10 +42,22 @@ export default function Leaderboard() {
   const game = GAMES.find((g) => g.key === selectedGame);
   const level = LEVELS.find((l) => l.key === selectedLevel);
 
-  const entries = getLeaderboard()
-    .filter((e) => e.mode === selectedGame && e.difficulty === selectedLevel)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 20);
+  const [entries, setEntries] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    getLeaderboard(selectedGame, selectedLevel, 20)
+      .then(data => {
+        if (mounted) setEntries(data);
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+    return () => { mounted = false; };
+  }, [selectedGame, selectedLevel]);
 
   return (
     <main className="mx-auto max-w-3xl px-3 pb-16 pt-8 sm:px-6 lg:px-8">
@@ -138,7 +150,15 @@ export default function Leaderboard() {
           </Link>
         </div>
 
-        {entries.length === 0 ? (
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <svg className="h-8 w-8 animate-spin text-[#f0e040] mb-4" viewBox="0 0 24 24" fill="none">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            <p className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em]">Loading scores...</p>
+          </div>
+        ) : entries.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <div className="text-5xl mb-4">🎮</div>
             <p className="text-sm font-bold text-slate-400 uppercase tracking-[0.2em]">No scores yet</p>
@@ -178,7 +198,7 @@ export default function Leaderboard() {
                       <span>·</span>
                       <span>{entry.questions || "?"}Q</span>
                       <span>·</span>
-                      <span>{getTimeAgo(entry.timestamp)}</span>
+                      <span>{getTimeAgo(entry.createdAt || entry.timestamp || Date.now())}</span>
                     </div>
                   </div>
 

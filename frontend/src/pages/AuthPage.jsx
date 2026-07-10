@@ -3,24 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../features/auth/authSlice";
 
-const USERS_KEY = "games-auth-users";
 
-const loadUsers = () => {
-  if (typeof window === "undefined") {
-    return [];
-  }
-
-  try {
-    const storedUsers = window.localStorage.getItem(USERS_KEY);
-    return storedUsers ? JSON.parse(storedUsers) : [];
-  } catch {
-    return [];
-  }
-};
-
-const saveUsers = (users) => {
-  window.localStorage.setItem(USERS_KEY, JSON.stringify(users));
-};
+const API_BASE = "/api";
 
 export default function AuthPage({ mode = "login" }) {
   const isSignup = mode === "signup";
@@ -54,19 +38,18 @@ export default function AuthPage({ mode = "login" }) {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
     setIsSubmitting(true);
 
     try {
-      const users = loadUsers();
       const password = formData.password.trim();
 
       if (isSignup) {
-        const email = formData.email.trim().toLowerCase();
         const name = formData.name.trim();
         const username = formData.username.trim().toLowerCase();
+        const email = formData.email.trim().toLowerCase();
 
         if (!name || !email || !username || !password) {
           setError("All fields are required.");
@@ -80,18 +63,17 @@ export default function AuthPage({ mode = "login" }) {
           setError("Passwords do not match.");
           return;
         }
-        if (users.some((u) => u.email === email)) {
-          setError("An account with this email already exists.");
-          return;
-        }
-        if (users.some((u) => u.username === username)) {
-          setError("Username already taken.");
-          return;
-        }
 
-        const newUser = { name, username, email, password };
-        saveUsers([...users, newUser]);
-        dispatch(loginSuccess({ name, username, email }));
+        const res = await fetch(`${API_BASE}/auth/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, username, email, password }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Registration failed.");
+
+        const user = data.user;
+        dispatch(loginSuccess({ name: user.name, username: user.username, email: user.email }));
         navigate("/");
         return;
       }
@@ -102,22 +84,24 @@ export default function AuthPage({ mode = "login" }) {
         return;
       }
 
-      let matchedUser;
-      if (loginMethod === "email") {
-        const email = formData.email.trim().toLowerCase();
-        matchedUser = users.find((u) => u.email === email && u.password === password);
-      } else {
-        const username = formData.username.trim().toLowerCase();
-        matchedUser = users.find((u) => u.username === username && u.password === password);
-      }
+      const res = await fetch(`${API_BASE}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email.trim().toLowerCase(),
+          username: formData.username.trim().toLowerCase(),
+          password,
+          loginMethod,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Login failed.");
 
-      if (!matchedUser) {
-        setError(`Incorrect ${loginMethod === "email" ? "email" : "username"} or password.`);
-        return;
-      }
-
-      dispatch(loginSuccess({ name: matchedUser.name, username: matchedUser.username, email: matchedUser.email }));
+      const user = data.user;
+      dispatch(loginSuccess({ name: user.name, username: user.username, email: user.email }));
       navigate("/");
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -147,15 +131,15 @@ export default function AuthPage({ mode = "login" }) {
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-8 text-slate-300">
               {isSignup
-                ? "Set up a profile, keep your progress local, and jump into the app in a few seconds."
-                : "Sign in with the account you created here and continue straight to the home dashboard."}
+                ? "Set up a profile, track your progress, and jump into the app in a few seconds."
+                : "Sign in with your account and continue straight to the home dashboard."}
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {[
                 { label: "Fast setup", value: "30 sec" },
-                { label: "Saved locally", value: "Yes" },
-                { label: "Works offline", value: "Demo mode" },
+                { label: "Saved to", value: "Database" },
+                { label: "Progress", value: "Tracked" },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -189,9 +173,9 @@ export default function AuthPage({ mode = "login" }) {
                 </h2>
               </div>
               <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-3 py-2 text-right text-xs text-cyan-100">
-                Demo auth
+                Secure
                 <div className="mt-1 font-semibold text-cyan-300">
-                  Local storage
+                  MongoDB
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
@@ -13,6 +14,7 @@ export default function Navbar({
 }) {
   const isActive = (path) => location.pathname === path;
   const initial = currentUser?.name?.trim()?.charAt(0)?.toUpperCase() || "G";
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   return (
     <header className="sticky top-0 z-20 border-b border-white/10 bg-[#07101d]/85 backdrop-blur-2xl">

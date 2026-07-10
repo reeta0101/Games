@@ -26,6 +26,8 @@ if (process.env.MONGODB_URI) {
     retryWrites: false,
   })
     .then(async () => {
+      console.log('MongoDB connected successfully');
+
       console.log('MongoDB connected');
       // Seed default admin password if none exists
       const adminSetting = await AdminSettings.findOne();
@@ -36,7 +38,10 @@ if (process.env.MONGODB_URI) {
         console.log('Seeded default admin password.');
       }
     })
-    .catch(err => console.error('MongoDB connection error:', err.message));
+    .catch(err => {
+      console.error('MongoDB connection error:', err.message);
+      console.error('MongoDB connection error full:', JSON.stringify(err, null, 2));
+    });
 } else {
   console.warn('MONGODB_URI not set - skipping database connection');
 }

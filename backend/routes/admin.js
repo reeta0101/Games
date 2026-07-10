@@ -6,11 +6,14 @@ import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
-const JWT_SECRET = process.env.JWT_SECRET;
-if (!JWT_SECRET) {
-  console.error('FATAL: JWT_SECRET env variable is not set.');
-  process.exit(1);
-}
+const JWT_SECRET = () => {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    console.error('FATAL: JWT_SECRET env variable is not set.');
+    process.exit(1);
+  }
+  return secret;
+};
 
 // POST /api/admin/login
 router.post('/login', async (req, res) => {
@@ -30,7 +33,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid admin credentials' });
     }
 
-    const token = jwt.sign({ role: 'admin' }, JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ role: 'admin' }, JWT_SECRET(), { expiresIn: '1d' });
     res.json({ token, name: 'Administrator' });
   } catch (err) {
     console.error('Admin login error:', err);
@@ -47,7 +50,7 @@ const adminAuth = (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    jwt.verify(token, JWT_SECRET);
+    jwt.verify(token, JWT_SECRET());
     next();
   } catch (err) {
     return res.status(403).json({ error: 'Forbidden: Invalid or expired token.' });

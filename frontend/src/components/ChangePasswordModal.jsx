@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { createPortal } from "react-dom";
 export default function ChangePasswordModal({ user, onClose, onLogout }) {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -47,7 +47,7 @@ export default function ChangePasswordModal({ user, onClose, onLogout }) {
     }
   };
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div className="w-full max-w-md animate-fade-in-up rounded-[2rem] border border-white/10 bg-[#07101d] p-6 shadow-2xl sm:p-8">
         
@@ -124,6 +124,7 @@ export default function ChangePasswordModal({ user, onClose, onLogout }) {
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

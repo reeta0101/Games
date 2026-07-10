@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import bcrypt from 'bcrypt';
+import AdminSettings from './models/AdminSettings.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,7 +22,17 @@ app.use(express.json());
 // MongoDB Connection
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('MongoDB connected'))
+    .then(async () => {
+      console.log('MongoDB connected');
+      // Seed default admin password if none exists
+      const adminSetting = await AdminSettings.findOne();
+      if (!adminSetting) {
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash('admin123', salt);
+        await AdminSettings.create({ passwordHash });
+        console.log('Seeded default admin password.');
+      }
+    })
     .catch(err => console.error('MongoDB connection error:', err.message));
 } else {
   console.warn('MONGODB_URI not set - skipping database connection');

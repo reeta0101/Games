@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import Score from '../models/Score.js';
 
 const router = express.Router();
@@ -40,6 +41,10 @@ router.get('/leaderboard/:mode/:difficulty', async (req, res) => {
   try {
     const { mode, difficulty } = req.params;
     const limit = parseInt(req.query.limit, 10) || 20;
+
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({ error: 'Database not connected.', scores: [] });
+    }
 
     const topScores = await Score.find({ mode, difficulty })
       .sort({ score: -1, updatedAt: 1 })

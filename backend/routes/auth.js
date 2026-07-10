@@ -90,5 +90,41 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Server error. Please try again.' });
   }
 });
+// POST /api/auth/change-password
+router.post('/change-password', async (req, res) => {
+  try {
+    const { username, currentPassword, newPassword, confirmPassword } = req.body;
+
+    if (!username || !currentPassword || !newPassword || !confirmPassword) {
+      return res.status(400).json({ error: 'All fields are required.' });
+    }
+
+    if (newPassword !== confirmPassword) {
+      return res.status(400).json({ error: 'New passwords do not match.' });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({ error: 'Password must be at least 6 characters.' });
+    }
+
+    const user = await User.findOne({ username: username.toLowerCase() });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return res.status(401).json({ error: 'Incorrect current password.' });
+    }
+
+    user.password = newPassword; // The pre-save hook in User.js will hash this
+    await user.save();
+
+    res.json({ message: 'Password updated successfully!' });
+  } catch (err) {
+    console.error('Change password error:', err.message);
+    res.status(500).json({ error: 'Server error. Please try again.' });
+  }
+});
 
 export default router;

@@ -21,7 +21,10 @@ app.use(express.json());
 
 // MongoDB Connection
 if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI)
+  mongoose.connect(process.env.MONGODB_URI, {
+    tls: true,
+    retryWrites: false,
+  })
     .then(async () => {
       console.log('MongoDB connected');
       // Seed default admin password if none exists

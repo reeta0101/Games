@@ -4,7 +4,7 @@ const API_BASE = '/api/score';
 
 export async function getLeaderboard(mode, difficulty, limit = 20) {
   try {
-    const res = await fetch(`${API_BASE}/leaderboard/${mode}/${difficulty}?limit=${limit}`);
+    const res = await fetch(`${API_BASE}/leaderboard/${mode}/${difficulty}?limit=${limit}`, { cache: 'no-store' });
     if (!res.ok) throw new Error('Failed to fetch leaderboard');
     const data = await res.json();
     return data.scores || [];
@@ -16,7 +16,7 @@ export async function getLeaderboard(mode, difficulty, limit = 20) {
 
 export async function getUserHighScores(name) {
   try {
-    const res = await fetch(`${API_BASE}/personal/${name}`);
+    const res = await fetch(`${API_BASE}/personal/${name}`, { cache: 'no-store' });
     if (!res.ok) throw new Error('Failed to fetch high scores');
     const data = await res.json();
     return data.highScores || {};

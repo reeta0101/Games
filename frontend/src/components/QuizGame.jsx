@@ -125,18 +125,20 @@ export default function QuizGame({ game }) {
   }, []);
 
   const endGame = useCallback(
-    async (reason) => {
+    async (reason, finalScore) => {
       clearTimers();
       setIsAnswered(true);
       setGameEndReason(reason);
-      setFinalMessage(buildFinalMessage(reason, score));
+      // Use the explicitly passed finalScore to avoid stale closure values
+      const scoreToSave = finalScore ?? score;
+      setFinalMessage(buildFinalMessage(reason, scoreToSave));
 
       // Save to leaderboard and wait for it to finish
       const answeredQs = reason === "wrong" || reason === "timeout" ? questionNum - 1 : questionNum;
-      if (score > 0) {
+      if (scoreToSave > 0) {
         await saveScore({
           name: guestName,
-          score,
+          score: scoreToSave,
           mode: game.key,
           difficulty,
           questions: answeredQs,
@@ -174,8 +176,13 @@ export default function QuizGame({ game }) {
         setFeedbackTone("danger");
         setResultState({ selected: null, correct: question.correctValue });
 
+        // Capture score via functional setState to get the current value,
+        // then pass it explicitly to endGame to avoid stale closure
         endTimeoutRef.current = setTimeout(() => {
-          endGame("timeout");
+          setScore((currentScore) => {
+            endGame("timeout", currentScore);
+            return currentScore;
+          });
         }, 1400);
       }
     }, 50);
@@ -220,11 +227,13 @@ export default function QuizGame({ game }) {
         return;
       }
 
+      // Wrong answer — pass the current score explicitly so endGame doesn't
+      // read a stale value from its closure (React setState is async)
       setStreak(0);
       setFeedbackTone("danger");
       setResultState({ selected: choice, correct: currentQuestion.correctValue });
       setFeedbackText(`✗ It was ${currentQuestion.correctValue} — Game Over!`);
-      endTimeoutRef.current = setTimeout(() => endGame("wrong"), 1400);
+      endTimeoutRef.current = setTimeout(() => endGame("wrong", score), 1400);
     },
     [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit],
   );

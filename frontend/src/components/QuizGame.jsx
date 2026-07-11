@@ -3,6 +3,7 @@ import GameReader from "./GameReader";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
+import { recordRecentGame } from "../App";
 import {
   getLeaderboard,
   saveScore,
@@ -195,6 +196,7 @@ export default function QuizGame({ game }) {
     setStreak(0);
     setFinalMessage("");
     setGameEndReason("");
+    recordRecentGame(game.key); // ← track this game as recently played
     setScreen("game");
     nextQuestion();
   };

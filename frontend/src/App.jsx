@@ -485,6 +485,38 @@ function getStudyStats() {
   }
 }
 
+// ── Recently played helpers ──────────────────────────────────────────────────
+const RECENT_KEY = "arcade_recent_games";
+const RECENT_MAX = 4;
+
+export function recordRecentGame(gameId) {
+  try {
+    const existing = JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
+    const filtered = existing.filter((r) => r.id !== gameId);
+    const updated = [{ id: gameId, playedAt: Date.now() }, ...filtered].slice(0, RECENT_MAX);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(updated));
+  } catch {}
+}
+
+function getRecentGames() {
+  try {
+    return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function timeAgo(ts) {
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  const days = Math.floor(hrs / 24);
+  return `${days}d ago`;
+}
+
 function getPersonalBest(gameId) {
   try {
     const hs = JSON.parse(localStorage.getItem("arcade_high_scores") || "{}");
@@ -535,6 +567,19 @@ function HomePage({ currentUser }) {
   }, [activeCategory, searchTerm]);
 
   const featuredGame = filteredGames[0] || GAME_MODES[0];
+  // Recently played — read from localStorage, map to GAME_MODES objects
+  const recentlyPlayed = useMemo(() => {
+    const recent = getRecentGames(); // [{ id, playedAt }]
+    const result = [];
+    for (const r of recent) {
+      const game = GAME_MODES.find((g) => g.id === r.id);
+      if (game) result.push({ ...game, playedAt: r.playedAt });
+    }
+    return result;
+  }, []);
+
+  const hasRecent = recentlyPlayed.length > 0;
+
   const recommendedGames = useMemo(() => {
     const seen = new Set([featuredGame.id]);
     return [...filteredGames, ...GAME_MODES]
@@ -613,7 +658,7 @@ function HomePage({ currentUser }) {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f0e040]/80">
-                  Recommended drills
+                  {hasRecent ? "Recently played" : "Recommended drills"}
                 </p>
                 <h2 className="mt-2 text-2xl font-black text-white">
                   Keep playing from here
@@ -628,7 +673,7 @@ function HomePage({ currentUser }) {
             </div>
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {recommendedGames.map((game) => (
+              {(hasRecent ? recentlyPlayed : recommendedGames).map((game) => (
                 <Link
                   key={game.id}
                   to={game.path}
@@ -644,18 +689,23 @@ function HomePage({ currentUser }) {
                   >
                     {game.hero}
                   </div>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-black text-white">
                       {game.title}
                     </p>
-                    <p className="mt-1 truncate text-xs text-slate-500">
+                    <p className="mt-0.5 truncate text-xs text-slate-500">
                       {game.category}
                     </p>
+                    {hasRecent && game.playedAt && (
+                      <p className="mt-0.5 text-[10px] text-slate-600 uppercase tracking-[0.14em]">
+                        🕐 {timeAgo(game.playedAt)}
+                      </p>
+                    )}
                     <p
-                      className="mt-2 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
+                      className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
                       style={{ color: game.accent }}
                     >
-                      Play now →
+                      Play again →
                     </p>
                   </div>
                 </Link>

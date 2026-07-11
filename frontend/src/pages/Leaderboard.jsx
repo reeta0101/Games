@@ -26,7 +26,22 @@ const GAMES = [
   { key: "indianVicePresident", label: "Indian Vice Presidents", accent: "#fb7185", icon: "IVP", path: "/indian-vice-president" },
   { key: "nationalOfficials", label: "National Officials", accent: "#f59e0b", icon: "GOV", path: "/national-officials" },
   { key: "stateOfficials", label: "State Chief Ministers", accent: "#ef4444", icon: "CM", path: "/state-officials" },
-  { key: "diseaseCause", label: "Disease → Cause", accent: "#10b981", icon: "BIO", path: "/disease-cause" },
+  { key: "diseaseCause", label: "Disease → Cause", accent: "#10b981", icon: "🦠", path: "/disease-cause" },
+  { key: "animalKingdom", label: "Animal Kingdom", accent: "#22d3ee", icon: "🐾", path: "/animal-kingdom" },
+  { key: "siUnits", label: "SI Units Quiz", accent: "#818cf8", icon: "SI", path: "/si-units" },
+  { key: "scientificName", label: "Scientific Names Quiz", accent: "#34d399", icon: "🧬", path: "/scientific-name" },
+  { key: "stateDance", label: "State & Dance Quiz", accent: "#fb7185", icon: "💃", path: "/state-dance" },
+  { key: "orgHq", label: "Organizations & HQ Quiz", accent: "#60a5fa", icon: "🏢", path: "/organization-hq" },
+  { key: "invention", label: "Inventions & Innovators Quiz", accent: "#fbbf24", icon: "💡", path: "/inventions" },
+  { key: "companyOrigin", label: "Company Origins Quiz", accent: "#f43f5e", icon: "🏭", path: "/company-origin" },
+  { key: "famousQuotes", label: "Famous Quotes Quiz", accent: "#a78bfa", icon: "💬", path: "/famous-quotes" },
+  { key: "riverOrigin", label: "River → Origin", accent: "#38bdf8", icon: "🌊", path: "/river-origin" },
+  { key: "nationalPark", label: "National Parks → State", accent: "#4ade80", icon: "🌲", path: "/national-parks" },
+  { key: "landmarkCountry", label: "Landmark → Country", accent: "#f472b6", icon: "🗼", path: "/landmark-country" },
+  { key: "vitaminDeficiency", label: "Vitamin → Deficiency", accent: "#fb923c", icon: "💊", path: "/vitamin-deficiency" },
+  { key: "indianNational", label: "Indian National Symbols", accent: "#f97316", icon: "🇮🇳", path: "/indian-national" },
+  { key: "famousBattles", label: "Famous Battles → Year", accent: "#dc2626", icon: "⚔️", path: "/famous-battles" },
+  { key: "compoundFormula", label: "Compound → Formula", accent: "#ec4899", icon: "H₂O", path: "/compound-formula" },
 ];
 
 const LEVELS = [

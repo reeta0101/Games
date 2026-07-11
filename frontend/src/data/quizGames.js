@@ -674,6 +674,37 @@ export const generateDiseaseCauseOptions = (correct) => {
   return shuffleArray(Array.from(options));
 };
 
+export const chemicalCompounds = [
+  { name: "Water", formula: "H₂O" },
+  { name: "Carbon Dioxide", formula: "CO₂" },
+  { name: "Sodium Chloride", formula: "NaCl" },
+  { name: "Ammonia", formula: "NH₃" },
+  { name: "Methane", formula: "CH₄" },
+  { name: "Hydrochloric Acid", formula: "HCl" },
+  { name: "Sulfuric Acid", formula: "H₂SO₄" },
+  { name: "Nitric Acid", formula: "HNO₃" },
+  { name: "Sodium Hydroxide", formula: "NaOH" },
+  { name: "Calcium Carbonate", formula: "CaCO₃" },
+  { name: "Glucose", formula: "C₆H₁₂O₆" },
+  { name: "Sucrose", formula: "C₁₂H₂₂O₁₁" },
+  { name: "Acetic Acid", formula: "CH₃COOH" },
+  { name: "Ethanol", formula: "C₂H₅OH" },
+  { name: "Ozone", formula: "O₃" },
+  { name: "Hydrogen Peroxide", formula: "H₂O₂" },
+  { name: "Carbon Monoxide", formula: "CO" },
+  { name: "Sodium Bicarbonate", formula: "NaHCO₃" },
+  { name: "Potassium Hydroxide", formula: "KOH" },
+  { name: "Magnesium Oxide", formula: "MgO" },
+];
+
+export const generateCompoundOptions = (correct) => {
+  const options = new Set([correct]);
+  while (options.size < 4) {
+    options.add(chemicalCompounds[Math.floor(Math.random() * chemicalCompounds.length)].formula);
+  }
+  return shuffleArray(Array.from(options));
+};
+
 export const quizGames = {
   alphabet: {
     key: "alphabet",
@@ -2839,4 +2870,28 @@ Object.assign(quizGames, {
       };
     },
   },
-});
+  compoundFormula: {
+    key: "compoundFormula",
+    title: "Compound → Formula",
+    bigLetter: "H₂O",
+    intro: "Match each compound name to its chemical formula.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Common chemical compounds.",
+    accent: "#ec4899",
+    timeLimit: 3000,
+    prompt: "What is the formula for",
+    subtext: "Choose the correct formula",
+    cardBadge: "Chemistry",
+    cardTitle: "Compound → Formula",
+    cardDescription: "Match compounds to their formulas.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = chemicalCompounds[Math.floor(Math.random() * chemicalCompounds.length)];
+      return {
+        display: item.name,
+        correctValue: item.formula,
+        options: generateCompoundOptions(item.formula),
+      };
+    },
+  },
+};

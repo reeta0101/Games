@@ -46,6 +46,7 @@ import LandmarkCountryQuiz from "./pages/LandmarkCountryQuiz";
 import VitaminDeficiencyQuiz from "./pages/VitaminDeficiencyQuiz";
 import IndianNationalQuiz from "./pages/IndianNationalQuiz";
 import FamousBattlesQuiz from "./pages/FamousBattlesQuiz";
+import CompoundFormulaQuiz from "./pages/CompoundFormulaQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FeedbackSection from "./components/FeedbackSection";
@@ -509,6 +510,20 @@ const GAME_MODES = [
     summary: "Year of...",
     details: "Match historic battles to the year they were fought.",
   },
+  {
+    id: "compoundFormula",
+    path: "/compound-formula",
+    title: "Compound → Formula",
+    badge: "Chemistry",
+    category: "Chemistry",
+    hero: "H₂O",
+    intro: "Match each compound name to its chemical formula.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Common chemical compounds.",
+    accent: "#ec4899",
+    summary: "What is the formula for...",
+    details: "Match compounds to their formulas.",
+  },
 ];
 
 function ArcadeBackground() {
@@ -858,71 +873,82 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#40e0f0]/[0.06] blur-3xl animate-float-orb" />
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
 
-            <div className="relative">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
-                <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
-                {GAME_MODES.length} focused quizzes
-              </div>
+            <div className="relative flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12">
+              <div className="flex-1">
+                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
+                  <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
+                  {GAME_MODES.length} focused quizzes
+                </div>
 
-              <h1 className="max-w-2xl text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Study smarter with quick,
-                <span className="bg-gradient-to-r from-[#40e0f0] via-[#a78bfa] to-[#40e0f0] bg-clip-text text-transparent animate-gradient-text">
-                  {" "}
-                  playable drills
-                </span>
-              </h1>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-                Pick a topic, read the reference, then practice under time
-                pressure with instant feedback and local progress tracking.
-              </p>
+                <h1 className="text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                  Study smarter with quick,
+                  <span className="block bg-gradient-to-r from-[#40e0f0] via-[#a78bfa] to-[#40e0f0] bg-clip-text text-transparent animate-gradient-text mt-2">
+                    playable drills
+                  </span>
+                </h1>
+                <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+                  Pick a topic, read the reference, then practice under time
+                  pressure with instant feedback and local progress tracking.
+                </p>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  to={featuredGame.path}
-                  className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)]"
-                >
-                  <span className="text-base">▶</span>
-                  Start {featuredGame.title}
-                </Link>
-                <a
-                  href="#quiz-library"
-                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8"
-                >
-                  Browse quizzes
-                </a>
-              </div>
-
-              <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                {[
-                  {
-                    label: "Read first",
-                    value: "Reference tables",
-                    icon: "📖",
-                  },
-                  {
-                    label: "Fast feedback",
-                    value: "Correct or game over",
-                    icon: "⚡",
-                  },
-                  {
-                    label: "Keyboard ready",
-                    value: "Use A, B, C, D",
-                    icon: "⌨️",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl border border-white/8 bg-black/18 p-4 transition hover:border-white/15 hover:bg-black/25"
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    to={featuredGame.path}
+                    className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)]"
                   >
-                    <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
-                      <span className="mr-1.5">{item.icon}</span>
-                      {item.label}
-                    </p>
-                    <p className="mt-1 text-sm font-bold text-white">
-                      {item.value}
-                    </p>
-                  </div>
-                ))}
+                    <span className="text-base">▶</span>
+                    Start {featuredGame.title}
+                  </Link>
+                  <a
+                    href="#quiz-library"
+                    className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8"
+                  >
+                    Browse quizzes
+                  </a>
+                </div>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                  {[
+                    {
+                      label: "Read first",
+                      value: "Reference tables",
+                      icon: "📖",
+                    },
+                    {
+                      label: "Fast feedback",
+                      value: "Correct or game over",
+                      icon: "⚡",
+                    },
+                    {
+                      label: "Keyboard ready",
+                      value: "Use A, B, C, D",
+                      icon: "⌨️",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-2xl border border-white/8 bg-black/18 p-4 transition hover:border-white/15 hover:bg-black/25"
+                    >
+                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
+                        <span className="mr-1.5">{item.icon}</span>
+                        {item.label}
+                      </p>
+                      <p className="mt-1 text-sm font-bold text-white">
+                        {item.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Hero Image Section */}
+              <div className="flex-1 w-full max-w-sm lg:max-w-none relative animate-float">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
+                <img 
+                  src="/images/hero.png" 
+                  alt="Study Arcade Hero" 
+                  className="relative w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
+                />
               </div>
             </div>
 
@@ -1356,70 +1382,7 @@ function HomePage({ currentUser }) {
         )}
       </section>
 
-      <section
-        className="surface mt-6 rounded-3xl p-4 animate-fade-in-up sm:p-5"
-        style={{ animationDelay: "0.12s" }}
-      >
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]/80">
-              More ideas
-            </p>
-            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
-              Quiz concepts not present yet
-            </h2>
-          </div>
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-            Ready for the next expansion
-          </p>
-        </div>
 
-        <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {FUTURE_IDEAS.map((idea, index) => (
-            <div
-              key={idea.title}
-              className="interactive-lift rounded-2xl border border-white/8 bg-white/[0.035] p-5 animate-fade-in-up"
-              style={{ animationDelay: `${Math.min(index * 40, 240)}ms` }}
-            >
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-black"
-                  style={{
-                    borderColor: `${idea.accent}55`,
-                    color: idea.accent,
-                    background: `${idea.accent}12`,
-                  }}
-                >
-                  {idea.hero}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <span
-                    className="inline-flex rounded-lg px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em]"
-                    style={{
-                      color: idea.accent,
-                      background: `${idea.accent}12`,
-                    }}
-                  >
-                    {idea.category}
-                  </span>
-                  <h3 className="mt-3 text-lg font-extrabold tracking-tight text-white">
-                    {idea.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-6 text-slate-400">
-                    {idea.details}
-                  </p>
-                  <p
-                    className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70"
-                    style={{ color: idea.accent }}
-                  >
-                    Not in the current library yet
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <FeedbackSection />
       <AllGameLeaderboards />
@@ -1506,6 +1469,7 @@ function ArcadeLayout() {
           />
           <Route path="/indian-national" element={<IndianNationalQuiz />} />
           <Route path="/famous-battles" element={<FamousBattlesQuiz />} />
+          <Route path="/compound-formula" element={<CompoundFormulaQuiz />} />
 
           <Route
             path="/indian-vice-president"

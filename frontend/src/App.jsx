@@ -651,6 +651,41 @@ function HomePage({ currentUser }) {
             </div>
           </div>
 
+          {/* ── Mobile login banner (hidden on xl where aside is visible) ── */}
+          {!currentUser && (
+            <div className="xl:hidden relative overflow-hidden rounded-3xl border border-[#40e0f0]/20 bg-gradient-to-r from-[#40e0f0]/8 via-[#07101d] to-[#a78bfa]/8 p-5 animate-fade-in-up" style={{ animationDelay: "0.08s" }}>
+              <div className="pointer-events-none absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-[#40e0f0]/6 to-transparent" />
+              <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[#40e0f0]/30 bg-[#40e0f0]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#40e0f0]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#40e0f0] animate-pulse" />
+                    Free to join
+                  </span>
+                  <p className="mt-2 text-base font-black text-white">
+                    Save scores &amp; beat the leaderboard
+                  </p>
+                  <p className="mt-1 text-xs text-slate-400">
+                    Create a free account to track your progress.
+                  </p>
+                </div>
+                <div className="flex shrink-0 gap-2">
+                  <Link
+                    to="/signup"
+                    className="touch-target inline-flex items-center justify-center rounded-2xl border border-[#40e0f0]/50 bg-[#40e0f0]/15 px-5 py-2.5 text-sm font-black text-[#40e0f0] transition hover:bg-[#40e0f0]/25"
+                  >
+                    Sign Up
+                  </Link>
+                  <Link
+                    to="/login"
+                    className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white"
+                  >
+                    Login
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div
             className="surface rounded-3xl p-5 animate-fade-in-up sm:p-6"
             style={{ animationDelay: "0.1s" }}
@@ -779,31 +814,67 @@ function HomePage({ currentUser }) {
 
           {currentUser ? (
             <div className="surface rounded-3xl p-5">
-              <p className="text-sm font-bold text-white">Progress is active</p>
-              <p className="mt-1 text-xs leading-5 text-slate-500">
-                Logged in as {currentUser.name}. Your local leaderboard entries
-                will use this name.
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-400/15 text-lg font-black text-emerald-300">
+                  {currentUser.name?.trim()?.charAt(0)?.toUpperCase() || "U"}
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-bold text-white">{currentUser.name}</p>
+                  <p className="text-xs text-emerald-400">● Logged in</p>
+                </div>
+              </div>
+              <p className="mt-3 text-xs leading-5 text-slate-500">
+                Your scores are saved under your name on the leaderboard.
               </p>
             </div>
           ) : (
-            <div className="surface rounded-3xl p-5">
-              <p className="text-sm font-bold text-white">Want named scores?</p>
-              <p className="mt-1 text-xs leading-5 text-slate-500">
-                Create a local account or play as a guest inside any quiz.
-              </p>
-              <div className="mt-4 flex gap-2">
-                <Link
-                  to="/login"
-                  className="touch-target inline-flex items-center rounded-xl border border-white/10 bg-white/[0.04] px-4 text-xs font-semibold text-slate-200 transition hover:bg-white/10"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="touch-target inline-flex items-center rounded-xl border border-[#40e0f0]/30 bg-[#40e0f0]/10 px-4 text-xs font-semibold text-[#40e0f0] transition hover:bg-[#40e0f0]/18"
-                >
-                  Sign up
-                </Link>
+            <div className="relative overflow-hidden rounded-3xl border border-[#40e0f0]/20 bg-gradient-to-br from-[#40e0f0]/10 via-[#07101d] to-[#a78bfa]/10 p-6 shadow-[0_0_40px_rgba(64,224,240,0.06)]">
+              {/* Glow blobs */}
+              <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[#40e0f0]/10 blur-2xl" />
+              <div className="pointer-events-none absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-[#a78bfa]/10 blur-2xl" />
+
+              <div className="relative">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#40e0f0]/30 bg-[#40e0f0]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#40e0f0]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#40e0f0] animate-pulse" />
+                  Free to join
+                </span>
+
+                <h3 className="mt-3 text-xl font-black text-white leading-snug">
+                  Save your scores &amp; climb the leaderboard
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-400">
+                  Create a free account to track your best scores, appear on leaderboards, and pick up where you left off.
+                </p>
+
+                <div className="mt-5 flex flex-col gap-3">
+                  <Link
+                    to="/signup"
+                    className="touch-target flex w-full items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/50 bg-[#40e0f0]/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_0_20px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/25 hover:shadow-[0_0_30px_rgba(64,224,240,0.2)]"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <line x1="19" y1="8" x2="19" y2="14"/>
+                      <line x1="22" y1="11" x2="16" y2="11"/>
+                    </svg>
+                    Create Free Account
+                  </Link>
+                  <Link
+                    to="/login"
+                    className="touch-target flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/8 hover:text-white"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                      <polyline points="10 17 15 12 10 7"/>
+                      <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                    Already have an account? Login
+                  </Link>
+                </div>
+
+                <p className="mt-4 text-center text-[10px] text-slate-600 uppercase tracking-[0.15em]">
+                  No payment · No email required
+                </p>
               </div>
             </div>
           )}

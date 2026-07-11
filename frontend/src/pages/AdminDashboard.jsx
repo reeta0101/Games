@@ -102,6 +102,7 @@ export default function AdminDashboard() {
   const adminUser = useSelector((state) => state.auth.adminUser);
 
   const [users, setUsers] = useState([]);
+  const [feedbackList, setFeedbackList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
@@ -147,13 +148,46 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, adminUser]);
+
+  const fetchFeedback = useCallback(async () => {
+    try {
+      const res = await fetch(`${API_BASE}/admin/feedback`, {
+        headers: {
+          'Authorization': `Bearer ${adminUser?.token}`
+        }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setFeedbackList(data.feedback || []);
+      }
+    } catch (err) {
+      console.error("Failed to fetch feedback:", err);
+    }
+  }, [adminUser]);
+
+  const deleteFeedback = async (id) => {
+    if (!window.confirm("Delete this feedback?")) return;
+    try {
+      const res = await fetch(`${API_BASE}/admin/feedback/${id}`, {
+        method: "DELETE",
+        headers: { 'Authorization': `Bearer ${adminUser?.token}` }
+      });
+      if (res.ok) {
+        setFeedbackList(prev => prev.filter(f => f._id !== id));
+        showToast("Feedback deleted");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     if (isAdmin) {
       fetchUsers();
+      fetchFeedback();
     }
-  }, [isAdmin, fetchUsers]);
+  }, [isAdmin, fetchUsers, fetchFeedback]);
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -567,6 +601,65 @@ export default function AdminDashboard() {
                   ))}
                 </div>
               </>
+            )}
+          </div>
+        </section>
+
+        {/* Feedback Section */}
+        <section
+          className="mt-6 animate-fade-in-up rounded-3xl border border-white/10 p-4 sm:p-5"
+          style={{
+            animationDelay: "0.1s",
+            background:
+              "linear-gradient(135deg, rgba(64,224,240,0.075), rgba(167,139,250,0.025)), rgba(8,13,24,0.72)",
+            boxShadow: "0 24px 80px rgba(2,6,23,0.35)",
+            backdropFilter: "blur(20px)",
+          }}
+        >
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80">
+                User Insights
+              </p>
+              <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+                Recent Feedback
+                <span className="ml-3 inline-flex items-center rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/10 px-3 py-1 text-sm font-bold text-[#40e0f0]">
+                  {feedbackList.length}
+                </span>
+              </h2>
+            </div>
+            <button
+              onClick={fetchFeedback}
+              className="touch-target shrink-0 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/10"
+              type="button"
+            >
+              🔄 Refresh
+            </button>
+          </div>
+          
+          <div className="mt-5 space-y-3">
+            {feedbackList.length === 0 ? (
+               <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.03] p-10 text-center text-slate-400">
+                 No feedback received yet.
+               </div>
+            ) : (
+               feedbackList.map(item => (
+                 <div key={item._id} className="rounded-2xl border border-white/8 bg-white/[0.035] p-4 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between transition hover:border-[#40e0f0]/20 hover:bg-white/[0.055]">
+                   <div className="min-w-0">
+                     <div className="flex items-center gap-2">
+                       <span className="font-bold text-white">{item.name}</span>
+                       <span className="text-xs text-slate-500">{formatDate(item.createdAt)}</span>
+                     </div>
+                     <p className="mt-1 text-sm text-slate-300 break-words whitespace-pre-wrap">{item.message}</p>
+                   </div>
+                   <button
+                     onClick={() => deleteFeedback(item._id)}
+                     className="shrink-0 self-start sm:self-center rounded-xl border border-rose-400/20 bg-rose-500/8 px-3 py-1.5 text-xs font-semibold text-rose-300 transition hover:bg-rose-500/18"
+                   >
+                     Delete
+                   </button>
+                 </div>
+               ))
             )}
           </div>
         </section>

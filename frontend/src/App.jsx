@@ -39,8 +39,16 @@ import StateDanceQuiz from "./pages/StateDanceQuiz";
 import OrganizationHqQuiz from "./pages/OrganizationHqQuiz";
 import InventionQuiz from "./pages/InventionQuiz";
 import CompanyOriginQuiz from "./pages/CompanyOriginQuiz";
+import FamousQuotesQuiz from "./pages/FamousQuotesQuiz";
+import RiverOriginQuiz from "./pages/RiverOriginQuiz";
+import NationalParkQuiz from "./pages/NationalParkQuiz";
+import LandmarkCountryQuiz from "./pages/LandmarkCountryQuiz";
+import VitaminDeficiencyQuiz from "./pages/VitaminDeficiencyQuiz";
+import IndianNationalQuiz from "./pages/IndianNationalQuiz";
+import FamousBattlesQuiz from "./pages/FamousBattlesQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FeedbackSection from "./components/FeedbackSection";
 import Leaderboard from "./pages/Leaderboard";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 
@@ -322,7 +330,8 @@ const GAME_MODES = [
     hero: "SI",
     intro: "What is the SI unit for the given physical quantity?",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
-    reference: "7 base units + 22 derived units — Newton, Pascal, Joule and more.",
+    reference:
+      "7 base units + 22 derived units — Newton, Pascal, Joule and more.",
     accent: "#818cf8",
     summary: "What is the SI unit of...",
     details: "Match physical quantities to their correct SI units.",
@@ -336,7 +345,8 @@ const GAME_MODES = [
     hero: "🧬",
     intro: "What is the scientific (binomial) name of this organism?",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
-    reference: "60 organisms — mammals, birds, reptiles, insects, plants & microbes.",
+    reference:
+      "60 organisms — mammals, birds, reptiles, insects, plants & microbes.",
     accent: "#34d399",
     summary: "Scientific name of...",
     details: "Match organisms to their Latin binomial names.",
@@ -392,10 +402,112 @@ const GAME_MODES = [
     hero: "🏭",
     intro: "Which country is this famous company from?",
     rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
-    reference: "35+ companies across Tech, Vehicles, Food, Fashion, and Electronics.",
+    reference:
+      "35+ companies across Tech, Vehicles, Food, Fashion, and Electronics.",
     accent: "#f43f5e",
     summary: "Origin of...",
     details: "Match famous global companies to their home countries.",
+  },
+  {
+    id: "famousQuotes",
+    path: "/famous-quotes",
+    title: "Famous Quotes Quiz",
+    badge: "History & GK",
+    category: "General Knowledge",
+    hero: "💬",
+    intro: "Who said this famous quote?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference:
+      "30 of the most iconic quotes from history, science, and politics.",
+    accent: "#a78bfa",
+    summary: "Who said...",
+    details:
+      "Match iconic historical quotes and slogans to the people who said them.",
+  },
+  {
+    id: "riverOrigin",
+    path: "/river-origin",
+    title: "River → Origin",
+    badge: "Geography",
+    category: "General Knowledge",
+    hero: "🌊",
+    intro: "Where does this river originate?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 major Indian and world rivers and their sources.",
+    accent: "#38bdf8",
+    summary: "Origin of...",
+    details: "Match rivers to where they begin.",
+  },
+  {
+    id: "nationalPark",
+    path: "/national-parks",
+    title: "National Parks → State",
+    badge: "India GK",
+    category: "General Knowledge",
+    hero: "🌲",
+    intro: "Which Indian state is this national park in?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 famous Indian national parks and tiger reserves.",
+    accent: "#4ade80",
+    summary: "State of...",
+    details: "Match Indian national parks to their states.",
+  },
+  {
+    id: "landmarkCountry",
+    path: "/landmark-country",
+    title: "Landmark → Country",
+    badge: "🌍 World GK",
+    category: "General Knowledge",
+    hero: "🗼",
+    intro: "Which country is this famous landmark in?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 iconic landmarks from India and around the world.",
+    accent: "#f472b6",
+    summary: "Country of...",
+    details: "Match famous landmarks to their countries.",
+  },
+  {
+    id: "vitaminDeficiency",
+    path: "/vitamin-deficiency",
+    title: "Vitamin → Deficiency",
+    badge: "Biology",
+    category: "Biology",
+    hero: "💊",
+    intro: "What disease is caused by deficiency of this vitamin?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "13 vitamins and their deficiency diseases.",
+    accent: "#fb923c",
+    summary: "Deficiency of...",
+    details: "Match vitamins to the diseases they prevent.",
+  },
+  {
+    id: "indianNational",
+    path: "/indian-national",
+    title: "Indian National Symbols",
+    badge: "India GK",
+    category: "General Knowledge",
+    hero: "🇮🇳",
+    intro: "What is the official name of this Indian national symbol?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference:
+      "20 official Indian national symbols — animal, bird, tree, sport, and more.",
+    accent: "#f97316",
+    summary: "Name of...",
+    details: "Match national symbol categories to their official names.",
+  },
+  {
+    id: "famousBattles",
+    path: "/famous-battles",
+    title: "Famous Battles → Year",
+    badge: "History",
+    category: "General Knowledge",
+    hero: "⚔️",
+    intro: "In which year was this famous battle fought?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 landmark battles from Indian and world history.",
+    accent: "#dc2626",
+    summary: "Year of...",
+    details: "Match historic battles to the year they were fought.",
   },
 ];
 
@@ -430,14 +542,16 @@ function GameLeaderboardCard({ game, activeDiff }) {
     let mounted = true;
     setLoading(true);
     getLeaderboard(game.id, activeDiff, 5)
-      .then(data => {
+      .then((data) => {
         if (mounted) setEntries(data);
       })
-      .catch(err => console.error(err))
+      .catch((err) => console.error(err))
       .finally(() => {
         if (mounted) setLoading(false);
       });
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, [game.id, activeDiff]);
 
   return (
@@ -450,9 +564,7 @@ function GameLeaderboardCard({ game, activeDiff }) {
           >
             {MODE_LABELS[game.id] || game.title}
           </p>
-          <h3 className="mt-1 text-lg font-black text-white">
-            {game.title}
-          </h3>
+          <h3 className="mt-1 text-lg font-black text-white">{game.title}</h3>
         </div>
         <Link
           to={game.path}
@@ -532,7 +644,11 @@ function AllGameLeaderboards() {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {GAME_MODES.map((game) => (
-          <GameLeaderboardCard key={game.id} game={game} activeDiff={activeDiff} />
+          <GameLeaderboardCard
+            key={game.id}
+            game={game}
+            activeDiff={activeDiff}
+          />
         ))}
       </div>
     </section>
@@ -576,7 +692,10 @@ export function recordRecentGame(gameId) {
   try {
     const existing = JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
     const filtered = existing.filter((r) => r.id !== gameId);
-    const updated = [{ id: gameId, playedAt: Date.now() }, ...filtered].slice(0, RECENT_MAX);
+    const updated = [{ id: gameId, playedAt: Date.now() }, ...filtered].slice(
+      0,
+      RECENT_MAX,
+    );
     localStorage.setItem(RECENT_KEY, JSON.stringify(updated));
   } catch {}
 }
@@ -618,6 +737,51 @@ const STUDY_STEPS = [
   { label: "Pick", detail: "Choose a topic or search by goal." },
   { label: "Read", detail: "Review the quick reference first." },
   { label: "Play", detail: "Answer fast and learn from feedback." },
+];
+
+const FUTURE_IDEAS = [
+  {
+    title: "Flag → Country",
+    category: "General Knowledge",
+    hero: "🏳️",
+    accent: "#60a5fa",
+    details: "Show a national flag and name the country it belongs to.",
+  },
+  {
+    title: "Author → Book",
+    category: "English",
+    hero: "📚",
+    accent: "#f59e0b",
+    details: "Match classic authors with their best-known books.",
+  },
+  {
+    title: "Scientist → Discovery",
+    category: "Science",
+    hero: "🔬",
+    accent: "#34d399",
+    details: "Identify the scientist from a major discovery or invention.",
+  },
+  {
+    title: "Language → Country",
+    category: "General Knowledge",
+    hero: "🗣️",
+    accent: "#f472b6",
+    details: "Pick the country most associated with a given language.",
+  },
+  {
+    title: "Book → Author",
+    category: "English",
+    hero: "✍️",
+    accent: "#a78bfa",
+    details: "Read a title and recall the person who wrote it.",
+  },
+  {
+    title: "City → Landmark",
+    category: "Travel",
+    hero: "🗼",
+    accent: "#22d3ee",
+    details: "Connect a major city with its signature landmark.",
+  },
 ];
 
 function HomePage({ currentUser }) {
@@ -683,7 +847,10 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute right-12 top-12 hidden sm:block">
               <div className="relative h-[120px] w-[120px]">
                 <div className="animate-orbit absolute left-1/2 top-1/2 h-2 w-2 rounded-full bg-[#40e0f0]/40 shadow-[0_0_12px_rgba(64,224,240,0.5)]" />
-                <div className="animate-orbit absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-[#a78bfa]/30 shadow-[0_0_10px_rgba(167,139,250,0.4)]" style={{ animationDelay: '-7s', animationDuration: '15s' }} />
+                <div
+                  className="animate-orbit absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-[#a78bfa]/30 shadow-[0_0_10px_rgba(167,139,250,0.4)]"
+                  style={{ animationDelay: "-7s", animationDuration: "15s" }}
+                />
               </div>
             </div>
 
@@ -727,9 +894,21 @@ function HomePage({ currentUser }) {
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Read first", value: "Reference tables", icon: "📖" },
-                  { label: "Fast feedback", value: "Correct or game over", icon: "⚡" },
-                  { label: "Keyboard ready", value: "Use A, B, C, D", icon: "⌨️" },
+                  {
+                    label: "Read first",
+                    value: "Reference tables",
+                    icon: "📖",
+                  },
+                  {
+                    label: "Fast feedback",
+                    value: "Correct or game over",
+                    icon: "⚡",
+                  },
+                  {
+                    label: "Keyboard ready",
+                    value: "Use A, B, C, D",
+                    icon: "⌨️",
+                  },
                 ].map((item) => (
                   <div
                     key={item.label}
@@ -753,7 +932,10 @@ function HomePage({ currentUser }) {
 
           {/* ── Mobile login banner (hidden on xl where aside is visible) ── */}
           {!currentUser && (
-            <div className="xl:hidden relative overflow-hidden rounded-3xl border border-[#40e0f0]/20 bg-gradient-to-r from-[#40e0f0]/8 via-[#07101d] to-[#a78bfa]/8 p-5 animate-fade-in-up" style={{ animationDelay: "0.08s" }}>
+            <div
+              className="xl:hidden relative overflow-hidden rounded-3xl border border-[#40e0f0]/20 bg-gradient-to-r from-[#40e0f0]/8 via-[#07101d] to-[#a78bfa]/8 p-5 animate-fade-in-up"
+              style={{ animationDelay: "0.08s" }}
+            >
               <div className="pointer-events-none absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-[#40e0f0]/6 to-transparent" />
               <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
@@ -869,9 +1051,24 @@ function HomePage({ currentUser }) {
 
             <div className="mt-5 grid grid-cols-3 gap-3">
               {[
-                { label: "Today", value: stats.todayGames, accent: "#40e0f0", delay: "0s" },
-                { label: "Total", value: stats.totalGames, accent: "#a78bfa", delay: "0.1s" },
-                { label: "Quizzes", value: stats.quizCount, accent: "#f59e0b", delay: "0.2s" },
+                {
+                  label: "Today",
+                  value: stats.todayGames,
+                  accent: "#40e0f0",
+                  delay: "0s",
+                },
+                {
+                  label: "Total",
+                  value: stats.totalGames,
+                  accent: "#a78bfa",
+                  delay: "0.1s",
+                },
+                {
+                  label: "Quizzes",
+                  value: stats.quizCount,
+                  accent: "#f59e0b",
+                  delay: "0.2s",
+                },
               ].map((s) => (
                 <div
                   key={s.label}
@@ -919,7 +1116,9 @@ function HomePage({ currentUser }) {
                   {currentUser.name?.trim()?.charAt(0)?.toUpperCase() || "U"}
                 </span>
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-bold text-white">{currentUser.name}</p>
+                  <p className="truncate text-sm font-bold text-white">
+                    {currentUser.name}
+                  </p>
                   <p className="text-xs text-emerald-400">● Logged in</p>
                 </div>
               </div>
@@ -943,7 +1142,8 @@ function HomePage({ currentUser }) {
                   Save your scores &amp; climb the leaderboard
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-slate-400">
-                  Create a free account to track your best scores, appear on leaderboards, and pick up where you left off.
+                  Create a free account to track your best scores, appear on
+                  leaderboards, and pick up where you left off.
                 </p>
 
                 <div className="mt-5 flex flex-col gap-3">
@@ -951,11 +1151,20 @@ function HomePage({ currentUser }) {
                     to="/signup"
                     className="touch-target flex w-full items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/50 bg-[#40e0f0]/15 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_0_20px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/25 hover:shadow-[0_0_30px_rgba(64,224,240,0.2)]"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                      <circle cx="9" cy="7" r="4"/>
-                      <line x1="19" y1="8" x2="19" y2="14"/>
-                      <line x1="22" y1="11" x2="16" y2="11"/>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <line x1="19" y1="8" x2="19" y2="14" />
+                      <line x1="22" y1="11" x2="16" y2="11" />
                     </svg>
                     Create Free Account
                   </Link>
@@ -963,10 +1172,19 @@ function HomePage({ currentUser }) {
                     to="/login"
                     className="touch-target flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/8 hover:text-white"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                      <polyline points="10 17 15 12 10 7"/>
-                      <line x1="15" y1="12" x2="3" y2="12"/>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                      <polyline points="10 17 15 12 10 7" />
+                      <line x1="15" y1="12" x2="3" y2="12" />
                     </svg>
                     Already have an account? Login
                   </Link>
@@ -1068,7 +1286,11 @@ function HomePage({ currentUser }) {
                 >
                   <div
                     className="absolute inset-x-0 top-0 h-1 neon-border"
-                    style={{ background: `linear-gradient(90deg, transparent, ${game.accent}, transparent)`, backgroundSize: '200% 100%', animation: 'neonTrace 3s linear infinite' }}
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${game.accent}, transparent)`,
+                      backgroundSize: "200% 100%",
+                      animation: "neonTrace 3s linear infinite",
+                    }}
                   />
                   <div
                     className="absolute right-0 top-0 h-28 w-28 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
@@ -1082,7 +1304,7 @@ function HomePage({ currentUser }) {
                         borderColor: `${game.accent}55`,
                         color: game.accent,
                         background: `${game.accent}12`,
-                        '--accent-glow': `${game.accent}40`,
+                        "--accent-glow": `${game.accent}40`,
                       }}
                     >
                       {game.hero}
@@ -1134,6 +1356,72 @@ function HomePage({ currentUser }) {
         )}
       </section>
 
+      <section
+        className="surface mt-6 rounded-3xl p-4 animate-fade-in-up sm:p-5"
+        style={{ animationDelay: "0.12s" }}
+      >
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]/80">
+              More ideas
+            </p>
+            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+              Quiz concepts not present yet
+            </h2>
+          </div>
+          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+            Ready for the next expansion
+          </p>
+        </div>
+
+        <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {FUTURE_IDEAS.map((idea, index) => (
+            <div
+              key={idea.title}
+              className="interactive-lift rounded-2xl border border-white/8 bg-white/[0.035] p-5 animate-fade-in-up"
+              style={{ animationDelay: `${Math.min(index * 40, 240)}ms` }}
+            >
+              <div className="flex items-start gap-4">
+                <div
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-black"
+                  style={{
+                    borderColor: `${idea.accent}55`,
+                    color: idea.accent,
+                    background: `${idea.accent}12`,
+                  }}
+                >
+                  {idea.hero}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <span
+                    className="inline-flex rounded-lg px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em]"
+                    style={{
+                      color: idea.accent,
+                      background: `${idea.accent}12`,
+                    }}
+                  >
+                    {idea.category}
+                  </span>
+                  <h3 className="mt-3 text-lg font-extrabold tracking-tight text-white">
+                    {idea.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-6 text-slate-400">
+                    {idea.details}
+                  </p>
+                  <p
+                    className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70"
+                    style={{ color: idea.accent }}
+                  >
+                    Not in the current library yet
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <FeedbackSection />
       <AllGameLeaderboards />
     </main>
   );
@@ -1208,6 +1496,16 @@ function ArcadeLayout() {
           <Route path="/organization-hq" element={<OrganizationHqQuiz />} />
           <Route path="/inventions" element={<InventionQuiz />} />
           <Route path="/company-origin" element={<CompanyOriginQuiz />} />
+          <Route path="/famous-quotes" element={<FamousQuotesQuiz />} />
+          <Route path="/river-origin" element={<RiverOriginQuiz />} />
+          <Route path="/national-parks" element={<NationalParkQuiz />} />
+          <Route path="/landmark-country" element={<LandmarkCountryQuiz />} />
+          <Route
+            path="/vitamin-deficiency"
+            element={<VitaminDeficiencyQuiz />}
+          />
+          <Route path="/indian-national" element={<IndianNationalQuiz />} />
+          <Route path="/famous-battles" element={<FamousBattlesQuiz />} />
 
           <Route
             path="/indian-vice-president"

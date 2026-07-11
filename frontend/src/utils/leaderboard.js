@@ -77,6 +77,13 @@ export const MODE_LABELS = {
   orgHq: 'Org & HQ',
   invention: 'Inventions',
   companyOrigin: 'Company Origins',
+  famousQuotes: 'Famous Quotes',
+  riverOrigin: 'River Origin',
+  nationalPark: 'Nat Parks',
+  landmarkCountry: 'Landmarks',
+  vitaminDeficiency: 'Vitamins',
+  indianNational: 'IND Symbols',
+  famousBattles: 'Battles',
 };
 
 export const DIFF_LABELS = {

@@ -2416,3 +2416,427 @@ Object.assign(quizGames, {
     },
   },
 });
+
+// ─── Famous Quotes Data ─────────────────────────────────────────────────────
+export const famousQuotesData = [
+  { quote: "I think, therefore I am.", person: "René Descartes" },
+  { quote: "To be, or not to be, that is the question.", person: "William Shakespeare" },
+  { quote: "I have a dream...", person: "Martin Luther King Jr." },
+  { quote: "That's one small step for a man, one giant leap for mankind.", person: "Neil Armstrong" },
+  { quote: "The only thing we have to fear is fear itself.", person: "Franklin D. Roosevelt" },
+  { quote: "Be the change that you wish to see in the world.", person: "Mahatma Gandhi" },
+  { quote: "Ask not what your country can do for you; ask what you can do for your country.", person: "John F. Kennedy" },
+  { quote: "Imagination is more important than knowledge.", person: "Albert Einstein" },
+  { quote: "Give me blood, and I shall give you freedom!", person: "Subhas Chandra Bose" },
+  { quote: "Swaraj is my birthright and I shall have it.", person: "Bal Gangadhar Tilak" },
+  { quote: "They may kill me, but they cannot kill my ideas.", person: "Bhagat Singh" },
+  { quote: "Mr. Gorbachev, tear down this wall!", person: "Ronald Reagan" },
+  { quote: "Alea iacta est (The die is cast).", person: "Julius Caesar" },
+  { quote: "The unexamined life is not worth living.", person: "Socrates" },
+  { quote: "Float like a butterfly, sting like a bee.", person: "Muhammad Ali" },
+  { quote: "Stay hungry, stay foolish.", person: "Steve Jobs" },
+  { quote: "I am become Death, the destroyer of worlds.", person: "J. Robert Oppenheimer" },
+  { quote: "Genius is one percent inspiration and ninety-nine percent perspiration.", person: "Thomas Edison" },
+  { quote: "I have not failed. I've just found 10,000 ways that won't work.", person: "Thomas Edison" },
+  { quote: "You miss 100% of the shots you don't take.", person: "Wayne Gretzky" },
+  { quote: "Whether you think you can or you think you can't, you're right.", person: "Henry Ford" },
+  { quote: "The future belongs to those who believe in the beauty of their dreams.", person: "Eleanor Roosevelt" },
+  { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.", person: "Winston Churchill" },
+  { quote: "If you want to shine like a sun, first burn like a sun.", person: "A. P. J. Abdul Kalam" },
+  { quote: "Jai Jawan Jai Kisan", person: "Lal Bahadur Shastri" },
+  { quote: "An eye for an eye only ends up making the whole world blind.", person: "Mahatma Gandhi" },
+  { quote: "Arise, awake, and stop not till the goal is reached.", person: "Swami Vivekananda" },
+  { quote: "Knowledge is power.", person: "Sir Francis Bacon" },
+  { quote: "I came, I saw, I conquered.", person: "Julius Caesar" },
+  { quote: "The only limit to our realization of tomorrow will be our doubts of today.", person: "Franklin D. Roosevelt" }
+];
+
+function generateQuotePersonOptions(correct) {
+  const allPeople = famousQuotesData.map((s) => s.person);
+  const options = new Set([correct]);
+  const pool = shuffleArray(allPeople.filter((p) => p !== correct));
+  for (const p of pool) {
+    if (options.size >= 4) break;
+    options.add(p);
+  }
+  return shuffleArray(Array.from(options));
+}
+
+// Extend quizGames with famousQuotes
+Object.assign(quizGames, {
+  famousQuotes: {
+    key: "famousQuotes",
+    title: "Famous Quotes",
+    bigLetter: "💬",
+    intro: "Who said this famous quote?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 of the most iconic quotes from history, science, and politics.",
+    accent: "#a78bfa", // Purple
+    timeLimit: 3000,
+    prompt: "Who said",
+    subtext: "Pick the correct person",
+    cardBadge: "History & GK",
+    cardTitle: "Famous Quotes",
+    cardDescription: "Match iconic historical quotes and slogans to the people who said them.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 3000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const item = famousQuotesData[Math.floor(Math.random() * famousQuotesData.length)];
+      return {
+        display: `"${item.quote}"`,
+        correctValue: item.person,
+        options: generateQuotePersonOptions(item.person),
+      };
+    },
+  },
+});
+
+// ─── River Origin Data ───────────────────────────────────────────────────────
+export const riverOriginData = [
+  { river: "Ganga", origin: "Gangotri Glacier, Uttarakhand" },
+  { river: "Yamuna", origin: "Yamunotri Glacier, Uttarakhand" },
+  { river: "Brahmaputra", origin: "Angsi Glacier, Tibet" },
+  { river: "Godavari", origin: "Trimbakeshwar, Maharashtra" },
+  { river: "Krishna", origin: "Mahabaleshwar, Maharashtra" },
+  { river: "Narmada", origin: "Amarkantak, Madhya Pradesh" },
+  { river: "Kaveri (Cauvery)", origin: "Talakaveri, Karnataka" },
+  { river: "Tapti", origin: "Multai, Madhya Pradesh" },
+  { river: "Mahanadi", origin: "Sihawa Hills, Chhattisgarh" },
+  { river: "Indus", origin: "Mansarovar Lake, Tibet" },
+  { river: "Sutlej", origin: "Rakshastal Lake, Tibet" },
+  { river: "Beas", origin: "Beas Kund, Himachal Pradesh" },
+  { river: "Ravi", origin: "Bara Banghal, Himachal Pradesh" },
+  { river: "Chenab", origin: "Bara Lacha Pass, Himachal Pradesh" },
+  { river: "Chambal", origin: "Singar Chouri Peak, Madhya Pradesh" },
+  { river: "Gomti", origin: "Gomat Taal, Uttar Pradesh" },
+  { river: "Luni", origin: "Near Ajmer, Rajasthan" },
+  { river: "Damodar", origin: "Palamu, Jharkhand" },
+  { river: "Pennar", origin: "Nandi Hills, Karnataka" },
+  { river: "Sabarmati", origin: "Dhebar Lake, Rajasthan" },
+  { river: "Nile", origin: "Lake Victoria, East Africa" },
+  { river: "Amazon", origin: "Andes Mountains, Peru" },
+  { river: "Mississippi", origin: "Lake Itasca, USA" },
+  { river: "Danube", origin: "Black Forest, Germany" },
+  { river: "Rhine", origin: "Swiss Alps, Switzerland" },
+  { river: "Thames", origin: "Gloucestershire, England" },
+  { river: "Volga", origin: "Valdai Hills, Russia" },
+  { river: "Yangtze", origin: "Tanggula Mountains, Tibet" },
+  { river: "Mekong", origin: "Tibetan Plateau" },
+  { river: "Congo", origin: "Zambia" },
+];
+
+// ─── National Parks Data ─────────────────────────────────────────────────────
+export const nationalParksData = [
+  { park: "Kaziranga National Park", state: "Assam" },
+  { park: "Jim Corbett National Park", state: "Uttarakhand" },
+  { park: "Sundarbans National Park", state: "West Bengal" },
+  { park: "Gir National Park", state: "Gujarat" },
+  { park: "Kanha National Park", state: "Madhya Pradesh" },
+  { park: "Bandhavgarh National Park", state: "Madhya Pradesh" },
+  { park: "Ranthambore National Park", state: "Rajasthan" },
+  { park: "Periyar National Park", state: "Kerala" },
+  { park: "Bandipur National Park", state: "Karnataka" },
+  { park: "Nagarhole National Park", state: "Karnataka" },
+  { park: "Manas National Park", state: "Assam" },
+  { park: "Nanda Devi National Park", state: "Uttarakhand" },
+  { park: "Valley of Flowers National Park", state: "Uttarakhand" },
+  { park: "Hemis National Park", state: "Ladakh" },
+  { park: "Great Himalayan National Park", state: "Himachal Pradesh" },
+  { park: "Keoladeo National Park", state: "Rajasthan" },
+  { park: "Sariska Tiger Reserve", state: "Rajasthan" },
+  { park: "Pench National Park", state: "Madhya Pradesh" },
+  { park: "Tadoba Andhari Tiger Reserve", state: "Maharashtra" },
+  { park: "Silent Valley National Park", state: "Kerala" },
+  { park: "Simlipal National Park", state: "Odisha" },
+  { park: "Bhitarkanika National Park", state: "Odisha" },
+  { park: "Mudumalai National Park", state: "Tamil Nadu" },
+  { park: "Mukurthi National Park", state: "Tamil Nadu" },
+  { park: "Dachigam National Park", state: "Jammu & Kashmir" },
+  { park: "Desert National Park", state: "Rajasthan" },
+  { park: "Eravikulam National Park", state: "Kerala" },
+  { park: "Kudremukh National Park", state: "Karnataka" },
+  { park: "Panna National Park", state: "Madhya Pradesh" },
+  { park: "Nameri National Park", state: "Assam" },
+];
+
+// ─── Landmark → Country Data ─────────────────────────────────────────────────
+export const landmarkData = [
+  { landmark: "Taj Mahal", country: "India" },
+  { landmark: "Red Fort", country: "India" },
+  { landmark: "Gateway of India", country: "India" },
+  { landmark: "Golden Temple (Harmandir Sahib)", country: "India" },
+  { landmark: "Lotus Temple", country: "India" },
+  { landmark: "Eiffel Tower", country: "France" },
+  { landmark: "Louvre Museum", country: "France" },
+  { landmark: "Statue of Liberty", country: "USA" },
+  { landmark: "Golden Gate Bridge", country: "USA" },
+  { landmark: "Great Wall of China", country: "China" },
+  { landmark: "Colosseum", country: "Italy" },
+  { landmark: "Leaning Tower of Pisa", country: "Italy" },
+  { landmark: "Petra", country: "Jordan" },
+  { landmark: "Machu Picchu", country: "Peru" },
+  { landmark: "Christ the Redeemer", country: "Brazil" },
+  { landmark: "Sydney Opera House", country: "Australia" },
+  { landmark: "Big Ben", country: "United Kingdom" },
+  { landmark: "Stonehenge", country: "United Kingdom" },
+  { landmark: "Kremlin", country: "Russia" },
+  { landmark: "Pyramids of Giza", country: "Egypt" },
+  { landmark: "Angkor Wat", country: "Cambodia" },
+  { landmark: "Burj Khalifa", country: "UAE" },
+  { landmark: "Mount Fuji", country: "Japan" },
+  { landmark: "Acropolis of Athens", country: "Greece" },
+  { landmark: "Sagrada Familia", country: "Spain" },
+  { landmark: "Moai Statues (Easter Island)", country: "Chile" },
+  { landmark: "Chichen Itza", country: "Mexico" },
+  { landmark: "Neuschwanstein Castle", country: "Germany" },
+  { landmark: "Brandenburg Gate", country: "Germany" },
+  { landmark: "CN Tower", country: "Canada" },
+];
+
+// ─── Vitamin → Deficiency Data ───────────────────────────────────────────────
+export const vitaminDeficiencyData = [
+  { vitamin: "Vitamin A", deficiency: "Night Blindness" },
+  { vitamin: "Vitamin B1 (Thiamine)", deficiency: "Beriberi" },
+  { vitamin: "Vitamin B2 (Riboflavin)", deficiency: "Ariboflavinosis" },
+  { vitamin: "Vitamin B3 (Niacin)", deficiency: "Pellagra" },
+  { vitamin: "Vitamin B5 (Pantothenic Acid)", deficiency: "Burning Feet Syndrome" },
+  { vitamin: "Vitamin B6 (Pyridoxine)", deficiency: "Anemia & Skin Disorders" },
+  { vitamin: "Vitamin B7 (Biotin)", deficiency: "Dermatitis & Hair Loss" },
+  { vitamin: "Vitamin B9 (Folate)", deficiency: "Megaloblastic Anemia" },
+  { vitamin: "Vitamin B12 (Cobalamin)", deficiency: "Pernicious Anemia" },
+  { vitamin: "Vitamin C", deficiency: "Scurvy" },
+  { vitamin: "Vitamin D", deficiency: "Rickets / Osteomalacia" },
+  { vitamin: "Vitamin E", deficiency: "Hemolytic Anemia" },
+  { vitamin: "Vitamin K", deficiency: "Bleeding Disorder" },
+];
+
+// ─── Indian National Symbols Data ────────────────────────────────────────────
+export const indianNationalData = [
+  { symbol: "National Animal", name: "Bengal Tiger" },
+  { symbol: "National Bird", name: "Indian Peafowl" },
+  { symbol: "National Tree", name: "Banyan Tree" },
+  { symbol: "National Flower", name: "Lotus" },
+  { symbol: "National Fruit", name: "Mango" },
+  { symbol: "National River", name: "Ganga" },
+  { symbol: "National Game", name: "Hockey" },
+  { symbol: "National Aquatic Animal", name: "Gangetic Dolphin" },
+  { symbol: "National Reptile", name: "King Cobra" },
+  { symbol: "National Heritage Animal", name: "Elephant" },
+  { symbol: "National Calendar", name: "Saka Calendar" },
+  { symbol: "National Emblem", name: "Lion Capital of Ashoka" },
+  { symbol: "National Anthem", name: "Jana Gana Mana" },
+  { symbol: "National Song", name: "Vande Mataram" },
+  { symbol: "National Currency Symbol", name: "₹ (Indian Rupee)" },
+  { symbol: "National Flag (Tricolour)", name: "Saffron, White & Green" },
+  { symbol: "National Sport", name: "Field Hockey" },
+  { symbol: "National Vegetable", name: "Pumpkin" },
+  { symbol: "State Emblem Motto", name: "Satyameva Jayate" },
+  { symbol: "National Pledge", name: "India is My Country" },
+];
+
+// ─── Famous Battles → Year Data ──────────────────────────────────────────────
+export const famousBattlesData = [
+  { battle: "Battle of Plassey", year: "1757" },
+  { battle: "First Battle of Panipat", year: "1526" },
+  { battle: "Second Battle of Panipat", year: "1556" },
+  { battle: "Third Battle of Panipat", year: "1761" },
+  { battle: "Battle of Buxar", year: "1764" },
+  { battle: "Battle of Haldighati", year: "1576" },
+  { battle: "Battle of Talikota", year: "1565" },
+  { battle: "Battle of Wandiwash", year: "1760" },
+  { battle: "Battle of Kohima", year: "1944" },
+  { battle: "Battle of Chamkaur", year: "1704" },
+  { battle: "First Battle of Tarain", year: "1191" },
+  { battle: "Second Battle of Tarain", year: "1192" },
+  { battle: "Battle of Khanwa", year: "1527" },
+  { battle: "Battle of Chausa", year: "1539" },
+  { battle: "Battle of Kanauj", year: "1540" },
+  { battle: "Battle of Waterloo", year: "1815" },
+  { battle: "Battle of Hastings", year: "1066" },
+  { battle: "Battle of Stalingrad", year: "1943" },
+  { battle: "Battle of Midway", year: "1942" },
+  { battle: "D-Day (Normandy Landings)", year: "1944" },
+  { battle: "Battle of Gettysburg", year: "1863" },
+  { battle: "Battle of Yorktown", year: "1781" },
+  { battle: "Battle of the Somme", year: "1916" },
+  { battle: "Battle of Britain", year: "1940" },
+  { battle: "Battle of Marathon", year: "490 BC" },
+  { battle: "Battle of Actium", year: "31 BC" },
+  { battle: "Battle of Kalinga", year: "261 BC" },
+  { battle: "Sepoy Mutiny (First War of Independence)", year: "1857" },
+  { battle: "Battle of Srirangapatna", year: "1799" },
+  { battle: "Battle of Assaye", year: "1803" },
+];
+
+function generatePoolOptions(correct, pool) {
+  const options = new Set([correct]);
+  const shuffled = shuffleArray(pool.filter((item) => item !== correct));
+  for (const item of shuffled) {
+    if (options.size >= 4) break;
+    options.add(item);
+  }
+  return shuffleArray(Array.from(options));
+}
+
+function generateBattleYearOptions(correct) {
+  const allYears = famousBattlesData.map((b) => b.year);
+  return generatePoolOptions(correct, allYears);
+}
+
+const standardScorePoints = (elapsedSec, timeLimitMs) => {
+  const third = (timeLimitMs || 3000) / 3000;
+  if (elapsedSec < third) return 12;
+  if (elapsedSec < third * 2) return 8;
+  return 4;
+};
+
+Object.assign(quizGames, {
+  riverOrigin: {
+    key: "riverOrigin",
+    title: "River → Origin",
+    bigLetter: "🌊",
+    intro: "Where does this river originate?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 major Indian and world rivers and their sources.",
+    accent: "#38bdf8",
+    timeLimit: 3000,
+    prompt: "Origin of",
+    subtext: "Pick the correct source location",
+    cardBadge: "Geography",
+    cardTitle: "River → Origin",
+    cardDescription: "Match rivers to where they begin.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = riverOriginData[Math.floor(Math.random() * riverOriginData.length)];
+      return {
+        display: item.river,
+        correctValue: item.origin,
+        options: generatePoolOptions(item.origin, riverOriginData.map((r) => r.origin)),
+      };
+    },
+  },
+  nationalPark: {
+    key: "nationalPark",
+    title: "National Parks → State",
+    bigLetter: "🌲",
+    intro: "Which Indian state is this national park in?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 famous Indian national parks and tiger reserves.",
+    accent: "#4ade80",
+    timeLimit: 3000,
+    prompt: "State of",
+    subtext: "Pick the correct state",
+    cardBadge: "India GK",
+    cardTitle: "National Parks → State",
+    cardDescription: "Match Indian national parks to their states.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = nationalParksData[Math.floor(Math.random() * nationalParksData.length)];
+      return {
+        display: item.park,
+        correctValue: item.state,
+        options: generatePoolOptions(item.state, nationalParksData.map((p) => p.state)),
+      };
+    },
+  },
+  landmarkCountry: {
+    key: "landmarkCountry",
+    title: "Landmark → Country",
+    bigLetter: "🗼",
+    intro: "Which country is this famous landmark in?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 iconic landmarks from India and around the world.",
+    accent: "#f472b6",
+    timeLimit: 3000,
+    prompt: "Country of",
+    subtext: "Pick the correct country",
+    cardBadge: "🌍 World GK",
+    cardTitle: "Landmark → Country",
+    cardDescription: "Match famous landmarks to their countries.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = landmarkData[Math.floor(Math.random() * landmarkData.length)];
+      return {
+        display: item.landmark,
+        correctValue: item.country,
+        options: generatePoolOptions(item.country, landmarkData.map((l) => l.country)),
+      };
+    },
+  },
+  vitaminDeficiency: {
+    key: "vitaminDeficiency",
+    title: "Vitamin → Deficiency",
+    bigLetter: "💊",
+    intro: "What disease is caused by deficiency of this vitamin?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "13 vitamins and their deficiency diseases.",
+    accent: "#fb923c",
+    timeLimit: 3000,
+    prompt: "Deficiency of",
+    subtext: "Pick the correct deficiency disease",
+    cardBadge: "Biology",
+    cardTitle: "Vitamin → Deficiency",
+    cardDescription: "Match vitamins to the diseases they prevent.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = vitaminDeficiencyData[Math.floor(Math.random() * vitaminDeficiencyData.length)];
+      return {
+        display: item.vitamin,
+        correctValue: item.deficiency,
+        options: generatePoolOptions(item.deficiency, vitaminDeficiencyData.map((v) => v.deficiency)),
+      };
+    },
+  },
+  indianNational: {
+    key: "indianNational",
+    title: "Indian National Symbols",
+    bigLetter: "🇮🇳",
+    intro: "What is the official name of this Indian national symbol?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "20 official Indian national symbols — animal, bird, tree, sport, and more.",
+    accent: "#f97316",
+    timeLimit: 3000,
+    prompt: "Name of",
+    subtext: "Pick the correct national symbol",
+    cardBadge: "India GK",
+    cardTitle: "Indian National Symbols",
+    cardDescription: "Match national symbol categories to their official names.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = indianNationalData[Math.floor(Math.random() * indianNationalData.length)];
+      return {
+        display: item.symbol,
+        correctValue: item.name,
+        options: generatePoolOptions(item.name, indianNationalData.map((s) => s.name)),
+      };
+    },
+  },
+  famousBattles: {
+    key: "famousBattles",
+    title: "Famous Battles → Year",
+    bigLetter: "⚔️",
+    intro: "In which year was this famous battle fought?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "30 landmark battles from Indian and world history.",
+    accent: "#dc2626",
+    timeLimit: 3000,
+    prompt: "Year of",
+    subtext: "Pick the correct year",
+    cardBadge: "History",
+    cardTitle: "Famous Battles → Year",
+    cardDescription: "Match historic battles to the year they were fought.",
+    getScorePoints: standardScorePoints,
+    generateQuestion: () => {
+      const item = famousBattlesData[Math.floor(Math.random() * famousBattlesData.length)];
+      return {
+        display: item.battle,
+        correctValue: item.year,
+        options: generateBattleYearOptions(item.year),
+      };
+    },
+  },
+});

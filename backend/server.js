@@ -50,6 +50,7 @@ if (process.env.MONGODB_URI) {
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
 import scoreRoutes from './routes/score.js';
+import feedbackRoutes from './routes/feedback.js';
 
 // Serve frontend static files from dist folder
 const distPath = path.resolve(__dirname, 'dist');
@@ -60,6 +61,7 @@ app.use(express.static(distPath));
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/score', scoreRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 app.get('/api/test', (req, res) => {
   res.json({

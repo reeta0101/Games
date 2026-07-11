@@ -6,6 +6,12 @@ import {
   countryCurrencies,
   indianPresidents,
   indianVicePresidents,
+  riverOriginData,
+  nationalParksData,
+  landmarkData,
+  vitaminDeficiencyData,
+  indianNationalData,
+  famousBattlesData,
 } from "../data/quizGames";
 
 // Helper for prime
@@ -303,6 +309,108 @@ export default function GameReader({ gameKey }) {
             </td>
             <td className="px-4 py-3 font-mono text-xs text-slate-400">
               {item.term}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "riverOrigin") {
+    return (
+      <TableWrapper columns={["River", "Origin / Source"]}>
+        {riverOriginData.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-sm font-black text-[#38bdf8] w-1/3 align-top">
+              {item.river}
+            </td>
+            <td className="px-4 py-3 text-sm leading-6 text-slate-300 w-2/3">
+              {item.origin}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "nationalPark") {
+    return (
+      <TableWrapper columns={["National Park", "State"]}>
+        {nationalParksData.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-sm font-black text-[#4ade80] w-2/3 align-top">
+              {item.park}
+            </td>
+            <td className="px-4 py-3 text-sm text-slate-300 w-1/3">
+              {item.state}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "landmarkCountry") {
+    return (
+      <TableWrapper columns={["Landmark", "Country"]}>
+        {landmarkData.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-sm font-black text-[#f472b6] w-2/3 align-top">
+              {item.landmark}
+            </td>
+            <td className="px-4 py-3 text-sm text-slate-300 w-1/3">
+              {item.country}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "vitaminDeficiency") {
+    return (
+      <TableWrapper columns={["Vitamin", "Deficiency Disease"]}>
+        {vitaminDeficiencyData.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-sm font-black text-[#fb923c] w-1/3 align-top">
+              {item.vitamin}
+            </td>
+            <td className="px-4 py-3 text-sm leading-6 text-slate-300 w-2/3">
+              {item.deficiency}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "indianNational") {
+    return (
+      <TableWrapper columns={["Symbol Category", "Official Name"]}>
+        {indianNationalData.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-sm font-black text-[#f97316] w-1/3 align-top">
+              {item.symbol}
+            </td>
+            <td className="px-4 py-3 text-sm leading-6 text-slate-300 w-2/3">
+              {item.name}
+            </td>
+          </tr>
+        ))}
+      </TableWrapper>
+    );
+  }
+
+  if (gameKey === "famousBattles") {
+    return (
+      <TableWrapper columns={["Battle", "Year"]}>
+        {famousBattlesData.map((item, i) => (
+          <tr key={i} className="transition hover:bg-white/5">
+            <td className="px-4 py-3 text-sm font-black text-[#dc2626] w-2/3 align-top">
+              {item.battle}
+            </td>
+            <td className="px-4 py-3 font-mono text-sm text-slate-300 w-1/3">
+              {item.year}
             </td>
           </tr>
         ))}

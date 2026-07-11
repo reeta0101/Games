@@ -74,6 +74,8 @@ export const MODE_LABELS = {
   siUnits: 'SI Units',
   scientificName: 'Scientific Name',
   stateDance: 'State & Dance',
+  orgHq: 'Org & HQ',
+  invention: 'Inventions',
 };
 
 export const DIFF_LABELS = {

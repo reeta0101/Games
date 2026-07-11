@@ -36,6 +36,8 @@ import AnimalKingdomQuiz from "./pages/AnimalKingdomQuiz";
 import SiUnitsQuiz from "./pages/SiUnitsQuiz";
 import ScientificNameQuiz from "./pages/ScientificNameQuiz";
 import StateDanceQuiz from "./pages/StateDanceQuiz";
+import OrganizationHqQuiz from "./pages/OrganizationHqQuiz";
+import InventionQuiz from "./pages/InventionQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
@@ -351,6 +353,34 @@ const GAME_MODES = [
     accent: "#fb7185",
     summary: "State of...",
     details: "Match Indian states to their famous dances.",
+  },
+  {
+    id: "orgHq",
+    path: "/organization-hq",
+    title: "Organizations & HQ Quiz",
+    badge: "GK Memory",
+    category: "General Knowledge",
+    hero: "🏢",
+    intro: "Where is the headquarters of this organization?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "25 prominent global and Indian organizations.",
+    accent: "#60a5fa",
+    summary: "Headquarters of...",
+    details: "Match international organizations to their headquarters.",
+  },
+  {
+    id: "invention",
+    path: "/inventions",
+    title: "Inventions & Innovators Quiz",
+    badge: "Science GK",
+    category: "Science",
+    hero: "💡",
+    intro: "Who invented or discovered this?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "25 famous inventions and their creators.",
+    accent: "#fbbf24",
+    summary: "Inventor of...",
+    details: "Match world-changing inventions to their creators.",
   },
 ];
 
@@ -1160,6 +1190,8 @@ function ArcadeLayout() {
           <Route path="/si-units" element={<SiUnitsQuiz />} />
           <Route path="/scientific-name" element={<ScientificNameQuiz />} />
           <Route path="/state-dance" element={<StateDanceQuiz />} />
+          <Route path="/organization-hq" element={<OrganizationHqQuiz />} />
+          <Route path="/inventions" element={<InventionQuiz />} />
 
           <Route
             path="/indian-vice-president"

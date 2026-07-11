@@ -2088,11 +2088,6 @@ Object.assign(quizGames, {
     generateQuestion: () => {
       const item = stateDances[Math.floor(Math.random() * stateDances.length)];
       
-      // We are asking for the state given the dance OR the dance given the state.
-      // Let's ask: What is the dance of this state?
-      // Wait, prompt says "State of", meaning the question is about the State.
-      // So display: dance name. correctValue: State.
-      
       const allStates = stateDances.map(s => s.state);
       const options = new Set([item.state]);
       const pool = shuffleArray(allStates.filter(s => s !== item.state));
@@ -2105,6 +2100,148 @@ Object.assign(quizGames, {
         display: item.dance,
         correctValue: item.state,
         options: shuffleArray(Array.from(options)),
+      };
+    },
+  },
+});
+
+// ─── Organizations and Headquarters Data ──────────────────────────────────────
+export const orgHqData = [
+  { org: "UN (United Nations)", hq: "New York, USA" },
+  { org: "UNESCO", hq: "Paris, France" },
+  { org: "WHO (World Health Organization)", hq: "Geneva, Switzerland" },
+  { org: "WTO (World Trade Organization)", hq: "Geneva, Switzerland" },
+  { org: "IMF (International Monetary Fund)", hq: "Washington, D.C., USA" },
+  { org: "World Bank", hq: "Washington, D.C., USA" },
+  { org: "UNICEF", hq: "New York, USA" },
+  { org: "NATO", hq: "Brussels, Belgium" },
+  { org: "OPEC", hq: "Vienna, Austria" },
+  { org: "ASEAN", hq: "Jakarta, Indonesia" },
+  { org: "SAARC", hq: "Kathmandu, Nepal" },
+  { org: "Interpol", hq: "Lyon, France" },
+  { org: "FIFA", hq: "Zurich, Switzerland" },
+  { org: "ICC (International Cricket Council)", hq: "Dubai, UAE" },
+  { org: "BCCI", hq: "Mumbai, India" },
+  { org: "ISRO", hq: "Bengaluru, India" },
+  { org: "NASA", hq: "Washington, D.C., USA" },
+  { org: "European Union (EU)", hq: "Brussels, Belgium" },
+  { org: "ILO (International Labour Organization)", hq: "Geneva, Switzerland" },
+  { org: "WIPO (World Intellectual Property Org)", hq: "Geneva, Switzerland" },
+  { org: "WMO (World Meteorological Org)", hq: "Geneva, Switzerland" },
+  { org: "ICRC (Red Cross)", hq: "Geneva, Switzerland" },
+  { org: "IAEA (Intl Atomic Energy Agency)", hq: "Vienna, Austria" },
+  { org: "Amnesty International", hq: "London, UK" },
+  { org: "FAO (Food and Agriculture Org)", hq: "Rome, Italy" },
+];
+
+function generateOrgHqOptions(correct) {
+  const allHqs = orgHqData.map((s) => s.hq);
+  const options = new Set([correct]);
+  const pool = shuffleArray(allHqs.filter((h) => h !== correct));
+  for (const h of pool) {
+    if (options.size >= 4) break;
+    options.add(h);
+  }
+  return shuffleArray(Array.from(options));
+}
+
+// ─── Inventions and Innovators Data ─────────────────────────────────────────
+export const inventionsData = [
+  { invention: "Telephone", innovator: "Alexander Graham Bell" },
+  { invention: "Light Bulb", innovator: "Thomas Edison" },
+  { invention: "Aeroplane", innovator: "Wright Brothers" },
+  { invention: "Radio", innovator: "Guglielmo Marconi" },
+  { invention: "Television", innovator: "John Logie Baird" },
+  { invention: "Computer", innovator: "Charles Babbage" },
+  { invention: "World Wide Web (WWW)", innovator: "Tim Berners-Lee" },
+  { invention: "Printing Press", innovator: "Johannes Gutenberg" },
+  { invention: "Penicillin", innovator: "Alexander Fleming" },
+  { invention: "Steam Engine", innovator: "James Watt" },
+  { invention: "Electric Battery", innovator: "Alessandro Volta" },
+  { invention: "Dynamite", innovator: "Alfred Nobel" },
+  { invention: "Vaccine (Smallpox)", innovator: "Edward Jenner" },
+  { invention: "Polio Vaccine", innovator: "Jonas Salk" },
+  { invention: "X-Rays", innovator: "Wilhelm Röntgen" },
+  { invention: "Periodic Table", innovator: "Dmitri Mendeleev" },
+  { invention: "Theory of Relativity", innovator: "Albert Einstein" },
+  { invention: "Telescope", innovator: "Galileo Galilei" },
+  { invention: "Automobile", innovator: "Karl Benz" },
+  { invention: "Stethoscope", innovator: "René Laennec" },
+  { invention: "Microscope", innovator: "Zacharias Janssen" },
+  { invention: "Thermometer", innovator: "Daniel G. Fahrenheit" },
+  { invention: "Elevator", innovator: "Elisha Otis" },
+  { invention: "Diesel Engine", innovator: "Rudolf Diesel" },
+  { invention: "Barometer", innovator: "Evangelista Torricelli" },
+];
+
+function generateInnovatorOptions(correct) {
+  const allInnovators = inventionsData.map((s) => s.innovator);
+  const options = new Set([correct]);
+  const pool = shuffleArray(allInnovators.filter((i) => i !== correct));
+  for (const i of pool) {
+    if (options.size >= 4) break;
+    options.add(i);
+  }
+  return shuffleArray(Array.from(options));
+}
+
+// Extend quizGames with new modes
+Object.assign(quizGames, {
+  orgHq: {
+    key: "orgHq",
+    title: "Organizations & HQ",
+    bigLetter: "🏢",
+    intro: "Where is the headquarters of this organization?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "25 prominent global and Indian organizations.",
+    accent: "#60a5fa", // Blue
+    timeLimit: 3000,
+    prompt: "Headquarters of",
+    subtext: "Pick the correct city/country",
+    cardBadge: "GK Memory",
+    cardTitle: "Organizations & HQ",
+    cardDescription: "Match international organizations to their headquarters.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 3000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const item = orgHqData[Math.floor(Math.random() * orgHqData.length)];
+      return {
+        display: item.org,
+        correctValue: item.hq,
+        options: generateOrgHqOptions(item.hq),
+      };
+    },
+  },
+  invention: {
+    key: "invention",
+    title: "Inventions & Innovators",
+    bigLetter: "💡",
+    intro: "Who invented or discovered this?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "25 famous inventions and their creators.",
+    accent: "#fbbf24", // Amber
+    timeLimit: 3000,
+    prompt: "Inventor of",
+    subtext: "Pick the correct innovator",
+    cardBadge: "Science GK",
+    cardTitle: "Inventions & Innovators",
+    cardDescription: "Match world-changing inventions to their creators.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 3000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const item = inventionsData[Math.floor(Math.random() * inventionsData.length)];
+      return {
+        display: item.invention,
+        correctValue: item.innovator,
+        options: generateInnovatorOptions(item.innovator),
       };
     },
   },

@@ -329,6 +329,14 @@ function ArcadeBackground() {
     <div className="pointer-events-none fixed inset-0 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(64,224,240,0.07),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(139,92,246,0.06),_transparent_50%),linear-gradient(180deg,_#080812,_#0a0a0f)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(64,224,240,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(64,224,240,0.02)_1px,transparent_1px)] bg-[size:48px_48px] opacity-60" />
+
+      {/* Floating orbs */}
+      <div className="animate-float-orb absolute top-[10%] left-[15%] h-64 w-64 rounded-full bg-[#40e0f0]/[0.03] blur-3xl" />
+      <div className="animate-float-orb-slow absolute top-[50%] right-[10%] h-80 w-80 rounded-full bg-[#a78bfa]/[0.03] blur-3xl" />
+      <div className="animate-float-orb-fast absolute bottom-[15%] left-[40%] h-48 w-48 rounded-full bg-[#f0e040]/[0.02] blur-3xl" />
+
+      {/* Scanning line */}
+      <div className="animate-scan-line absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-[#40e0f0]/20 to-transparent" />
     </div>
   );
 }
@@ -596,15 +604,27 @@ function HomePage({ currentUser }) {
       <section className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr] xl:gap-10">
         <div className="space-y-6">
           <div className="surface relative overflow-hidden rounded-3xl p-5 animate-fade-in-up sm:p-7 lg:p-8">
+            {/* Decorative orbiting dot */}
+            <div className="pointer-events-none absolute right-12 top-12 hidden sm:block">
+              <div className="relative h-[120px] w-[120px]">
+                <div className="animate-orbit absolute left-1/2 top-1/2 h-2 w-2 rounded-full bg-[#40e0f0]/40 shadow-[0_0_12px_rgba(64,224,240,0.5)]" />
+                <div className="animate-orbit absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-[#a78bfa]/30 shadow-[0_0_10px_rgba(167,139,250,0.4)]" style={{ animationDelay: '-7s', animationDuration: '15s' }} />
+              </div>
+            </div>
+
+            {/* Corner glow accent */}
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#40e0f0]/[0.06] blur-3xl animate-float-orb" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
+
             <div className="relative">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0]">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
                 <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
                 {GAME_MODES.length} focused quizzes
               </div>
 
               <h1 className="max-w-2xl text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Study smarter with quick,
-                <span className="bg-gradient-to-r from-[#40e0f0] to-[#a78bfa] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#40e0f0] via-[#a78bfa] to-[#40e0f0] bg-clip-text text-transparent animate-gradient-text">
                   {" "}
                   playable drills
                 </span>
@@ -617,8 +637,9 @@ function HomePage({ currentUser }) {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Link
                   to={featuredGame.path}
-                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22"
+                  className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)]"
                 >
+                  <span className="text-base">▶</span>
                   Start {featuredGame.title}
                 </Link>
                 <a
@@ -631,15 +652,16 @@ function HomePage({ currentUser }) {
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
                 {[
-                  { label: "Read first", value: "Reference tables" },
-                  { label: "Fast feedback", value: "Correct or game over" },
-                  { label: "Keyboard ready", value: "Use A, B, C, D" },
+                  { label: "Read first", value: "Reference tables", icon: "📖" },
+                  { label: "Fast feedback", value: "Correct or game over", icon: "⚡" },
+                  { label: "Keyboard ready", value: "Use A, B, C, D", icon: "⌨️" },
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-2xl border border-white/8 bg-black/18 p-4"
+                    className="rounded-2xl border border-white/8 bg-black/18 p-4 transition hover:border-white/15 hover:bg-black/25"
                   >
                     <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
+                      <span className="mr-1.5">{item.icon}</span>
                       {item.label}
                     </p>
                     <p className="mt-1 text-sm font-bold text-white">
@@ -649,6 +671,9 @@ function HomePage({ currentUser }) {
                 ))}
               </div>
             </div>
+
+            {/* Neon border trace at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-[1px] neon-border" />
           </div>
 
           {/* ── Mobile login banner (hidden on xl where aside is visible) ── */}
@@ -769,17 +794,17 @@ function HomePage({ currentUser }) {
 
             <div className="mt-5 grid grid-cols-3 gap-3">
               {[
-                { label: "Today", value: stats.todayGames, accent: "#40e0f0" },
-                { label: "Total", value: stats.totalGames, accent: "#a78bfa" },
-                { label: "Quizzes", value: stats.quizCount, accent: "#f59e0b" },
+                { label: "Today", value: stats.todayGames, accent: "#40e0f0", delay: "0s" },
+                { label: "Total", value: stats.totalGames, accent: "#a78bfa", delay: "0.1s" },
+                { label: "Quizzes", value: stats.quizCount, accent: "#f59e0b", delay: "0.2s" },
               ].map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl border border-white/8 bg-white/[0.035] p-3 text-center"
+                  className="rounded-2xl border border-white/8 bg-white/[0.035] p-3 text-center transition hover:border-white/15 hover:bg-white/[0.06]"
                 >
                   <div
-                    className="text-2xl font-black tabular-nums"
-                    style={{ color: s.accent }}
+                    className="text-2xl font-black tabular-nums animate-counter-pop"
+                    style={{ color: s.accent, animationDelay: s.delay }}
                   >
                     {s.value}
                   </div>
@@ -967,21 +992,22 @@ function HomePage({ currentUser }) {
                   style={{ animationDelay: `${Math.min(i * 35, 280)}ms` }}
                 >
                   <div
-                    className="absolute inset-x-0 top-0 h-1"
-                    style={{ background: game.accent }}
+                    className="absolute inset-x-0 top-0 h-1 neon-border"
+                    style={{ background: `linear-gradient(90deg, transparent, ${game.accent}, transparent)`, backgroundSize: '200% 100%', animation: 'neonTrace 3s linear infinite' }}
                   />
                   <div
-                    className="absolute right-0 top-0 h-28 w-28 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+                    className="absolute right-0 top-0 h-28 w-28 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
                     style={{ background: `${game.accent}33` }}
                   />
 
                   <div className="relative flex items-start gap-4">
                     <div
-                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-black"
+                      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-lg font-black transition-shadow duration-300 group-hover:shadow-[0_0_18px_var(--accent-glow)]"
                       style={{
                         borderColor: `${game.accent}55`,
                         color: game.accent,
                         background: `${game.accent}12`,
+                        '--accent-glow': `${game.accent}40`,
                       }}
                     >
                       {game.hero}

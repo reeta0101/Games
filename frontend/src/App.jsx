@@ -33,6 +33,7 @@ import NationalOfficialsQuiz from "./pages/NationalOfficialsQuiz";
 import StateOfficialsQuiz from "./pages/StateOfficialsQuiz";
 import DiseaseCauseQuiz from "./pages/DiseaseCauseQuiz";
 import AnimalKingdomQuiz from "./pages/AnimalKingdomQuiz";
+import SiUnitsQuiz from "./pages/SiUnitsQuiz";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Leaderboard from "./pages/Leaderboard";
@@ -307,6 +308,20 @@ const GAME_MODES = [
     summary: "Who was the Nth Vice President of India?",
     details: "From S. Radhakrishnan (1st) to Jagdeep Dhankhar (14th).",
   },
+  {
+    id: "siUnits",
+    path: "/si-units",
+    title: "SI Units Quiz",
+    badge: "Physics",
+    category: "Physics",
+    hero: "SI",
+    intro: "What is the SI unit for the given physical quantity?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "7 base units + 22 derived units — Newton, Pascal, Joule and more.",
+    accent: "#818cf8",
+    summary: "What is the SI unit of...",
+    details: "Match physical quantities to their correct SI units.",
+  },
 ];
 
 function ArcadeBackground() {
@@ -444,6 +459,7 @@ function AllGameLeaderboards() {
 const CATEGORIES = [
   { label: "All", icon: "🎯" },
   { label: "Mathematics", icon: "📐" },
+  { label: "Physics", icon: "⚡" },
   { label: "Biology", icon: "🧬" },
   { label: "Chemistry", icon: "⚗️" },
   { label: "General Knowledge", icon: "📚" },
@@ -964,6 +980,7 @@ function ArcadeLayout() {
           <Route path="/state-officials" element={<StateOfficialsQuiz />} />
           <Route path="/disease-cause" element={<DiseaseCauseQuiz />} />
           <Route path="/animal-kingdom" element={<AnimalKingdomQuiz />} />
+          <Route path="/si-units" element={<SiUnitsQuiz />} />
 
           <Route
             path="/indian-vice-president"

@@ -71,6 +71,7 @@ export const MODE_LABELS = {
   stateOfficials: 'State CM',
   diseaseCause: 'Disease',
   animalKingdom: 'Animals',
+  siUnits: 'SI Units',
 };
 
 export const DIFF_LABELS = {

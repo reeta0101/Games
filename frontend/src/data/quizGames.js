@@ -1804,3 +1804,101 @@ export const generateAnimalKingdomOptions = (correct) => {
   }
   return shuffleArray(Array.from(options));
 };
+
+// ─── SI Units Data ────────────────────────────────────────────────────────────
+export const siUnits = [
+  { quantity: "Length", unit: "Metre", symbol: "m" },
+  { quantity: "Mass", unit: "Kilogram", symbol: "kg" },
+  { quantity: "Time", unit: "Second", symbol: "s" },
+  { quantity: "Electric Current", unit: "Ampere", symbol: "A" },
+  { quantity: "Temperature", unit: "Kelvin", symbol: "K" },
+  { quantity: "Amount of Substance", unit: "Mole", symbol: "mol" },
+  { quantity: "Luminous Intensity", unit: "Candela", symbol: "cd" },
+  { quantity: "Force", unit: "Newton", symbol: "N" },
+  { quantity: "Pressure", unit: "Pascal", symbol: "Pa" },
+  { quantity: "Energy", unit: "Joule", symbol: "J" },
+  { quantity: "Power", unit: "Watt", symbol: "W" },
+  { quantity: "Electric Charge", unit: "Coulomb", symbol: "C" },
+  { quantity: "Electric Potential", unit: "Volt", symbol: "V" },
+  { quantity: "Resistance", unit: "Ohm", symbol: "Ω" },
+  { quantity: "Capacitance", unit: "Farad", symbol: "F" },
+  { quantity: "Magnetic Flux", unit: "Weber", symbol: "Wb" },
+  { quantity: "Magnetic Flux Density", unit: "Tesla", symbol: "T" },
+  { quantity: "Inductance", unit: "Henry", symbol: "H" },
+  { quantity: "Frequency", unit: "Hertz", symbol: "Hz" },
+  { quantity: "Radioactivity", unit: "Becquerel", symbol: "Bq" },
+  { quantity: "Absorbed Dose (Radiation)", unit: "Gray", symbol: "Gy" },
+  { quantity: "Effective Dose (Radiation)", unit: "Sievert", symbol: "Sv" },
+  { quantity: "Luminous Flux", unit: "Lumen", symbol: "lm" },
+  { quantity: "Illuminance", unit: "Lux", symbol: "lx" },
+  { quantity: "Catalytic Activity", unit: "Katal", symbol: "kat" },
+  { quantity: "Angle (plane)", unit: "Radian", symbol: "rad" },
+  { quantity: "Solid Angle", unit: "Steradian", symbol: "sr" },
+  { quantity: "Electric Conductance", unit: "Siemens", symbol: "S" },
+  { quantity: "Area", unit: "Square metre", symbol: "m²" },
+  { quantity: "Volume", unit: "Cubic metre", symbol: "m³" },
+  { quantity: "Speed / Velocity", unit: "Metre per second", symbol: "m/s" },
+  { quantity: "Acceleration", unit: "Metre per second squared", symbol: "m/s²" },
+  { quantity: "Density", unit: "Kilogram per cubic metre", symbol: "kg/m³" },
+  { quantity: "Momentum", unit: "Kilogram metre per second", symbol: "kg·m/s" },
+  { quantity: "Torque", unit: "Newton metre", symbol: "N·m" },
+  { quantity: "Surface Tension", unit: "Newton per metre", symbol: "N/m" },
+  { quantity: "Dynamic Viscosity", unit: "Pascal second", symbol: "Pa·s" },
+  { quantity: "Heat Capacity", unit: "Joule per Kelvin", symbol: "J/K" },
+  { quantity: "Specific Heat Capacity", unit: "Joule per kilogram Kelvin", symbol: "J/(kg·K)" },
+  { quantity: "Thermal Conductivity", unit: "Watt per metre Kelvin", symbol: "W/(m·K)" },
+  { quantity: "Electric Field Strength", unit: "Volt per metre", symbol: "V/m" },
+  { quantity: "Molar Mass", unit: "Kilogram per mole", symbol: "kg/mol" },
+  { quantity: "Luminance", unit: "Candela per square metre", symbol: "cd/m²" },
+  { quantity: "Refractive Index", unit: "Dimensionless", symbol: "—" },
+  { quantity: "Wavelength", unit: "Metre", symbol: "m" },
+  { quantity: "Work", unit: "Joule", symbol: "J" },
+  { quantity: "Voltage (EMF)", unit: "Volt", symbol: "V" },
+  { quantity: "Current", unit: "Ampere", symbol: "A" },
+  { quantity: "Magnetic Field Intensity", unit: "Ampere per metre", symbol: "A/m" },
+  { quantity: "Entropy", unit: "Joule per Kelvin", symbol: "J/K" },
+];
+
+function generateSiUnitOptions(correct) {
+  const allUnits = siUnits.map((s) => s.unit);
+  const options = new Set([correct]);
+  const pool = shuffleArray(allUnits.filter((u) => u !== correct));
+  for (const u of pool) {
+    if (options.size >= 4) break;
+    options.add(u);
+  }
+  return shuffleArray(Array.from(options));
+}
+
+// Extend quizGames with siUnits
+Object.assign(quizGames, {
+  siUnits: {
+    key: "siUnits",
+    title: "SI Units Quiz",
+    bigLetter: "SI",
+    intro: "What is the SI unit for the given physical quantity?",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "7 base units + 22 derived units covering Physics, Chemistry & more.",
+    accent: "#818cf8",
+    timeLimit: 3000,
+    prompt: "SI unit of",
+    subtext: "Pick the correct SI unit",
+    cardBadge: "Physics",
+    cardTitle: "SI Units Quiz",
+    cardDescription: "Match physical quantities to their correct SI units.",
+    getScorePoints: (elapsedSec, timeLimitMs) => {
+      const third = (timeLimitMs || 3000) / 3000;
+      if (elapsedSec < third) return 12;
+      if (elapsedSec < third * 2) return 8;
+      return 4;
+    },
+    generateQuestion: () => {
+      const item = siUnits[Math.floor(Math.random() * siUnits.length)];
+      return {
+        display: item.quantity,
+        correctValue: item.unit,
+        options: generateSiUnitOptions(item.unit),
+      };
+    },
+  },
+});

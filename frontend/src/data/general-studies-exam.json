@@ -1,0 +1,688 @@
+[
+    {
+        "id": 1,
+        "question": "Match List I with List II: List I (Amendment to the Constitution): A. 69th Amendment Act 1991, B. 75th Amendment Act 1994, C. 80th Amendment Act 2000, D. 83rd Amendment Act 2000. List II (Topic): i. Establishment of State-level Rent Tribunals, ii. No Reservations for SC in Panchayats in Arunachal Pradesh, iii. Constitution of Panchayats at village or local level, iv. Accepting recommendations of 10th Finance Commission, v. Accorded status of National Capital Territory to Delhi.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "A-i, B-v, C-iii, D-iv" },
+            { "id": "b", "text": "A-v, B-i, C-iv, D-ii" },
+            { "id": "c", "text": "A-i, B-v, C-iv, D-ii" },
+            { "id": "d", "text": "A-v, B-i, C-iii, D-iv" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["polity"]
+    },
+    {
+        "id": 2,
+        "question": "Assertion (A): India tested its Integrated Air Defence Weapon System in August 2025. Reason (R): The test was carried out on the coast of Kerala.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)." },
+            { "id": "b", "text": "(A) is true, but (R) is false." },
+            { "id": "c", "text": "(A) is false, but (R) is true." },
+            { "id": "d", "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)." }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["current-affairs"]
+    },
+    {
+        "id": 3,
+        "question": "Match List I with List II: List I (Ruler): A. Bahadur Shah I, B. Jahandar Shah, C. Farrukhsiyar, D. Muhammad Shah. List II (Custom Name): i. Rangeela, ii. Lustful Fool, iii. Shah-i-Bekhabar, iv. Disgusting Coward.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "A-iv, B-iii, C-i, D-ii" },
+            { "id": "b", "text": "A-iv, B-i, C-iii, D-ii" },
+            { "id": "c", "text": "A-iii, B-ii, C-iv, D-i" },
+            { "id": "d", "text": "A-iii, B-iv, C-ii, D-i" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["history"]
+    },
+    {
+        "id": 4,
+        "question": "According to National Family Health Survey-5, which state has the highest total fertility rate (TFR) among the following states?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Jharkhand" },
+            { "id": "b", "text": "Bihar" },
+            { "id": "c", "text": "Uttar Pradesh" },
+            { "id": "d", "text": "Meghalaya" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["geography", "demographics"]
+    },
+    {
+        "id": 5,
+        "question": "Which countries are included in the 'Jakota' Triangle?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Japan, South Korea and Thailand" },
+            { "id": "b", "text": "Japan, North Korea and Hong Kong" },
+            { "id": "c", "text": "Japan, South Korea and Taiwan" },
+            { "id": "d", "text": "Japan, North Korea and Taiwan" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["geography"]
+    },
+    {
+        "id": 6,
+        "question": "Match List I with List II: List I (Book): A. India Today, B. Modern India, C. Oxford History of India, D. Social Background of Indian Nationalism. List II (Historian): i. Sumit Sarkar, ii. Rajani Palme Dutt, iii. Percival Spear, iv. A.R. Desai.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "A-iv, B-iii, C-ii, D-i" },
+            { "id": "b", "text": "A-ii, B-iv, C-i, D-iii" },
+            { "id": "c", "text": "A-i, B-ii, C-iii, D-iv" },
+            { "id": "d", "text": "A-ii, B-i, C-iii, D-iv" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["history", "literature"]
+    },
+    {
+        "id": 7,
+        "question": "Match List I with List II: List I (Institution): A. NMM, B. NMMA, C. IGNCA, D. NGMA. List II (Launch/Inauguration year): i. 1954, ii. 1985, iii. 2007, iv. 2003.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "A-iii, B-iv, C-i, D-ii" },
+            { "id": "b", "text": "A-iii, B-iv, C-ii, D-i" },
+            { "id": "c", "text": "A-iv, B-iii, C-i, D-ii" },
+            { "id": "d", "text": "A-iv, B-iii, C-ii, D-i" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["institutions", "history"]
+    },
+    {
+        "id": 8,
+        "question": "An electric pole, 16 metres high, casts a shadow of 12 metres length. The height of the tree that casts a shadow of 15 metres length under similar conditions, will be[cite: 1]",
+        "options": [
+            { "id": "a", "text": "20 m" },
+            { "id": "b", "text": "21 m" },
+            { "id": "c", "text": "17 m" },
+            { "id": "d", "text": "15 m" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["mathematics", "geometry"]
+    },
+    {
+        "id": 9,
+        "question": "Which State's Assembly became the first assembly with translator facilities?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Madhya Pradesh" },
+            { "id": "b", "text": "Telangana" },
+            { "id": "c", "text": "Uttar Pradesh" },
+            { "id": "d", "text": "Kerala" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["current-affairs", "polity"]
+    },
+    {
+        "id": 10,
+        "question": "Area of a circle is 314 cm². Its perimeter is: (Take π=3.14)[cite: 1]",
+        "options": [
+            { "id": "a", "text": "10 cm" },
+            { "id": "b", "text": "81.9 cm" },
+            { "id": "c", "text": "62.8 cm" },
+            { "id": "d", "text": "20 cm" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Assuming typo in source text '61.8 cm', actual value is 62.8 cm.",
+        "difficulty": "easy",
+        "topics": ["mathematics", "geometry"]
+    },
+    {
+        "id": 11,
+        "question": "Match List I with List II: List I: A. Sum of interior angles of a hexagon, B. Diagonals of a rhombus, C. A cyclic quadrilateral's opposite angles are, D. Maximum number of diagonals in an octagon. List II: i. Supplementary, ii. 20°, iii. 720°, iv. Bisect each other at 90°.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "A-i, B-iv, C-iii, D-ii" },
+            { "id": "b", "text": "A-ii, B-iv, C-i, D-iii" },
+            { "id": "c", "text": "A-iii, B-iv, C-i, D-ii" },
+            { "id": "d", "text": "A-ii, B-iii, C-i, D-iv" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["mathematics", "geometry"]
+    },
+    {
+        "id": 12,
+        "question": "How many people took a holy dip in the Maha Kumbh Mela at Prayagraj in 2025?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "About 46 crores" },
+            { "id": "b", "text": "About 56 crores" },
+            { "id": "c", "text": "About 76 crores" },
+            { "id": "d", "text": "About 66 crores" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["current-affairs"]
+    },
+    {
+        "id": 13,
+        "question": "Which of the following are the limitations on the Sovereignty of the Indian Parliament? I. Fundamental Rights, II. Judicial Review, III. Federalism, IV. Written Constitution.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "I, III and IV" },
+            { "id": "b", "text": "I, II, III and IV" },
+            { "id": "c", "text": "I, II and III" },
+            { "id": "d", "text": "I and II" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["polity"]
+    },
+    {
+        "id": 14,
+        "question": "Consider the following events and arrange these in correct chronological order: I. Minerva Mills vs Union of India Case, II. S.P. Gupta vs Union of India Case, III. Golaknath vs State of Punjab Case, IV. Kesavananda Bharati vs State of Kerala Case.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "III, II, I, IV" },
+            { "id": "b", "text": "IV, I, II, III" },
+            { "id": "c", "text": "IV, I, III, II" },
+            { "id": "d", "text": "III, IV, I, II" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["polity", "law"]
+    },
+    {
+        "id": 15,
+        "question": "Where is the Central Siberian Plateau located?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Between the Yenisey River and Lena River" },
+            { "id": "b", "text": "Between the Lena River and Verkhoyansk Range" },
+            { "id": "c", "text": "Between the Ural mountains and Cherskogo Range" },
+            { "id": "d", "text": "Between the Verkhoyansk Range and Ural mountains" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["geography"]
+    },
+    {
+        "id": 16,
+        "question": "In the magnetic meridian of a certain place, the horizonal component of the Earth's magnetic field is 0.26 G and the dip angle is 60°. What is the magnetic field of the Earth at this location?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "0.55 G" },
+            { "id": "b", "text": "0.54 G" },
+            { "id": "c", "text": "0.52 G" },
+            { "id": "d", "text": "0.58 G" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["physics", "magnetism"]
+    },
+    {
+        "id": 17,
+        "question": "Consider the following statements with reference to Chaudhary Charan Singh National Institute of Agricultural Marketing (CCSNIAM): I. CCSNIAM is located in Jodhpur (Rajasthan). II. It is a premier national level institute established in 1988 as an autonomous organisation under the Ministry of Agriculture and Farmers' Welfare.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Neither I nor II" },
+            { "id": "b", "text": "Both I and II" },
+            { "id": "c", "text": "Only II" },
+            { "id": "d", "text": "Only I" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["institutions", "agriculture"]
+    },
+    {
+        "id": 18,
+        "question": "Assertion (A): The theme of G20 Summit, 2023 was \"Vasudhaiva Kutumbakam\". Reason (R): It is taken from the ancient Sanskrit text of Maha Upanishad.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)." },
+            { "id": "b", "text": "(A) is true, but (R) is false." },
+            { "id": "c", "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)." },
+            { "id": "d", "text": "(A) is false, but (R) is true." }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["current-affairs", "history"]
+    },
+    {
+        "id": 19,
+        "question": "Chronological order: I. First test-tube baby born, II. First cloned sheep (Dolly), III. Discovery of Penicillin, IV. Discovery of double helix of DNA.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "II, IV, III, I" },
+            { "id": "b", "text": "I, II, III, IV" },
+            { "id": "c", "text": "IV, III, I, II" },
+            { "id": "d", "text": "III, IV, I, II" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["science", "history-of-science"]
+    },
+    {
+        "id": 20,
+        "question": "Match Iron-Ore mines with State: A. Badampahar, B. Noamundi, C. Chandrapur, D. Tumkuru; with i. Karnataka, ii. Maharashtra, iii. Jharkhand, iv. Odisha.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "A-ii, B-iii, C-iv, D-i" },
+            { "id": "b", "text": "A-iv, B-iii, C-ii, D-i" },
+            { "id": "c", "text": "A-iii, B-iv, C-i, D-ii" },
+            { "id": "d", "text": "A-iv, B-ii, C-i, D-iii" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["geography", "minerals"]
+    },
+    {
+        "id": 21,
+        "question": "'NAKSHA' Programme is implemented under which government initiative?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Atal Mission for Rejuvenation and Urban Transformation (AMRUT)" },
+            { "id": "b", "text": "National Urban Livelihoods Mission" },
+            { "id": "c", "text": "Smart Cities Mission" },
+            { "id": "d", "text": "Digital India Land Records Modernization Programme (DILRMP)" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["government-schemes"]
+    },
+    {
+        "id": 22,
+        "question": "Assertion (A): Bioremediation relies on the abilities of micro-organisms to degrade and detoxify organic and inorganic compounds. Reason (R): Bioremediation can be relatively intrusive to the environment.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "(A) is false, but (R) is true" },
+            { "id": "b", "text": "(A) is true, but (R) is false." },
+            { "id": "c", "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)" },
+            { "id": "d", "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["environment"]
+    },
+    {
+        "id": 23,
+        "question": "What is the primary objective of Rashtriya Gokul Mission?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "To establish large scale dairy farms" },
+            { "id": "b", "text": "To establish veterinary hospitals across rural India" },
+            { "id": "c", "text": "To promote organic farming practices in India" },
+            { "id": "d", "text": "To conserve and develop indigenous breeds of cows and buffaloes" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["government-schemes", "agriculture"]
+    },
+    {
+        "id": 24,
+        "question": "What was the theme of the Tri-Services tableau showcased during the 76th Republic day Parade in 2025?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "India's Defence Heritage" },
+            { "id": "b", "text": "United India Strong India" },
+            { "id": "c", "text": "Sashakt aur Surakshit Bharat" },
+            { "id": "d", "text": "Bharat's Joint Defence Vision" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["current-affairs", "defence"]
+    },
+    {
+        "id": 25,
+        "question": "Assertion (A): The Upanishads were compiled towards the end of the Vedic period. Reason (R): The thought of Upanishads is centered around the idea of soul and not sacrifice.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Both (A) and (R) are true, but (R) is not the correct explanation of (A)." },
+            { "id": "b", "text": "(A) is true, but (R) is false." },
+            { "id": "c", "text": "(A) is false, but (R) is true." },
+            { "id": "d", "text": "Both (A) and (R) are true and (R) is the correct explanation of (A)." }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["history", "ancient-india"]
+    },
+    {
+        "id": 26,
+        "question": "The states of India where cotton textile industry is not established are: I. Jammu and Kashmir, II. Goa, III. Arunachal Pradesh, IV. Punjab.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "I and II" },
+            { "id": "b", "text": "I, II and III" },
+            { "id": "c", "text": "III and IV" },
+            { "id": "d", "text": "II and III" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "hard",
+        "topics": ["geography", "industry"]
+    },
+    {
+        "id": 27,
+        "question": "When was the Ain-i-Dahsala Settlement implemented?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "1586 AD" },
+            { "id": "b", "text": "1576 AD" },
+            { "id": "c", "text": "1580 AD" },
+            { "id": "d", "text": "1570 AD" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["history", "medieval-india"]
+    },
+    {
+        "id": 28,
+        "question": "Consider the following statements with reference to vision for Amrit Kaal: I. It aims to provide opportunities for citizens with focus on youth. II. It aims to establish strong and stable macro-economic environment.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Both I and II are correct" },
+            { "id": "b", "text": "Only II is correct" },
+            { "id": "c", "text": "Neither I nor II is correct" },
+            { "id": "d", "text": "Only I is correct" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["polity", "economy"]
+    },
+    {
+        "id": 29,
+        "question": "Bee dance pattern which is used for foraging and communication is:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Tail wagging and wing flipping dance" },
+            { "id": "b", "text": "Round and tail wagging dance" },
+            { "id": "c", "text": "Elliptical and spiral dance" },
+            { "id": "d", "text": "Spiral and round dance" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 30,
+        "question": "The response of applied nitrogen is rather reduced:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "under saline irrigation" },
+            { "id": "b", "text": "in highly alkaline water" },
+            { "id": "c", "text": "in irrigation with water having low SAR" },
+            { "id": "d", "text": "in irrigation with marginally alkaline water" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["agriculture"]
+    },
+    {
+        "id": 31,
+        "question": "Absence of one sex chromosome causes:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Klinefelter Syndrome" },
+            { "id": "b", "text": "Down Syndrome" },
+            { "id": "c", "text": "Turner Syndrome" },
+            { "id": "d", "text": "Tay-Sachs Syndrome" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "genetics"]
+    },
+    {
+        "id": 32,
+        "question": "In which mammal are hind limbs absent?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Platypus" },
+            { "id": "b", "text": "Sloth" },
+            { "id": "c", "text": "Aquatic Cetaceans and Sirenians" },
+            { "id": "d", "text": "Armadillo" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 33,
+        "question": "Bioluminescence is found in:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Giardia" },
+            { "id": "b", "text": "Noctiluca" },
+            { "id": "c", "text": "Trichomonas" },
+            { "id": "d", "text": "Volvox" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 34,
+        "question": "A baby born with a small tail is a case exhibiting:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Retrogressive evolution" },
+            { "id": "b", "text": "Metamorphosis" },
+            { "id": "c", "text": "Atavism" },
+            { "id": "d", "text": "Mutation" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "evolution"]
+    },
+    {
+        "id": 35,
+        "question": "Weberian Ossicles are found in:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Birds" },
+            { "id": "b", "text": "Snakes" },
+            { "id": "c", "text": "Fishes" },
+            { "id": "d", "text": "Frogs" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 36,
+        "question": "Which of the following is sex-linked?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Sickle Cell Anaemia" },
+            { "id": "b", "text": "Albinism" },
+            { "id": "c", "text": "Phenylketonuria" },
+            { "id": "d", "text": "Haemophilia" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "genetics"]
+    },
+    {
+        "id": 37,
+        "question": "The hormone secreted from the kidneys is:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Secretin" },
+            { "id": "b", "text": "Erythropoietin" },
+            { "id": "c", "text": "Testosterone" },
+            { "id": "d", "text": "Gastrin" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "physiology"]
+    },
+    {
+        "id": 38,
+        "question": "The principle of naming an organism by two words was first proposed by:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Carolus Linnaeus" },
+            { "id": "b", "text": "Julian Huxley" },
+            { "id": "c", "text": "Charles Darwin" },
+            { "id": "d", "text": "Ernst Haeckel" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "taxonomy"]
+    },
+    {
+        "id": 39,
+        "question": "The cleavage in zygote of Amphioxus is:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Holoblastic" },
+            { "id": "b", "text": "Meroblastic" },
+            { "id": "c", "text": "Discoidal" },
+            { "id": "d", "text": "Superficial" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 40,
+        "question": "Which of the following helps in the defence of Paramecium?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Trichocyst" },
+            { "id": "b", "text": "Statocyst" },
+            { "id": "c", "text": "Oocyst" },
+            { "id": "d", "text": "Nematocyst" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 41,
+        "question": "Ruminating animals produce which green house gas?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Methane" },
+            { "id": "b", "text": "Carbon dioxide" },
+            { "id": "c", "text": "Nitrous oxide" },
+            { "id": "d", "text": "Water vapour" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "environment"]
+    },
+    {
+        "id": 42,
+        "question": "If thyroid gland is completely removed from a tadpole, it will:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "remain a tadpole indefinitely." },
+            { "id": "b", "text": "turn into a giant frog." },
+            { "id": "c", "text": "turn into a dwarf frog" },
+            { "id": "d", "text": "die immediately." }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 43,
+        "question": "The embryonic respiratory organ in chicks is:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Allantois" },
+            { "id": "b", "text": "Yolk sac" },
+            { "id": "c", "text": "Amnion" },
+            { "id": "d", "text": "Chorion" }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 44,
+        "question": "Stomochord is present in:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Amphioxus" },
+            { "id": "b", "text": "Balanoglossus" },
+            { "id": "c", "text": "Herdmania" },
+            { "id": "d", "text": "All of the above" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 45,
+        "question": "Which of the following pair is not correctly matched?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Polynoe - Scale worm" },
+            { "id": "b", "text": "Eunice viridis - Palolo worm" },
+            { "id": "c", "text": "Aphrodita - Sea mouse" },
+            { "id": "d", "text": "Chaetopterus - Lug worm" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "Chaetopterus is a parchment worm; Lug worm is Arenicola.",
+        "difficulty": "hard",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 46,
+        "question": "Consider the following statements: I. ADH is formed primarily in the supraoptic nuclei of hypothalamus. II. Oxytocin is formed primarily in the paraventricular nuclei.[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Only II is true" },
+            { "id": "b", "text": "Both I and II are true" },
+            { "id": "c", "text": "Neither I nor II is true" },
+            { "id": "d", "text": "Only I is true" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["biology", "physiology"]
+    },
+    {
+        "id": 47,
+        "question": "'One gene one enzyme hypothesis' was given by:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Johannsen" },
+            { "id": "b", "text": "Beadle and Tatum" },
+            { "id": "c", "text": "T.H. Morgan" },
+            { "id": "d", "text": "Benzer" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "genetics"]
+    },
+    {
+        "id": 48,
+        "question": "Which zoogeographical region has no representative lungfish?[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Ethiopian region" },
+            { "id": "b", "text": "Neotropical region" },
+            { "id": "c", "text": "Australian region" },
+            { "id": "d", "text": "Oriental region" }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": ["biology", "zoology"]
+    },
+    {
+        "id": 49,
+        "question": "The type of placenta found in humans is:[cite: 1]",
+        "options": [
+            { "id": "a", "text": "Epitheliochorial" },
+            { "id": "b", "text": "Haemoendothelial" },
+            { "id": "c", "text": "Haemochorial" },
+            { "id": "d", "text": "Endotheliochorial" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": ["biology", "zoology"]
+    }
+]

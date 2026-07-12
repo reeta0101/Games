@@ -28,7 +28,8 @@ export default function TestPage() {
       'microsoft365': 'Microsoft 365',
       'system-design': 'System Design',
       'tcs': 'TCS',
-      'quizdata': 'Quiz Data'
+      'quizdata': 'Quiz Data',
+      'general-studies-exam': 'General Studies Exam'
     };
     
     if (customNames[id.toLowerCase()]) {

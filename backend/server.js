@@ -52,10 +52,7 @@ import adminRoutes from './routes/admin.js';
 import scoreRoutes from './routes/score.js';
 import feedbackRoutes from './routes/feedback.js';
 
-// Serve frontend static files from dist folder
-const distPath = path.resolve(__dirname, 'dist');
-console.log('Serving static files from:', distPath);
-app.use(express.static(distPath));
+
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -71,10 +68,7 @@ app.get('/api/test', (req, res) => {
   });
 });
 
-// Serve index.html for all other routes (SPA support)
-app.get('{*path}', (req, res) => {
-  res.sendFile(path.resolve(distPath, 'index.html'));
-});
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -1,6 +1,6 @@
 // Leaderboard utility — fetches from and saves to the MongoDB backend
 
-const API_BASE = '/api/score';
+const API_BASE = `${import.meta.env.VITE_API_URL || ''}/api/score`;
 
 export async function getLeaderboard(mode, difficulty, limit = 20) {
   try {

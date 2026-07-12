@@ -26,7 +26,7 @@ export default function AdminLoginPage() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/admin/login", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

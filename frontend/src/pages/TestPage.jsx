@@ -29,7 +29,8 @@ export default function TestPage() {
       'system-design': 'System Design',
       'tcs': 'TCS',
       'quizdata': 'Quiz Data',
-      'general-studies-exam': 'General Studies Exam'
+      'biology-exam': 'Biology Mock Exam',
+      'general-knowledge-exam': 'General Knowledge Exam'
     };
     
     if (customNames[id.toLowerCase()]) {

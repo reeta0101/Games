@@ -1,0 +1,582 @@
+[
+    {
+        "id": 29,
+        "question": "Bee dance pattern which is used for foraging and communication is:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Tail wagging and wing flipping dance"
+            },
+            {
+                "id": "b",
+                "text": "Round and tail wagging dance"
+            },
+            {
+                "id": "c",
+                "text": "Elliptical and spiral dance"
+            },
+            {
+                "id": "d",
+                "text": "Spiral and round dance"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 31,
+        "question": "Absence of one sex chromosome causes:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Klinefelter Syndrome"
+            },
+            {
+                "id": "b",
+                "text": "Down Syndrome"
+            },
+            {
+                "id": "c",
+                "text": "Turner Syndrome"
+            },
+            {
+                "id": "d",
+                "text": "Tay-Sachs Syndrome"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "genetics"
+        ]
+    },
+    {
+        "id": 32,
+        "question": "In which mammal are hind limbs absent?[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Platypus"
+            },
+            {
+                "id": "b",
+                "text": "Sloth"
+            },
+            {
+                "id": "c",
+                "text": "Aquatic Cetaceans and Sirenians"
+            },
+            {
+                "id": "d",
+                "text": "Armadillo"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 33,
+        "question": "Bioluminescence is found in:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Giardia"
+            },
+            {
+                "id": "b",
+                "text": "Noctiluca"
+            },
+            {
+                "id": "c",
+                "text": "Trichomonas"
+            },
+            {
+                "id": "d",
+                "text": "Volvox"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 34,
+        "question": "A baby born with a small tail is a case exhibiting:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Retrogressive evolution"
+            },
+            {
+                "id": "b",
+                "text": "Metamorphosis"
+            },
+            {
+                "id": "c",
+                "text": "Atavism"
+            },
+            {
+                "id": "d",
+                "text": "Mutation"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "evolution"
+        ]
+    },
+    {
+        "id": 35,
+        "question": "Weberian Ossicles are found in:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Birds"
+            },
+            {
+                "id": "b",
+                "text": "Snakes"
+            },
+            {
+                "id": "c",
+                "text": "Fishes"
+            },
+            {
+                "id": "d",
+                "text": "Frogs"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 36,
+        "question": "Which of the following is sex-linked?[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Sickle Cell Anaemia"
+            },
+            {
+                "id": "b",
+                "text": "Albinism"
+            },
+            {
+                "id": "c",
+                "text": "Phenylketonuria"
+            },
+            {
+                "id": "d",
+                "text": "Haemophilia"
+            }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "genetics"
+        ]
+    },
+    {
+        "id": 37,
+        "question": "The hormone secreted from the kidneys is:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Secretin"
+            },
+            {
+                "id": "b",
+                "text": "Erythropoietin"
+            },
+            {
+                "id": "c",
+                "text": "Testosterone"
+            },
+            {
+                "id": "d",
+                "text": "Gastrin"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "physiology"
+        ]
+    },
+    {
+        "id": 38,
+        "question": "The principle of naming an organism by two words was first proposed by:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Carolus Linnaeus"
+            },
+            {
+                "id": "b",
+                "text": "Julian Huxley"
+            },
+            {
+                "id": "c",
+                "text": "Charles Darwin"
+            },
+            {
+                "id": "d",
+                "text": "Ernst Haeckel"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "taxonomy"
+        ]
+    },
+    {
+        "id": 39,
+        "question": "The cleavage in zygote of Amphioxus is:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Holoblastic"
+            },
+            {
+                "id": "b",
+                "text": "Meroblastic"
+            },
+            {
+                "id": "c",
+                "text": "Discoidal"
+            },
+            {
+                "id": "d",
+                "text": "Superficial"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 40,
+        "question": "Which of the following helps in the defence of Paramecium?[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Trichocyst"
+            },
+            {
+                "id": "b",
+                "text": "Statocyst"
+            },
+            {
+                "id": "c",
+                "text": "Oocyst"
+            },
+            {
+                "id": "d",
+                "text": "Nematocyst"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 41,
+        "question": "Ruminating animals produce which green house gas?[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Methane"
+            },
+            {
+                "id": "b",
+                "text": "Carbon dioxide"
+            },
+            {
+                "id": "c",
+                "text": "Nitrous oxide"
+            },
+            {
+                "id": "d",
+                "text": "Water vapour"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "environment"
+        ]
+    },
+    {
+        "id": 42,
+        "question": "If thyroid gland is completely removed from a tadpole, it will:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "remain a tadpole indefinitely."
+            },
+            {
+                "id": "b",
+                "text": "turn into a giant frog."
+            },
+            {
+                "id": "c",
+                "text": "turn into a dwarf frog"
+            },
+            {
+                "id": "d",
+                "text": "die immediately."
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 43,
+        "question": "The embryonic respiratory organ in chicks is:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Allantois"
+            },
+            {
+                "id": "b",
+                "text": "Yolk sac"
+            },
+            {
+                "id": "c",
+                "text": "Amnion"
+            },
+            {
+                "id": "d",
+                "text": "Chorion"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 44,
+        "question": "Stomochord is present in:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Amphioxus"
+            },
+            {
+                "id": "b",
+                "text": "Balanoglossus"
+            },
+            {
+                "id": "c",
+                "text": "Herdmania"
+            },
+            {
+                "id": "d",
+                "text": "All of the above"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 45,
+        "question": "Which of the following pair is not correctly matched?[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Polynoe - Scale worm"
+            },
+            {
+                "id": "b",
+                "text": "Eunice viridis - Palolo worm"
+            },
+            {
+                "id": "c",
+                "text": "Aphrodita - Sea mouse"
+            },
+            {
+                "id": "d",
+                "text": "Chaetopterus - Lug worm"
+            }
+        ],
+        "correctOptionId": "d",
+        "explanation": "Chaetopterus is a parchment worm; Lug worm is Arenicola.",
+        "difficulty": "hard",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 46,
+        "question": "Consider the following statements: I. ADH is formed primarily in the supraoptic nuclei of hypothalamus. II. Oxytocin is formed primarily in the paraventricular nuclei.[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Only II is true"
+            },
+            {
+                "id": "b",
+                "text": "Both I and II are true"
+            },
+            {
+                "id": "c",
+                "text": "Neither I nor II is true"
+            },
+            {
+                "id": "d",
+                "text": "Only I is true"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": [
+            "biology",
+            "physiology"
+        ]
+    },
+    {
+        "id": 47,
+        "question": "'One gene one enzyme hypothesis' was given by:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Johannsen"
+            },
+            {
+                "id": "b",
+                "text": "Beadle and Tatum"
+            },
+            {
+                "id": "c",
+                "text": "T.H. Morgan"
+            },
+            {
+                "id": "d",
+                "text": "Benzer"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "genetics"
+        ]
+    },
+    {
+        "id": 48,
+        "question": "Which zoogeographical region has no representative lungfish?[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Ethiopian region"
+            },
+            {
+                "id": "b",
+                "text": "Neotropical region"
+            },
+            {
+                "id": "c",
+                "text": "Australian region"
+            },
+            {
+                "id": "d",
+                "text": "Oriental region"
+            }
+        ],
+        "correctOptionId": "d",
+        "explanation": "",
+        "difficulty": "medium",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    },
+    {
+        "id": 49,
+        "question": "The type of placenta found in humans is:[cite: 1]",
+        "options": [
+            {
+                "id": "a",
+                "text": "Epitheliochorial"
+            },
+            {
+                "id": "b",
+                "text": "Haemoendothelial"
+            },
+            {
+                "id": "c",
+                "text": "Haemochorial"
+            },
+            {
+                "id": "d",
+                "text": "Endotheliochorial"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "",
+        "difficulty": "easy",
+        "topics": [
+            "biology",
+            "zoology"
+        ]
+    }
+]

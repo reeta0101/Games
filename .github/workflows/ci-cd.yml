@@ -41,10 +41,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
-      - name: Trigger Render Deployment
+      - name: Trigger Render Frontend Deployment
         run: |
-          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
-            echo "RENDER_DEPLOY_HOOK secret is not set. Skipping manual trigger."
-            exit 0
+          if [ -n "${{ secrets.RENDER_FRONTEND_HOOK }}" ]; then
+            curl -X POST ${{ secrets.RENDER_FRONTEND_HOOK }}
           fi
-          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+      - name: Trigger Render Backend Deployment
+        run: |
+          if [ -n "${{ secrets.RENDER_BACKEND_HOOK }}" ]; then
+            curl -X POST ${{ secrets.RENDER_BACKEND_HOOK }}
+          fi

@@ -175,7 +175,7 @@ const Quiz = ({
         {question.options.map((option, index) => (
           <motion.button
             key={option.id}
-            className={`btn quiz-option-btn text-left py-4 px-5 relative flex items-center justify-between ${getOptionClass(option.id)}`}
+            className={`btn quiz-option-btn text-left py-5 sm:py-4 px-4 sm:px-5 relative flex items-center justify-between min-h-[60px] ${getOptionClass(option.id)}`}
             onClick={() => onOptionClick(option.id)}
             disabled={isAnswered}
             whileHover={!isAnswered ? { scale: 1.01 } : {}}
@@ -211,7 +211,7 @@ const Quiz = ({
                   )}
                 </AnimatePresence>
               </span>
-              <span className="relative z-10 text-[0.95rem]">{option.text}</span>
+              <span className="relative z-10 text-[1rem] sm:text-[0.95rem] pr-2">{option.text}</span>
             </div>
 
             <div className="flex items-center gap-3 relative z-10">
@@ -261,10 +261,10 @@ const Quiz = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ delay: 0.4 }}
-            className="mt-4 d-flex justify-content-center align-items-center gap-3"
+            className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-3 w-full"
           >
             <button
-              className="telegram-next-btn inline-flex items-center gap-2"
+              className="telegram-next-btn w-full sm:w-auto justify-center inline-flex items-center gap-2"
               onClick={handleNextClick}
               aria-label="Go to next question"
             >

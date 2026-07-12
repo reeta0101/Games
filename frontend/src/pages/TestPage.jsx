@@ -86,17 +86,17 @@ export default function TestPage() {
 
   if (selectedCategory) {
     return (
-      <div className="w-full h-[calc(100vh-64px)] flex flex-col bg-[#0f172a]">
-        <div className="p-4 flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-slate-700 bg-[#0f172a] sticky top-0 z-20">
+      <div className="w-full h-[calc(100dvh-64px)] flex flex-col bg-[#0f172a]">
+        <div className="p-3 sm:p-4 flex flex-row justify-between items-center gap-3 border-b border-slate-700 bg-[#0f172a] sticky top-0 z-20">
           <button 
             onClick={handleBack}
-            className="text-white hover:text-gray-300 font-bold px-4 py-2 rounded-lg bg-slate-800 w-full sm:w-auto text-center shrink-0"
+            className="text-white hover:text-gray-300 font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-slate-800 text-sm sm:text-base text-center shrink-0 flex items-center gap-1"
           >
-            ← Back to Exams
+            <span>←</span> <span className="hidden sm:inline">Back to Exams</span><span className="sm:hidden">Back</span>
           </button>
           
-          <div className="flex-1 flex justify-end items-center gap-4 w-full sm:w-auto">
-            <h2 className="text-lg sm:text-xl font-black text-white/90 tracking-wide text-center sm:text-right w-full sm:w-auto">
+          <div className="flex-1 flex justify-end items-center min-w-0">
+            <h2 className="text-base sm:text-xl font-black text-white/90 tracking-wide text-right truncate">
               {formatDisplayName(selectedCategory)} {quizMode === 'test' ? 'Exam' : 'Practice'}
             </h2>
             

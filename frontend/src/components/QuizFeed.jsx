@@ -15,6 +15,7 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
     const [visitedIds, setVisitedIds] = useState(new Set());
     const [testAnswers, setTestAnswers] = useState({}); // Store answers for test mode
     const [testSubmitted, setTestSubmitted] = useState(false);
+    const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
     // Format time as MM:SS
     const formatTime = (seconds) => {
@@ -353,9 +354,35 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
                     )}
                 </div>
 
-                {/* Right-side navigation panel */}
-                <div className="shrink-0 hidden md:block" style={{ width: '400px' }}>
-                    <div className="glass-card p-5 rounded-2xl border-t-4 border-t-purple-500 shadow-[0_10px_30px_rgba(139,92,246,0.15)]">
+                {/* Overlay for mobile sidebar */}
+                {isMobileNavOpen && (
+                    <div 
+                        className="fixed inset-0 z-40 bg-black/50 md:hidden backdrop-blur-sm"
+                        onClick={() => setIsMobileNavOpen(false)}
+                    />
+                )}
+
+                {/* Navigation Panel (Sidebar on mobile, fixed width on desktop) */}
+                <div className={`
+                    fixed top-0 bottom-0 right-0 z-50 w-[320px] md:w-[400px] shrink-0 
+                    transform transition-transform duration-300 ease-in-out
+                    ${isMobileNavOpen ? 'translate-x-0' : 'translate-x-full'} md:translate-x-0 md:static
+                    bg-[#0f172a] md:bg-transparent shadow-2xl md:shadow-none
+                    border-l border-white/10 md:border-none p-4 md:p-0
+                    flex flex-col h-full overflow-y-auto
+                `}>
+                    <div className="glass-card p-5 rounded-2xl border-t-4 border-t-purple-500 shadow-[0_10px_30px_rgba(139,92,246,0.15)] flex-1 relative mt-16 md:mt-0">
+                        {/* Mobile Close Button */}
+                        <button 
+                            className="md:hidden absolute -top-12 right-2 text-white/70 hover:text-white p-2"
+                            onClick={() => setIsMobileNavOpen(false)}
+                        >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                        
                         <div className="flex justify-between items-center mb-4 border-b border-white/5 pb-3">
                             <span className="font-black text-lg tracking-wide" style={{ color: isDarkMode ? '#e2e8f0' : '#1e293b' }}>
                                 Questions Navigation Panel
@@ -367,10 +394,18 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
                                     key={id || idx}
                                     className={`nav-dot nav-dot-${status} ${idx === currentQuestionIndex ? 'nav-dot-current' : ''}`}
                                     title={`Q${idx + 1} - ${status} (Click to jump)`}
-                                    onClick={() => goToQuestion(idx)}
+                                    onClick={() => {
+                                        goToQuestion(idx);
+                                        setIsMobileNavOpen(false); // Auto-close on selection
+                                    }}
                                     role="button"
                                     tabIndex={0}
-                                    onKeyDown={(e) => e.key === 'Enter' && goToQuestion(idx)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            goToQuestion(idx);
+                                            setIsMobileNavOpen(false);
+                                        }
+                                    }}
                                 >
                                     {idx + 1}
                                 </span>
@@ -385,6 +420,21 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
                     </div>
                 </div>
             </div>
+
+            {/* Mobile Sidebar Toggle Button */}
+            {!isMobileNavOpen && (
+                <button
+                    className="md:hidden fixed bottom-6 right-6 z-30 p-4 bg-purple-600 text-white rounded-full shadow-[0_4px_15px_rgba(147,51,234,0.5)] hover:bg-purple-500 transition-colors"
+                    onClick={() => setIsMobileNavOpen(true)}
+                    aria-label="Open Navigation Panel"
+                >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                </button>
+            )}
         </div>
     );
 };

@@ -14,6 +14,8 @@ import AuthPage from "./pages/AuthPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFoundPage from "./pages/NotFoundPage";
+import TestPage from "./pages/TestPage";
+import QuizzesPage from "./pages/QuizzesPage";
 import AlphabetQuiz from "./pages/AlphabetQuiz";
 import SquareQuiz from "./pages/SquareQuiz";
 import StateCapitalQuiz from "./pages/StateCapitalQuiz";
@@ -53,7 +55,7 @@ import FeedbackSection from "./components/FeedbackSection";
 import Leaderboard from "./pages/Leaderboard";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 
-const GAME_MODES = [
+export const GAME_MODES = [
   {
     id: "nationalOfficials",
     path: "/national-officials",
@@ -570,20 +572,21 @@ function GameLeaderboardCard({ game, activeDiff }) {
   }, [game.id, activeDiff]);
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.18)]">
-      <div className="flex items-start justify-between gap-3">
+    <div className="premium-card rounded-2xl p-5 relative overflow-hidden group">
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative z-10 flex items-start justify-between gap-3">
         <div>
           <p
-            className="text-[10px] font-bold uppercase tracking-[0.25em]"
-            style={{ color: game.accent }}
+            className="text-[10px] font-black uppercase tracking-[0.25em] mb-1"
+            style={{ color: game.accent, textShadow: `0 0 10px ${game.accent}40` }}
           >
             {MODE_LABELS[game.id] || game.title}
           </p>
-          <h3 className="mt-1 text-lg font-black text-white">{game.title}</h3>
+          <h3 className="text-lg font-black text-white leading-tight">{game.title}</h3>
         </div>
         <Link
           to={game.path}
-          className="shrink-0 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 transition hover:bg-white/10"
+          className="shrink-0 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white transition-all hover:bg-white/20 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
         >
           Play
         </Link>
@@ -602,15 +605,17 @@ function GameLeaderboardCard({ game, activeDiff }) {
           entries.map((entry, index) => (
             <div
               key={index}
-              className="flex justify-between items-center bg-white/[0.03] px-3 py-2 rounded-xl text-sm border border-white/[0.05]"
+              className="flex justify-between items-center bg-slate-900/40 px-3 py-2.5 rounded-xl text-sm border border-white/5 hover:bg-white/10 transition-colors"
             >
-              <div className="min-w-0">
-                <p className="truncate font-bold text-slate-200">
-                  <span className="text-slate-500 mr-2">{index + 1}</span>
+              <div className="min-w-0 flex items-center gap-2">
+                <div className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-black ${index === 0 ? 'bg-yellow-500/20 text-yellow-400' : index === 1 ? 'bg-slate-300/20 text-slate-300' : index === 2 ? 'bg-amber-600/20 text-amber-500' : 'bg-white/5 text-slate-500'}`}>
+                  {index + 1}
+                </div>
+                <p className="truncate font-semibold text-slate-200">
                   {entry.name}
                 </p>
               </div>
-              <div className="font-black" style={{ color: game.accent }}>
+              <div className="font-black tracking-wide" style={{ color: game.accent, textShadow: `0 0 8px ${game.accent}30` }}>
                 {entry.score}
               </div>
             </div>
@@ -670,7 +675,7 @@ function AllGameLeaderboards() {
   );
 }
 
-const CATEGORIES = [
+export const CATEGORIES = [
   { label: "All", icon: "🎯" },
   { label: "Mathematics", icon: "📐" },
   { label: "Physics", icon: "⚡" },
@@ -1420,7 +1425,7 @@ function ArcadeLayout() {
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden text-slate-100">
+    <div className="min-h-screen text-slate-100">
       <ArcadeBackground />
       <div className="relative z-10">
         <Navbar
@@ -1476,6 +1481,8 @@ function ArcadeLayout() {
             element={<IndianVicePresidentQuiz />}
           />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/quizzes" element={<QuizzesPage />} />
+          <Route path="/test-page" element={<TestPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
@@ -1491,7 +1498,7 @@ function App() {
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/signup" element={<AuthPage mode="signup" />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/*" element={<ArcadeLayout />} />
       </Routes>
     </BrowserRouter>

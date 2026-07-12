@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "What does IP stand for in networking?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Internet Protocol"
+            },
+            {
+                "id": "b",
+                "text": "Internal Process"
+            },
+            {
+                "id": "c",
+                "text": "Internet Port"
+            },
+            {
+                "id": "d",
+                "text": "Interface Protocol"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "IP stands for Internet Protocol, used for routing packets across networks.",
+        "difficulty": "easy",
+        "topics": [
+            "basics",
+            "ip"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Which layer of OSI model handles routing?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Data Link Layer"
+            },
+            {
+                "id": "b",
+                "text": "Network Layer"
+            },
+            {
+                "id": "c",
+                "text": "Transport Layer"
+            },
+            {
+                "id": "d",
+                "text": "Session Layer"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "The Network Layer (Layer 3) handles routing of packets between different networks.",
+        "difficulty": "easy",
+        "topics": [
+            "osi-model",
+            "routing"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is the difference between TCP and UDP?",
+        "options": [
+            {
+                "id": "a",
+                "text": "TCP is faster than UDP"
+            },
+            {
+                "id": "b",
+                "text": "TCP is connection-oriented, UDP is connectionless"
+            },
+            {
+                "id": "c",
+                "text": "UDP is more reliable than TCP"
+            },
+            {
+                "id": "d",
+                "text": "No difference"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "TCP is connection-oriented ensuring reliable delivery; UDP is connectionless and faster but unreliable.",
+        "difficulty": "medium",
+        "topics": [
+            "protocols",
+            "tcp-udp"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "What is a MAC address?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Logical address"
+            },
+            {
+                "id": "b",
+                "text": "Physical hardware address"
+            },
+            {
+                "id": "c",
+                "text": "IP address"
+            },
+            {
+                "id": "d",
+                "text": "Port number"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "MAC (Media Access Control) address is a unique physical address assigned to network interface cards.",
+        "difficulty": "easy",
+        "topics": [
+            "data-link",
+            "addressing"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "How many layers are in the OSI model?",
+        "options": [
+            {
+                "id": "a",
+                "text": "4"
+            },
+            {
+                "id": "b",
+                "text": "5"
+            },
+            {
+                "id": "c",
+                "text": "6"
+            },
+            {
+                "id": "d",
+                "text": "7"
+            }
+        ],
+        "correctOptionId": "d",
+        "explanation": "The OSI model has 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application.",
+        "difficulty": "easy",
+        "topics": [
+            "osi-model",
+            "basics"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is the purpose of DNS?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Encrypt data"
+            },
+            {
+                "id": "b",
+                "text": "Translate domain names to IP addresses"
+            },
+            {
+                "id": "c",
+                "text": "Route packets"
+            },
+            {
+                "id": "d",
+                "text": "Store files"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "DNS (Domain Name System) translates human-readable domain names to IP addresses.",
+        "difficulty": "easy",
+        "topics": [
+            "dns",
+            "application-layer"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "What is subnetting used for?",
+        "options": [
+            {
+                "id": "a",
+                "text": "To increase speed"
+            },
+            {
+                "id": "b",
+                "text": "To divide a network into smaller networks"
+            },
+            {
+                "id": "c",
+                "text": "To encrypt data"
+            },
+            {
+                "id": "d",
+                "text": "To backup data"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Subnetting divides a network into smaller subnetworks for better management and security.",
+        "difficulty": "medium",
+        "topics": [
+            "ip-addressing",
+            "subnetting"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "Which protocol is used for secure web browsing?",
+        "options": [
+            {
+                "id": "a",
+                "text": "HTTP"
+            },
+            {
+                "id": "b",
+                "text": "FTP"
+            },
+            {
+                "id": "c",
+                "text": "HTTPS"
+            },
+            {
+                "id": "d",
+                "text": "SMTP"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "HTTPS (HTTP Secure) uses SSL/TLS encryption for secure web communication.",
+        "difficulty": "easy",
+        "topics": [
+            "protocols",
+            "security"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is a firewall?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A type of virus"
+            },
+            {
+                "id": "b",
+                "text": "A security system that monitors network traffic"
+            },
+            {
+                "id": "c",
+                "text": "A routing protocol"
+            },
+            {
+                "id": "d",
+                "text": "A type of cable"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A firewall monitors and controls incoming/outgoing network traffic based on security rules.",
+        "difficulty": "easy",
+        "topics": [
+            "security",
+            "network-security"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is the three-way handshake in TCP?",
+        "options": [
+            {
+                "id": "a",
+                "text": "SYN, SYN-ACK, ACK"
+            },
+            {
+                "id": "b",
+                "text": "ACK, SYN, FIN"
+            },
+            {
+                "id": "c",
+                "text": "FIN, ACK, RST"
+            },
+            {
+                "id": "d",
+                "text": "SYN, FIN, ACK"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "TCP connection establishment uses SYN, SYN-ACK, ACK sequence for three-way handshake.",
+        "difficulty": "medium",
+        "topics": [
+            "tcp",
+            "protocols"
+        ]
+    }
+]

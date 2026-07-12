@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "What is horizontal scaling?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Adding more RAM to existing server"
+            },
+            {
+                "id": "b",
+                "text": "Adding more servers to the system"
+            },
+            {
+                "id": "c",
+                "text": "Adding more CPU cores"
+            },
+            {
+                "id": "d",
+                "text": "Adding more disk space"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Horizontal scaling (scale-out) adds more servers to distribute the load.",
+        "difficulty": "easy",
+        "topics": [
+            "scaling",
+            "basics"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "What is a load balancer?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A device that increases CPU power"
+            },
+            {
+                "id": "b",
+                "text": "A component that distributes traffic across servers"
+            },
+            {
+                "id": "c",
+                "text": "A database"
+            },
+            {
+                "id": "d",
+                "text": "A cache system"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A load balancer distributes incoming traffic across multiple servers to ensure no single server is overwhelmed.",
+        "difficulty": "easy",
+        "topics": [
+            "load-balancing",
+            "components"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is CAP theorem?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A programming paradigm"
+            },
+            {
+                "id": "b",
+                "text": "You can only have two of: Consistency, Availability, Partition tolerance"
+            },
+            {
+                "id": "c",
+                "text": "A sorting algorithm"
+            },
+            {
+                "id": "d",
+                "text": "A networking protocol"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "CAP theorem states a distributed system can only guarantee two of: Consistency, Availability, Partition tolerance.",
+        "difficulty": "hard",
+        "topics": [
+            "distributed-systems",
+            "cap"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "What is caching used for in system design?",
+        "options": [
+            {
+                "id": "a",
+                "text": "To store permanent data"
+            },
+            {
+                "id": "b",
+                "text": "To reduce database load and improve response time"
+            },
+            {
+                "id": "c",
+                "text": "To backup data"
+            },
+            {
+                "id": "d",
+                "text": "To encrypt data"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Caching stores frequently accessed data in memory to reduce database queries and improve performance.",
+        "difficulty": "easy",
+        "topics": [
+            "caching",
+            "performance"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "What is database sharding?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Backing up database"
+            },
+            {
+                "id": "b",
+                "text": "Splitting database across multiple servers"
+            },
+            {
+                "id": "c",
+                "text": "Encrypting database"
+            },
+            {
+                "id": "d",
+                "text": "Indexing database"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Sharding horizontally partitions data across multiple database servers for scalability.",
+        "difficulty": "medium",
+        "topics": [
+            "databases",
+            "scaling"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is a CDN?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Central Data Network"
+            },
+            {
+                "id": "b",
+                "text": "Content Delivery Network"
+            },
+            {
+                "id": "c",
+                "text": "Cloud Database Node"
+            },
+            {
+                "id": "d",
+                "text": "Cached Data Node"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "CDN (Content Delivery Network) distributes content to servers worldwide for faster delivery to users.",
+        "difficulty": "easy",
+        "topics": [
+            "cdn",
+            "performance"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "What is eventual consistency?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Data is always consistent immediately"
+            },
+            {
+                "id": "b",
+                "text": "Data becomes consistent after some time"
+            },
+            {
+                "id": "c",
+                "text": "Data is never consistent"
+            },
+            {
+                "id": "d",
+                "text": "Data is read-only"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Eventual consistency means the system will become consistent over time, allowing temporary inconsistencies.",
+        "difficulty": "medium",
+        "topics": [
+            "consistency",
+            "distributed-systems"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "What is a message queue used for?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Storing user profiles"
+            },
+            {
+                "id": "b",
+                "text": "Asynchronous communication between services"
+            },
+            {
+                "id": "c",
+                "text": "User authentication"
+            },
+            {
+                "id": "d",
+                "text": "Database backup"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Message queues enable asynchronous, decoupled communication between different system components.",
+        "difficulty": "medium",
+        "topics": [
+            "messaging",
+            "async"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is a microservices architecture?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Single large application"
+            },
+            {
+                "id": "b",
+                "text": "Application split into small, independent services"
+            },
+            {
+                "id": "c",
+                "text": "Mobile application design"
+            },
+            {
+                "id": "d",
+                "text": "Database design pattern"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Microservices architecture splits an application into small, independently deployable services.",
+        "difficulty": "medium",
+        "topics": [
+            "architecture",
+            "microservices"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is rate limiting?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Limiting database size"
+            },
+            {
+                "id": "b",
+                "text": "Controlling the number of requests a user can make"
+            },
+            {
+                "id": "c",
+                "text": "Limiting memory usage"
+            },
+            {
+                "id": "d",
+                "text": "Limiting file uploads"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Rate limiting restricts the number of API requests a user can make in a given time period.",
+        "difficulty": "easy",
+        "topics": [
+            "api",
+            "security"
+        ]
+    }
+]

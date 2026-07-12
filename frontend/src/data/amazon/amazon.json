@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "What is the time complexity of finding an element in a hash table (average case)?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(n)"
+            },
+            {
+                "id": "b",
+                "text": "O(log n)"
+            },
+            {
+                "id": "c",
+                "text": "O(1)"
+            },
+            {
+                "id": "d",
+                "text": "O(n²)"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Hash tables provide O(1) average case lookup using hash functions for direct access.",
+        "difficulty": "easy",
+        "topics": [
+            "hashing",
+            "data-structures"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Design a system to handle 1 million concurrent users. Which architecture pattern would you use?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Monolithic"
+            },
+            {
+                "id": "b",
+                "text": "Microservices with horizontal scaling"
+            },
+            {
+                "id": "c",
+                "text": "Single server with high RAM"
+            },
+            {
+                "id": "d",
+                "text": "Desktop application"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Microservices with horizontal scaling allows distributing load across many servers for high concurrency.",
+        "difficulty": "hard",
+        "topics": [
+            "system-design",
+            "scaling"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is the purpose of the 'final' keyword in Java?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Makes variable thread-safe"
+            },
+            {
+                "id": "b",
+                "text": "Prevents modification, inheritance, or overriding"
+            },
+            {
+                "id": "c",
+                "text": "Improves performance"
+            },
+            {
+                "id": "d",
+                "text": "Creates static variables"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "final prevents variable reassignment, method overriding, or class inheritance.",
+        "difficulty": "easy",
+        "topics": [
+            "java",
+            "keywords"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "In a graph with cycles, which traversal will cause infinite loop without proper handling?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Binary search"
+            },
+            {
+                "id": "b",
+                "text": "BFS without visited tracking"
+            },
+            {
+                "id": "c",
+                "text": "Merge sort"
+            },
+            {
+                "id": "d",
+                "text": "Quick sort"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "BFS/DFS without tracking visited nodes will revisit the same nodes infinitely in cyclic graphs.",
+        "difficulty": "medium",
+        "topics": [
+            "graphs",
+            "traversal"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "What is the space complexity of recursive Fibonacci without memoization?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(1)"
+            },
+            {
+                "id": "b",
+                "text": "O(n)"
+            },
+            {
+                "id": "c",
+                "text": "O(2^n)"
+            },
+            {
+                "id": "d",
+                "text": "O(log n)"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Stack depth is O(n) as maximum recursion depth equals n for Fibonacci.",
+        "difficulty": "medium",
+        "topics": [
+            "recursion",
+            "space-complexity"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is eventual consistency in distributed databases?",
+        "options": [
+            {
+                "id": "a",
+                "text": "All nodes always have same data"
+            },
+            {
+                "id": "b",
+                "text": "Given enough time, all nodes will have the same data"
+            },
+            {
+                "id": "c",
+                "text": "Data is never consistent"
+            },
+            {
+                "id": "d",
+                "text": "Only one node has correct data"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Eventual consistency guarantees that all replicas will converge to the same value eventually.",
+        "difficulty": "hard",
+        "topics": [
+            "distributed-systems",
+            "consistency"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "Which design pattern ensures only one instance of a class exists?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Factory"
+            },
+            {
+                "id": "b",
+                "text": "Observer"
+            },
+            {
+                "id": "c",
+                "text": "Singleton"
+            },
+            {
+                "id": "d",
+                "text": "Strategy"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Singleton pattern ensures a class has only one instance with a global access point.",
+        "difficulty": "easy",
+        "topics": [
+            "design-patterns",
+            "singleton"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "What is the difference between a process and a thread?",
+        "options": [
+            {
+                "id": "a",
+                "text": "No difference"
+            },
+            {
+                "id": "b",
+                "text": "Threads share memory, processes have separate memory"
+            },
+            {
+                "id": "c",
+                "text": "Processes are faster"
+            },
+            {
+                "id": "d",
+                "text": "Threads cannot communicate"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Threads share the same memory space within a process; processes have isolated memory.",
+        "difficulty": "medium",
+        "topics": [
+            "os",
+            "concurrency"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is the output of: [1,2,3] + [4,5,6] in Python?",
+        "options": [
+            {
+                "id": "a",
+                "text": "[5, 7, 9]"
+            },
+            {
+                "id": "b",
+                "text": "[1, 2, 3, 4, 5, 6]"
+            },
+            {
+                "id": "c",
+                "text": "Error"
+            },
+            {
+                "id": "d",
+                "text": "[[1,2,3], [4,5,6]]"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "In Python, + operator concatenates lists: [1,2,3] + [4,5,6] = [1,2,3,4,5,6].",
+        "difficulty": "easy",
+        "topics": [
+            "python",
+            "lists"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is the purpose of an API Gateway in microservices?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Store database"
+            },
+            {
+                "id": "b",
+                "text": "Single entry point for all client requests"
+            },
+            {
+                "id": "c",
+                "text": "Compile code"
+            },
+            {
+                "id": "d",
+                "text": "Host frontend"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "API Gateway acts as a single entry point, handling routing, authentication, rate limiting for microservices.",
+        "difficulty": "medium",
+        "topics": [
+            "microservices",
+            "architecture"
+        ]
+    }
+]

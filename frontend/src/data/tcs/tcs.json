@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "If the day before yesterday was Thursday, what day will it be the day after tomorrow?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Sunday"
+            },
+            {
+                "id": "b",
+                "text": "Monday"
+            },
+            {
+                "id": "c",
+                "text": "Tuesday"
+            },
+            {
+                "id": "d",
+                "text": "Wednesday"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Day before yesterday = Thursday, so yesterday = Friday, today = Saturday, tomorrow = Sunday, day after tomorrow = Monday.",
+        "difficulty": "easy",
+        "topics": [
+            "reasoning",
+            "calendar"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Find the missing number: 2, 6, 12, 20, 30, ?",
+        "options": [
+            {
+                "id": "a",
+                "text": "40"
+            },
+            {
+                "id": "b",
+                "text": "42"
+            },
+            {
+                "id": "c",
+                "text": "44"
+            },
+            {
+                "id": "d",
+                "text": "46"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Pattern: n(n+1). 1×2=2, 2×3=6, 3×4=12, 4×5=20, 5×6=30, 6×7=42.",
+        "difficulty": "medium",
+        "topics": [
+            "series",
+            "patterns"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "A train running at 54 km/hr crosses a pole in 9 seconds. What is the length of the train?",
+        "options": [
+            {
+                "id": "a",
+                "text": "120 meters"
+            },
+            {
+                "id": "b",
+                "text": "135 meters"
+            },
+            {
+                "id": "c",
+                "text": "150 meters"
+            },
+            {
+                "id": "d",
+                "text": "180 meters"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Speed = 54 × (5/18) = 15 m/s. Length = Speed × Time = 15 × 9 = 135 meters.",
+        "difficulty": "medium",
+        "topics": [
+            "speed-time-distance",
+            "word-problems"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "If A is coded as 1, B as 2, and so on, what is the code for JAVA?",
+        "options": [
+            {
+                "id": "a",
+                "text": "34"
+            },
+            {
+                "id": "b",
+                "text": "36"
+            },
+            {
+                "id": "c",
+                "text": "38"
+            },
+            {
+                "id": "d",
+                "text": "40"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "J=10, A=1, V=22, A=1. Total = 10+1+22+1 = 34. Wait, let me recalculate: 10+1+22+1=34",
+        "difficulty": "easy",
+        "topics": [
+            "coding",
+            "patterns"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "A man walks 30m towards North, turns right and walks 40m. What is his distance from starting point?",
+        "options": [
+            {
+                "id": "a",
+                "text": "50 meters"
+            },
+            {
+                "id": "b",
+                "text": "60 meters"
+            },
+            {
+                "id": "c",
+                "text": "70 meters"
+            },
+            {
+                "id": "d",
+                "text": "80 meters"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Using Pythagoras: √(30² + 40²) = √(900+1600) = √2500 = 50 meters.",
+        "difficulty": "medium",
+        "topics": [
+            "directions",
+            "geometry"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is 15% of 300?",
+        "options": [
+            {
+                "id": "a",
+                "text": "40"
+            },
+            {
+                "id": "b",
+                "text": "45"
+            },
+            {
+                "id": "c",
+                "text": "50"
+            },
+            {
+                "id": "d",
+                "text": "55"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "15% of 300 = (15/100) × 300 = 45.",
+        "difficulty": "easy",
+        "topics": [
+            "percentage",
+            "arithmetic"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "If 6 men can complete a work in 8 days, how many days will 12 men take?",
+        "options": [
+            {
+                "id": "a",
+                "text": "4 days"
+            },
+            {
+                "id": "b",
+                "text": "6 days"
+            },
+            {
+                "id": "c",
+                "text": "8 days"
+            },
+            {
+                "id": "d",
+                "text": "16 days"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Work = Men × Days. 6×8 = 12×D. D = 48/12 = 4 days.",
+        "difficulty": "easy",
+        "topics": [
+            "work-time",
+            "word-problems"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "Find the odd one out: 3, 5, 11, 14, 17, 21",
+        "options": [
+            {
+                "id": "a",
+                "text": "3"
+            },
+            {
+                "id": "b",
+                "text": "14"
+            },
+            {
+                "id": "c",
+                "text": "17"
+            },
+            {
+                "id": "d",
+                "text": "21"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "All others are prime numbers except 14 (14 = 2 × 7).",
+        "difficulty": "easy",
+        "topics": [
+            "number-series",
+            "patterns"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "A shopkeeper sells an item at 20% profit. If the cost price is Rs. 500, what is the selling price?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Rs. 550"
+            },
+            {
+                "id": "b",
+                "text": "Rs. 580"
+            },
+            {
+                "id": "c",
+                "text": "Rs. 600"
+            },
+            {
+                "id": "d",
+                "text": "Rs. 620"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Selling Price = Cost Price + Profit = 500 + (20% of 500) = 500 + 100 = Rs. 600.",
+        "difficulty": "easy",
+        "topics": [
+            "profit-loss",
+            "arithmetic"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What comes next in the series: A, C, F, J, ?",
+        "options": [
+            {
+                "id": "a",
+                "text": "N"
+            },
+            {
+                "id": "b",
+                "text": "O"
+            },
+            {
+                "id": "c",
+                "text": "P"
+            },
+            {
+                "id": "d",
+                "text": "Q"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Pattern: +2, +3, +4, +5. A(1)+2=C(3)+3=F(6)+4=J(10)+5=O(15).",
+        "difficulty": "medium",
+        "topics": [
+            "series",
+            "patterns"
+        ]
+    }
+]

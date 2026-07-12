@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "What is the capital of France?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Paris"
+      },
+      {
+        "id": "b",
+        "text": "London"
+      },
+      {
+        "id": "c",
+        "text": "Berlin"
+      },
+      {
+        "id": "d",
+        "text": "Madrid"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Paris has been the capital of France since 987 AD and is known as the 'City of Light'."
+  },
+  {
+    "id": 2,
+    "question": "Which planet is known as the Red Planet?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Venus"
+      },
+      {
+        "id": "b",
+        "text": "Mars"
+      },
+      {
+        "id": "c",
+        "text": "Jupiter"
+      },
+      {
+        "id": "d",
+        "text": "Saturn"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Mars appears red due to iron oxide (rust) on its surface, giving it a distinctive reddish appearance."
+  },
+  {
+    "id": 3,
+    "question": "What is the largest ocean on Earth?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Atlantic Ocean"
+      },
+      {
+        "id": "b",
+        "text": "Indian Ocean"
+      },
+      {
+        "id": "c",
+        "text": "Arctic Ocean"
+      },
+      {
+        "id": "d",
+        "text": "Pacific Ocean"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The Pacific Ocean covers approximately 165 million square kilometers, making it larger than all of Earth's land area combined."
+  },
+  {
+    "id": 4,
+    "question": "Who painted the Mona Lisa?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Vincent van Gogh"
+      },
+      {
+        "id": "b",
+        "text": "Leonardo da Vinci"
+      },
+      {
+        "id": "c",
+        "text": "Pablo Picasso"
+      },
+      {
+        "id": "d",
+        "text": "Michelangelo"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Leonardo da Vinci painted the Mona Lisa between 1503 and 1519. It's now displayed in the Louvre Museum in Paris."
+  },
+  {
+    "id": 5,
+    "question": "What is the speed of light?",
+    "options": [
+      {
+        "id": "a",
+        "text": "300,000 km/s"
+      },
+      {
+        "id": "b",
+        "text": "150,000 km/s"
+      },
+      {
+        "id": "c",
+        "text": "450,000 km/s"
+      },
+      {
+        "id": "d",
+        "text": "600,000 km/s"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Light travels at approximately 299,792,458 meters per second (about 300,000 km/s) in a vacuum, which is the fastest speed possible in the universe."
+  }
+]

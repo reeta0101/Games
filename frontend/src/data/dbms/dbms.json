@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "What does SQL stand for?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Structured Query Language"
+            },
+            {
+                "id": "b",
+                "text": "Simple Query Language"
+            },
+            {
+                "id": "c",
+                "text": "Standard Query Language"
+            },
+            {
+                "id": "d",
+                "text": "Sequential Query Language"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "SQL stands for Structured Query Language, used to manage relational databases.",
+        "difficulty": "easy",
+        "topics": [
+            "sql",
+            "basics"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Which normal form eliminates transitive dependency?",
+        "options": [
+            {
+                "id": "a",
+                "text": "1NF"
+            },
+            {
+                "id": "b",
+                "text": "2NF"
+            },
+            {
+                "id": "c",
+                "text": "3NF"
+            },
+            {
+                "id": "d",
+                "text": "BCNF"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Third Normal Form (3NF) eliminates transitive dependencies on the primary key.",
+        "difficulty": "medium",
+        "topics": [
+            "normalization",
+            "3nf"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is a primary key?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A key that can have null values"
+            },
+            {
+                "id": "b",
+                "text": "A unique identifier for each record"
+            },
+            {
+                "id": "c",
+                "text": "A foreign key reference"
+            },
+            {
+                "id": "d",
+                "text": "An index on a column"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A primary key uniquely identifies each record in a table and cannot be null.",
+        "difficulty": "easy",
+        "topics": [
+            "keys",
+            "basics"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Which JOIN returns all rows when there is a match in either table?",
+        "options": [
+            {
+                "id": "a",
+                "text": "INNER JOIN"
+            },
+            {
+                "id": "b",
+                "text": "LEFT JOIN"
+            },
+            {
+                "id": "c",
+                "text": "RIGHT JOIN"
+            },
+            {
+                "id": "d",
+                "text": "FULL OUTER JOIN"
+            }
+        ],
+        "correctOptionId": "d",
+        "explanation": "FULL OUTER JOIN returns all rows from both tables, matching where possible.",
+        "difficulty": "medium",
+        "topics": [
+            "joins",
+            "sql"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "What is ACID in database transactions?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A programming language"
+            },
+            {
+                "id": "b",
+                "text": "Atomicity, Consistency, Isolation, Durability"
+            },
+            {
+                "id": "c",
+                "text": "A type of database"
+            },
+            {
+                "id": "d",
+                "text": "A query optimization technique"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "ACID properties ensure reliable database transactions: Atomicity, Consistency, Isolation, Durability.",
+        "difficulty": "medium",
+        "topics": [
+            "transactions",
+            "acid"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "Which command is used to remove a table from the database?",
+        "options": [
+            {
+                "id": "a",
+                "text": "DELETE TABLE"
+            },
+            {
+                "id": "b",
+                "text": "REMOVE TABLE"
+            },
+            {
+                "id": "c",
+                "text": "DROP TABLE"
+            },
+            {
+                "id": "d",
+                "text": "TRUNCATE TABLE"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "DROP TABLE removes the entire table structure and data from the database.",
+        "difficulty": "easy",
+        "topics": [
+            "ddl",
+            "sql"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "What is a deadlock in DBMS?",
+        "options": [
+            {
+                "id": "a",
+                "text": "When database crashes"
+            },
+            {
+                "id": "b",
+                "text": "When two transactions wait for each other indefinitely"
+            },
+            {
+                "id": "c",
+                "text": "When query takes too long"
+            },
+            {
+                "id": "d",
+                "text": "When table is locked"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Deadlock occurs when two or more transactions are waiting for each other to release locks.",
+        "difficulty": "hard",
+        "topics": [
+            "concurrency",
+            "transactions"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "Which clause is used to filter groups in SQL?",
+        "options": [
+            {
+                "id": "a",
+                "text": "WHERE"
+            },
+            {
+                "id": "b",
+                "text": "HAVING"
+            },
+            {
+                "id": "c",
+                "text": "GROUP BY"
+            },
+            {
+                "id": "d",
+                "text": "ORDER BY"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "HAVING clause filters groups after GROUP BY, while WHERE filters rows before grouping.",
+        "difficulty": "medium",
+        "topics": [
+            "sql",
+            "aggregation"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is an index in a database?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A backup of data"
+            },
+            {
+                "id": "b",
+                "text": "A data structure to speed up queries"
+            },
+            {
+                "id": "c",
+                "text": "A type of constraint"
+            },
+            {
+                "id": "d",
+                "text": "A foreign key"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "An index is a data structure that improves the speed of data retrieval operations.",
+        "difficulty": "easy",
+        "topics": [
+            "indexing",
+            "performance"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is the difference between DELETE and TRUNCATE?",
+        "options": [
+            {
+                "id": "a",
+                "text": "No difference"
+            },
+            {
+                "id": "b",
+                "text": "DELETE can have WHERE, TRUNCATE removes all rows"
+            },
+            {
+                "id": "c",
+                "text": "TRUNCATE is slower"
+            },
+            {
+                "id": "d",
+                "text": "DELETE removes table structure"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "DELETE can selectively remove rows with WHERE; TRUNCATE removes all rows and is faster but cannot be rolled back.",
+        "difficulty": "medium",
+        "topics": [
+            "dml",
+            "sql"
+        ]
+    }
+]

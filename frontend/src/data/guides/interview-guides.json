@@ -1,0 +1,191 @@
+[
+    {
+        "id": "tcs",
+        "company": "TCS (Tata Consultancy Services)",
+        "icon": "🏢",
+        "overview": "TCS is one of India's largest IT services companies. The interview process typically involves aptitude tests, technical interviews, and HR rounds.",
+        "rounds": [
+            {
+                "name": "TCS NQT (National Qualifier Test)",
+                "description": "Online aptitude test covering verbal, quantitative, and programming ability",
+                "tips": [
+                    "Practice verbal ability - synonyms, antonyms, reading comprehension",
+                    "Focus on quantitative aptitude - percentages, ratios, time & work",
+                    "Programming section tests logic and basic coding"
+                ]
+            },
+            {
+                "name": "Technical Interview",
+                "description": "Tests core CS fundamentals and project knowledge",
+                "tips": [
+                    "Be thorough with OOPS concepts",
+                    "Know DBMS basics - normalization, SQL queries",
+                    "Prepare your projects well - be ready to explain code",
+                    "Basic data structures and algorithms"
+                ]
+            },
+            {
+                "name": "HR Interview",
+                "description": "Assesses communication, attitude, and cultural fit",
+                "tips": [
+                    "Be confident and maintain eye contact",
+                    "Research TCS values and recent news",
+                    "Prepare for 'Tell me about yourself' and 'Why TCS?'",
+                    "Show willingness to relocate and work in any domain"
+                ]
+            }
+        ],
+        "commonQuestions": [
+            "Tell me about yourself",
+            "Why TCS?",
+            "Explain OOPS concepts with examples",
+            "What is normalization in DBMS?",
+            "Are you willing to relocate?"
+        ]
+    },
+    {
+        "id": "infosys",
+        "company": "Infosys",
+        "icon": "🌐",
+        "overview": "Infosys conducts a multi-stage selection process including online tests, technical interviews, and HR rounds. They emphasize logical thinking and communication skills.",
+        "rounds": [
+            {
+                "name": "InfyTQ / Online Assessment",
+                "description": "Tests aptitude, logical reasoning, and programming skills",
+                "tips": [
+                    "Practice puzzle-solving and logical reasoning",
+                    "Strong focus on programming fundamentals",
+                    "Time management is crucial - questions are timed"
+                ]
+            },
+            {
+                "name": "Technical Interview",
+                "description": "Deep dive into technical skills and projects",
+                "tips": [
+                    "Know at least one programming language thoroughly",
+                    "Be prepared to write code on paper/whiteboard",
+                    "Understand your projects end-to-end",
+                    "DBMS and networking basics are commonly asked"
+                ]
+            },
+            {
+                "name": "HR Interview",
+                "description": "Evaluates soft skills and company fit",
+                "tips": [
+                    "Research Infosys's recent projects and values",
+                    "Prepare behavioral questions using STAR method",
+                    "Show enthusiasm for learning and growth",
+                    "Be honest about your strengths and weaknesses"
+                ]
+            }
+        ],
+        "commonQuestions": [
+            "Why do you want to join Infosys?",
+            "Explain your final year project",
+            "What is inheritance? Types?",
+            "Difference between C and Java",
+            "Where do you see yourself in 5 years?"
+        ]
+    },
+    {
+        "id": "wipro",
+        "company": "Wipro",
+        "icon": "🔷",
+        "overview": "Wipro's recruitment process includes online tests, technical interviews, and HR rounds. They value adaptability and problem-solving skills.",
+        "rounds": [
+            {
+                "name": "Wipro NLTH (National Level Talent Hunt)",
+                "description": "Online test with aptitude, logical reasoning, and written communication",
+                "tips": [
+                    "Essay writing is important - practice clear, concise writing",
+                    "Quantitative section is moderate difficulty",
+                    "Logical reasoning needs practice"
+                ]
+            },
+            {
+                "name": "Technical Interview",
+                "description": "Tests programming skills and CS fundamentals",
+                "tips": [
+                    "Focus on data structures and algorithms",
+                    "Know OOPS concepts with real-world examples",
+                    "Prepare to explain your resume projects in detail",
+                    "Basic OS concepts like process, thread, memory"
+                ]
+            },
+            {
+                "name": "HR Interview",
+                "description": "Assesses personality and career goals",
+                "tips": [
+                    "Know Wipro's Spirit of values",
+                    "Be clear about your career aspirations",
+                    "Show flexibility for roles and locations",
+                    "Demonstrate good communication skills"
+                ]
+            }
+        ],
+        "commonQuestions": [
+            "Tell me about yourself",
+            "What is polymorphism?",
+            "Explain your project architecture",
+            "What are your salary expectations?",
+            "Why should we hire you?"
+        ]
+    },
+    {
+        "id": "amazon",
+        "company": "Amazon",
+        "icon": "📦",
+        "overview": "Amazon has a rigorous interview process focused on Leadership Principles and technical excellence. Expect multiple rounds of behavioral and coding interviews.",
+        "rounds": [
+            {
+                "name": "Online Assessment (OA)",
+                "description": "2-3 coding problems + work simulation",
+                "tips": [
+                    "Practice LeetCode medium/hard problems",
+                    "Focus on arrays, strings, trees, graphs, DP",
+                    "Work simulation tests Leadership Principles",
+                    "Time yourself - usually 90-120 minutes"
+                ]
+            },
+            {
+                "name": "Phone Screen",
+                "description": "45-60 min coding interview with LP questions",
+                "tips": [
+                    "Think out loud while solving problems",
+                    "Clarify requirements before coding",
+                    "Practice explaining your approach clearly",
+                    "Prepare 2-3 STAR stories for LP questions"
+                ]
+            },
+            {
+                "name": "Onsite/Virtual Loop",
+                "description": "4-5 rounds of coding + system design + LP",
+                "tips": [
+                    "Each round tests different LPs - prepare examples",
+                    "System design: practice designing scalable systems",
+                    "Coding: focus on optimal solutions with clean code",
+                    "Bar Raiser round is crucial - be your authentic self"
+                ]
+            }
+        ],
+        "commonQuestions": [
+            "Tell me about a time you disagreed with your manager",
+            "Describe a situation where you had to make a decision with incomplete data",
+            "Design a URL shortener",
+            "Implement LRU cache",
+            "How would you scale a system to handle 1M requests/second?"
+        ],
+        "leadershipPrinciples": [
+            "Customer Obsession",
+            "Ownership",
+            "Invent and Simplify",
+            "Bias for Action",
+            "Learn and Be Curious",
+            "Hire and Develop the Best",
+            "Insist on the Highest Standards",
+            "Think Big",
+            "Earn Trust",
+            "Deliver Results"
+        ]
+    }
+]

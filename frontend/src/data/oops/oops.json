@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "What are the four pillars of OOP?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Variables, Functions, Classes, Objects"
+            },
+            {
+                "id": "b",
+                "text": "Encapsulation, Abstraction, Inheritance, Polymorphism"
+            },
+            {
+                "id": "c",
+                "text": "Arrays, Loops, Conditions, Methods"
+            },
+            {
+                "id": "d",
+                "text": "Public, Private, Protected, Static"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "The four pillars of OOP are Encapsulation, Abstraction, Inheritance, and Polymorphism.",
+        "difficulty": "easy",
+        "topics": [
+            "basics",
+            "pillars"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "What is encapsulation?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Hiding implementation details and bundling data with methods"
+            },
+            {
+                "id": "b",
+                "text": "Creating multiple forms of a method"
+            },
+            {
+                "id": "c",
+                "text": "Inheriting from parent class"
+            },
+            {
+                "id": "d",
+                "text": "Creating objects"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Encapsulation bundles data and methods together while hiding internal implementation details.",
+        "difficulty": "easy",
+        "topics": [
+            "encapsulation",
+            "pillars"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is method overloading?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Methods with same name but different signatures in same class"
+            },
+            {
+                "id": "b",
+                "text": "Overriding parent class method"
+            },
+            {
+                "id": "c",
+                "text": "Creating abstract methods"
+            },
+            {
+                "id": "d",
+                "text": "Static methods"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Method overloading allows multiple methods with same name but different parameters in the same class.",
+        "difficulty": "easy",
+        "topics": [
+            "polymorphism",
+            "methods"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "What is the difference between abstract class and interface?",
+        "options": [
+            {
+                "id": "a",
+                "text": "No difference"
+            },
+            {
+                "id": "b",
+                "text": "Abstract class can have implementation, interface cannot (before Java 8)"
+            },
+            {
+                "id": "c",
+                "text": "Interface is faster"
+            },
+            {
+                "id": "d",
+                "text": "Abstract class is deprecated"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Abstract classes can have partial implementation; interfaces (traditionally) define only contracts.",
+        "difficulty": "medium",
+        "topics": [
+            "abstraction",
+            "interface"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "What is inheritance?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Creating new objects"
+            },
+            {
+                "id": "b",
+                "text": "A class acquiring properties of another class"
+            },
+            {
+                "id": "c",
+                "text": "Hiding data"
+            },
+            {
+                "id": "d",
+                "text": "Creating interfaces"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Inheritance allows a class to inherit properties and methods from a parent class.",
+        "difficulty": "easy",
+        "topics": [
+            "inheritance",
+            "pillars"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is polymorphism?",
+        "options": [
+            {
+                "id": "a",
+                "text": "One interface, multiple implementations"
+            },
+            {
+                "id": "b",
+                "text": "Hiding data"
+            },
+            {
+                "id": "c",
+                "text": "Creating constructors"
+            },
+            {
+                "id": "d",
+                "text": "Memory management"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Polymorphism allows objects to take multiple forms - same interface, different implementations.",
+        "difficulty": "easy",
+        "topics": [
+            "polymorphism",
+            "pillars"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "What is a constructor?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A method that destroys objects"
+            },
+            {
+                "id": "b",
+                "text": "A special method called when object is created"
+            },
+            {
+                "id": "c",
+                "text": "A static method"
+            },
+            {
+                "id": "d",
+                "text": "A private method"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A constructor is a special method automatically called when an object is instantiated.",
+        "difficulty": "easy",
+        "topics": [
+            "constructors",
+            "basics"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "What is the SOLID principle S stand for?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Simple Responsibility"
+            },
+            {
+                "id": "b",
+                "text": "Single Responsibility"
+            },
+            {
+                "id": "c",
+                "text": "Static Responsibility"
+            },
+            {
+                "id": "d",
+                "text": "Structured Responsibility"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "S in SOLID stands for Single Responsibility Principle - a class should have only one reason to change.",
+        "difficulty": "medium",
+        "topics": [
+            "solid",
+            "design-principles"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is method overriding?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Same method name, different parameters"
+            },
+            {
+                "id": "b",
+                "text": "Redefining parent class method in child class"
+            },
+            {
+                "id": "c",
+                "text": "Creating static methods"
+            },
+            {
+                "id": "d",
+                "text": "Creating constructors"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Method overriding allows a child class to provide specific implementation of a parent class method.",
+        "difficulty": "easy",
+        "topics": [
+            "polymorphism",
+            "inheritance"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is the 'this' keyword used for?",
+        "options": [
+            {
+                "id": "a",
+                "text": "To create new object"
+            },
+            {
+                "id": "b",
+                "text": "To refer to current instance of the class"
+            },
+            {
+                "id": "c",
+                "text": "To inherit from parent"
+            },
+            {
+                "id": "d",
+                "text": "To create static methods"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "The 'this' keyword refers to the current instance of the class within methods.",
+        "difficulty": "easy",
+        "topics": [
+            "basics",
+            "keywords"
+        ]
+    }
+]

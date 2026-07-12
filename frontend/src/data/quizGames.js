@@ -2894,4 +2894,4 @@ Object.assign(quizGames, {
       };
     },
   },
-};
+});

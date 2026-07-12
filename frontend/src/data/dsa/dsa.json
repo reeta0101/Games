@@ -1,0 +1,439 @@
+[
+    {
+        "id": 1,
+        "question": "What is the time complexity of binary search?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(n)"
+            },
+            {
+                "id": "b",
+                "text": "O(log n)"
+            },
+            {
+                "id": "c",
+                "text": "O(n²)"
+            },
+            {
+                "id": "d",
+                "text": "O(1)"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Binary search divides the search interval in half each time, resulting in O(log n) complexity.",
+        "codeSnippet": "function binarySearch(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left <= right) {\n    let mid = Math.floor((left + right) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}",
+        "difficulty": "easy",
+        "topics": [
+            "searching",
+            "time-complexity"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Which data structure uses LIFO (Last In First Out) principle?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Queue"
+            },
+            {
+                "id": "b",
+                "text": "Stack"
+            },
+            {
+                "id": "c",
+                "text": "Array"
+            },
+            {
+                "id": "d",
+                "text": "Linked List"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Stack follows LIFO - the last element inserted is the first one to be removed.",
+        "difficulty": "easy",
+        "topics": [
+            "stack",
+            "basics"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is the worst-case time complexity of QuickSort?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(n log n)"
+            },
+            {
+                "id": "b",
+                "text": "O(n)"
+            },
+            {
+                "id": "c",
+                "text": "O(n²)"
+            },
+            {
+                "id": "d",
+                "text": "O(log n)"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "QuickSort has O(n²) worst case when the pivot is always the smallest or largest element.",
+        "difficulty": "medium",
+        "topics": [
+            "sorting",
+            "time-complexity"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "In a max heap, the value of each node is:",
+        "options": [
+            {
+                "id": "a",
+                "text": "Less than its children"
+            },
+            {
+                "id": "b",
+                "text": "Greater than or equal to its children"
+            },
+            {
+                "id": "c",
+                "text": "Equal to its children"
+            },
+            {
+                "id": "d",
+                "text": "Random"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "In a max heap, every parent node has a value greater than or equal to its children.",
+        "difficulty": "easy",
+        "topics": [
+            "heap",
+            "trees"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Which algorithm is used for finding the shortest path in a weighted graph?",
+        "options": [
+            {
+                "id": "a",
+                "text": "DFS"
+            },
+            {
+                "id": "b",
+                "text": "BFS"
+            },
+            {
+                "id": "c",
+                "text": "Dijkstra's Algorithm"
+            },
+            {
+                "id": "d",
+                "text": "Bubble Sort"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Dijkstra's algorithm finds the shortest path from a source to all vertices in a weighted graph.",
+        "difficulty": "medium",
+        "topics": [
+            "graphs",
+            "shortest-path"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is the time complexity of accessing an element in an array by index?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(1)"
+            },
+            {
+                "id": "b",
+                "text": "O(n)"
+            },
+            {
+                "id": "c",
+                "text": "O(log n)"
+            },
+            {
+                "id": "d",
+                "text": "O(n²)"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Arrays provide constant-time O(1) access to elements using their index.",
+        "difficulty": "easy",
+        "topics": [
+            "arrays",
+            "time-complexity"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "Which traversal of a BST gives elements in sorted order?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Preorder"
+            },
+            {
+                "id": "b",
+                "text": "Postorder"
+            },
+            {
+                "id": "c",
+                "text": "Inorder"
+            },
+            {
+                "id": "d",
+                "text": "Level order"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Inorder traversal of a Binary Search Tree visits nodes in ascending sorted order.",
+        "difficulty": "easy",
+        "topics": [
+            "trees",
+            "bst",
+            "traversal"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "What is the space complexity of merge sort?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(1)"
+            },
+            {
+                "id": "b",
+                "text": "O(n)"
+            },
+            {
+                "id": "c",
+                "text": "O(log n)"
+            },
+            {
+                "id": "d",
+                "text": "O(n log n)"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Merge sort requires O(n) auxiliary space for the temporary arrays during merging.",
+        "difficulty": "medium",
+        "topics": [
+            "sorting",
+            "space-complexity"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "Which data structure is best for implementing a priority queue?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Array"
+            },
+            {
+                "id": "b",
+                "text": "Linked List"
+            },
+            {
+                "id": "c",
+                "text": "Heap"
+            },
+            {
+                "id": "d",
+                "text": "Stack"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Heap provides efficient O(log n) insertion and O(1) access to the highest priority element.",
+        "difficulty": "medium",
+        "topics": [
+            "heap",
+            "queue"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is dynamic programming?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Programming at runtime"
+            },
+            {
+                "id": "b",
+                "text": "Breaking problems into overlapping subproblems"
+            },
+            {
+                "id": "c",
+                "text": "Object-oriented programming"
+            },
+            {
+                "id": "d",
+                "text": "Parallel programming"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Dynamic Programming solves complex problems by breaking them into overlapping subproblems and storing results.",
+        "difficulty": "medium",
+        "topics": [
+            "dp",
+            "algorithms"
+        ]
+    },
+    {
+        "id": 11,
+        "question": "The time complexity of inserting at the beginning of a linked list is:",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(n)"
+            },
+            {
+                "id": "b",
+                "text": "O(1)"
+            },
+            {
+                "id": "c",
+                "text": "O(log n)"
+            },
+            {
+                "id": "d",
+                "text": "O(n²)"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Inserting at the head of a linked list only requires updating the head pointer - O(1).",
+        "difficulty": "easy",
+        "topics": [
+            "linked-list",
+            "time-complexity"
+        ]
+    },
+    {
+        "id": 12,
+        "question": "Which of the following is NOT a stable sorting algorithm?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Merge Sort"
+            },
+            {
+                "id": "b",
+                "text": "Bubble Sort"
+            },
+            {
+                "id": "c",
+                "text": "Quick Sort"
+            },
+            {
+                "id": "d",
+                "text": "Insertion Sort"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Quick Sort is not stable as equal elements may change their relative order during partitioning.",
+        "difficulty": "medium",
+        "topics": [
+            "sorting",
+            "algorithms"
+        ]
+    },
+    {
+        "id": 13,
+        "question": "What is the height of a balanced binary tree with n nodes?",
+        "options": [
+            {
+                "id": "a",
+                "text": "O(n)"
+            },
+            {
+                "id": "b",
+                "text": "O(log n)"
+            },
+            {
+                "id": "c",
+                "text": "O(1)"
+            },
+            {
+                "id": "d",
+                "text": "O(n²)"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A balanced binary tree has height O(log n) as each level roughly doubles the number of nodes.",
+        "difficulty": "easy",
+        "topics": [
+            "trees",
+            "balanced-trees"
+        ]
+    },
+    {
+        "id": 14,
+        "question": "Which algorithm technique does the Knapsack problem typically use?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Greedy"
+            },
+            {
+                "id": "b",
+                "text": "Dynamic Programming"
+            },
+            {
+                "id": "c",
+                "text": "Divide and Conquer"
+            },
+            {
+                "id": "d",
+                "text": "Backtracking"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "The 0/1 Knapsack problem is solved optimally using Dynamic Programming.",
+        "difficulty": "hard",
+        "topics": [
+            "dp",
+            "algorithms"
+        ]
+    },
+    {
+        "id": 15,
+        "question": "What is a hash collision?",
+        "options": [
+            {
+                "id": "a",
+                "text": "When hash table is full"
+            },
+            {
+                "id": "b",
+                "text": "When two keys map to the same index"
+            },
+            {
+                "id": "c",
+                "text": "When hash function fails"
+            },
+            {
+                "id": "d",
+                "text": "When memory overflows"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A hash collision occurs when two different keys produce the same hash value/index.",
+        "difficulty": "easy",
+        "topics": [
+            "hashing",
+            "hash-table"
+        ]
+    }
+]

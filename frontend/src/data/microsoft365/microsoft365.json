@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "question": "______ is not among the eight principles followed by the Software Code of Ethics and Professional Practice.",
+    "options": [
+      { "id": "a", "text": "PRODUCT" },
+      { "id": "b", "text": "ENVIRONMENT" },
+      { "id": "c", "text": "PUBLIC" },
+      { "id": "d", "text": "PROFESSION" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The eight principles are: Public, Client & Employer, Product, Judgment, Management, Profession, Colleagues, Self. 'Environment' is not one of them."
+  },
+  {
+    "id": 2,
+    "question": "______ is a software development Life cycle model that is chosen if the development team has less experience on similar projects.",
+    "options": [
+      { "id": "a", "text": "Iterative Enhancement Model" },
+      { "id": "b", "text": "RAD" },
+      { "id": "c", "text": "Spiral" },
+      { "id": "d", "text": "Waterfall" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The Spiral model supports risk handling and is suitable when teams have limited experience."
+  },
+  {
+    "id": 3,
+    "question": "In which step of SDLC is actual programming of software code done?",
+    "options": [
+      { "id": "a", "text": "Development and Documentation" },
+      { "id": "b", "text": "Maintenance and Evaluation" },
+      { "id": "c", "text": "Design" },
+      { "id": "d", "text": "Analysis" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Coding takes place in the Development phase, where software is actually created."
+  },
+  {
+    "id": 4,
+    "question": "The incorrect activity among the following for configuration management of a software system is ______.",
+    "options": [
+      { "id": "a", "text": "Version management" },
+      { "id": "b", "text": "System management" },
+      { "id": "c", "text": "Change management" },
+      { "id": "d", "text": "Internship management" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Internship management is unrelated to software configuration management processes."
+  },
+  {
+    "id": 5,
+    "question": "RAD Model has:",
+    "options": [
+      { "id": "a", "text": "2 phases" },
+      { "id": "b", "text": "3 phases" },
+      { "id": "c", "text": "5 phases" },
+      { "id": "d", "text": "6 phases" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "RAD (Rapid Application Development) typically includes 5 phases including planning, user design, construction, etc."
+  },
+  {
+    "id": 6,
+    "question": "______ is the definition of objects in the database that leads directly to a standard approach for the creation of software documentation.",
+    "options": [
+      { "id": "a", "text": "Data/data integration" },
+      { "id": "b", "text": "Information sharing" },
+      { "id": "c", "text": "Document standardization" },
+      { "id": "d", "text": "Data integrity" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Data/data integration supports consistent documentation and software development standards."
+  },
+  {
+    "id": 7,
+    "question": "The incorrect activity among the following for configuration management of a software system is ______.",
+    "options": [
+      { "id": "a", "text": "Version management" },
+      { "id": "b", "text": "System management" },
+      { "id": "c", "text": "Change management" },
+      { "id": "d", "text": "Internship management" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Internship management has no relation to software configuration management."
+  },
+  {
+    "id": 8,
+    "question": "Structural complexity of a module is given as S(i) = f²(i). What does f symbolize here?",
+    "options": [
+      { "id": "a", "text": "\"fan check out\" of module i" },
+      { "id": "b", "text": "\"fan check in\" of module i" },
+      { "id": "c", "text": "\"fan in\" of module i" },
+      { "id": "d", "text": "\"fan out\" of module i" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Fan-out measures how many modules are called by a given module; used in structural complexity."
+  },
+  {
+    "id": 9,
+    "question": "Which feature in MS Office applications allows users to translate text into another language?",
+    "options": [
+      { "id": "a", "text": "Spell Check" },
+      { "id": "b", "text": "Translate" },
+      { "id": "c", "text": "Thesaurus" },
+      { "id": "d", "text": "Research" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The Translate tool uses language services to convert text into another language."
+  },
+  {
+    "id": 10,
+    "question": "What is the Excel formula for calculating percentage?",
+    "options": [
+      { "id": "a", "text": "=A1*100/B1" },
+      { "id": "b", "text": "=A1/(B1)" },
+      { "id": "c", "text": "=A1*B1" },
+      { "id": "d", "text": "=A1+B1" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Percentage = (Part/Whole) × 100, which matches =A1*100/B1."
+  },
+  {
+    "id": 11,
+    "question": "What does the Excel function =SUMIF(A1:A10,\">10\") do?",
+    "options": [
+      { "id": "a", "text": "Returns the average of values greater than 10 in A1:A10" },
+      { "id": "b", "text": "Adds all values in A1:A10" },
+      { "id": "c", "text": "Adds only values greater than 10 from A1:A10" },
+      { "id": "d", "text": "Returns the number of values greater than 10 in A1:A10" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "SUMIF adds only those values that meet the condition (>10)."
+  },
+  {
+    "id": 12,
+    "question": "In Excel, how do you reference a cell from another worksheet in the same workbook?",
+    "options": [
+      { "id": "a", "text": "=Sheet1(A1)" },
+      { "id": "b", "text": "=+A1(Sheet1)" },
+      { "id": "c", "text": "=Sheet1 A1" },
+      { "id": "d", "text": "=Sheet1!A1" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The syntax SheetName!CellReference (e.g., Sheet1!A1) is used to reference another sheet."
+  },
+  {
+    "id": 13,
+    "question": "What is the shortcut to insert a new row in Excel?",
+    "options": [
+      { "id": "a", "text": "Ctrl + Shift + Minus (-)" },
+      { "id": "b", "text": "Ctrl + Shift + Plus (+)" },
+      { "id": "c", "text": "Ctrl + Alt + Plus (+)" },
+      { "id": "d", "text": "Alt + Enter" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Ctrl + Shift + + inserts a new row or column."
+  },
+  {
+    "id": 14,
+    "question": "Where is the Slide Master located in PowerPoint?",
+    "options": [
+      { "id": "a", "text": "Under the 'Design' tab" },
+      { "id": "b", "text": "Under the 'View' tab" },
+      { "id": "c", "text": "Under the 'Insert' tab" },
+      { "id": "d", "text": "Under the 'Animations' tab" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Slide Master view is accessed through the View tab."
+  },
+  {
+    "id": 15,
+    "question": "What does the 'Slide Show' tab in PowerPoint allow you to do?",
+    "options": [
+      { "id": "a", "text": "Change slide layouts" },
+      { "id": "b", "text": "Edit text on slides" },
+      { "id": "c", "text": "Insert media files" },
+      { "id": "d", "text": "Start and control the presentation" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The Slide Show tab contains options to start, rehearse, and control presentations."
+  },
+  {
+    "id": 16,
+    "question": "How can you animate text so that it appears letter by letter in PowerPoint?",
+    "options": [
+      { "id": "a", "text": "Apply a 'Wipe' animation effect" },
+      { "id": "b", "text": "Use the 'Fly In' animation" },
+      { "id": "c", "text": "Use the 'Typewriter' animation effect" },
+      { "id": "d", "text": "Use the 'Appear' animation with a delay" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The Typewriter effect displays characters one at a time, simulating typing."
+  },
+  {
+    "id": 17,
+    "question": "What is the shortcut to ungroup shapes in PowerPoint?",
+    "options": [
+      { "id": "a", "text": "Ctrl + Shift + G" },
+      { "id": "b", "text": "Ctrl + G" },
+      { "id": "c", "text": "Alt + G" },
+      { "id": "d", "text": "Shift + G" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Ctrl + Shift + G ungroups objects; Ctrl + G groups them."
+  },
+  {
+    "id": 18,
+    "question": "What is the shortcut key for adding a new slide in PowerPoint?",
+    "options": [
+      { "id": "a", "text": "Ctrl + T" },
+      { "id": "b", "text": "Ctrl + N" },
+      { "id": "c", "text": "Ctrl + Shift + N" },
+      { "id": "d", "text": "Ctrl + M" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Ctrl + M inserts a new slide in PowerPoint."
+  },
+  {
+    "id": 19,
+    "question": "Which MS Office tool helps you sort and filter data in an Excel spreadsheet?",
+    "options": [
+      { "id": "a", "text": "Merge Cells" },
+      { "id": "b", "text": "Data tab" },
+      { "id": "c", "text": "Conditional Formatting" },
+      { "id": "d", "text": "Table Tools" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The Data tab contains Sort, Filter, and Data Tools."
+  },
+  {
+    "id": 20,
+    "question": "Which feature in MS Office allows you to automatically align shapes, pictures, and text in a document?",
+    "options": [
+      { "id": "a", "text": "Layout Options" },
+      { "id": "b", "text": "Text Wrapping" },
+      { "id": "c", "text": "Align Tools" },
+      { "id": "d", "text": "Insert Menu" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Align Tools allow consistent alignment of shapes and objects."
+  }
+]

@@ -1,0 +1,177 @@
+Create a comprehensive Static General Knowledge (GK) database for competitive exams (UPSC, SSC, Banking, Railways, CDS, NDA, State PSC, CAPF).
+
+Requirements:
+- Include ONLY finite, mostly permanent topics.
+- Avoid topics that require frequent updates (current office holders, ministers, governors, CEOs, etc.).
+- Organize each topic into a separate category.
+- Output should be structured, machine-readable, and suitable for importing into a quiz app.
+- Cover every important static GK topic with complete data.
+
+Include ALL of the following categories:
+
+GEOGRAPHY
+- Countries → Capitals
+- Countries → Currency
+- Countries → Official Language(s)
+- Countries → Continent
+- Countries → National Animal
+- Countries → National Bird
+- Countries → National Flower
+- Countries → National Sport
+- Country Nicknames
+- Continents → Countries
+- Oceans
+- Seas
+- Gulfs
+- Bays
+- Straits
+- Channels
+- Deserts
+- Islands
+- Peninsulas
+- Plateaus
+- Mountain Ranges
+- Highest Peaks → Country
+- Volcanoes → Country
+- Rivers → Origin
+- Rivers → Tributaries
+- Rivers → Mouth
+- Dams → River
+- Lakes → State/Country
+- Waterfalls → State/Country
+- National Parks → State
+- Tiger Reserves → State
+- Biosphere Reserves → State
+- Ramsar Sites → State
+- Wildlife Sanctuaries → State
+- Bird Sanctuaries → State
+- UNESCO World Heritage Sites (India)
+- UNESCO World Heritage Sites (World)
+- Indian Ports → State
+- Airports → City
+- Indian Railway Zones → Headquarters
+
+INDIAN POLITY
+- States → Capitals
+- Union Territories → Capitals
+- High Courts → Principal Seat
+- High Courts → States/UTs
+- Constitutional Articles
+- Constitutional Parts
+- Constitutional Schedules
+- Fundamental Rights
+- Fundamental Duties
+- Directive Principles
+- Constitutional Bodies
+- Statutory Bodies
+- Regulatory Bodies
+
+SCIENCE
+- Chemical Elements → Symbol
+- Chemical Elements → Atomic Number
+- Chemical Elements → Atomic Mass
+- Chemical Elements → Group
+- Chemical Elements → Period
+- Chemical Elements → Uses
+- Chemical Elements → Discoverer
+- Chemical Compounds → Formula
+- SI Units
+- SI Prefixes
+- Physical Constants
+- Scientific Instruments
+- Scientists → Discoveries
+- Inventions → Inventors
+- Diseases → Pathogen
+- Diseases → Vaccine
+- Diseases → Deficiency
+- Vitamins → Sources
+- Vitamins → Deficiency Diseases
+- Minerals → Sources
+- Human Hormones
+- Endocrine Glands
+- Human Bones
+- Blood Groups
+
+SPACE
+- Planets
+- Natural Satellites
+- Dwarf Planets
+- Constellations
+- Zodiac Signs
+- Galaxies
+- Space Agencies → Country
+
+HISTORY
+- Ancient Dynasties
+- Medieval Dynasties
+- Mughal Emperors
+- Governor Generals
+- Viceroys
+- Presidents of India
+- Vice Presidents of India
+- Prime Ministers of India
+- Freedom Fighters
+- Important Battles → Year
+- Important Acts
+- INC Sessions
+- Important Revolts
+
+ART & CULTURE
+- Classical Dances → State
+- Folk Dances → State
+- Classical Languages
+- Festivals → State
+- Fairs → State
+- Temples → State
+- Monuments → City
+- GI Tags → State
+- Handicrafts → State
+- Paintings → State
+
+ECONOMICS
+- Banks → Headquarters
+- Financial Institutions → Headquarters
+- Stock Exchanges → Country
+- Economic Terms
+
+SPORTS
+- Sports → Number of Players
+- Sports → Governing Body
+- Sports → Trophy
+- Grand Slams
+- Olympics Facts
+- Stadiums → City
+
+BOOKS & AUTHORS
+- Books → Authors
+- Autobiographies → Person
+- Famous Quotes → Person
+
+LANGUAGE
+- One Word Substitutions
+- Idioms
+- Proverbs
+- Foreign Words
+- Latin Phrases
+
+COMPUTER
+- Full Forms
+- Programming Languages → Creator
+- File Extensions
+- Internet Terms
+- Keyboard Shortcuts
+
+MISCELLANEOUS
+- National Symbols of India
+- Important Days
+- Awards → Field
+- Nobel Prize Categories
+- Bharat Ratna Awardees
+- Civilian Awards
+- Military Awards
+- Company Origin Countries
+- Famous Landmarks → Country
+- City Nicknames
+- Country Nicknames
+- Famous Personalities → Nicknames
+

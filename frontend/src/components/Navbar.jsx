@@ -5,7 +5,9 @@ import ChangePasswordModal from "./ChangePasswordModal";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/leaderboard", label: "Leaderboard" },
+  { to: "/quizzes", label: "Quizzes" },
+  { to: "/test-page", label: "Exam Mode" },
+  { to: "/leaderboard", label: "Leaderboard" }
 ];
 
 export default function Navbar({
@@ -56,25 +58,25 @@ export default function Navbar({
 
   return (
     <>
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-[#07101d]/90 backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-20 border-b border-white/5 bg-[#020617]/70 backdrop-blur-xl shadow-lg">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link
             to="/"
-            className="group inline-flex min-h-11 items-center gap-2.5 rounded-xl pr-2"
+            className="group inline-flex min-h-11 items-center gap-3 rounded-xl pr-2"
             aria-label="Study Arcade home"
           >
-            <span className="flex h-10 items-center rounded-xl border border-[#40e0f0]/30 bg-[#40e0f0]/10 px-3 text-xs font-black tracking-[0.32em] text-[#40e0f0] shadow-[0_0_20px_rgba(64,224,240,0.12)] transition-all duration-300 group-hover:border-[#40e0f0]/55 group-hover:shadow-[0_0_28px_rgba(64,224,240,0.22)]">
+            <span className="flex h-10 items-center rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/20 to-blue-500/10 px-3 text-xs font-black tracking-[0.32em] text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all duration-300 group-hover:border-cyan-400/60 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]">
               STUDY
             </span>
-            <span className="text-sm font-bold tracking-[0.14em] text-white/75 transition group-hover:text-white">
+            <span className="text-sm font-bold tracking-[0.14em] text-slate-300 transition group-hover:text-white drop-shadow-md">
               arcade
             </span>
           </Link>
 
           {/* Desktop nav links */}
           <nav
-            className="hidden sm:flex items-center gap-2 rounded-2xl border border-white/8 bg-white/[0.03] p-1"
+            className="hidden sm:flex items-center gap-1 rounded-2xl border border-white/5 bg-slate-900/50 p-1 backdrop-blur-md shadow-inner"
             aria-label="Primary navigation"
           >
             {NAV_LINKS.map((item) => {
@@ -84,10 +86,10 @@ export default function Navbar({
                   key={item.to}
                   to={item.to}
                   aria-current={active ? "page" : undefined}
-                  className={`touch-target inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200 ${
+                  className={`touch-target inline-flex items-center justify-center rounded-xl px-5 py-2 text-sm font-medium transition-all duration-300 ${
                     active
-                      ? "bg-white/12 text-white shadow-[0_12px_30px_rgba(2,6,23,0.22)]"
-                      : "text-slate-400 hover:bg-white/7 hover:text-white"
+                      ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white shadow-lg border border-white/10"
+                      : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
                   }`}
                 >
                   {item.label}

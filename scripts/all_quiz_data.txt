@@ -1,0 +1,1603 @@
+STUDY ARCADE - ALL QUIZ DATA
+==============================
+
+
+========== Category: ANIMALKINGDOM ==========
+
+1. animal: Lion | phylum: Chordata | class: Mammalia
+2. animal: Tiger | phylum: Chordata | class: Mammalia
+3. animal: Elephant | phylum: Chordata | class: Mammalia
+4. animal: Blue Whale | phylum: Chordata | class: Mammalia
+5. animal: Dolphin | phylum: Chordata | class: Mammalia
+6. animal: Bat | phylum: Chordata | class: Mammalia
+7. animal: Kangaroo | phylum: Chordata | class: Mammalia
+8. animal: Platypus | phylum: Chordata | class: Mammalia
+9. animal: Human | phylum: Chordata | class: Mammalia
+10. animal: Giraffe | phylum: Chordata | class: Mammalia
+11. animal: Eagle | phylum: Chordata | class: Aves
+12. animal: Penguin | phylum: Chordata | class: Aves
+13. animal: Ostrich | phylum: Chordata | class: Aves
+14. animal: Peacock | phylum: Chordata | class: Aves
+15. animal: Parrot | phylum: Chordata | class: Aves
+16. animal: Sparrow | phylum: Chordata | class: Aves
+17. animal: Crow | phylum: Chordata | class: Aves
+18. animal: Owl | phylum: Chordata | class: Aves
+19. animal: Kingfisher | phylum: Chordata | class: Aves
+20. animal: Flamingo | phylum: Chordata | class: Aves
+21. animal: Crocodile | phylum: Chordata | class: Reptilia
+22. animal: Snake (Cobra) | phylum: Chordata | class: Reptilia
+23. animal: Lizard | phylum: Chordata | class: Reptilia
+24. animal: Turtle | phylum: Chordata | class: Reptilia
+25. animal: Chameleon | phylum: Chordata | class: Reptilia
+26. animal: Komodo Dragon | phylum: Chordata | class: Reptilia
+27. animal: Frog | phylum: Chordata | class: Amphibia
+28. animal: Toad | phylum: Chordata | class: Amphibia
+29. animal: Salamander | phylum: Chordata | class: Amphibia
+30. animal: Newt | phylum: Chordata | class: Amphibia
+31. animal: Shark | phylum: Chordata | class: Chondrichthyes
+32. animal: Ray (Stingray) | phylum: Chordata | class: Chondrichthyes
+33. animal: Goldfish | phylum: Chordata | class: Osteichthyes
+34. animal: Salmon | phylum: Chordata | class: Osteichthyes
+35. animal: Tuna | phylum: Chordata | class: Osteichthyes
+36. animal: Clownfish | phylum: Chordata | class: Osteichthyes
+37. animal: Seahorse | phylum: Chordata | class: Osteichthyes
+38. animal: Butterfly | phylum: Arthropoda | class: Insecta
+39. animal: Honeybee | phylum: Arthropoda | class: Insecta
+40. animal: Ant | phylum: Arthropoda | class: Insecta
+41. animal: Mosquito | phylum: Arthropoda | class: Insecta
+42. animal: Housefly | phylum: Arthropoda | class: Insecta
+43. animal: Grasshopper | phylum: Arthropoda | class: Insecta
+44. animal: Dragonfly | phylum: Arthropoda | class: Insecta
+45. animal: Ladybug | phylum: Arthropoda | class: Insecta
+46. animal: Spider | phylum: Arthropoda | class: Arachnida
+47. animal: Scorpion | phylum: Arthropoda | class: Arachnida
+48. animal: Crab | phylum: Arthropoda | class: Crustacea
+49. animal: Lobster | phylum: Arthropoda | class: Crustacea
+50. animal: Shrimp | phylum: Arthropoda | class: Crustacea
+51. animal: Octopus | phylum: Mollusca | class: Cephalopoda
+52. animal: Squid | phylum: Mollusca | class: Cephalopoda
+53. animal: Snail | phylum: Mollusca | class: Gastropoda
+54. animal: Oyster | phylum: Mollusca | class: Bivalvia
+55. animal: Clam | phylum: Mollusca | class: Bivalvia
+56. animal: Starfish | phylum: Echinodermata | class: Asteroidea
+57. animal: Sea Urchin | phylum: Echinodermata | class: Echinoidea
+58. animal: Sea Cucumber | phylum: Echinodermata | class: Holothuroidea
+59. animal: Earthworm | phylum: Annelida | class: Clitellata
+60. animal: Leech | phylum: Annelida | class: Clitellata
+61. animal: Jellyfish | phylum: Cnidaria | class: Scyphozoa
+62. animal: Coral | phylum: Cnidaria | class: Anthozoa
+63. animal: Sea Anemone | phylum: Cnidaria | class: Anthozoa
+64. animal: Sponge | phylum: Porifera | class: Demospongiae
+65. animal: Tapeworm | phylum: Platyhelminthes | class: Cestoda
+66. animal: Roundworm | phylum: Nematoda | class: Chromadorea
+
+
+========== Category: CHEMICALCOMPOUNDS ==========
+
+1. name: Water | formula: H₂O
+2. name: Carbon Dioxide | formula: CO₂
+3. name: Sodium Chloride | formula: NaCl
+4. name: Ammonia | formula: NH₃
+5. name: Methane | formula: CH₄
+6. name: Hydrochloric Acid | formula: HCl
+7. name: Sulfuric Acid | formula: H₂SO₄
+8. name: Nitric Acid | formula: HNO₃
+9. name: Sodium Hydroxide | formula: NaOH
+10. name: Calcium Carbonate | formula: CaCO₃
+11. name: Glucose | formula: C₆H₁₂O₆
+12. name: Sucrose | formula: C₁₂H₂₂O₁₁
+13. name: Acetic Acid | formula: CH₃COOH
+14. name: Ethanol | formula: C₂H₅OH
+15. name: Ozone | formula: O₃
+16. name: Hydrogen Peroxide | formula: H₂O₂
+17. name: Carbon Monoxide | formula: CO
+18. name: Sodium Bicarbonate | formula: NaHCO₃
+19. name: Potassium Hydroxide | formula: KOH
+20. name: Magnesium Oxide | formula: MgO
+
+
+========== Category: CITYNICKNAMESDATA ==========
+
+1. nickname: Pink City | city: Jaipur
+2. nickname: Blue City | city: Jodhpur
+3. nickname: City of Lakes | city: Udaipur
+4. nickname: Golden City | city: Jaisalmer
+5. nickname: Manchester of India | city: Ahmedabad
+6. nickname: Silicon Valley of India | city: Bengaluru
+7. nickname: Space City | city: Bengaluru
+8. nickname: Garden City | city: Bengaluru
+9. nickname: City of Nawabs | city: Lucknow
+10. nickname: City of Joy | city: Kolkata
+11. nickname: Financial Capital of India | city: Mumbai
+12. nickname: City of Dreams | city: Mumbai
+13. nickname: Rome of the East | city: Mangaluru
+14. nickname: Orange City | city: Nagpur
+15. nickname: Wine Capital of India | city: Nashik
+16. nickname: Leather City of the World | city: Kanpur
+17. nickname: Diamond City of India | city: Surat
+18. nickname: City of Weavers | city: Panipat
+19. nickname: Twin City | city: Hyderabad and Secunderabad
+20. nickname: Steel City of India | city: Jamshedpur
+21. nickname: Pittsburgh of India | city: Jamshedpur
+22. nickname: Temple City of India | city: Bhubaneswar
+23. nickname: Scotland of India | city: Coorg (Madikeri)
+24. nickname: Coal Capital of India | city: Dhanbad
+25. nickname: City of Spices | city: Kozhikode
+26. nickname: Tea City of India | city: Dibrugarh
+27. nickname: Royal City | city: Patiala
+28. nickname: City of Pearls | city: Hyderabad
+29. nickname: Mini Switzerland of India | city: Khajjiar
+30. nickname: City of Blood | city: Tezpur
+31. nickname: City of Rallies | city: New Delhi
+32. nickname: Boston of India | city: Ahmedabad
+33. nickname: City of Destiny | city: Visakhapatnam
+34. nickname: Goa of the East | city: Visakhapatnam
+35. nickname: Deccan Queen | city: Pune
+36. nickname: Oxford of the East | city: Pune
+37. nickname: Cultural Capital of India | city: Kolkata
+38. nickname: IT Capital of India | city: Bengaluru
+39. nickname: Gateway of India | city: Mumbai
+40. nickname: City of Festivals | city: Madurai
+41. nickname: Athens of the East | city: Madurai
+42. nickname: Paris of the East | city: Puducherry
+43. nickname: City of Palaces | city: Mysuru
+44. nickname: Heritage City | city: Mysuru
+45. nickname: Queen of the Arabian Sea | city: Kochi
+46. nickname: Venice of the East | city: Alappuzha
+47. nickname: Spiritual Capital of India | city: Varanasi
+48. nickname: Yoga City | city: Rishikesh
+49. nickname: City of Dawn | city: Auroville
+50. nickname: Evergreen City of India | city: Thiruvananthapuram
+
+
+========== Category: COMPANYORIGINDATA ==========
+
+1. company: Apple | country: USA | category: Tech
+2. company: Samsung | country: South Korea | category: Tech
+3. company: Sony | country: Japan | category: Tech
+4. company: Tencent | country: China | category: Tech
+5. company: SAP | country: Germany | category: Tech
+6. company: Nokia | country: Finland | category: Tech
+7. company: Infosys | country: India | category: Tech
+8. company: Spotify | country: Sweden | category: Tech
+9. company: Microsoft | country: USA | category: Tech
+10. company: Google | country: USA | category: Tech
+11. company: Meta | country: USA | category: Tech
+12. company: Amazon | country: USA | category: Tech
+13. company: IBM | country: USA | category: Tech
+14. company: Oracle | country: USA | category: Tech
+15. company: Intel | country: USA | category: Tech
+16. company: Cisco | country: USA | category: Tech
+17. company: Adobe | country: USA | category: Tech
+18. company: Baidu | country: China | category: Tech
+19. company: Alibaba | country: China | category: Tech
+20. company: Huawei | country: China | category: Tech
+21. company: Xiaomi | country: China | category: Tech
+22. company: TSMC | country: Taiwan | category: Tech
+23. company: Nintendo | country: Japan | category: Tech
+24. company: Toyota | country: Japan | category: Vehicle
+25. company: Ford | country: USA | category: Vehicle
+26. company: Volkswagen | country: Germany | category: Vehicle
+27. company: Hyundai | country: South Korea | category: Vehicle
+28. company: Ferrari | country: Italy | category: Vehicle
+29. company: Volvo | country: Sweden | category: Vehicle
+30. company: Tata Motors | country: India | category: Vehicle
+31. company: Renault | country: France | category: Vehicle
+32. company: Honda | country: Japan | category: Vehicle
+33. company: Nissan | country: Japan | category: Vehicle
+34. company: Mazda | country: Japan | category: Vehicle
+35. company: Subaru | country: Japan | category: Vehicle
+36. company: Chevrolet | country: USA | category: Vehicle
+37. company: Tesla | country: USA | category: Vehicle
+38. company: Mercedes-Benz | country: Germany | category: Vehicle
+39. company: Audi | country: Germany | category: Vehicle
+40. company: Porsche | country: Germany | category: Vehicle
+41. company: Kia | country: South Korea | category: Vehicle
+42. company: Peugeot | country: France | category: Vehicle
+43. company: Fiat | country: Italy | category: Vehicle
+44. company: Jaguar | country: United Kingdom | category: Vehicle
+45. company: Land Rover | country: United Kingdom | category: Vehicle
+46. company: Mahindra | country: India | category: Vehicle
+47. company: Bajaj Auto | country: India | category: Vehicle
+48. company: Nestlé | country: Switzerland | category: Food & Beverage
+49. company: Coca-Cola | country: USA | category: Food & Beverage
+50. company: Unilever | country: United Kingdom | category: Food & Beverage
+51. company: Danone | country: France | category: Food & Beverage
+52. company: Ferrero | country: Italy | category: Food & Beverage
+53. company: Amul | country: India | category: Food & Beverage
+54. company: Red Bull | country: Austria | category: Food & Beverage
+55. company: PepsiCo | country: USA | category: Food & Beverage
+56. company: McDonald's | country: USA | category: Food & Beverage
+57. company: Starbucks | country: USA | category: Food & Beverage
+58. company: KFC | country: USA | category: Food & Beverage
+59. company: Burger King | country: USA | category: Food & Beverage
+60. company: Subway | country: USA | category: Food & Beverage
+61. company: Heineken | country: Netherlands | category: Food & Beverage
+62. company: Carlsberg | country: Denmark | category: Food & Beverage
+63. company: Diageo | country: United Kingdom | category: Food & Beverage
+64. company: Kellogg's | country: USA | category: Food & Beverage
+65. company: Nike | country: USA | category: Fashion & Apparel
+66. company: Adidas | country: Germany | category: Fashion & Apparel
+67. company: Zara | country: Spain | category: Fashion & Apparel
+68. company: H&M | country: Sweden | category: Fashion & Apparel
+69. company: Gucci | country: Italy | category: Fashion & Apparel
+70. company: Louis Vuitton | country: France | category: Fashion & Apparel
+71. company: Uniqlo | country: Japan | category: Fashion & Apparel
+72. company: Rolex | country: Switzerland | category: Fashion & Apparel
+73. company: Puma | country: Germany | category: Fashion & Apparel
+74. company: Under Armour | country: USA | category: Fashion & Apparel
+75. company: Levi's | country: USA | category: Fashion & Apparel
+76. company: Ralph Lauren | country: USA | category: Fashion & Apparel
+77. company: Calvin Klein | country: USA | category: Fashion & Apparel
+78. company: Tommy Hilfiger | country: USA | category: Fashion & Apparel
+79. company: Prada | country: Italy | category: Fashion & Apparel
+80. company: Versace | country: Italy | category: Fashion & Apparel
+81. company: Chanel | country: France | category: Fashion & Apparel
+82. company: Dior | country: France | category: Fashion & Apparel
+83. company: LG | country: South Korea | category: Electronics
+84. company: Panasonic | country: Japan | category: Electronics
+85. company: Philips | country: Netherlands | category: Electronics
+86. company: Bosch | country: Germany | category: Electronics
+87. company: Haier | country: China | category: Electronics
+88. company: IKEA | country: Sweden | category: Furniture / Home Furnishings
+89. company: Lego | country: Denmark | category: Toys
+90. company: Whirlpool | country: USA | category: Electronics
+91. company: Electrolux | country: Sweden | category: Electronics
+92. company: Hitachi | country: Japan | category: Electronics
+93. company: Toshiba | country: Japan | category: Electronics
+94. company: Sharp | country: Japan | category: Electronics
+95. company: Visa | country: USA | category: Finance
+96. company: Mastercard | country: USA | category: Finance
+97. company: American Express | country: USA | category: Finance
+98. company: JPMorgan Chase | country: USA | category: Finance
+99. company: Goldman Sachs | country: USA | category: Finance
+100. company: HSBC | country: United Kingdom | category: Finance
+101. company: Barclays | country: United Kingdom | category: Finance
+102. company: Allianz | country: Germany | category: Finance
+103. company: AXA | country: France | category: Finance
+104. company: SBI (State Bank of India) | country: India | category: Finance
+105. company: Walmart | country: USA | category: Retail
+106. company: Target | country: USA | category: Retail
+107. company: Costco | country: USA | category: Retail
+108. company: Home Depot | country: USA | category: Retail
+109. company: Tesco | country: United Kingdom | category: Retail
+110. company: Carrefour | country: France | category: Retail
+111. company: Aldi | country: Germany | category: Retail
+112. company: Lidl | country: Germany | category: Retail
+113. company: Flipkart | country: India | category: Retail
+114. company: Rakuten | country: Japan | category: Retail
+
+
+========== Category: COUNTRIES ==========
+
+1. id: 1 | country: India | capital: New Delhi | currency: Indian Rupee | continent: Asia | officialLanguages: Hindi,English | nationalAnimal: Royal Bengal Tiger | nationalBird: Indian Peacock | nationalFlower: Lotus | nationalTree: Banyan | nationalFruit: Mango | internetDomain: .in | callingCode: +91 | timezone: UTC+5:30
+2. id: 2 | country: United States | capital: Washington, D.C. | currency: United States Dollar | continent: North America | officialLanguages: English (De facto) | nationalAnimal: American Bison | nationalBird: Bald Eagle | nationalFlower: Rose | nationalTree: Oak | nationalFruit: Blueberry | internetDomain: .us | callingCode: +1 | timezone: UTC-4 to UTC-10
+3. id: 3 | country: United Kingdom | capital: London | currency: Pound Sterling | continent: Europe | officialLanguages: English | nationalAnimal: Lion | nationalBird: European Robin | nationalFlower: Tudor Rose | nationalTree: Royal Oak | nationalFruit: Apple | internetDomain: .uk | callingCode: +44 | timezone: UTC+0
+4. id: 4 | country: Canada | capital: Ottawa | currency: Canadian Dollar | continent: North America | officialLanguages: English,French | nationalAnimal: North American Beaver | nationalBird: Canada Jay | nationalFlower: Bunchberry | nationalTree: Maple | nationalFruit: Blueberry | internetDomain: .ca | callingCode: +1 | timezone: UTC-3:30 to UTC-8
+5. id: 5 | country: Australia | capital: Canberra | currency: Australian Dollar | continent: Oceania | officialLanguages: English | nationalAnimal: Red Kangaroo | nationalBird: Emu | nationalFlower: Golden Wattle | nationalTree: Eucalyptus | nationalFruit: Macadamia | internetDomain: .au | callingCode: +61 | timezone: UTC+8 to UTC+10:30
+6. id: 6 | country: Japan | capital: Tokyo | currency: Japanese Yen | continent: Asia | officialLanguages: Japanese | nationalAnimal: Macaque | nationalBird: Green Pheasant | nationalFlower: Cherry Blossom | nationalTree: Sugi | nationalFruit: Japanese Persimmon | internetDomain: .jp | callingCode: +81 | timezone: UTC+9
+7. id: 7 | country: China | capital: Beijing | currency: Chinese Yuan | continent: Asia | officialLanguages: Standard Chinese | nationalAnimal: Giant Panda | nationalBird: Red-crowned Crane | nationalFlower: Plum Blossom | nationalTree: Ginkgo | nationalFruit: Kiwi | internetDomain: .cn | callingCode: +86 | timezone: UTC+8
+8. id: 8 | country: Germany | capital: Berlin | currency: Euro | continent: Europe | officialLanguages: German | nationalAnimal: Federal Eagle | nationalBird: Federal Eagle | nationalFlower: Cornflower | nationalTree: Oak | nationalFruit: Apple | internetDomain: .de | callingCode: +49 | timezone: UTC+1
+9. id: 9 | country: France | capital: Paris | currency: Euro | continent: Europe | officialLanguages: French | nationalAnimal: Gallic Rooster | nationalBird: Gallic Rooster | nationalFlower: Iris | nationalTree: Yew | nationalFruit: Pear | internetDomain: .fr | callingCode: +33 | timezone: UTC+1
+10. id: 10 | country: Brazil | capital: Brasília | currency: Brazilian Real | continent: South America | officialLanguages: Portuguese | nationalAnimal: Jaguar | nationalBird: Rufous-bellied Thrush | nationalFlower: Ipê-amarelo | nationalTree: Brazilwood | nationalFruit: Cupuaçu | internetDomain: .br | callingCode: +55 | timezone: UTC-2 to UTC-5
+11. id: 11 | country: South Africa | capital: Pretoria | currency: South African Rand | continent: Africa | officialLanguages: Zulu,Xhosa,Afrikaans,English | nationalAnimal: Springbok | nationalBird: Blue Crane | nationalFlower: King Protea | nationalTree: Real Yellowwood | nationalFruit: Ackee | internetDomain: .za | callingCode: +27 | timezone: UTC+2
+12. id: 12 | country: Mexico | capital: Mexico City | currency: Mexican Peso | continent: North America | officialLanguages: Spanish | nationalAnimal: Golden Eagle | nationalBird: Golden Eagle | nationalFlower: Dahlia | nationalTree: Ahuehuete | nationalFruit: Avocado | internetDomain: .mx | callingCode: +52 | timezone: UTC-5 to UTC-8
+13. id: 13 | country: Argentina | capital: Buenos Aires | currency: Argentine Peso | continent: South America | officialLanguages: Spanish | nationalAnimal: Rufous Hornero | nationalBird: Rufous Hornero | nationalFlower: Ceibo | nationalTree: Ombú | nationalFruit: Apple | internetDomain: .ar | callingCode: +54 | timezone: UTC-3
+14. id: 14 | country: Italy | capital: Rome | currency: Euro | continent: Europe | officialLanguages: Italian | nationalAnimal: Italian Wolf | nationalBird: Italian Sparrow | nationalFlower: Lily | nationalTree: Olive | nationalFruit: Strawberry | internetDomain: .it | callingCode: +39 | timezone: UTC+1
+15. id: 15 | country: Spain | capital: Madrid | currency: Euro | continent: Europe | officialLanguages: Spanish | nationalAnimal: Bull | nationalBird: Spanish Imperial Eagle | nationalFlower: Red Carnation | nationalTree: Olive | nationalFruit: Grape | internetDomain: .es | callingCode: +34 | timezone: UTC+1
+16. id: 16 | country: Russia | capital: Moscow | currency: Russian Ruble | continent: Europe | officialLanguages: Russian | nationalAnimal: Eurasian Brown Bear | nationalBird: Mute Swan | nationalFlower: Chamomile | nationalTree: Birch | nationalFruit: Apple | internetDomain: .ru | callingCode: +7 | timezone: UTC+2 to UTC+12
+17. id: 17 | country: Egypt | capital: Cairo | currency: Egyptian Pound | continent: Africa | officialLanguages: Arabic | nationalAnimal: Steppe Eagle | nationalBird: Steppe Eagle | nationalFlower: Lotus | nationalTree: Date Palm | nationalFruit: Mango | internetDomain: .eg | callingCode: +20 | timezone: UTC+2
+18. id: 18 | country: Pakistan | capital: Islamabad | currency: Pakistani Rupee | continent: Asia | officialLanguages: Urdu,English | nationalAnimal: Markhor | nationalBird: Chukar Partridge | nationalFlower: Poet's Jasmine | nationalTree: Deodar | nationalFruit: Mango | internetDomain: .pk | callingCode: +92 | timezone: UTC+5
+19. id: 19 | country: Bangladesh | capital: Dhaka | currency: Bangladeshi Taka | continent: Asia | officialLanguages: Bengali | nationalAnimal: Royal Bengal Tiger | nationalBird: Oriental Magpie-Robin | nationalFlower: Water Lily | nationalTree: Mango | nationalFruit: Jackfruit | internetDomain: .bd | callingCode: +880 | timezone: UTC+6
+20. id: 20 | country: Sri Lanka | capital: Sri Jayawardenepura Kotte | currency: Sri Lankan Rupee | continent: Asia | officialLanguages: Sinhala,Tamil | nationalAnimal: Sri Lankan Elephant | nationalBird: Ceylon Junglefowl | nationalFlower: Blue Water Lily | nationalTree: Ceylon Ironwood | nationalFruit: Jackfruit | internetDomain: .lk | callingCode: +94 | timezone: UTC+5:30
+21. id: 21 | country: Nepal | capital: Kathmandu | currency: Nepalese Rupee | continent: Asia | officialLanguages: Nepali | nationalAnimal: Cow | nationalBird: Himalayan Monal | nationalFlower: Rhododendron | nationalTree: Ficus | nationalFruit: Orange | internetDomain: .np | callingCode: +977 | timezone: UTC+5:45
+22. id: 22 | country: Saudi Arabia | capital: Riyadh | currency: Saudi Riyal | continent: Asia | officialLanguages: Arabic | nationalAnimal: Arabian Camel | nationalBird: Saker Falcon | nationalFlower: Arfaj | nationalTree: Date Palm | nationalFruit: Date | internetDomain: .sa | callingCode: +966 | timezone: UTC+3
+23. id: 23 | country: Turkey | capital: Ankara | currency: Turkish Lira | continent: Europe | officialLanguages: Turkish | nationalAnimal: Gray Wolf | nationalBird: Redwing | nationalFlower: Tulip | nationalTree: Oak | nationalFruit: Fig | internetDomain: .tr | callingCode: +90 | timezone: UTC+3
+24. id: 24 | country: South Korea | capital: Seoul | currency: South Korean Won | continent: Asia | officialLanguages: Korean | nationalAnimal: Siberian Tiger | nationalBird: Korean Magpie | nationalFlower: Hibiscus syriacus | nationalTree: Korean Pine | nationalFruit: Asian Pear | internetDomain: .kr | callingCode: +82 | timezone: UTC+9
+25. id: 25 | country: Indonesia | capital: Jakarta | currency: Indonesian Rupiah | continent: Asia | officialLanguages: Indonesian | nationalAnimal: Komodo Dragon | nationalBird: Javan Hawk-Eagle | nationalFlower: Moon Orchid | nationalTree: Teak | nationalFruit: Durian | internetDomain: .id | callingCode: +62 | timezone: UTC+7 to UTC+9
+26. id: 26 | country: Malaysia | capital: Kuala Lumpur | currency: Malaysian Ringgit | continent: Asia | officialLanguages: Malay | nationalAnimal: Malayan Tiger | nationalBird: Rhinoceros Hornbill | nationalFlower: Hibiscus | nationalTree: Borneo Tallow Nut | nationalFruit: Papaya | internetDomain: .my | callingCode: +60 | timezone: UTC+8
+27. id: 27 | country: Thailand | capital: Bangkok | currency: Thai Baht | continent: Asia | officialLanguages: Thai | nationalAnimal: Thai Elephant | nationalBird: Siamese Fireback | nationalFlower: Ratchaphruek | nationalTree: Ratchaphruek | nationalFruit: Mangosteen | internetDomain: .th | callingCode: +66 | timezone: UTC+7
+28. id: 28 | country: Vietnam | capital: Hanoi | currency: Vietnamese Dong | continent: Asia | officialLanguages: Vietnamese | nationalAnimal: Water Buffalo | nationalBird: Chim Lac | nationalFlower: Lotus | nationalTree: Bamboo | nationalFruit: Rambutan | internetDomain: .vn | callingCode: +84 | timezone: UTC+7
+29. id: 29 | country: Philippines | capital: Manila | currency: Philippine Peso | continent: Asia | officialLanguages: Filipino,English | nationalAnimal: Carabao | nationalBird: Philippine Eagle | nationalFlower: Sampaguita | nationalTree: Narra | nationalFruit: Mango | internetDomain: .ph | callingCode: +63 | timezone: UTC+8
+30. id: 30 | country: New Zealand | capital: Wellington | currency: New Zealand Dollar | continent: Oceania | officialLanguages: English,Māori | nationalAnimal: Kiwi | nationalBird: Kiwi | nationalFlower: Kōwhai | nationalTree: Silver Fern | nationalFruit: Kiwifruit | internetDomain: .nz | callingCode: +64 | timezone: UTC+12
+31. id: 31 | country: Kenya | capital: Nairobi | currency: Kenyan Shilling | continent: Africa | officialLanguages: Swahili,English | nationalAnimal: African Lion | nationalBird: Lilac-breasted Roller | nationalFlower: Orchid | nationalTree: Acacia | nationalFruit: Mango | internetDomain: .ke | callingCode: +254 | timezone: UTC+3
+32. id: 32 | country: Nigeria | capital: Abuja | currency: Nigerian Naira | continent: Africa | officialLanguages: English | nationalAnimal: Eagle | nationalBird: Black Crowned Crane | nationalFlower: Costus Spectabilis | nationalTree: Iroko | nationalFruit: Ackee | internetDomain: .ng | callingCode: +234 | timezone: UTC+1
+33. id: 33 | country: Egypt | capital: Cairo | currency: Egyptian Pound | continent: Africa | officialLanguages: Arabic | nationalAnimal: Steppe Eagle | nationalBird: Steppe Eagle | nationalFlower: Lotus | nationalTree: Date Palm | nationalFruit: Mango | internetDomain: .eg | callingCode: +20 | timezone: UTC+2
+34. id: 34 | country: Chile | capital: Santiago | currency: Chilean Peso | continent: South America | officialLanguages: Spanish | nationalAnimal: Huemul | nationalBird: Andean Condor | nationalFlower: Copihue | nationalTree: Araucaria | nationalFruit: Lúcuma | internetDomain: .cl | callingCode: +56 | timezone: UTC-3
+35. id: 35 | country: Peru | capital: Lima | currency: Peruvian Sol | continent: South America | officialLanguages: Spanish | nationalAnimal: Vicuña | nationalBird: Andean Cock-of-the-rock | nationalFlower: Cantuta | nationalTree: Cinchona | nationalFruit: Lúcuma | internetDomain: .pe | callingCode: +51 | timezone: UTC-5
+36. id: 36 | country: Colombia | capital: Bogotá | currency: Colombian Peso | continent: South America | officialLanguages: Spanish | nationalAnimal: Andean Condor | nationalBird: Andean Condor | nationalFlower: Cattleya Trianae | nationalTree: Quindío Wax Palm | nationalFruit: Borojó | internetDomain: .co | callingCode: +57 | timezone: UTC-5
+37. id: 37 | country: Sweden | capital: Stockholm | currency: Swedish Krona | continent: Europe | officialLanguages: Swedish | nationalAnimal: Eurasian Elk | nationalBird: Common Blackbird | nationalFlower: Twinflower | nationalTree: Ornäs Birch | nationalFruit: Cloudberry | internetDomain: .se | callingCode: +46 | timezone: UTC+1
+38. id: 38 | country: Norway | capital: Oslo | currency: Norwegian Krone | continent: Europe | officialLanguages: Norwegian | nationalAnimal: Lion | nationalBird: White-throated Dipper | nationalFlower: Purple Heather | nationalTree: Birch | nationalFruit: Apple | internetDomain: .no | callingCode: +47 | timezone: UTC+1
+39. id: 39 | country: Finland | capital: Helsinki | currency: Euro | continent: Europe | officialLanguages: Finnish,Swedish | nationalAnimal: Brown Bear | nationalBird: Whooper Swan | nationalFlower: Lily of the Valley | nationalTree: Silver Birch | nationalFruit: Cloudberry | internetDomain: .fi | callingCode: +358 | timezone: UTC+2
+40. id: 40 | country: Greece | capital: Athens | currency: Euro | continent: Europe | officialLanguages: Greek | nationalAnimal: Dolphin | nationalBird: Little Owl | nationalFlower: Bear's Breech | nationalTree: Olive Tree | nationalFruit: Olive | internetDomain: .gr | callingCode: +30 | timezone: UTC+2
+
+
+========== Category: COUNTRYNICKNAMESDATA ==========
+
+1. nickname: Land of the Rising Sun | country: Japan
+2. nickname: Land of the Midnight Sun | country: Norway
+3. nickname: Land of the Free | country: USA
+4. nickname: Gift of the Nile | country: Egypt
+5. nickname: Land of a Thousand Lakes | country: Finland
+6. nickname: Land of Fire and Ice | country: Iceland
+7. nickname: Land of the Thunder Dragon | country: Bhutan
+8. nickname: The Emerald Isle | country: Ireland
+9. nickname: Land of the Morning Calm | country: South Korea
+10. nickname: Sugar Bowl of the World | country: Cuba
+11. nickname: Playground of Europe | country: Switzerland
+12. nickname: Rainbow Nation | country: South Africa
+13. nickname: Land of Maple Leaf | country: Canada
+14. nickname: Land of Kangaroos | country: Australia
+15. nickname: Land of White Elephants | country: Thailand
+16. nickname: Pearl of the Indian Ocean | country: Sri Lanka
+17. nickname: Land of Golden Pagodas | country: Myanmar
+18. nickname: Land of the Long White Cloud | country: New Zealand
+19. nickname: Land of Smiles | country: Thailand
+20. nickname: Hermit Kingdom | country: North Korea
+21. nickname: The Boot | country: Italy
+22. nickname: Hexagon | country: France
+23. nickname: Land of the Eagles | country: Albania
+24. nickname: Heart of South America | country: Paraguay
+25. nickname: Land of Grace | country: Venezuela
+26. nickname: The Copper Country | country: Zambia
+27. nickname: Giant of Africa | country: Nigeria
+28. nickname: Pearl of Africa | country: Uganda
+29. nickname: Spice Island | country: Grenada
+30. nickname: Land of Milk and Honey | country: Israel
+31. nickname: Land of Fire | country: Azerbaijan
+32. nickname: Land of Origins | country: Ethiopia
+33. nickname: The Warm Heart of Africa | country: Malawi
+34. nickname: Nation of the 53 Volcanoes | country: El Salvador
+35. nickname: Cradle of Western Civilization | country: Greece
+36. nickname: Land of the Incas | country: Peru
+37. nickname: The Silver River | country: Argentina
+38. nickname: Crossroads of the World | country: Panama
+39. nickname: The Switzerland of Central America | country: Costa Rica
+40. nickname: Rich Coast | country: Costa Rica
+41. nickname: The Pearl of the Antilles | country: Cuba
+42. nickname: Mother Russia | country: Russia
+43. nickname: The Great White North | country: Canada
+44. nickname: Land of the Fens | country: Netherlands
+45. nickname: The Lion City | country: Singapore
+46. nickname: Graveyard of Empires | country: Afghanistan
+47. nickname: Land of Poets and Thinkers | country: Germany
+48. nickname: Land of a Million Elephants | country: Laos
+49. nickname: Isle of Springs | country: Jamaica
+50. nickname: Sick Man of Europe | country: Turkey
+
+
+========== Category: DISEASECAUSES ==========
+
+1. disease: COVID-19 | cause: Virus (SARS-CoV-2)
+2. disease: Tuberculosis (TB) | cause: Bacteria (Mycobacterium tuberculosis)
+3. disease: Malaria | cause: Protozoa (Plasmodium)
+4. disease: Dengue | cause: Virus (Dengue virus)
+5. disease: Cholera | cause: Bacteria (Vibrio cholerae)
+6. disease: Typhoid | cause: Bacteria (Salmonella typhi)
+7. disease: Rabies | cause: Virus (Rabies virus)
+8. disease: Ringworm | cause: Fungus (Dermatophytes)
+9. disease: Chickenpox | cause: Virus (Varicella-zoster)
+10. disease: Measles | cause: Virus (Measles virus)
+11. disease: Mumps | cause: Virus (Mumps virus)
+12. disease: Polio | cause: Virus (Poliovirus)
+13. disease: Hepatitis B | cause: Virus (Hepatitis B virus)
+14. disease: Hepatitis A | cause: Virus (Hepatitis A virus)
+15. disease: Tetanus | cause: Bacteria (Clostridium tetani)
+16. disease: Diphtheria | cause: Bacteria (Corynebacterium diphtheriae)
+17. disease: Whooping Cough | cause: Bacteria (Bordetella pertussis)
+18. disease: Leprosy | cause: Bacteria (Mycobacterium leprae)
+19. disease: Plague | cause: Bacteria (Yersinia pestis)
+20. disease: Pneumonia | cause: Bacteria, Virus, or Fungi
+21. disease: Influenza (Flu) | cause: Virus (Influenza virus)
+22. disease: Ebola | cause: Virus (Ebola virus)
+23. disease: Zika | cause: Virus (Zika virus)
+24. disease: Chikungunya | cause: Virus (Chikungunya virus)
+25. disease: AIDS | cause: Virus (HIV)
+26. disease: Athlete's Foot | cause: Fungus (Trichophyton)
+27. disease: Amoebic Dysentery | cause: Protozoa (Entamoeba histolytica)
+28. disease: Sleeping Sickness | cause: Protozoa (Trypanosoma)
+29. disease: Kala-Azar | cause: Protozoa (Leishmania)
+30. disease: Filariasis | cause: Helminth (Wuchereria bancrofti)
+31. disease: Ascariasis | cause: Helminth (Ascaris lumbricoides)
+32. disease: Tapeworm Infection | cause: Helminth (Taenia)
+33. disease: Anthrax | cause: Bacteria (Bacillus anthracis)
+34. disease: Syphilis | cause: Bacteria (Treponema pallidum)
+35. disease: Gonorrhoea | cause: Bacteria (Neisseria gonorrhoeae)
+36. disease: Smallpox | cause: Virus (Variola virus)
+37. disease: SARS | cause: Virus (SARS-CoV)
+38. disease: MERS | cause: Virus (MERS-CoV)
+39. disease: Japanese Encephalitis | cause: Virus (JE virus)
+40. disease: Candidiasis | cause: Fungus (Candida albicans)
+41. disease: Aspergillosis | cause: Fungus (Aspergillus)
+42. disease: Giardiasis | cause: Protozoa (Giardia lamblia)
+43. disease: Botulism | cause: Bacteria (Clostridium botulinum)
+44. disease: Meningitis | cause: Bacteria (Neisseria meningitidis)
+45. disease: Conjunctivitis (Pink Eye) | cause: Virus / Bacteria
+46. disease: Swine Flu | cause: Virus (H1N1)
+47. disease: Bird Flu | cause: Virus (H5N1)
+48. disease: Yellow Fever | cause: Virus (Yellow Fever virus)
+49. disease: Leptospirosis | cause: Bacteria (Leptospira)
+50. disease: Scabies | cause: Parasite (Sarcoptes scabiei)
+
+
+========== Category: FAMOUSBATTLESDATA ==========
+
+1. battle: Battle of Plassey | year: 1757
+2. battle: First Battle of Panipat | year: 1526
+3. battle: Second Battle of Panipat | year: 1556
+4. battle: Third Battle of Panipat | year: 1761
+5. battle: Battle of Buxar | year: 1764
+6. battle: Battle of Haldighati | year: 1576
+7. battle: Battle of Talikota | year: 1565
+8. battle: Battle of Wandiwash | year: 1760
+9. battle: Battle of Kohima | year: 1944
+10. battle: Battle of Chamkaur | year: 1704
+11. battle: First Battle of Tarain | year: 1191
+12. battle: Second Battle of Tarain | year: 1192
+13. battle: Battle of Khanwa | year: 1527
+14. battle: Battle of Chausa | year: 1539
+15. battle: Battle of Kanauj | year: 1540
+16. battle: Battle of Waterloo | year: 1815
+17. battle: Battle of Hastings | year: 1066
+18. battle: Battle of Stalingrad | year: 1943
+19. battle: Battle of Midway | year: 1942
+20. battle: D-Day (Normandy Landings) | year: 1944
+21. battle: Battle of Gettysburg | year: 1863
+22. battle: Battle of Yorktown | year: 1781
+23. battle: Battle of the Somme | year: 1916
+24. battle: Battle of Britain | year: 1940
+25. battle: Battle of Marathon | year: 490 BC
+26. battle: Battle of Actium | year: 31 BC
+27. battle: Battle of Kalinga | year: 261 BC
+28. battle: Sepoy Mutiny (First War of Independence) | year: 1857
+29. battle: Battle of Srirangapatna | year: 1799
+30. battle: Battle of Assaye | year: 1803
+
+
+========== Category: FAMOUSBOOKSDATA ==========
+
+1. book: The Discovery of India | author: Jawaharlal Nehru
+2. book: Gitanjali | author: Rabindranath Tagore
+3. book: Godan | author: Munshi Premchand
+4. book: My Experiments with Truth | author: Mahatma Gandhi
+5. book: The Guide | author: R. K. Narayan
+6. book: A Suitable Boy | author: Vikram Seth
+7. book: Midnight's Children | author: Salman Rushdie
+8. book: The God of Small Things | author: Arundhati Roy
+9. book: The White Tiger | author: Aravind Adiga
+10. book: Train to Pakistan | author: Khushwant Singh
+11. book: Ignited Minds | author: A. P. J. Abdul Kalam
+12. book: Wings of Fire | author: A. P. J. Abdul Kalam
+13. book: Malgudi Days | author: R. K. Narayan
+14. book: Anandmath | author: Bankim Chandra Chatterjee
+15. book: The Argumentative Indian | author: Amartya Sen
+16. book: India Wins Freedom | author: Maulana Abul Kalam Azad
+17. book: A Fine Balance | author: Rohinton Mistry
+18. book: The Namesake | author: Jhumpa Lahiri
+19. book: Glimpses of World History | author: Jawaharlal Nehru
+20. book: Unhappy India | author: Lala Lajpat Rai
+21. book: Poverty and Un-British Rule in India | author: Dadabhai Naoroji
+22. book: The Glass Palace | author: Amitav Ghosh
+23. book: Interpreter of Maladies | author: Jhumpa Lahiri
+24. book: Untouchable | author: Mulk Raj Anand
+25. book: The Shadow Lines | author: Amitav Ghosh
+26. book: The Room on the Roof | author: Ruskin Bond
+27. book: The Blue Umbrella | author: Ruskin Bond
+28. book: Fasting, Feasting | author: Anita Desai
+29. book: The Inheritance of Loss | author: Kiran Desai
+30. book: Sacred Games | author: Vikram Chandra
+31. book: Arthashastra | author: Chanakya (Kautilya)
+32. book: Kamasutra | author: Vatsyayana
+33. book: Panchatantra | author: Vishnu Sharma
+34. book: Ramcharitmanas | author: Tulsidas
+35. book: Mahabharata | author: Ved Vyasa
+36. book: Ramayana | author: Valmiki
+37. book: Rajatarangini | author: Kalhana
+38. book: Shakuntala (Abhijñānaśākuntalam) | author: Kalidasa
+39. book: Meghadūta | author: Kalidasa
+40. book: Gita Govinda | author: Jayadeva
+41. book: Devdas | author: Sarat Chandra Chattopadhyay
+42. book: Satyarth Prakash | author: Swami Dayanand Saraswati
+43. book: Half Girlfriend | author: Chetan Bhagat
+44. book: Shiva Trilogy | author: Amish Tripathi
+
+
+========== Category: FAMOUSQUOTESDATA ==========
+
+1. quote: I think, therefore I am. | person: René Descartes
+2. quote: To be, or not to be, that is the question. | person: William Shakespeare
+3. quote: I have a dream... | person: Martin Luther King Jr.
+4. quote: That's one small step for a man, one giant leap for mankind. | person: Neil Armstrong
+5. quote: The only thing we have to fear is fear itself. | person: Franklin D. Roosevelt
+6. quote: Be the change that you wish to see in the world. | person: Mahatma Gandhi
+7. quote: Ask not what your country can do for you; ask what you can do for your country. | person: John F. Kennedy
+8. quote: Imagination is more important than knowledge. | person: Albert Einstein
+9. quote: Give me blood, and I shall give you freedom! | person: Subhas Chandra Bose
+10. quote: Swaraj is my birthright and I shall have it. | person: Bal Gangadhar Tilak
+11. quote: They may kill me, but they cannot kill my ideas. | person: Bhagat Singh
+12. quote: Mr. Gorbachev, tear down this wall! | person: Ronald Reagan
+13. quote: Alea iacta est (The die is cast). | person: Julius Caesar
+14. quote: The unexamined life is not worth living. | person: Socrates
+15. quote: Float like a butterfly, sting like a bee. | person: Muhammad Ali
+16. quote: Stay hungry, stay foolish. | person: Steve Jobs
+17. quote: I am become Death, the destroyer of worlds. | person: J. Robert Oppenheimer
+18. quote: Genius is one percent inspiration and ninety-nine percent perspiration. | person: Thomas Edison
+19. quote: I have not failed. I've just found 10,000 ways that won't work. | person: Thomas Edison
+20. quote: You miss 100% of the shots you don't take. | person: Wayne Gretzky
+21. quote: Whether you think you can or you think you can't, you're right. | person: Henry Ford
+22. quote: The future belongs to those who believe in the beauty of their dreams. | person: Eleanor Roosevelt
+23. quote: Success is not final, failure is not fatal: it is the courage to continue that counts. | person: Winston Churchill
+24. quote: If you want to shine like a sun, first burn like a sun. | person: A. P. J. Abdul Kalam
+25. quote: Jai Jawan Jai Kisan | person: Lal Bahadur Shastri
+26. quote: An eye for an eye only ends up making the whole world blind. | person: Mahatma Gandhi
+27. quote: Arise, awake, and stop not till the goal is reached. | person: Swami Vivekananda
+28. quote: Knowledge is power. | person: Sir Francis Bacon
+29. quote: I came, I saw, I conquered. | person: Julius Caesar
+30. quote: The only limit to our realization of tomorrow will be our doubts of today. | person: Franklin D. Roosevelt
+
+
+========== Category: HORMONEGLANDDATA ==========
+
+1. hormone: Insulin | gland: Pancreas
+2. hormone: Glucagon | gland: Pancreas
+3. hormone: Somatostatin | gland: Pancreas
+4. hormone: Thyroxine (T4) | gland: Thyroid Gland
+5. hormone: Triiodothyronine (T3) | gland: Thyroid Gland
+6. hormone: Calcitonin | gland: Thyroid Gland
+7. hormone: Parathyroid Hormone (PTH) | gland: Parathyroid Gland
+8. hormone: Epinephrine (Adrenaline) | gland: Adrenal Medulla
+9. hormone: Norepinephrine | gland: Adrenal Medulla
+10. hormone: Cortisol | gland: Adrenal Cortex
+11. hormone: Aldosterone | gland: Adrenal Cortex
+12. hormone: Growth Hormone (GH) | gland: Anterior Pituitary
+13. hormone: Prolactin (PRL) | gland: Anterior Pituitary
+14. hormone: Thyroid-Stimulating Hormone (TSH) | gland: Anterior Pituitary
+15. hormone: Adrenocorticotropic Hormone (ACTH) | gland: Anterior Pituitary
+16. hormone: Luteinizing Hormone (LH) | gland: Anterior Pituitary
+17. hormone: Follicle-Stimulating Hormone (FSH) | gland: Anterior Pituitary
+18. hormone: Oxytocin | gland: Posterior Pituitary
+19. hormone: Antidiuretic Hormone (ADH) | gland: Posterior Pituitary
+20. hormone: Melatonin | gland: Pineal Gland
+21. hormone: Testosterone | gland: Testes
+22. hormone: Estrogen | gland: Ovaries
+23. hormone: Progesterone | gland: Ovaries
+24. hormone: Thymosin | gland: Thymus Gland
+25. hormone: Erythropoietin | gland: Kidneys
+26. hormone: Gastrin | gland: Stomach
+27. hormone: Secretin | gland: Small Intestine
+28. hormone: Cholecystokinin (CCK) | gland: Small Intestine
+29. hormone: Human Chorionic Gonadotropin (hCG) | gland: Placenta
+30. hormone: Atrial Natriuretic Peptide (ANP) | gland: Heart
+
+
+========== Category: IMPORTANTDAYSDATA ==========
+
+1. day: National Youth Day | date: 12 January
+2. day: National Girl Child Day | date: 24 January
+3. day: Republic Day | date: 26 January
+4. day: National Science Day | date: 28 February
+5. day: International Women's Day | date: 8 March
+6. day: World Water Day | date: 22 March
+7. day: World Health Day | date: 7 April
+8. day: Earth Day | date: 22 April
+9. day: World Environment Day | date: 5 June
+10. day: International Yoga Day | date: 21 June
+11. day: World Population Day | date: 11 July
+12. day: Independence Day | date: 15 August
+13. day: Teachers' Day | date: 5 September
+14. day: Hindi Diwas | date: 14 September
+15. day: Gandhi Jayanti | date: 2 October
+16. day: National Unity Day | date: 31 October
+17. day: Children's Day | date: 14 November
+18. day: World AIDS Day | date: 1 December
+19. day: Human Rights Day | date: 10 December
+
+
+========== Category: INDIANAIRPORTSDATA ==========
+
+1. airport: Indira Gandhi International Airport | city: New Delhi
+2. airport: Chhatrapati Shivaji Maharaj International Airport | city: Mumbai
+3. airport: Kempegowda International Airport | city: Bengaluru
+4. airport: Netaji Subhas Chandra Bose International Airport | city: Kolkata
+5. airport: Rajiv Gandhi International Airport | city: Hyderabad
+6. airport: Chennai International Airport | city: Chennai
+7. airport: Sardar Vallabhbhai Patel International Airport | city: Ahmedabad
+8. airport: Cochin International Airport | city: Kochi
+9. airport: Pune Airport | city: Pune
+10. airport: Dabolim Airport | city: Goa
+11. airport: Lokpriya Gopinath Bordoloi International Airport | city: Guwahati
+12. airport: Chaudhary Charan Singh International Airport | city: Lucknow
+13. airport: Jaipur International Airport | city: Jaipur
+14. airport: Trivandrum International Airport | city: Thiruvananthapuram
+15. airport: Biju Patnaik International Airport | city: Bhubaneswar
+16. airport: Dr. Babasaheb Ambedkar International Airport | city: Nagpur
+17. airport: Devi Ahilya Bai Holkar Airport | city: Indore
+18. airport: Lal Bahadur Shastri International Airport | city: Varanasi
+19. airport: Sri Guru Ram Dass Jee International Airport | city: Amritsar
+20. airport: Birsa Munda Airport | city: Ranchi
+21. airport: Swami Vivekananda Airport | city: Raipur
+22. airport: Jay Prakash Narayan International Airport | city: Patna
+23. airport: Veer Savarkar International Airport | city: Port Blair
+24. airport: Maharishi Valmiki International Airport | city: Ayodhya
+25. airport: Calicut International Airport | city: Kozhikode
+26. airport: Mangaluru International Airport | city: Mangaluru
+27. airport: Coimbatore International Airport | city: Coimbatore
+28. airport: Tiruchirappalli International Airport | city: Tiruchirappalli
+29. airport: Madurai Airport | city: Madurai
+30. airport: Bagdogra International Airport | city: Siliguri
+31. airport: Kushok Bakula Rimpochee Airport | city: Leh
+32. airport: Sheikh ul-Alam International Airport | city: Srinagar
+33. airport: Raja Bhoj Airport | city: Bhopal
+34. airport: Maharana Pratap Airport | city: Udaipur
+35. airport: Shaheed Bhagat Singh International Airport | city: Chandigarh
+36. airport: Jolly Grant Airport | city: Dehradun
+37. airport: Kangra Airport | city: Dharamshala
+38. airport: Maharaja Bir Bikram Airport | city: Agartala
+39. airport: Bir Tikendrajit International Airport | city: Imphal
+40. airport: Pakyong Airport | city: Gangtok
+
+
+========== Category: INDIANDAMSDATA ==========
+
+1. dam: Tehri Dam | river: Bhagirathi River
+2. dam: Bhakra Nangal Dam | river: Sutlej River
+3. dam: Hirakud Dam | river: Mahanadi River
+4. dam: Sardar Sarovar Dam | river: Narmada River
+5. dam: Nagarjuna Sagar Dam | river: Krishna River
+6. dam: Idukki Dam | river: Periyar River
+7. dam: Tungabhadra Dam | river: Tungabhadra River
+8. dam: Krishnarajasagar Dam | river: Kaveri River
+9. dam: Mettur Dam | river: Kaveri River
+10. dam: Srisailam Dam | river: Krishna River
+11. dam: Koyna Dam | river: Koyna River
+12. dam: Rihand Dam | river: Rihand River
+13. dam: Indravati Dam | river: Indravati River
+14. dam: Mullaperiyar Dam | river: Periyar River
+15. dam: Bhavanisagar Dam | river: Bhavani River
+16. dam: Maithon Dam | river: Barakar River
+17. dam: Cheruthoni Dam | river: Cheruthoni River
+18. dam: Supa Dam | river: Kali River
+19. dam: Pong Dam (Maharana Pratap Sagar) | river: Beas River
+20. dam: Ranjit Sagar Dam (Thein Dam) | river: Ravi River
+21. dam: Baglihar Dam | river: Chenab River
+22. dam: Salal Dam | river: Chenab River
+23. dam: Uri Dam | river: Jhelum River
+24. dam: Ukai Dam | river: Tapti River
+25. dam: Gandhi Sagar Dam | river: Chambal River
+26. dam: Rana Pratap Sagar Dam | river: Chambal River
+27. dam: Jawahar Sagar Dam | river: Chambal River
+28. dam: Kadana Dam | river: Mahi River
+29. dam: Ujjani Dam | river: Bhima River
+30. dam: Jayakwadi Dam | river: Godavari River
+31. dam: Somasila Dam | river: Pennar River
+32. dam: Linganamakki Dam | river: Sharavathi River
+33. dam: Alamatti Dam | river: Krishna River
+34. dam: Bansagar Dam | river: Sone River
+35. dam: Rajghat Dam | river: Betwa River
+36. dam: Matatila Dam | river: Betwa River
+37. dam: Tawa Dam | river: Tawa River
+38. dam: Ramganga Dam | river: Ramganga River
+39. dam: Kosi Project Dam | river: Kosi River
+40. dam: Bisalpur Dam | river: Banas River
+
+
+========== Category: INDIANNATIONALDATA ==========
+
+1. symbol: National Animal | name: Bengal Tiger
+2. symbol: National Bird | name: Indian Peafowl
+3. symbol: National Tree | name: Banyan Tree
+4. symbol: National Flower | name: Lotus
+5. symbol: National Fruit | name: Mango
+6. symbol: National River | name: Ganga
+7. symbol: National Aquatic Animal | name: Gangetic Dolphin
+8. symbol: National Heritage Animal | name: Elephant
+9. symbol: National Calendar | name: Saka Calendar
+10. symbol: National Emblem | name: Lion Capital of Ashoka
+11. symbol: National Anthem | name: Jana Gana Mana
+12. symbol: National Song | name: Vande Mataram
+13. symbol: National Currency Symbol | name: ₹ (Indian Rupee)
+14. symbol: National Flag (Tricolour) | name: Saffron, White & Green
+15. symbol: National Pledge | name: India is My Country
+
+
+========== Category: INDIANPRESIDENTS ==========
+
+1. order: 1 | ordinal: 1st | name: Dr. Rajendra Prasad | term: 1950–1962
+2. order: 2 | ordinal: 2nd | name: Dr. S. Radhakrishnan | term: 1962–1967
+3. order: 3 | ordinal: 3rd | name: Dr. Zakir Husain | term: 1967–1969
+4. order: 4 | ordinal: 4th | name: V. V. Giri | term: 1969–1974
+5. order: 5 | ordinal: 5th | name: Fakhruddin Ali Ahmed | term: 1974–1977
+6. order: 6 | ordinal: 6th | name: Neelam Sanjiva Reddy | term: 1977–1982
+7. order: 7 | ordinal: 7th | name: Giani Zail Singh | term: 1982–1987
+8. order: 8 | ordinal: 8th | name: R. Venkataraman | term: 1987–1992
+9. order: 9 | ordinal: 9th | name: Dr. Shankar Dayal Sharma | term: 1992–1997
+10. order: 10 | ordinal: 10th | name: K. R. Narayanan | term: 1997–2002
+11. order: 11 | ordinal: 11th | name: Dr. A. P. J. Abdul Kalam | term: 2002–2007
+12. order: 12 | ordinal: 12th | name: Pratibha Patil | term: 2007–2012
+13. order: 13 | ordinal: 13th | name: Pranab Mukherjee | term: 2012–2017
+14. order: 14 | ordinal: 14th | name: Ram Nath Kovind | term: 2017–2022
+15. order: 15 | ordinal: 15th | name: Droupadi Murmu | term: 2022–present
+
+
+========== Category: INDIANVICEPRESIDENTS ==========
+
+1. order: 1 | ordinal: 1st | name: Dr. S. Radhakrishnan | term: 1952–1962
+2. order: 2 | ordinal: 2nd | name: Dr. Zakir Husain | term: 1962–1967
+3. order: 3 | ordinal: 3rd | name: Varahagiri Venkata Giri | term: 1967–1969
+4. order: 4 | ordinal: 4th | name: Gopal Swarup Pathak | term: 1969–1974
+5. order: 5 | ordinal: 5th | name: Basappa Danappa Jatti | term: 1974–1979
+6. order: 6 | ordinal: 6th | name: Mohammad Hidayatullah | term: 1979–1984
+7. order: 7 | ordinal: 7th | name: Ramaswamy Venkataraman | term: 1984–1987
+8. order: 8 | ordinal: 8th | name: Dr. Shankar Dayal Sharma | term: 1987–1992
+9. order: 9 | ordinal: 9th | name: K. R. Narayanan | term: 1992–1997
+10. order: 10 | ordinal: 10th | name: Krishan Kant | term: 1997–2002
+11. order: 11 | ordinal: 11th | name: Bhairon Singh Shekhawat | term: 2002–2007
+12. order: 12 | ordinal: 12th | name: Mohammad Hamid Ansari | term: 2007–2017
+13. order: 13 | ordinal: 13th | name: M. Venkaiah Naidu | term: 2017–2022
+14. order: 14 | ordinal: 14th | name: Jagdeep Dhankhar | term: 2022–present
+
+
+========== Category: INVENTIONSDATA ==========
+
+1. invention: Telephone | innovator: Alexander Graham Bell
+2. invention: Light Bulb | innovator: Thomas Edison
+3. invention: Aeroplane | innovator: Wright Brothers
+4. invention: Radio | innovator: Guglielmo Marconi
+5. invention: Television | innovator: John Logie Baird
+6. invention: Computer | innovator: Charles Babbage
+7. invention: World Wide Web (WWW) | innovator: Tim Berners-Lee
+8. invention: Printing Press | innovator: Johannes Gutenberg
+9. invention: Penicillin | innovator: Alexander Fleming
+10. invention: Steam Engine | innovator: James Watt
+11. invention: Electric Battery | innovator: Alessandro Volta
+12. invention: Dynamite | innovator: Alfred Nobel
+13. invention: Vaccine (Smallpox) | innovator: Edward Jenner
+14. invention: Polio Vaccine | innovator: Jonas Salk
+15. invention: X-Rays | innovator: Wilhelm Röntgen
+16. invention: Periodic Table | innovator: Dmitri Mendeleev
+17. invention: Theory of Relativity | innovator: Albert Einstein
+18. invention: Telescope | innovator: Galileo Galilei
+19. invention: Automobile | innovator: Karl Benz
+20. invention: Stethoscope | innovator: René Laennec
+21. invention: Microscope | innovator: Zacharias Janssen
+22. invention: Thermometer | innovator: Daniel G. Fahrenheit
+23. invention: Elevator | innovator: Elisha Otis
+24. invention: Diesel Engine | innovator: Rudolf Diesel
+25. invention: Barometer | innovator: Evangelista Torricelli
+
+
+========== Category: LANDMARKDATA ==========
+
+1. landmark: Taj Mahal | country: India
+2. landmark: Red Fort | country: India
+3. landmark: Gateway of India | country: India
+4. landmark: Golden Temple (Harmandir Sahib) | country: India
+5. landmark: Lotus Temple | country: India
+6. landmark: Eiffel Tower | country: France
+7. landmark: Louvre Museum | country: France
+8. landmark: Statue of Liberty | country: USA
+9. landmark: Golden Gate Bridge | country: USA
+10. landmark: Great Wall of China | country: China
+11. landmark: Colosseum | country: Italy
+12. landmark: Leaning Tower of Pisa | country: Italy
+13. landmark: Petra | country: Jordan
+14. landmark: Machu Picchu | country: Peru
+15. landmark: Christ the Redeemer | country: Brazil
+16. landmark: Sydney Opera House | country: Australia
+17. landmark: Big Ben | country: United Kingdom
+18. landmark: Stonehenge | country: United Kingdom
+19. landmark: Kremlin | country: Russia
+20. landmark: Pyramids of Giza | country: Egypt
+21. landmark: Angkor Wat | country: Cambodia
+22. landmark: Burj Khalifa | country: UAE
+23. landmark: Mount Fuji | country: Japan
+24. landmark: Acropolis of Athens | country: Greece
+25. landmark: Sagrada Familia | country: Spain
+26. landmark: Moai Statues (Easter Island) | country: Chile
+27. landmark: Chichen Itza | country: Mexico
+28. landmark: Neuschwanstein Castle | country: Germany
+29. landmark: Brandenburg Gate | country: Germany
+30. landmark: CN Tower | country: Canada
+
+
+========== Category: NATIONALOFFICIALS ==========
+
+1. office: Prime Minister of India | name: Narendra Modi
+2. office: President of India | name: Droupadi Murmu
+3. office: Vice President of India | name: C. P. Radhakrishnan
+4. office: Chief Justice of India | name: Justice Surya Kant
+5. office: Governor of Reserve Bank of India (RBI) | name: Sanjay Malhotra
+6. office: Chief Election Commissioner | name: Gyanesh Kumar
+7. office: Comptroller and Auditor General (CAG) | name: K. Sanjay Murthy
+8. office: Attorney General for India | name: R. Venkataramani
+9. office: National Security Advisor | name: Ajit Doval
+10. office: ISRO Chairman | name: Dr. V. Narayanan
+11. office: DRDO Chairman | name: Samir V Kamat
+12. office: Chief of Defence Staff | name: Gen Anil Chauhan
+13. office: Chief of Army Staff | name: Gen Upendra Dwivedi
+14. office: Chief of Naval Staff | name: Adm Dinesh K Tripathi
+15. office: Chief of Air Staff | name: ACM Amar Preet Singh
+16. office: UPSC Chairman | name: Preeti Sudan
+17. office: Finance Commission Chairman | name: Arvind Panagariya
+
+
+========== Category: NATIONALPARKSDATA ==========
+
+1. park: Kaziranga National Park | state: Assam
+2. park: Jim Corbett National Park | state: Uttarakhand
+3. park: Sundarbans National Park | state: West Bengal
+4. park: Gir National Park | state: Gujarat
+5. park: Kanha National Park | state: Madhya Pradesh
+6. park: Bandhavgarh National Park | state: Madhya Pradesh
+7. park: Ranthambore National Park | state: Rajasthan
+8. park: Periyar National Park | state: Kerala
+9. park: Bandipur National Park | state: Karnataka
+10. park: Nagarhole National Park | state: Karnataka
+11. park: Manas National Park | state: Assam
+12. park: Nanda Devi National Park | state: Uttarakhand
+13. park: Valley of Flowers National Park | state: Uttarakhand
+14. park: Hemis National Park | state: Ladakh
+15. park: Great Himalayan National Park | state: Himachal Pradesh
+16. park: Keoladeo National Park | state: Rajasthan
+17. park: Sariska National Park | state: Rajasthan
+18. park: Pench National Park | state: Madhya Pradesh
+19. park: Tadoba Andhari Tiger Reserve | state: Maharashtra
+20. park: Silent Valley National Park | state: Kerala
+21. park: Simlipal National Park | state: Odisha
+22. park: Bhitarkanika National Park | state: Odisha
+23. park: Mudumalai National Park | state: Tamil Nadu
+24. park: Mukurthi National Park | state: Tamil Nadu
+25. park: Dachigam National Park | state: Jammu & Kashmir
+26. park: Desert National Park | state: Rajasthan
+27. park: Eravikulam National Park | state: Kerala
+28. park: Kudremukh National Park | state: Karnataka
+29. park: Panna National Park | state: Madhya Pradesh
+30. park: Nameri National Park | state: Assam
+
+
+========== Category: ORGHQDATA ==========
+
+1. org: UN (United Nations) | hq: New York, USA
+2. org: WHO (World Health Organization) | hq: Geneva, Switzerland
+3. org: IMF (International Monetary Fund) | hq: Washington, D.C., USA
+4. org: World Bank | hq: Washington, D.C., USA
+5. org: WTO (World Trade Organization) | hq: Geneva, Switzerland
+6. org: UNESCO (United Nations Educational, Scientific and Cultural Organization) | hq: Paris, France
+7. org: UNICEF (United Nations Children's Fund) | hq: New York, USA
+8. org: FAO (Food and Agriculture Organization) | hq: Rome, Italy
+9. org: ILO (International Labour Organization) | hq: Geneva, Switzerland
+10. org: IAEA (International Atomic Energy Agency) | hq: Vienna, Austria
+11. org: ADB (Asian Development Bank) | hq: Manila, Philippines
+12. org: AIIB (Asian Infrastructure Investment Bank) | hq: Beijing, China
+13. org: NDB (New Development Bank / BRICS Bank) | hq: Shanghai, China
+14. org: INTERPOL (International Criminal Police Organization) | hq: Lyon, France
+15. org: ICJ (International Court of Justice) | hq: The Hague, Netherlands
+16. org: ICC (International Criminal Court) | hq: The Hague, Netherlands
+17. org: NATO (North Atlantic Treaty Organization) | hq: Brussels, Belgium
+18. org: ASEAN (Association of Southeast Asian Nations) | hq: Jakarta, Indonesia
+19. org: SAARC (South Asian Association for Regional Cooperation) | hq: Kathmandu, Nepal
+20. org: BIMSTEC (Bay of Bengal Initiative for Multi-Sectoral Technical and Economic Cooperation) | hq: Dhaka, Bangladesh
+21. org: SCO (Shanghai Cooperation Organisation) | hq: Beijing, China
+22. org: AU (African Union) | hq: Addis Ababa, Ethiopia
+23. org: OPEC (Organization of the Petroleum Exporting Countries) | hq: Vienna, Austria
+24. org: IEA (International Energy Agency) | hq: Paris, France
+25. org: APEC (Asia-Pacific Economic Cooperation) | hq: Singapore
+26. org: FIFA (Fédération Internationale de Football Association) | hq: Zurich, Switzerland
+27. org: ICC (International Cricket Council) | hq: Dubai, UAE
+28. org: BCCI (Board of Control for Cricket in India) | hq: Mumbai, India
+29. org: ISRO (Indian Space Research Organisation) | hq: Bengaluru, India
+30. org: NASA (National Aeronautics and Space Administration) | hq: Washington, D.C., USA
+31. org: EU (European Union) | hq: Brussels, Belgium
+32. org: WIPO (World Intellectual Property Organization) | hq: Geneva, Switzerland
+33. org: WMO (World Meteorological Organization) | hq: Geneva, Switzerland
+34. org: ICRC (International Committee of the Red Cross) | hq: Geneva, Switzerland
+35. org: Amnesty International | hq: London, UK
+
+
+========== Category: OWSDATA ==========
+
+1. phrase: A person who cannot be corrected | word: Incorrigible
+2. phrase: A person who knows many languages | word: Polyglot
+3. phrase: One who eats everything | word: Omnivore
+4. phrase: Fear of water | word: Hydrophobia
+5. phrase: A place where bees are kept | word: Apiary
+6. phrase: One who walks in sleep | word: Somnambulist
+7. phrase: A doctor who treats children | word: Pediatrician
+8. phrase: A person who hates mankind | word: Misanthrope
+9. phrase: One who loves books | word: Bibliophile
+10. phrase: A story that cannot be believed | word: Incredible
+11. phrase: One who is present everywhere | word: Omnipresent
+12. phrase: A person who is always optimistic | word: Optimist
+13. phrase: Fear of heights | word: Acrophobia
+14. phrase: One who looks on the bright side | word: Optimist
+15. phrase: A place where animals are kept | word: Zoo
+16. phrase: One who cannot read or write | word: Illiterate
+17. phrase: A person who travels to a holy place | word: Pilgrim
+18. phrase: One who is all-powerful | word: Omnipotent
+19. phrase: Fear of fire | word: Pyrophobia
+20. phrase: A person who is new to a job | word: Novice
+21. phrase: One who studies the stars | word: Astronomer
+22. phrase: A place where bread is baked | word: Bakery
+23. phrase: One who is fond of fighting | word: Bellicose
+24. phrase: A person who speaks two languages | word: Bilingual
+25. phrase: Fear of darkness | word: Nyctophobia
+26. phrase: One who collects stamps | word: Philatelist
+27. phrase: A person who lives alone | word: Recluse
+28. phrase: One who is easily deceived | word: Gullible
+29. phrase: A place where coins are made | word: Mint
+30. phrase: One who studies insects | word: Entomologist
+31. phrase: A person who is against war | word: Pacifist
+32. phrase: Fear of spiders | word: Arachnophobia
+33. phrase: One who studies the mind | word: Psychologist
+34. phrase: A place where wine is made | word: Winery
+35. phrase: One who is indifferent to pleasure or pain | word: Stoic
+36. phrase: A person who pretends to be ill | word: Malingerer
+37. phrase: Fear of crowds | word: Agoraphobia
+38. phrase: One who studies birds | word: Ornithologist
+39. phrase: A place where fish are kept | word: Aquarium
+40. phrase: One who is very talkative | word: Loquacious
+41. phrase: A person who donates blood | word: Donor
+42. phrase: Fear of enclosed spaces | word: Claustrophobia
+43. phrase: One who studies earthquakes | word: Seismologist
+44. phrase: A place where monks live | word: Monastery
+45. phrase: One who is greedy for money | word: Miser
+46. phrase: A person who is excessively proud | word: Narcissist
+47. phrase: Fear of snakes | word: Ophidiophobia
+48. phrase: One who studies fossils | word: Paleontologist
+49. phrase: A place where planes are kept | word: Hangar
+50. phrase: One who is unable to pay debts | word: Insolvent
+51. phrase: A person who works for free | word: Volunteer
+52. phrase: Fear of flying | word: Aviophobia
+53. phrase: One who studies the weather | word: Meteorologist
+54. phrase: A place where soldiers live | word: Barracks
+55. phrase: One who is skilled in many arts | word: Versatile
+56. phrase: A person who is very wise | word: Sage
+57. phrase: Fear of death | word: Thanatophobia
+58. phrase: One who studies the origin of words | word: Etymologist
+59. phrase: A place where ships are built | word: Shipyard
+60. phrase: One who is beyond correction | word: Incorrigible
+61. phrase: A person who believes in no god | word: Atheist
+62. phrase: Fear of germs | word: Mysophobia
+63. phrase: One who studies the structure of the body | word: Anatomist
+64. phrase: A place where books are kept | word: Library
+65. phrase: One who is very cruel | word: Sadist
+66. phrase: A person who is always doubting | word: Skeptic
+67. phrase: Fear of open spaces | word: Agoraphobia
+68. phrase: One who studies the history of mankind | word: Historian
+69. phrase: A place where medicines are sold | word: Pharmacy
+70. phrase: One who is very lazy | word: Indolent
+71. phrase: A person who is very brave | word: Valiant
+72. phrase: Fear of blood | word: Hemophobia
+73. phrase: One who studies the earth | word: Geologist
+74. phrase: A place where cars are repaired | word: Garage
+75. phrase: One who is very generous | word: Philanthropist
+76. phrase: A person who is very shy | word: Introvert
+77. phrase: Fear of the number 13 | word: Triskaidekaphobia
+78. phrase: One who studies the universe | word: Cosmologist
+79. phrase: A place where paintings are displayed | word: Gallery
+80. phrase: One who is very tidy | word: Meticulous
+81. phrase: A person who is very curious | word: Inquisitive
+82. phrase: Fear of thunder | word: Astraphobia
+83. phrase: One who studies languages | word: Linguist
+84. phrase: A place where dead bodies are kept | word: Mortuary
+85. phrase: One who is very stubborn | word: Obstinate
+86. phrase: A person who is very humble | word: Meek
+87. phrase: Fear of the dark | word: Scotophobia
+88. phrase: One who studies plants | word: Botanist
+89. phrase: A place where orphans live | word: Orphanage
+90. phrase: One who is very ambitious | word: Aspiring
+91. phrase: A person who is very forgetful | word: Amnesiac
+92. phrase: Fear of being alone | word: Autophobia
+93. phrase: One who studies the sea | word: Oceanographer
+94. phrase: A place where old people live | word: Nursing home
+95. phrase: One who is very punctual | word: Punctilious
+96. phrase: A person who is very honest | word: Upright
+97. phrase: Fear of mirrors | word: Spectrophobia
+98. phrase: One who studies animals | word: Zoologist
+99. phrase: A place where criminals are kept | word: Prison
+
+
+========== Category: PERIODICELEMENTS ==========
+
+1. atomicNumber: 1 | symbol: H | name: Hydrogen | atomicWeight: 1.008
+2. atomicNumber: 2 | symbol: He | name: Helium | atomicWeight: 4.0026
+3. atomicNumber: 3 | symbol: Li | name: Lithium | atomicWeight: 6.94
+4. atomicNumber: 4 | symbol: Be | name: Beryllium | atomicWeight: 9.0122
+5. atomicNumber: 5 | symbol: B | name: Boron | atomicWeight: 10.81
+6. atomicNumber: 6 | symbol: C | name: Carbon | atomicWeight: 12.011
+7. atomicNumber: 7 | symbol: N | name: Nitrogen | atomicWeight: 14.007
+8. atomicNumber: 8 | symbol: O | name: Oxygen | atomicWeight: 15.999
+9. atomicNumber: 9 | symbol: F | name: Fluorine | atomicWeight: 18.998
+10. atomicNumber: 10 | symbol: Ne | name: Neon | atomicWeight: 20.180
+11. atomicNumber: 11 | symbol: Na | name: Sodium | atomicWeight: 22.990
+12. atomicNumber: 12 | symbol: Mg | name: Magnesium | atomicWeight: 24.305
+13. atomicNumber: 13 | symbol: Al | name: Aluminium | atomicWeight: 26.982
+14. atomicNumber: 14 | symbol: Si | name: Silicon | atomicWeight: 28.085
+15. atomicNumber: 15 | symbol: P | name: Phosphorus | atomicWeight: 30.974
+16. atomicNumber: 16 | symbol: S | name: Sulfur | atomicWeight: 32.06
+17. atomicNumber: 17 | symbol: Cl | name: Chlorine | atomicWeight: 35.45
+18. atomicNumber: 18 | symbol: Ar | name: Argon | atomicWeight: 39.948
+19. atomicNumber: 19 | symbol: K | name: Potassium | atomicWeight: 39.098
+20. atomicNumber: 20 | symbol: Ca | name: Calcium | atomicWeight: 40.078
+21. atomicNumber: 21 | symbol: Sc | name: Scandium | atomicWeight: 44.956
+22. atomicNumber: 22 | symbol: Ti | name: Titanium | atomicWeight: 47.867
+23. atomicNumber: 23 | symbol: V | name: Vanadium | atomicWeight: 50.942
+24. atomicNumber: 24 | symbol: Cr | name: Chromium | atomicWeight: 51.996
+25. atomicNumber: 25 | symbol: Mn | name: Manganese | atomicWeight: 54.938
+26. atomicNumber: 26 | symbol: Fe | name: Iron | atomicWeight: 55.845
+27. atomicNumber: 27 | symbol: Co | name: Cobalt | atomicWeight: 58.933
+28. atomicNumber: 28 | symbol: Ni | name: Nickel | atomicWeight: 58.693
+29. atomicNumber: 29 | symbol: Cu | name: Copper | atomicWeight: 63.546
+30. atomicNumber: 30 | symbol: Zn | name: Zinc | atomicWeight: 65.38
+31. atomicNumber: 31 | symbol: Ga | name: Gallium | atomicWeight: 69.723
+32. atomicNumber: 32 | symbol: Ge | name: Germanium | atomicWeight: 72.630
+33. atomicNumber: 33 | symbol: As | name: Arsenic | atomicWeight: 74.922
+34. atomicNumber: 34 | symbol: Se | name: Selenium | atomicWeight: 78.971
+35. atomicNumber: 35 | symbol: Br | name: Bromine | atomicWeight: 79.904
+36. atomicNumber: 36 | symbol: Kr | name: Krypton | atomicWeight: 83.798
+37. atomicNumber: 37 | symbol: Rb | name: Rubidium | atomicWeight: 85.468
+38. atomicNumber: 38 | symbol: Sr | name: Strontium | atomicWeight: 87.62
+39. atomicNumber: 39 | symbol: Y | name: Yttrium | atomicWeight: 88.906
+40. atomicNumber: 40 | symbol: Zr | name: Zirconium | atomicWeight: 91.224
+41. atomicNumber: 41 | symbol: Nb | name: Niobium | atomicWeight: 92.906
+42. atomicNumber: 42 | symbol: Mo | name: Molybdenum | atomicWeight: 95.95
+43. atomicNumber: 43 | symbol: Tc | name: Technetium | atomicWeight: 98
+44. atomicNumber: 44 | symbol: Ru | name: Ruthenium | atomicWeight: 101.07
+45. atomicNumber: 45 | symbol: Rh | name: Rhodium | atomicWeight: 102.91
+46. atomicNumber: 46 | symbol: Pd | name: Palladium | atomicWeight: 106.42
+47. atomicNumber: 47 | symbol: Ag | name: Silver | atomicWeight: 107.87
+48. atomicNumber: 48 | symbol: Cd | name: Cadmium | atomicWeight: 112.41
+49. atomicNumber: 49 | symbol: In | name: Indium | atomicWeight: 114.82
+50. atomicNumber: 50 | symbol: Sn | name: Tin | atomicWeight: 118.71
+51. atomicNumber: 51 | symbol: Sb | name: Antimony | atomicWeight: 121.76
+52. atomicNumber: 52 | symbol: Te | name: Tellurium | atomicWeight: 127.60
+53. atomicNumber: 53 | symbol: I | name: Iodine | atomicWeight: 126.90
+54. atomicNumber: 54 | symbol: Xe | name: Xenon | atomicWeight: 131.29
+55. atomicNumber: 55 | symbol: Cs | name: Cesium | atomicWeight: 132.91
+56. atomicNumber: 56 | symbol: Ba | name: Barium | atomicWeight: 137.33
+57. atomicNumber: 57 | symbol: La | name: Lanthanum | atomicWeight: 138.91
+58. atomicNumber: 58 | symbol: Ce | name: Cerium | atomicWeight: 140.12
+59. atomicNumber: 59 | symbol: Pr | name: Praseodymium | atomicWeight: 140.91
+60. atomicNumber: 60 | symbol: Nd | name: Neodymium | atomicWeight: 144.24
+61. atomicNumber: 61 | symbol: Pm | name: Promethium | atomicWeight: 145
+62. atomicNumber: 62 | symbol: Sm | name: Samarium | atomicWeight: 150.36
+63. atomicNumber: 63 | symbol: Eu | name: Europium | atomicWeight: 151.96
+64. atomicNumber: 64 | symbol: Gd | name: Gadolinium | atomicWeight: 157.25
+65. atomicNumber: 65 | symbol: Tb | name: Terbium | atomicWeight: 158.93
+66. atomicNumber: 66 | symbol: Dy | name: Dysprosium | atomicWeight: 162.50
+67. atomicNumber: 67 | symbol: Ho | name: Holmium | atomicWeight: 164.93
+68. atomicNumber: 68 | symbol: Er | name: Erbium | atomicWeight: 167.26
+69. atomicNumber: 69 | symbol: Tm | name: Thulium | atomicWeight: 168.93
+70. atomicNumber: 70 | symbol: Yb | name: Ytterbium | atomicWeight: 173.05
+71. atomicNumber: 71 | symbol: Lu | name: Lutetium | atomicWeight: 174.97
+72. atomicNumber: 72 | symbol: Hf | name: Hafnium | atomicWeight: 178.49
+73. atomicNumber: 73 | symbol: Ta | name: Tantalum | atomicWeight: 180.95
+74. atomicNumber: 74 | symbol: W | name: Tungsten | atomicWeight: 183.84
+75. atomicNumber: 75 | symbol: Re | name: Rhenium | atomicWeight: 186.21
+76. atomicNumber: 76 | symbol: Os | name: Osmium | atomicWeight: 190.23
+77. atomicNumber: 77 | symbol: Ir | name: Iridium | atomicWeight: 192.22
+78. atomicNumber: 78 | symbol: Pt | name: Platinum | atomicWeight: 195.08
+79. atomicNumber: 79 | symbol: Au | name: Gold | atomicWeight: 196.97
+80. atomicNumber: 80 | symbol: Hg | name: Mercury | atomicWeight: 200.59
+81. atomicNumber: 81 | symbol: Tl | name: Thallium | atomicWeight: 204.38
+82. atomicNumber: 82 | symbol: Pb | name: Lead | atomicWeight: 207.2
+83. atomicNumber: 83 | symbol: Bi | name: Bismuth | atomicWeight: 208.98
+84. atomicNumber: 84 | symbol: Po | name: Polonium | atomicWeight: 209
+85. atomicNumber: 85 | symbol: At | name: Astatine | atomicWeight: 210
+86. atomicNumber: 86 | symbol: Rn | name: Radon | atomicWeight: 222
+87. atomicNumber: 87 | symbol: Fr | name: Francium | atomicWeight: 223
+88. atomicNumber: 88 | symbol: Ra | name: Radium | atomicWeight: 226
+89. atomicNumber: 89 | symbol: Ac | name: Actinium | atomicWeight: 227
+90. atomicNumber: 90 | symbol: Th | name: Thorium | atomicWeight: 232.04
+91. atomicNumber: 91 | symbol: Pa | name: Protactinium | atomicWeight: 231.04
+92. atomicNumber: 92 | symbol: U | name: Uranium | atomicWeight: 238.03
+93. atomicNumber: 93 | symbol: Np | name: Neptunium | atomicWeight: 237
+94. atomicNumber: 94 | symbol: Pu | name: Plutonium | atomicWeight: 244
+95. atomicNumber: 95 | symbol: Am | name: Americium | atomicWeight: 243
+96. atomicNumber: 96 | symbol: Cm | name: Curium | atomicWeight: 247
+97. atomicNumber: 97 | symbol: Bk | name: Berkelium | atomicWeight: 247
+98. atomicNumber: 98 | symbol: Cf | name: Californium | atomicWeight: 251
+99. atomicNumber: 99 | symbol: Es | name: Einsteinium | atomicWeight: 252
+100. atomicNumber: 100 | symbol: Fm | name: Fermium | atomicWeight: 257
+101. atomicNumber: 101 | symbol: Md | name: Mendelevium | atomicWeight: 258
+102. atomicNumber: 102 | symbol: No | name: Nobelium | atomicWeight: 259
+103. atomicNumber: 103 | symbol: Lr | name: Lawrencium | atomicWeight: 266
+104. atomicNumber: 104 | symbol: Rf | name: Rutherfordium | atomicWeight: 267
+105. atomicNumber: 105 | symbol: Db | name: Dubnium | atomicWeight: 268
+106. atomicNumber: 106 | symbol: Sg | name: Seaborgium | atomicWeight: 269
+107. atomicNumber: 107 | symbol: Bh | name: Bohrium | atomicWeight: 270
+108. atomicNumber: 108 | symbol: Hs | name: Hassium | atomicWeight: 277
+109. atomicNumber: 109 | symbol: Mt | name: Meitnerium | atomicWeight: 278
+110. atomicNumber: 110 | symbol: Ds | name: Darmstadtium | atomicWeight: 281
+111. atomicNumber: 111 | symbol: Rg | name: Roentgenium | atomicWeight: 282
+112. atomicNumber: 112 | symbol: Cn | name: Copernicium | atomicWeight: 285
+113. atomicNumber: 113 | symbol: Nh | name: Nihonium | atomicWeight: 286
+114. atomicNumber: 114 | symbol: Fl | name: Flerovium | atomicWeight: 289
+115. atomicNumber: 115 | symbol: Mc | name: Moscovium | atomicWeight: 290
+116. atomicNumber: 116 | symbol: Lv | name: Livermorium | atomicWeight: 293
+117. atomicNumber: 117 | symbol: Ts | name: Tennessine | atomicWeight: 294
+118. atomicNumber: 118 | symbol: Og | name: Oganesson | atomicWeight: 294
+
+
+========== Category: RAMSARSITESDATA ==========
+
+1. site: Kolleru Lake | state: Andhra Pradesh
+2. site: Deepor Beel | state: Assam
+3. site: Kabartal Wetland | state: Bihar
+4. site: Nagi Bird Sanctuary | state: Bihar
+5. site: Nakti Bird Sanctuary | state: Bihar
+6. site: Nanda Lake | state: Goa
+7. site: Khijadia Wildlife Sanctuary | state: Gujarat
+8. site: Nalsarovar Bird Sanctuary | state: Gujarat
+9. site: Thol Lake Wildlife Sanctuary | state: Gujarat
+10. site: Wadhvana Wetland | state: Gujarat
+11. site: Chhari-Dhand | state: Gujarat
+12. site: Bhindawas Wildlife Sanctuary | state: Haryana
+13. site: Sultanpur National Park | state: Haryana
+14. site: Chandertal Wetland | state: Himachal Pradesh
+15. site: Pong Dam Lake | state: Himachal Pradesh
+16. site: Renuka Wetland | state: Himachal Pradesh
+17. site: Wular Lake | state: Jammu and Kashmir
+18. site: Hokera Wetland | state: Jammu and Kashmir
+19. site: Surinsar-Mansar Lakes | state: Jammu and Kashmir
+20. site: Hygam Wetland Conservation Reserve | state: Jammu and Kashmir
+21. site: Shallbugh Wetland Conservation Reserve | state: Jammu and Kashmir
+22. site: Aghanashini Estuary | state: Karnataka
+23. site: Magadi Kere Conservation Reserve | state: Karnataka
+24. site: Ankasamudra Bird Conservation Reserve | state: Karnataka
+25. site: Ranganathittu Bird Sanctuary | state: Karnataka
+26. site: Ashtamudi Wetland | state: Kerala
+27. site: Sasthamkotta Lake | state: Kerala
+28. site: Vembanad-Kol Wetland | state: Kerala
+29. site: Tso Kar | state: Ladakh
+30. site: Tsomoriri | state: Ladakh
+31. site: Bhoj Wetland | state: Madhya Pradesh
+32. site: Sakhya Sagar | state: Madhya Pradesh
+33. site: Sirpur Wetland | state: Madhya Pradesh
+34. site: Yashwant Sagar | state: Madhya Pradesh
+35. site: Lonar Lake | state: Maharashtra
+36. site: Nandur Madhameshwar | state: Maharashtra
+37. site: Thane Creek | state: Maharashtra
+38. site: Loktak Lake | state: Manipur
+39. site: Pala Wetland | state: Mizoram
+40. site: Ansupa Lake | state: Odisha
+41. site: Bhitarkanika Mangroves | state: Odisha
+42. site: Chilika Lake | state: Odisha
+43. site: Hirakud Reservoir | state: Odisha
+44. site: Satkosia Gorge | state: Odisha
+45. site: Tampara Lake | state: Odisha
+46. site: Beas Conservation Reserve | state: Punjab
+47. site: Harike Wetland | state: Punjab
+48. site: Kanjli Wetland | state: Punjab
+49. site: Keshopur-Miani Community Reserve | state: Punjab
+50. site: Nangal Wildlife Sanctuary | state: Punjab
+51. site: Ropar Wetland | state: Punjab
+52. site: Keoladeo National Park | state: Rajasthan
+53. site: Sambhar Lake | state: Rajasthan
+54. site: Chitrangudi Bird Sanctuary | state: Tamil Nadu
+55. site: Gulf of Mannar Marine Biosphere Reserve | state: Tamil Nadu
+56. site: Kanjirankulam Bird Sanctuary | state: Tamil Nadu
+57. site: Karikili Bird Sanctuary | state: Tamil Nadu
+58. site: Koonthankulam Bird Sanctuary | state: Tamil Nadu
+59. site: Pallikaranai Marsh Reserve Forest | state: Tamil Nadu
+60. site: Pichavaram Mangrove | state: Tamil Nadu
+61. site: Point Calimere Wildlife and Bird Sanctuary | state: Tamil Nadu
+62. site: Suchindram Theroor Wetland Complex | state: Tamil Nadu
+63. site: Udhayamarthandapuram Bird Sanctuary | state: Tamil Nadu
+64. site: Vaduvur Bird Sanctuary | state: Tamil Nadu
+65. site: Vedanthangal Bird Sanctuary | state: Tamil Nadu
+66. site: Vellode Bird Sanctuary | state: Tamil Nadu
+67. site: Vembannur Wetland Complex | state: Tamil Nadu
+68. site: Karaivetti Bird Sanctuary | state: Tamil Nadu
+69. site: Longwood Shola Reserve Forest | state: Tamil Nadu
+70. site: Rudrasagar Lake | state: Tripura
+71. site: Bakhira Wildlife Sanctuary | state: Uttar Pradesh
+72. site: Haiderpur Wetland | state: Uttar Pradesh
+73. site: Nawabganj Bird Sanctuary | state: Uttar Pradesh
+74. site: Parvati Arga Bird Sanctuary | state: Uttar Pradesh
+75. site: Saman Bird Sanctuary | state: Uttar Pradesh
+76. site: Samaspur Bird Sanctuary | state: Uttar Pradesh
+77. site: Sandi Bird Sanctuary | state: Uttar Pradesh
+78. site: Sarsai Nawar Jheel | state: Uttar Pradesh
+79. site: Sur Sarovar | state: Uttar Pradesh
+80. site: Upper Ganga River | state: Uttar Pradesh
+81. site: Patna Bird Sanctuary | state: Uttar Pradesh
+82. site: Shekha Jheel Bird Sanctuary | state: Uttar Pradesh
+83. site: Jai Prakash Narayan Bird Sanctuary | state: Uttar Pradesh
+84. site: Asan Conservation Reserve | state: Uttarakhand
+85. site: East Calcutta Wetlands | state: West Bengal
+86. site: Sundarban Wetland | state: West Bengal
+87. site: Karasur Wetland | state: Tamil Nadu
+88. site: Velode Bird Sanctuary | state: Tamil Nadu
+89. site: Okhla Bird Sanctuary | state: Uttar Pradesh
+90. site: Nighasan Wetland | state: Uttar Pradesh
+91. site: Vijai Sagar Pakshi Vihar | state: Uttar Pradesh
+92. site: Kaimoor Wildlife Sanctuary | state: Uttar Pradesh
+93. site: Katerniaghat Wildlife Sanctuary | state: Uttar Pradesh
+94. site: Sohagi Barwa Wildlife Sanctuary | state: Uttar Pradesh
+95. site: Suhelva Wildlife Sanctuary | state: Uttar Pradesh
+96. site: Chandra Prabha Wildlife Sanctuary | state: Uttar Pradesh
+97. site: Kishanpur Wildlife Sanctuary | state: Uttar Pradesh
+98. site: National Chambal Sanctuary | state: Uttar Pradesh
+99. site: Ranipur Wildlife Sanctuary | state: Uttar Pradesh
+
+
+========== Category: RIVERORIGINDATA ==========
+
+1. river: Ganga | origin: Gangotri Glacier, Uttarakhand
+2. river: Yamuna | origin: Yamunotri Glacier, Uttarakhand
+3. river: Brahmaputra | origin: Angsi Glacier, Tibet
+4. river: Godavari | origin: Trimbakeshwar, Maharashtra
+5. river: Krishna | origin: Mahabaleshwar, Maharashtra
+6. river: Narmada | origin: Amarkantak, Madhya Pradesh
+7. river: Kaveri (Cauvery) | origin: Talakaveri, Karnataka
+8. river: Tapti | origin: Multai, Madhya Pradesh
+9. river: Mahanadi | origin: Sihawa Hills, Chhattisgarh
+10. river: Indus | origin: Tibetan Plateau near Lake Manasarovar
+11. river: Sutlej | origin: Rakshastal Lake, Tibet
+12. river: Beas | origin: Beas Kund, Himachal Pradesh
+13. river: Ravi | origin: Bara Banghal, Himachal Pradesh
+14. river: Chenab | origin: Bara Lacha Pass, Himachal Pradesh
+15. river: Chambal | origin: Singar Chouri Peak, Madhya Pradesh
+16. river: Gomti | origin: Gomat Taal, Uttar Pradesh
+17. river: Luni | origin: Near Ajmer, Rajasthan
+18. river: Damodar | origin: Palamu, Jharkhand
+19. river: Pennar | origin: Nandi Hills, Karnataka
+20. river: Sabarmati | origin: Dhebar Lake, Rajasthan
+21. river: Nile | origin: Lake Victoria, East Africa
+22. river: Amazon | origin: Andes Mountains, Peru
+23. river: Mississippi | origin: Lake Itasca, USA
+24. river: Danube | origin: Black Forest, Germany
+25. river: Rhine | origin: Swiss Alps, Switzerland
+26. river: Thames | origin: Gloucestershire, England
+27. river: Volga | origin: Valdai Hills, Russia
+28. river: Yangtze | origin: Tanggula Mountains, Tibet
+29. river: Mekong | origin: Tibetan Plateau
+30. river: Congo | origin: Highlands of northeastern Zambia
+
+
+========== Category: RIVERTRIBUTARIESDATA ==========
+
+1. tributary: Yamuna | river: Ganga
+2. tributary: Son | river: Ganga
+3. tributary: Gomti | river: Ganga
+4. tributary: Ghaghara | river: Ganga
+5. tributary: Kosi | river: Ganga
+6. tributary: Gandak | river: Ganga
+7. tributary: Chambal | river: Yamuna
+8. tributary: Betwa | river: Yamuna
+9. tributary: Ken | river: Yamuna
+10. tributary: Sind | river: Yamuna
+11. tributary: Tons | river: Yamuna
+12. tributary: Jhelum | river: Indus
+13. tributary: Chenab | river: Indus
+14. tributary: Ravi | river: Indus
+15. tributary: Beas | river: Indus
+16. tributary: Sutlej | river: Indus
+17. tributary: Zanskar | river: Indus
+18. tributary: Shyok | river: Indus
+19. tributary: Dibang | river: Brahmaputra
+20. tributary: Lohit | river: Brahmaputra
+21. tributary: Subansiri | river: Brahmaputra
+22. tributary: Teesta | river: Brahmaputra
+23. tributary: Manas | river: Brahmaputra
+24. tributary: Kameng | river: Brahmaputra
+25. tributary: Dhansiri | river: Brahmaputra
+26. tributary: Tungabhadra | river: Krishna
+27. tributary: Bhima | river: Krishna
+28. tributary: Musi | river: Krishna
+29. tributary: Ghataprabha | river: Krishna
+30. tributary: Malaprabha | river: Krishna
+31. tributary: Koyna | river: Krishna
+32. tributary: Indravati | river: Godavari
+33. tributary: Pranahita | river: Godavari
+34. tributary: Manjira | river: Godavari
+35. tributary: Penganga | river: Godavari
+36. tributary: Wainganga | river: Godavari
+37. tributary: Wardha | river: Godavari
+38. tributary: Sabari | river: Godavari
+39. tributary: Hemavati | river: Kaveri
+40. tributary: Kabini | river: Kaveri
+41. tributary: Bhavani | river: Kaveri
+42. tributary: Amaravati | river: Kaveri
+43. tributary: Arkavathi | river: Kaveri
+44. tributary: Tawa | river: Narmada
+45. tributary: Hiran | river: Narmada
+46. tributary: Shakkar | river: Narmada
+47. tributary: Purna | river: Tapti
+48. tributary: Girna | river: Tapti
+49. tributary: Seonath | river: Mahanadi
+50. tributary: Hasdeo | river: Mahanadi
+51. tributary: Mand | river: Mahanadi
+52. tributary: Ib | river: Mahanadi
+53. tributary: Ong | river: Mahanadi
+54. tributary: Tel | river: Mahanadi
+55. tributary: Banas | river: Chambal
+56. tributary: Kali Sindh | river: Chambal
+57. tributary: Parbati | river: Chambal
+58. tributary: Barakar | river: Damodar
+59. tributary: Noyyal | river: Kaveri
+
+
+========== Category: SCIENTIFICNAMES ==========
+
+1. common: Human | scientific: Homo sapiens
+2. common: Dog | scientific: Canis lupus familiaris
+3. common: Cat | scientific: Felis catus
+4. common: Cow | scientific: Bos taurus
+5. common: Horse | scientific: Equus caballus
+6. common: Tiger | scientific: Panthera tigris
+7. common: Lion | scientific: Panthera leo
+8. common: Elephant (Asian) | scientific: Elephas maximus
+9. common: Elephant (African) | scientific: Loxodonta africana
+10. common: Rabbit | scientific: Oryctolagus cuniculus
+11. common: Rat | scientific: Rattus rattus
+12. common: Mouse (House) | scientific: Mus musculus
+13. common: Monkey (Rhesus) | scientific: Macaca mulatta
+14. common: Gorilla | scientific: Gorilla gorilla
+15. common: Chimpanzee | scientific: Pan troglodytes
+16. common: Whale (Blue) | scientific: Balaenoptera musculus
+17. common: Dolphin | scientific: Delphinus delphis
+18. common: Bat (Fruit) | scientific: Pteropus giganteus
+19. common: Deer (Spotted) | scientific: Axis axis
+20. common: Fox (Red) | scientific: Vulpes vulpes
+21. common: Bear (Brown) | scientific: Ursus arctos
+22. common: Wolf | scientific: Canis lupus
+23. common: Zebra | scientific: Equus quagga
+24. common: Giraffe | scientific: Giraffa camelopardalis
+25. common: Hippopotamus | scientific: Hippopotamus amphibius
+26. common: Rhinoceros (Indian) | scientific: Rhinoceros unicornis
+27. common: Peacock (Indian) | scientific: Pavo cristatus
+28. common: Crow (House) | scientific: Corvus splendens
+29. common: Sparrow (House) | scientific: Passer domesticus
+30. common: Pigeon | scientific: Columba livia
+31. common: Parrot (Rose-ringed) | scientific: Psittacula krameri
+32. common: Eagle (Bald) | scientific: Haliaeetus leucocephalus
+33. common: Penguin (Emperor) | scientific: Aptenodytes forsteri
+34. common: Ostrich | scientific: Struthio camelus
+35. common: Cobra (King) | scientific: Ophiophagus hannah
+36. common: Python (Indian) | scientific: Python molurus
+37. common: Crocodile (Saltwater) | scientific: Crocodylus porosus
+38. common: Tortoise (Indian Star) | scientific: Geochelone elegans
+39. common: Frog (Common) | scientific: Rana temporaria
+40. common: Chameleon | scientific: Chamaeleo chamaeleon
+41. common: Komodo Dragon | scientific: Varanus komodoensis
+42. common: Goldfish | scientific: Carassius auratus
+43. common: Catfish (Walking) | scientific: Clarias batrachus
+44. common: Shark (Great White) | scientific: Carcharodon carcharias
+45. common: Housefly | scientific: Musca domestica
+46. common: Mosquito (Anopheles) | scientific: Anopheles stephensi
+47. common: Honey Bee | scientific: Apis mellifera
+48. common: Silkworm | scientific: Bombyx mori
+49. common: Cockroach | scientific: Periplaneta americana
+50. common: Butterfly (Monarch) | scientific: Danaus plexippus
+51. common: Rice | scientific: Oryza sativa
+52. common: Wheat | scientific: Triticum aestivum
+53. common: Maize (Corn) | scientific: Zea mays
+54. common: Mango | scientific: Mangifera indica
+55. common: Banana | scientific: Musa paradisiaca
+56. common: Neem | scientific: Azadirachta indica
+57. common: Tulsi (Holy Basil) | scientific: Ocimum tenuiflorum
+58. common: Banyan Tree | scientific: Ficus benghalensis
+59. common: Peepal Tree | scientific: Ficus religiosa
+60. common: Rose | scientific: Rosa indica
+61. common: Amoeba | scientific: Amoeba proteus
+62. common: Plasmodium (Malaria) | scientific: Plasmodium vivax
+
+
+========== Category: SIUNITS ==========
+
+1. quantity: Length | unit: Metre | symbol: m
+2. quantity: Mass | unit: Kilogram | symbol: kg
+3. quantity: Time | unit: Second | symbol: s
+4. quantity: Electric Current | unit: Ampere | symbol: A
+5. quantity: Temperature | unit: Kelvin | symbol: K
+6. quantity: Amount of Substance | unit: Mole | symbol: mol
+7. quantity: Luminous Intensity | unit: Candela | symbol: cd
+8. quantity: Force | unit: Newton | symbol: N
+9. quantity: Pressure | unit: Pascal | symbol: Pa
+10. quantity: Energy | unit: Joule | symbol: J
+11. quantity: Power | unit: Watt | symbol: W
+12. quantity: Electric Charge | unit: Coulomb | symbol: C
+13. quantity: Electric Potential | unit: Volt | symbol: V
+14. quantity: Resistance | unit: Ohm | symbol: Ω
+15. quantity: Capacitance | unit: Farad | symbol: F
+16. quantity: Magnetic Flux | unit: Weber | symbol: Wb
+17. quantity: Magnetic Flux Density | unit: Tesla | symbol: T
+18. quantity: Inductance | unit: Henry | symbol: H
+19. quantity: Frequency | unit: Hertz | symbol: Hz
+20. quantity: Radioactivity | unit: Becquerel | symbol: Bq
+21. quantity: Absorbed Dose (Radiation) | unit: Gray | symbol: Gy
+22. quantity: Effective Dose (Radiation) | unit: Sievert | symbol: Sv
+23. quantity: Luminous Flux | unit: Lumen | symbol: lm
+24. quantity: Illuminance | unit: Lux | symbol: lx
+25. quantity: Catalytic Activity | unit: Katal | symbol: kat
+26. quantity: Angle (plane) | unit: Radian | symbol: rad
+27. quantity: Solid Angle | unit: Steradian | symbol: sr
+28. quantity: Electric Conductance | unit: Siemens | symbol: S
+29. quantity: Area | unit: Square metre | symbol: m²
+30. quantity: Volume | unit: Cubic metre | symbol: m³
+31. quantity: Speed / Velocity | unit: Metre per second | symbol: m/s
+32. quantity: Acceleration | unit: Metre per second squared | symbol: m/s²
+33. quantity: Density | unit: Kilogram per cubic metre | symbol: kg/m³
+34. quantity: Momentum | unit: Kilogram metre per second | symbol: kg·m/s
+35. quantity: Torque | unit: Newton metre | symbol: N·m
+36. quantity: Surface Tension | unit: Newton per metre | symbol: N/m
+37. quantity: Dynamic Viscosity | unit: Pascal second | symbol: Pa·s
+38. quantity: Heat Capacity | unit: Joule per Kelvin | symbol: J/K
+39. quantity: Specific Heat Capacity | unit: Joule per kilogram Kelvin | symbol: J/(kg·K)
+40. quantity: Thermal Conductivity | unit: Watt per metre Kelvin | symbol: W/(m·K)
+41. quantity: Electric Field Strength | unit: Volt per metre | symbol: V/m
+42. quantity: Molar Mass | unit: Kilogram per mole | symbol: kg/mol
+43. quantity: Luminance | unit: Candela per square metre | symbol: cd/m²
+44. quantity: Refractive Index | unit: Dimensionless | symbol: —
+45. quantity: Wavelength | unit: Metre | symbol: m
+46. quantity: Work | unit: Joule | symbol: J
+47. quantity: Voltage (EMF) | unit: Volt | symbol: V
+48. quantity: Current | unit: Ampere | symbol: A
+49. quantity: Magnetic Field Intensity | unit: Ampere per metre | symbol: A/m
+50. quantity: Entropy | unit: Joule per Kelvin | symbol: J/K
+
+
+========== Category: SPACEAGENCIESDATA ==========
+
+1. agency: ISRO (Indian Space Research Organisation) | hq: Bengaluru, India
+2. agency: NASA (National Aeronautics and Space Administration) | hq: Washington, D.C., USA
+3. agency: ESA (European Space Agency) | hq: Paris, France
+4. agency: Roscosmos (State Space Corporation) | hq: Moscow, Russia
+5. agency: CNSA (China National Space Administration) | hq: Beijing, China
+6. agency: JAXA (Japan Aerospace Exploration Agency) | hq: Chofu, Tokyo, Japan
+7. agency: CSA (Canadian Space Agency) | hq: Longueuil, Quebec, Canada
+8. agency: KARI (Korea Aerospace Research Institute) | hq: Daejeon, South Korea
+9. agency: CNES (National Centre for Space Studies) | hq: Paris, France
+10. agency: ASI (Italian Space Agency) | hq: Rome, Italy
+11. agency: DLR (German Aerospace Center) | hq: Cologne, Germany
+12. agency: UKSA (United Kingdom Space Agency) | hq: Swindon, UK
+13. agency: ISA (Israel Space Agency) | hq: Tel Aviv, Israel
+14. agency: AEB (Brazilian Space Agency) | hq: Brasília, Brazil
+15. agency: CONAE (National Commission for Space Activities) | hq: Buenos Aires, Argentina
+16. agency: SANSA (South African National Space Agency) | hq: Pretoria, South Africa
+17. agency: ASA (Australian Space Agency) | hq: Adelaide, Australia
+18. agency: UAESA (United Arab Emirates Space Agency) | hq: Abu Dhabi, UAE
+19. agency: SSU (State Space Agency of Ukraine) | hq: Kyiv, Ukraine
+20. agency: SUPARCO (Space and Upper Atmosphere Research Commission) | hq: Karachi, Pakistan
+21. agency: LAPAN (National Institute of Aeronautics and Space) | hq: Jakarta, Indonesia
+22. agency: TUA (Turkish Space Agency) | hq: Ankara, Turkey
+
+
+========== Category: STATECAPITALS ==========
+
+1. state: Andhra Pradesh | capital: Amaravati
+2. state: Arunachal Pradesh | capital: Itanagar
+3. state: Assam | capital: Dispur
+4. state: Bihar | capital: Patna
+5. state: Chhattisgarh | capital: Raipur
+6. state: Goa | capital: Panaji
+7. state: Gujarat | capital: Gandhinagar
+8. state: Haryana | capital: Chandigarh
+9. state: Himachal Pradesh | capital: Shimla
+10. state: Jharkhand | capital: Ranchi
+11. state: Karnataka | capital: Bengaluru
+12. state: Kerala | capital: Thiruvananthapuram
+13. state: Madhya Pradesh | capital: Bhopal
+14. state: Maharashtra | capital: Mumbai
+15. state: Manipur | capital: Imphal
+16. state: Meghalaya | capital: Shillong
+17. state: Mizoram | capital: Aizawl
+18. state: Nagaland | capital: Kohima
+19. state: Odisha | capital: Bhubaneswar
+20. state: Punjab | capital: Chandigarh
+21. state: Rajasthan | capital: Jaipur
+22. state: Sikkim | capital: Gangtok
+23. state: Tamil Nadu | capital: Chennai
+24. state: Telangana | capital: Hyderabad
+25. state: Tripura | capital: Agartala
+26. state: Uttarakhand | capital: Dehradun
+27. state: Uttar Pradesh | capital: Lucknow
+28. state: West Bengal | capital: Kolkata
+
+
+========== Category: STATEDANCES ==========
+
+1. state: Andhra Pradesh | dance: Kuchipudi
+2. state: Assam | dance: Bihu
+3. state: Bihar | dance: Jata-Jatin
+4. state: Gujarat | dance: Garba
+5. state: Haryana | dance: Jhumar
+6. state: Himachal Pradesh | dance: Nati
+7. state: Jammu & Kashmir | dance: Rauf
+8. state: Karnataka | dance: Yakshagana
+9. state: Kerala | dance: Kathakali
+10. state: Maharashtra | dance: Lavani
+11. state: Odisha | dance: Odissi
+12. state: Punjab | dance: Bhangra
+13. state: Rajasthan | dance: Ghoomar
+14. state: Tamil Nadu | dance: Bharatanatyam
+15. state: Uttar Pradesh | dance: Kathak
+16. state: Uttarakhand | dance: Garhwali
+17. state: Goa | dance: Fugdi
+18. state: Madhya Pradesh | dance: Matki
+19. state: Chhattisgarh | dance: Raut Nacha
+20. state: Jharkhand | dance: Jhumar
+21. state: Arunachal Pradesh | dance: Lion and Peacock Dance
+22. state: Manipur | dance: Manipuri
+23. state: Meghalaya | dance: Nongkrem
+24. state: Mizoram | dance: Cheraw (Bamboo Dance)
+25. state: Nagaland | dance: Chang Lo
+26. state: Tripura | dance: Hojagiri
+27. state: Sikkim | dance: Singhi Chham
+28. state: Lakshadweep | dance: Lava
+
+
+========== Category: STATEOFFICIALS ==========
+
+1. state: Andhra Pradesh | cm: N. Chandrababu Naidu | governor: S. Abdul Nazeer
+2. state: Arunachal Pradesh | cm: Pema Khandu | governor: K. T. Parnaik
+3. state: Assam | cm: Himanta Biswa Sarma | governor: Lakshman Prasad Acharya
+4. state: Bihar | cm: Nitish Kumar | governor: Rajendra Arlekar
+5. state: Chhattisgarh | cm: Vishnu Deo Sai | governor: Ramen Deka
+6. state: Goa | cm: Pramod Sawant | governor: P. S. Sreedharan Pillai
+7. state: Gujarat | cm: Bhupendrabhai Patel | governor: Acharya Devvrat
+8. state: Haryana | cm: Nayab Singh Saini | governor: Bandaru Dattatreya
+9. state: Himachal Pradesh | cm: Sukhvinder Singh Sukhu | governor: Shiv Pratap Shukla
+10. state: Jharkhand | cm: Hemant Soren | governor: Santosh Kumar Gangwar
+11. state: Karnataka | cm: Siddaramaiah | governor: Thawar Chand Gehlot
+12. state: Kerala | cm: Pinarayi Vijayan | governor: Arif Mohammad Khan
+13. state: Madhya Pradesh | cm: Mohan Yadav | governor: Mangubhai C. Patel
+14. state: Maharashtra | cm: Devendra Fadnavis | governor: C. P. Radhakrishnan
+15. state: Manipur | cm: N. Biren Singh | governor: Anusuiya Uikey
+16. state: Meghalaya | cm: Conrad Sangma | governor: C. H. Vijayashankar
+17. state: Mizoram | cm: Lalduhoma | governor: Kambhampati Hari Babu
+18. state: Nagaland | cm: Neiphiu Rio | governor: La. Ganesan
+19. state: Odisha | cm: Mohan Charan Majhi | governor: Raghubar Das
+20. state: Punjab | cm: Bhagwant Mann | governor: Gulab Chand Kataria
+21. state: Rajasthan | cm: Bhajan Lal Sharma | governor: Haribhau Bagade
+22. state: Sikkim | cm: Prem Singh Tamang | governor: Om Prakash Mathur
+23. state: Tamil Nadu | cm: M. K. Stalin | governor: R. N. Ravi
+24. state: Telangana | cm: A. Revanth Reddy | governor: Jishnu Dev Varma
+25. state: Tripura | cm: Manik Saha | governor: Indrasena Reddy Nallu
+26. state: Uttar Pradesh | cm: Yogi Adityanath | governor: Anandiben Patel
+27. state: Uttarakhand | cm: Pushkar Singh Dhami | governor: Gurmit Singh
+28. state: West Bengal | cm: Mamata Banerjee | governor: C. V. Ananda Bose
+
+
+========== Category: VACCINEDATA ==========
+
+1. disease: Tuberculosis (TB) | vaccine: BCG (Bacillus Calmette-Guérin)
+2. disease: Polio | vaccine: OPV (Oral Polio Vaccine) / IPV
+3. disease: Measles, Mumps, Rubella | vaccine: MMR vaccine
+4. disease: Diphtheria, Tetanus, Pertussis | vaccine: DTP vaccine
+5. disease: Hepatitis B | vaccine: HepB vaccine
+6. disease: Hepatitis A | vaccine: HepA vaccine
+7. disease: Rabies | vaccine: Anti-Rabies Vaccine (ARV)
+8. disease: Typhoid | vaccine: Typhoid Conjugate Vaccine (TCV)
+9. disease: Rotavirus diarrhea | vaccine: Rotavirus vaccine
+10. disease: Cervical Cancer | vaccine: HPV vaccine
+11. disease: Chickenpox (Varicella) | vaccine: Varicella vaccine
+12. disease: Influenza (Flu) | vaccine: Flu shot (Influenza vaccine)
+13. disease: Yellow Fever | vaccine: Yellow Fever vaccine
+14. disease: Pneumonia / Meningitis (Pneumococcal) | vaccine: PCV (Pneumococcal Conjugate Vaccine)
+15. disease: Cholera | vaccine: Oral Cholera Vaccine (OCV)
+16. disease: COVID-19 | vaccine: Covishield / Covaxin / mRNA vaccines
+17. disease: Japanese Encephalitis | vaccine: JE vaccine
+18. disease: Shingles | vaccine: Shingrix (Zoster vaccine)
+19. disease: Malaria | vaccine: RTS,S (Mosquirix) / R21
+20. disease: Dengue | vaccine: Dengvaxia / Qdenga
+
+
+========== Category: VITAMINDEFICIENCYDATA ==========
+
+1. vitamin: Vitamin A | deficiency: Night Blindness
+2. vitamin: Vitamin B1 (Thiamine) | deficiency: Beriberi
+3. vitamin: Vitamin B2 (Riboflavin) | deficiency: Ariboflavinosis
+4. vitamin: Vitamin B3 (Niacin) | deficiency: Pellagra
+5. vitamin: Vitamin B5 (Pantothenic Acid) | deficiency: Burning Feet Syndrome
+6. vitamin: Vitamin B6 (Pyridoxine) | deficiency: Anemia & Skin Disorders
+7. vitamin: Vitamin B7 (Biotin) | deficiency: Dermatitis & Hair Loss
+8. vitamin: Vitamin B9 (Folate) | deficiency: Megaloblastic Anemia
+9. vitamin: Vitamin B12 (Cobalamin) | deficiency: Pernicious Anemia
+10. vitamin: Vitamin C | deficiency: Scurvy
+11. vitamin: Vitamin D | deficiency: Rickets / Osteomalacia
+12. vitamin: Vitamin E | deficiency: Hemolytic Anemia
+13. vitamin: Vitamin K | deficiency: Bleeding Disorder
+

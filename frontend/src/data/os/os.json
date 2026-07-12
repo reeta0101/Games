@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "What is the main function of an operating system?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Run applications only"
+            },
+            {
+                "id": "b",
+                "text": "Manage hardware and software resources"
+            },
+            {
+                "id": "c",
+                "text": "Connect to internet"
+            },
+            {
+                "id": "d",
+                "text": "Store files only"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "An OS manages computer hardware, software resources, and provides common services for programs.",
+        "difficulty": "easy",
+        "topics": [
+            "basics",
+            "introduction"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "What is a process in operating systems?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A program on disk"
+            },
+            {
+                "id": "b",
+                "text": "A program in execution"
+            },
+            {
+                "id": "c",
+                "text": "A file"
+            },
+            {
+                "id": "d",
+                "text": "A thread"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A process is a program in execution, including program code, current activity, and resources.",
+        "difficulty": "easy",
+        "topics": [
+            "processes",
+            "basics"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Which scheduling algorithm may cause starvation?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Round Robin"
+            },
+            {
+                "id": "b",
+                "text": "FCFS"
+            },
+            {
+                "id": "c",
+                "text": "Priority Scheduling"
+            },
+            {
+                "id": "d",
+                "text": "Both a and b"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Priority Scheduling can cause starvation as low-priority processes may never execute.",
+        "difficulty": "medium",
+        "topics": [
+            "scheduling",
+            "cpu-scheduling"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "What is virtual memory?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Physical RAM"
+            },
+            {
+                "id": "b",
+                "text": "Hard disk space used as RAM extension"
+            },
+            {
+                "id": "c",
+                "text": "Cache memory"
+            },
+            {
+                "id": "d",
+                "text": "ROM"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Virtual memory uses disk space to extend physical memory, allowing larger programs to run.",
+        "difficulty": "medium",
+        "topics": [
+            "memory-management",
+            "virtual-memory"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "What is thrashing in OS?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Fast execution"
+            },
+            {
+                "id": "b",
+                "text": "High page fault rate causing system slowdown"
+            },
+            {
+                "id": "c",
+                "text": "Disk failure"
+            },
+            {
+                "id": "d",
+                "text": "CPU overheating"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Thrashing occurs when the system spends more time swapping pages than executing processes.",
+        "difficulty": "hard",
+        "topics": [
+            "virtual-memory",
+            "paging"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is a semaphore?",
+        "options": [
+            {
+                "id": "a",
+                "text": "A type of virus"
+            },
+            {
+                "id": "b",
+                "text": "A synchronization tool"
+            },
+            {
+                "id": "c",
+                "text": "A memory unit"
+            },
+            {
+                "id": "d",
+                "text": "A scheduling algorithm"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A semaphore is a synchronization primitive used to control access to shared resources.",
+        "difficulty": "medium",
+        "topics": [
+            "synchronization",
+            "concurrency"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "What are the necessary conditions for deadlock?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Mutual exclusion only"
+            },
+            {
+                "id": "b",
+                "text": "Mutual exclusion, Hold & Wait, No preemption, Circular wait"
+            },
+            {
+                "id": "c",
+                "text": "Starvation and blocking"
+            },
+            {
+                "id": "d",
+                "text": "Priority inversion"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "All four conditions must hold simultaneously for a deadlock to occur.",
+        "difficulty": "hard",
+        "topics": [
+            "deadlock",
+            "synchronization"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "What is the purpose of paging?",
+        "options": [
+            {
+                "id": "a",
+                "text": "To organize files"
+            },
+            {
+                "id": "b",
+                "text": "To eliminate external fragmentation"
+            },
+            {
+                "id": "c",
+                "text": "To speed up CPU"
+            },
+            {
+                "id": "d",
+                "text": "To manage I/O devices"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Paging divides memory into fixed-size pages, eliminating external fragmentation.",
+        "difficulty": "medium",
+        "topics": [
+            "memory-management",
+            "paging"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is a context switch?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Switching between users"
+            },
+            {
+                "id": "b",
+                "text": "Saving and restoring process state"
+            },
+            {
+                "id": "c",
+                "text": "Changing screen resolution"
+            },
+            {
+                "id": "d",
+                "text": "Switching network connections"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Context switch saves the state of the current process and restores the state of another process.",
+        "difficulty": "easy",
+        "topics": [
+            "processes",
+            "scheduling"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "What is the Banker's algorithm used for?",
+        "options": [
+            {
+                "id": "a",
+                "text": "Memory allocation"
+            },
+            {
+                "id": "b",
+                "text": "Deadlock avoidance"
+            },
+            {
+                "id": "c",
+                "text": "CPU scheduling"
+            },
+            {
+                "id": "d",
+                "text": "File management"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Banker's algorithm is used for deadlock avoidance by checking if resource allocation leaves system in safe state.",
+        "difficulty": "hard",
+        "topics": [
+            "deadlock",
+            "algorithms"
+        ]
+    }
+]

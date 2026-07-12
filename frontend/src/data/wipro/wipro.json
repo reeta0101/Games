@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "question": "If COMPUTER is coded as RFUVQNPC, how is MONITOR coded?",
+        "options": [
+            {
+                "id": "a",
+                "text": "SPUJOPN"
+            },
+            {
+                "id": "b",
+                "text": "PQUJOPN"
+            },
+            {
+                "id": "c",
+                "text": "SPUJOPS"
+            },
+            {
+                "id": "d",
+                "text": "NQOJUPS"
+            }
+        ],
+        "correctOptionId": "d",
+        "explanation": "The pattern reverses the word and shifts each letter by 1. MONITOR → ROTINIM → shifted = NQOJUPS.",
+        "difficulty": "medium",
+        "topics": [
+            "coding-decoding",
+            "patterns"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "A pipe can fill a tank in 12 hours. Due to a leak, it takes 15 hours. How long will the leak take to empty the full tank?",
+        "options": [
+            {
+                "id": "a",
+                "text": "40 hours"
+            },
+            {
+                "id": "b",
+                "text": "50 hours"
+            },
+            {
+                "id": "c",
+                "text": "60 hours"
+            },
+            {
+                "id": "d",
+                "text": "75 hours"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Leak rate = 1/12 - 1/15 = (5-4)/60 = 1/60. Leak empties tank in 60 hours.",
+        "difficulty": "medium",
+        "topics": [
+            "pipes-cisterns",
+            "word-problems"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "What is the difference between '==' and '===' in JavaScript?",
+        "options": [
+            {
+                "id": "a",
+                "text": "No difference"
+            },
+            {
+                "id": "b",
+                "text": "'==' checks value only, '===' checks value and type"
+            },
+            {
+                "id": "c",
+                "text": "'===' is for assignment"
+            },
+            {
+                "id": "d",
+                "text": "'==' is deprecated"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "'==' performs type coercion before comparison; '===' strictly compares value and type.",
+        "difficulty": "easy",
+        "topics": [
+            "javascript",
+            "programming"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "In a race, A beats B by 20 meters or 5 seconds. What is B's speed?",
+        "options": [
+            {
+                "id": "a",
+                "text": "2 m/s"
+            },
+            {
+                "id": "b",
+                "text": "3 m/s"
+            },
+            {
+                "id": "c",
+                "text": "4 m/s"
+            },
+            {
+                "id": "d",
+                "text": "5 m/s"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "B covers 20 meters in 5 seconds. B's speed = 20/5 = 4 m/s.",
+        "difficulty": "easy",
+        "topics": [
+            "speed-time-distance",
+            "races"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "The probability of getting a sum of 9 when two dice are thrown is:",
+        "options": [
+            {
+                "id": "a",
+                "text": "1/6"
+            },
+            {
+                "id": "b",
+                "text": "1/9"
+            },
+            {
+                "id": "c",
+                "text": "1/12"
+            },
+            {
+                "id": "d",
+                "text": "1/18"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Favorable outcomes: (3,6),(4,5),(5,4),(6,3) = 4. Probability = 4/36 = 1/9.",
+        "difficulty": "medium",
+        "topics": [
+            "probability",
+            "dice"
+        ]
+    },
+    {
+        "id": 6,
+        "question": "What is the value of √(144) + √(81)?",
+        "options": [
+            {
+                "id": "a",
+                "text": "21"
+            },
+            {
+                "id": "b",
+                "text": "23"
+            },
+            {
+                "id": "c",
+                "text": "25"
+            },
+            {
+                "id": "d",
+                "text": "27"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "√144 = 12, √81 = 9. Sum = 12 + 9 = 21.",
+        "difficulty": "easy",
+        "topics": [
+            "arithmetic",
+            "square-roots"
+        ]
+    },
+    {
+        "id": 7,
+        "question": "Which data type is used for storing true/false values?",
+        "options": [
+            {
+                "id": "a",
+                "text": "int"
+            },
+            {
+                "id": "b",
+                "text": "float"
+            },
+            {
+                "id": "c",
+                "text": "boolean"
+            },
+            {
+                "id": "d",
+                "text": "string"
+            }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Boolean data type stores only true or false values.",
+        "difficulty": "easy",
+        "topics": [
+            "data-types",
+            "programming"
+        ]
+    },
+    {
+        "id": 8,
+        "question": "If 40% of a number is 200, what is the number?",
+        "options": [
+            {
+                "id": "a",
+                "text": "400"
+            },
+            {
+                "id": "b",
+                "text": "500"
+            },
+            {
+                "id": "c",
+                "text": "600"
+            },
+            {
+                "id": "d",
+                "text": "800"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "40% of x = 200 → x = 200 × (100/40) = 500.",
+        "difficulty": "easy",
+        "topics": [
+            "percentage",
+            "arithmetic"
+        ]
+    },
+    {
+        "id": 9,
+        "question": "What is the output of 10 // 3 in Python?",
+        "options": [
+            {
+                "id": "a",
+                "text": "3.33"
+            },
+            {
+                "id": "b",
+                "text": "3"
+            },
+            {
+                "id": "c",
+                "text": "4"
+            },
+            {
+                "id": "d",
+                "text": "1"
+            }
+        ],
+        "correctOptionId": "b",
+        "explanation": "// is floor division in Python. 10 // 3 = 3 (integer division, rounded down).",
+        "difficulty": "easy",
+        "topics": [
+            "python",
+            "operators"
+        ]
+    },
+    {
+        "id": 10,
+        "question": "A boat travels 20 km downstream in 2 hours. If water speed is 3 km/hr, what is the boat's speed in still water?",
+        "options": [
+            {
+                "id": "a",
+                "text": "7 km/hr"
+            },
+            {
+                "id": "b",
+                "text": "8 km/hr"
+            },
+            {
+                "id": "c",
+                "text": "10 km/hr"
+            },
+            {
+                "id": "d",
+                "text": "13 km/hr"
+            }
+        ],
+        "correctOptionId": "a",
+        "explanation": "Downstream speed = 20/2 = 10 km/hr. Boat speed = 10 - 3 = 7 km/hr still water.",
+        "difficulty": "medium",
+        "topics": [
+            "boats-streams",
+            "word-problems"
+        ]
+    }
+]

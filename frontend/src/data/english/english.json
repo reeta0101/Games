@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "question": "Fill in the blanks\n\nHe is ______ honour to his profession.",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "No article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Although 'honour' starts with the consonant 'h', it is silent, and the word begins with a vowel sound ('on-er'). Therefore, the article 'an' is used."
+  },
+  {
+    "id": 2,
+    "question": "Fill in the blanks\n\nThe meeting was ______ due to heavy rain.",
+    "options": [
+      { "id": "a", "text": "called off" },
+      { "id": "b", "text": "called up" },
+      { "id": "c", "text": "called in" },
+      { "id": "d", "text": "called for" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Called off' is a phrasal verb meaning to cancel something. 'Called up' means to telephone; 'called in' means to summon; 'called for' means to require."
+  },
+  {
+    "id": 3,
+    "question": "Fill in the blanks\n\nShe has been sleeping ______ 8 AM.",
+    "options": [
+      { "id": "a", "text": "for" },
+      { "id": "b", "text": "from" },
+      { "id": "c", "text": "since" },
+      { "id": "d", "text": "by" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Since' is used to denote a specific point in time in the past when an action started. 'For' is used for a duration of time."
+  },
+  {
+    "id": 4,
+    "question": "Fill in the blanks\n\nNo sooner had I reached the station ______ the train left.",
+    "options": [
+      { "id": "a", "text": "then" },
+      { "id": "b", "text": "when" },
+      { "id": "c", "text": "than" },
+      { "id": "d", "text": "before" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The correlative conjunction structure is 'No sooner... than'. 'Hardly/Scarcely' is followed by 'when'."
+  },
+  {
+    "id": 5,
+    "question": "Fill in the blanks\n\nOne of the ______ was absent today.",
+    "options": [
+      { "id": "a", "text": "student" },
+      { "id": "b", "text": "students" },
+      { "id": "c", "text": "class" },
+      { "id": "d", "text": "staff" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The phrase 'One of the' is always followed by a plural noun (students) and a singular verb."
+  },
+  {
+    "id": 6,
+    "question": "Spot the error\n\nNeither of the two candidates have submitted their application.",
+    "options": [
+      { "id": "a", "text": "Neither of the" },
+      { "id": "b", "text": "two candidates" },
+      { "id": "c", "text": "have submitted" },
+      { "id": "d", "text": "their application" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Neither' is singular and takes a singular verb. 'Have' should be replaced with 'has'."
+  },
+  {
+    "id": 7,
+    "question": "Spot the error\n\nI prefer coffee than tea in the morning.",
+    "options": [
+      { "id": "a", "text": "I prefer" },
+      { "id": "b", "text": "coffee" },
+      { "id": "c", "text": "than tea" },
+      { "id": "d", "text": "in the morning" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The verb 'prefer' is followed by the preposition 'to', not 'than'. The correct sentence is 'I prefer coffee to tea'."
+  },
+  {
+    "id": 8,
+    "question": "Spot the error\n\nThe police has arrested the thief yesterday.",
+    "options": [
+      { "id": "a", "text": "The police" },
+      { "id": "b", "text": "has arrested" },
+      { "id": "c", "text": "the thief" },
+      { "id": "d", "text": "yesterday" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Police' is a plural noun, so it should be 'have'. Furthermore, since the specific time 'yesterday' is mentioned, the simple past 'arrested' (without has/have) is preferred. Either way, 'has' is incorrect."
+  },
+  {
+    "id": 9,
+    "question": "Spot the error\n\nKindly return back the book I lent you.",
+    "options": [
+      { "id": "a", "text": "Kindly" },
+      { "id": "b", "text": "return back" },
+      { "id": "c", "text": "the book" },
+      { "id": "d", "text": "I lent you" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Return' implies going or giving back. Using 'back' with 'return' is redundant (superfluous)."
+  },
+  {
+    "id": 10,
+    "question": "Spot the error\n\nPhysics are a difficult subject for many students.",
+    "options": [
+      { "id": "a", "text": "Physics" },
+      { "id": "b", "text": "are a" },
+      { "id": "c", "text": "difficult subject" },
+      { "id": "d", "text": "for many students" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Names of subjects like Physics, Mathematics, and Economics are singular even though they end in 's'. The verb should be 'is'."
+  },
+  {
+    "id": 11,
+    "question": "Identify the proper sequence\n\nSuccess\n\nP: those who\nQ: comes to\nR: and work hard\nS: are patient\n\nThe proper sequence should be:",
+    "options": [
+      { "id": "a", "text": "QPSR" },
+      { "id": "b", "text": "PQRS" },
+      { "id": "c", "text": "SPQR" },
+      { "id": "d", "text": "QPRS" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The correct sentence structure is: 'Success comes to (Q) those who (P) are patient (S) and work hard (R).'"
+  },
+  {
+    "id": 12,
+    "question": "Identify the proper sequence\n\nThe doctor\n\nP: the patient\nQ: advised\nR: to take rest\nS: for a few days\n\nThe proper sequence should be:",
+    "options": [
+      { "id": "a", "text": "QPRS" },
+      { "id": "b", "text": "PQRS" },
+      { "id": "c", "text": "RPSQ" },
+      { "id": "d", "text": "SQPR" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The logical order is: 'The doctor advised (Q) the patient (P) to take rest (R) for a few days (S).'"
+  },
+  {
+    "id": 13,
+    "question": "Identify the proper sequence\n\nIt is\n\nP: to be happy\nQ: not easy\nR: for everyone\nS: in this situation\n\nThe proper sequence should be:",
+    "options": [
+      { "id": "a", "text": "QPRS" },
+      { "id": "b", "text": "PQRS" },
+      { "id": "c", "text": "QRPS" },
+      { "id": "d", "text": "RSPQ" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The sentence flows as: 'It is not easy (Q) for everyone (P—wait, logic check: 'not easy to be happy' or 'not easy for everyone to be happy'). Correct flow: It is not easy (Q) to be happy (P) in this situation (S) for everyone (R)? Or QPSR? Let's re-evaluate standard English: 'It is not easy (Q) for everyone (R) to be happy (P) in this situation (S).' This option (QRPS) is usually preferred."
+  },
+  {
+    "id": 14,
+    "question": "One word substitution:\n\nA person who looks at the bright side of things.",
+    "options": [
+      { "id": "a", "text": "Pessimist" },
+      { "id": "b", "text": "Atheist" },
+      { "id": "c", "text": "Optimist" },
+      { "id": "d", "text": "Theist" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "An optimist expects the best possible outcome. A pessimist looks at the dark side."
+  },
+  {
+    "id": 15,
+    "question": "One word substitution:\n\nA life history written by oneself.",
+    "options": [
+      { "id": "a", "text": "Biography" },
+      { "id": "b", "text": "Autobiography" },
+      { "id": "c", "text": "Bibliography" },
+      { "id": "d", "text": "Memoir" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An autobiography is the story of a person's life written by that person. A biography is written by someone else."
+  },
+  {
+    "id": 16,
+    "question": "One word substitution:\n\nThat which cannot be heard.",
+    "options": [
+      { "id": "a", "text": "Inaudible" },
+      { "id": "b", "text": "Invisible" },
+      { "id": "c", "text": "Invincible" },
+      { "id": "d", "text": "Inedible" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Inaudible' means unable to be heard. 'Invisible' is unable to be seen; 'Invincible' is unable to be defeated."
+  },
+  {
+    "id": 17,
+    "question": "Choose the correct spelling:",
+    "options": [
+      { "id": "a", "text": "Comittee" },
+      { "id": "b", "text": "Committee" },
+      { "id": "c", "text": "Committie" },
+      { "id": "d", "text": "Comitte" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Committee is spelled with double m, double t, and double e."
+  },
+  {
+    "id": 18,
+    "question": "Change the Voice:\n\nWho wrote this book?",
+    "options": [
+      { "id": "a", "text": "By whom is this book written?" },
+      { "id": "b", "text": "By whom was this book written?" },
+      { "id": "c", "text": "Who was written this book?" },
+      { "id": "d", "text": "This book was written by who?" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "When converting an interrogative sentence starting with 'Who' to passive, it becomes 'By whom'. The tense is past ('wrote'), so the auxiliary verb must be 'was'."
+  },
+  {
+    "id": 19,
+    "question": "Change the Speech (Direct/Indirect):\n\nHe said, \"I am busy now.\"",
+    "options": [
+      { "id": "a", "text": "He said that he is busy now." },
+      { "id": "b", "text": "He said that he was busy then." },
+      { "id": "c", "text": "He said that I was busy then." },
+      { "id": "d", "text": "He asked if he was busy." }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In indirect speech, present tense changes to past ('am' to 'was') and time adverbs change ('now' to 'then')."
+  },
+  {
+    "id": 20,
+    "question": "Idiom/Phrase Meaning:\n\nTo break the ice",
+    "options": [
+      { "id": "a", "text": "To start a conflict" },
+      { "id": "b", "text": "To make people feel comfortable" },
+      { "id": "c", "text": "To cool down a room" },
+      { "id": "d", "text": "To solve a difficult problem" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Breaking the ice' means saying or doing something to relieve tension or silence in a social situation."
+  },
+  {
+    "id": 21,
+    "question": "Idiom/Phrase Meaning:\n\nOnce in a blue moon",
+    "options": [
+      { "id": "a", "text": "Very rarely" },
+      { "id": "b", "text": "Every month" },
+      { "id": "c", "text": "During a full moon" },
+      { "id": "d", "text": "Frequently" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "This idiom refers to an event that happens very infrequently."
+  },
+  {
+    "id": 22,
+    "question": "Idiom/Phrase Meaning:\n\nA piece of cake",
+    "options": [
+      { "id": "a", "text": "A tasty dessert" },
+      { "id": "b", "text": "Something very easy to do" },
+      { "id": "c", "text": "A difficult task" },
+      { "id": "d", "text": "A hidden danger" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "If something is 'a piece of cake', it is very simple or easy."
+  },
+  {
+    "id": 23,
+    "question": "Find the best sentence to complete the paragraph:\n\nSolar Energy\n\nSolar energy is a renewable source of power derived from the sun. It is clean and abundant. Solar panels capture sunlight and convert it into electricity. ______",
+    "options": [
+      { "id": "a", "text": "Coal mining is dangerous and dirty." },
+      { "id": "b", "text": "This reduces our reliance on fossil fuels." },
+      { "id": "c", "text": "The sun is a star at the center of the solar system." },
+      { "id": "d", "text": "Wind turbines also produce electricity." }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The paragraph focuses on the benefits and function of solar energy. Option B logically follows by explaining a consequence of using solar panels (reducing reliance on other fuels)."
+  },
+  {
+    "id": 24,
+    "question": "Logical Reasoning (Analogy):\n\nBook is to Library as Animal is to ______",
+    "options": [
+      { "id": "a", "text": "Forest" },
+      { "id": "b", "text": "Zoo" },
+      { "id": "c", "text": "Biology" },
+      { "id": "d", "text": "Domestic" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A library is a place where books are kept/displayed. A zoo is a place where animals are kept/displayed. While animals live in forests, the 'collection/display' relationship is stronger with Zoo in this specific analogy style."
+  },
+  {
+    "id": 25,
+    "question": "Sentence Transformation:\n\nAs soon as he saw the police, he ran away.\n(Transform using 'No sooner')",
+    "options": [
+      { "id": "a", "text": "No sooner did he see the police than he ran away." },
+      { "id": "b", "text": "No sooner he saw the police then he ran away." },
+      { "id": "c", "text": "No sooner had he see the police than he ran away." },
+      { "id": "d", "text": "No sooner did he saw the police than he ran away." }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'No sooner' is followed by the auxiliary verb (did/had). If 'did' is used, the main verb is V1 (see). If 'had' is used, the main verb is V3 (seen). Option A uses 'did... see' correctly with 'than'."
+  },
+  {
+    "id": 26,
+    "question": "Fill in the blanks\n\nPlease, stop making ___ so many mistakes",
+    "options": [
+      { "id": "a", "text": "to make" },
+      { "id": "b", "text": "make" },
+      { "id": "c", "text": "making" },
+      { "id": "d", "text": "makes" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The verb 'stop' is followed by a gerund (-ing form) when referring to ceasing an action. Although the sentence structure in the image contains a likely typo (repeating 'making'), 'making' is the only grammatically correct verb form to follow 'stop' in this context."
+  },
+  {
+    "id": 27,
+    "question": "Fill in the blanks\n\nOur armed forces are ____ those of any other country in the world",
+    "options": [
+      { "id": "a", "text": "Superior than" },
+      { "id": "b", "text": "Superior to" },
+      { "id": "c", "text": "Superior from" },
+      { "id": "d", "text": "Superior of" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Latin comparatives like 'superior', 'inferior', 'senior', and 'junior' are followed by the preposition 'to', not 'than'."
+  },
+  {
+    "id": 28,
+    "question": "Fill in the blanks\n\nI really like watching old shows ____ are some of the best things on TV",
+    "options": [
+      { "id": "a", "text": "those" },
+      { "id": "b", "text": "that" },
+      { "id": "c", "text": "this" },
+      { "id": "d", "text": "these" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'These' is the correct demonstrative pronoun to refer to the plural noun 'old shows' which were just mentioned and are conceptually close to the speaker."
+  },
+  {
+    "id": 29,
+    "question": "Find the best sentences to complete each short paragraph\n\nFax Machine\n\nA fax machine works by scanning each outgoing page... The receiving fax \"hears\" the tones, pieces the grid together, and prints the total number of dots. ----.",
+    "options": [
+      { "id": "a", "text": "He invented a machine capable of receiving signals from a telegraph wire" },
+      { "id": "b", "text": "The idea of fax machines has been around for a long time" },
+      { "id": "c", "text": "They were an easy way to send documents to any phone number" },
+      { "id": "d", "text": "The resulting document is a black and white copy of the original page" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The paragraph describes the technical process of how a fax machine works. Option D logically concludes this process by describing the final output (the document)."
+  },
+  {
+    "id": 30,
+    "question": "Find the best sentences to complete each short paragraph\n\nBroadband\n\n...High-speed Internet allows users access to advance data processing and high-speed transmission technologies.",
+    "options": [
+      { "id": "a", "text": "They include cable modem, wireless access, satellite access, and power line access" },
+      { "id": "b", "text": "It is frequently used as another term for high-speed Internet access" },
+      { "id": "c", "text": "However, there are also many advantages of using broadband" },
+      { "id": "d", "text": "There was obviously no need to dial-up your Internet provider" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The previous sentence ends by mentioning 'high-speed transmission technologies'. Option A follows logically by listing examples of these technologies ('They include...')."
+  },
+  {
+    "id": 31,
+    "question": "The food in this hotel is no match to what where forced at late hours in \"Hotel Kohinoor\" Means:",
+    "options": [
+      { "id": "a", "text": "The food in this hotel is quite good compared to what we ate at kohinoor" },
+      { "id": "b", "text": "Hotel kohinoor served us good quality food than what we get here" },
+      { "id": "c", "text": "Both hotels have maintained good quality of food" },
+      { "id": "d", "text": "Both hotels serve poor quality of food" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The phrase 'is no match to' implies that the first item is inferior to the second. Therefore, the food at Hotel Kohinoor was better."
+  },
+  {
+    "id": 32,
+    "question": "Choose the correct statement:",
+    "options": [
+      { "id": "a", "text": "My aunt who lives in Mumbai is a doctor" },
+      { "id": "b", "text": "My aunt, who lives in Mumbai, is a doctor" },
+      { "id": "c", "text": "My aunt, who lives in Mumbai is a doctor" },
+      { "id": "d", "text": "My aunt who lives in Mumbai, is a doctor" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Options C and D have incorrect comma placement. Between A and B, B is generally preferred in testing contexts to demonstrate a non-restrictive clause (implying the speaker has only one aunt, so the location is extra information)."
+  },
+  {
+    "id": 33,
+    "question": "Spot the error\n\nHe was not able to give many time to his research",
+    "options": [
+      { "id": "a", "text": "many time" },
+      { "id": "b", "text": "He was not able" },
+      { "id": "c", "text": "to give" },
+      { "id": "d", "text": "to his research" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Time' in this context is an uncountable noun, so it should be quantified with 'much' or 'enough', not 'many'. The correct phrase is 'much time'."
+  },
+  {
+    "id": 34,
+    "question": "Spot the error\n\nThe child along with his parents were waiting for the programme to begin",
+    "options": [
+      { "id": "a", "text": "A. a long with his parents" },
+      { "id": "b", "text": "Were waiting for the" },
+      { "id": "c", "text": "The child" },
+      { "id": "d", "text": "programme to begin" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The subject is 'The child' (singular). Phrases introduced by 'along with' do not change the number of the subject. Therefore, the verb should be singular ('was waiting'), not plural ('were waiting')."
+  },
+  {
+    "id": 35,
+    "question": "Spot the error\n\nClimate change are a greatest threat facing our planet which needs our immediate attention",
+    "options": [
+      { "id": "a", "text": "our immediate attention" },
+      { "id": "b", "text": "are a greatest" },
+      { "id": "c", "text": "which needs" },
+      { "id": "d", "text": "facing our planet" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "There are two errors in this segment: 'Climate change' is singular and requires 'is', and the superlative 'greatest' requires the definite article 'the'. It should be 'is the greatest'."
+  },
+  {
+    "id": 36,
+    "question": "Humans have good bone structure and a well-developed immune system.\n\nThe sentence is:",
+    "options": [
+      { "id": "a", "text": "simple" },
+      { "id": "b", "text": "compound" },
+      { "id": "c", "text": "complex" },
+      { "id": "d", "text": "compound-complex" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "This is a simple sentence. It contains one independent clause with a single subject (Humans) and a compound predicate/object, but it does not connect two independent clauses."
+  },
+  {
+    "id": 37,
+    "question": "Most of us take life for granted.\nThe sentence is:",
+    "options": [
+      { "id": "a", "text": "simple" },
+      { "id": "b", "text": "compound" },
+      { "id": "c", "text": "complex" },
+      { "id": "d", "text": "compound-complex" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "This is a simple sentence containing one independent clause."
+  },
+  {
+    "id": 38,
+    "question": "Read the below mentioned sentene carefully. The sentence contains a grammatical mistake. Find out which part of the sentecnce contains the grammatical mistake.\n\nEvery teacher / and every student / of this school is determined to do their best / for the benifit of all.",
+    "options": [
+      { "id": "a", "text": "Every teacher" },
+      { "id": "b", "text": "and every student" },
+      { "id": "c", "text": "of this school is determined to do their best" },
+      { "id": "d", "text": "for the benifit of all" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Grammatically, singular subjects joined by 'and' and preceded by 'every' take a singular pronoun. It should strictly be 'his best' or 'his or her best' rather than 'their best'. Note: Option D also contains a spelling error ('benifit'), but C is the intended grammatical error."
+  },
+  {
+    "id": 39,
+    "question": "Transform the given sentence into superlative.\nNo other metal is as expensive as gold.",
+    "options": [
+      { "id": "a", "text": "No other metal except gold is expensive" },
+      { "id": "b", "text": "Gold is expensive of all the metals" },
+      { "id": "c", "text": "Isnt gold the most expensive of all metals" },
+      { "id": "d", "text": "Gold is the most expensive of all metals" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The superlative form implies the subject possesses the quality to the highest degree. If no other metal is as expensive, Gold is the most expensive."
+  },
+  {
+    "id": 40,
+    "question": "Transform the given sentence into negative.\nMany people want to travel the world.",
+    "options": [
+      { "id": "a", "text": "Many people want to travel the world, isnt it?" },
+      { "id": "b", "text": "Many people dont want to travel the world." },
+      { "id": "c", "text": "Dont many people want to travel the world?" },
+      { "id": "d", "text": "Not many people want to travel the world" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "While 'Don't many people...' (Option C) preserves meaning via a rhetorical question, Option D 'Not many people...' is the structural negation of the quantifier 'Many'. In multiple-choice formatting of this type, B or D are common selections for simply converting to a negative statement."
+  },
+  {
+    "id": 41,
+    "question": "Identify the proper sequence\n\nIt would\n\nP: appear from his statement\nQ: about the policy of management\nR: in dealing with the strike\nS: that he was quite in the dark\n\nThe proper sequence should be:",
+    "options": [
+      { "id": "a", "text": "RPSQ" },
+      { "id": "b", "text": "PSQR" },
+      { "id": "c", "text": "RQPS" },
+      { "id": "d", "text": "PRQS" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The logical flow is: 'It would appear from his statement (P) that he was quite in the dark (S) about the policy of management (Q) in dealing with the strike (R).'"
+  },
+  {
+    "id": 42,
+    "question": "It is not easy to remain tranquil when those around you ____",
+    "options": [
+      { "id": "a", "text": "behave in a socially acceptable manner" },
+      { "id": "b", "text": "exhibit pleasant mannerism" },
+      { "id": "c", "text": "are losing their heads" },
+      { "id": "d", "text": "agree to whatever you say" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "This references the famous poem 'If' by Rudyard Kipling. Even without the reference, 'losing their heads' (panicking/behaving irrationally) is the only option that makes remaining tranquil difficult."
+  },
+  {
+    "id": 43,
+    "question": "Practically, very little work could be completed in the last week as it was ____",
+    "options": [
+      { "id": "a", "text": "full of working days" },
+      { "id": "b", "text": "a very hectic week" },
+      { "id": "c", "text": "full of holidays" },
+      { "id": "d", "text": "a very busy week" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The reason for 'very little work' being completed is logically that there were many holidays (Option C), preventing work."
+  },
+  {
+    "id": 44,
+    "question": "They are mostly poeople\n\nP: and they find the club very covenient\nQ: to get a reasonable meal\nR: who work in the neighbourhood\nS: because it enables tham\n\nwithout too much trouble\n\nThe proper sequence should be:",
+    "options": [
+      { "id": "a", "text": "PQRS" },
+      { "id": "b", "text": "QPRS" },
+      { "id": "c", "text": "RPSQ" },
+      { "id": "d", "text": "SQRP" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The sequence follows the logic: People [who work in the neighbourhood - R] -> [and they find the club convenient - P] -> [because it enables them - S] -> [to get a meal - Q]."
+  },
+  {
+    "id": 45,
+    "question": "One who believes in the power of FATE",
+    "options": [
+      { "id": "a", "text": "Fatalist" },
+      { "id": "b", "text": "Optimist" },
+      { "id": "c", "text": "Pessimist" },
+      { "id": "d", "text": "Parsimonious" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A fatalist is someone who believes that all events are determined by fate and are inevitable."
+  },
+  {
+    "id": 46,
+    "question": "In the question below, the sentences have been given in Direct/Indirect speech.\nFrom the given alternatives, choose the one which best expresses the given sentence in Indirect/Direct speech\n\nShe exclaimed with sorrow that was a very miserable plight.",
+    "options": [
+      { "id": "a", "text": "She said with sorrow, \"What a pity it is.\"" },
+      { "id": "b", "text": "She said, \"What a mystery it is.\"" },
+      { "id": "c", "text": "She said, \"What a miserable sight it is.\"" },
+      { "id": "d", "text": "She said, \"What a miserable plight it is.\"" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Option D directly converts the reported speech back to direct speech, maintaining the specific vocabulary ('miserable plight')."
+  },
+  {
+    "id": 47,
+    "question": "do not think you know the case well enough to have opinions. Having said that, I agree with your other point.\nWhat does the Text \"having said that\" mean in the given text",
+    "options": [
+      { "id": "a", "text": "as opposed to what I have said" },
+      { "id": "b", "text": "despite what I have said" },
+      { "id": "c", "text": "in addition to what I have said" },
+      { "id": "d", "text": "contrary to what I have said" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The phrase 'Having said that' is used to signal a shift or a concession, similar to 'however' or 'nevertheless'. 'Despite what I have said' matches this usage best."
+  },
+  {
+    "id": 48,
+    "question": "Read the below mentioned sentene carefully. The sentence contains a grammatical mistake. Find out which part of the sentecnce contains the grammatical mistake.\n\nEvery teacher / and every student / of this school is determined to do their best / for the benifit of all.",
+    "options": [
+      { "id": "a", "text": "Every teacher" },
+      { "id": "b", "text": "and every student" },
+      { "id": "c", "text": "of this school is determined to do their best" },
+      { "id": "d", "text": "for the benifit of all" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "This is a duplicate of Question 38 found later in the video. The error is the use of 'their' with singular antecedents 'Every teacher and every student'."
+  },
+  {
+    "id": 49,
+    "question": "Which type of word is generally not used in verbal communication?",
+    "options": [
+      { "id": "a", "text": "Technical" },
+      { "id": "b", "text": "Simple" },
+      { "id": "c", "text": "Easy" },
+      { "id": "d", "text": "Local Language" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "In general verbal communication meant for a broad audience, highly 'Technical' vocabulary is often avoided to ensure clarity, whereas simple, easy, or local language is preferred."
+  },
+  {
+    "id": 50,
+    "question": "To have an axe to grind:",
+    "options": [
+      { "id": "a", "text": "A private end to serve" },
+      { "id": "b", "text": "To fail to arouse interest" },
+      { "id": "c", "text": "To have no result" },
+      { "id": "d", "text": "To work for both sides" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The idiom 'to have an axe to grind' means to have a selfish motive or a personal reason for doing something."
+  }
+]

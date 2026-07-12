@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "category": "Introduction",
+        "question": "Tell me about yourself.",
+        "tips": [
+            "Keep it professional and relevant to the job",
+            "Follow the Present-Past-Future formula",
+            "Mention your current role, key achievements, and career goals",
+            "Keep it under 2 minutes"
+        ],
+        "sampleAnswer": "I'm a software developer with 3 years of experience specializing in full-stack web development. Currently, I work at XYZ Tech where I've led the development of a customer portal that increased user engagement by 40%. I started my career after graduating with a Computer Science degree, and I've since worked on various projects using React, Node.js, and cloud technologies. I'm now looking to take on more challenging projects and grow into a senior technical role, which is why I'm excited about this opportunity at your company."
+    },
+    {
+        "id": 2,
+        "category": "Strengths",
+        "question": "What are your greatest strengths?",
+        "tips": [
+            "Choose strengths relevant to the job",
+            "Provide specific examples",
+            "Show how your strength benefits the team",
+            "Be confident but not arrogant"
+        ],
+        "sampleAnswer": "My greatest strength is problem-solving. I enjoy breaking down complex technical challenges into manageable pieces. For example, at my current job, we had a performance issue where our app was loading slowly. I analyzed the codebase, identified bottlenecks, and implemented caching strategies that reduced load time by 60%. I also have strong communication skills which help me collaborate effectively with both technical and non-technical team members."
+    },
+    {
+        "id": 3,
+        "category": "Weaknesses",
+        "question": "What is your greatest weakness?",
+        "tips": [
+            "Be honest but strategic",
+            "Choose a real weakness that won't disqualify you",
+            "Show what you're doing to improve",
+            "Never say 'I work too hard' or 'I'm a perfectionist'"
+        ],
+        "sampleAnswer": "I sometimes struggle with delegating tasks because I want everything to be done perfectly. I've realized this can slow down projects and prevent team members from growing. To address this, I've been making a conscious effort to trust my teammates more and provide clear guidelines when assigning tasks. I've also started using project management tools to track progress without micromanaging. This has helped me become a better team player while still maintaining quality standards."
+    },
+    {
+        "id": 4,
+        "category": "Behavioral",
+        "question": "Tell me about a time you faced a conflict at work.",
+        "tips": [
+            "Use the STAR method (Situation, Task, Action, Result)",
+            "Focus on resolution, not blame",
+            "Highlight what you learned",
+            "Choose a conflict that ended positively"
+        ],
+        "sampleAnswer": "At my previous company, I disagreed with a senior developer about the architecture for a new feature. (Situation) We needed to decide between a microservices approach and keeping it monolithic. (Task) Instead of arguing, I proposed we both present our cases with pros and cons to the team. I prepared a detailed analysis showing scalability benefits of microservices. (Action) After the discussion, we compromised: we used microservices for the high-traffic components and kept simpler parts monolithic. (Result) The feature launched on time and the hybrid approach proved efficient. I learned the importance of data-driven decisions and respectful debate."
+    },
+    {
+        "id": 5,
+        "category": "Situational",
+        "question": "How do you handle tight deadlines?",
+        "tips": [
+            "Show you can prioritize effectively",
+            "Mention communication with stakeholders",
+            "Give a specific example if possible",
+            "Demonstrate you stay calm under pressure"
+        ],
+        "sampleAnswer": "I handle tight deadlines by first assessing the scope and identifying critical deliverables. Then I break the work into smaller tasks and prioritize based on impact. For example, during a product launch, we had just two weeks to deliver a major feature. I created a detailed timeline, identified tasks that could run in parallel, and communicated daily with stakeholders about progress. I also wasn't afraid to ask for help when needed. We delivered on time with all key functionality, and I learned valuable lessons about efficient time management."
+    },
+    {
+        "id": 6,
+        "category": "Career Goals",
+        "question": "Where do you see yourself in 5 years?",
+        "tips": [
+            "Show ambition but be realistic",
+            "Align your goals with the company's growth",
+            "Focus on skill development and contributions",
+            "Don't say you want the interviewer's job"
+        ],
+        "sampleAnswer": "In 5 years, I see myself as a senior developer or technical lead, having deepened my expertise in cloud architecture and system design. I want to be someone who not only writes great code but also mentors junior developers and contributes to technical decisions. I'm attracted to this company because of your focus on innovation, and I believe the challenging projects here will help me grow. I'm also interested in eventually contributing to open-source projects and sharing knowledge through technical blogs or talks."
+    },
+    {
+        "id": 7,
+        "category": "Motivation",
+        "question": "Why do you want to work here?",
+        "tips": [
+            "Research the company thoroughly",
+            "Mention specific projects, values, or culture",
+            "Connect their needs to your skills",
+            "Be genuine and enthusiastic"
+        ],
+        "sampleAnswer": "I've been following your company's work on AI-powered solutions, and I'm impressed by the impact you're making in healthcare technology. The engineering blog posts about your microservices migration showed a culture of technical excellence and knowledge sharing. My experience in building scalable applications and my interest in healthcare tech aligns well with your mission. I'm excited about the opportunity to work with talented engineers and contribute to products that genuinely help people."
+    },
+    {
+        "id": 8,
+        "category": "Teamwork",
+        "question": "Describe a successful team project you worked on.",
+        "tips": [
+            "Highlight your specific contribution",
+            "Mention collaboration and communication",
+            "Include measurable outcomes",
+            "Credit the team while showing your impact"
+        ],
+        "sampleAnswer": "I was part of a team that rebuilt our company's e-commerce platform from scratch. As the frontend lead, I established coding standards, set up the React architecture, and implemented the checkout flow. I held weekly sync meetings with the backend team to ensure smooth API integration. We practiced agile methodology with two-week sprints. My key contribution was implementing a responsive design system that reduced development time for new features by 30%. The new platform launched on time and increased conversion rates by 25%. The project succeeded because everyone communicated openly and supported each other."
+    }
+]

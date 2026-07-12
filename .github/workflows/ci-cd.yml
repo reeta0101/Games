@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm install
+
+      - name: Lint Frontend
+        working-directory: ./frontend
+        run: npm run lint
+
+      # (Optional) Run backend tests if you add them later
+      # - name: Install Backend Dependencies
+      #   working-directory: ./backend
+      #   run: npm install
+      # - name: Run Backend Tests
+      #   working-directory: ./backend
+      #   run: npm test
+
+  deploy-to-render:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Trigger Render Deployment
+        run: |
+          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
+            echo "RENDER_DEPLOY_HOOK secret is not set. Skipping manual trigger."
+            exit 0
+          fi
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}

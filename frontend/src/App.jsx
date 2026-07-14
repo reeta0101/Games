@@ -6,6 +6,7 @@ import {
   Route,
   Link,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import { toggleTheme } from "./features/theme/themeSlice";
 import { logout } from "./features/auth/authSlice";
@@ -1497,6 +1498,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/signup" element={<AuthPage mode="signup" />} />
+        <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
         <Route path="/admin/login" element={<AdminLoginPage />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/*" element={<ArcadeLayout />} />

@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
 
   useEffect(() => {
     if (isAdmin) {
-      navigate("/admin");
+      navigate("/admin/dashboard");
     }
   }, [isAdmin, navigate]);
 
@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
       } else {
         // Redux expects an object with 'token' or we can just pass the data
         dispatch(adminLogin({ name: data.name, token: data.token }));
-        navigate("/admin");
+        navigate("/admin/dashboard");
       }
     } catch (err) {
       console.error(err);

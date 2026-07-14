@@ -55,6 +55,7 @@ import Footer from "./components/Footer";
 import FeedbackSection from "./components/FeedbackSection";
 import Leaderboard from "./pages/Leaderboard";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
+import Analytics from "./components/Analytics";
 
 export const GAME_MODES = [
   {
@@ -1515,6 +1516,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Analytics />
       <Routes>
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/signup" element={<AuthPage mode="signup" />} />

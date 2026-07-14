@@ -3,6 +3,7 @@ import User from '../models/User.js';
 import AdminSettings from '../models/AdminSettings.js';
 import Feedback from '../models/Feedback.js';
 import Score from '../models/Score.js';
+import ActiveVisitor from '../models/ActiveVisitor.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
@@ -135,10 +136,16 @@ router.get('/stats', async (req, res) => {
     const registeredNames = await User.distinct('name');
     const guestPlayers = uniqueScorers.filter(name => !registeredNames.includes(name)).length;
 
+    const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+    const activeUsers = await ActiveVisitor.countDocuments({
+      lastActive: { $gte: fiveMinutesAgo }
+    });
+
     res.json({
       totalUsers,
       todaySignups,
       guestPlayers,
+      activeUsers,
     });
   } catch (err) {
     console.error('Stats error:', err.message);

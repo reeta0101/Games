@@ -1493,6 +1493,26 @@ function ArcadeLayout() {
 }
 
 function App() {
+  useEffect(() => {
+    let visitorId = sessionStorage.getItem('visitorId');
+    if (!visitorId) {
+      visitorId = 'visitor_' + Math.random().toString(36).substring(2, 15);
+      sessionStorage.setItem('visitorId', visitorId);
+    }
+
+    const pingServer = () => {
+      fetch(`${import.meta.env.VITE_API_URL || ''}/api/stats/ping`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ visitorId })
+      }).catch(console.error);
+    };
+
+    pingServer();
+    const interval = setInterval(pingServer, 60000); // every 60 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

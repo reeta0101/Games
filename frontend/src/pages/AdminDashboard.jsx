@@ -383,7 +383,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Stats row */}
-        <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           <StatCard
             icon="👥"
             label="Total Users"
@@ -411,6 +411,13 @@ export default function AdminDashboard() {
             value={stats.guestPlayers || 0}
             accent="#10b981"
             delay="0.15s"
+          />
+          <StatCard
+            icon="🔥"
+            label="Active Users"
+            value={stats.activeUsers || 0}
+            accent="#ef4444"
+            delay="0.2s"
           />
         </div>
 

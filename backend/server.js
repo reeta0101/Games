@@ -58,6 +58,7 @@ import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
 import scoreRoutes from './routes/score.js';
 import feedbackRoutes from './routes/feedback.js';
+import statsRoutes from './routes/stats.js';
 
 
 
@@ -66,6 +67,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/score', scoreRoutes);
 app.use('/api/feedback', feedbackRoutes);
+app.use('/api/stats', statsRoutes);
 
 app.get('/api/test', (req, res) => {
   res.json({

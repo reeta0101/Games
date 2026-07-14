@@ -17,9 +17,16 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware
 const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(',')
-  : ['http://localhost:5173'];
-app.use(cors({ origin: allowedOrigins }));
+  ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
+  : ['http://localhost:5173', 'https://games-frontend-ju7y.onrender.com'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow any origin for now to prevent CORS issues
+    callback(null, origin || '*');
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Connection

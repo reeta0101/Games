@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../features/auth/authSlice";
 
 
-const API_BASE = "/api";
+const API_BASE = `${import.meta.env.VITE_API_URL || ''}/api`;
 
 export default function AuthPage({ mode = "login" }) {
   const isSignup = mode === "signup";

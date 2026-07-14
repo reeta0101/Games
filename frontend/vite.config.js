@@ -9,6 +9,16 @@ export default defineConfig({
   ],
   build: {
     emptyOutDir: true,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'; // Groups all node_modules into a single 'vendor' chunk
+          }
+        }
+      }
+    }
   },
   server: {
     proxy: {

@@ -109,6 +109,7 @@ export default function AdminDashboard() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [toast, setToast] = useState(null);
   const [error, setError] = useState("");
+  const [stats, setStats] = useState({ totalUsers: 0, todaySignups: 0, guestPlayers: 0 });
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -182,12 +183,29 @@ export default function AdminDashboard() {
     }
   };
 
+  const fetchStats = useCallback(async () => {
+    try {
+      const res = await fetch(`${API_BASE}/admin/stats`, {
+        headers: {
+          'Authorization': `Bearer ${adminUser?.token}`
+        }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setStats(data);
+      }
+    } catch (err) {
+      console.error("Failed to fetch stats:", err);
+    }
+  }, [adminUser]);
+
   useEffect(() => {
     if (isAdmin) {
       fetchUsers();
       fetchFeedback();
+      fetchStats();
     }
-  }, [isAdmin, fetchUsers, fetchFeedback]);
+  }, [isAdmin, fetchUsers, fetchFeedback, fetchStats]);
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -388,10 +406,10 @@ export default function AdminDashboard() {
             delay="0.1s"
           />
           <StatCard
-            icon="🔥"
-            label="Today's Games"
-            value={lbStats.todayGames}
-            accent="#fb7185"
+            icon="👤"
+            label="Guest Players"
+            value={stats.guestPlayers || 0}
+            accent="#10b981"
             delay="0.15s"
           />
         </div>

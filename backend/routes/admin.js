@@ -2,6 +2,7 @@ import express from 'express';
 import User from '../models/User.js';
 import AdminSettings from '../models/AdminSettings.js';
 import Feedback from '../models/Feedback.js';
+import Score from '../models/Score.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
@@ -130,9 +131,14 @@ router.get('/stats', async (req, res) => {
       createdAt: { $gte: todayStart },
     });
 
+    const uniqueScorers = await Score.distinct('name');
+    const registeredNames = await User.distinct('name');
+    const guestPlayers = uniqueScorers.filter(name => !registeredNames.includes(name)).length;
+
     res.json({
       totalUsers,
       todaySignups,
+      guestPlayers,
     });
   } catch (err) {
     console.error('Stats error:', err.message);

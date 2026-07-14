@@ -204,6 +204,13 @@ export default function AdminDashboard() {
       fetchUsers();
       fetchFeedback();
       fetchStats();
+      
+      // Auto-refresh stats every 30 seconds
+      const statsInterval = setInterval(() => {
+        fetchStats();
+      }, 30000);
+      
+      return () => clearInterval(statsInterval);
     }
   }, [isAdmin, fetchUsers, fetchFeedback, fetchStats]);
 

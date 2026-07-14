@@ -20,7 +20,7 @@ const JWT_SECRET = () => {
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
-    if (username !== 'admin') {
+    if (username !== 'study_games_admin' && username !== process.env.ADMIN_USERNAME) {
       return res.status(401).json({ error: 'Invalid admin credentials' });
     }
 

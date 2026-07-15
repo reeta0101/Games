@@ -220,8 +220,7 @@ io.on('connection', (socket) => {
   socket.on('start_game', ({ roomId }) => {
     if (lobbies[roomId]) {
       lobbies[roomId].status = 'playing';
-      // Add a server-coordinated start time (e.g. 2 seconds in the future)
-      // to sync global timers across clients.
+      // Use syncStartTime for visual client timer (clock skew might make it visually off, but server enforces end)
       const syncStartTime = Date.now() + 2000;
       lobbies[roomId].settings = { ...lobbies[roomId].settings, syncStartTime };
       
@@ -233,6 +232,17 @@ io.on('connection', (socket) => {
         p.wrong = 0;
       });
       io.to(roomId).emit('game_started', lobbies[roomId].settings);
+
+      // Server enforces the end of Time Attack matches
+      const { challengeMode, timeLimit } = lobbies[roomId].settings;
+      if (challengeMode === 'time_attack' && timeLimit > 0) {
+        // Add 2 seconds for the sync delay
+        setTimeout(() => {
+          if (lobbies[roomId] && lobbies[roomId].status === 'playing') {
+            io.to(roomId).emit('game_over', { reason: 'timeout' });
+          }
+        }, (timeLimit * 1000) + 2000);
+      }
     }
   });
 

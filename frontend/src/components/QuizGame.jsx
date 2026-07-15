@@ -97,6 +97,7 @@ export default function QuizGame({ game }) {
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const { socket } = useGlobalSocket();
   const [liveLobbyState, setLiveLobbyState] = useState(null);
+  const [serverGameOver, setServerGameOver] = useState(false);
 
   const [globalTimeLeft, setGlobalTimeLeft] = useState(null);
   const globalTimerRef = useRef(null);
@@ -141,13 +142,34 @@ export default function QuizGame({ game }) {
         setLiveLobbyState(state);
       };
       
+      const onGameOver = () => {
+        setServerGameOver(true);
+      };
+      
       socket.on("lobby_state", onLobbyState);
+      socket.on("game_over", onGameOver);
       
       return () => {
         socket.off("lobby_state", onLobbyState);
+        socket.off("game_over", onGameOver);
       };
     }
   }, [challenge?.roomId, currentUser, socket]);
+
+  // Handle server-enforced game over with latest closure
+  useEffect(() => {
+    if (serverGameOver && screen === "game") {
+      setServerGameOver(false); // Reset
+      clearTimers();
+      setIsAnswered(true);
+      setFeedbackText("⏱ Time's up!");
+      setFeedbackTone("danger");
+      setScore((currentScore) => {
+        endGame("timeout", currentScore);
+        return currentScore;
+      });
+    }
+  }, [serverGameOver, screen, endGame, clearTimers]);
 
   // ── Guest login ──
   const handleGuestLogin = () => {
@@ -332,6 +354,7 @@ export default function QuizGame({ game }) {
         if (remaining <= 0) {
           clearInterval(globalTimerRef.current);
           globalTimerRef.current = null;
+          clearTimers(); // <--- STOP LOCAL TIMER so it doesn't cancel our endgame timeout!
           setIsAnswered(true);
           setFeedbackText("⏱ Time's up!");
           setFeedbackTone("danger");

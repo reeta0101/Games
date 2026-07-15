@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { SVGMap } from 'react-svg-map';
-import india from '@svg-maps/india';
+import indiaMap from '@svg-maps/india';
 import { Tooltip } from 'react-tooltip';
-import "react-svg-map/lib/index.css";
 
 const stateCapitals = {
   'Andhra Pradesh': 'Amaravati',
@@ -55,6 +53,8 @@ export default function InteractiveMapPage() {
     setHoveredState(null);
   };
 
+  const mapData = indiaMap.default || indiaMap;
+
   return (
     <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl flex-col items-center gap-8 px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
       <div className="text-center">
@@ -85,12 +85,28 @@ export default function InteractiveMapPage() {
         `}} />
         
         <div data-tooltip-id="map-tooltip" className="w-full">
-          <SVGMap 
-            map={india} 
-            onLocationMouseOver={handleLocationMouseOver}
-            onLocationMouseOut={handleLocationMouseOut}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox={mapData.viewBox}
             className="svg-map"
-          />
+            aria-label={mapData.label}
+          >
+            {mapData.locations.map((location) => (
+              <path
+                key={location.id}
+                id={location.id}
+                name={location.name}
+                d={location.path}
+                className="svg-map__location"
+                onMouseOver={handleLocationMouseOver}
+                onMouseOut={handleLocationMouseOut}
+                onFocus={handleLocationMouseOver}
+                onBlur={handleLocationMouseOut}
+                tabIndex="0"
+                aria-label={location.name}
+              />
+            ))}
+          </svg>
         </div>
 
         <Tooltip 

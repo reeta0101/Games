@@ -103,6 +103,7 @@ export default function ChallengePage() {
                 <p className="text-2xl font-black text-white shadow-sm">
                   {score}
                 </p>
+              </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1">
                   Game Duration

@@ -93,6 +93,7 @@ export default function QuizGame({ game }) {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
   const [liveLobbyState, setLiveLobbyState] = useState(null);
+  const socketRef = useRef(null);
 
   const [globalTimeLeft, setGlobalTimeLeft] = useState(null);
   const globalTimerRef = useRef(null);
@@ -124,6 +125,27 @@ export default function QuizGame({ game }) {
     };
   }, [clearTimers]);
 
+  // Connect to live room to listen for opponent state
+  useEffect(() => {
+    if (challenge?.roomId) {
+      const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:8080');
+      socketRef.current = socket;
+      
+      socket.emit('join_lobby', {
+        roomId: challenge.roomId,
+        user: { username: guestName, name: guestName }
+      });
+      
+      socket.on("lobby_state", (state) => {
+        setLiveLobbyState(state);
+      });
+
+      return () => {
+        socket.disconnect();
+      };
+    }
+  }, [challenge?.roomId, guestName]);
+
   // ── Guest login ──
   const handleGuestLogin = () => {
     const name = guestInput.trim() || `Guest_${Math.floor(Math.random() * 9000 + 1000)}`;
@@ -134,6 +156,7 @@ export default function QuizGame({ game }) {
 
   // ── Game logic ──
   const buildFinalMessage = useCallback((reason, currentScore) => {
+    if (reason === "win") return "Last Player Standing! 🏆";
     if (reason === "quit") return "You quit. 🏳️";
     if (reason === "wrong") return "Wrong answer! 💥";
     if (reason === "timeout") return "Time ran out! ⏱";
@@ -168,25 +191,48 @@ export default function QuizGame({ game }) {
 
       setScreen("end");
 
-      if (challenge?.roomId) {
-        const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:8080');
+      if (challenge?.roomId && socketRef.current) {
         const finalWrong = reason === "wrong" ? wrongAnswers + 1 : wrongAnswers;
         
-        socket.emit("submit_score", {
+        socketRef.current.emit("submit_score", {
           roomId: challenge.roomId,
           username: guestName,
           score: scoreToSave,
           correct: correctAnswers,
           wrong: finalWrong
         });
-        
-        socket.on("lobby_state", (state) => {
-          setLiveLobbyState(state);
-        });
       }
     },
     [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers],
   );
+
+  // Auto-Win Logic for Sudden Death
+  useEffect(() => {
+    if (
+      screen === "game" &&
+      !isAnswered && 
+      challenge?.roomId &&
+      challenge?.wrongsAcceptable === false && 
+      liveLobbyState
+    ) {
+      const players = liveLobbyState.players;
+      if (players.length > 1) {
+        const alivePlayers = players.filter(p => !p.finished);
+        if (alivePlayers.length === 1 && alivePlayers[0].username === guestName) {
+          clearTimers();
+          setIsAnswered(true);
+          setFeedbackText("🏆 LAST PLAYER STANDING!");
+          setFeedbackTone("success");
+          endTimeoutRef.current = setTimeout(() => {
+            setScore((currentScore) => {
+              endGame("win", currentScore);
+              return currentScore;
+            });
+          }, 2000);
+        }
+      }
+    }
+  }, [liveLobbyState, screen, isAnswered, challenge, guestName, endGame, clearTimers]);
 
   const nextQuestion = useCallback(() => {
     clearTimers();

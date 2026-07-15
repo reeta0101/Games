@@ -56,7 +56,8 @@ export default function LobbyPage() {
               score: 0,
               difficulty: settings.difficulty,
               timeLimit: settings.challengeMode === 'time_attack' ? settings.timeLimit : 0,
-              wrongsAcceptable: settings.challengeMode === 'time_attack'
+              wrongsAcceptable: settings.challengeMode === 'time_attack',
+              syncStartTime: settings.syncStartTime
             }
           }
         });

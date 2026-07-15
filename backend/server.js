@@ -215,18 +215,32 @@ io.on('connection', (socket) => {
   socket.on('start_game', ({ roomId }) => {
     if (lobbies[roomId]) {
       lobbies[roomId].status = 'playing';
+      // Add a server-coordinated start time (e.g. 2 seconds in the future)
+      // to sync global timers across clients.
+      const syncStartTime = Date.now() + 2000;
+      lobbies[roomId].settings = { ...lobbies[roomId].settings, syncStartTime };
+      
+      // Reset players
+      lobbies[roomId].players.forEach(p => {
+        p.finished = false;
+        p.finalScore = 0;
+        p.correct = 0;
+        p.wrong = 0;
+      });
       io.to(roomId).emit('game_started', lobbies[roomId].settings);
     }
   });
 
-  socket.on('submit_score', ({ roomId, username, score, correct, wrong }) => {
+  socket.on('submit_score', ({ roomId, username, score, correct, wrong, status }) => {
     if (lobbies[roomId]) {
       const p = lobbies[roomId].players.find(p => p.username === username);
       if (p) {
         p.finalScore = score;
         p.correct = correct;
         p.wrong = wrong;
-        p.finished = true;
+        if (status === 'finished') {
+          p.finished = true;
+        }
         io.to(roomId).emit('lobby_state', lobbies[roomId]);
       }
     }

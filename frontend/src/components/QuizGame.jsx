@@ -311,11 +311,24 @@ export default function QuizGame({ game }) {
     
     if (isGlobalChallenge) {
       setGlobalTimeLeft(challenge.timeLimit);
-      const gameStartedAt = Date.now();
+      
+      // Calculate effective start time:
+      // If server sent syncStartTime, wait until then (or use it as the zero-point).
+      // Otherwise fallback to Date.now().
+      const syncTime = challenge.syncStartTime || Date.now();
+      
       globalTimerRef.current = setInterval(() => {
-        const elapsed = Date.now() - gameStartedAt;
+        const now = Date.now();
+        // If the game hasn't started yet (syncTime is in the future), just show full time
+        if (now < syncTime) {
+          setGlobalTimeLeft(challenge.timeLimit);
+          return;
+        }
+
+        const elapsed = now - syncTime;
         const remaining = Math.max(0, (challenge.timeLimit * 1000 - elapsed) / 1000);
         setGlobalTimeLeft(remaining);
+        
         if (remaining <= 0) {
           clearInterval(globalTimerRef.current);
           globalTimerRef.current = null;

@@ -18,6 +18,8 @@ export default function LobbyPage() {
   const { socket, onlineFriends } = useGlobalSocket();
   const [friendsList, setFriendsList] = useState([]);
   const [loadingFriends, setLoadingFriends] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   // Form states for Leader
   const initialGameId = searchParams.get("gameId") || GAME_MODES[0].id || GAME_MODES[0].key;
@@ -257,20 +259,30 @@ export default function LobbyPage() {
           <button
             onClick={() => {
               navigator.clipboard.writeText(roomId);
-              alert("Room Code copied to clipboard!");
+              setCopiedCode(true);
+              setTimeout(() => setCopiedCode(false), 2000);
             }}
-            className="rounded-xl border border-[#f0e040]/40 bg-[#f0e040]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#f0e040] hover:bg-[#f0e040]/20 transition whitespace-nowrap"
+            className={`rounded-xl border px-4 py-2 text-xs font-bold uppercase tracking-widest transition whitespace-nowrap ${
+              copiedCode 
+                ? "border-[#40f080]/40 bg-[#40f080]/10 text-[#40f080]"
+                : "border-[#f0e040]/40 bg-[#f0e040]/10 text-[#f0e040] hover:bg-[#f0e040]/20"
+            }`}
           >
-            Copy Code
+            {copiedCode ? "Copied!" : "Copy Code"}
           </button>
           <button
             onClick={() => {
               navigator.clipboard.writeText(`${window.location.origin}/lobby?room=${roomId}`);
-              alert("Invite link copied to clipboard!");
+              setCopiedLink(true);
+              setTimeout(() => setCopiedLink(false), 2000);
             }}
-            className="rounded-xl border border-[#40e0f0]/40 bg-[#40e0f0]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#40e0f0] hover:bg-[#40e0f0]/20 transition whitespace-nowrap"
+            className={`rounded-xl border px-4 py-2 text-xs font-bold uppercase tracking-widest transition whitespace-nowrap ${
+              copiedLink 
+                ? "border-[#40f080]/40 bg-[#40f080]/10 text-[#40f080]"
+                : "border-[#40e0f0]/40 bg-[#40e0f0]/10 text-[#40e0f0] hover:bg-[#40e0f0]/20"
+            }`}
           >
-            Copy Link
+            {copiedLink ? "Copied!" : "Copy Link"}
           </button>
           <button
             onClick={leaveRoom}

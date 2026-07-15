@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { GAME_MODES } from "../App";
 
 export default function FriendsPage() {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -19,6 +20,15 @@ export default function FriendsPage() {
   const [searchMessage, setSearchMessage] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
+
+  // Challenge Modal State
+  const [showChallengeModal, setShowChallengeModal] = useState(false);
+  const [challengeTarget, setChallengeTarget] = useState(null);
+  const [challengeGame, setChallengeGame] = useState(GAME_MODES[0].key || GAME_MODES[0].id);
+  const [challengeDiff, setChallengeDiff] = useState("intermediate");
+  const [challengeTime, setChallengeTime] = useState(0); // 0 means Unlimited
+  const [challengeWrongs, setChallengeWrongs] = useState(true); // true means acceptable
+  const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
     if (!currentUser) {
@@ -77,7 +87,6 @@ export default function FriendsPage() {
         senderUsername: currentUser.username,
         targetUsername
       });
-      // Refresh to update Sent Requests
       fetchAllData();
     } catch (err) {
       alert(err.response?.data?.error || "Error sending friend request.");
@@ -108,6 +117,23 @@ export default function FriendsPage() {
     }
   };
 
+  const openChallengeModal = (friend) => {
+    setChallengeTarget(friend);
+    setShowChallengeModal(true);
+    setCopiedLink(false);
+  };
+
+  const handleSendChallenge = () => {
+    const url = `${window.location.origin}/challenge?gameId=${challengeGame}&difficulty=${challengeDiff}&timeLimit=${challengeTime}&wrongsAcceptable=${challengeWrongs}&score=0&challenger=${encodeURIComponent(currentUser.username)}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopiedLink(true);
+      setTimeout(() => {
+        setShowChallengeModal(false);
+        setCopiedLink(false);
+      }, 2000);
+    });
+  };
+
   if (isLoading) {
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center justify-center px-3 py-8">
@@ -124,7 +150,7 @@ export default function FriendsPage() {
   ];
 
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-4xl flex-col gap-8 px-3 py-8 sm:px-6 sm:py-10">
+    <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-4xl flex-col gap-8 px-3 py-8 sm:px-6 sm:py-10 relative">
       <div className="text-center">
         <h1 className="text-4xl font-black text-white sm:text-5xl tracking-tight">Connections</h1>
         <p className="mt-2 text-slate-400">Manage your friends, pending requests, and discover new players.</p>
@@ -168,7 +194,7 @@ export default function FriendsPage() {
             ) : (
               <div className="grid gap-4 sm:grid-cols-2">
                 {friends.map((friend) => (
-                  <div key={friend._id} className="flex items-center justify-between rounded-2xl bg-black/20 p-4 border border-white/5 hover:border-white/10 transition">
+                  <div key={friend._id} className="flex flex-col sm:flex-row sm:items-center justify-between rounded-2xl bg-black/20 p-4 border border-white/5 hover:border-[#40e0f0]/30 transition gap-4">
                     <div className="flex items-center gap-4">
                       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#40e0f0]/30 to-[#f04060]/30 text-xl font-black text-white">
                         {friend.name.charAt(0).toUpperCase()}
@@ -178,6 +204,12 @@ export default function FriendsPage() {
                         <p className="text-xs text-slate-400">@{friend.username}</p>
                       </div>
                     </div>
+                    <button 
+                      onClick={() => openChallengeModal(friend)}
+                      className="rounded-full bg-[#f0e040]/10 text-[#f0e040] border border-[#f0e040]/30 px-5 py-2 text-xs font-black uppercase tracking-[0.1em] hover:bg-[#f0e040]/20 transition shadow-lg"
+                    >
+                      Challenge ⚔️
+                    </button>
                   </div>
                 ))}
               </div>
@@ -304,6 +336,109 @@ export default function FriendsPage() {
         )}
 
       </section>
+
+      {/* Challenge Configuration Modal */}
+      {showChallengeModal && challengeTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-md rounded-[2rem] border border-white/10 bg-[#0f172a] p-8 shadow-2xl">
+            <h2 className="text-3xl font-black text-white text-center mb-2">Setup Challenge</h2>
+            <p className="text-center text-[#40e0f0] font-bold uppercase tracking-widest text-xs mb-8">vs {challengeTarget.name}</p>
+            
+            <div className="space-y-6">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Game Mode</label>
+                <select 
+                  value={challengeGame} 
+                  onChange={(e) => setChallengeGame(e.target.value)}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-[#f0e040]/50"
+                >
+                  {GAME_MODES.map(game => (
+                    <option key={game.key || game.id} value={game.key || game.id} className="bg-slate-900">
+                      {game.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Difficulty</label>
+                <select 
+                  value={challengeDiff} 
+                  onChange={(e) => setChallengeDiff(e.target.value)}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-[#f0e040]/50"
+                >
+                  <option value="beginner" className="bg-slate-900">Beginner</option>
+                  <option value="intermediate" className="bg-slate-900">Intermediate</option>
+                  <option value="advanced" className="bg-slate-900">Advanced</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Game Duration</label>
+                <div className="flex gap-2">
+                  {[0, 30, 60, 120].map(time => (
+                    <button
+                      key={time}
+                      onClick={() => setChallengeTime(time)}
+                      className={`flex-1 rounded-xl border py-3 text-xs sm:text-sm font-black transition ${
+                        challengeTime === time 
+                          ? 'bg-[#f0e040]/20 text-[#f0e040] border-[#f0e040]/50' 
+                          : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                      }`}
+                    >
+                      {time === 0 ? "Unlimited" : `${time}s`}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Wrongs Acceptable?</label>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setChallengeWrongs(true)}
+                    className={`flex-1 rounded-xl border py-3 text-sm font-black transition ${
+                      challengeWrongs === true 
+                        ? 'bg-[#40f080]/20 text-[#40f080] border-[#40f080]/50' 
+                        : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                    }`}
+                  >
+                    Yes (Lose Streak)
+                  </button>
+                  <button
+                    onClick={() => setChallengeWrongs(false)}
+                    className={`flex-1 rounded-xl border py-3 text-sm font-black transition ${
+                      challengeWrongs === false 
+                        ? 'bg-[#f04060]/20 text-[#f04060] border-[#f04060]/50' 
+                        : 'bg-white/5 text-slate-400 border-white/10 hover:bg-white/10'
+                    }`}
+                  >
+                    No (Instant Over)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex gap-3">
+              <button
+                onClick={() => setShowChallengeModal(false)}
+                className="flex-1 rounded-xl border border-white/10 bg-white/5 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 hover:bg-white/10 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSendChallenge}
+                className="flex-[2] rounded-xl border border-[#40e0f0]/50 bg-[#40e0f0]/20 py-3 text-xs font-black uppercase tracking-widest text-[#40e0f0] hover:bg-[#40e0f0]/30 transition"
+              >
+                {copiedLink ? "Link Copied! ✓" : "Generate Link"}
+              </button>
+            </div>
+            {copiedLink && (
+              <p className="mt-4 text-center text-xs text-[#40e0f0] animate-pulse">Paste the link to your friend to start the battle!</p>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }

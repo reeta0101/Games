@@ -89,7 +89,11 @@ export default function QuizGame({ game }) {
   const [loadingScores, setLoadingScores] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const [globalTimeLeft, setGlobalTimeLeft] = useState(null);
+  const globalTimerRef = useRef(null);
+
   const activeTimeLimit = DIFFICULTIES[difficulty].timeMs;
+  const isGlobalChallenge = !!challenge?.timeLimit;
 
   const clearTimers = useCallback(() => {
     if (timerRef.current) {
@@ -107,7 +111,12 @@ export default function QuizGame({ game }) {
   }, []);
 
   useEffect(() => {
-    return () => clearTimers();
+    return () => {
+      clearTimers();
+      if (globalTimerRef.current) {
+        clearInterval(globalTimerRef.current);
+      }
+    };
   }, [clearTimers]);
 
   // ── Guest login ──
@@ -132,13 +141,15 @@ export default function QuizGame({ game }) {
   const endGame = useCallback(
     async (reason, finalScore) => {
       clearTimers();
+      if (globalTimerRef.current) {
+        clearInterval(globalTimerRef.current);
+        globalTimerRef.current = null;
+      }
       setIsAnswered(true);
       setGameEndReason(reason);
-      // Use the explicitly passed finalScore to avoid stale closure values
       const scoreToSave = finalScore ?? score;
       setFinalMessage(buildFinalMessage(reason, scoreToSave));
 
-      // Save to leaderboard and wait for it to finish
       const answeredQs = reason === "wrong" || reason === "timeout" ? questionNum - 1 : questionNum;
       if (scoreToSave > 0) {
         await saveScore({
@@ -164,43 +175,69 @@ export default function QuizGame({ game }) {
     setFeedbackText("");
     setFeedbackTone("neutral");
     setResultState({ selected: null, correct: null });
-    setTimeLeft(activeTimeLimit / 1000);
 
-    const startedAt = Date.now();
+    if (!isGlobalChallenge) {
+      setTimeLeft(activeTimeLimit / 1000);
+      const startedAt = Date.now();
 
-    timerRef.current = setInterval(() => {
-      const elapsed = Date.now() - startedAt;
-      const remaining = Math.max(0, (activeTimeLimit - elapsed) / 1000);
-      setTimeLeft(remaining);
+      timerRef.current = setInterval(() => {
+        const elapsed = Date.now() - startedAt;
+        const remaining = Math.max(0, (activeTimeLimit - elapsed) / 1000);
+        setTimeLeft(remaining);
 
-      if (elapsed >= activeTimeLimit) {
-        clearTimers();
-        setIsAnswered(true);
-        setStreak(0);
-        setFeedbackText("⏱ Time's up — Game Over!");
-        setFeedbackTone("danger");
-        setResultState({ selected: null, correct: question.correctValue });
+        if (elapsed >= activeTimeLimit) {
+          clearTimers();
+          setIsAnswered(true);
+          setStreak(0);
+          setFeedbackText("⏱ Time's up — Game Over!");
+          setFeedbackTone("danger");
+          setResultState({ selected: null, correct: question.correctValue });
 
-        // Capture score via functional setState to get the current value,
-        // then pass it explicitly to endGame to avoid stale closure
-        endTimeoutRef.current = setTimeout(() => {
-          setScore((currentScore) => {
-            endGame("timeout", currentScore);
-            return currentScore;
-          });
-        }, 1400);
-      }
-    }, 50);
-  }, [clearTimers, endGame, game, activeTimeLimit]);
+          endTimeoutRef.current = setTimeout(() => {
+            setScore((currentScore) => {
+              endGame("timeout", currentScore);
+              return currentScore;
+            });
+          }, 1400);
+        }
+      }, 50);
+    }
+  }, [clearTimers, endGame, game, activeTimeLimit, isGlobalChallenge]);
 
   const startGame = () => {
     clearTimers();
+    if (globalTimerRef.current) clearInterval(globalTimerRef.current);
+    
     setScore(0);
     setQuestionNum(0);
     setStreak(0);
     setFinalMessage("");
     setGameEndReason("");
-    recordRecentGame(game.key); // ← track this game as recently played
+    recordRecentGame(game.key);
+    
+    if (isGlobalChallenge) {
+      setGlobalTimeLeft(challenge.timeLimit);
+      const gameStartedAt = Date.now();
+      globalTimerRef.current = setInterval(() => {
+        const elapsed = Date.now() - gameStartedAt;
+        const remaining = Math.max(0, (challenge.timeLimit * 1000 - elapsed) / 1000);
+        setGlobalTimeLeft(remaining);
+        if (remaining <= 0) {
+          clearInterval(globalTimerRef.current);
+          globalTimerRef.current = null;
+          setIsAnswered(true);
+          setFeedbackText("⏱ Time's up!");
+          setFeedbackTone("danger");
+          endTimeoutRef.current = setTimeout(() => {
+            setScore((currentScore) => {
+              endGame("timeout", currentScore);
+              return currentScore;
+            });
+          }, 1000);
+        }
+      }, 50);
+    }
+    
     setScreen("game");
     nextQuestion();
   };
@@ -212,11 +249,18 @@ export default function QuizGame({ game }) {
       clearTimers();
       setIsAnswered(true);
 
-      const elapsed = activeTimeLimit / 1000 - timeLeft;
+      let elapsed = 0;
+      if (!isGlobalChallenge) {
+        elapsed = activeTimeLimit / 1000 - timeLeft;
+      } else {
+        // Just use a fixed fast elapsed time for scoring in global mode
+        elapsed = 1.0; 
+      }
+
       const isCorrect = choice === currentQuestion.correctValue;
 
       if (isCorrect) {
-        const points = game.getScorePoints(elapsed, activeTimeLimit);
+        const points = game.getScorePoints(elapsed, isGlobalChallenge ? 5000 : activeTimeLimit);
         const nextScore = score + points;
         const nextStreak = streak + 1;
 
@@ -229,19 +273,26 @@ export default function QuizGame({ game }) {
             ? `🔥 ${nextStreak}x streak! +${points}pts`
             : `+${points} pts`,
         );
-        advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1200);
+        advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1000);
         return;
       }
 
-      // Wrong answer — pass the current score explicitly so endGame doesn't
-      // read a stale value from its closure (React setState is async)
+      // Wrong answer
       setStreak(0);
       setFeedbackTone("danger");
       setResultState({ selected: choice, correct: currentQuestion.correctValue });
-      setFeedbackText(`✗ It was ${currentQuestion.correctValue} — Game Over!`);
-      endTimeoutRef.current = setTimeout(() => endGame("wrong", score), 1400);
+      
+      const isWrongsAcceptable = challenge && challenge.wrongsAcceptable !== false;
+
+      if (isWrongsAcceptable) {
+        setFeedbackText(`✗ It was ${currentQuestion.correctValue}`);
+        advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1200);
+      } else {
+        setFeedbackText(`✗ It was ${currentQuestion.correctValue} — Game Over!`);
+        endTimeoutRef.current = setTimeout(() => endGame("wrong", score), 1400);
+      }
     },
-    [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit],
+    [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit, isGlobalChallenge],
   );
 
   // Keyboard handler
@@ -275,7 +326,8 @@ export default function QuizGame({ game }) {
     }
   }, [screen, game.key, difficulty, guestName]);
 
-  const timerPercent = Math.max(0, (timeLeft / (activeTimeLimit / 1000)) * 100);
+  const displayTime = isGlobalChallenge ? globalTimeLeft : timeLeft;
+  const timerPercent = Math.max(0, (displayTime / (isGlobalChallenge ? challenge.timeLimit : (activeTimeLimit / 1000))) * 100);
   const isTimerDanger = timerPercent < 33;
   const progressItems = [
     { key: "guest", label: "Player" },
@@ -684,7 +736,7 @@ export default function QuizGame({ game }) {
             </div>
             {challenge && (
               <div className="mb-2 text-[10px] uppercase tracking-[0.2em] text-pink-400 font-bold border border-pink-400/30 bg-pink-400/10 rounded-full px-2 py-0.5 inline-block">
-                Target: {challenge.score} by {challenge.challenger}
+                Target: {challenge.score} points by {challenge.challenger} in {challenge.timeLimit}s
               </div>
             )}
             <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.18em] text-slate-400 sm:justify-end sm:gap-6 sm:text-sm sm:tracking-[0.25em]">
@@ -708,8 +760,8 @@ export default function QuizGame({ game }) {
             role="progressbar"
             aria-label="Time remaining"
             aria-valuemin={0}
-            aria-valuemax={activeTimeLimit / 1000}
-            aria-valuenow={Number(timeLeft.toFixed(1))}
+            aria-valuemax={isGlobalChallenge ? challenge.timeLimit : activeTimeLimit / 1000}
+            aria-valuenow={Number(displayTime?.toFixed(1) || 0)}
           >
             <div
               className={`h-full rounded-full transition-[width] duration-75 ${
@@ -723,11 +775,12 @@ export default function QuizGame({ game }) {
             />
           </div>
           <div
-            className={`mt-1 text-right text-[10px] uppercase tracking-[0.2em] ${
+            className={`mt-1 flex justify-between text-[10px] uppercase tracking-[0.2em] ${
               isTimerDanger ? "text-[#f04060]" : "text-slate-500"
             }`}
           >
-            {timeLeft.toFixed(1)}s remaining
+            {isGlobalChallenge && <span className="font-bold">Total Time</span>}
+            <span>{displayTime?.toFixed(1)}s remaining</span>
           </div>
         </div>
 

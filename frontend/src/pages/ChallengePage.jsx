@@ -10,6 +10,8 @@ export default function ChallengePage() {
   const gameId = searchParams.get("gameId");
   const difficulty = searchParams.get("difficulty") || "intermediate";
   const score = parseInt(searchParams.get("score"), 10) || 0;
+  const timeLimit = parseInt(searchParams.get("timeLimit"), 10) || 0;
+  const wrongsAcceptable = searchParams.get("wrongsAcceptable") === "true";
   const challenger = searchParams.get("challenger") || "A friend";
 
   const [game, setGame] = useState(null);
@@ -47,6 +49,8 @@ export default function ChallengePage() {
           challenger,
           score,
           difficulty,
+          timeLimit,
+          wrongsAcceptable
         },
       },
     });
@@ -98,6 +102,21 @@ export default function ChallengePage() {
                 </p>
                 <p className="text-2xl font-black text-white shadow-sm">
                   {score}
+                </p>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1">
+                  Game Duration
+                </p>
+                <p className="text-2xl font-black text-white shadow-sm">
+                  {timeLimit > 0 ? `${timeLimit}s` : 'Unlimited'}
+                </p>
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1">
+                  Wrongs Acceptable
+                </p>
+                <p className="text-2xl font-black text-white shadow-sm">
+                  {wrongsAcceptable ? 'Yes' : 'No'}
                 </p>
               </div>
             </div>

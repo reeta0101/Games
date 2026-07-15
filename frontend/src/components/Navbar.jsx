@@ -148,7 +148,15 @@ export default function Navbar({
                 {profileOpen && (
                   <div className="absolute right-0 top-full pt-2 z-50">
                     <div className="flex w-48 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#07101d] shadow-xl backdrop-blur-2xl animate-fade-in-up">
+                      <Link
+                        to="/profile"
+                        onClick={() => setProfileOpen(false)}
+                        className="px-4 py-3 text-left text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                      >
+                        My Profile
+                      </Link>
                       <button
+                        id="navbar-change-password-btn"
                         onClick={() => {
                           setShowPasswordModal(true);
                           setProfileOpen(false);
@@ -259,8 +267,22 @@ export default function Navbar({
                     </div>
                   </div>
 
+                  {/* Profile Link */}
+                  <Link
+                    to="/profile"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    My Profile
+                  </Link>
+
                   {/* Change Password */}
                   <button
+                    id="navbar-mobile-change-password-btn"
                     onClick={() => {
                       setShowPasswordModal(true);
                       setMobileOpen(false);

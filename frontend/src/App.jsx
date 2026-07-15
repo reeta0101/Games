@@ -57,6 +57,7 @@ import Leaderboard from "./pages/Leaderboard";
 import ChallengePage from "./pages/ChallengePage";
 import FriendsPage from "./pages/FriendsPage";
 import InteractiveMapPage from "./pages/InteractiveMapPage";
+import ProfilePage from "./pages/ProfilePage";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 import Analytics from "./components/Analytics";
 
@@ -1491,6 +1492,7 @@ function ArcadeLayout() {
           <Route path="/challenge" element={<ChallengePage />} />
           <Route path="/friends" element={<FriendsPage />} />
           <Route path="/map" element={<InteractiveMapPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

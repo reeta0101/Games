@@ -753,10 +753,23 @@ export default function QuizGame({ game }) {
                   <p className="py-3 text-xs text-slate-500 tracking-[0.15em] animate-pulse">Syncing results...</p>
                 ) : (
                   <div className="space-y-2">
-                    {[...liveLobbyState.players].sort((a, b) => b.finalScore - a.finalScore).map((p, i) => {
-                      const isMe = p.username === guestName;
-                      const medal = i === 0 ? '👑' : i + 1;
-                      return (
+                    {(() => {
+                      const sortedPlayers = [...liveLobbyState.players].sort((a, b) => b.finalScore - a.finalScore);
+                      let currentRank = 1;
+                      let lastScore = null;
+                      const rankedPlayers = sortedPlayers.map((p, i) => {
+                        if (p.finalScore !== lastScore) {
+                          currentRank = i + 1;
+                          lastScore = p.finalScore;
+                        }
+                        return { ...p, rank: currentRank };
+                      });
+
+                      return rankedPlayers.map((p, i) => {
+                        const isMe = p.username === (currentUser?.username || guestName);
+                        const isTie = rankedPlayers.filter(rp => rp.finalScore === p.finalScore).length > 1;
+                        const medal = p.rank === 1 ? '👑' : p.rank;
+                        return (
                         <div key={i} className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 transition ${
                           isMe ? 'border-[#f04060]/40 bg-[#f04060]/10 shadow-[0_0_16px_rgba(240,64,96,0.1)]' : 'border-white/8 bg-white/[0.03]'
                         }`}>
@@ -782,7 +795,8 @@ export default function QuizGame({ game }) {
                           </div>
                         </div>
                       );
-                    })}
+                      });
+                    })()}
                   </div>
                 )}
               </>

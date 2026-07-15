@@ -250,7 +250,7 @@ export default function LobbyPage() {
 
   return (
     <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl flex-col px-3 py-8 sm:px-6 sm:py-10">
-      <div className="mb-8 flex items-center justify-between rounded-3xl border border-white/10 bg-[#0f172a] p-6 shadow-2xl">
+      <div className="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-3xl border border-white/10 bg-[#0f172a] p-6 shadow-2xl gap-4">
         <div>
           <h1 className="text-2xl font-black text-white">Lobby <span className="text-[#40e0f0]">#{roomId}</span></h1>
           <p className="text-sm text-slate-400 mt-1">Share this code with your friends!</p>

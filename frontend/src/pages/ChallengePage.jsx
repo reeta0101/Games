@@ -87,7 +87,7 @@ export default function ChallengePage() {
               {game.title}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/10 pt-6">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-1">
                   Difficulty

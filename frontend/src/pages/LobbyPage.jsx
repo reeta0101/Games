@@ -206,15 +206,26 @@ export default function LobbyPage() {
           <h1 className="text-2xl font-black text-white">Lobby <span className="text-[#40e0f0]">#{roomId}</span></h1>
           <p className="text-sm text-slate-400 mt-1">Share this code with your friends!</p>
         </div>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(`${window.location.origin}/lobby?room=${roomId}`);
-            alert("Invite link copied to clipboard!");
-          }}
-          className="rounded-xl border border-[#40e0f0]/40 bg-[#40e0f0]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#40e0f0] hover:bg-[#40e0f0]/20 transition"
-        >
-          Copy Link
-        </button>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(roomId);
+              alert("Room Code copied to clipboard!");
+            }}
+            className="rounded-xl border border-[#f0e040]/40 bg-[#f0e040]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#f0e040] hover:bg-[#f0e040]/20 transition whitespace-nowrap"
+          >
+            Copy Code
+          </button>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(`${window.location.origin}/lobby?room=${roomId}`);
+              alert("Invite link copied to clipboard!");
+            }}
+            className="rounded-xl border border-[#40e0f0]/40 bg-[#40e0f0]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#40e0f0] hover:bg-[#40e0f0]/20 transition whitespace-nowrap"
+          >
+            Copy Link
+          </button>
+        </div>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">

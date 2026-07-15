@@ -7,7 +7,9 @@ const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/quizzes", label: "Quizzes" },
   { to: "/test-page", label: "Exam Mode" },
-  { to: "/leaderboard", label: "Leaderboard" }
+  { to: "/leaderboard", label: "Leaderboard" },
+  { to: "/friends", label: "Friends" },
+  { to: "/map", label: "Maps" }
 ];
 
 export default function Navbar({

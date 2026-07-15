@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import GameReader from "./GameReader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import { recordRecentGame } from "../App";
@@ -41,6 +41,9 @@ const DIFFICULTY_OPTIONS = [
 
 export default function QuizGame({ game }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const challenge = location.state?.challenge;
+  
   const timerRef = useRef(null);
   const advanceTimeoutRef = useRef(null);
   const endTimeoutRef = useRef(null);
@@ -55,7 +58,7 @@ export default function QuizGame({ game }) {
   const [guestInput, setGuestInput] = useState("");
 
   // Difficulty
-  const [difficulty, setDifficulty] = useState("intermediate");
+  const [difficulty, setDifficulty] = useState(challenge?.difficulty || "intermediate");
 
   // Screens: guest → difficulty → game → end
   const [screen, setScreen] = useState(() => {
@@ -84,6 +87,7 @@ export default function QuizGame({ game }) {
   const [top5, setTop5] = useState([]);
   const [personalBest, setPersonalBest] = useState(0);
   const [loadingScores, setLoadingScores] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const activeTimeLimit = DIFFICULTIES[difficulty].timeMs;
 
@@ -297,6 +301,14 @@ export default function QuizGame({ game }) {
     }
     return "";
   };
+  
+  const handleChallengeClick = () => {
+    const url = `${window.location.origin}/challenge?gameId=${game.key}&difficulty=${difficulty}&score=${score}&challenger=${encodeURIComponent(guestName)}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   // ════════════════════════════════════════
   //  GUEST LOGIN SCREEN
@@ -505,12 +517,17 @@ export default function QuizGame({ game }) {
     const myRank = top5.findIndex((e) => e.name === guestName && e.score === score);
     const isNewBest = score > 0 && score >= personalBest;
 
+    let titleText = "Game Over!";
+    if (challenge && gameEndReason !== "quit") {
+      titleText = score > challenge.score ? "Challenge Won! 🎉" : "Challenge Lost! 💀";
+    }
+
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
         <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
 
           {/* Result */}
-          <h1 className="text-3xl font-black text-white sm:text-5xl">Game Over!</h1>
+          <h1 className="text-3xl font-black text-white sm:text-5xl">{titleText}</h1>
           <p className="mt-4 text-lg text-slate-300">Your score</p>
           <div className="my-4 text-6xl font-black text-[#40e0f0] drop-shadow-[0_0_24px_rgba(64,224,240,0.35)]">
             {score}
@@ -582,6 +599,14 @@ export default function QuizGame({ game }) {
           </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-4">
+            {score > 0 && (
+              <button
+                onClick={handleChallengeClick}
+                className="rounded-full border border-pink-400/60 bg-pink-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-pink-400 transition hover:bg-pink-400/20"
+              >
+                {copied ? "Copied!" : "Challenge a Friend"}
+              </button>
+            )}
             <button
               onClick={startGame}
               className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
@@ -657,6 +682,11 @@ export default function QuizGame({ game }) {
             <div className="mb-1 text-[10px] uppercase tracking-[0.2em] text-slate-500">
               {guestName} · {DIFFICULTIES[difficulty].icon} {DIFF_LABELS[difficulty]}
             </div>
+            {challenge && (
+              <div className="mb-2 text-[10px] uppercase tracking-[0.2em] text-pink-400 font-bold border border-pink-400/30 bg-pink-400/10 rounded-full px-2 py-0.5 inline-block">
+                Target: {challenge.score} by {challenge.challenger}
+              </div>
+            )}
             <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.18em] text-slate-400 sm:justify-end sm:gap-6 sm:text-sm sm:tracking-[0.25em]">
               <div>
                 Score <span className="text-white">{score}</span>

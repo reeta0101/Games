@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 import AdminSettings from './models/AdminSettings.js';
+import User from './models/User.js';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 
@@ -93,12 +94,32 @@ app.get('/api/test', (req, res) => {
 const lobbies = {}; // In-memory store: { roomId: { players: [], settings: {} } }
 
 io.on('connection', (socket) => {
-  socket.on('join_lobby', ({ roomId, user }) => {
+  socket.on('join_lobby', async ({ roomId, user }, callback) => {
     socket.join(roomId);
     if (!lobbies[roomId]) {
       lobbies[roomId] = { players: [], settings: null };
     }
     
+    // Authorization Check: If the room has a leader, check if the joining user is a friend
+    const leader = lobbies[roomId].players.find(p => p.isLeader);
+    if (leader && leader.username !== user.username) {
+      try {
+        const dbLeader = await User.findOne({ username: leader.username.toLowerCase() });
+        const dbGuest = await User.findOne({ username: user.username.toLowerCase() });
+        
+        if (!dbLeader || !dbGuest || !dbLeader.friends.includes(dbGuest._id)) {
+          socket.leave(roomId);
+          if (callback) callback({ error: `You must be friends with ${leader.name} to join this lobby.` });
+          return;
+        }
+      } catch (err) {
+        console.error("Lobby join auth error:", err);
+        socket.leave(roomId);
+        if (callback) callback({ error: 'Server error verifying friends.' });
+        return;
+      }
+    }
+
     // Check if user already exists
     const existing = lobbies[roomId].players.find(p => p.username === user.username);
     if (!existing) {
@@ -123,6 +144,7 @@ io.on('connection', (socket) => {
       }
     }
     io.to(roomId).emit('lobby_state', lobbies[roomId]);
+    if (callback) callback({ success: true });
   });
 
   socket.on('toggle_ready', ({ roomId, username, readyState }) => {

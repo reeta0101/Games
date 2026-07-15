@@ -16,6 +16,7 @@ export default function LobbyPage() {
   const [inRoom, setInRoom] = useState(false);
   const [lobbyState, setLobbyState] = useState(null);
   const [isReady, setIsReady] = useState(false);
+  const [joinError, setJoinError] = useState("");
 
   // Form states for Leader
   const initialGameId = searchParams.get("gameId") || GAME_MODES[0].id || GAME_MODES[0].key;
@@ -80,23 +81,30 @@ export default function LobbyPage() {
     e?.preventDefault();
     if (!roomId.trim()) return;
     
+    setJoinError("");
+
     socket.emit("join_lobby", {
       roomId,
       user: {
         username: currentUser.username,
         name: currentUser.name
       }
+    }, (response) => {
+      if (response && response.error) {
+        setJoinError(response.error);
+        return;
+      }
+      
+      // Set initial settings if we are creating
+      socket.emit("update_settings", {
+        roomId,
+        settings: { gameId, difficulty, challengeMode, timeLimit }
+      });
+      
+      setInRoom(true);
+      // update URL without refresh
+      window.history.pushState({}, '', `/lobby?room=${roomId}`);
     });
-    
-    // Set initial settings if we are creating
-    socket.emit("update_settings", {
-      roomId,
-      settings: { gameId, difficulty, challengeMode, timeLimit }
-    });
-    
-    setInRoom(true);
-    // update URL without refresh
-    window.history.pushState({}, '', `/lobby?room=${roomId}`);
   };
 
   useEffect(() => {
@@ -149,6 +157,11 @@ export default function LobbyPage() {
         <p className="text-slate-400 mb-10">Create a room or join a friend to play head-to-head in real time.</p>
         
         <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+          {joinError && (
+            <div className="mb-6 rounded-xl border border-[#f04060]/30 bg-[#f04060]/10 p-4 text-sm font-bold text-[#f04060]">
+              {joinError}
+            </div>
+          )}
           <form onSubmit={joinOrCreateRoom} className="flex flex-col gap-4">
             <input
               type="text"

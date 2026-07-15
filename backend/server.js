@@ -180,9 +180,26 @@ io.on('connection', (socket) => {
 
   socket.on('toggle_ready', ({ roomId, username, readyState }) => {
     if (lobbies[roomId]) {
-      const p = lobbies[roomId].players.find(p => p.username === username);
-      if (p) {
-        p.ready = readyState;
+      const player = lobbies[roomId].players.find(p => p.username === username);
+      if (player) {
+        player.ready = readyState;
+        io.to(roomId).emit('lobby_state', lobbies[roomId]);
+      }
+    }
+  });
+
+  socket.on('leave_lobby', ({ roomId, username }) => {
+    if (lobbies[roomId]) {
+      socket.leave(roomId);
+      lobbies[roomId].players = lobbies[roomId].players.filter(p => p.username !== username);
+      
+      if (lobbies[roomId].players.length === 0) {
+        delete lobbies[roomId];
+      } else {
+        // If leader left, make the next person leader
+        if (!lobbies[roomId].players.some(p => p.isLeader)) {
+          lobbies[roomId].players[0].isLeader = true;
+        }
         io.to(roomId).emit('lobby_state', lobbies[roomId]);
       }
     }

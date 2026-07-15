@@ -172,6 +172,16 @@ export default function LobbyPage() {
     });
   };
 
+  const leaveRoom = () => {
+    if (socket) {
+      socket.emit("leave_lobby", { roomId, username: currentUser.username });
+    }
+    setInRoom(false);
+    setLobbyState(null);
+    setRoomId("");
+    window.history.pushState({}, '', '/lobby');
+  };
+
   const isMeLeader = () => {
     if (!lobbyState) return false;
     const me = lobbyState.players.find(p => p.username === currentUser.username);
@@ -261,6 +271,12 @@ export default function LobbyPage() {
             className="rounded-xl border border-[#40e0f0]/40 bg-[#40e0f0]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#40e0f0] hover:bg-[#40e0f0]/20 transition whitespace-nowrap"
           >
             Copy Link
+          </button>
+          <button
+            onClick={leaveRoom}
+            className="rounded-xl border border-[#f04060]/40 bg-[#f04060]/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#f04060] hover:bg-[#f04060]/20 transition whitespace-nowrap"
+          >
+            Leave
           </button>
         </div>
       </div>

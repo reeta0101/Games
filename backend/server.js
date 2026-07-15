@@ -6,6 +6,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bcrypt from 'bcrypt';
 import AdminSettings from './models/AdminSettings.js';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +15,14 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: '*', // Allow all origins for now
+    methods: ["GET", "POST"]
+  }
+});
+
 const PORT = process.env.PORT || 8080;
 
 // Middleware
@@ -79,8 +89,59 @@ app.get('/api/test', (req, res) => {
   });
 });
 
+// Socket.io Lobby Logic
+const lobbies = {}; // In-memory store: { roomId: { players: [], settings: {} } }
 
+io.on('connection', (socket) => {
+  socket.on('join_lobby', ({ roomId, user }) => {
+    socket.join(roomId);
+    if (!lobbies[roomId]) {
+      lobbies[roomId] = { players: [], settings: null };
+    }
+    
+    // Check if user already exists
+    const existing = lobbies[roomId].players.find(p => p.username === user.username);
+    if (!existing) {
+      lobbies[roomId].players.push({ 
+        ...user, 
+        ready: false, 
+        isLeader: lobbies[roomId].players.length === 0, 
+        socketId: socket.id 
+      });
+    } else {
+      existing.socketId = socket.id;
+    }
+    io.to(roomId).emit('lobby_state', lobbies[roomId]);
+  });
 
-app.listen(PORT, () => {
+  socket.on('toggle_ready', ({ roomId, username, readyState }) => {
+    if (lobbies[roomId]) {
+      const p = lobbies[roomId].players.find(p => p.username === username);
+      if (p) {
+        p.ready = readyState;
+        io.to(roomId).emit('lobby_state', lobbies[roomId]);
+      }
+    }
+  });
+
+  socket.on('update_settings', ({ roomId, settings }) => {
+    if (lobbies[roomId]) {
+      lobbies[roomId].settings = settings;
+      io.to(roomId).emit('lobby_state', lobbies[roomId]);
+    }
+  });
+
+  socket.on('start_game', ({ roomId }) => {
+    if (lobbies[roomId]) {
+      io.to(roomId).emit('game_started', lobbies[roomId].settings);
+    }
+  });
+
+  socket.on('disconnect', () => {
+    // Optionally clean up disconnected players if needed
+  });
+});
+
+httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

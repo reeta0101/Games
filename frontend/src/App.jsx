@@ -56,6 +56,7 @@ import FeedbackSection from "./components/FeedbackSection";
 import Leaderboard from "./pages/Leaderboard";
 import ChallengePage from "./pages/ChallengePage";
 import FriendsPage from "./pages/FriendsPage";
+import LobbyPage from "./pages/LobbyPage";
 import InteractiveMapPage from "./pages/InteractiveMapPage";
 import ProfilePage from "./pages/ProfilePage";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
@@ -1489,8 +1490,9 @@ function ArcadeLayout() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/quizzes" element={<QuizzesPage />} />
           <Route path="/test-page" element={<TestPage />} />
-          <Route path="/challenge" element={<ChallengePage />} />
           <Route path="/friends" element={<FriendsPage />} />
+          <Route path="/lobby" element={<LobbyPage />} />
+          <Route path="/challenge" element={<ChallengePage />} />
           <Route path="/map" element={<InteractiveMapPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<NotFoundPage />} />

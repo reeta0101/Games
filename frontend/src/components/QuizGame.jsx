@@ -553,7 +553,7 @@ export default function QuizGame({ game }) {
                   Back to library
                 </button>
                 <button
-                  onClick={() => navigate(`/friends?gameId=${game.key}`)}
+                  onClick={() => navigate(`/lobby?gameId=${game.key}`)}
                   className="touch-target w-full rounded-2xl border border-[#f04060]/30 bg-[#f04060]/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-[#f04060] transition hover:bg-[#f04060]/20"
                   type="button"
                 >

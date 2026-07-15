@@ -26,6 +26,28 @@ router.get('/:username', async (req, res) => {
   }
 });
 
+// Get sent friend requests for a user
+// GET /api/friends/:username/sent-requests
+router.get('/:username/sent-requests', async (req, res) => {
+  try {
+    const { username } = req.params;
+    const user = await User.findOne({ username: username.toLowerCase() });
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    // Find all users who have this user's ID in their friendRequests array
+    const sentRequestsUsers = await User.find({ friendRequests: user._id })
+      .select('name username');
+
+    res.json(sentRequestsUsers);
+  } catch (err) {
+    console.error('Get sent requests error:', err.message);
+    res.status(500).json({ error: 'Server error. Please try again.' });
+  }
+});
+
 // Search users by username (for adding friends)
 // GET /api/friends/search?query=xxx&currentUsername=yyy
 router.get('/search/users', async (req, res) => {

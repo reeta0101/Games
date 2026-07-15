@@ -60,6 +60,7 @@ import LobbyPage from "./pages/LobbyPage";
 import { GlobalSocketProvider } from "./contexts/GlobalSocketContext";
 import InteractiveMapPage from "./pages/InteractiveMapPage";
 import ProfilePage from "./pages/ProfilePage";
+import MobileBottomNav from "./components/MobileBottomNav";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 import Analytics from "./components/Analytics";
 
@@ -1396,60 +1397,64 @@ function ArcadeLayout() {
           onLogout={() => dispatch(logout())}
         />
 
-        <Routes>
-          <Route path="/" element={<HomePage currentUser={currentUser} />} />
-          <Route path="/alphabet" element={<AlphabetQuiz />} />
-          <Route path="/square" element={<SquareQuiz />} />
-          <Route path="/cube" element={<CubeQuiz />} />
-          <Route path="/state-capital" element={<StateCapitalQuiz />} />
-          <Route path="/world-capital" element={<WorldCapitalQuiz />} />
-          <Route path="/periodic-table" element={<PeriodicTableQuiz />} />
-          <Route path="/multiplication" element={<MultiplicationQuiz />} />
-          <Route path="/reverse-alphabet" element={<ReverseAlphabetQuiz />} />
-          <Route path="/prime" element={<PrimeQuiz />} />
-          <Route path="/roman" element={<RomanQuiz />} />
-          <Route path="/country-currency" element={<CountryCurrencyQuiz />} />
-          <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
-          <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
-          <Route path="/indian-president" element={<IndianPresidentQuiz />} />
-          <Route
-            path="/national-officials"
-            element={<NationalOfficialsQuiz />}
-          />
-          <Route path="/state-officials" element={<StateOfficialsQuiz />} />
-          <Route path="/disease-cause" element={<DiseaseCauseQuiz />} />
-          <Route path="/animal-kingdom" element={<AnimalKingdomQuiz />} />
-          <Route path="/si-units" element={<SiUnitsQuiz />} />
-          <Route path="/scientific-name" element={<ScientificNameQuiz />} />
-          <Route path="/state-dance" element={<StateDanceQuiz />} />
-          <Route path="/organization-hq" element={<OrganizationHqQuiz />} />
-          <Route path="/inventions" element={<InventionQuiz />} />
-          <Route path="/company-origin" element={<CompanyOriginQuiz />} />
-          <Route path="/famous-quotes" element={<FamousQuotesQuiz />} />
-          <Route path="/river-origin" element={<RiverOriginQuiz />} />
-          <Route path="/national-parks" element={<NationalParkQuiz />} />
-          <Route path="/landmark-country" element={<LandmarkCountryQuiz />} />
-          <Route
-            path="/vitamin-deficiency"
-            element={<VitaminDeficiencyQuiz />}
-          />
-          <Route path="/indian-national" element={<IndianNationalQuiz />} />
-          <Route path="/famous-battles" element={<FamousBattlesQuiz />} />
-          <Route path="/compound-formula" element={<CompoundFormulaQuiz />} />
-          <Route
-            path="/indian-vice-president"
-            element={<IndianVicePresidentQuiz />}
-          />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/quizzes" element={<QuizzesPage />} />
-          <Route path="/test-page" element={<TestPage />} />
-          <Route path="/friends" element={<FriendsPage />} />
-          <Route path="/lobby" element={<LobbyPage />} />
-          <Route path="/challenge" element={<ChallengePage />} />
-          <Route path="/map" element={<InteractiveMapPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+
+        <div className="pb-20 sm:pb-0">
+          <Routes>
+            <Route path="/" element={<HomePage currentUser={currentUser} />} />
+            <Route path="/alphabet" element={<AlphabetQuiz />} />
+            <Route path="/square" element={<SquareQuiz />} />
+            <Route path="/cube" element={<CubeQuiz />} />
+            <Route path="/state-capital" element={<StateCapitalQuiz />} />
+            <Route path="/world-capital" element={<WorldCapitalQuiz />} />
+            <Route path="/periodic-table" element={<PeriodicTableQuiz />} />
+            <Route path="/multiplication" element={<MultiplicationQuiz />} />
+            <Route path="/reverse-alphabet" element={<ReverseAlphabetQuiz />} />
+            <Route path="/prime" element={<PrimeQuiz />} />
+            <Route path="/roman" element={<RomanQuiz />} />
+            <Route path="/country-currency" element={<CountryCurrencyQuiz />} />
+            <Route path="/element-symbol" element={<ElementSymbolQuiz />} />
+            <Route path="/one-word-sub" element={<OneWordSubstitutionQuiz />} />
+            <Route path="/indian-president" element={<IndianPresidentQuiz />} />
+            <Route
+              path="/national-officials"
+              element={<NationalOfficialsQuiz />}
+            />
+            <Route path="/state-officials" element={<StateOfficialsQuiz />} />
+            <Route path="/disease-cause" element={<DiseaseCauseQuiz />} />
+            <Route path="/animal-kingdom" element={<AnimalKingdomQuiz />} />
+            <Route path="/si-units" element={<SiUnitsQuiz />} />
+            <Route path="/scientific-name" element={<ScientificNameQuiz />} />
+            <Route path="/state-dance" element={<StateDanceQuiz />} />
+            <Route path="/organization-hq" element={<OrganizationHqQuiz />} />
+            <Route path="/inventions" element={<InventionQuiz />} />
+            <Route path="/company-origin" element={<CompanyOriginQuiz />} />
+            <Route path="/famous-quotes" element={<FamousQuotesQuiz />} />
+            <Route path="/river-origin" element={<RiverOriginQuiz />} />
+            <Route path="/national-parks" element={<NationalParkQuiz />} />
+            <Route path="/landmark-country" element={<LandmarkCountryQuiz />} />
+            <Route
+              path="/vitamin-deficiency"
+              element={<VitaminDeficiencyQuiz />}
+            />
+            <Route path="/indian-national" element={<IndianNationalQuiz />} />
+            <Route path="/famous-battles" element={<FamousBattlesQuiz />} />
+            <Route path="/compound-formula" element={<CompoundFormulaQuiz />} />
+            <Route
+              path="/indian-vice-president"
+              element={<IndianVicePresidentQuiz />}
+            />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/quizzes" element={<QuizzesPage />} />
+            <Route path="/test-page" element={<TestPage />} />
+            <Route path="/friends" element={<FriendsPage />} />
+            <Route path="/lobby" element={<LobbyPage />} />
+            <Route path="/challenge" element={<ChallengePage />} />
+            <Route path="/map" element={<InteractiveMapPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+        <MobileBottomNav />
         <Footer />
       </div>
     </div>

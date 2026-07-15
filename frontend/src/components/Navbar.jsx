@@ -225,28 +225,7 @@ export default function Navbar({
             className="sm:hidden border-t border-white/8 bg-[#07101d]/95 backdrop-blur-2xl animate-fade-in-up"
           >
             <div className="mx-auto max-w-7xl px-4 py-4 space-y-2">
-              {/* Nav links */}
-              {NAV_LINKS.map((item) => {
-                const active = isActive(item.to);
-                return (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setMobileOpen(false)}
-                    aria-current={active ? "page" : undefined}
-                    className={`flex w-full items-center rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 ${
-                      active
-                        ? "bg-white/12 text-white"
-                        : "text-slate-400 hover:bg-white/7 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
 
-              {/* Divider */}
-              <div className="my-2 h-px bg-white/8" />
 
               {currentUser ? (
                 <>

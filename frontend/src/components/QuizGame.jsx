@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import { recordRecentGame } from "../App";
+import { io } from "socket.io-client";
 import {
   getLeaderboard,
   saveScore,
@@ -86,8 +87,12 @@ export default function QuizGame({ game }) {
   // Async leaderboard state for end screen
   const [top5, setTop5] = useState([]);
   const [personalBest, setPersonalBest] = useState(0);
-  const [loadingScores, setLoadingScores] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  // Live Multiplayer State
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [liveLobbyState, setLiveLobbyState] = useState(null);
 
   const [globalTimeLeft, setGlobalTimeLeft] = useState(null);
   const globalTimerRef = useRef(null);
@@ -162,8 +167,25 @@ export default function QuizGame({ game }) {
       }
 
       setScreen("end");
+
+      if (challenge?.roomId) {
+        const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:8080');
+        const finalWrong = reason === "wrong" ? wrongAnswers + 1 : wrongAnswers;
+        
+        socket.emit("submit_score", {
+          roomId: challenge.roomId,
+          username: guestName,
+          score: scoreToSave,
+          correct: correctAnswers,
+          wrong: finalWrong
+        });
+        
+        socket.on("lobby_state", (state) => {
+          setLiveLobbyState(state);
+        });
+      }
     },
-    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum],
+    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers],
   );
 
   const nextQuestion = useCallback(() => {
@@ -211,6 +233,8 @@ export default function QuizGame({ game }) {
     setScore(0);
     setQuestionNum(0);
     setStreak(0);
+    setCorrectAnswers(0);
+    setWrongAnswers(0);
     setFinalMessage("");
     setGameEndReason("");
     recordRecentGame(game.key);
@@ -266,6 +290,7 @@ export default function QuizGame({ game }) {
 
         setScore(nextScore);
         setStreak(nextStreak);
+        setCorrectAnswers(prev => prev + 1);
         setFeedbackTone("success");
         setResultState({ selected: choice, correct: currentQuestion.correctValue });
         setFeedbackText(
@@ -279,6 +304,7 @@ export default function QuizGame({ game }) {
 
       // Wrong answer
       setStreak(0);
+      setWrongAnswers(prev => prev + 1);
       setFeedbackTone("danger");
       setResultState({ selected: choice, correct: currentQuestion.correctValue });
       
@@ -613,49 +639,95 @@ export default function QuizGame({ game }) {
             {diffInfo.icon} {diffInfo.label} · {answeredQs} correct
           </p>
 
-          {/* Top 5 */}
+          {/* Match / Leaderboard */}
           <div className="mt-7 rounded-2xl border border-white/10 bg-black/20 p-4">
-            <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#f0e040]">
-              🏆 Top 5 — {MODE_LABELS[game.key] || game.key} · {diffInfo.label}
-            </p>
-            {loadingScores ? (
-              <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">Loading scores...</p>
-            ) : top5.length === 0 ? (
-              <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">No scores yet. Be the first!</p>
+            {challenge?.roomId ? (
+              <>
+                <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#f04060] font-bold">
+                  🔴 LIVE MATCH RESULTS
+                </p>
+                {!liveLobbyState ? (
+                  <p className="py-3 text-xs text-slate-500 tracking-[0.15em] animate-pulse">Syncing results...</p>
+                ) : (
+                  <div className="space-y-2">
+                    {[...liveLobbyState.players].sort((a, b) => b.finalScore - a.finalScore).map((p, i) => {
+                      const isMe = p.username === guestName;
+                      const medal = i === 0 ? '👑' : i + 1;
+                      return (
+                        <div key={i} className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 transition ${
+                          isMe ? 'border-[#f04060]/40 bg-[#f04060]/10 shadow-[0_0_16px_rgba(240,64,96,0.1)]' : 'border-white/8 bg-white/[0.03]'
+                        }`}>
+                          <span className="w-7 text-center text-lg font-black">{medal}</span>
+                          <div className="min-w-0 text-left">
+                            <div className={`truncate text-sm font-bold ${isMe ? 'text-[#f04060]' : 'text-white'}`}>
+                              {p.name}{isMe && ' ← you'}
+                            </div>
+                            <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500">
+                              {p.finished ? (
+                                <span className="text-[#40f080]">{p.correct}✓</span> 
+                              ) : (
+                                <span className="animate-pulse">Playing...</span>
+                              )}
+                              {p.finished && ` · `}
+                              {p.finished && (
+                                <span className="text-[#f04060]">{p.wrong}✗</span>
+                              )}
+                            </div>
+                          </div>
+                          <div className={`text-xl font-black ${isMe ? 'text-[#f04060]' : 'text-slate-200'}`}>
+                            {p.finished ? p.finalScore : '---'}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
             ) : (
-              <div className="space-y-2">
-                {top5.map((entry, i) => {
-                  const isMe = i === myRank;
-                  const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : null;
-                  return (
-                    <div
-                      key={i}
-                      className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 transition ${
-                        isMe
-                          ? 'border-[#40e0f0]/40 bg-[#40e0f0]/8 shadow-[0_0_16px_rgba(64,224,240,0.1)]'
-                          : 'border-white/8 bg-white/[0.03]'
-                      }`}
-                    >
-                      <span className="w-7 text-center text-base font-black" style={{
-                        color: i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '#6060a0'
-                      }}>
-                        {medal ?? i + 1}
-                      </span>
-                      <div className="min-w-0 text-left">
-                        <div className={`truncate text-sm font-bold ${isMe ? 'text-[#40e0f0]' : 'text-white'}`}>
-                          {entry.name}{isMe && ' ← you'}
+              <>
+                <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#f0e040]">
+                  🏆 Top 5 — {MODE_LABELS[game.key] || game.key} · {diffInfo.label}
+                </p>
+                {loadingScores ? (
+                  <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">Loading scores...</p>
+                ) : top5.length === 0 ? (
+                  <p className="py-3 text-xs text-slate-500 tracking-[0.15em]">No scores yet. Be the first!</p>
+                ) : (
+                  <div className="space-y-2">
+                    {top5.map((entry, i) => {
+                      const isMe = i === myRank;
+                      const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : null;
+                      return (
+                        <div
+                          key={i}
+                          className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 transition ${
+                            isMe
+                              ? 'border-[#40e0f0]/40 bg-[#40e0f0]/8 shadow-[0_0_16px_rgba(64,224,240,0.1)]'
+                              : 'border-white/8 bg-white/[0.03]'
+                          }`}
+                        >
+                          <span className="w-7 text-center text-base font-black" style={{
+                            color: i === 0 ? '#ffd700' : i === 1 ? '#c0c0c0' : i === 2 ? '#cd7f32' : '#6060a0'
+                          }}>
+                            {medal ?? i + 1}
+                          </span>
+                          <div className="min-w-0 text-left">
+                            <div className={`truncate text-sm font-bold ${isMe ? 'text-[#40e0f0]' : 'text-white'}`}>
+                              {entry.name}{isMe && ' ← you'}
+                            </div>
+                            <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500">
+                              {entry.questions || '?'}Q · {getTimeAgo(entry.createdAt || entry.timestamp || Date.now())}
+                            </div>
+                          </div>
+                          <div className={`text-xl font-black ${isMe ? 'text-[#40e0f0]' : 'text-slate-200'}`}>
+                            {entry.score}
+                          </div>
                         </div>
-                        <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500">
-                          {entry.questions || '?'}Q · {getTimeAgo(entry.createdAt || entry.timestamp || Date.now())}
-                        </div>
-                      </div>
-                      <div className={`text-xl font-black ${isMe ? 'text-[#40e0f0]' : 'text-slate-200'}`}>
-                        {entry.score}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
             )}
           </div>
 

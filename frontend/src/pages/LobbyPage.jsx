@@ -50,6 +50,7 @@ export default function LobbyPage() {
           state: {
             challenge: {
               challenger: "Live Challenge",
+              roomId: roomId,
               score: 0,
               difficulty: settings.difficulty,
               timeLimit: settings.challengeMode === 'time_attack' ? settings.timeLimit : 0,

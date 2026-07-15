@@ -106,10 +106,21 @@ io.on('connection', (socket) => {
         ...user, 
         ready: false, 
         isLeader: lobbies[roomId].players.length === 0, 
-        socketId: socket.id 
+        socketId: socket.id,
+        finished: false,
+        finalScore: 0,
+        correct: 0,
+        wrong: 0
       });
     } else {
       existing.socketId = socket.id;
+      // Reset if rejoining before game starts
+      if (lobbies[roomId].status !== 'playing') {
+        existing.finished = false;
+        existing.finalScore = 0;
+        existing.correct = 0;
+        existing.wrong = 0;
+      }
     }
     io.to(roomId).emit('lobby_state', lobbies[roomId]);
   });
@@ -133,7 +144,21 @@ io.on('connection', (socket) => {
 
   socket.on('start_game', ({ roomId }) => {
     if (lobbies[roomId]) {
+      lobbies[roomId].status = 'playing';
       io.to(roomId).emit('game_started', lobbies[roomId].settings);
+    }
+  });
+
+  socket.on('submit_score', ({ roomId, username, score, correct, wrong }) => {
+    if (lobbies[roomId]) {
+      const p = lobbies[roomId].players.find(p => p.username === username);
+      if (p) {
+        p.finalScore = score;
+        p.correct = correct;
+        p.wrong = wrong;
+        p.finished = true;
+        io.to(roomId).emit('lobby_state', lobbies[roomId]);
+      }
     }
   });
 

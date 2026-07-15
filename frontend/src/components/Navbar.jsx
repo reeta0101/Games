@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { to: "/quizzes", label: "Quizzes" },
   { to: "/test-page", label: "Exam Mode" },
   { to: "/leaderboard", label: "Leaderboard" },
-  { to: "/friends", label: "Friends" },
   { to: "/map", label: "Maps" }
 ];
 

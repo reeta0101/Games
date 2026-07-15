@@ -544,13 +544,22 @@ export default function QuizGame({ game }) {
                 </button>
               </div>
 
-              <button
-                onClick={() => navigate("/")}
-                className="touch-target mt-3 w-full rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400 transition hover:bg-white/10 hover:text-white"
-                type="button"
-              >
-                Back to library
-              </button>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <button
+                  onClick={() => navigate("/")}
+                  className="touch-target w-full rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400 transition hover:bg-white/10 hover:text-white"
+                  type="button"
+                >
+                  Back to library
+                </button>
+                <button
+                  onClick={() => navigate(`/friends?gameId=${game.key}`)}
+                  className="touch-target w-full rounded-2xl border border-[#f04060]/30 bg-[#f04060]/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-[#f04060] transition hover:bg-[#f04060]/20"
+                  type="button"
+                >
+                  Challenge Friend
+                </button>
+              </div>
             </div>
           </div>
         </section>

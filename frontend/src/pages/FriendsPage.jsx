@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { GAME_MODES } from "../App";
 
@@ -21,10 +21,15 @@ export default function FriendsPage() {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const location = useLocation();
+  
   // Challenge Modal State
   const [showChallengeModal, setShowChallengeModal] = useState(false);
   const [challengeTarget, setChallengeTarget] = useState(null);
-  const [challengeGame, setChallengeGame] = useState(GAME_MODES[0].key || GAME_MODES[0].id);
+  
+  const searchParams = new URLSearchParams(location.search);
+  const initialGameId = searchParams.get('gameId') || GAME_MODES[0].key || GAME_MODES[0].id;
+  const [challengeGame, setChallengeGame] = useState(initialGameId);
   const [challengeDiff, setChallengeDiff] = useState("intermediate");
   const [challengeTime, setChallengeTime] = useState(0); // 0 means Unlimited
   const [challengeWrongs, setChallengeWrongs] = useState(true); // true means acceptable

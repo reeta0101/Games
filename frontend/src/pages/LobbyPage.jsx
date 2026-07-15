@@ -118,11 +118,14 @@ export default function LobbyPage() {
         return;
       }
       
-      // Set initial settings if we are creating
-      socket.emit("update_settings", {
-        roomId,
-        settings: { gameId, difficulty, challengeMode, timeLimit }
-      });
+      // Only set initial settings if we are the leader (i.e. we created it)
+      // Otherwise, we inherit the existing settings from the lobby state
+      if (response && response.isLeader) {
+        socket.emit("update_settings", {
+          roomId,
+          settings: { gameId, difficulty, challengeMode, timeLimit }
+        });
+      }
       
       setInRoom(true);
       // update URL without refresh

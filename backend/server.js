@@ -127,8 +127,10 @@ io.on('connection', (socket) => {
 
   socket.on('join_lobby', async ({ roomId, user }, callback) => {
     socket.join(roomId);
+    let isNewRoom = false;
     if (!lobbies[roomId]) {
       lobbies[roomId] = { players: [], settings: null };
+      isNewRoom = true;
     }
     
     // Authorization Check: If the room has a leader, check if the joining user is a friend
@@ -175,7 +177,10 @@ io.on('connection', (socket) => {
       }
     }
     io.to(roomId).emit('lobby_state', lobbies[roomId]);
-    if (callback) callback({ success: true });
+    
+    const isMeLeader = lobbies[roomId].players.find(p => p.username === user.username)?.isLeader;
+    
+    if (callback) callback({ success: true, isLeader: isMeLeader, isNewRoom });
   });
 
   socket.on('toggle_ready', ({ roomId, username, readyState }) => {

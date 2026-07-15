@@ -273,7 +273,7 @@ export default function QuizGame({ game }) {
     }
   }, [clearTimers, endGame, game, activeTimeLimit, isGlobalChallenge]);
 
-  const startGame = () => {
+  const startGame = useCallback(() => {
     clearTimers();
     if (globalTimerRef.current) clearInterval(globalTimerRef.current);
     
@@ -311,7 +311,15 @@ export default function QuizGame({ game }) {
     
     setScreen("game");
     nextQuestion();
-  };
+  }, [clearTimers, game.key, isGlobalChallenge, challenge?.timeLimit, nextQuestion, endGame]);
+
+  // Auto-start game if coming from a live lobby
+  useEffect(() => {
+    if (challenge?.roomId && screen === "difficulty") {
+      startGame();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChoice = useCallback(
     (choice) => {

@@ -87,6 +87,7 @@ export default function QuizGame({ game }) {
   // Async leaderboard state for end screen
   const [top5, setTop5] = useState([]);
   const [personalBest, setPersonalBest] = useState(0);
+  const [loadingScores, setLoadingScores] = useState(false);
   const [copied, setCopied] = useState(false);
 
   // Live Multiplayer State
@@ -655,6 +656,8 @@ export default function QuizGame({ game }) {
       titleText = score > challenge.score ? "Challenge Won! 🎉" : "Challenge Lost! 💀";
     }
 
+    const isMatchStillPlaying = challenge?.roomId && liveLobbyState && liveLobbyState.players.some(p => !p.finished);
+
     return (
       <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
         <section className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-center shadow-[0_30px_120px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
@@ -690,7 +693,7 @@ export default function QuizGame({ game }) {
             {challenge?.roomId ? (
               <>
                 <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#f04060] font-bold">
-                  🔴 LIVE MATCH RESULTS
+                  🔴 {isMatchStillPlaying ? "WAITING FOR OTHERS..." : "LIVE MATCH RESULTS"}
                 </p>
                 {!liveLobbyState ? (
                   <p className="py-3 text-xs text-slate-500 tracking-[0.15em] animate-pulse">Syncing results...</p>
@@ -778,26 +781,37 @@ export default function QuizGame({ game }) {
           </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-4">
-            {score > 0 && (
+            {challenge?.roomId ? (
               <button
-                onClick={handleChallengeClick}
-                className="rounded-full border border-pink-400/60 bg-pink-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-pink-400 transition hover:bg-pink-400/20"
+                onClick={() => navigate(`/lobby?room=${challenge.roomId}`)}
+                className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
               >
-                {copied ? "Copied!" : "Challenge a Friend"}
+                Back to Lobby
               </button>
+            ) : (
+              <>
+                {score > 0 && (
+                  <button
+                    onClick={handleChallengeClick}
+                    className="rounded-full border border-pink-400/60 bg-pink-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-pink-400 transition hover:bg-pink-400/20"
+                  >
+                    {copied ? "Copied!" : "Challenge a Friend"}
+                  </button>
+                )}
+                <button
+                  onClick={startGame}
+                  className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
+                >
+                  Play Again
+                </button>
+                <button
+                  onClick={() => setScreen("difficulty")}
+                  className="rounded-full border border-orange-400/30 bg-orange-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-orange-400 transition hover:bg-orange-400/20"
+                >
+                  Reset
+                </button>
+              </>
             )}
-            <button
-              onClick={startGame}
-              className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
-            >
-              Play Again
-            </button>
-            <button
-              onClick={() => setScreen("difficulty")}
-              className="rounded-full border border-orange-400/30 bg-orange-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-orange-400 transition hover:bg-orange-400/20"
-            >
-              Reset
-            </button>
             <button
               onClick={() => {
                 setReadReturnScreen("end");

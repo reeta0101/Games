@@ -23,7 +23,19 @@ export default function FriendsPage() {
       return;
     }
     fetchFriendsData();
+    fetchAllUsers();
   }, [currentUser, navigate]);
+
+  const fetchAllUsers = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/friends/search/users`, {
+        params: { currentUsername: currentUser.username }
+      });
+      setSearchResults(res.data);
+    } catch (err) {
+      console.error("Error fetching all users", err);
+    }
+  };
 
   const fetchFriendsData = async () => {
     try {
@@ -39,14 +51,8 @@ export default function FriendsPage() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (searchQuery.length < 3) {
-      setSearchMessage("Enter at least 3 characters to search.");
-      return;
-    }
-
     setIsSearching(true);
     setSearchMessage("");
-    setSearchResults([]);
 
     try {
       const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/friends/search/users`, {

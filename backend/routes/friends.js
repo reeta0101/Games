@@ -31,17 +31,16 @@ router.get('/:username', async (req, res) => {
 router.get('/search/users', async (req, res) => {
   try {
     const { query, currentUsername } = req.query;
-    if (!query || query.length < 3) {
-      return res.json([]);
+    
+    let searchCriteria = { username: { $ne: currentUsername.toLowerCase() } };
+    if (query) {
+      searchCriteria.username = { $regex: query, $options: 'i', $ne: currentUsername.toLowerCase() };
     }
 
     // Find users matching query but exclude the current user
-    const users = await User.find({
-      username: { $regex: query, $options: 'i' },
-      username: { $ne: currentUsername.toLowerCase() }
-    })
+    const users = await User.find(searchCriteria)
     .select('name username')
-    .limit(10);
+    .limit(50);
 
     res.json(users);
   } catch (err) {

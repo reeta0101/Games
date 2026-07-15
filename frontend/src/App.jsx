@@ -57,6 +57,7 @@ import Leaderboard from "./pages/Leaderboard";
 import ChallengePage from "./pages/ChallengePage";
 import FriendsPage from "./pages/FriendsPage";
 import LobbyPage from "./pages/LobbyPage";
+import { GlobalSocketProvider } from "./contexts/GlobalSocketContext";
 import InteractiveMapPage from "./pages/InteractiveMapPage";
 import ProfilePage from "./pages/ProfilePage";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
@@ -766,51 +767,6 @@ const STUDY_STEPS = [
   { label: "Play", detail: "Answer fast and learn from feedback." },
 ];
 
-const FUTURE_IDEAS = [
-  {
-    title: "Flag → Country",
-    category: "General Knowledge",
-    hero: "🏳️",
-    accent: "#60a5fa",
-    details: "Show a national flag and name the country it belongs to.",
-  },
-  {
-    title: "Author → Book",
-    category: "English",
-    hero: "📚",
-    accent: "#f59e0b",
-    details: "Match classic authors with their best-known books.",
-  },
-  {
-    title: "Scientist → Discovery",
-    category: "Science",
-    hero: "🔬",
-    accent: "#34d399",
-    details: "Identify the scientist from a major discovery or invention.",
-  },
-  {
-    title: "Language → Country",
-    category: "General Knowledge",
-    hero: "🗣️",
-    accent: "#f472b6",
-    details: "Pick the country most associated with a given language.",
-  },
-  {
-    title: "Book → Author",
-    category: "English",
-    hero: "✍️",
-    accent: "#a78bfa",
-    details: "Read a title and recall the person who wrote it.",
-  },
-  {
-    title: "City → Landmark",
-    category: "Travel",
-    hero: "🗼",
-    accent: "#22d3ee",
-    details: "Connect a major city with its signature landmark.",
-  },
-];
-
 function HomePage({ currentUser }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
@@ -1394,8 +1350,6 @@ function HomePage({ currentUser }) {
         )}
       </section>
 
-
-
       <FeedbackSection />
       <AllGameLeaderboards />
     </main>
@@ -1482,7 +1436,6 @@ function ArcadeLayout() {
           <Route path="/indian-national" element={<IndianNationalQuiz />} />
           <Route path="/famous-battles" element={<FamousBattlesQuiz />} />
           <Route path="/compound-formula" element={<CompoundFormulaQuiz />} />
-
           <Route
             path="/indian-vice-president"
             element={<IndianVicePresidentQuiz />}
@@ -1526,15 +1479,17 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Analytics />
-      <Routes>
-        <Route path="/login" element={<AuthPage mode="login" />} />
-        <Route path="/signup" element={<AuthPage mode="signup" />} />
-        <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-        <Route path="/admin/login" element={<AdminLoginPage />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/*" element={<ArcadeLayout />} />
-      </Routes>
+      <GlobalSocketProvider>
+        <Analytics />
+        <Routes>
+          <Route path="/login" element={<AuthPage mode="login" />} />
+          <Route path="/signup" element={<AuthPage mode="signup" />} />
+          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/*" element={<ArcadeLayout />} />
+        </Routes>
+      </GlobalSocketProvider>
     </BrowserRouter>
   );
 }

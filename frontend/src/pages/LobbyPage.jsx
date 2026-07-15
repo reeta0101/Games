@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { io } from "socket.io-client";
 import { GAME_MODES } from "../App";
 import { DIFFICULTIES, DIFF_LABELS } from "../utils/leaderboard";
-
-let socket;
+import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 
 export default function LobbyPage() {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -17,6 +15,9 @@ export default function LobbyPage() {
   const [lobbyState, setLobbyState] = useState(null);
   const [isReady, setIsReady] = useState(false);
   const [joinError, setJoinError] = useState("");
+  const { socket, onlineFriends } = useGlobalSocket();
+  const [friendsList, setFriendsList] = useState([]);
+  const [loadingFriends, setLoadingFriends] = useState(false);
 
   // Form states for Leader
   const initialGameId = searchParams.get("gameId") || GAME_MODES[0].id || GAME_MODES[0].key;
@@ -30,11 +31,9 @@ export default function LobbyPage() {
       navigate("/login");
       return;
     }
+    if (!socket) return;
 
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
-    socket = io(apiUrl);
-
-    socket.on("lobby_state", (state) => {
+    const onLobbyState = (state) => {
       setLobbyState(state);
       if (state.settings) {
         setGameId(state.settings.gameId);
@@ -42,9 +41,9 @@ export default function LobbyPage() {
         setChallengeMode(state.settings.challengeMode);
         setTimeLimit(state.settings.timeLimit);
       }
-    });
+    };
 
-    socket.on("game_started", (settings) => {
+    const onGameStarted = (settings) => {
       const foundGame = GAME_MODES.find(g => g.id === settings.gameId || g.key === settings.gameId);
       if (foundGame) {
         navigate(foundGame.path, {
@@ -60,12 +59,33 @@ export default function LobbyPage() {
           }
         });
       }
-    });
+    };
+
+    socket.on("lobby_state", onLobbyState);
+    socket.on("game_started", onGameStarted);
 
     return () => {
-      socket.disconnect();
+      socket.off("lobby_state", onLobbyState);
+      socket.off("game_started", onGameStarted);
     };
-  }, [currentUser, navigate]);
+  }, [currentUser, navigate, socket, roomId]);
+
+  useEffect(() => {
+    if (!currentUser) return;
+    setLoadingFriends(true);
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/friends/${currentUser.username}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.friends) {
+          setFriendsList(data.friends);
+          if (socket) {
+            socket.emit("check_online_status", { friendsList: data.friends.map(f => f.username) });
+          }
+        }
+      })
+      .catch(console.error)
+      .finally(() => setLoadingFriends(false));
+  }, [currentUser, socket]);
 
   useEffect(() => {
     // If leader, broadcast settings changes
@@ -108,10 +128,10 @@ export default function LobbyPage() {
   };
 
   useEffect(() => {
-    if (searchParams.get("room") && !inRoom && currentUser) {
+    if (searchParams.get("room") && !inRoom && currentUser && socket) {
       joinOrCreateRoom();
     }
-  }, [searchParams, currentUser]);
+  }, [searchParams, currentUser, socket]);
 
   const createRandomRoom = () => {
     const randomId = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -122,6 +142,7 @@ export default function LobbyPage() {
   };
 
   const toggleReady = () => {
+    if (!socket) return;
     const newState = !isReady;
     setIsReady(newState);
     socket.emit("toggle_ready", {
@@ -132,7 +153,23 @@ export default function LobbyPage() {
   };
 
   const startGame = () => {
-    socket.emit("start_game", { roomId });
+    if (socket) socket.emit("start_game", { roomId });
+  };
+
+  const sendChallenge = (friend) => {
+    if (!socket || !roomId) return;
+    socket.emit("send_challenge", {
+      targetUsername: friend.username,
+      fromUsername: currentUser.username,
+      fromName: currentUser.name,
+      roomId
+    }, (res) => {
+      if (res.error) {
+        alert(res.error);
+      } else {
+        alert(`Challenge sent to ${friend.name}!`);
+      }
+    });
   };
 
   const isMeLeader = () => {
@@ -385,6 +422,54 @@ export default function LobbyPage() {
               </button>
             )}
           </div>
+
+          {leader && (
+            <div className="flex-1 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
+              <h2 className="text-xl font-black text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Invite Friends</h2>
+              
+              {loadingFriends ? (
+                <p className="text-sm text-slate-400">Loading friends...</p>
+              ) : friendsList.length === 0 ? (
+                <p className="text-sm text-slate-400">You have no friends yet. Add friends to challenge them directly!</p>
+              ) : (
+                <div className="space-y-3">
+                  {friendsList.map(friend => {
+                    const isOnline = onlineFriends[friend.username];
+                    const inLobby = lobbyState?.players.some(p => p.username === friend.username);
+                    return (
+                      <div key={friend.username} className="flex items-center justify-between rounded-2xl bg-black/30 p-3 border border-white/5">
+                        <div className="flex items-center gap-3">
+                          <div className="relative">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-700 text-lg font-black text-white">
+                              {friend.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-slate-900 ${isOnline ? 'bg-[#40f080]' : 'bg-slate-500'}`} />
+                          </div>
+                          <div>
+                            <p className="font-bold text-white text-sm">{friend.name}</p>
+                            <p className="text-[10px] uppercase tracking-widest text-slate-400">@{friend.username}</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => sendChallenge(friend)}
+                          disabled={inLobby}
+                          className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-widest transition ${
+                            inLobby 
+                              ? 'bg-white/5 text-slate-500 border border-white/10 opacity-50' 
+                              : isOnline
+                                ? 'bg-[#f04060]/20 text-[#f04060] border border-[#f04060]/40 hover:bg-[#f04060]/30'
+                                : 'bg-white/10 text-slate-300 border border-white/20 hover:bg-white/20'
+                          }`}
+                        >
+                          {inLobby ? 'Joined' : 'Challenge'}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
         </section>
       </div>
     </main>

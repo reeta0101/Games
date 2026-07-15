@@ -92,8 +92,39 @@ app.get('/api/test', (req, res) => {
 
 // Socket.io Lobby Logic
 const lobbies = {}; // In-memory store: { roomId: { players: [], settings: {} } }
+const onlineUsers = {}; // Map of username (lowercase) -> socket.id
 
 io.on('connection', (socket) => {
+  // Global online tracking
+  socket.on('user_online', ({ username }) => {
+    if (username) {
+      onlineUsers[username.toLowerCase()] = socket.id;
+      // We could broadcast to friends here, but for simplicity we will just let LobbyPage request status
+    }
+  });
+
+  socket.on('check_online_status', ({ friendsList }, callback) => {
+    const statusMap = {};
+    friendsList.forEach(friend => {
+      statusMap[friend] = !!onlineUsers[friend.toLowerCase()];
+    });
+    if (callback) callback(statusMap);
+  });
+
+  socket.on('send_challenge', ({ targetUsername, fromUsername, fromName, roomId }, callback) => {
+    const targetSocketId = onlineUsers[targetUsername.toLowerCase()];
+    if (targetSocketId) {
+      io.to(targetSocketId).emit('receive_challenge', {
+        fromUsername,
+        fromName,
+        roomId
+      });
+      if (callback) callback({ success: true });
+    } else {
+      if (callback) callback({ error: 'User is offline' });
+    }
+  });
+
   socket.on('join_lobby', async ({ roomId, user }, callback) => {
     socket.join(roomId);
     if (!lobbies[roomId]) {
@@ -185,7 +216,13 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    // Optionally clean up disconnected players if needed
+    // Remove from online tracking
+    const username = Object.keys(onlineUsers).find(key => onlineUsers[key] === socket.id);
+    if (username) {
+      delete onlineUsers[username];
+    }
+    
+    // Optionally clean up disconnected players from lobbies if needed
   });
 });
 

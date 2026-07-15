@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import GameReader from "./GameReader";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useSound from "../hooks/useSound";
+import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import { recordRecentGame } from "../App";
 import { io } from "socket.io-client";
@@ -93,8 +95,8 @@ export default function QuizGame({ game }) {
   // Live Multiplayer State
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [wrongAnswers, setWrongAnswers] = useState(0);
+  const { socket } = useGlobalSocket();
   const [liveLobbyState, setLiveLobbyState] = useState(null);
-  const socketRef = useRef(null);
 
   const [globalTimeLeft, setGlobalTimeLeft] = useState(null);
   const globalTimerRef = useRef(null);
@@ -126,26 +128,26 @@ export default function QuizGame({ game }) {
     };
   }, [clearTimers]);
 
-  // Connect to live room to listen for opponent state
+  // Setup Socket.io for live matches
   useEffect(() => {
-    if (challenge?.roomId) {
-      const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:8080');
-      socketRef.current = socket;
-      
-      socket.emit('join_lobby', {
+    if (challenge?.roomId && socket && currentUser) {
+      // Re-join just in case we reloaded, but usually we are already in the room
+      socket.emit("join_lobby", {
         roomId: challenge.roomId,
-        user: { username: guestName, name: guestName }
-      });
-      
-      socket.on("lobby_state", (state) => {
-        setLiveLobbyState(state);
+        user: { username: currentUser.username, name: currentUser.name }
       });
 
+      const onLobbyState = (state) => {
+        setLiveLobbyState(state);
+      };
+      
+      socket.on("lobby_state", onLobbyState);
+      
       return () => {
-        socket.disconnect();
+        socket.off("lobby_state", onLobbyState);
       };
     }
-  }, [challenge?.roomId, guestName]);
+  }, [challenge?.roomId, currentUser, socket]);
 
   // ── Guest login ──
   const handleGuestLogin = () => {
@@ -192,19 +194,20 @@ export default function QuizGame({ game }) {
 
       setScreen("end");
 
-      if (challenge?.roomId && socketRef.current) {
+      if (challenge?.roomId && socket) {
         const finalWrong = reason === "wrong" ? wrongAnswers + 1 : wrongAnswers;
         
-        socketRef.current.emit("submit_score", {
+        socket.emit("submit_score", {
           roomId: challenge.roomId,
-          username: guestName,
-          score: scoreToSave,
+          username: currentUser?.username || guestName,
+          score: finalScore ?? score,
           correct: correctAnswers,
-          wrong: finalWrong
+          wrong: finalWrong,
+          status: "finished"
         });
       }
     },
-    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers],
+    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers, socket, currentUser],
   );
 
   // Auto-Win Logic for Sudden Death
@@ -353,6 +356,18 @@ export default function QuizGame({ game }) {
             ? `🔥 ${nextStreak}x streak! +${points}pts`
             : `+${points} pts`,
         );
+
+        if (challenge?.roomId && socket) {
+          socket.emit("submit_score", {
+            roomId: challenge.roomId,
+            username: currentUser?.username || guestName,
+            score: nextScore,
+            correct: correctAnswers + 1,
+            wrong: wrongAnswers,
+            status: "playing"
+          });
+        }
+
         advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1000);
         return;
       }
@@ -365,6 +380,17 @@ export default function QuizGame({ game }) {
       
       const isWrongsAcceptable = challenge && challenge.wrongsAcceptable !== false;
 
+      if (challenge?.roomId && socket) {
+        socket.emit("submit_score", {
+          roomId: challenge.roomId,
+          username: currentUser?.username || guestName,
+          score: score,
+          correct: correctAnswers,
+          wrong: wrongAnswers + 1,
+          status: "playing"
+        });
+      }
+
       if (isWrongsAcceptable) {
         setFeedbackText(`✗ It was ${currentQuestion.correctValue}`);
         advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1200);
@@ -373,7 +399,7 @@ export default function QuizGame({ game }) {
         endTimeoutRef.current = setTimeout(() => endGame("wrong", score), 1400);
       }
     },
-    [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit, isGlobalChallenge],
+    [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit, isGlobalChallenge, challenge, socket, currentUser, guestName, correctAnswers, wrongAnswers],
   );
 
   // Keyboard handler

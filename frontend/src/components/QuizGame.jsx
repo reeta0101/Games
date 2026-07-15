@@ -248,23 +248,43 @@ export default function QuizGame({ game }) {
     setFeedbackTone("neutral");
     setResultState({ selected: null, correct: null });
 
-    if (!isGlobalChallenge) {
-      setTimeLeft(activeTimeLimit / 1000);
-      const startedAt = Date.now();
+    setTimeLeft(activeTimeLimit / 1000);
+    const startedAt = Date.now();
 
-      timerRef.current = setInterval(() => {
-        const elapsed = Date.now() - startedAt;
-        const remaining = Math.max(0, (activeTimeLimit - elapsed) / 1000);
-        setTimeLeft(remaining);
+    timerRef.current = setInterval(() => {
+      const elapsed = Date.now() - startedAt;
+      const remaining = Math.max(0, (activeTimeLimit - elapsed) / 1000);
+      setTimeLeft(remaining);
 
-        if (elapsed >= activeTimeLimit) {
-          clearTimers();
-          setIsAnswered(true);
-          setStreak(0);
+      if (elapsed >= activeTimeLimit) {
+        clearTimers();
+        setIsAnswered(true);
+        setStreak(0);
+        setResultState({ selected: null, correct: question.correctValue });
+
+        const isWrongsAcceptable = challenge && challenge.wrongsAcceptable !== false;
+        
+        if (isWrongsAcceptable) {
+          setFeedbackText(`⏱ Too slow! It was ${question.correctValue}`);
+          setFeedbackTone("danger");
+          setWrongAnswers(prev => prev + 1);
+          
+          if (challenge?.roomId && socket) {
+            socket.emit("submit_score", {
+              roomId: challenge.roomId,
+              username: currentUser?.username || guestName,
+              score: score, // score stays the same
+              correct: correctAnswers,
+              wrong: wrongAnswers + 1,
+              status: "playing"
+            });
+          }
+          
+          advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1200);
+        } else {
           setFeedbackText("⏱ Time's up — Game Over!");
           setFeedbackTone("danger");
-          setResultState({ selected: null, correct: question.correctValue });
-
+          
           endTimeoutRef.current = setTimeout(() => {
             setScore((currentScore) => {
               endGame("timeout", currentScore);
@@ -272,9 +292,9 @@ export default function QuizGame({ game }) {
             });
           }, 1400);
         }
-      }, 50);
-    }
-  }, [clearTimers, endGame, game, activeTimeLimit, isGlobalChallenge]);
+      }
+    }, 50);
+  }, [clearTimers, endGame, game, activeTimeLimit, challenge, socket, currentUser, guestName, score, correctAnswers, wrongAnswers]);
 
   const startGame = useCallback(() => {
     clearTimers();

@@ -33,6 +33,14 @@ export default function GamesPage() {
       icon: "♔♚",
       color: "from-indigo-400 to-blue-600",
       shadow: "shadow-[0_0_15px_rgba(99,102,241,0.2)]"
+    },
+    {
+      to: "/football",
+      title: "Stadium Football",
+      description: "Experience the stadium atmosphere! Shoot past the keeper in this highly animated penalty game.",
+      icon: "🏟️⚽",
+      color: "from-yellow-400 to-orange-500",
+      shadow: "shadow-[0_0_15px_rgba(250,204,21,0.2)]"
     }
   ];
 

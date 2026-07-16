@@ -962,7 +962,7 @@ function ArcadeLayout() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/tic-tac-toe" element={<TicTacToe />} />
             <Route path="/rock-paper-scissors" element={<RockPaperScissors />} />
-            <Route path="/football" element={<FootballGame />} />
+            <Route path="/penalty-shootout" element={<FootballGame />} />
             <Route path="/games" element={<GamesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

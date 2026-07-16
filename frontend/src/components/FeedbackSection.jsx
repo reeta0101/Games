@@ -46,32 +46,35 @@ export default function FeedbackSection() {
         backdropFilter: "blur(20px)",
       }}
     >
-      <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-        <div className="md:w-[45%] flex flex-col justify-between">
+      <div className="mb-6">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80">
+          We value your input
+        </p>
+        <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+          Help us improve
+        </h2>
+      </div>
+
+      <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80">
-              We value your input
-            </p>
-            <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
-              Help us improve
-            </h2>
-            <p className="mt-4 text-sm leading-6 text-slate-300">
+            <p className="text-sm leading-6 text-slate-300">
               What features or quiz topics would you like to see next? Found a bug? Have an idea to make learning even better? Let us know!
             </p>
           </div>
-          <div className="mt-8 hidden md:flex items-center justify-center animate-float">
+          <div className="hidden sm:flex items-center justify-center animate-float">
             <div className="relative">
               <div className="absolute inset-0 bg-[#40e0f0]/10 rounded-full blur-2xl opacity-60"></div>
               <img 
                 src="/images/feedback.png" 
                 alt="Feedback Suggestion" 
-                className="relative w-48 h-auto object-contain drop-shadow-[0_10px_30px_rgba(167,139,250,0.3)] transition-transform duration-500 hover:scale-105"
+                className="relative w-36 lg:w-48 h-auto object-contain drop-shadow-[0_10px_30px_rgba(167,139,250,0.3)] transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="md:w-1/2 flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="md:w-[45%] flex flex-col gap-3">
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}

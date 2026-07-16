@@ -391,7 +391,7 @@ function HomePage({ currentUser }) {
               </div>
             </div>
 
-            <div className="mt-auto flex flex-wrap gap-4 w-full pt-10">
+            <div className="mt-auto grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-10">
               {[
                 {
                   label: "Read first",
@@ -411,7 +411,7 @@ function HomePage({ currentUser }) {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="flex-1 min-w-[200px] rounded-2xl border border-white/8 bg-black/18 p-5 transition hover:border-white/15 hover:bg-black/25"
+                  className="rounded-2xl border border-white/8 bg-black/18 p-5 transition hover:border-white/15 hover:bg-black/25 overflow-hidden"
                 >
                   <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 whitespace-nowrap">
                     <span className="mr-1.5">{item.icon}</span>

@@ -331,6 +331,7 @@ export default function SimonSays() {
   );
 
   const startGame = useCallback(() => {
+    setScreen("game");
     setSequence([]);
     setUserSequence([]);
     setScore(0);

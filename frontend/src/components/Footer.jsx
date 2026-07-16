@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/8 bg-[#070d18]/95 py-8 pb-24 sm:pb-8">
@@ -11,6 +13,13 @@ export default function Footer() {
             Quick quizzes, instant feedback, and local progress tracking.
           </p>
         </div>
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-400">
+          <Link to="/about" className="hover:text-[#40e0f0] transition">About Us</Link>
+          <Link to="/contact" className="hover:text-[#40e0f0] transition">Contact</Link>
+          <Link to="/privacy" className="hover:text-[#40e0f0] transition">Privacy Policy</Link>
+          <Link to="/terms" className="hover:text-[#40e0f0] transition">Terms</Link>
+        </nav>
 
         <div className="flex flex-col items-center gap-3 sm:items-end">
           {/* Social Link */}

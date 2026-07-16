@@ -64,6 +64,10 @@ import TicTacToe from "./pages/TicTacToe";
 import RockPaperScissors from "./pages/RockPaperScissors";
 import FootballGame from "./pages/FootballGame";
 import GamesPage from "./pages/GamesPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
 import MobileBottomNav from "./components/MobileBottomNav";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 import { GAME_MODES, CATEGORIES, recordRecentGame, getRecentGames } from "./utils/gameConstants";
@@ -964,6 +968,10 @@ function ArcadeLayout() {
             <Route path="/rock-paper-scissors" element={<RockPaperScissors />} />
             <Route path="/penalty-shootout" element={<FootballGame />} />
             <Route path="/games" element={<GamesPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

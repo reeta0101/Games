@@ -24,20 +24,28 @@ export default function TicTacToe() {
   const [xMoves, setXMoves] = useState([]); // indices
   const [oMoves, setOMoves] = useState([]); // indices
   
+  // Single player mode state
+  const [singlePlayerSymbol, setSinglePlayerSymbol] = useState(
+    () => Math.random() > 0.5 ? "X" : "O"
+  );
+  
   // Multiplayer state
   const [mySymbol, setMySymbol] = useState(null); // 'X' or 'O'
   const [opponentName, setOpponentName] = useState("Opponent");
   const [playersReady, setPlayersReady] = useState(false);
 
-  // Single player mode: user is X, AI is O
+  // Single player mode: trigger AI if it's AI's turn
   useEffect(() => {
-    if (!isMultiplayer && !xIsNext && gameStatus === "playing") {
-      const timer = setTimeout(() => {
-        makeAIMove(board);
-      }, 600); // Small delay for AI
-      return () => clearTimeout(timer);
+    if (!isMultiplayer && gameStatus === "playing") {
+      const aiTurn = (xIsNext && singlePlayerSymbol === "O") || (!xIsNext && singlePlayerSymbol === "X");
+      if (aiTurn) {
+        const timer = setTimeout(() => {
+          makeAIMove(board);
+        }, 600); // Small delay for AI
+        return () => clearTimeout(timer);
+      }
     }
-  }, [xIsNext, board, gameStatus, isMultiplayer]);
+  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol]);
 
   // Multiplayer Socket Setup
   useEffect(() => {
@@ -111,7 +119,7 @@ export default function TicTacToe() {
             setScore(s => ({ ...s, opponent: s.opponent + 1 }));
           }
         } else {
-          if (squares[a] === "X") {
+          if (squares[a] === singlePlayerSymbol) {
             setScore(s => ({ ...s, me: s.me + 1 }));
           } else {
             setScore(s => ({ ...s, opponent: s.opponent + 1 }));
@@ -125,7 +133,7 @@ export default function TicTacToe() {
       return "draw";
     }
     return null;
-  }, [isMultiplayer, mySymbol]);
+  }, [isMultiplayer, mySymbol, singlePlayerSymbol]);
 
   const handleClick = (i) => {
     if (gameStatus !== "playing" || board[i]) return;
@@ -192,79 +200,145 @@ export default function TicTacToe() {
       
     } else {
       // Single Player Mode
-      if (!xIsNext) return; // Wait for AI
+      const isMyTurn = (xIsNext && singlePlayerSymbol === "X") || (!xIsNext && singlePlayerSymbol === "O");
+      if (!isMyTurn) return; // Wait for AI
       
       const newBoard = [...board];
-      const newXMoves = [...xMoves];
+      const newMoves = singlePlayerSymbol === "X" ? [...xMoves] : [...oMoves];
       
       if (gameMode === "infinite") {
-        if (newXMoves.length === 3) {
-          newBoard[newXMoves[0]] = null;
-          newXMoves.shift();
+        if (newMoves.length === 3) {
+          newBoard[newMoves[0]] = null;
+          newMoves.shift();
         }
-        newXMoves.push(i);
-        setXMoves(newXMoves);
+        newMoves.push(i);
+        if (singlePlayerSymbol === "X") setXMoves(newMoves);
+        else setOMoves(newMoves);
       }
       
-      newBoard[i] = "X";
+      newBoard[i] = singlePlayerSymbol;
       setBoard(newBoard);
-      setXIsNext(false);
+      setXIsNext(!xIsNext);
       checkWin(newBoard);
     }
   };
 
-  const makeAIMove = (currentBoard) => {
-    // Simple AI: block player win, otherwise random
-    let move = -1;
-    
+  const getWinner = (squares) => {
     const lines = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8],
       [0, 3, 6], [1, 4, 7], [2, 5, 8],
       [0, 4, 8], [2, 4, 6]
     ];
-    
-    // Check if AI can win
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (currentBoard[a] === "O" && currentBoard[b] === "O" && !currentBoard[c]) move = c;
-      if (currentBoard[a] === "O" && currentBoard[c] === "O" && !currentBoard[b]) move = b;
-      if (currentBoard[b] === "O" && currentBoard[c] === "O" && !currentBoard[a]) move = a;
-    }
-    
-    // Block player
-    if (move === -1) {
-      for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (currentBoard[a] === "X" && currentBoard[b] === "X" && !currentBoard[c]) move = c;
-        if (currentBoard[a] === "X" && currentBoard[c] === "X" && !currentBoard[b]) move = b;
-        if (currentBoard[b] === "X" && currentBoard[c] === "X" && !currentBoard[a]) move = a;
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
       }
     }
+    if (!squares.includes(null)) return "draw";
+    return null;
+  };
+
+  const minimax = (currentBoard, depth, isMaximizing, aiSym, userSym) => {
+    let result = getWinner(currentBoard);
+    if (result === aiSym) return 10 - depth;
+    if (result === userSym) return depth - 10;
+    if (result === 'draw') return 0;
     
-    // Random move
-    if (move === -1) {
-      const emptySpots = currentBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
-      if (emptySpots.length > 0) {
-        move = emptySpots[Math.floor(Math.random() * emptySpots.length)];
+    if (isMaximizing) {
+      let bestScore = -Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (!currentBoard[i]) {
+          currentBoard[i] = aiSym;
+          let score = minimax(currentBoard, depth + 1, false, aiSym, userSym);
+          currentBoard[i] = null;
+          bestScore = Math.max(score, bestScore);
+        }
+      }
+      return bestScore;
+    } else {
+      let bestScore = Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (!currentBoard[i]) {
+          currentBoard[i] = userSym;
+          let score = minimax(currentBoard, depth + 1, true, aiSym, userSym);
+          currentBoard[i] = null;
+          bestScore = Math.min(score, bestScore);
+        }
+      }
+      return bestScore;
+    }
+  };
+
+  const makeAIMove = (currentBoard) => {
+    const aiSym = singlePlayerSymbol === "X" ? "O" : "X";
+    let move = -1;
+    
+    if (gameMode === "classic") {
+      let bestScore = -Infinity;
+      for (let i = 0; i < 9; i++) {
+        if (!currentBoard[i]) {
+          currentBoard[i] = aiSym;
+          let score = minimax(currentBoard, 0, false, aiSym, singlePlayerSymbol);
+          currentBoard[i] = null;
+          if (score > bestScore) {
+            bestScore = score;
+            move = i;
+          }
+        }
+      }
+    } else {
+      // Infinite mode: Simple AI
+      const lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+      
+      // Check if AI can win
+      for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (currentBoard[a] === aiSym && currentBoard[b] === aiSym && !currentBoard[c]) move = c;
+        if (currentBoard[a] === aiSym && currentBoard[c] === aiSym && !currentBoard[b]) move = b;
+        if (currentBoard[b] === aiSym && currentBoard[c] === aiSym && !currentBoard[a]) move = a;
+      }
+      
+      // Block player
+      if (move === -1) {
+        for (let i = 0; i < lines.length; i++) {
+          const [a, b, c] = lines[i];
+          if (currentBoard[a] === singlePlayerSymbol && currentBoard[b] === singlePlayerSymbol && !currentBoard[c]) move = c;
+          if (currentBoard[a] === singlePlayerSymbol && currentBoard[c] === singlePlayerSymbol && !currentBoard[b]) move = b;
+          if (currentBoard[b] === singlePlayerSymbol && currentBoard[c] === singlePlayerSymbol && !currentBoard[a]) move = a;
+        }
+      }
+      
+      // Random move
+      if (move === -1) {
+        const emptySpots = currentBoard.map((val, idx) => val === null ? idx : null).filter(val => val !== null);
+        if (emptySpots.length > 0) {
+          move = emptySpots[Math.floor(Math.random() * emptySpots.length)];
+        }
       }
     }
     
     if (move !== -1) {
       const newBoard = [...currentBoard];
-      const newOMoves = [...oMoves];
+      const newMoves = aiSym === "X" ? [...xMoves] : [...oMoves];
       
       if (gameMode === "infinite") {
-        if (newOMoves.length === 3) {
-          newBoard[newOMoves[0]] = null;
-          newOMoves.shift();
+        if (newMoves.length === 3) {
+          newBoard[newMoves[0]] = null;
+          newMoves.shift();
         }
-        newOMoves.push(move);
-        setOMoves(newOMoves);
+        newMoves.push(move);
+        if (aiSym === "X") setXMoves(newMoves);
+        else setOMoves(newMoves);
       }
       
-      newBoard[move] = "O";
+      newBoard[move] = aiSym;
       setBoard(newBoard);
-      setXIsNext(true);
+      setXIsNext(aiSym === "X" ? false : true);
       checkWin(newBoard);
     }
   };
@@ -274,6 +348,7 @@ export default function TicTacToe() {
       socket.emit("ttt_request_reset", { roomId });
     } else {
       setBoard(Array(9).fill(null));
+      setSinglePlayerSymbol(Math.random() > 0.5 ? "X" : "O");
       setXIsNext(true);
       setGameStatus("playing");
       setWinner(null);
@@ -295,7 +370,7 @@ export default function TicTacToe() {
       if (isMultiplayer) {
         return winner === mySymbol ? "🎉 You Won!" : `😞 ${opponentName} Won`;
       } else {
-        return winner === "X" ? "🎉 You Won!" : "🤖 Computer Won";
+        return winner === singlePlayerSymbol ? "🎉 You Won!" : "🤖 Computer Won";
       }
     } else if (gameStatus === "draw") {
       return "🤝 It's a Draw!";
@@ -304,7 +379,8 @@ export default function TicTacToe() {
         if (!playersReady) return "Waiting for opponent...";
         return (mySymbol === "X" && xIsNext) || (mySymbol === "O" && !xIsNext) ? "Your Turn" : `${opponentName}'s Turn`;
       } else {
-        return xIsNext ? "Your Turn (X)" : "Computer's Turn (O)";
+        const isMyTurn = (xIsNext && singlePlayerSymbol === "X") || (!xIsNext && singlePlayerSymbol === "O");
+        return isMyTurn ? `Your Turn (${singlePlayerSymbol})` : `Computer's Turn (${singlePlayerSymbol === "X" ? "O" : "X"})`;
       }
     }
   };
@@ -320,7 +396,7 @@ export default function TicTacToe() {
 
       <div className="flex justify-between w-full max-w-md mb-8 text-white text-xl font-black bg-[#0f172a] px-8 py-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(64,224,240,0.15)]">
         <div className="text-center">
-          <p className="text-[10px] uppercase tracking-widest text-[#40e0f0] mb-1">You ({isMultiplayer ? mySymbol : 'X'})</p>
+          <p className="text-[10px] uppercase tracking-widest text-[#40e0f0] mb-1">You ({isMultiplayer ? mySymbol : singlePlayerSymbol})</p>
           <p className="text-3xl">{score.me}</p>
         </div>
         <div className="text-center">
@@ -328,7 +404,7 @@ export default function TicTacToe() {
           <p className="text-3xl text-slate-700">-</p>
         </div>
         <div className="text-center">
-          <p className="text-[10px] uppercase tracking-widest text-[#f04060] mb-1">{isMultiplayer ? opponentName : "AI"} ({isMultiplayer ? (mySymbol === 'X' ? 'O' : 'X') : 'O'})</p>
+          <p className="text-[10px] uppercase tracking-widest text-[#f04060] mb-1">{isMultiplayer ? opponentName : "AI"} ({isMultiplayer ? (mySymbol === 'X' ? 'O' : 'X') : (singlePlayerSymbol === 'X' ? 'O' : 'X')})</p>
           <p className="text-3xl">{score.opponent}</p>
         </div>
       </div>
@@ -336,7 +412,7 @@ export default function TicTacToe() {
       <div className="bg-[#0f172a]/80 border border-white/10 p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-md w-full relative">
         <div className="mb-6 text-center h-8">
           <p className={`text-xl font-black uppercase tracking-widest transition-all duration-300 ${
-            gameStatus === "won" ? (winner === (isMultiplayer ? mySymbol : "X") ? "text-[#40f080] scale-110 drop-shadow-[0_0_10px_rgba(64,240,128,0.5)]" : "text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]") : "text-slate-300"
+            gameStatus === "won" ? (winner === (isMultiplayer ? mySymbol : singlePlayerSymbol) ? "text-[#40f080] scale-110 drop-shadow-[0_0_10px_rgba(64,240,128,0.5)]" : "text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]") : "text-slate-300"
           }`}>
             {getStatusMessage()}
           </p>

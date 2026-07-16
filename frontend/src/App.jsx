@@ -60,6 +60,8 @@ import LobbyPage from "./pages/LobbyPage";
 import { GlobalSocketProvider } from "./contexts/GlobalSocketContext";
 import InteractiveMapPage from "./pages/InteractiveMapPage";
 import ProfilePage from "./pages/ProfilePage";
+import TicTacToe from "./pages/TicTacToe";
+import RockPaperScissors from "./pages/RockPaperScissors";
 import MobileBottomNav from "./components/MobileBottomNav";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
 import { GAME_MODES, CATEGORIES, recordRecentGame, getRecentGames } from "./utils/gameConstants";
@@ -956,6 +958,8 @@ function ArcadeLayout() {
             <Route path="/challenge" element={<ChallengePage />} />
             <Route path="/map" element={<InteractiveMapPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/tic-tac-toe" element={<TicTacToe />} />
+            <Route path="/rock-paper-scissors" element={<RockPaperScissors />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

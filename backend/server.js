@@ -269,6 +269,75 @@ io.on('connection', (socket) => {
     }
   });
 
+  // --- TIC TAC TOE LOGIC ---
+  socket.on('ttt_join', ({ roomId, username }) => {
+    socket.join(roomId);
+    if (!lobbies[roomId]) return;
+    const p = lobbies[roomId].players.find(p => p.username === username);
+    if (p) p.socketId = socket.id;
+
+    // Wait until both players are connected (length >= 2)
+    const players = lobbies[roomId].players;
+    if (players.length >= 2) {
+      // Assign X and O based on who is leader
+      const leader = players.find(p => p.isLeader) || players[0];
+      const other = players.find(p => p.username !== leader.username) || players[1];
+      
+      io.to(roomId).emit('ttt_init', {
+        playerX: leader.username,
+        playerXName: leader.name,
+        playerO: other.username,
+        playerOName: other.name
+      });
+    }
+  });
+
+  socket.on('ttt_make_move', ({ roomId, board, xIsNext }) => {
+    io.to(roomId).emit('ttt_move', { board, xIsNext });
+  });
+
+  socket.on('ttt_request_reset', ({ roomId }) => {
+    io.to(roomId).emit('ttt_reset');
+  });
+
+  // --- ROCK PAPER SCISSORS LOGIC ---
+  const rpsState = {}; // { roomId: { p1: { username, choice }, p2: { username, choice } } }
+
+  socket.on('rps_join', ({ roomId, username }) => {
+    socket.join(roomId);
+    if (!lobbies[roomId]) return;
+    
+    io.to(roomId).emit('rps_init', {
+      players: lobbies[roomId].players.map(p => ({ username: p.username, name: p.name }))
+    });
+  });
+
+  socket.on('rps_make_choice', ({ roomId, username, choice }) => {
+    if (!rpsState[roomId]) {
+      rpsState[roomId] = { p1: null, p2: null };
+    }
+    
+    // Assign choice to p1 or p2
+    if (!rpsState[roomId].p1) {
+      rpsState[roomId].p1 = { username, choice };
+    } else if (rpsState[roomId].p1.username !== username) {
+      rpsState[roomId].p2 = { username, choice };
+    }
+
+    // Tell opponent we are ready
+    socket.to(roomId).emit('rps_opponent_ready');
+
+    // Both made choices?
+    if (rpsState[roomId].p1 && rpsState[roomId].p2) {
+      io.to(roomId).emit('rps_result', rpsState[roomId]);
+    }
+  });
+
+  socket.on('rps_request_reset', ({ roomId }) => {
+    delete rpsState[roomId];
+    io.to(roomId).emit('rps_reset');
+  });
+
   socket.on('disconnect', () => {
     // Remove from online tracking
     const username = Object.keys(onlineUsers).find(key => onlineUsers[key] === socket.id);

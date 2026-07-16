@@ -84,6 +84,7 @@ export const MODE_LABELS = {
   vitaminDeficiency: 'Vitamins',
   indianNational: 'IND Symbols',
   famousBattles: 'Battles',
+  simon_says: 'Simon',
 };
 
 export const DIFF_LABELS = {

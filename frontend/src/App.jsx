@@ -64,6 +64,7 @@ import TicTacToe from "./pages/TicTacToe";
 import RockPaperScissors from "./pages/RockPaperScissors";
 import FootballGame from "./pages/FootballGame";
 import ChessGame from "./pages/ChessGame";
+import SimonSays from "./pages/SimonSays";
 import GamesPage from "./pages/GamesPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
@@ -71,7 +72,12 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import MobileBottomNav from "./components/MobileBottomNav";
 import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
-import { GAME_MODES, CATEGORIES, recordRecentGame, getRecentGames } from "./utils/gameConstants";
+import {
+  GAME_MODES,
+  CATEGORIES,
+  recordRecentGame,
+  getRecentGames,
+} from "./utils/gameConstants";
 import Analytics from "./components/Analytics";
 
 // GAME_MODES is now imported from ./utils/gameConstants.js
@@ -126,11 +132,16 @@ function GameLeaderboardCard({ game, activeDiff }) {
         <div>
           <p
             className="text-[10px] font-black uppercase tracking-[0.25em] mb-1"
-            style={{ color: game.accent, textShadow: `0 0 10px ${game.accent}40` }}
+            style={{
+              color: game.accent,
+              textShadow: `0 0 10px ${game.accent}40`,
+            }}
           >
             {MODE_LABELS[game.id] || game.title}
           </p>
-          <h3 className="text-lg font-black text-white leading-tight">{game.title}</h3>
+          <h3 className="text-lg font-black text-white leading-tight">
+            {game.title}
+          </h3>
         </div>
         <Link
           to={game.path}
@@ -156,14 +167,22 @@ function GameLeaderboardCard({ game, activeDiff }) {
               className="flex justify-between items-center bg-slate-900/40 px-3 py-2.5 rounded-xl text-sm border border-white/5 hover:bg-white/10 transition-colors"
             >
               <div className="min-w-0 flex items-center gap-2">
-                <div className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-black ${index === 0 ? 'bg-yellow-500/20 text-yellow-400' : index === 1 ? 'bg-slate-300/20 text-slate-300' : index === 2 ? 'bg-amber-600/20 text-amber-500' : 'bg-white/5 text-slate-500'}`}>
+                <div
+                  className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-black ${index === 0 ? "bg-yellow-500/20 text-yellow-400" : index === 1 ? "bg-slate-300/20 text-slate-300" : index === 2 ? "bg-amber-600/20 text-amber-500" : "bg-white/5 text-slate-500"}`}
+                >
                   {index + 1}
                 </div>
                 <p className="truncate font-semibold text-slate-200">
                   {entry.name}
                 </p>
               </div>
-              <div className="font-black tracking-wide" style={{ color: game.accent, textShadow: `0 0 8px ${game.accent}30` }}>
+              <div
+                className="font-black tracking-wide"
+                style={{
+                  color: game.accent,
+                  textShadow: `0 0 8px ${game.accent}30`,
+                }}
+              >
                 {entry.score}
               </div>
             </div>
@@ -367,9 +386,9 @@ function HomePage({ currentUser }) {
               {/* Hero Image Section */}
               <div className="min-w-0 w-full max-w-[200px] mx-auto lg:max-w-[260px] relative animate-float flex justify-center lg:justify-end">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
-                <img 
-                  src="/images/hero.png" 
-                  alt="Study Arcade Hero" 
+                <img
+                  src="/images/hero.png"
+                  alt="Study Arcade Hero"
                   className="relative w-full max-h-32 lg:max-h-40 object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
                 />
               </div>
@@ -474,8 +493,6 @@ function HomePage({ currentUser }) {
               </div>
             </div>
           )}
-
-
         </div>
 
         <aside
@@ -911,7 +928,6 @@ function ArcadeLayout() {
           onLogout={() => dispatch(logout())}
         />
 
-
         <div className="pb-20 sm:pb-0">
           <Routes>
             <Route path="/" element={<HomePage currentUser={currentUser} />} />
@@ -966,7 +982,11 @@ function ArcadeLayout() {
             <Route path="/map" element={<InteractiveMapPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/tic-tac-toe" element={<TicTacToe />} />
-            <Route path="/rock-paper-scissors" element={<RockPaperScissors />} />
+            <Route path="/simon-says" element={<SimonSays />} />
+            <Route
+              path="/rock-paper-scissors"
+              element={<RockPaperScissors />}
+            />
             <Route path="/penalty-shootout" element={<FootballGame />} />
             <Route path="/chess" element={<ChessGame />} />
             <Route path="/games" element={<GamesPage />} />
@@ -986,17 +1006,17 @@ function ArcadeLayout() {
 
 function App() {
   useEffect(() => {
-    let visitorId = sessionStorage.getItem('visitorId');
+    let visitorId = sessionStorage.getItem("visitorId");
     if (!visitorId) {
-      visitorId = 'visitor_' + Math.random().toString(36).substring(2, 15);
-      sessionStorage.setItem('visitorId', visitorId);
+      visitorId = "visitor_" + Math.random().toString(36).substring(2, 15);
+      sessionStorage.setItem("visitorId", visitorId);
     }
 
     const pingServer = () => {
-      fetch(`${import.meta.env.VITE_API_URL || ''}/api/stats/ping`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ visitorId })
+      fetch(`${import.meta.env.VITE_API_URL || ""}/api/stats/ping`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ visitorId }),
       }).catch(console.error);
     };
 
@@ -1012,7 +1032,10 @@ function App() {
         <Routes>
           <Route path="/login" element={<AuthPage mode="login" />} />
           <Route path="/signup" element={<AuthPage mode="signup" />} />
-          <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+          <Route
+            path="/admin"
+            element={<Navigate to="/admin/login" replace />}
+          />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/*" element={<ArcadeLayout />} />

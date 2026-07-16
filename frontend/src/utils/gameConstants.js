@@ -516,6 +516,20 @@ export const GAME_MODES = [
     summary: "What is the formula for...",
     details: "Match compounds to their formulas.",
   },
+  {
+    id: "simon_says",
+    path: "/simon-says",
+    title: "Simon Says",
+    badge: "Memory",
+    category: "Mind Games",
+    hero: "🧠",
+    intro: "Watch the pattern. Repeat the pattern. How far can you go?",
+    rules: "Each level adds a new color. Wrong tap = game over.",
+    reference: "Classic memory sequence game.",
+    accent: "#40e0f0",
+    summary: "Simon Says",
+    details: "Test your working memory with increasing sequences.",
+  },
 ];
 
 export const CATEGORIES = [
@@ -528,6 +542,7 @@ export const CATEGORIES = [
   { label: "Memory & Logic", icon: "🧠" },
   { label: "English", icon: "✍️" },
   { label: "Miscellaneous", icon: "🎲" },
+  { label: "Mind Games", icon: "🧩" },
 ];
 
 // ── Recently played helpers ──────────────────────────────────────────────────

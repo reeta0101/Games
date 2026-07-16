@@ -932,7 +932,7 @@ export default function QuizGame({ game }) {
               Read
             </button>
 
-            {!challenge?.roomId && score > 0 && gameEndReason !== "quit" && (
+            {!challenge?.roomId && gameEndReason !== "quit" && (
               <button
                 onClick={handleChallengeClick}
                 className="rounded-full border border-pink-400/60 bg-pink-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-pink-400 transition hover:bg-pink-400/20"

@@ -10,6 +10,12 @@ const PIECE_SYMBOLS = {
   b: { p: "♟", r: "♜", n: "♞", b: "♝", q: "♛", k: "♚" }
 };
 
+const TIME_MODES = [
+  { label: "3 min + 10s", timeLimit: 180, increment: 10 },
+  { label: "5 min", timeLimit: 300, increment: 0 },
+  { label: "10 min", timeLimit: 600, increment: 0 }
+];
+
 export default function ChessGame() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,8 +25,16 @@ export default function ChessGame() {
   const challenge = location.state?.challenge;
   const isMultiplayer = !!challenge?.roomId;
   const roomId = challenge?.roomId;
-  // If timeLimit is provided, we use it (in seconds), else default to 600 (10 mins) for local games
-  const initialTimeLimit = challenge?.timeLimit !== undefined ? challenge.timeLimit : 600; 
+  
+  const [activeModeIndex, setActiveModeIndex] = useState(2); // Default to 10 min
+
+  const initialTimeLimit = isMultiplayer 
+    ? (challenge?.timeLimit !== undefined ? challenge.timeLimit : 600)
+    : TIME_MODES[activeModeIndex].timeLimit;
+    
+  const currentIncrement = isMultiplayer 
+    ? (challenge?.increment || 0) 
+    : TIME_MODES[activeModeIndex].increment;
 
   const [game, setGame] = useState(new Chess());
   const [board, setBoard] = useState(game.board());
@@ -199,6 +213,14 @@ export default function ChessGame() {
             });
           }
 
+          if (initialTimeLimit > 0 && currentIncrement > 0) {
+            if (game.turn() === 'b') {
+              setWhiteTime(prev => prev + currentIncrement);
+            } else {
+              setBlackTime(prev => prev + currentIncrement);
+            }
+          }
+
           setSelectedSquare(null);
           setValidMoves([]);
           updateStatus();
@@ -218,6 +240,18 @@ export default function ChessGame() {
         setValidMoves(game.moves({ square: squareStr, verbose: true }).map(m => m.to));
       }
     }
+  };
+
+  const handleModeChange = (index) => {
+    if (isMultiplayer) return;
+    setActiveModeIndex(index);
+    const newLimit = TIME_MODES[index].timeLimit;
+    setWhiteTime(newLimit);
+    setBlackTime(newLimit);
+    setGame(new Chess());
+    setSelectedSquare(null);
+    setValidMoves([]);
+    setStatus("White's Turn");
   };
 
   const resetGame = () => {
@@ -291,6 +325,20 @@ export default function ChessGame() {
           {!playersReady ? "Waiting for Opponent..." : status}
         </p>
       </div>
+
+      {!isMultiplayer && (
+        <div className="flex gap-2 justify-center mb-6 w-full max-w-[500px]">
+          {TIME_MODES.map((mode, idx) => (
+            <button
+              key={mode.label}
+              onClick={() => handleModeChange(idx)}
+              className={`flex-1 py-2 px-2 text-xs font-bold uppercase tracking-widest rounded-xl transition ${activeModeIndex === idx ? 'bg-[#40e0f0]/20 text-[#40e0f0] border border-[#40e0f0]/50 shadow-[0_0_10px_rgba(64,224,240,0.2)]' : 'bg-black/20 text-slate-400 border border-white/10 hover:bg-white/5'}`}
+            >
+              {mode.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="w-full max-w-[500px] mb-8">
         {/* Opponent Timer / Info */}

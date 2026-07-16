@@ -17,6 +17,14 @@ export default function GamesPage() {
       icon: "✊✋✌️",
       color: "from-[#f04060] to-orange-400",
       shadow: "shadow-[0_0_15px_rgba(240,64,96,0.2)]"
+    },
+    {
+      to: "/football",
+      title: "Penalty Shootout",
+      description: "Step up to the spot! Shoot past the keeper and make spectacular saves.",
+      icon: "⚽🧤",
+      color: "from-green-400 to-emerald-600",
+      shadow: "shadow-[0_0_15px_rgba(16,185,129,0.2)]"
     }
   ];
 

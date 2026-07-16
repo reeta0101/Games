@@ -1,68 +1,72 @@
-/* =====================================================
-   FOOTBALL PENALTY SHOOTOUT – Scoped styles (fb- prefix)
-   ===================================================== */
+/* ====================================================
+   FOOTBALL PENALTY SHOOTOUT – fb- prefix
+   ==================================================== */
 
-/* ---------- Page wrapper ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
+
+/* ---------- Reset & Page ---------- */
 .fb-game-page {
   position: relative;
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
   font-family: 'Outfit', system-ui, sans-serif;
-  background: linear-gradient(160deg, #0a1628 0%, #0d2b1a 40%, #0a1628 100%);
+  background: radial-gradient(ellipse at top, #0b2a1a 0%, #060d0a 60%, #030708 100%);
   color: #fff;
   user-select: none;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ---------- Particles ---------- */
+/* ---------- Floating Particles ---------- */
 .fb-particles {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
 }
 .fb-particle {
   position: absolute;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(57, 255, 20, 0.12);
   border-radius: 50%;
   animation: fb-float-up linear infinite;
 }
 @keyframes fb-float-up {
   0%   { transform: translateY(100vh) scale(0); opacity: 0; }
   10%  { opacity: 1; }
-  90%  { opacity: 1; }
+  90%  { opacity: 0.6; }
   100% { transform: translateY(-10vh) scale(1); opacity: 0; }
 }
 
-/* ---------- Game wrapper ---------- */
+/* ---------- Main layout ---------- */
 .fb-game-wrapper {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  padding: 16px 16px 0;
-  overflow: hidden;
+  min-height: 100vh;
+  padding: 16px 12px 0;
 }
 
-/* ===================== SCOREBOARD ===================== */
+/* ====================================================
+   SCOREBOARD
+   ==================================================== */
 .fb-scoreboard {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 12px 36px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 20px;
+  padding: 12px 32px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(57, 255, 20, 0.08);
-  animation: fb-slideDown 0.6s ease-out;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 60px rgba(57,255,20,0.06);
+  animation: fb-slideDown 0.5s ease-out;
+  flex-shrink: 0;
 }
 @keyframes fb-slideDown {
-  from { transform: translateY(-40px); opacity: 0; }
+  from { transform: translateY(-30px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
 .fb-score-side {
@@ -70,23 +74,23 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
+  min-width: 60px;
 }
 .fb-score-label {
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255,255,255,0.45);
 }
 .fb-score-value {
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 900;
   line-height: 1;
   background: linear-gradient(135deg, #fff 30%, #39ff14);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transition: transform 0.3s;
 }
 .fb-score-value.fb-pop { animation: fb-scorePop 0.4s ease; }
 @keyframes fb-scorePop {
@@ -101,435 +105,392 @@
   gap: 2px;
 }
 .fb-round-info {
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 9px;
+  font-weight: 700;
   letter-spacing: 1px;
   color: #39ff14;
   text-transform: uppercase;
 }
 .fb-vs-text {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255,255,255,0.25);
 }
 
-/* ===================== STADIUM ===================== */
+/* ====================================================
+   STADIUM
+   ==================================================== */
 .fb-stadium {
   position: relative;
   flex: 1;
   width: 100%;
-  max-width: 700px;
-  --fb-goal-lift: clamp(104px, 15vh, 126px);
-  --fb-keeper-dive-x: clamp(94px, 18vw, 132px);
-  --fb-keeper-dive-mid-x: clamp(62px, 12vw, 88px);
-  --fb-shot-wide-x: clamp(122px, 25vw, 178px);
-  --fb-ball-start-y: 10px;
-  --fb-catch-side-y: calc(var(--fb-goal-lift) + 58px);
-  --fb-catch-center-y: calc(var(--fb-goal-lift) + 75px);
-  --fb-shot-side-y: calc(var(--fb-goal-lift) + 104px);
-  --fb-shot-center-y: calc(var(--fb-goal-lift) + 125px);
-  margin-top: 10px;
+  max-width: 680px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  overflow: visible;
+  /* CSS variables for positioning */
+  --goal-w: min(480px, 88vw);
+  --goal-h: 160px;
+  --pitch-h: 220px;
 }
-/* Pitch gradient */
-.fb-stadium::after {
-  content: '';
+
+/* Green pitch at bottom */
+.fb-pitch {
   position: absolute;
   bottom: 0;
-  left: -20%;
-  right: -20%;
-  height: 210px;
-  background: linear-gradient(to top, #1a7a3a 0%, #0f5c28 60%, transparent 100%);
-  border-radius: 50% 50% 0 0 / 30px;
+  left: -10%;
+  right: -10%;
+  height: var(--pitch-h);
+  background: linear-gradient(to top, #1a6b3a 0%, #12532c 50%, #0c3d20 100%);
+  border-radius: 50% 50% 0 0 / 40px 40px 0 0;
   z-index: 1;
+  overflow: hidden;
 }
-.fb-stadium::before {
+/* Grass stripes */
+.fb-pitch::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: -20%;
-  right: -20%;
-  height: 122px;
-  background: repeating-linear-gradient(90deg,
-    rgba(255, 255, 255, 0.02) 0px,
-    rgba(255, 255, 255, 0.02) 35px,
-    transparent 35px,
-    transparent 70px);
-  z-index: 1;
-  border-radius: 50% 50% 0 0 / 20px;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 40px,
+    transparent 40px, transparent 80px
+  );
+}
+/* Penalty area */
+.fb-pitch::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 80px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+/* Penalty spot */
+.fb-penalty-spot {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  z-index: 3;
 }
 
 /* Floodlights */
 .fb-floodlight {
   position: absolute;
-  top: -20px;
-  width: 6px;
-  height: 100px;
-  background: linear-gradient(to bottom, rgba(255, 255, 200, 0.9), transparent);
+  top: 0;
+  width: 5px;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(255,255,200,0.85), transparent);
   border-radius: 3px;
   z-index: 0;
 }
-.fb-fl-left  { left: 10%; transform: rotate(-8deg); }
-.fb-fl-right { right: 10%; transform: rotate(8deg); }
+.fb-fl-left  { left: 8%; transform: rotate(-6deg); }
+.fb-fl-right { right: 8%; transform: rotate(6deg); }
 .fb-floodlight::before {
   content: '';
   position: absolute;
-  top: -8px;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, rgba(255,255,220,1), rgba(255,255,200,0.4));
+  border-radius: 50%;
+  box-shadow: 0 0 24px 6px rgba(255,255,200,0.5);
+}
+/* Spotlight cone */
+.fb-floodlight::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 80px solid rgba(255,255,200,0.05);
+}
+
+/* ====================================================
+   GOAL FRAME
+   ==================================================== */
+.fb-goal-frame {
+  position: absolute;
+  bottom: var(--pitch-h);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--goal-w);
+  height: var(--goal-h);
+  z-index: 4;
+}
+
+/* Net background */
+.fb-goal-net {
+  position: absolute;
+  inset: 0;
+  /* Realistic net pattern */
+  background-color: rgba(255,255,255,0.02);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 24px 20px;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Goal zones (highlight on shot) */
+.fb-goal-zones {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 2;
+}
+.fb-goal-zone {
+  flex: 1;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+.fb-highlight-goal {
+  background: rgba(57,255,20,0.28);
+  box-shadow: inset 0 0 50px rgba(57,255,20,0.2);
+}
+.fb-highlight-save {
+  background: rgba(255,61,90,0.28);
+  box-shadow: inset 0 0 50px rgba(255,61,90,0.2);
+}
+
+/* Left post */
+.fb-post-left {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(to right, #c8c8c8, #ffffff, #b0b0b0);
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 12px rgba(255,255,255,0.4), 2px 0 6px rgba(0,0,0,0.4);
+  z-index: 6;
+}
+/* Right post */
+.fb-post-right {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(to left, #c8c8c8, #ffffff, #b0b0b0);
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 12px rgba(255,255,255,0.4), -2px 0 6px rgba(0,0,0,0.4);
+  z-index: 6;
+}
+/* Crossbar */
+.fb-crossbar {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  height: 10px;
+  background: linear-gradient(to bottom, #ffffff, #d8d8d8, #b8b8b8);
+  border-radius: 5px;
+  box-shadow: 0 0 14px rgba(255,255,255,0.5), 0 3px 8px rgba(0,0,0,0.5);
+  z-index: 6;
+}
+
+/* Post depth shadows at bottom */
+.fb-post-left::after,
+.fb-post-right::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
   width: 14px;
-  height: 14px;
-  background: radial-gradient(circle, rgba(255, 255, 200, 1), rgba(255, 255, 200, 0.3));
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 255, 200, 0.6);
-}
-
-/* ===================== GOAL FRAME ===================== */
-.fb-goal-frame {
-  position: relative;
-  width: 85%;
-  max-width: 500px;
-  height: 200px;
-  margin-bottom: var(--fb-goal-lift);
-  z-index: 2;
-}
-
-/* Net */
-.fb-goal-net {
-  position: absolute;
-  inset: 6px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.fb-net-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.08);
-}
-.fb-net-line-h {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* Posts */
-.fb-post {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background: linear-gradient(to right, #e0e0e0, #fff, #c0c0c0);
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  z-index: 5;
-}
-.fb-post-left  { left: -4px; }
-.fb-post-right { right: -4px; }
-.fb-crossbar {
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
   height: 8px;
-  background: linear-gradient(to bottom, #fff, #e0e0e0, #c0c0c0);
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  z-index: 5;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  filter: blur(3px);
 }
 
-/* Goal Zones */
-.fb-goal-zone {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 33.33%;
-  z-index: 3;
-  transition: background 0.2s;
-}
-.fb-zone-left   { left: 0; }
-.fb-zone-center { left: 33.33%; }
-.fb-zone-right  { left: 66.66%; }
-.fb-highlight-goal {
-  background: rgba(57, 255, 20, 0.25);
-  box-shadow: inset 0 0 40px rgba(57, 255, 20, 0.15);
-}
-.fb-highlight-save {
-  background: rgba(255, 61, 90, 0.25);
-  box-shadow: inset 0 0 40px rgba(255, 61, 90, 0.15);
-}
-
-/* ===================== GOALKEEPER ===================== */
+/* ====================================================
+   GOALKEEPER
+   ==================================================== */
 .fb-goalkeeper {
   position: absolute;
-  bottom: 12px;
+  /* Sits just inside the goal, near the crossbar area */
+  bottom: calc(var(--pitch-h) + 10px);
   left: 50%;
   transform: translateX(-50%);
-  z-index: 4;
-  transform-origin: 50% 90%;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 5;
+  transform-origin: 50% 95%;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* Idle bounce */
 .fb-gk-idle {
-  animation: fb-gkBounce 1.2s ease-in-out infinite;
+  animation: fb-gkBounce 1.4s ease-in-out infinite;
 }
 @keyframes fb-gkBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%      { transform: translateX(-50%) translateY(-6px); }
 }
+
+/* Ready / crouch */
 .fb-gk-ready {
-  transform: translateX(-50%) translateY(5px) scaleY(0.94);
-  animation: fb-gkReadySet 0.42s ease-out both;
+  transform: translateX(-50%) translateY(6px) scaleY(0.93);
+  animation: fb-gkReadySet 0.4s ease-out both;
 }
-.fb-gk-ready .fb-gk-arm-left  { transform: translateX(2px) rotate(48deg) scaleY(0.92); }
-.fb-gk-ready .fb-gk-arm-right { transform: translateX(-2px) rotate(-48deg) scaleY(0.92); }
-.fb-gk-ready .fb-gk-leg-left  { transform: rotate(10deg) translateX(-2px); }
-.fb-gk-ready .fb-gk-leg-right { transform: rotate(-10deg) translateX(2px); }
 @keyframes fb-gkReadySet {
   0%   { transform: translateX(-50%) translateY(0) scaleY(1); }
-  58%  { transform: translateX(-50%) translateY(7px) scaleY(0.9); }
-  100% { transform: translateX(-50%) translateY(5px) scaleY(0.94); }
+  60%  { transform: translateX(-50%) translateY(8px) scaleY(0.88); }
+  100% { transform: translateX(-50%) translateY(6px) scaleY(0.93); }
 }
+
+/* Dives */
 .fb-dive-left {
-  transform: translateX(calc(-50% - var(--fb-keeper-dive-x))) translateY(8px) rotate(-27deg);
-  animation: fb-gkDiveLeft 0.52s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+  animation: fb-gkDiveLeft 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 .fb-dive-right {
-  transform: translateX(calc(-50% + var(--fb-keeper-dive-x))) translateY(8px) rotate(27deg);
-  animation: fb-gkDiveRight 0.52s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+  animation: fb-gkDiveRight 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 .fb-dive-center {
-  transform: translateX(-50%) translateY(-28px) scaleY(1.08);
-  animation: fb-gkDiveCenter 0.46s cubic-bezier(0.18, 0.82, 0.22, 1) forwards;
+  animation: fb-gkDiveCenter 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 @keyframes fb-gkDiveLeft {
   0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-  45%  { transform: translateX(calc(-50% - var(--fb-keeper-dive-mid-x))) translateY(-32px) rotate(-18deg); }
-  100% { transform: translateX(calc(-50% - var(--fb-keeper-dive-x))) translateY(8px) rotate(-27deg); }
+  50%  { transform: translateX(calc(-50% - 90px)) translateY(-30px) rotate(-20deg); }
+  100% { transform: translateX(calc(-50% - 130px)) translateY(6px) rotate(-28deg); }
 }
 @keyframes fb-gkDiveRight {
   0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-  45%  { transform: translateX(calc(-50% + var(--fb-keeper-dive-mid-x))) translateY(-32px) rotate(18deg); }
-  100% { transform: translateX(calc(-50% + var(--fb-keeper-dive-x))) translateY(8px) rotate(27deg); }
+  50%  { transform: translateX(calc(-50% + 90px)) translateY(-30px) rotate(20deg); }
+  100% { transform: translateX(calc(-50% + 130px)) translateY(6px) rotate(28deg); }
 }
 @keyframes fb-gkDiveCenter {
   0%   { transform: translateX(-50%) translateY(0) scaleY(1); }
-  55%  { transform: translateX(-50%) translateY(-38px) scaleY(1.14); }
-  100% { transform: translateX(-50%) translateY(-28px) scaleY(1.08); }
+  55%  { transform: translateX(-50%) translateY(-36px) scaleY(1.15); }
+  100% { transform: translateX(-50%) translateY(-26px) scaleY(1.1); }
 }
 
+/* GK body parts */
 .fb-gk-body {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/* Head */
 .fb-gk-head {
-  width: 22px;
-  height: 22px;
-  background: #ffd5b0;
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle at 40% 35%, #ffd8a8, #e8a060);
   border-radius: 50%;
-  border: 2px solid #ff6b2b;
   position: relative;
   z-index: 5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+/* Cap */
 .fb-gk-head::before {
   content: '';
   position: absolute;
-  top: -6px;
-  left: -2px;
-  right: -2px;
-  height: 12px;
-  background: #ff6b2b;
-  border-radius: 10px 10px 0 0;
+  top: -8px;
+  left: -3px;
+  right: -3px;
+  height: 14px;
+  background: linear-gradient(to bottom, #ff6b2b, #e85a1e);
+  border-radius: 14px 14px 2px 2px;
 }
+/* Cap brim */
+.fb-gk-head::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -6px;
+  right: -6px;
+  height: 6px;
+  background: #e05015;
+  border-radius: 3px;
+}
+
+/* Torso */
 .fb-gk-torso {
-  width: 30px;
-  height: 32px;
-  background: linear-gradient(135deg, #ff6b2b, #ff8f5a);
-  border-radius: 6px 6px 4px 4px;
+  width: 36px;
+  height: 38px;
+  background: linear-gradient(150deg, #ff7733 0%, #ff5500 60%, #cc3300 100%);
+  border-radius: 7px 7px 5px 5px;
   margin-top: -4px;
   position: relative;
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
 }
+/* Jersey number */
 .fb-gk-torso::after {
   content: '1';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 /* Arms */
 .fb-gk-arm {
   position: absolute;
-  top: 24px;
-  width: 10px;
-  height: 28px;
-  background: linear-gradient(to bottom, #ff6b2b, #ff8f5a);
-  border-radius: 5px;
+  top: 28px;
+  width: 12px;
+  height: 32px;
+  background: linear-gradient(to bottom, #ff7733, #ff5500);
+  border-radius: 6px;
   transform-origin: top center;
   z-index: 4;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.fb-gk-arm-left  { left: -8px; transform: rotate(15deg); }
-.fb-gk-arm-right { right: -8px; transform: rotate(-15deg); }
-
+.fb-gk-arm-left  { left: -10px; transform: rotate(18deg); }
+.fb-gk-arm-right { right: -10px; transform: rotate(-18deg); }
 /* Gloves */
-.fb-gk-arm::after {
+.fb-gk-arm-left::after,
+.fb-gk-arm-right::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
-  height: 10px;
-  background: #4ade80;
-  border-radius: 4px;
+  width: 14px;
+  height: 12px;
+  background: linear-gradient(145deg, #bbf7d0, #4ade80, #16a34a);
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(74,222,128,0.5);
 }
 
-/* Dive arm animations */
-.fb-dive-left .fb-gk-arm-left   { transform: rotate(-80deg) scaleY(1.2); }
-.fb-dive-left .fb-gk-arm-right  { transform: rotate(-40deg); }
-.fb-dive-right .fb-gk-arm-right { transform: rotate(80deg) scaleY(1.2); }
-.fb-dive-right .fb-gk-arm-left  { transform: rotate(40deg); }
-.fb-dive-center .fb-gk-arm-left  { transform: rotate(-60deg) scaleY(1.15); }
-.fb-dive-center .fb-gk-arm-right { transform: rotate(60deg) scaleY(1.15); }
+/* Dive arm states */
+.fb-dive-left .fb-gk-arm-left   { transform: rotate(-85deg) scaleY(1.2); }
+.fb-dive-left .fb-gk-arm-right  { transform: rotate(-35deg); }
+.fb-dive-right .fb-gk-arm-right { transform: rotate(85deg) scaleY(1.2); }
+.fb-dive-right .fb-gk-arm-left  { transform: rotate(35deg); }
+.fb-dive-center .fb-gk-arm-left  { transform: rotate(-65deg) scaleY(1.15); }
+.fb-dive-center .fb-gk-arm-right { transform: rotate(65deg) scaleY(1.15); }
 
-/* ---- Holding / catch arms ---- */
-.fb-holding .fb-gk-body {
-  animation: fb-gkSecureBall 0.52s ease-out;
-}
-.fb-holding .fb-gk-arm-left  { transform: translate(7px, 3px) rotate(-48deg) scaleY(0.74); transition: transform 0.24s ease-in; }
-.fb-holding .fb-gk-arm-right { transform: translate(-7px, 3px) rotate(48deg) scaleY(0.74); transition: transform 0.24s ease-in; }
-.fb-holding.fb-dive-left .fb-gk-arm-left  { transform: translate(9px, 1px) rotate(-88deg) scaleY(0.78); }
-.fb-holding.fb-dive-left .fb-gk-arm-right { transform: translate(-5px, 5px) rotate(-24deg) scaleY(0.78); }
-.fb-holding.fb-dive-right .fb-gk-arm-right { transform: translate(-9px, 1px) rotate(88deg) scaleY(0.78); }
-.fb-holding.fb-dive-right .fb-gk-arm-left  { transform: translate(5px, 5px) rotate(24deg) scaleY(0.78); }
-.fb-holding.fb-dive-center .fb-gk-arm-left  { transform: translate(9px, 1px) rotate(-52deg) scaleY(0.76); }
-.fb-holding.fb-dive-center .fb-gk-arm-right { transform: translate(-9px, 1px) rotate(52deg) scaleY(0.76); }
-@keyframes fb-gkSecureBall {
-  0%   { transform: scale(1.06) translateY(-1px); }
-  45%  { transform: scale(0.93) translateY(2px); }
-  100% { transform: scale(1); }
-}
+/* Ready arms */
+.fb-gk-ready .fb-gk-arm-left  { transform: rotate(52deg) scaleY(0.92); }
+.fb-gk-ready .fb-gk-arm-right { transform: rotate(-52deg) scaleY(0.92); }
 
-/* Glove pulse on catch */
-.fb-holding .fb-gk-arm::after {
-  opacity: 0;
-  background: #86efac;
-  box-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
-  transition: all 0.2s;
-}
-
-/* Ball and gloves shown together after a save */
-.fb-gk-catch-pocket {
-  position: absolute;
-  top: 27px;
-  left: 50%;
-  width: 54px;
-  height: 30px;
-  z-index: 7;
-  pointer-events: none;
-  --fb-catch-rotate: 0deg;
-  transform: translateX(-50%) rotate(var(--fb-catch-rotate));
-  animation: fb-catchPocketClamp 0.5s cubic-bezier(0.18, 0.82, 0.22, 1) both;
-}
-.fb-gk-catch-pocket-left {
-  left: 18%;
-  top: 25px;
-  --fb-catch-rotate: -8deg;
-}
-.fb-gk-catch-pocket-right {
-  left: 82%;
-  top: 25px;
-  --fb-catch-rotate: 8deg;
-}
-.fb-gk-catch-pocket-center {
-  left: 50%;
-  top: 26px;
-}
-.fb-held-ball {
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  width: 19px;
-  height: 19px;
-  z-index: 2;
-  transform: translateX(-50%) scale(1);
-  animation: fb-heldBallPop 0.36s ease-out both;
-}
-.fb-gk-catch-glove {
-  position: absolute;
-  top: 7px;
-  width: 18px;
-  height: 16px;
-  z-index: 3;
-  background: linear-gradient(145deg, #bbf7d0 0%, #4ade80 52%, #16a34a 100%);
-  border: 1px solid rgba(20, 83, 45, 0.4);
-  border-radius: 7px 7px 9px 9px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), 0 0 12px rgba(74, 222, 128, 0.3);
-}
-.fb-gk-catch-glove::before {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  right: 4px;
-  height: 6px;
-  border-top: 2px solid rgba(20, 83, 45, 0.32);
-  border-radius: 50%;
-}
-.fb-gk-catch-glove-left {
-  left: 8px;
-  transform: rotate(-20deg) translateX(2px);
-  animation: fb-leftGloveClamp 0.46s cubic-bezier(0.18, 0.82, 0.22, 1) both;
-}
-.fb-gk-catch-glove-right {
-  right: 8px;
-  transform: rotate(20deg) translateX(-2px);
-  animation: fb-rightGloveClamp 0.46s cubic-bezier(0.18, 0.82, 0.22, 1) both;
-}
-.fb-held-ball .fb-ball-inner {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45), 0 0 12px rgba(255, 255, 255, 0.24);
-  animation: fb-heldBallSettle 0.48s ease-out;
-}
-@keyframes fb-heldBallPop {
-  0%   { transform: translateX(-50%) scale(0.3); opacity: 0; }
-  55%  { transform: translateX(-50%) scale(1.18); opacity: 1; }
-  100% { transform: translateX(-50%) scale(1); opacity: 1; }
-}
-@keyframes fb-heldBallSettle {
-  0%   { transform: rotate(-90deg) scale(0.85); }
-  48%  { transform: rotate(14deg) scale(1.1, 0.9); }
-  100% { transform: rotate(0deg) scale(1); }
-}
-@keyframes fb-catchPocketClamp {
-  0%   { opacity: 0; transform: translateX(-50%) rotate(var(--fb-catch-rotate)) scale(1.35); }
-  42%  { opacity: 1; transform: translateX(-50%) rotate(var(--fb-catch-rotate)) scale(0.9); }
-  100% { opacity: 1; transform: translateX(-50%) rotate(var(--fb-catch-rotate)) scale(1); }
-}
-@keyframes fb-leftGloveClamp {
-  0%   { transform: rotate(-52deg) translate(-10px, -3px); }
-  65%  { transform: rotate(-11deg) translate(5px, 1px); }
-  100% { transform: rotate(-20deg) translateX(2px); }
-}
-@keyframes fb-rightGloveClamp {
-  0%   { transform: rotate(52deg) translate(10px, -3px); }
-  65%  { transform: rotate(11deg) translate(-5px, 1px); }
-  100% { transform: rotate(20deg) translateX(-2px); }
-}
+/* Holding */
+.fb-holding .fb-gk-arm-left  { transform: translate(8px, 4px) rotate(-50deg) scaleY(0.72); transition: transform 0.22s ease-in; }
+.fb-holding .fb-gk-arm-right { transform: translate(-8px, 4px) rotate(50deg) scaleY(0.72); transition: transform 0.22s ease-in; }
 
 /* Legs */
 .fb-gk-legs {
@@ -540,133 +501,192 @@
   z-index: 1;
 }
 .fb-gk-leg {
-  width: 10px;
-  height: 28px;
-  background: linear-gradient(to bottom, #222, #111);
-  border-radius: 4px;
+  width: 12px;
+  height: 30px;
+  background: linear-gradient(to bottom, #1e1e3a, #0f0f20);
+  border-radius: 5px;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
 }
-.fb-dive-left .fb-gk-leg-left   { transform: rotate(20deg) translateX(-8px); }
-.fb-dive-left .fb-gk-leg-right  { transform: rotate(30deg) translateX(-4px); }
-.fb-dive-right .fb-gk-leg-right { transform: rotate(-20deg) translateX(8px); }
-.fb-dive-right .fb-gk-leg-left  { transform: rotate(-30deg) translateX(4px); }
-
-/* ===================== BALL ===================== */
-.fb-ball {
+/* Boots */
+.fb-gk-leg::after {
+  content: '';
   position: absolute;
-  bottom: var(--fb-ball-start-y);
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
+  width: 15px;
+  height: 6px;
+  background: #111;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.fb-dive-left .fb-gk-leg-left   { transform: rotate(22deg) translateX(-8px); }
+.fb-dive-left .fb-gk-leg-right  { transform: rotate(32deg) translateX(-4px); }
+.fb-dive-right .fb-gk-leg-right { transform: rotate(-22deg) translateX(8px); }
+.fb-dive-right .fb-gk-leg-left  { transform: rotate(-32deg) translateX(4px); }
+
+/* Catch pocket (ball displayed in keeper's hands after save) */
+.fb-gk-catch-pocket {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 52px;
+  height: 30px;
+  z-index: 7;
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: fb-catchPocketClamp 0.5s cubic-bezier(0.18, 0.82, 0.22, 1) both;
+}
+.fb-held-ball {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+.fb-gk-catch-glove {
+  position: absolute;
+  top: 6px;
+  width: 18px;
+  height: 16px;
+  z-index: 3;
+  background: linear-gradient(145deg, #bbf7d0 0%, #4ade80 52%, #16a34a 100%);
+  border-radius: 7px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35), 0 0 10px rgba(74,222,128,0.35);
+}
+.fb-gk-catch-glove-left  { left: 6px; transform: rotate(-20deg); }
+.fb-gk-catch-glove-right { right: 6px; transform: rotate(20deg); }
+
+@keyframes fb-catchPocketClamp {
+  0%   { opacity: 0; transform: translateX(-50%) scale(1.4); }
+  45%  { opacity: 1; transform: translateX(-50%) scale(0.9); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* ====================================================
+   FOOTBALL
+   ==================================================== */
+.fb-ball {
+  position: absolute;
+  /* Start near penalty spot */
+  bottom: calc(var(--pitch-h) + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
   z-index: 10;
-  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
 }
 .fb-ball-inner {
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 35% 35%, #fff, #e8e8e8 50%, #ccc);
+  background: radial-gradient(circle at 32% 30%, #ffffff, #e0e0e0 45%, #b8b8b8);
   border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.15);
+  box-shadow:
+    inset -4px -4px 8px rgba(0,0,0,0.25),
+    inset 2px 2px 5px rgba(255,255,255,0.5),
+    0 3px 12px rgba(0,0,0,0.5);
   position: relative;
   overflow: hidden;
 }
+/* Black pentagon patches */
 .fb-ball-pattern {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at 65% 30%, rgba(0,0,0,0.15) 8px, transparent 8px),
-    radial-gradient(circle at 35% 70%, rgba(0,0,0,0.15) 6px, transparent 6px),
-    radial-gradient(circle at 75% 70%, rgba(0,0,0,0.12) 5px, transparent 5px);
   border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(0,0,0,0.78) 5px, transparent 5px),
+    radial-gradient(circle at 27% 60%, rgba(0,0,0,0.68) 4px, transparent 4px),
+    radial-gradient(circle at 73% 60%, rgba(0,0,0,0.68) 4px, transparent 4px),
+    radial-gradient(circle at 16% 32%, rgba(0,0,0,0.55) 3px, transparent 3px),
+    radial-gradient(circle at 84% 32%, rgba(0,0,0,0.55) 3px, transparent 3px);
 }
+/* Shine */
+.fb-ball-inner::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 15%;
+  width: 35%;
+  height: 30%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7), transparent);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+}
+
+/* Shadow on pitch */
 .fb-ball::after {
   content: '';
   position: absolute;
-  top: 50%;
+  bottom: -4px;
   left: 50%;
-  width: 54px;
+  transform: translateX(-50%);
+  width: 28px;
   height: 8px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scaleX(0.25);
-  z-index: -1;
+  background: rgba(0,0,0,0.35);
+  border-radius: 50%;
+  filter: blur(3px);
 }
 
-/* Ball shot positions */
+/* ---- Ball shot positions ---- */
+/* Ball travels into the goal */
 .fb-ball.shot-left {
-  bottom: var(--fb-shot-side-y);
-  left: calc(50% - var(--fb-shot-wide-x));
-  transform: translateX(-50%) scale(0.7);
+  bottom: calc(var(--pitch-h) + var(--goal-h) - 24px);
+  left: calc(50% - min(180px, 32vw));
+  transform: translateX(-50%) scale(0.65);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.4));
 }
 .fb-ball.shot-center {
-  bottom: var(--fb-shot-center-y);
+  bottom: calc(var(--pitch-h) + var(--goal-h) - 16px);
   left: 50%;
   transform: translateX(-50%) scale(0.6);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.4));
 }
 .fb-ball.shot-right {
-  bottom: var(--fb-shot-side-y);
-  left: calc(50% + var(--fb-shot-wide-x));
-  transform: translateX(-50%) scale(0.7);
+  bottom: calc(var(--pitch-h) + var(--goal-h) - 24px);
+  left: calc(50% + min(180px, 32vw));
+  transform: translateX(-50%) scale(0.65);
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.4));
 }
 .fb-ball.goal-scored {
-  opacity: 0.82;
-  filter: drop-shadow(0 0 16px rgba(57, 255, 20, 0.35));
+  filter: drop-shadow(0 0 18px rgba(57,255,20,0.7));
+  opacity: 0.9;
 }
 
 /* Ball spin during flight */
 .fb-ball.fb-shooting .fb-ball-inner {
-  animation: fb-ballSpin 0.45s linear;
-}
-.fb-ball.fb-shooting::after {
-  opacity: 1;
-  animation: fb-ballTrail 0.42s ease-out forwards;
-}
-.fb-ball.fb-shooting.shot-left::after {
-  transform-origin: right center;
-  rotate: -20deg;
-}
-.fb-ball.fb-shooting.shot-center::after {
-  rotate: 90deg;
-}
-.fb-ball.fb-shooting.shot-right::after {
-  transform-origin: left center;
-  rotate: 20deg;
+  animation: fb-ballSpin 0.48s linear;
 }
 @keyframes fb-ballSpin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(720deg); }
 }
-@keyframes fb-ballTrail {
-  0%   { opacity: 0.9; transform: translate(-50%, -50%) scaleX(1.2); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scaleX(0.2); }
-}
 
-/* ---- Ball caught positions (snaps to keeper's body) ---- */
+/* ---- Ball caught ---- */
 .fb-ball.fb-caught {
-  transition: all 0.32s cubic-bezier(0.18, 0.82, 0.22, 1);
-  z-index: 7;
-  animation: fb-ballCollect 0.38s ease-out forwards;
+  transition: all 0.3s cubic-bezier(0.18, 0.82, 0.22, 1);
+  z-index: 8;
 }
 .fb-ball.fb-caught.caught-left {
-  bottom: var(--fb-catch-side-y);
-  left: calc(50% - var(--fb-keeper-dive-x));
+  bottom: calc(var(--pitch-h) + 50px);
+  left: calc(50% - 130px);
   transform: translateX(-50%) scale(0.52);
 }
 .fb-ball.fb-caught.caught-center {
-  bottom: var(--fb-catch-center-y);
+  bottom: calc(var(--pitch-h) + 56px);
   left: 50%;
-  transform: translateX(-50%) scale(0.48);
+  transform: translateX(-50%) scale(0.5);
 }
 .fb-ball.fb-caught.caught-right {
-  bottom: var(--fb-catch-side-y);
-  left: calc(50% + var(--fb-keeper-dive-x));
+  bottom: calc(var(--pitch-h) + 50px);
+  left: calc(50% + 130px);
   transform: translateX(-50%) scale(0.52);
 }
-
-/* Catch squeeze */
 .fb-ball.fb-caught .fb-ball-inner {
   animation: fb-catchSqueeze 0.3s ease-out;
 }
@@ -676,150 +696,131 @@
   70%  { transform: scale(1.1, 0.9); }
   100% { transform: scale(1); }
 }
+.fb-ball.fb-ball-fade {
+  animation: fb-ballCollect 0.4s ease-out forwards;
+}
 @keyframes fb-ballCollect {
-  0%, 58% { opacity: 1; }
+  0%, 50% { opacity: 1; }
   100%    { opacity: 0; }
 }
 
-/* ---- Catch flash ring ---- */
+/* Catch flash ring */
 .fb-catch-flash {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
-  border: 3px solid rgba(74, 222, 128, 0.8);
+  border: 3px solid rgba(74,222,128,0.9);
   pointer-events: none;
-  z-index: 11;
-  animation: fb-flashRing 0.5s ease-out forwards;
+  z-index: 12;
+  animation: fb-flashRing 0.55s ease-out forwards;
 }
 @keyframes fb-flashRing {
   0%   { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
 }
 
-/* ===================== KICKER ===================== */
+/* ====================================================
+   KICKER
+   ==================================================== */
 .fb-kicker {
   position: absolute;
-  bottom: 0;
+  bottom: var(--pitch-h);
   left: 50%;
-  transform: translateX(-50%) scale(1.05);
+  transform: translateX(-50%);
   transform-origin: 50% 100%;
   z-index: 6;
-  transition: transform 0.32s;
+  transition: transform 0.3s;
 }
+
 .fb-kicker.fb-run-up {
-  animation: fb-runUp 0.46s ease-out forwards;
+  animation: fb-runUp 0.45s ease-out forwards;
 }
 .fb-kicker.fb-kick {
   animation: fb-kickStep 0.42s ease-out forwards;
 }
+
 @keyframes fb-runUp {
-  0%   { transform: translateX(-50%) scale(1.05) translateY(0) rotate(-1deg); }
-  34%  { transform: translateX(calc(-50% - 5px)) scale(1.05) translateY(-18px) rotate(2deg); }
-  72%  { transform: translateX(calc(-50% + 4px)) scale(1.05) translateY(-42px) rotate(-4deg); }
-  100% { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
+  0%   { transform: translateX(-50%) translateY(0) rotate(-1deg); }
+  35%  { transform: translateX(calc(-50% - 6px)) translateY(-18px) rotate(2deg); }
+  72%  { transform: translateX(calc(-50% + 5px)) translateY(-40px) rotate(-4deg); }
+  100% { transform: translateX(-50%) translateY(-34px) rotate(-6deg); }
 }
 @keyframes fb-kickStep {
-  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
-  46%  { transform: translateX(calc(-50% + 5px)) scale(1.05) translateY(-44px) rotate(8deg); }
-  100% { transform: translateX(-50%) scale(1.05) translateY(-34px) rotate(3deg); }
+  0%   { transform: translateX(-50%) translateY(-34px) rotate(-6deg); }
+  45%  { transform: translateX(calc(-50% + 6px)) translateY(-44px) rotate(8deg); }
+  100% { transform: translateX(-50%) translateY(-34px) rotate(3deg); }
 }
-.fb-kicker-shot-left.fb-kick {
-  animation: fb-kickStepLeft 0.44s ease-out forwards;
-}
-.fb-kicker-shot-center.fb-kick {
-  animation: fb-kickStepCenter 0.44s ease-out forwards;
-}
-.fb-kicker-shot-right.fb-kick {
-  animation: fb-kickStepRight 0.44s ease-out forwards;
-}
+
+.fb-kicker-shot-left.fb-kick  { animation: fb-kickStepLeft 0.44s ease-out forwards; }
+.fb-kicker-shot-center.fb-kick { animation: fb-kickStepCenter 0.44s ease-out forwards; }
+.fb-kicker-shot-right.fb-kick  { animation: fb-kickStepRight 0.44s ease-out forwards; }
+
 @keyframes fb-kickStepLeft {
-  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
-  44%  { transform: translateX(calc(-50% - 9px)) scale(1.05) translateY(-45px) rotate(-11deg); }
-  100% { transform: translateX(calc(-50% - 4px)) scale(1.05) translateY(-34px) rotate(-7deg); }
+  0%   { transform: translateX(-50%) translateY(-34px) rotate(-6deg); }
+  45%  { transform: translateX(calc(-50% - 10px)) translateY(-46px) rotate(-12deg); }
+  100% { transform: translateX(calc(-50% - 4px)) translateY(-34px) rotate(-7deg); }
 }
 @keyframes fb-kickStepCenter {
-  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
-  44%  { transform: translateX(calc(-50% + 2px)) scale(1.05) translateY(-47px) rotate(5deg); }
-  100% { transform: translateX(-50%) scale(1.05) translateY(-34px) rotate(1deg); }
+  0%   { transform: translateX(-50%) translateY(-34px) rotate(-6deg); }
+  45%  { transform: translateX(calc(-50% + 2px)) translateY(-48px) rotate(5deg); }
+  100% { transform: translateX(-50%) translateY(-34px) rotate(1deg); }
 }
 @keyframes fb-kickStepRight {
-  0%   { transform: translateX(-50%) scale(1.05) translateY(-35px) rotate(-6deg); }
-  44%  { transform: translateX(calc(-50% + 10px)) scale(1.05) translateY(-45px) rotate(13deg); }
-  100% { transform: translateX(calc(-50% + 4px)) scale(1.05) translateY(-34px) rotate(7deg); }
+  0%   { transform: translateX(-50%) translateY(-34px) rotate(-6deg); }
+  45%  { transform: translateX(calc(-50% + 10px)) translateY(-46px) rotate(13deg); }
+  100% { transform: translateX(calc(-50% + 4px)) translateY(-34px) rotate(7deg); }
 }
+
+/* Kicker body */
 .fb-kicker-body {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.fb-run-up .fb-kicker-body {
-  animation: fb-kickerRunLean 0.46s ease-out forwards;
-}
-.fb-kick .fb-kicker-body {
-  animation: fb-kickerStrikeLean 0.42s ease-out forwards;
-}
+.fb-run-up .fb-kicker-body  { animation: fb-kickerRunLean 0.45s ease-out forwards; }
+.fb-kick .fb-kicker-body    { animation: fb-kickerStrikeLean 0.42s ease-out forwards; }
 @keyframes fb-kickerRunLean {
   0%   { transform: rotate(0deg); }
-  55%  { transform: rotate(-7deg); }
-  100% { transform: rotate(-10deg); }
+  55%  { transform: rotate(-6deg); }
+  100% { transform: rotate(-9deg); }
 }
 @keyframes fb-kickerStrikeLean {
-  0%   { transform: rotate(-10deg); }
-  48%  { transform: rotate(13deg); }
-  100% { transform: rotate(4deg); }
+  0%   { transform: rotate(-9deg); }
+  48%  { transform: rotate(12deg); }
+  100% { transform: rotate(3deg); }
 }
-.fb-kicker-shot-left.fb-kick .fb-kicker-body {
-  animation: fb-kickerStrikeLeft 0.44s ease-out forwards;
-}
-.fb-kicker-shot-center.fb-kick .fb-kicker-body {
-  animation: fb-kickerStrikeCenter 0.44s ease-out forwards;
-}
-.fb-kicker-shot-right.fb-kick .fb-kicker-body {
-  animation: fb-kickerStrikeRight 0.44s ease-out forwards;
-}
-@keyframes fb-kickerStrikeLeft {
-  0%   { transform: rotate(-10deg); }
-  52%  { transform: rotate(-18deg) translateX(-2px); }
-  100% { transform: rotate(-8deg); }
-}
-@keyframes fb-kickerStrikeCenter {
-  0%   { transform: rotate(-10deg); }
-  52%  { transform: rotate(6deg) translateY(-1px); }
-  100% { transform: rotate(2deg); }
-}
-@keyframes fb-kickerStrikeRight {
-  0%   { transform: rotate(-10deg); }
-  52%  { transform: rotate(20deg) translateX(2px); }
-  100% { transform: rotate(8deg); }
-}
+
 .fb-kicker-head {
-  width: 20px;
-  height: 20px;
-  background: #d4a574;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 38% 35%, #e8c090, #c8904a);
   border-radius: 50%;
   position: relative;
   z-index: 2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
+/* Hair */
 .fb-kicker-head::before {
   content: '';
   position: absolute;
-  top: -4px;
+  top: -5px;
   left: -1px;
   right: -1px;
-  height: 10px;
-  background: #333;
-  border-radius: 10px 10px 0 0;
+  height: 11px;
+  background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
+  border-radius: 12px 12px 0 0;
 }
+
 .fb-kicker-torso {
-  width: 26px;
-  height: 30px;
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  border-radius: 5px 5px 3px 3px;
+  width: 32px;
+  height: 36px;
+  background: linear-gradient(150deg, #4f8ef7 0%, #2563eb 60%, #1e3fa8 100%);
+  border-radius: 6px 6px 4px 4px;
   margin-top: -3px;
   position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
 }
 .fb-kicker-torso::after {
   content: '10';
@@ -827,27 +828,28 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 /* Kicker arms */
 .fb-kicker-arm {
   position: absolute;
-  top: 22px;
-  width: 8px;
-  height: 24px;
-  background: linear-gradient(to bottom, #3b82f6, #60a5fa);
-  border-radius: 4px;
+  top: 24px;
+  width: 10px;
+  height: 28px;
+  background: linear-gradient(to bottom, #4f8ef7, #2563eb);
+  border-radius: 5px;
   transform-origin: top center;
 }
-.fb-kicker-arm-left  { left: -6px; transform: rotate(10deg); }
-.fb-kicker-arm-right { right: -6px; transform: rotate(-10deg); }
-.fb-run-up .fb-kicker-arm-left  { transform: rotate(-34deg); transition: 0.3s; }
-.fb-run-up .fb-kicker-arm-right { transform: rotate(34deg); transition: 0.3s; }
-.fb-kick .fb-kicker-arm-left  { transform: rotate(-58deg); transition: 0.18s; }
-.fb-kick .fb-kicker-arm-right { transform: rotate(54deg); transition: 0.18s; }
+.fb-kicker-arm-left  { left: -8px; transform: rotate(12deg); }
+.fb-kicker-arm-right { right: -8px; transform: rotate(-12deg); }
+.fb-run-up .fb-kicker-arm-left  { transform: rotate(-36deg); transition: 0.3s; }
+.fb-run-up .fb-kicker-arm-right { transform: rotate(36deg); transition: 0.3s; }
+.fb-kick .fb-kicker-arm-left    { transform: rotate(-60deg); transition: 0.18s; }
+.fb-kick .fb-kicker-arm-right   { transform: rotate(56deg); transition: 0.18s; }
 
 /* Kicker legs */
 .fb-kicker-legs {
@@ -856,39 +858,33 @@
   margin-top: -2px;
 }
 .fb-kicker-leg {
-  width: 9px;
-  height: 26px;
-  background: linear-gradient(to bottom, #1e3a5f, #0f1f33);
+  width: 11px;
+  height: 30px;
+  background: linear-gradient(to bottom, #1e3060, #0f1e40);
   border-radius: 4px;
   transform-origin: top center;
   transition: transform 0.3s;
+  position: relative;
 }
+/* Boots */
 .fb-kicker-leg::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
+  width: 14px;
   height: 6px;
-  background: #222;
+  background: #111;
   border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
-.fb-kick .fb-kicker-leg-right {
-  animation: fb-kickLeg 0.42s ease-out;
-}
-.fb-kick .fb-kicker-leg-left {
-  transform: rotate(12deg) translateX(-3px);
-}
-.fb-kicker-shot-left.fb-kick .fb-kicker-leg-right {
-  animation: fb-kickLegLeft 0.44s ease-out;
-}
-.fb-kicker-shot-center.fb-kick .fb-kicker-leg-right {
-  animation: fb-kickLegCenter 0.44s ease-out;
-}
-.fb-kicker-shot-right.fb-kick .fb-kicker-leg-right {
-  animation: fb-kickLegRight 0.44s ease-out;
-}
+.fb-kick .fb-kicker-leg-right { animation: fb-kickLeg 0.42s ease-out; }
+.fb-kick .fb-kicker-leg-left  { transform: rotate(14deg) translateX(-3px); }
+.fb-kicker-shot-left.fb-kick .fb-kicker-leg-right   { animation: fb-kickLegLeft 0.44s ease-out; }
+.fb-kicker-shot-center.fb-kick .fb-kicker-leg-right { animation: fb-kickLegCenter 0.44s ease-out; }
+.fb-kicker-shot-right.fb-kick .fb-kicker-leg-right  { animation: fb-kickLegRight 0.44s ease-out; }
+
 @keyframes fb-kickLeg {
   0%   { transform: rotate(16deg) translateX(2px); }
   34%  { transform: rotate(-68deg) translateX(-2px); }
@@ -896,7 +892,7 @@
   100% { transform: rotate(10deg) translateX(2px); }
 }
 @keyframes fb-kickLegLeft {
-  0%   { transform: rotate(16deg) translateX(1px); }
+  0%   { transform: rotate(16px) translateX(1px); }
   34%  { transform: rotate(-78deg) translateX(-6px); }
   66%  { transform: rotate(28deg) translateX(-8px); }
   100% { transform: rotate(4deg) translateX(-4px); }
@@ -914,37 +910,9 @@
   100% { transform: rotate(12deg) translateX(4px); }
 }
 
-/* ===================== PITCH LINES ===================== */
-.fb-pitch-lines {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 150px;
-  pointer-events: none;
-}
-.fb-penalty-spot {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  opacity: 0.6;
-}
-.fb-penalty-arc {
-  position: absolute;
-  bottom: -34px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  height: 260px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-}
-
-/* ===================== RESULT OVERLAY ===================== */
+/* ====================================================
+   RESULT OVERLAY
+   ==================================================== */
 .fb-result-overlay {
   position: absolute;
   inset: 0;
@@ -954,7 +922,7 @@
   z-index: 50;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.35s;
 }
 .fb-result-overlay.fb-show {
   opacity: 1;
@@ -963,122 +931,115 @@
 .fb-result-content {
   text-align: center;
   animation: fb-resultBounce 0.5s ease-out;
+  padding: 24px 40px;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 @keyframes fb-resultBounce {
   0%   { transform: scale(0.3) translateY(30px); opacity: 0; }
-  60%  { transform: scale(1.1) translateY(-5px); }
+  60%  { transform: scale(1.08) translateY(-4px); }
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 .fb-result-icon {
-  font-size: 56px;
+  font-size: 52px;
   display: block;
   margin-bottom: 8px;
-  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
 }
 .fb-result-text {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-shadow: 0 0 30px currentColor;
   margin: 0;
+  text-shadow: 0 0 30px currentColor;
 }
 .fb-result-text.fb-goal { color: #39ff14; }
 .fb-result-text.fb-save { color: #ff3d5a; }
 .fb-result-sub {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 4px;
-  letter-spacing: 1px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 6px;
+  letter-spacing: 0.5px;
 }
 
-/* ===================== CONTROLS ===================== */
+/* ====================================================
+   CONTROLS
+   ==================================================== */
 .fb-controls {
   position: relative;
   z-index: 20;
   width: 100%;
-  max-width: 500px;
+  max-width: 520px;
   text-align: center;
-  padding-bottom: 24px;
-  animation: fb-fadeUp 0.6s ease-out 0.3s both;
-}
-@keyframes fb-fadeUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+  padding: 16px 12px 20px;
+  flex-shrink: 0;
 }
 .fb-instruction {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255,255,255,0.45);
   margin-bottom: 14px;
 }
 .fb-direction-buttons {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   justify-content: center;
 }
 .fb-dir-btn {
   position: relative;
   flex: 1;
-  max-width: 140px;
+  max-width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 16px 12px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  gap: 8px;
+  padding: 18px 10px;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
   color: #fff;
   font-family: 'Outfit', system-ui, sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.22s ease;
   overflow: hidden;
 }
-.fb-dir-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.05));
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-.fb-dir-btn:hover::before { opacity: 1; }
 .fb-dir-btn svg {
-  width: 28px;
-  height: 28px;
-  transition: transform 0.25s;
+  width: 30px;
+  height: 30px;
+  transition: transform 0.22s;
 }
 .fb-dir-btn:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(57, 255, 20, 0.1);
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,0.28);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.35);
 }
-.fb-dir-btn:hover svg { transform: scale(1.15); }
-.fb-dir-btn:active { transform: translateY(-1px) scale(0.97); }
-.fb-dir-btn.fb-dir-left:hover   { box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 25px rgba(59,130,246,0.3); border-color: rgba(59,130,246,0.5); }
-.fb-dir-btn.fb-dir-center:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 25px rgba(57,255,20,0.3); border-color: rgba(57,255,20,0.5); }
-.fb-dir-btn.fb-dir-right:hover  { box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 25px rgba(255,61,90,0.3); border-color: rgba(255,61,90,0.5); }
+.fb-dir-btn:hover svg { transform: scale(1.18); }
+.fb-dir-btn:active    { transform: translateY(-1px) scale(0.96); }
+.fb-dir-btn.fb-dir-left:hover   { box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 28px rgba(59,130,246,0.35); border-color: rgba(59,130,246,0.5); }
+.fb-dir-btn.fb-dir-center:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 28px rgba(57,255,20,0.35); border-color: rgba(57,255,20,0.5); }
+.fb-dir-btn.fb-dir-right:hover  { box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 28px rgba(255,61,90,0.35); border-color: rgba(255,61,90,0.5); }
 .fb-dir-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
   transform: none !important;
 }
 
-/* ===================== GAME OVER ===================== */
+/* ====================================================
+   GAME OVER
+   ==================================================== */
 .fb-gameover-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(22px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1100,70 +1061,63 @@
   to   { transform: scale(1) translateY(0); opacity: 1; }
 }
 .fb-trophy {
-  font-size: 80px;
-  margin-bottom: 16px;
-  animation: fb-trophyBounce 1s ease-in-out infinite;
+  font-size: 90px;
+  margin-bottom: 20px;
+  animation: fb-trophyBounce 1.2s ease-in-out infinite;
 }
 @keyframes fb-trophyBounce {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  25%      { transform: translateY(-10px) rotate(-3deg); }
-  75%      { transform: translateY(-10px) rotate(3deg); }
+  25%      { transform: translateY(-12px) rotate(-3deg); }
+  75%      { transform: translateY(-12px) rotate(3deg); }
 }
 .fb-gameover-title {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 900;
   letter-spacing: 4px;
   text-transform: uppercase;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 .fb-gameover-title.fb-win {
   background: linear-gradient(135deg, #ffd700, #ffaa00, #ffd700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.4));
 }
-.fb-gameover-title.fb-lose {
-  color: #ff3d5a;
-  text-shadow: 0 0 30px rgba(255, 61, 90, 0.4);
-}
-.fb-gameover-title.fb-draw {
-  color: #00e5ff;
-  text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
-}
+.fb-gameover-title.fb-lose { color: #ff3d5a; text-shadow: 0 0 30px rgba(255,61,90,0.4); }
+.fb-gameover-title.fb-draw { color: #00e5ff; text-shadow: 0 0 30px rgba(0,229,255,0.4); }
 .fb-gameover-score {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 32px;
+  color: rgba(255,255,255,0.6);
+  margin: 0 0 36px;
 }
 .fb-play-again-btn {
-  padding: 16px 48px;
+  padding: 16px 52px;
   background: linear-gradient(135deg, #39ff14, #22c55e);
   color: #0a1628;
   border: none;
-  border-radius: 14px;
+  border-radius: 16px;
   font-family: 'Outfit', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 3px;
   cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px rgba(57, 255, 20, 0.3);
+  transition: all 0.25s;
+  box-shadow: 0 4px 24px rgba(57,255,20,0.35);
 }
-.fb-play-again-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 30px rgba(57, 255, 20, 0.5);
-}
-.fb-play-again-btn:active { transform: translateY(0) scale(0.98); }
+.fb-play-again-btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 10px 34px rgba(57,255,20,0.55); }
+.fb-play-again-btn:active { transform: translateY(0) scale(0.97); }
 
-/* ===================== CROWD BAR ===================== */
+/* ====================================================
+   CROWD BAR
+   ==================================================== */
 .fb-crowd-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 5px;
   display: flex;
   z-index: 60;
   opacity: 0;
@@ -1175,16 +1129,15 @@
   background: #39ff14;
   animation: fb-crowdPulse 0.3s ease-in-out infinite alternate;
 }
-.fb-crowd-segment:nth-child(odd) {
-  animation-delay: 0.1s;
-  background: #ffd700;
-}
+.fb-crowd-segment:nth-child(odd) { animation-delay: 0.1s; background: #ffd700; }
 @keyframes fb-crowdPulse {
   from { transform: scaleY(1); }
-  to   { transform: scaleY(3); }
+  to   { transform: scaleY(3.5); }
 }
 
-/* ===================== CONFETTI ===================== */
+/* ====================================================
+   CONFETTI
+   ==================================================== */
 .fb-confetti {
   position: fixed;
   top: -10px;
@@ -1197,31 +1150,25 @@
   100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
-/* ===================== RESPONSIVE ===================== */
+/* ====================================================
+   RESPONSIVE
+   ==================================================== */
 @media (max-width: 500px) {
   .fb-stadium {
-    --fb-goal-lift: 88px;
-    --fb-keeper-dive-x: clamp(74px, 22vw, 96px);
-    --fb-keeper-dive-mid-x: clamp(50px, 15vw, 64px);
-    --fb-shot-wide-x: clamp(100px, 30vw, 132px);
+    --goal-w: 90vw;
+    --goal-h: 130px;
+    --pitch-h: 180px;
   }
-  .fb-scoreboard { padding: 10px 20px; gap: 16px; }
-  .fb-score-value { font-size: 32px; }
-  .fb-goal-frame { height: 160px; width: 90%; }
-  .fb-kicker { bottom: 0; }
+  .fb-scoreboard { padding: 10px 18px; gap: 14px; }
+  .fb-score-value { font-size: 30px; }
   .fb-dir-btn { padding: 12px 8px; }
-  .fb-result-text { font-size: 28px; }
-  .fb-gameover-title { font-size: 36px; }
+  .fb-result-text { font-size: 26px; }
+  .fb-gameover-title { font-size: 38px; }
 }
-@media (max-height: 700px) {
+@media (max-height: 680px) {
   .fb-stadium {
-    --fb-goal-lift: 72px;
-    --fb-keeper-dive-x: clamp(78px, 16vw, 108px);
-    --fb-keeper-dive-mid-x: clamp(52px, 11vw, 72px);
-    --fb-shot-wide-x: clamp(104px, 22vw, 146px);
-    margin-top: 5px;
+    --goal-h: 120px;
+    --pitch-h: 160px;
   }
-  .fb-goal-frame { height: 150px; margin-bottom: var(--fb-goal-lift); }
-  .fb-kicker { bottom: 0; }
-  .fb-controls { padding-bottom: 12px; }
+  .fb-controls { padding: 10px 12px 14px; }
 }

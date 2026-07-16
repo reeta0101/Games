@@ -64,7 +64,7 @@ export default function FootballGame() {
     if (isMyTurn) {
       // User is shooting
       setBallPos(zone);
-      setGkPos(aiZone);
+      setTimeout(() => setGkPos(aiZone), 150); // GK reacts slightly after
       
       setTimeout(() => {
         const isGoal = zone !== aiZone;
@@ -93,7 +93,7 @@ export default function FootballGame() {
     } else {
       // User is Goalkeeper (zone = user dive, aiZone = ai shot)
       setGkPos(zone);
-      setBallPos(aiZone);
+      setTimeout(() => setBallPos(aiZone), 150); // AI shoots slightly after you move
       
       setTimeout(() => {
         const isGoal = zone !== aiZone;
@@ -134,27 +134,27 @@ export default function FootballGame() {
 
   const getBallPositionClass = () => {
     switch (ballPos) {
-      case "start": return "bottom-4 left-1/2 -translate-x-1/2 scale-100";
-      case "TL": return "top-8 left-[10%] scale-50";
-      case "TC": return "top-8 left-1/2 -translate-x-1/2 scale-50";
-      case "TR": return "top-8 right-[10%] translate-x-0 scale-50";
-      case "BL": return "bottom-[30%] left-[10%] scale-50";
-      case "BC": return "bottom-[30%] left-1/2 -translate-x-1/2 scale-50";
-      case "BR": return "bottom-[30%] right-[10%] translate-x-0 scale-50";
-      default: return "bottom-4 left-1/2 -translate-x-1/2 scale-100";
+      case "start": return "bottom-4 left-1/2 -translate-x-1/2 scale-100 rotate-0";
+      case "TL": return "top-[10%] left-[10%] scale-[0.4] -rotate-[720deg]";
+      case "TC": return "top-[10%] left-1/2 -translate-x-1/2 scale-[0.4] rotate-[720deg]";
+      case "TR": return "top-[10%] right-[10%] translate-x-0 scale-[0.4] rotate-[720deg]";
+      case "BL": return "bottom-[30%] left-[10%] scale-[0.6] -rotate-[360deg]";
+      case "BC": return "bottom-[30%] left-1/2 -translate-x-1/2 scale-[0.6] rotate-[360deg]";
+      case "BR": return "bottom-[30%] right-[10%] translate-x-0 scale-[0.6] rotate-[360deg]";
+      default: return "bottom-4 left-1/2 -translate-x-1/2 scale-100 rotate-0";
     }
   };
 
   const getGkPositionClass = () => {
     switch (gkPos) {
-      case "start": return "bottom-[30%] left-1/2 -translate-x-1/2";
-      case "TL": return "top-8 left-[15%] -rotate-45";
-      case "TC": return "top-4 left-1/2 -translate-x-1/2 -translate-y-4";
-      case "TR": return "top-8 right-[15%] rotate-45";
-      case "BL": return "bottom-[20%] left-[20%] -rotate-90";
-      case "BC": return "bottom-[30%] left-1/2 -translate-x-1/2";
-      case "BR": return "bottom-[20%] right-[20%] rotate-90";
-      default: return "bottom-[30%] left-1/2 -translate-x-1/2";
+      case "start": return "bottom-[30%] left-1/2 -translate-x-1/2 scale-100 rotate-0";
+      case "TL": return "top-[15%] left-[15%] scale-90 -rotate-[60deg] -translate-y-8";
+      case "TC": return "top-[10%] left-1/2 -translate-x-1/2 scale-90 -translate-y-12";
+      case "TR": return "top-[15%] right-[15%] scale-90 rotate-[60deg] -translate-y-8";
+      case "BL": return "bottom-[15%] left-[20%] scale-100 -rotate-[80deg] -translate-x-4";
+      case "BC": return "bottom-[25%] left-1/2 -translate-x-1/2 scale-100 translate-y-4";
+      case "BR": return "bottom-[15%] right-[20%] scale-100 rotate-[80deg] translate-x-4";
+      default: return "bottom-[30%] left-1/2 -translate-x-1/2 scale-100 rotate-0";
     }
   };
 
@@ -202,7 +202,7 @@ export default function FootballGame() {
         <div className="absolute top-0 left-0 w-full h-4 bg-slate-300 border-b border-slate-400 shadow-xl z-10"></div>
 
         {/* Goalkeeper */}
-        <div className={`absolute w-16 h-24 transition-all duration-500 ease-out z-20 ${getGkPositionClass()}`}>
+        <div className={`absolute w-16 h-24 transition-all duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] z-20 origin-bottom ${getGkPositionClass()}`}>
           <div className="w-full h-full relative">
             {/* GK Body */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-16 bg-blue-600 rounded-t-xl border-2 border-blue-800"></div>
@@ -215,7 +215,7 @@ export default function FootballGame() {
         </div>
 
         {/* The Ball */}
-        <div className={`absolute w-12 h-12 transition-all duration-500 ease-in-out z-30 flex items-center justify-center text-4xl drop-shadow-2xl ${getBallPositionClass()}`}>
+        <div className={`absolute w-12 h-12 transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] z-30 flex items-center justify-center text-4xl drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] ${getBallPositionClass()}`}>
           ⚽
         </div>
 

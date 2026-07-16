@@ -63,12 +63,25 @@ export default function MobileBottomNav() {
           <line x1="15" y1="6" x2="15" y2="21" />
         </svg>
       )
+    },
+    {
+      to: "/games",
+      label: "Games",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2" />
+          <path d="M6 12h4" />
+          <path d="M8 10v4" />
+          <circle cx="15" cy="13" r="1" fill="currentColor" />
+          <circle cx="18" cy="11" r="1" fill="currentColor" />
+        </svg>
+      )
     }
   ];
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 sm:hidden bg-[#07101d]/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-      <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">
+      <div className="grid h-full max-w-lg grid-cols-6 mx-auto font-medium px-1">
         {navItems.map((item) => {
           const active = isActive(item.to);
           return (

@@ -94,9 +94,9 @@ export default function Navbar({
               if (item.dropdown) {
                 return (
                   <div key={item.label} className="group relative touch-target inline-flex items-center justify-center rounded-xl px-5 py-2 text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all duration-300">
-                    <span className="cursor-pointer">{item.label}</span>
-                    <div className="absolute left-0 top-full hidden pt-2 group-hover:block">
-                      <div className="flex w-48 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#020617]/90 p-1 shadow-2xl backdrop-blur-xl">
+                    <Link to="/games" className="cursor-pointer">{item.label}</Link>
+                    <div className="absolute left-0 top-full hidden pt-2 group-hover:block z-[100]">
+                      <div className="flex w-48 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#020617] p-1 shadow-2xl backdrop-blur-xl">
                         {item.dropdown.map(subItem => (
                           <Link key={subItem.to} to={subItem.to} className="block rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white/10 hover:text-white">
                             {subItem.label}
@@ -273,9 +273,9 @@ export default function Navbar({
                   if (item.dropdown) {
                     return (
                       <div key={item.label} className="flex flex-col gap-1 w-full mt-2 border-t border-white/5 pt-2">
-                        <span className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-500">
+                        <Link to="/games" onClick={() => setMobileOpen(false)} className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-300">
                           {item.label.replace(' ▾', '')}
-                        </span>
+                        </Link>
                         {item.dropdown.map(subItem => {
                           const active = isActive(subItem.to);
                           return (

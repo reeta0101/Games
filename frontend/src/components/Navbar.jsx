@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 import ChangePasswordModal from "./ChangePasswordModal";
+import { useAudioContext } from "../contexts/AudioContext";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
@@ -22,6 +23,7 @@ export default function Navbar({
   const initial = currentUser?.name?.trim()?.charAt(0)?.toUpperCase() || "G";
   const isAdmin = useSelector((state) => state.auth.isAdmin);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const { isMuted, toggleMute } = useAudioContext();
 
   // Mobile menu state
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -128,6 +130,15 @@ export default function Navbar({
             >
               Theme
             </button>
+            <button
+              onClick={toggleMute}
+              className="touch-target flex h-9 w-9 items-center justify-center rounded-xl border border-white/8 bg-white/[0.03] text-slate-300 transition hover:bg-white/8 hover:text-white"
+              type="button"
+              aria-label={isMuted ? "Unmute sound" : "Mute sound"}
+              title={isMuted ? "Unmute sound" : "Mute sound"}
+            >
+              {isMuted ? "🔇" : "🔊"}
+            </button>
 
             {currentUser && (
               <div className="relative" ref={profileRef}>
@@ -190,6 +201,14 @@ export default function Navbar({
               aria-label="Toggle color theme"
             >
               Theme
+            </button>
+            <button
+              onClick={toggleMute}
+              className="touch-target flex h-11 w-11 items-center justify-center rounded-xl border border-white/8 bg-white/[0.03] text-slate-300 transition hover:bg-white/8 hover:text-white"
+              type="button"
+              aria-label={isMuted ? "Unmute sound" : "Mute sound"}
+            >
+              {isMuted ? "🔇" : "🔊"}
             </button>
 
             {/* Hamburger */}

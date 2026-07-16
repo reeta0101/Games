@@ -3,6 +3,7 @@ import GameReader from "./GameReader";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useSound from "../hooks/useSound";
+import { useAudio } from "../hooks/useAudio";
 import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import { recordRecentGame } from "../utils/gameConstants";
@@ -62,6 +63,9 @@ export default function QuizGame({ game }) {
 
   // Difficulty
   const [difficulty, setDifficulty] = useState(challenge?.difficulty || "intermediate");
+
+  // Audio hook
+  const { playCorrect, playWrong, playStreak, playGameOver } = useAudio();
 
   // Screens: guest → difficulty → game → end
   const [screen, setScreen] = useState(() => {
@@ -142,6 +146,7 @@ export default function QuizGame({ game }) {
       setGameEndReason(reason);
       const scoreToSave = finalScore ?? score;
       setFinalMessage(buildFinalMessage(reason, scoreToSave));
+      playGameOver();
 
       const answeredQs = reason === "wrong" || reason === "timeout" ? questionNum - 1 : questionNum;
       if (scoreToSave > 0) {
@@ -414,6 +419,12 @@ export default function QuizGame({ game }) {
             : `+${points} pts`,
         );
 
+        if (nextStreak >= 3) {
+          playStreak(nextStreak);
+        } else {
+          playCorrect();
+        }
+
         if (challenge?.roomId && socket) {
           socket.emit("submit_score", {
             roomId: challenge.roomId,
@@ -434,6 +445,7 @@ export default function QuizGame({ game }) {
       setWrongAnswers(prev => prev + 1);
       setFeedbackTone("danger");
       setResultState({ selected: choice, correct: currentQuestion.correctValue });
+      playWrong();
       
       const isWrongsAcceptable = challenge && challenge.wrongsAcceptable !== false;
 

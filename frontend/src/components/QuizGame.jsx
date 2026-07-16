@@ -120,6 +120,58 @@ export default function QuizGame({ game }) {
     }
   }, []);
 
+  const buildFinalMessage = useCallback((reason, currentScore) => {
+    if (reason === "win") return "Last Player Standing! 🏆";
+    if (reason === "quit") return "You quit. 🏳️";
+    if (reason === "wrong") return "Wrong answer! 💥";
+    if (reason === "timeout") return "Time ran out! ⏱";
+    if (currentScore >= 150) return "Quiz Master! 🏆";
+    if (currentScore >= 100) return "Great job! 🎯";
+    if (currentScore >= 50) return "Keep practicing! 📚";
+    return "You'll get better! 💪";
+  }, []);
+
+  const endGame = useCallback(
+    async (reason, finalScore) => {
+      clearTimers();
+      if (globalTimerRef.current) {
+        clearInterval(globalTimerRef.current);
+        globalTimerRef.current = null;
+      }
+      setIsAnswered(true);
+      setGameEndReason(reason);
+      const scoreToSave = finalScore ?? score;
+      setFinalMessage(buildFinalMessage(reason, scoreToSave));
+
+      const answeredQs = reason === "wrong" || reason === "timeout" ? questionNum - 1 : questionNum;
+      if (scoreToSave > 0) {
+        await saveScore({
+          name: guestName,
+          score: scoreToSave,
+          mode: game.key,
+          difficulty,
+          questions: answeredQs,
+        });
+      }
+
+      setScreen("end");
+
+      if (challenge?.roomId && socket) {
+        const finalWrong = reason === "wrong" ? wrongAnswers + 1 : wrongAnswers;
+        
+        socket.emit("submit_score", {
+          roomId: challenge.roomId,
+          username: currentUser?.username || guestName,
+          score: finalScore ?? score,
+          correct: correctAnswers,
+          wrong: finalWrong,
+          status: "finished"
+        });
+      }
+    },
+    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers, socket, currentUser],
+  );
+
   useEffect(() => {
     return () => {
       clearTimers();
@@ -180,57 +232,6 @@ export default function QuizGame({ game }) {
   };
 
   // ── Game logic ──
-  const buildFinalMessage = useCallback((reason, currentScore) => {
-    if (reason === "win") return "Last Player Standing! 🏆";
-    if (reason === "quit") return "You quit. 🏳️";
-    if (reason === "wrong") return "Wrong answer! 💥";
-    if (reason === "timeout") return "Time ran out! ⏱";
-    if (currentScore >= 150) return "Quiz Master! 🏆";
-    if (currentScore >= 100) return "Great job! 🎯";
-    if (currentScore >= 50) return "Keep practicing! 📚";
-    return "You'll get better! 💪";
-  }, []);
-
-  const endGame = useCallback(
-    async (reason, finalScore) => {
-      clearTimers();
-      if (globalTimerRef.current) {
-        clearInterval(globalTimerRef.current);
-        globalTimerRef.current = null;
-      }
-      setIsAnswered(true);
-      setGameEndReason(reason);
-      const scoreToSave = finalScore ?? score;
-      setFinalMessage(buildFinalMessage(reason, scoreToSave));
-
-      const answeredQs = reason === "wrong" || reason === "timeout" ? questionNum - 1 : questionNum;
-      if (scoreToSave > 0) {
-        await saveScore({
-          name: guestName,
-          score: scoreToSave,
-          mode: game.key,
-          difficulty,
-          questions: answeredQs,
-        });
-      }
-
-      setScreen("end");
-
-      if (challenge?.roomId && socket) {
-        const finalWrong = reason === "wrong" ? wrongAnswers + 1 : wrongAnswers;
-        
-        socket.emit("submit_score", {
-          roomId: challenge.roomId,
-          username: currentUser?.username || guestName,
-          score: finalScore ?? score,
-          correct: correctAnswers,
-          wrong: finalWrong,
-          status: "finished"
-        });
-      }
-    },
-    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers, socket, currentUser],
-  );
 
   // Auto-Win Logic for Sudden Death
   useEffect(() => {

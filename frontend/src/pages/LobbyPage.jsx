@@ -20,6 +20,7 @@ export default function LobbyPage() {
   const [loadingFriends, setLoadingFriends] = useState(false);
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [activeTab, setActiveTab] = useState('room'); // 'room' or 'friends' for mobile
 
   // Form states for Leader
   const initialGameId = searchParams.get("gameId") || GAME_MODES[0].id || GAME_MODES[0].key;
@@ -89,6 +90,12 @@ export default function LobbyPage() {
       .catch(console.error)
       .finally(() => setLoadingFriends(false));
   }, [currentUser, socket]);
+
+  const isMeLeader = () => {
+    if (!lobbyState) return false;
+    const me = lobbyState.players.find(p => p.username === currentUser.username);
+    return me?.isLeader || false;
+  };
 
   useEffect(() => {
     // If leader, broadcast settings changes
@@ -188,12 +195,6 @@ export default function LobbyPage() {
     window.history.pushState({}, '', '/lobby');
   };
 
-  const isMeLeader = () => {
-    if (!lobbyState) return false;
-    const me = lobbyState.players.find(p => p.username === currentUser.username);
-    return me?.isLeader || false;
-  };
-
   const allReady = () => {
     if (!lobbyState) return false;
     // The leader doesn't strictly need to be "ready" if they are the one clicking start,
@@ -211,9 +212,24 @@ export default function LobbyPage() {
           <p className="text-slate-400">Challenge your friends or join a private room.</p>
         </div>
         
+        <div className="flex lg:hidden mb-6 rounded-xl bg-white/5 p-1 w-full max-w-sm mx-auto">
+          <button 
+            onClick={() => setActiveTab('room')}
+            className={`flex-1 rounded-lg py-3 text-sm font-black uppercase tracking-widest transition ${activeTab === 'room' ? 'bg-[#40e0f0]/20 text-[#40e0f0]' : 'text-slate-400 hover:text-white'}`}
+          >
+            Room
+          </button>
+          <button 
+            onClick={() => setActiveTab('friends')}
+            className={`flex-1 rounded-lg py-3 text-sm font-black uppercase tracking-widest transition ${activeTab === 'friends' ? 'bg-[#f04060]/20 text-[#f04060]' : 'text-slate-400 hover:text-white'}`}
+          >
+            Friends
+          </button>
+        </div>
+
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           {/* Join / Create Room Card */}
-          <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl h-fit shadow-2xl">
+          <div className={`w-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl h-fit shadow-2xl ${activeTab !== 'room' ? 'hidden lg:block' : ''}`}>
             <h2 className="text-xl font-black text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Room Access</h2>
             {joinError && (
               <div className="mb-6 rounded-xl border border-[#f04060]/30 bg-[#f04060]/10 p-4 text-sm font-bold text-[#f04060]">
@@ -253,7 +269,7 @@ export default function LobbyPage() {
           </div>
 
           {/* Quick Challenge Friends */}
-          <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl flex flex-col h-[500px] shadow-2xl">
+          <div className={`w-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl flex-col h-[500px] shadow-2xl ${activeTab !== 'friends' ? 'hidden lg:flex' : 'flex'}`}>
             <h2 className="text-xl font-black text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Challenge Friends</h2>
             
             <div className="flex-1 overflow-y-auto no-scrollbar pr-2">

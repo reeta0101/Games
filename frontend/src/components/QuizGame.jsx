@@ -895,14 +895,6 @@ export default function QuizGame({ game }) {
               </button>
             ) : (
               <>
-                {score > 0 && (
-                  <button
-                    onClick={handleChallengeClick}
-                    className="rounded-full border border-pink-400/60 bg-pink-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-pink-400 transition hover:bg-pink-400/20"
-                  >
-                    {copied ? "Copied!" : "Challenge a Friend"}
-                  </button>
-                )}
                 <button
                   onClick={startGame}
                   className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
@@ -917,6 +909,7 @@ export default function QuizGame({ game }) {
                 </button>
               </>
             )}
+            
             <button
               onClick={() => {
                 setReadReturnScreen("end");
@@ -926,6 +919,16 @@ export default function QuizGame({ game }) {
             >
               Read
             </button>
+
+            {!challenge?.roomId && score > 0 && gameEndReason !== "quit" && (
+              <button
+                onClick={handleChallengeClick}
+                className="rounded-full border border-pink-400/60 bg-pink-400/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-pink-400 transition hover:bg-pink-400/20"
+              >
+                {copied ? "Copied!" : "Challenge a Friend"}
+              </button>
+            )}
+
             <button
               onClick={() => navigate("/")}
               className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-slate-300 transition hover:bg-white/10"

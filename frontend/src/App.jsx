@@ -324,7 +324,7 @@ function HomePage({ currentUser }) {
     <main className="mx-auto max-w-7xl px-3 pb-12 pt-5 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
       <section className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr] xl:gap-10 items-stretch">
         <div className="space-y-6 h-full flex flex-col">
-          <div className="surface relative overflow-hidden rounded-3xl p-5 animate-fade-in-up sm:p-7 lg:p-8 flex-1 flex flex-col">
+          <div className="surface relative overflow-hidden rounded-3xl p-5 animate-fade-in-up sm:p-6 lg:p-6 flex-1 flex flex-col">
             {/* Decorative orbiting dot */}
             <div className="pointer-events-none absolute right-12 top-12 hidden sm:block">
               <div className="relative h-[120px] w-[120px]">
@@ -340,34 +340,34 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#40e0f0]/[0.06] blur-3xl animate-float-orb" />
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
 
-            <div className="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-8">
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-4 lg:gap-6">
               <div className="min-w-0">
-                <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
                   <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
                   {GAME_MODES.length} focused quizzes
                 </div>
 
-                <h1 className="text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <h1 className="text-3xl font-black leading-[1.06] tracking-tight text-white sm:text-4xl lg:text-5xl">
                   Study smarter with quick,
-                  <span className="block bg-gradient-to-r from-[#40e0f0] via-[#a78bfa] to-[#40e0f0] bg-clip-text text-transparent animate-gradient-text mt-2">
+                  <span className="block bg-gradient-to-r from-[#40e0f0] via-[#a78bfa] to-[#40e0f0] bg-clip-text text-transparent animate-gradient-text mt-1">
                     playable drills
                   </span>
                 </h1>
               </div>
 
               {/* Hero Image Section */}
-              <div className="min-w-0 w-full max-w-sm mx-auto lg:max-w-none relative animate-float flex justify-center lg:justify-end">
+              <div className="min-w-0 w-full max-w-[200px] mx-auto lg:max-w-[260px] relative animate-float flex justify-center lg:justify-end">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
                 <img 
                   src="/images/hero.png" 
                   alt="Study Arcade Hero" 
-                  className="relative w-full max-w-[280px] lg:max-w-[320px] max-h-48 lg:max-h-56 object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
+                  className="relative w-full max-h-32 lg:max-h-40 object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
                 />
               </div>
 
               {/* Row 2: Subtitle */}
-              <div className="lg:col-span-2 pt-2">
-                <p className="text-base leading-7 text-slate-300 sm:text-lg lg:max-w-4xl">
+              <div className="lg:col-span-2 pt-1">
+                <p className="text-sm leading-6 text-slate-300 sm:text-base lg:max-w-4xl">
                   Pick a topic, read the reference, then practice under time
                   pressure with instant feedback and local progress tracking.
                 </p>

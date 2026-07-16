@@ -358,23 +358,23 @@ function HomePage({ currentUser }) {
                   pressure with instant feedback and local progress tracking.
                 </p>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     to={featuredGame.path}
-                    className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)]"
+                    className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)] whitespace-nowrap flex-1 sm:flex-none"
                   >
                     <span className="text-base">▶</span>
                     Start {featuredGame.title}
                   </Link>
                   <a
                     href="#quiz-library"
-                    className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8"
+                    className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8 whitespace-nowrap flex-1 sm:flex-none"
                   >
                     Browse quizzes
                   </a>
                 </div>
 
-                <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                <div className="mt-7 flex flex-wrap gap-3">
                   {[
                     {
                       label: "Read first",
@@ -394,13 +394,13 @@ function HomePage({ currentUser }) {
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-2xl border border-white/8 bg-black/18 p-4 transition hover:border-white/15 hover:bg-black/25"
+                      className="flex-1 min-w-[140px] rounded-2xl border border-white/8 bg-black/18 p-4 transition hover:border-white/15 hover:bg-black/25"
                     >
-                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 whitespace-nowrap">
                         <span className="mr-1.5">{item.icon}</span>
                         {item.label}
                       </p>
-                      <p className="mt-1 text-sm font-bold text-white">
+                      <p className="mt-1 text-sm font-bold text-white whitespace-nowrap">
                         {item.value}
                       </p>
                     </div>

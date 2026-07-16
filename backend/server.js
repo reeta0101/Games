@@ -292,8 +292,12 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('ttt_make_move', ({ roomId, board, xIsNext }) => {
-    io.to(roomId).emit('ttt_move', { board, xIsNext });
+  socket.on('ttt_make_move', (data) => {
+    io.to(data.roomId).emit('ttt_move', data);
+  });
+
+  socket.on('ttt_set_mode', ({ roomId, gameMode }) => {
+    io.to(roomId).emit('ttt_mode_change', gameMode);
   });
 
   socket.on('ttt_request_reset', ({ roomId }) => {

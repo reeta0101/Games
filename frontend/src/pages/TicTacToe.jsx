@@ -17,6 +17,11 @@ export default function TicTacToe() {
   const [xIsNext, setXIsNext] = useState(true);
   const [gameStatus, setGameStatus] = useState("playing"); // playing, won, draw
   const [winner, setWinner] = useState(null);
+  const [gameMode, setGameMode] = useState("classic"); // classic, infinite
+  
+  // Track move history for infinite mode
+  const [xMoves, setXMoves] = useState([]); // indices
+  const [oMoves, setOMoves] = useState([]); // indices
   
   // Multiplayer state
   const [mySymbol, setMySymbol] = useState(null); // 'X' or 'O'
@@ -53,7 +58,14 @@ export default function TicTacToe() {
       const onMove = (data) => {
         setBoard(data.board);
         setXIsNext(data.xIsNext);
+        if (data.gameMode) setGameMode(data.gameMode);
+        if (data.xMoves) setXMoves(data.xMoves);
+        if (data.oMoves) setOMoves(data.oMoves);
         checkWin(data.board);
+      };
+
+      const onModeChange = (newMode) => {
+        setGameMode(newMode);
       };
 
       const onReset = () => {
@@ -61,15 +73,19 @@ export default function TicTacToe() {
         setXIsNext(true);
         setGameStatus("playing");
         setWinner(null);
+        setXMoves([]);
+        setOMoves([]);
       };
 
       socket.on("ttt_init", onInit);
       socket.on("ttt_move", onMove);
+      socket.on("ttt_mode_change", onModeChange);
       socket.on("ttt_reset", onReset);
 
       return () => {
         socket.off("ttt_init", onInit);
         socket.off("ttt_move", onMove);
+        socket.off("ttt_mode_change", onModeChange);
         socket.off("ttt_reset", onReset);
       };
     }
@@ -105,15 +121,41 @@ export default function TicTacToe() {
       }
       
       const newBoard = [...board];
+      const newXMoves = [...xMoves];
+      const newOMoves = [...oMoves];
+      
+      if (gameMode === "infinite") {
+        if (mySymbol === "X") {
+          if (newXMoves.length === 3) {
+            newBoard[newXMoves[0]] = null;
+            newXMoves.shift();
+          }
+          newXMoves.push(i);
+        } else {
+          if (newOMoves.length === 3) {
+            newBoard[newOMoves[0]] = null;
+            newOMoves.shift();
+          }
+          newOMoves.push(i);
+        }
+      }
+      
       newBoard[i] = mySymbol;
       setBoard(newBoard);
+      if (gameMode === "infinite") {
+        setXMoves(newXMoves);
+        setOMoves(newOMoves);
+      }
       setXIsNext(!xIsNext);
       const winResult = checkWin(newBoard);
       
       socket.emit("ttt_make_move", {
         roomId,
         board: newBoard,
-        xIsNext: !xIsNext
+        xIsNext: !xIsNext,
+        gameMode,
+        xMoves: newXMoves,
+        oMoves: newOMoves
       });
       
       if (winResult && winResult !== 'draw') {
@@ -138,6 +180,17 @@ export default function TicTacToe() {
       if (!xIsNext) return; // Wait for AI
       
       const newBoard = [...board];
+      const newXMoves = [...xMoves];
+      
+      if (gameMode === "infinite") {
+        if (newXMoves.length === 3) {
+          newBoard[newXMoves[0]] = null;
+          newXMoves.shift();
+        }
+        newXMoves.push(i);
+        setXMoves(newXMoves);
+      }
+      
       newBoard[i] = "X";
       setBoard(newBoard);
       setXIsNext(false);
@@ -183,6 +236,17 @@ export default function TicTacToe() {
     
     if (move !== -1) {
       const newBoard = [...currentBoard];
+      const newOMoves = [...oMoves];
+      
+      if (gameMode === "infinite") {
+        if (newOMoves.length === 3) {
+          newBoard[newOMoves[0]] = null;
+          newOMoves.shift();
+        }
+        newOMoves.push(move);
+        setOMoves(newOMoves);
+      }
+      
       newBoard[move] = "O";
       setBoard(newBoard);
       setXIsNext(true);
@@ -198,6 +262,16 @@ export default function TicTacToe() {
       setXIsNext(true);
       setGameStatus("playing");
       setWinner(null);
+      setXMoves([]);
+      setOMoves([]);
+    }
+  };
+
+  const toggleMode = () => {
+    const newMode = gameMode === "classic" ? "infinite" : "classic";
+    setGameMode(newMode);
+    if (isMultiplayer) {
+      socket.emit("ttt_set_mode", { roomId, gameMode: newMode });
     }
   };
 
@@ -238,19 +312,37 @@ export default function TicTacToe() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mb-8 bg-white/5 p-3 rounded-2xl">
-          {board.map((cell, i) => (
-            <button
-              key={i}
-              onClick={() => handleClick(i)}
-              className="aspect-square bg-[#1e293b] rounded-xl flex items-center justify-center text-6xl transition-all duration-300 hover:bg-[#334155] disabled:cursor-not-allowed border border-white/5 shadow-inner"
-              disabled={gameStatus !== "playing" || cell !== null}
-            >
-              <span className={`transform transition-transform ${cell === "X" ? "text-[#40e0f0] scale-100" : cell === "O" ? "text-[#f04060] scale-100" : "scale-0"} drop-shadow-[0_0_10px_currentColor]`}>
-                {cell}
-              </span>
-            </button>
-          ))}
+        <div className="grid grid-cols-3 gap-3 mb-8 bg-white/5 p-3 rounded-2xl relative">
+          {board.every(c => c === null) && (
+            <div className="absolute -top-12 left-0 right-0 flex justify-center">
+              <button 
+                onClick={toggleMode}
+                className="bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold text-slate-300 transition uppercase tracking-widest flex items-center gap-2"
+              >
+                Mode: <span className={gameMode === 'infinite' ? 'text-purple-400' : 'text-[#40e0f0]'}>{gameMode}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/></svg>
+              </button>
+            </div>
+          )}
+
+          {board.map((cell, i) => {
+            const isFadingX = gameMode === "infinite" && cell === "X" && xMoves.length === 3 && xMoves[0] === i;
+            const isFadingO = gameMode === "infinite" && cell === "O" && oMoves.length === 3 && oMoves[0] === i;
+            const isFading = isFadingX || isFadingO;
+            
+            return (
+              <button
+                key={i}
+                onClick={() => handleClick(i)}
+                className={`aspect-square bg-[#1e293b] rounded-xl flex items-center justify-center text-6xl transition-all duration-300 hover:bg-[#334155] disabled:cursor-not-allowed border border-white/5 shadow-inner ${isFading ? 'animate-pulse bg-red-900/20 border-red-500/30' : ''}`}
+                disabled={gameStatus !== "playing" || cell !== null}
+              >
+                <span className={`transform transition-all duration-500 ${cell === "X" ? "text-[#40e0f0] scale-100" : cell === "O" ? "text-[#f04060] scale-100" : "scale-0"} ${isFading ? 'opacity-30 scale-90' : 'drop-shadow-[0_0_10px_currentColor]'}`}>
+                  {cell}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="flex flex-col gap-4">

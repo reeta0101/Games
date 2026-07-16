@@ -25,6 +25,14 @@ export default function GamesPage() {
       icon: "⚽🧤",
       color: "from-green-400 to-emerald-600",
       shadow: "shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+    },
+    {
+      to: "/chess",
+      title: "Grandmaster Chess",
+      description: "Play classic Chess. Outsmart your opponent and capture the King!",
+      icon: "♔♚",
+      color: "from-indigo-400 to-blue-600",
+      shadow: "shadow-[0_0_15px_rgba(99,102,241,0.2)]"
     }
   ];
 

@@ -5,9 +5,8 @@ import ChangePasswordModal from "./ChangePasswordModal";
 import { useAudioContext } from "../contexts/AudioContext";
 
 const NAV_LINKS = [
-  { to: "/", label: "Home" },
   { to: "/quizzes", label: "Quizzes" },
-  { to: "/test-page", label: "Exam Mode" },
+  { to: "/test-page", label: "Exams" },
   { to: "/leaderboard", label: "Leaderboard" },
   { to: "/lobby", label: "Challenges" },
   { to: "/map", label: "Maps" },

@@ -168,7 +168,7 @@ export default function ChessGame() {
   }, [isMultiplayer, socket, currentUser, roomId, game, myColor, initialTimeLimit, updateStatus]);
 
   const handleSquareClick = (squareStr) => {
-    if (game.isGameOver() || whiteTime <= 0 || blackTime <= 0 || !playersReady) return;
+    if (game.isGameOver() || (initialTimeLimit > 0 && (whiteTime <= 0 || blackTime <= 0)) || !playersReady) return;
     
     // In multiplayer, restrict to own color
     if (isMultiplayer && game.turn() !== myColor) return;
@@ -286,7 +286,7 @@ export default function ChessGame() {
             <span className={myColor === 'b' ? 'text-white' : ''}>{opponentName} (Black)</span>
           </div>
         )}
-        <p className={`text-lg font-bold mt-2 transition-all duration-300 ${game.isCheckmate() || whiteTime <= 0 || blackTime <= 0 ? 'text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]' : 'text-slate-300'}`}>
+        <p className={`text-lg font-bold mt-2 transition-all duration-300 ${game.isCheckmate() || (initialTimeLimit > 0 && (whiteTime <= 0 || blackTime <= 0)) ? 'text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]' : 'text-slate-300'}`}>
           {!playersReady ? "Waiting for Opponent..." : status}
         </p>
       </div>
@@ -331,7 +331,7 @@ export default function ChessGame() {
           className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-600 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition disabled:opacity-50"
           disabled={!playersReady}
         >
-          {game.isGameOver() || (whiteTime <= 0 || blackTime <= 0) ? "Play Again" : "Reset Board"}
+          {game.isGameOver() || (initialTimeLimit > 0 && (whiteTime <= 0 || blackTime <= 0)) ? "Play Again" : "Reset Board"}
         </button>
         <button
           onClick={() => navigate("/games")}

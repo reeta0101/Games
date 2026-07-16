@@ -225,7 +225,27 @@ export default function Navbar({
             className="sm:hidden border-t border-white/8 bg-[#07101d]/95 backdrop-blur-2xl animate-fade-in-up"
           >
             <div className="mx-auto max-w-7xl px-4 py-4 space-y-2">
-
+              {/* Mobile Nav Links */}
+              <nav className="flex flex-col gap-1 pb-3 mb-3 border-b border-white/8" aria-label="Mobile navigation">
+                {NAV_LINKS.map((item) => {
+                  const active = isActive(item.to);
+                  return (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setMobileOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium transition ${
+                        active
+                          ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border border-white/10"
+                          : "text-slate-300 hover:bg-white/5 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
 
               {currentUser ? (
                 <>

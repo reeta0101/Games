@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { GAME_MODES } from "../App";
+import { GAME_MODES } from "../utils/gameConstants";
 import { DIFFICULTIES, DIFF_LABELS } from "../utils/leaderboard";
 import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 
@@ -205,46 +205,127 @@ export default function LobbyPage() {
 
   if (!inRoom) {
     return (
-      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-lg flex-col items-center justify-center px-4 py-12 text-center">
-        <h1 className="text-4xl font-black text-white mb-4">Live Multiplayer</h1>
-        <p className="text-slate-400 mb-10">Create a room or join a friend to play head-to-head in real time.</p>
+      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl flex-col px-3 py-8 sm:px-6 sm:py-10">
+        <div className="text-center mb-10 animate-fade-in-up">
+          <h1 className="text-4xl font-black text-white mb-4">Multiplayer Arena</h1>
+          <p className="text-slate-400">Challenge your friends or join a private room.</p>
+        </div>
         
-        <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-          {joinError && (
-            <div className="mb-6 rounded-xl border border-[#f04060]/30 bg-[#f04060]/10 p-4 text-sm font-bold text-[#f04060]">
-              {joinError}
-            </div>
-          )}
-          <form onSubmit={joinOrCreateRoom} className="flex flex-col gap-4">
-            <input
-              type="text"
-              value={roomId}
-              onChange={e => setRoomId(e.target.value.toUpperCase())}
-              placeholder="ENTER ROOM CODE"
-              className="w-full rounded-2xl border border-white/15 bg-black/30 px-6 py-4 text-center text-2xl font-black uppercase tracking-widest text-white outline-none transition focus:border-[#40e0f0]/60"
-            />
-            <button
-              id="join-form-btn"
-              type="submit"
-              disabled={!roomId.trim()}
-              className="w-full rounded-2xl bg-gradient-to-r from-[#40e0f0] to-[#f04060] py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-[#40e0f0]/20 disabled:opacity-50 transition hover:scale-[1.02]"
-            >
-              Join Room
-            </button>
-          </form>
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          {/* Join / Create Room Card */}
+          <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl h-fit shadow-2xl">
+            <h2 className="text-xl font-black text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Room Access</h2>
+            {joinError && (
+              <div className="mb-6 rounded-xl border border-[#f04060]/30 bg-[#f04060]/10 p-4 text-sm font-bold text-[#f04060]">
+                {joinError}
+              </div>
+            )}
+            <form onSubmit={joinOrCreateRoom} className="flex flex-col gap-4">
+              <input
+                type="text"
+                value={roomId}
+                onChange={e => setRoomId(e.target.value.toUpperCase())}
+                placeholder="ENTER ROOM CODE"
+                className="w-full rounded-2xl border border-white/15 bg-black/30 px-6 py-4 text-center text-2xl font-black uppercase tracking-widest text-white outline-none transition focus:border-[#40e0f0]/60"
+              />
+              <button
+                id="join-form-btn"
+                type="submit"
+                disabled={!roomId.trim()}
+                className="w-full rounded-2xl bg-gradient-to-r from-[#40e0f0] to-[#f04060] py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-[#40e0f0]/20 disabled:opacity-50 transition hover:scale-[1.02]"
+              >
+                Join Room
+              </button>
+            </form>
 
-          <div className="my-6 flex items-center justify-center gap-4 text-slate-500">
-            <div className="h-px flex-1 bg-white/10"></div>
-            <span className="text-xs font-bold uppercase tracking-widest">OR</span>
-            <div className="h-px flex-1 bg-white/10"></div>
+            <div className="my-6 flex items-center justify-center gap-4 text-slate-500">
+              <div className="h-px flex-1 bg-white/10"></div>
+              <span className="text-xs font-bold uppercase tracking-widest">OR</span>
+              <div className="h-px flex-1 bg-white/10"></div>
+            </div>
+
+            <button
+              onClick={createRandomRoom}
+              className="w-full rounded-2xl border border-[#f0e040]/40 bg-[#f0e040]/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-[#f0e040] shadow-[0_0_15px_rgba(240,224,64,0.1)] transition hover:bg-[#f0e040]/20"
+            >
+              Host a New Match
+            </button>
           </div>
 
-          <button
-            onClick={createRandomRoom}
-            className="w-full rounded-2xl border border-[#f0e040]/40 bg-[#f0e040]/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-[#f0e040] shadow-[0_0_15px_rgba(240,224,64,0.1)] transition hover:bg-[#f0e040]/20"
-          >
-            Create New Room
-          </button>
+          {/* Quick Challenge Friends */}
+          <div className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-xl flex flex-col h-[500px] shadow-2xl">
+            <h2 className="text-xl font-black text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-4">Challenge Friends</h2>
+            
+            <div className="flex-1 overflow-y-auto no-scrollbar pr-2">
+              {loadingFriends ? (
+                <p className="text-sm text-slate-400 text-center mt-10">Loading friends...</p>
+              ) : friendsList.length === 0 ? (
+                <div className="text-center mt-10">
+                  <p className="text-sm text-slate-400 mb-4">You have no friends yet.</p>
+                  <button onClick={() => navigate('/friends')} className="text-[#40e0f0] hover:underline font-bold">Find Friends</button>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {friendsList.map(friend => {
+                    const isOnline = onlineFriends[friend.username];
+                    return (
+                      <div key={friend.username} className="flex items-center justify-between rounded-2xl bg-black/30 p-3 border border-white/5 hover:border-white/10 transition">
+                        <div className="flex items-center gap-3">
+                          <div className="relative">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-700 text-lg font-black text-white">
+                              {friend.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div className={`absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-slate-900 ${isOnline ? 'bg-[#40f080]' : 'bg-slate-500'}`} />
+                          </div>
+                          <div>
+                            <p className="font-bold text-white text-sm">{friend.name}</p>
+                            <p className="text-[10px] uppercase tracking-widest text-slate-400">@{friend.username}</p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => {
+                            const newRoom = Math.random().toString(36).substring(2, 8).toUpperCase();
+                            setRoomId(newRoom);
+                            
+                            socket.emit("join_lobby", {
+                              roomId: newRoom,
+                              user: {
+                                username: currentUser.username,
+                                name: currentUser.name
+                              }
+                            }, (response) => {
+                              if (response && response.isLeader) {
+                                socket.emit("update_settings", {
+                                  roomId: newRoom,
+                                  settings: { gameId, difficulty, challengeMode, timeLimit }
+                                });
+                              }
+                              setInRoom(true);
+                              window.history.pushState({}, '', `/lobby?room=${newRoom}`);
+                              
+                              socket.emit("send_challenge", {
+                                targetUsername: friend.username,
+                                fromUsername: currentUser.username,
+                                fromName: currentUser.name,
+                                roomId: newRoom
+                              });
+                            });
+                          }}
+                          className={`rounded-xl px-4 py-2 text-xs font-bold uppercase tracking-widest transition ${
+                            isOnline
+                              ? 'bg-[#f04060]/20 text-[#f04060] border border-[#f04060]/40 hover:bg-[#f04060]/30 shadow-[0_0_10px_rgba(240,64,96,0.1)]'
+                              : 'bg-white/10 text-slate-300 border border-white/20 hover:bg-white/20'
+                          }`}
+                        >
+                          Challenge
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </main>
     );

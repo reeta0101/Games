@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { GAME_MODES } from "../App";
+import { GAME_MODES } from "../utils/gameConstants";
 
 export default function FriendsPage() {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -26,6 +26,10 @@ export default function FriendsPage() {
   // Challenge Modal State
   const [showChallengeModal, setShowChallengeModal] = useState(false);
   const [challengeTarget, setChallengeTarget] = useState(null);
+  
+  // Friend Profile Modal State
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [profileTarget, setProfileTarget] = useState(null);
   
   const searchParams = new URLSearchParams(location.search);
   const initialGameId = searchParams.get('gameId') || GAME_MODES[0].key || GAME_MODES[0].id;
@@ -128,6 +132,11 @@ export default function FriendsPage() {
     setCopiedLink(false);
   };
 
+  const openProfileModal = (friend) => {
+    setProfileTarget(friend);
+    setShowProfileModal(true);
+  };
+
   const handleSendChallenge = () => {
     const url = `${window.location.origin}/challenge?gameId=${challengeGame}&difficulty=${challengeDiff}&timeLimit=${challengeTime}&wrongsAcceptable=${challengeWrongs}&score=0&challenger=${encodeURIComponent(currentUser.username)}`;
     navigator.clipboard.writeText(url).then(() => {
@@ -161,30 +170,31 @@ export default function FriendsPage() {
         <p className="mt-2 text-slate-400">Manage your friends, pending requests, and discover new players.</p>
       </div>
 
-      {/* Tab Bar */}
-      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 rounded-3xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl">
-        {tabs.map(tab => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-bold transition ${
-              activeTab === tab.id 
-                ? 'bg-[#40e0f0]/20 text-[#40e0f0] border border-[#40e0f0]/40 shadow-[0_0_15px_rgba(64,224,240,0.2)]' 
-                : 'text-slate-400 hover:bg-white/5 hover:text-white border border-transparent'
-            }`}
-          >
-            <span>{tab.icon}</span>
-            <span className="hidden sm:inline">{tab.label}</span>
-            <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
-            {tab.count !== null && (
-              <span className={`ml-1 flex h-5 min-w-[20px] items-center justify-center rounded-full text-[10px] px-1 ${
-                activeTab === tab.id ? 'bg-[#40e0f0] text-black' : 'bg-white/10 text-slate-300'
-              }`}>
-                {tab.count}
-              </span>
-            )}
-          </button>
-        ))}
+      {/* Tab Bar — scrollable on mobile */}
+      <div className="overflow-x-auto -mx-3 px-3 sm:mx-0 sm:px-0 no-scrollbar">
+        <div className="flex items-center gap-2 sm:gap-4 rounded-3xl border border-white/10 bg-white/5 p-2 backdrop-blur-xl min-w-max sm:min-w-0 sm:flex-wrap sm:justify-center">
+          {tabs.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-1.5 sm:gap-2 rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm font-bold transition whitespace-nowrap ${
+                activeTab === tab.id 
+                  ? 'bg-[#40e0f0]/20 text-[#40e0f0] border border-[#40e0f0]/40 shadow-[0_0_15px_rgba(64,224,240,0.2)]' 
+                  : 'text-slate-400 hover:bg-white/5 hover:text-white border border-transparent'
+              }`}
+            >
+              <span>{tab.icon}</span>
+              <span>{tab.label}</span>
+              {tab.count !== null && (
+                <span className={`ml-0.5 sm:ml-1 flex h-5 min-w-[20px] items-center justify-center rounded-full text-[10px] px-1 ${
+                  activeTab === tab.id ? 'bg-[#40e0f0] text-black' : 'bg-white/10 text-slate-300'
+                }`}>
+                  {tab.count}
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Content Area */}
@@ -199,19 +209,25 @@ export default function FriendsPage() {
             ) : (
               <div className="grid gap-4 sm:grid-cols-2">
                 {friends.map((friend) => (
-                  <div key={friend._id} className="flex flex-col sm:flex-row sm:items-center justify-between rounded-2xl bg-black/20 p-4 border border-white/5 hover:border-[#40e0f0]/30 transition gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#40e0f0]/30 to-[#f04060]/30 text-xl font-black text-white">
+                  <div key={friend._id} className="flex flex-col sm:flex-row sm:items-center justify-between rounded-2xl bg-black/20 p-4 border border-white/5 hover:border-[#40e0f0]/30 transition gap-3 sm:gap-4">
+                    <div 
+                      className="flex items-center gap-3 sm:gap-4 cursor-pointer group"
+                      onClick={() => openProfileModal(friend)}
+                    >
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#40e0f0]/30 to-[#f04060]/30 text-xl font-black text-white transition-transform group-hover:scale-110">
                         {friend.name.charAt(0).toUpperCase()}
                       </div>
-                      <div>
-                        <p className="font-bold text-white text-lg">{friend.name}</p>
+                      <div className="min-w-0">
+                        <p className="font-bold text-white text-base sm:text-lg truncate group-hover:text-[#40e0f0] transition">{friend.name}</p>
                         <p className="text-xs text-slate-400">@{friend.username}</p>
+                        {friend.instagram && (
+                          <p className="text-xs text-[#E1306C] mt-0.5 truncate">📷 @{friend.instagram}</p>
+                        )}
                       </div>
                     </div>
                     <button 
                       onClick={() => openChallengeModal(friend)}
-                      className="rounded-full bg-[#f0e040]/10 text-[#f0e040] border border-[#f0e040]/30 px-5 py-2 text-xs font-black uppercase tracking-[0.1em] hover:bg-[#f0e040]/20 transition shadow-lg"
+                      className="rounded-full bg-[#f0e040]/10 text-[#f0e040] border border-[#f0e040]/30 px-5 py-2 text-xs font-black uppercase tracking-[0.1em] hover:bg-[#f0e040]/20 transition shadow-lg w-full sm:w-auto"
                     >
                       Challenge ⚔️
                     </button>
@@ -345,7 +361,7 @@ export default function FriendsPage() {
       {/* Challenge Configuration Modal */}
       {showChallengeModal && challengeTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md rounded-[2rem] border border-white/10 bg-[#0f172a] p-8 shadow-2xl">
+          <div className="w-full max-w-md rounded-[2rem] border border-white/10 bg-[#0f172a] p-5 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
             <h2 className="text-3xl font-black text-white text-center mb-2">Setup Challenge</h2>
             <p className="text-center text-[#40e0f0] font-bold uppercase tracking-widest text-xs mb-8">vs {challengeTarget.name}</p>
             
@@ -441,6 +457,75 @@ export default function FriendsPage() {
             {copiedLink && (
               <p className="mt-4 text-center text-xs text-[#40e0f0] animate-pulse">Paste the link to your friend to start the battle!</p>
             )}
+          </div>
+        </div>
+      )}
+      {/* Friend Profile Modal (Instagram-style) */}
+      {showProfileModal && profileTarget && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm animate-fade-in"
+          onClick={() => setShowProfileModal(false)}
+        >
+          <div 
+            className="w-full max-w-sm rounded-[2rem] border border-white/10 bg-[#0f172a] p-6 sm:p-8 shadow-2xl animate-fade-in-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowProfileModal(false)}
+              className="absolute top-4 right-4 text-slate-500 hover:text-white transition text-xl"
+            >
+              ✕
+            </button>
+
+            {/* Profile Card Content */}
+            <div className="flex flex-col items-center text-center">
+              {/* Large Avatar */}
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-[#40e0f0]/40 to-[#f04060]/40 border-4 border-[#40e0f0]/30 shadow-[0_0_30px_rgba(64,224,240,0.2)] text-4xl font-black text-white mb-4">
+                {profileTarget.name.charAt(0).toUpperCase()}
+              </div>
+
+              {/* Name & Username */}
+              <h3 className="text-2xl font-black text-white">{profileTarget.name}</h3>
+              <p className="text-sm text-[#40e0f0] font-semibold mt-1">@{profileTarget.username}</p>
+
+              {/* Instagram Link */}
+              {profileTarget.instagram && (
+                <a
+                  href={`https://instagram.com/${profileTarget.instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 rounded-full border border-[#E1306C]/30 bg-[#E1306C]/10 px-4 py-2 text-sm font-semibold text-[#E1306C] transition hover:bg-[#E1306C]/20 hover:border-[#E1306C]/50"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                  </svg>
+                  @{profileTarget.instagram}
+                </a>
+              )}
+
+              {/* Divider */}
+              <div className="w-full h-px bg-white/10 my-5"></div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 w-full">
+                <button
+                  onClick={() => {
+                    setShowProfileModal(false);
+                    openChallengeModal(profileTarget);
+                  }}
+                  className="flex-1 rounded-xl border border-[#f0e040]/40 bg-[#f0e040]/10 py-3 text-xs font-black uppercase tracking-[0.1em] text-[#f0e040] hover:bg-[#f0e040]/20 transition"
+                >
+                  Challenge ⚔️
+                </button>
+                <button
+                  onClick={() => setShowProfileModal(false)}
+                  className="flex-1 rounded-xl border border-white/10 bg-white/5 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 hover:bg-white/10 transition"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

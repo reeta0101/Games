@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
     trim: true,
     match: [/^\S+@\S+\.\S+$/, 'Please enter a valid secure email address']
   },
+  instagram: {
+    type: String,
+    trim: true,
+    default: '',
+  },
   password: {
     type: String,
     required: true,

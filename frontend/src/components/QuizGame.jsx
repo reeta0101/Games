@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import useSound from "../hooks/useSound";
 import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
-import { recordRecentGame } from "../App";
+import { recordRecentGame } from "../utils/gameConstants";
 import { io } from "socket.io-client";
 import {
   getLeaderboard,

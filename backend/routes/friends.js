@@ -9,8 +9,8 @@ router.get('/:username', async (req, res) => {
   try {
     const { username } = req.params;
     const user = await User.findOne({ username: username.toLowerCase() })
-      .populate('friends', 'name username')
-      .populate('friendRequests', 'name username');
+      .populate('friends', 'name username instagram')
+      .populate('friendRequests', 'name username instagram');
 
     if (!user) {
       return res.status(404).json({ error: 'User not found.' });
@@ -39,7 +39,7 @@ router.get('/:username/sent-requests', async (req, res) => {
 
     // Find all users who have this user's ID in their friendRequests array
     const sentRequestsUsers = await User.find({ friendRequests: user._id })
-      .select('name username');
+      .select('name username instagram');
 
     res.json(sentRequestsUsers);
   } catch (err) {
@@ -61,7 +61,7 @@ router.get('/search/users', async (req, res) => {
 
     // Find users matching query but exclude the current user
     const users = await User.find(searchCriteria)
-    .select('name username')
+    .select('name username instagram')
     .limit(50);
 
     res.json(users);

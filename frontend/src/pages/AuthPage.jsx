@@ -18,6 +18,7 @@ export default function AuthPage({ mode = "login" }) {
     name: "",
     username: "",
     email: "",
+    instagram: "",
     password: "",
     confirmPassword: "",
   });
@@ -64,16 +65,17 @@ export default function AuthPage({ mode = "login" }) {
           return;
         }
 
+        const instagram = formData.instagram.trim();
         const res = await fetch(`${API_BASE}/auth/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, username, email, password }),
+          body: JSON.stringify({ name, username, email, password, instagram }),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Registration failed.");
 
         const user = data.user;
-        dispatch(loginSuccess({ name: user.name, username: user.username, email: user.email }));
+        dispatch(loginSuccess({ name: user.name, username: user.username, email: user.email, instagram: user.instagram || '' }));
         navigate("/");
         return;
       }
@@ -98,7 +100,7 @@ export default function AuthPage({ mode = "login" }) {
       if (!res.ok) throw new Error(data.error || "Login failed.");
 
       const user = data.user;
-      dispatch(loginSuccess({ name: user.name, username: user.username, email: user.email }));
+      dispatch(loginSuccess({ name: user.name, username: user.username, email: user.email, instagram: user.instagram || '' }));
       navigate("/");
     } catch (err) {
       setError(err.message || "Something went wrong. Please try again.");
@@ -205,6 +207,24 @@ export default function AuthPage({ mode = "login" }) {
                     autoComplete="username"
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:bg-white/8"
                   />
+                </label>
+              )}
+
+              {isSignup && (
+                <label className="block">
+                  <span className="mb-2 block text-sm font-medium text-slate-300">
+                    Instagram username <span className="text-slate-500 font-normal">(optional)</span>
+                  </span>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">@</span>
+                    <input
+                      name="instagram"
+                      value={formData.instagram}
+                      onChange={handleChange}
+                      placeholder="your_instagram"
+                      className="w-full rounded-2xl border border-white/10 bg-white/5 pl-8 pr-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#E1306C]/60 focus:bg-white/8"
+                    />
+                  </div>
                 </label>
               )}
 

@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import TestGameReader from "./TestGameReader";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
-import { recordRecentGame } from "../App";
+import { recordRecentGame } from "../utils/gameConstants";
 import {
   getLeaderboard,
   saveScore,

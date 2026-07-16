@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { GAME_MODES } from "../App";
+import { GAME_MODES } from "../utils/gameConstants";
 import { DIFFICULTIES, DIFF_LABELS } from "../utils/leaderboard";
 
 export default function ChallengePage() {

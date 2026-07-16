@@ -6,7 +6,7 @@ const router = express.Router();
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
-    const { name, username, email, password } = req.body;
+    const { name, username, email, password, instagram } = req.body;
 
     if (!name || !username || !email || !password) {
       return res.status(400).json({ error: 'All fields are required.' });
@@ -32,6 +32,7 @@ router.post('/register', async (req, res) => {
       username: username.trim().toLowerCase(),
       email: email.trim().toLowerCase(),
       password,
+      instagram: instagram ? instagram.trim() : '',
     });
 
     await user.save();

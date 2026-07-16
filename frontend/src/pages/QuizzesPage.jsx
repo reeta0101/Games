@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GAME_MODES, CATEGORIES } from "../App";
+import { GAME_MODES, CATEGORIES } from "../utils/gameConstants";
 
 export default function QuizzesPage() {
   const categories = CATEGORIES.filter(c => c.label !== "All");

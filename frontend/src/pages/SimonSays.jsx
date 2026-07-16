@@ -460,7 +460,6 @@ export default function SimonSays() {
                 key={d.key}
                 onClick={() => {
                   setDifficulty(d.key);
-                  startGame();
                 }}
                 className={`w-full p-4 rounded-2xl border-2 text-left transition-all ${
                   difficulty === d.key
@@ -482,6 +481,14 @@ export default function SimonSays() {
                 </div>
               </button>
             ))}
+          </div>
+          <div className="mt-8">
+            <button
+              onClick={startGame}
+              className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#40e0f0] to-[#a78bfa] text-black font-black text-xl hover:opacity-90 transition transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#40e0f0]/20"
+            >
+              Start Game
+            </button>
           </div>
           {currentUser && (
             <div className="mt-6 text-center">

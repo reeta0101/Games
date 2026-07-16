@@ -19,8 +19,8 @@ export default function ChessGame() {
   const challenge = location.state?.challenge;
   const isMultiplayer = !!challenge?.roomId;
   const roomId = challenge?.roomId;
-  // If timeLimit is provided, we use it (in seconds), else default to 0 (no time limit)
-  const initialTimeLimit = challenge?.timeLimit || 0; 
+  // If timeLimit is provided, we use it (in seconds), else default to 600 (10 mins) for local games
+  const initialTimeLimit = challenge?.timeLimit !== undefined ? challenge.timeLimit : 600; 
 
   const [game, setGame] = useState(new Chess());
   const [board, setBoard] = useState(game.board());
@@ -40,6 +40,7 @@ export default function ChessGame() {
 
   // Formatting helper
   const formatTime = (seconds) => {
+    if (initialTimeLimit === 0) return "--:--";
     if (seconds <= 0) return "0:00";
     const m = Math.floor(seconds / 60);
     const s = Math.floor(seconds % 60);
@@ -293,16 +294,14 @@ export default function ChessGame() {
 
       <div className="w-full max-w-[500px] mb-8">
         {/* Opponent Timer / Info */}
-        {initialTimeLimit > 0 && (
-          <div className={`flex justify-between items-center mb-2 px-4 py-2 rounded-xl border border-white/10 ${game.turn() !== myColor ? 'bg-indigo-500/20' : 'bg-black/20'}`}>
-            <span className="font-bold text-slate-300 uppercase tracking-widest text-xs">
-              {isFlipped ? "White" : "Black"}
-            </span>
-            <span className="font-mono text-xl font-black text-white">
-              {formatTime(isFlipped ? whiteTime : blackTime)}
-            </span>
-          </div>
-        )}
+        <div className={`flex justify-between items-center mb-2 px-4 py-2 rounded-xl border border-white/10 ${game.turn() !== myColor ? 'bg-indigo-500/20' : 'bg-black/20'}`}>
+          <span className="font-bold text-slate-300 uppercase tracking-widest text-xs">
+            {isFlipped ? "White" : "Black"}
+          </span>
+          <span className="font-mono text-xl font-black text-white">
+            {formatTime(isFlipped ? whiteTime : blackTime)}
+          </span>
+        </div>
 
         <div className="bg-[#0f172a] p-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
           <div className="w-full grid grid-cols-8 grid-rows-8 border-4 border-slate-700 rounded-lg overflow-hidden shadow-2xl bg-slate-800">
@@ -313,16 +312,14 @@ export default function ChessGame() {
         </div>
 
         {/* Player Timer / Info */}
-        {initialTimeLimit > 0 && (
-          <div className={`flex justify-between items-center mt-2 px-4 py-2 rounded-xl border border-white/10 ${game.turn() === myColor ? 'bg-indigo-500/20' : 'bg-black/20'}`}>
-            <span className="font-bold text-slate-300 uppercase tracking-widest text-xs">
-              {isFlipped ? "Black (You)" : "White (You)"}
-            </span>
-            <span className="font-mono text-xl font-black text-white">
-              {formatTime(isFlipped ? blackTime : whiteTime)}
-            </span>
-          </div>
-        )}
+        <div className={`flex justify-between items-center mt-2 px-4 py-2 rounded-xl border border-white/10 ${game.turn() === myColor ? 'bg-indigo-500/20' : 'bg-black/20'}`}>
+          <span className="font-bold text-slate-300 uppercase tracking-widest text-xs">
+            {isFlipped ? "Black (You)" : "White (You)"}
+          </span>
+          <span className="font-mono text-xl font-black text-white">
+            {formatTime(isFlipped ? blackTime : whiteTime)}
+          </span>
+        </div>
       </div>
 
       <div className="flex gap-4 w-full max-w-md">

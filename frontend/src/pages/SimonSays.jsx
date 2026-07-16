@@ -214,7 +214,6 @@ export default function SimonSays() {
   const addToSequence = useCallback(() => {
     const newColor = Math.floor(Math.random() * 4);
     setSequence((prev) => [...prev, newColor]);
-    setLevel((prev) => prev + 1);
   }, []);
 
   const handleColorPress = useCallback(
@@ -243,10 +242,10 @@ export default function SimonSays() {
         setScore((prev) => prev + pointsEarned);
         setFeedbackText(`Level ${level}! +${pointsEarned} pts`);
         setFeedbackTone("correct");
+        setLevel((prev) => prev + 1);
 
         setTimeout(() => {
           addToSequence();
-          playSequence();
         }, 1200);
       }
     },
@@ -339,10 +338,18 @@ export default function SimonSays() {
     setIsGameOver(false);
     setFeedbackText("");
     setFeedbackTone("neutral");
-    addToSequence();
-    playSequence();
     recordRecentGame("simon_says");
-  }, [addToSequence, playSequence]);
+
+    setTimeout(() => {
+      addToSequence();
+    }, 500);
+  }, [addToSequence]);
+
+  useEffect(() => {
+    if (sequence.length > 0 && !isGameOver) {
+      playSequence();
+    }
+  }, [sequence, isGameOver, playSequence]);
 
   const handleGuestSubmit = (e) => {
     e.preventDefault();

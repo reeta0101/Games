@@ -304,6 +304,44 @@ io.on('connection', (socket) => {
     io.to(roomId).emit('ttt_reset');
   });
 
+  // --- CHESS LOGIC ---
+  socket.on('chess_join', ({ roomId, username }) => {
+    socket.join(roomId);
+    if (!lobbies[roomId]) return;
+    const p = lobbies[roomId].players.find(p => p.username === username);
+    if (p) p.socketId = socket.id;
+
+    // Wait until both players are connected
+    const players = lobbies[roomId].players;
+    if (players.length >= 2) {
+      // Assign White and Black. Leader is White.
+      const leader = players.find(p => p.isLeader) || players[0];
+      const other = players.find(p => p.username !== leader.username) || players[1];
+      
+      io.to(roomId).emit('chess_init', {
+        playerWhite: leader.username,
+        playerWhiteName: leader.name,
+        playerBlack: other.username,
+        playerBlackName: other.name
+      });
+    }
+  });
+
+  socket.on('chess_make_move', (data) => {
+    // data: { roomId, from, to, promotion }
+    io.to(data.roomId).emit('chess_move', data);
+  });
+
+  socket.on('chess_time_update', (data) => {
+    // data: { roomId, whiteTime, blackTime, activeColor }
+    // Broadcast clock states to ensure synchronization, but exclude the sender
+    socket.to(data.roomId).emit('chess_clock_sync', data);
+  });
+
+  socket.on('chess_request_reset', ({ roomId }) => {
+    io.to(roomId).emit('chess_reset');
+  });
+
   // --- ROCK PAPER SCISSORS LOGIC ---
   const rpsState = {}; // { roomId: { p1: { username, choice }, p2: { username, choice } } }
 

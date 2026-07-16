@@ -479,7 +479,7 @@ export default function LobbyPage() {
                   
                   {challengeMode === 'time_attack' && (
                     <div className="mt-4 flex gap-2">
-                      {[30, 60, 120].map(time => (
+                      {[30, 60, 120, 300, 600].map(time => (
                         <div
                           key={time}
                           onClick={(e) => { e.stopPropagation(); leader && setTimeLimit(time); }}

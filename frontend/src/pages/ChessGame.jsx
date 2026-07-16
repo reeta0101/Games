@@ -1,6 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Chess } from "chess.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 import { recordRecentGame } from "../utils/gameConstants";
 
 const PIECE_SYMBOLS = {
@@ -10,19 +12,50 @@ const PIECE_SYMBOLS = {
 
 export default function ChessGame() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const { socket } = useGlobalSocket();
+
+  const challenge = location.state?.challenge;
+  const isMultiplayer = !!challenge?.roomId;
+  const roomId = challenge?.roomId;
+  // If timeLimit is provided, we use it (in seconds), else default to 0 (no time limit)
+  const initialTimeLimit = challenge?.timeLimit || 0; 
+
   const [game, setGame] = useState(new Chess());
   const [board, setBoard] = useState(game.board());
   const [selectedSquare, setSelectedSquare] = useState(null);
   const [validMoves, setValidMoves] = useState([]);
   const [status, setStatus] = useState("White's Turn");
 
-  // Initialize analytics
+  // Multiplayer State
+  const [myColor, setMyColor] = useState(isMultiplayer ? null : 'w'); 
+  const [opponentName, setOpponentName] = useState(isMultiplayer ? "Opponent" : "Local Player");
+  const [playersReady, setPlayersReady] = useState(!isMultiplayer);
+  
+  // Timer State (in seconds)
+  const [whiteTime, setWhiteTime] = useState(initialTimeLimit);
+  const [blackTime, setBlackTime] = useState(initialTimeLimit);
+  const timerRef = useRef(null);
+
+  // Formatting helper
+  const formatTime = (seconds) => {
+    if (seconds <= 0) return "0:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
+
   useEffect(() => {
     recordRecentGame('chess');
   }, []);
 
   const updateStatus = useCallback(() => {
-    if (game.isCheckmate()) {
+    if (whiteTime <= 0 && initialTimeLimit > 0) {
+      setStatus("Game Over: White Flagged (Timeout)");
+    } else if (blackTime <= 0 && initialTimeLimit > 0) {
+      setStatus("Game Over: Black Flagged (Timeout)");
+    } else if (game.isCheckmate()) {
       setStatus(`Checkmate! ${game.turn() === "w" ? "Black" : "White"} Wins!`);
     } else if (game.isDraw()) {
       setStatus("Game Over: Draw");
@@ -34,28 +67,137 @@ export default function ChessGame() {
       setStatus(`${game.turn() === "w" ? "White" : "Black"}'s Turn`);
     }
     setBoard(game.board());
-  }, [game]);
+  }, [game, whiteTime, blackTime, initialTimeLimit]);
+
+  // Handle Timers
+  useEffect(() => {
+    if (initialTimeLimit === 0) return; // No time limit
+    if (game.isGameOver() || whiteTime <= 0 || blackTime <= 0 || !playersReady) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      updateStatus();
+      return;
+    }
+
+    timerRef.current = setInterval(() => {
+      if (game.turn() === 'w') {
+        setWhiteTime(prev => {
+          if (prev <= 1) { clearInterval(timerRef.current); return 0; }
+          return prev - 1;
+        });
+      } else {
+        setBlackTime(prev => {
+          if (prev <= 1) { clearInterval(timerRef.current); return 0; }
+          return prev - 1;
+        });
+      }
+    }, 1000);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [game, playersReady, whiteTime, blackTime, initialTimeLimit, updateStatus]);
+
+  // Sync clocks via socket periodically if we are the one moving
+  useEffect(() => {
+    if (isMultiplayer && socket && roomId && initialTimeLimit > 0) {
+      const syncInterval = setInterval(() => {
+        if (game.turn() === myColor && playersReady) {
+          socket.emit("chess_time_update", { roomId, whiteTime, blackTime, activeColor: game.turn() });
+        }
+      }, 5000); // sync every 5 seconds
+      return () => clearInterval(syncInterval);
+    }
+  }, [isMultiplayer, socket, roomId, initialTimeLimit, game, myColor, playersReady, whiteTime, blackTime]);
+
+  // Socket logic
+  useEffect(() => {
+    if (isMultiplayer && socket && currentUser) {
+      socket.emit("chess_join", { roomId, username: currentUser.username });
+
+      const onInit = (data) => {
+        if (data.playerWhite === currentUser.username) {
+          setMyColor("w");
+          setOpponentName(data.playerBlackName || "Opponent");
+        } else {
+          setMyColor("b");
+          setOpponentName(data.playerWhiteName || "Opponent");
+        }
+        setPlayersReady(true);
+      };
+
+      const onMove = (data) => {
+        // data: { from, to, promotion, fen }
+        // Ensure our board matches their FEN
+        if (game.fen() !== data.fen) {
+          const newGame = new Chess(data.fen);
+          setGame(newGame);
+          updateStatus();
+        }
+      };
+
+      const onClockSync = (data) => {
+        // only accept if it's NOT our turn (to prevent snapping back our own clock)
+        if (game.turn() !== myColor) {
+          setWhiteTime(data.whiteTime);
+          setBlackTime(data.blackTime);
+        }
+      };
+
+      const onReset = () => {
+        const newGame = new Chess();
+        setGame(newGame);
+        setSelectedSquare(null);
+        setValidMoves([]);
+        setWhiteTime(initialTimeLimit);
+        setBlackTime(initialTimeLimit);
+        updateStatus();
+      };
+
+      socket.on("chess_init", onInit);
+      socket.on("chess_move", onMove);
+      socket.on("chess_clock_sync", onClockSync);
+      socket.on("chess_reset", onReset);
+
+      return () => {
+        socket.off("chess_init", onInit);
+        socket.off("chess_move", onMove);
+        socket.off("chess_clock_sync", onClockSync);
+        socket.off("chess_reset", onReset);
+      };
+    }
+  }, [isMultiplayer, socket, currentUser, roomId, game, myColor, initialTimeLimit, updateStatus]);
 
   const handleSquareClick = (squareStr) => {
-    // If game is over, do nothing
-    if (game.isGameOver()) return;
+    if (game.isGameOver() || whiteTime <= 0 || blackTime <= 0 || !playersReady) return;
+    
+    // In multiplayer, restrict to own color
+    if (isMultiplayer && game.turn() !== myColor) return;
 
     const piece = game.get(squareStr);
     const isOwnPiece = piece && piece.color === game.turn();
 
     if (selectedSquare) {
-      // Trying to move
       const moves = game.moves({ square: selectedSquare, verbose: true });
       const move = moves.find((m) => m.to === squareStr);
 
       if (move) {
-        // Handle basic pawn promotion (always promote to Queen for simplicity)
         try {
           game.move({
             from: selectedSquare,
             to: squareStr,
-            promotion: 'q' // Always promote to queen for now
+            promotion: 'q'
           });
+          
+          if (isMultiplayer && socket) {
+            socket.emit("chess_make_move", { 
+              roomId, 
+              from: selectedSquare, 
+              to: squareStr, 
+              promotion: 'q',
+              fen: game.fen() // Send FEN to guarantee sync
+            });
+          }
+
           setSelectedSquare(null);
           setValidMoves([]);
           updateStatus();
@@ -63,16 +205,13 @@ export default function ChessGame() {
           console.error("Invalid move", e);
         }
       } else if (isOwnPiece) {
-        // Switch selection to another own piece
         setSelectedSquare(squareStr);
         setValidMoves(game.moves({ square: squareStr, verbose: true }).map(m => m.to));
       } else {
-        // Clicked empty square or enemy piece that is not a valid move
         setSelectedSquare(null);
         setValidMoves([]);
       }
     } else {
-      // No square selected yet
       if (isOwnPiece) {
         setSelectedSquare(squareStr);
         setValidMoves(game.moves({ square: squareStr, verbose: true }).map(m => m.to));
@@ -81,23 +220,32 @@ export default function ChessGame() {
   };
 
   const resetGame = () => {
-    const newGame = new Chess();
-    setGame(newGame);
-    setBoard(newGame.board());
-    setSelectedSquare(null);
-    setValidMoves([]);
-    setStatus("White's Turn");
+    if (isMultiplayer && socket) {
+      socket.emit("chess_request_reset", { roomId });
+    } else {
+      const newGame = new Chess();
+      setGame(newGame);
+      setWhiteTime(initialTimeLimit);
+      setBlackTime(initialTimeLimit);
+      setSelectedSquare(null);
+      setValidMoves([]);
+      updateStatus();
+    }
   };
 
-  const renderSquare = (rowIdx, colIdx, piece) => {
-    // chess.js board is 8x8. 
-    // row 0 is Rank 8 (top), row 7 is Rank 1 (bottom).
-    // col 0 is File a (left), col 7 is File h (right).
-    const file = String.fromCharCode(97 + colIdx); // 'a' to 'h'
-    const rank = 8 - rowIdx; // 8 to 1
-    const squareStr = `${file}${rank}`;
+  const isFlipped = myColor === 'b'; // Black perspective
 
-    const isLightSquare = (rowIdx + colIdx) % 2 === 0;
+  const renderSquare = (rowIdx, colIdx) => {
+    // Determine square coordinate based on flip
+    const fileIdx = isFlipped ? 7 - colIdx : colIdx;
+    const rankIdx = isFlipped ? rowIdx : 7 - rowIdx; 
+    
+    const file = String.fromCharCode(97 + fileIdx); 
+    const rank = rankIdx + 1; 
+    const squareStr = `${file}${rank}`;
+    const piece = game.get(squareStr);
+
+    const isLightSquare = (fileIdx + rankIdx) % 2 !== 0;
     const isSelected = selectedSquare === squareStr;
     const isValidMove = validMoves.includes(squareStr);
     const isCheck = piece && piece.type === 'k' && piece.color === game.turn() && game.isCheck();
@@ -105,7 +253,6 @@ export default function ChessGame() {
     let bgClass = isLightSquare ? "bg-slate-200" : "bg-slate-500";
     if (isSelected) bgClass = "bg-yellow-300/80";
     if (isValidMove) {
-      // Show dot for empty, or red tint for capture
       bgClass = piece ? "bg-rose-400/80" : isLightSquare ? "bg-slate-300/80" : "bg-slate-400/80";
     }
     if (isCheck) bgClass = "bg-red-500 animate-pulse";
@@ -130,27 +277,61 @@ export default function ChessGame() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
-      <div className="text-center mb-8">
+      <div className="text-center mb-6">
         <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 mb-2">Grandmaster Chess</h1>
-        <p className={`text-lg font-bold transition-all duration-300 ${game.isCheckmate() ? 'text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]' : 'text-slate-300'}`}>
-          {status}
+        {isMultiplayer && (
+          <div className="flex justify-center items-center gap-4 text-sm font-bold uppercase tracking-widest text-slate-400">
+            <span className={myColor === 'w' ? 'text-white' : ''}>You (White)</span>
+            <span className="text-[#40e0f0]">VS</span>
+            <span className={myColor === 'b' ? 'text-white' : ''}>{opponentName} (Black)</span>
+          </div>
+        )}
+        <p className={`text-lg font-bold mt-2 transition-all duration-300 ${game.isCheckmate() || whiteTime <= 0 || blackTime <= 0 ? 'text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]' : 'text-slate-300'}`}>
+          {!playersReady ? "Waiting for Opponent..." : status}
         </p>
       </div>
 
-      <div className="w-full max-w-[500px] bg-[#0f172a] p-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.15)] mb-8">
-        <div className="w-full grid grid-cols-8 grid-rows-8 border-4 border-slate-700 rounded-lg overflow-hidden shadow-2xl bg-slate-800">
-          {board.map((row, rowIdx) => (
-            row.map((piece, colIdx) => renderSquare(rowIdx, colIdx, piece))
-          ))}
+      <div className="w-full max-w-[500px] mb-8">
+        {/* Opponent Timer / Info */}
+        {initialTimeLimit > 0 && (
+          <div className={`flex justify-between items-center mb-2 px-4 py-2 rounded-xl border border-white/10 ${game.turn() !== myColor ? 'bg-indigo-500/20' : 'bg-black/20'}`}>
+            <span className="font-bold text-slate-300 uppercase tracking-widest text-xs">
+              {isFlipped ? "White" : "Black"}
+            </span>
+            <span className="font-mono text-xl font-black text-white">
+              {formatTime(isFlipped ? whiteTime : blackTime)}
+            </span>
+          </div>
+        )}
+
+        <div className="bg-[#0f172a] p-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
+          <div className="w-full grid grid-cols-8 grid-rows-8 border-4 border-slate-700 rounded-lg overflow-hidden shadow-2xl bg-slate-800">
+            {Array.from({ length: 8 }).map((_, r) => (
+              Array.from({ length: 8 }).map((_, c) => renderSquare(r, c))
+            ))}
+          </div>
         </div>
+
+        {/* Player Timer / Info */}
+        {initialTimeLimit > 0 && (
+          <div className={`flex justify-between items-center mt-2 px-4 py-2 rounded-xl border border-white/10 ${game.turn() === myColor ? 'bg-indigo-500/20' : 'bg-black/20'}`}>
+            <span className="font-bold text-slate-300 uppercase tracking-widest text-xs">
+              {isFlipped ? "Black (You)" : "White (You)"}
+            </span>
+            <span className="font-mono text-xl font-black text-white">
+              {formatTime(isFlipped ? blackTime : whiteTime)}
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="flex gap-4 w-full max-w-md">
         <button
           onClick={resetGame}
-          className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-600 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
+          className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-600 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition disabled:opacity-50"
+          disabled={!playersReady}
         >
-          {game.isGameOver() ? "Play Again" : "Reset Board"}
+          {game.isGameOver() || (whiteTime <= 0 || blackTime <= 0) ? "Play Again" : "Reset Board"}
         </button>
         <button
           onClick={() => navigate("/games")}

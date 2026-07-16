@@ -129,7 +129,7 @@ io.on('connection', (socket) => {
     socket.join(roomId);
     let isNewRoom = false;
     if (!lobbies[roomId]) {
-      lobbies[roomId] = { players: [], settings: null };
+      lobbies[roomId] = { players: [], settings: null, status: 'waiting' };
       isNewRoom = true;
     }
     

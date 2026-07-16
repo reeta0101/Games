@@ -349,11 +349,37 @@ export default function LobbyPage() {
 
   const leader = isMeLeader();
 
+  const getStatusBadge = () => {
+    if (!lobbyState) return null;
+    if (lobbyState.status === 'playing') {
+      return (
+        <span className="ml-3 inline-block rounded-full bg-rose-500/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-rose-400 border border-rose-500/30 animate-pulse">
+          Match in Progress
+        </span>
+      );
+    } else if (lobbyState.status === 'finished') {
+      return (
+        <span className="ml-3 inline-block rounded-full bg-slate-500/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400 border border-slate-500/30">
+          Match Finished
+        </span>
+      );
+    } else {
+      return (
+        <span className="ml-3 inline-block rounded-full bg-[#40f080]/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-[#40f080] border border-[#40f080]/30">
+          Waiting for Players
+        </span>
+      );
+    }
+  };
+
   return (
     <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl flex-col px-3 py-8 sm:px-6 sm:py-10">
       <div className="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-3xl border border-white/10 bg-[#0f172a] p-6 shadow-2xl gap-4">
         <div>
-          <h1 className="text-2xl font-black text-white">Lobby <span className="text-[#40e0f0]">#{roomId}</span></h1>
+          <h1 className="text-2xl font-black text-white flex items-center flex-wrap gap-y-2">
+            Lobby <span className="text-[#40e0f0] ml-2">#{roomId}</span>
+            {getStatusBadge()}
+          </h1>
           <p className="text-sm text-slate-400 mt-1">Share this code with your friends!</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2">

@@ -18,6 +18,7 @@ export default function TicTacToe() {
   const [gameStatus, setGameStatus] = useState("playing"); // playing, won, draw
   const [winner, setWinner] = useState(null);
   const [gameMode, setGameMode] = useState("classic"); // classic, infinite
+  const [score, setScore] = useState({ me: 0, opponent: 0 });
   
   // Track move history for infinite mode
   const [xMoves, setXMoves] = useState([]); // indices
@@ -102,6 +103,20 @@ export default function TicTacToe() {
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         setWinner(squares[a]);
         setGameStatus("won");
+        // Update score
+        if (isMultiplayer) {
+          if (squares[a] === mySymbol) {
+            setScore(s => ({ ...s, me: s.me + 1 }));
+          } else {
+            setScore(s => ({ ...s, opponent: s.opponent + 1 }));
+          }
+        } else {
+          if (squares[a] === "X") {
+            setScore(s => ({ ...s, me: s.me + 1 }));
+          } else {
+            setScore(s => ({ ...s, opponent: s.opponent + 1 }));
+          }
+        }
         return squares[a];
       }
     }
@@ -110,7 +125,7 @@ export default function TicTacToe() {
       return "draw";
     }
     return null;
-  }, []);
+  }, [isMultiplayer, mySymbol]);
 
   const handleClick = (i) => {
     if (gameStatus !== "playing" || board[i]) return;
@@ -303,24 +318,39 @@ export default function TicTacToe() {
         </p>
       </div>
 
-      <div className="bg-[#0f172a] border border-white/10 p-8 rounded-3xl shadow-[0_0_40px_rgba(64,224,240,0.1)] backdrop-blur-xl max-w-md w-full">
-        <div className="mb-8 text-center h-8">
-          <p className={`text-xl font-black uppercase tracking-widest ${
-            gameStatus === "won" ? (winner === (isMultiplayer ? mySymbol : "X") ? "text-[#40f080]" : "text-rose-400") : "text-slate-300"
+      <div className="flex justify-between w-full max-w-md mb-8 text-white text-xl font-black bg-[#0f172a] px-8 py-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(64,224,240,0.15)]">
+        <div className="text-center">
+          <p className="text-[10px] uppercase tracking-widest text-[#40e0f0] mb-1">You ({isMultiplayer ? mySymbol : 'X'})</p>
+          <p className="text-3xl">{score.me}</p>
+        </div>
+        <div className="text-center">
+          <p className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Score</p>
+          <p className="text-3xl text-slate-700">-</p>
+        </div>
+        <div className="text-center">
+          <p className="text-[10px] uppercase tracking-widest text-[#f04060] mb-1">{isMultiplayer ? opponentName : "AI"} ({isMultiplayer ? (mySymbol === 'X' ? 'O' : 'X') : 'O'})</p>
+          <p className="text-3xl">{score.opponent}</p>
+        </div>
+      </div>
+
+      <div className="bg-[#0f172a]/80 border border-white/10 p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-md w-full relative">
+        <div className="mb-6 text-center h-8">
+          <p className={`text-xl font-black uppercase tracking-widest transition-all duration-300 ${
+            gameStatus === "won" ? (winner === (isMultiplayer ? mySymbol : "X") ? "text-[#40f080] scale-110 drop-shadow-[0_0_10px_rgba(64,240,128,0.5)]" : "text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]") : "text-slate-300"
           }`}>
             {getStatusMessage()}
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mb-8 bg-white/5 p-3 rounded-2xl relative">
+        <div className="grid grid-cols-3 gap-3 mb-8 bg-slate-900/50 p-4 rounded-3xl relative border border-white/5 shadow-inner">
           {board.every(c => c === null) && (
-            <div className="absolute -top-12 left-0 right-0 flex justify-center">
+            <div className="absolute -top-12 left-0 right-0 flex justify-center z-10">
               <button 
                 onClick={toggleMode}
-                className="bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold text-slate-300 transition uppercase tracking-widest flex items-center gap-2"
+                className="bg-[#1e293b] hover:bg-[#334155] border border-white/10 px-5 py-2 rounded-full text-xs font-black text-slate-300 transition-all duration-300 uppercase tracking-widest flex items-center gap-2 shadow-lg hover:shadow-cyan-500/20"
               >
-                Mode: <span className={gameMode === 'infinite' ? 'text-purple-400' : 'text-[#40e0f0]'}>{gameMode}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/></svg>
+                Mode: <span className={gameMode === 'infinite' ? 'text-purple-400 drop-shadow-[0_0_5px_rgba(192,132,252,0.5)]' : 'text-[#40e0f0] drop-shadow-[0_0_5px_rgba(64,224,240,0.5)]'}>{gameMode}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/></svg>
               </button>
             </div>
           )}
@@ -334,10 +364,19 @@ export default function TicTacToe() {
               <button
                 key={i}
                 onClick={() => handleClick(i)}
-                className={`aspect-square bg-[#1e293b] rounded-xl flex items-center justify-center text-6xl transition-all duration-300 hover:bg-[#334155] disabled:cursor-not-allowed border border-white/5 shadow-inner ${isFading ? 'animate-pulse bg-red-900/20 border-red-500/30' : ''}`}
+                className={`aspect-square bg-[#0f172a] rounded-2xl flex items-center justify-center text-7xl transition-all duration-300 disabled:cursor-not-allowed border border-white/5 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] overflow-hidden relative group
+                  ${cell === null && gameStatus === "playing" ? 'hover:bg-[#1e293b] hover:shadow-[inset_0_0_15px_rgba(255,255,255,0.05)]' : ''}
+                  ${isFading ? 'animate-pulse bg-red-950/40 border-red-500/30 shadow-[inset_0_0_30px_rgba(255,0,0,0.2)]' : ''}
+                  ${gameStatus === "won" && cell === winner ? 'bg-white/10 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)]' : ''}
+                `}
                 disabled={gameStatus !== "playing" || cell !== null}
               >
-                <span className={`transform transition-all duration-500 ${cell === "X" ? "text-[#40e0f0] scale-100" : cell === "O" ? "text-[#f04060] scale-100" : "scale-0"} ${isFading ? 'opacity-30 scale-90' : 'drop-shadow-[0_0_10px_currentColor]'}`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${cell === "X" ? "from-cyan-500/20 to-blue-500/20" : cell === "O" ? "from-rose-500/20 to-orange-500/20" : "opacity-0"} transition-opacity duration-300 ${cell ? 'opacity-100' : ''}`} />
+                <span className={`relative z-10 transform transition-all duration-500 
+                  ${cell === "X" ? "text-[#40e0f0] scale-100 font-black" : cell === "O" ? "text-[#f04060] scale-100 font-black" : "scale-0"} 
+                  ${isFading ? 'opacity-30 scale-75' : 'drop-shadow-[0_0_15px_currentColor]'}
+                  ${gameStatus === "won" && cell === winner ? 'scale-110 drop-shadow-[0_0_25px_currentColor] animate-bounce-short' : ''}
+                `}>
                   {cell}
                 </span>
               </button>

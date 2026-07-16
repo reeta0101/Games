@@ -901,9 +901,9 @@ export default function QuizGame({ game }) {
             {challenge?.roomId ? (
               <button
                 onClick={() => navigate(`/lobby?room=${challenge.roomId}`)}
-                className="rounded-full border border-[#f0e040]/60 bg-[#f0e040]/10 px-6 py-3 text-sm font-bold uppercase tracking-[0.25em] text-[#f0e040] transition hover:bg-[#f0e040]/20"
+                className="rounded-full border border-[#40e0f0]/60 bg-gradient-to-r from-[#40e0f0]/20 to-[#f04060]/20 px-6 py-3 text-sm font-black uppercase tracking-[0.25em] text-white shadow-[0_0_15px_rgba(64,224,240,0.15)] transition hover:scale-105 hover:shadow-[0_0_20px_rgba(64,224,240,0.3)]"
               >
-                Back to Lobby
+                🔄 Rematch
               </button>
             ) : (
               <>

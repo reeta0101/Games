@@ -230,6 +230,7 @@ io.on('connection', (socket) => {
         p.finalScore = 0;
         p.correct = 0;
         p.wrong = 0;
+        p.ready = false; // Reset ready state for the next rematch
       });
       io.to(roomId).emit('game_started', lobbies[roomId].settings);
 
@@ -256,6 +257,13 @@ io.on('connection', (socket) => {
         if (status === 'finished') {
           p.finished = true;
         }
+        
+        // Check if all players are finished
+        const allFinished = lobbies[roomId].players.every(player => player.finished);
+        if (allFinished) {
+          lobbies[roomId].status = 'finished';
+        }
+
         io.to(roomId).emit('lobby_state', lobbies[roomId]);
       }
     }

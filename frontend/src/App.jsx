@@ -322,9 +322,9 @@ function HomePage({ currentUser }) {
 
   return (
     <main className="mx-auto max-w-7xl px-3 pb-12 pt-5 sm:px-6 sm:pb-16 sm:pt-8 lg:px-8">
-      <section className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr] xl:gap-10">
-        <div className="space-y-6">
-          <div className="surface relative overflow-hidden rounded-3xl p-5 animate-fade-in-up sm:p-7 lg:p-8">
+      <section className="grid gap-6 xl:grid-cols-[1.12fr_0.88fr] xl:gap-10 items-stretch">
+        <div className="space-y-6 h-full flex flex-col">
+          <div className="surface relative overflow-hidden rounded-3xl p-5 animate-fade-in-up sm:p-7 lg:p-8 flex-1 flex flex-col">
             {/* Decorative orbiting dot */}
             <div className="pointer-events-none absolute right-12 top-12 hidden sm:block">
               <div className="relative h-[120px] w-[120px]">
@@ -340,8 +340,8 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#40e0f0]/[0.06] blur-3xl animate-float-orb" />
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
 
-            <div className="relative flex flex-col-reverse lg:flex-row items-stretch gap-8 lg:gap-12">
-              <div className="flex-1 min-w-0 flex flex-col justify-center">
+            <div className="relative flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="flex-1 min-w-0">
                 <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
                   <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
                   {GAME_MODES.length} focused quizzes
@@ -377,17 +377,17 @@ function HomePage({ currentUser }) {
               </div>
 
               {/* Hero Image Section */}
-              <div className="flex-1 min-w-0 w-full max-w-sm lg:max-w-none relative animate-float flex flex-col justify-end">
+              <div className="flex-1 min-w-0 w-full max-w-sm lg:max-w-none relative animate-float">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
                 <img 
                   src="/images/hero.png" 
                   alt="Study Arcade Hero" 
-                  className="relative w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
+                  className="relative w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
                 />
               </div>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-4 w-full">
+            <div className="mt-auto flex flex-wrap gap-4 w-full pt-10">
               {[
                 {
                   label: "Read first",
@@ -466,7 +466,7 @@ function HomePage({ currentUser }) {
         </div>
 
         <aside
-          className="space-y-4 animate-fade-in-up"
+          className="space-y-4 animate-fade-in-up h-full flex flex-col"
           style={{ animationDelay: "0.14s" }}
         >
           <div className="surface rounded-3xl p-5">
@@ -631,7 +631,7 @@ function HomePage({ currentUser }) {
             </div>
           )}
 
-          <div className="surface rounded-3xl p-5">
+          <div className="surface rounded-3xl p-5 mt-auto">
             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f59e0b]/80">
               Tip
             </p>

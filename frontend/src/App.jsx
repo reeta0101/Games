@@ -340,8 +340,8 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#40e0f0]/[0.06] blur-3xl animate-float-orb" />
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
 
-            <div className="relative flex flex-col-reverse lg:flex-row items-start gap-8 lg:gap-12">
-              <div className="flex-1 min-w-0">
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 items-center gap-6 lg:gap-8">
+              <div className="min-w-0">
                 <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
                   <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
                   {GAME_MODES.length} focused quizzes
@@ -353,37 +353,41 @@ function HomePage({ currentUser }) {
                     playable drills
                   </span>
                 </h1>
-                <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
-                  Pick a topic, read the reference, then practice under time
-                  pressure with instant feedback and local progress tracking.
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    to={featuredGame.path}
-                    className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)] whitespace-nowrap flex-1 sm:flex-none"
-                  >
-                    <span className="text-base">▶</span>
-                    Start {featuredGame.title}
-                  </Link>
-                  <a
-                    href="#quiz-library"
-                    className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8 whitespace-nowrap flex-1 sm:flex-none"
-                  >
-                    Browse quizzes
-                  </a>
-                </div>
-
               </div>
 
               {/* Hero Image Section */}
-              <div className="flex-1 min-w-0 w-full max-w-sm lg:max-w-none relative animate-float">
+              <div className="min-w-0 w-full max-w-sm mx-auto lg:max-w-none relative animate-float">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
                 <img 
                   src="/images/hero.png" 
                   alt="Study Arcade Hero" 
                   className="relative w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
                 />
+              </div>
+
+              {/* Row 2: Subtitle */}
+              <div className="lg:col-span-2 pt-2">
+                <p className="text-base leading-7 text-slate-300 sm:text-lg lg:max-w-4xl">
+                  Pick a topic, read the reference, then practice under time
+                  pressure with instant feedback and local progress tracking.
+                </p>
+              </div>
+
+              {/* Row 3: Buttons */}
+              <div className="lg:col-span-2 flex flex-wrap gap-3 pt-2">
+                <Link
+                  to={featuredGame.path}
+                  className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)] whitespace-nowrap flex-1 sm:flex-none"
+                >
+                  <span className="text-base">▶</span>
+                  Start {featuredGame.title}
+                </Link>
+                <a
+                  href="#quiz-library"
+                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8 whitespace-nowrap flex-1 sm:flex-none"
+                >
+                  Browse quizzes
+                </a>
               </div>
             </div>
 

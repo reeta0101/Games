@@ -462,67 +462,7 @@ function HomePage({ currentUser }) {
             </div>
           )}
 
-          <div
-            className="surface rounded-3xl p-5 animate-fade-in-up sm:p-6"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f0e040]/80">
-                  {hasRecent ? "Recently played" : "Recommended drills"}
-                </p>
-                <h2 className="mt-2 text-2xl font-black text-white">
-                  Keep playing from here
-                </h2>
-              </div>
-              <a
-                href="#quiz-library"
-                className="text-xs font-bold uppercase tracking-[0.2em] text-[#40e0f0] transition hover:text-white"
-              >
-                View all
-              </a>
-            </div>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {(hasRecent ? recentlyPlayed : recommendedGames).map((game) => (
-                <Link
-                  key={game.id}
-                  to={game.path}
-                  className="interactive-lift group flex min-h-24 items-center gap-4 rounded-2xl border border-white/8 bg-white/[0.035] p-4"
-                >
-                  <div
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-sm font-black"
-                    style={{
-                      borderColor: `${game.accent}55`,
-                      color: game.accent,
-                      background: `${game.accent}12`,
-                    }}
-                  >
-                    {game.hero}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-black text-white">
-                      {game.title}
-                    </p>
-                    <p className="mt-0.5 truncate text-xs text-slate-500">
-                      {game.category}
-                    </p>
-                    {hasRecent && game.playedAt && (
-                      <p className="mt-0.5 text-[10px] text-slate-600 uppercase tracking-[0.14em]">
-                        🕐 {timeAgo(game.playedAt)}
-                      </p>
-                    )}
-                    <p
-                      className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
-                      style={{ color: game.accent }}
-                    >
-                      Play again →
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
         </div>
 
         <aside
@@ -701,6 +641,68 @@ function HomePage({ currentUser }) {
             </p>
           </div>
         </aside>
+      </section>
+
+      <section
+        className="surface mt-6 rounded-3xl p-5 animate-fade-in-up sm:p-6"
+        style={{ animationDelay: "0.1s" }}
+      >
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#f0e040]/80">
+              {hasRecent ? "Recently played" : "Recommended drills"}
+            </p>
+            <h2 className="mt-2 text-2xl font-black text-white">
+              Keep playing from here
+            </h2>
+          </div>
+          <a
+            href="#quiz-library"
+            className="text-xs font-bold uppercase tracking-[0.2em] text-[#40e0f0] transition hover:text-white"
+          >
+            View all
+          </a>
+        </div>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {(hasRecent ? recentlyPlayed : recommendedGames).map((game) => (
+            <Link
+              key={game.id}
+              to={game.path}
+              className="interactive-lift group flex min-h-24 items-center gap-4 rounded-2xl border border-white/8 bg-white/[0.035] p-4"
+            >
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-sm font-black"
+                style={{
+                  borderColor: `${game.accent}55`,
+                  color: game.accent,
+                  background: `${game.accent}12`,
+                }}
+              >
+                {game.hero}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-sm font-black text-white">
+                  {game.title}
+                </p>
+                <p className="mt-0.5 truncate text-xs text-slate-500">
+                  {game.category}
+                </p>
+                {hasRecent && game.playedAt && (
+                  <p className="mt-0.5 text-[10px] text-slate-600 uppercase tracking-[0.14em]">
+                    🕐 {timeAgo(game.playedAt)}
+                  </p>
+                )}
+                <p
+                  className="mt-1.5 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70 transition group-hover:translate-x-1 group-hover:opacity-100"
+                  style={{ color: game.accent }}
+                >
+                  Play again →
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section

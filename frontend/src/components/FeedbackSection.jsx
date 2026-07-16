@@ -46,11 +46,11 @@ export default function FeedbackSection() {
         backdropFilter: "blur(20px)",
       }}
     >
-      <div className="mb-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#40e0f0]/80 whitespace-nowrap">
           We value your input
         </p>
-        <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+        <h2 className="text-2xl font-black text-white sm:text-3xl whitespace-nowrap">
           Help us improve
         </h2>
       </div>

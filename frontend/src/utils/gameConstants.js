@@ -5,6 +5,20 @@
 
 export const GAME_MODES = [
   {
+    id: "stateCapital",
+    path: "/state-capital",
+    title: "State Capital Quiz",
+    badge: "GK Memory",
+    category: "General Knowledge",
+    hero: "IND",
+    intro: "Indian state capitals at exam speed.",
+    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
+    reference: "Covers the 28 Indian states only, not union territories.",
+    accent: "#fb7185",
+    summary: "Find the capital of the state. ",
+    details: "A general knowledge memory test with a pink accent.",
+  },
+  {
     id: "nationalOfficials",
     path: "/national-officials",
     title: "National Officials",
@@ -103,20 +117,6 @@ export const GAME_MODES = [
     summary: "What is the cube of the number?",
     details:
       "A challenging cube calculations mode with a purple arcade accent.",
-  },
-  {
-    id: "stateCapital",
-    path: "/state-capital",
-    title: "State Capital Quiz",
-    badge: "GK Memory",
-    category: "General Knowledge",
-    hero: "IND",
-    intro: "Indian state capitals at exam speed.",
-    rules: "<1s = 12pts · <2s = 8pts · <3s = 4pts · wrong = over",
-    reference: "Covers the 28 Indian states only, not union territories.",
-    accent: "#fb7185",
-    summary: "Find the capital of the state. ",
-    details: "A general knowledge memory test with a pink accent.",
   },
   {
     id: "worldCapital",

@@ -356,12 +356,12 @@ function HomePage({ currentUser }) {
               </div>
 
               {/* Hero Image Section */}
-              <div className="min-w-0 w-full max-w-sm mx-auto lg:max-w-none relative animate-float">
+              <div className="min-w-0 w-full max-w-sm mx-auto lg:max-w-none relative animate-float flex justify-center lg:justify-end">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
                 <img 
                   src="/images/hero.png" 
                   alt="Study Arcade Hero" 
-                  className="relative w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
+                  className="relative w-full max-w-[280px] lg:max-w-[320px] max-h-48 lg:max-h-56 object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
                 />
               </div>
 
@@ -391,7 +391,7 @@ function HomePage({ currentUser }) {
               </div>
             </div>
 
-            <div className="mt-auto grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-10">
+            <div className="mt-auto grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-6">
               {[
                 {
                   label: "Read first",

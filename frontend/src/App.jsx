@@ -340,8 +340,8 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#40e0f0]/[0.06] blur-3xl animate-float-orb" />
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
 
-            <div className="relative flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12">
-              <div className="flex-1 min-w-0">
+            <div className="relative flex flex-col-reverse lg:flex-row items-stretch gap-8 lg:gap-12">
+              <div className="flex-1 min-w-0 flex flex-col justify-center">
                 <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
                   <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
                   {GAME_MODES.length} focused quizzes
@@ -374,49 +374,50 @@ function HomePage({ currentUser }) {
                   </a>
                 </div>
 
-                <div className="mt-7 flex flex-wrap gap-3">
-                  {[
-                    {
-                      label: "Read first",
-                      value: "Reference tables",
-                      icon: "📖",
-                    },
-                    {
-                      label: "Fast feedback",
-                      value: "Correct or game over",
-                      icon: "⚡",
-                    },
-                    {
-                      label: "Keyboard ready",
-                      value: "Use A, B, C, D",
-                      icon: "⌨️",
-                    },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex-1 min-w-[140px] rounded-2xl border border-white/8 bg-black/18 p-4 transition hover:border-white/15 hover:bg-black/25"
-                    >
-                      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 whitespace-nowrap">
-                        <span className="mr-1.5">{item.icon}</span>
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-sm font-bold text-white whitespace-nowrap">
-                        {item.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
               </div>
 
               {/* Hero Image Section */}
-              <div className="flex-1 min-w-0 w-full max-w-sm lg:max-w-none relative animate-float">
+              <div className="flex-1 min-w-0 w-full max-w-sm lg:max-w-none relative animate-float flex flex-col justify-end">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
                 <img 
                   src="/images/hero.png" 
                   alt="Study Arcade Hero" 
-                  className="relative w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
+                  className="relative w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(64,224,240,0.3)] transition-transform duration-700 hover:scale-105"
                 />
               </div>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-4 w-full">
+              {[
+                {
+                  label: "Read first",
+                  value: "Reference tables",
+                  icon: "📖",
+                },
+                {
+                  label: "Fast feedback",
+                  value: "Correct or game over",
+                  icon: "⚡",
+                },
+                {
+                  label: "Keyboard ready",
+                  value: "Use A, B, C, D",
+                  icon: "⌨️",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="flex-1 min-w-[200px] rounded-2xl border border-white/8 bg-black/18 p-5 transition hover:border-white/15 hover:bg-black/25"
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 whitespace-nowrap">
+                    <span className="mr-1.5">{item.icon}</span>
+                    {item.label}
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-white whitespace-nowrap">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
             </div>
 
             {/* Neon border trace at bottom */}

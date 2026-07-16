@@ -34,13 +34,16 @@ export default function FootballGame() {
 
   const [score, setScore] = useState({ me: 0, opponent: 0 });
   const [round, setRound] = useState(1);
-  const [isMyTurn, setIsMyTurn] = useState(true);
+  // Rounds 1-5: Player is Striker, Rounds 6-10: Player is Goalkeeper
+  const isMyTurn = round <= 5;
   const [gameStatus, setGameStatus] = useState("playing");
   const [animating, setAnimating] = useState(false);
 
   const [ballPos, setBallPos] = useState("start");
   const [gkPos, setGkPos] = useState("start");
-  const [message, setMessage] = useState("You are Striker! Pick a target.");
+  const [message, setMessage] = useState(
+    "⚽ ROUND 1! YOU ARE STRIKER. Pick a target.",
+  );
   const [ballTrajectory, setBallTrajectory] = useState(null);
   const [showGoalEffect, setShowGoalEffect] = useState(false);
   const [showSaveEffect, setShowSaveEffect] = useState(false);
@@ -142,7 +145,8 @@ export default function FootballGame() {
 
   // Check win condition
   const checkWin = useCallback((newScore, currentRound, currentTurn) => {
-    if (currentRound > 5 && !currentTurn) {
+    // Game ends after 10 rounds (5 as striker, 5 as goalkeeper)
+    if (currentRound > 10 && !currentTurn) {
       if (newScore.me > newScore.opponent) {
         setGameStatus("won");
         setMessage("🏆 YOU WON THE SHOOTOUT!");
@@ -151,14 +155,17 @@ export default function FootballGame() {
         setGameStatus("lost");
         setMessage("💔 YOU LOST THE SHOOTOUT.");
         return true;
+      } else {
+        // Sudden death
+        setMessage("⚡ SUDDEN DEATH! Next goal wins!");
       }
     }
 
-    if (currentRound <= 5) {
+    if (currentRound <= 10) {
       const remainingShotsMe = currentTurn
-        ? 6 - currentRound
-        : 5 - currentRound;
-      const remainingShotsOpp = 5 - currentRound;
+        ? 11 - currentRound
+        : 10 - currentRound;
+      const remainingShotsOpp = 10 - currentRound;
 
       if (newScore.me > newScore.opponent + remainingShotsOpp) {
         setGameStatus("won");
@@ -187,8 +194,8 @@ export default function FootballGame() {
       const startPos = ZONE_3D_POSITIONS.start;
       setBallTrajectory({ start: startPos, end: targetPos, progress: 0 });
 
-      if (isMyTurn) {
-        // User shooting
+      if (round <= 5) {
+        // Rounds 1-5: User is Striker (shooting)
         setMessage("⚽ SHOOTING...");
         setGkPos(aiZone); // GK reacts
 
@@ -244,7 +251,7 @@ export default function FootballGame() {
               }
               setScore(newScore);
 
-              const gameOver = checkWin(newScore, round, isMyTurn);
+              const gameOver = checkWin(newScore, round, true);
 
               setTimeout(() => {
                 setShowGoalEffect(false);
@@ -252,8 +259,11 @@ export default function FootballGame() {
                 if (!gameOver) {
                   setBallPos("start");
                   setGkPos("start");
-                  setIsMyTurn(false);
-                  setMessage("🧤 YOU ARE GOALKEEPER! Predict the shot.");
+                  if (round < 5) {
+                    setMessage(`⚽ ROUND ${round + 1}! YOU ARE STRIKER.`);
+                  } else {
+                    setMessage("🧤 HALF TIME! NOW YOU ARE GOALKEEPER!");
+                  }
                 }
                 setAnimating(false);
               }, 2000);
@@ -262,7 +272,7 @@ export default function FootballGame() {
         };
         animateBall();
       } else {
-        // User goalkeeping
+        // Rounds 6-10: User is Goalkeeper (saving)
         setMessage("🧤 DIVING...");
         setGkPos(zone);
 
@@ -327,7 +337,7 @@ export default function FootballGame() {
                 }
                 setScore(newScore);
 
-                const gameOver = checkWin(newScore, round, isMyTurn);
+                const gameOver = checkWin(newScore, round, false);
 
                 setTimeout(() => {
                   setShowGoalEffect(false);
@@ -335,9 +345,10 @@ export default function FootballGame() {
                   if (!gameOver) {
                     setBallPos("start");
                     setGkPos("start");
-                    setIsMyTurn(true);
-                    setRound((r) => r + 1);
-                    setMessage(`⚽ ROUND ${round + 1}! YOU ARE STRIKER.`);
+                    if (round < 10) {
+                      setRound((r) => r + 1);
+                      setMessage(`🧤 ROUND ${round + 1}! YOU ARE GOALKEEPER.`);
+                    }
                   }
                   setAnimating(false);
                 }, 2000);
@@ -351,9 +362,8 @@ export default function FootballGame() {
     [
       gameStatus,
       animating,
-      isMyTurn,
-      score,
       round,
+      score,
       checkWin,
       spawnConfetti,
       triggerCameraShake,
@@ -363,11 +373,10 @@ export default function FootballGame() {
   const resetGame = useCallback(() => {
     setScore({ me: 0, opponent: 0 });
     setRound(1);
-    setIsMyTurn(true);
     setGameStatus("playing");
     setBallPos("start");
     setGkPos("start");
-    setMessage("⚽ YOU ARE STRIKER! Pick a target.");
+    setMessage("⚽ ROUND 1! YOU ARE STRIKER. Pick a target.");
     setBallTrajectory(null);
     setShowGoalEffect(false);
     setShowSaveEffect(false);
@@ -574,10 +583,10 @@ export default function FootballGame() {
           </div>
           <div className="text-center px-6 py-4 bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-xl border border-slate-500/30 rounded-2xl flex flex-col justify-center">
             <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-bold">
-              ROUND {Math.min(round, 5)}
-              {round > 5
-                ? ' <span className="text-emerald-400">(SUDDEN DEATH)</span>'
-                : ""}
+              ROUND {round} / 10
+              {round <= 5
+                ? ' <span className="text-emerald-400">(STRIKER)</span>'
+                : ' <span className="text-blue-400">(GOALKEEPER)</span>'}
             </p>
             <p className="text-3xl md:text-4xl font-black text-slate-400">—</p>
           </div>
@@ -1171,6 +1180,7 @@ export default function FootballGame() {
                 {ZONES.map((zone) => {
                   const pos = getZonePosition(zone);
                   const isTop = zone.startsWith("T");
+                  const isUserStriker = round <= 5;
                   return (
                     <button
                       key={zone}
@@ -1182,18 +1192,18 @@ export default function FootballGame() {
                         transform: isTop
                           ? "translate(-50%, -50%) translateZ(-15px)"
                           : "translate(-50%, 50%) translateZ(-15px)",
-                        width: isMyTurn ? "55px" : "65px",
-                        height: isMyTurn ? "55px" : "65px",
+                        width: isUserStriker ? "55px" : "65px",
+                        height: isUserStriker ? "55px" : "65px",
                         borderRadius: "50%",
-                        background: isMyTurn
+                        background: isUserStriker
                           ? "radial-gradient(circle at 30% 30%, rgba(16,185,129,0.4) 0%, rgba(16,185,129,0.1) 60%, transparent 70%)"
-                          : "radial-gradient(circle at 30% 30%, rgba(244,63,94,0.4) 0%, rgba(244,63,94,0.1) 60%, transparent 70%)",
-                        border: isMyTurn
+                          : "radial-gradient(circle at 30% 30%, rgba(6,182,212,0.4) 0%, rgba(6,182,212,0.1) 60%, transparent 70%)",
+                        border: isUserStriker
                           ? "2px dashed rgba(16,185,129,0.6)"
-                          : "2px dashed rgba(244,63,94,0.6)",
-                        boxShadow: isMyTurn
+                          : "2px dashed rgba(6,182,212,0.6)",
+                        boxShadow: isUserStriker
                           ? "0 0 20px rgba(16,185,129,0.3), inset 0 0 20px rgba(16,185,129,0.1)"
-                          : "0 0 20px rgba(244,63,94,0.3), inset 0 0 20px rgba(244,63,94,0.1)",
+                          : "0 0 20px rgba(6,182,212,0.3), inset 0 0 20px rgba(6,182,212,0.1)",
                         cursor: "crosshair",
                         zIndex: 40,
                         display: "flex",
@@ -1201,16 +1211,18 @@ export default function FootballGame() {
                         justifyContent: "center",
                         animation: "pulse 2s ease-in-out infinite",
                       }}
-                      aria-label={isMyTurn ? `Shoot ${zone}` : `Dive ${zone}`}
+                      aria-label={
+                        isUserStriker ? `Shoot ${zone}` : `Dive ${zone}`
+                      }
                     >
                       <div
                         style={{
                           width: "24px",
                           height: "24px",
                           borderRadius: "50%",
-                          background: isMyTurn
+                          background: isUserStriker
                             ? "linear-gradient(135deg, #10b981, #059669)"
-                            : "linear-gradient(135deg, #f43f5e, #e11d48)",
+                            : "linear-gradient(135deg, #06b6d4, #0891b2)",
                           boxShadow: "0 0 10px currentColor",
                           animation: "pulse 1.5s ease-in-out infinite",
                         }}

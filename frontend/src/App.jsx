@@ -341,7 +341,7 @@ function HomePage({ currentUser }) {
             <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#a78bfa]/[0.04] blur-3xl animate-float-orb-slow" />
 
             <div className="relative flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12">
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#40e0f0]/25 bg-[#40e0f0]/8 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-[#40e0f0] animate-glow-pulse">
                   <span className="h-2 w-2 rounded-full bg-[#40e0f0] shadow-[0_0_12px_rgba(64,224,240,0.85)]" />
                   {GAME_MODES.length} focused quizzes
@@ -409,7 +409,7 @@ function HomePage({ currentUser }) {
               </div>
 
               {/* Hero Image Section */}
-              <div className="flex-1 w-full max-w-sm lg:max-w-none relative animate-float">
+              <div className="flex-1 min-w-0 w-full max-w-sm lg:max-w-none relative animate-float">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#40e0f0]/20 to-[#a78bfa]/20 rounded-full blur-3xl opacity-60"></div>
                 <img 
                   src="/images/hero.png" 

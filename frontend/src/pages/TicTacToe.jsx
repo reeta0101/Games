@@ -19,6 +19,8 @@ export default function TicTacToe() {
   const [winner, setWinner] = useState(null);
   const [gameMode, setGameMode] = useState("classic"); // classic, infinite
   const [score, setScore] = useState({ me: 0, opponent: 0 });
+  const [setupPhase, setSetupPhase] = useState(isMultiplayer ? false : true);
+  const [playMode, setPlayMode] = useState("computer"); // 'computer' or 'local'
   
   // Track move history for infinite mode
   const [xMoves, setXMoves] = useState([]); // indices
@@ -36,7 +38,7 @@ export default function TicTacToe() {
 
   // Single player mode: trigger AI if it's AI's turn
   useEffect(() => {
-    if (!isMultiplayer && gameStatus === "playing") {
+    if (!isMultiplayer && playMode === "computer" && gameStatus === "playing" && !setupPhase) {
       const aiTurn = (xIsNext && singlePlayerSymbol === "O") || (!xIsNext && singlePlayerSymbol === "X");
       if (aiTurn) {
         const timer = setTimeout(() => {
@@ -45,7 +47,7 @@ export default function TicTacToe() {
         return () => clearTimeout(timer);
       }
     }
-  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol]);
+  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol, playMode, setupPhase]);
 
   // Multiplayer Socket Setup
   useEffect(() => {
@@ -118,8 +120,15 @@ export default function TicTacToe() {
           } else {
             setScore(s => ({ ...s, opponent: s.opponent + 1 }));
           }
-        } else {
+        } else if (playMode === "computer") {
           if (squares[a] === singlePlayerSymbol) {
+            setScore(s => ({ ...s, me: s.me + 1 }));
+          } else {
+            setScore(s => ({ ...s, opponent: s.opponent + 1 }));
+          }
+        } else {
+          // local mode
+          if (squares[a] === "X") {
             setScore(s => ({ ...s, me: s.me + 1 }));
           } else {
             setScore(s => ({ ...s, opponent: s.opponent + 1 }));
@@ -133,7 +142,7 @@ export default function TicTacToe() {
       return "draw";
     }
     return null;
-  }, [isMultiplayer, mySymbol, singlePlayerSymbol]);
+  }, [isMultiplayer, mySymbol, singlePlayerSymbol, playMode]);
 
   const handleClick = (i) => {
     if (gameStatus !== "playing" || board[i]) return;
@@ -199,27 +208,49 @@ export default function TicTacToe() {
       }
       
     } else {
-      // Single Player Mode
-      const isMyTurn = (xIsNext && singlePlayerSymbol === "X") || (!xIsNext && singlePlayerSymbol === "O");
-      if (!isMyTurn) return; // Wait for AI
-      
-      const newBoard = [...board];
-      const newMoves = singlePlayerSymbol === "X" ? [...xMoves] : [...oMoves];
-      
-      if (gameMode === "infinite") {
-        if (newMoves.length === 3) {
-          newBoard[newMoves[0]] = null;
-          newMoves.shift();
+      if (playMode === "computer") {
+        // Single Player Mode
+        const isMyTurn = (xIsNext && singlePlayerSymbol === "X") || (!xIsNext && singlePlayerSymbol === "O");
+        if (!isMyTurn) return; // Wait for AI
+        
+        const newBoard = [...board];
+        const newMoves = singlePlayerSymbol === "X" ? [...xMoves] : [...oMoves];
+        
+        if (gameMode === "infinite") {
+          if (newMoves.length === 3) {
+            newBoard[newMoves[0]] = null;
+            newMoves.shift();
+          }
+          newMoves.push(i);
+          if (singlePlayerSymbol === "X") setXMoves(newMoves);
+          else setOMoves(newMoves);
         }
-        newMoves.push(i);
-        if (singlePlayerSymbol === "X") setXMoves(newMoves);
-        else setOMoves(newMoves);
+        
+        newBoard[i] = singlePlayerSymbol;
+        setBoard(newBoard);
+        setXIsNext(!xIsNext);
+        checkWin(newBoard);
+      } else {
+        // Local 2-Player Mode
+        const currentSymbol = xIsNext ? "X" : "O";
+        const newBoard = [...board];
+        const newMoves = currentSymbol === "X" ? [...xMoves] : [...oMoves];
+        
+        if (gameMode === "infinite") {
+          if (newMoves.length === 3) {
+            newBoard[newMoves[0]] = null;
+            newMoves.shift();
+          }
+          newMoves.push(i);
+          if (currentSymbol === "X") setXMoves(newMoves);
+          else setOMoves(newMoves);
+        }
+        
+        newBoard[i] = currentSymbol;
+        setBoard(newBoard);
+        setXIsNext(!xIsNext);
+        checkWin(newBoard);
       }
-      
-      newBoard[i] = singlePlayerSymbol;
-      setBoard(newBoard);
-      setXIsNext(!xIsNext);
-      checkWin(newBoard);
     }
   };
 
@@ -369,8 +400,10 @@ export default function TicTacToe() {
     if (gameStatus === "won") {
       if (isMultiplayer) {
         return winner === mySymbol ? "🎉 You Won!" : `😞 ${opponentName} Won`;
-      } else {
+      } else if (playMode === "computer") {
         return winner === singlePlayerSymbol ? "🎉 You Won!" : "🤖 Computer Won";
+      } else {
+        return `🎉 Player ${winner} Won!`;
       }
     } else if (gameStatus === "draw") {
       return "🤝 It's a Draw!";
@@ -378,25 +411,63 @@ export default function TicTacToe() {
       if (isMultiplayer) {
         if (!playersReady) return "Waiting for opponent...";
         return (mySymbol === "X" && xIsNext) || (mySymbol === "O" && !xIsNext) ? "Your Turn" : `${opponentName}'s Turn`;
-      } else {
+      } else if (playMode === "computer") {
         const isMyTurn = (xIsNext && singlePlayerSymbol === "X") || (!xIsNext && singlePlayerSymbol === "O");
         return isMyTurn ? `Your Turn (${singlePlayerSymbol})` : `Computer's Turn (${singlePlayerSymbol === "X" ? "O" : "X"})`;
+      } else {
+        return `Player ${xIsNext ? "X" : "O"}'s Turn`;
       }
     }
   };
+
+  if (setupPhase) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-2">Tic Tac Toe</h1>
+          <p className="text-lg font-bold text-slate-300">Choose your opponent</p>
+        </div>
+
+        <div className="bg-[#0f172a]/80 border border-white/10 p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-sm w-full flex flex-col gap-4">
+          <button 
+            onClick={() => { setPlayMode("computer"); setSetupPhase(false); }}
+            className="flex items-center justify-center gap-3 w-full rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
+          >
+            <span className="text-2xl">🤖</span> Vs Computer
+          </button>
+          
+          <button 
+            onClick={() => { setPlayMode("local"); setSetupPhase(false); }}
+            className="flex items-center justify-center gap-3 w-full rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
+          >
+            <span className="text-2xl">👥</span> Pass & Play
+          </button>
+
+          <button 
+            onClick={() => navigate('/lobby')}
+            className="flex items-center justify-center gap-3 w-full rounded-2xl bg-gradient-to-r from-orange-500 to-rose-500 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
+          >
+            <span className="text-2xl">🌍</span> Play Online
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-2">Tic Tac Toe</h1>
         <p className="text-lg font-bold text-slate-300">
-          {isMultiplayer ? `Vs ${opponentName}` : "Vs Computer"}
+          {isMultiplayer ? `Vs ${opponentName}` : playMode === "computer" ? "Vs Computer" : "Pass & Play"}
         </p>
       </div>
 
       <div className="flex justify-between w-full max-w-md mb-8 text-white text-xl font-black bg-[#0f172a] px-8 py-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(64,224,240,0.15)]">
         <div className="text-center">
-          <p className="text-[10px] uppercase tracking-widest text-[#40e0f0] mb-1">You ({isMultiplayer ? mySymbol : singlePlayerSymbol})</p>
+          <p className="text-[10px] uppercase tracking-widest text-[#40e0f0] mb-1">
+            {isMultiplayer ? `You (${mySymbol})` : playMode === "computer" ? `You (${singlePlayerSymbol})` : 'Player X'}
+          </p>
           <p className="text-3xl">{score.me}</p>
         </div>
         <div className="text-center">
@@ -404,7 +475,9 @@ export default function TicTacToe() {
           <p className="text-3xl text-slate-700">-</p>
         </div>
         <div className="text-center">
-          <p className="text-[10px] uppercase tracking-widest text-[#f04060] mb-1">{isMultiplayer ? opponentName : "AI"} ({isMultiplayer ? (mySymbol === 'X' ? 'O' : 'X') : (singlePlayerSymbol === 'X' ? 'O' : 'X')})</p>
+          <p className="text-[10px] uppercase tracking-widest text-[#f04060] mb-1">
+            {isMultiplayer ? `${opponentName} (${mySymbol === 'X' ? 'O' : 'X'})` : playMode === "computer" ? `AI (${singlePlayerSymbol === 'X' ? 'O' : 'X'})` : 'Player O'}
+          </p>
           <p className="text-3xl">{score.opponent}</p>
         </div>
       </div>

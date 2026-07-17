@@ -222,7 +222,7 @@ export default function TestPage() {
           }
         }
       } else {
-        const singlePath = Object.values(category.files)[0];
+        const singlePath = category.files[category.id] || Object.values(category.files)[0];
         if (singlePath) {
           const m = await allModules[singlePath]();
           questions = m.default || m || [];

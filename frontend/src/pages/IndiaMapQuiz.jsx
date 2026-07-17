@@ -8,10 +8,7 @@ import {
   saveScore,
   getLeaderboard,
   getUserHighScores,
-  getTimeAgo,
   DIFFICULTIES,
-  MODE_LABELS,
-  DIFF_LABELS,
 } from "../utils/leaderboard";
 import indiaMap from "@svg-maps/india";
 
@@ -161,12 +158,12 @@ export default function IndiaMapQuiz() {
 
   useEffect(() => () => clearTimers(), [clearTimers]);
 
-  const getScorePoints = (elapsedSec) => {
+  const getScorePoints = useCallback((elapsedSec) => {
     const third = activeTimeLimit / 3000;
     if (elapsedSec < third) return 12;
     if (elapsedSec < third * 2) return 8;
     return 4;
-  };
+  }, [activeTimeLimit]);
 
   const buildFinalMessage = (currentScore) => {
     if (currentScore >= 150) return "Quiz Master! 🏆";
@@ -272,7 +269,7 @@ export default function IndiaMapQuiz() {
       setFeedbackText(`✗ It was ${currentQuestion.correctValue} — Game Over!`);
       endRef.current = setTimeout(() => endGame("wrong", score), 1400);
     }
-  }, [isAnswered, screen, currentQuestion, clearTimers, activeTimeLimit, timeLeft, score, streak, nextQuestion, endGame, playCorrect, playStreak, playWrong]);
+  }, [isAnswered, screen, currentQuestion, clearTimers, activeTimeLimit, timeLeft, score, streak, nextQuestion, endGame, playCorrect, playStreak, playWrong, getScorePoints]);
 
   // Keyboard
   useEffect(() => {
@@ -288,6 +285,7 @@ export default function IndiaMapQuiz() {
   // Fetch scores on end
   useEffect(() => {
     if (screen === "end") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoadingScores(true);
       Promise.all([
         getLeaderboard("indiaMap", difficulty, 5),

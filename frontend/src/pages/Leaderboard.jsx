@@ -124,12 +124,12 @@ export default function Leaderboard() {
       {/* Level selector */}
       <div className="mb-8">
         <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-slate-500">Select Level</p>
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 snap-x snap-mandatory">
           {LEVELS.map((l) => (
             <button
               key={l.key}
               onClick={() => setSelectedLevel(l.key)}
-              className={`flex-1 rounded-xl border py-3 text-xs font-bold uppercase tracking-[0.2em] transition duration-200 hover:-translate-y-0.5 ${
+              className={`shrink-0 flex-1 min-w-[6rem] rounded-xl border py-3 px-3 text-xs font-bold uppercase tracking-[0.15em] transition duration-200 hover:-translate-y-0.5 snap-start ${
                 selectedLevel === l.key
                   ? "border-[#f0e040]/50 bg-[#f0e040]/10 text-[#f0e040] shadow-[0_0_16px_rgba(240,224,64,0.1)]"
                   : "border-white/8 bg-white/[0.03] text-slate-400 hover:bg-white/[0.06]"
@@ -146,11 +146,11 @@ export default function Leaderboard() {
 
         {/* Table header */}
         <div
-          className="flex items-center justify-between px-5 py-4 border-b border-white/10"
+          className="flex flex-wrap items-center justify-between gap-3 px-4 py-4 border-b border-white/10 sm:px-5"
           style={{ background: `${game.accent}0a` }}
         >
-          <div>
-            <span className="text-xs font-black uppercase tracking-[0.25em]" style={{ color: game.accent }}>
+          <div className="min-w-0">
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] break-words" style={{ color: game.accent }}>
               {MODE_LABELS[game.key]} · {level.icon} {level.label}
             </span>
             <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-500">
@@ -159,7 +159,7 @@ export default function Leaderboard() {
           </div>
           <Link
             to={game.path}
-            className="rounded-full border px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] transition hover:opacity-80"
+            className="shrink-0 rounded-full border px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] transition hover:opacity-80"
             style={{ borderColor: `${game.accent}50`, color: game.accent, background: `${game.accent}12` }}
           >
             Play →

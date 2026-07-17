@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "What does SQL stand for?",
+    "options": [
+      { "id": "a", "text": "Structured Query Language" },
+      { "id": "b", "text": "Simple Query Language" },
+      { "id": "c", "text": "Standard Query Language" },
+      { "id": "d", "text": "Sequential Query Language" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "SQL stands for Structured Query Language, used to manage relational databases.",
+    "difficulty": "easy",
+    "topics": ["sql", "basics"]
+  },
+  {
+    "id": 2,
+    "question": "What is a primary key?",
+    "options": [
+      { "id": "a", "text": "A key that can have null values" },
+      { "id": "b", "text": "A unique identifier for each record" },
+      { "id": "c", "text": "A foreign key reference" },
+      { "id": "d", "text": "An index on a column" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A primary key uniquely identifies each record in a table and cannot be null.",
+    "difficulty": "easy",
+    "topics": ["keys", "basics"]
+  },
+  {
+    "id": 3,
+    "question": "Which command is used to remove a table from the database?",
+    "options": [
+      { "id": "a", "text": "DELETE TABLE" },
+      { "id": "b", "text": "REMOVE TABLE" },
+      { "id": "c", "text": "DROP TABLE" },
+      { "id": "d", "text": "TRUNCATE TABLE" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "DROP TABLE removes the entire table structure and all its data from the database permanently.",
+    "difficulty": "easy",
+    "topics": ["ddl", "sql"]
+  },
+  {
+    "id": 4,
+    "question": "What is an index in a database?",
+    "options": [
+      { "id": "a", "text": "A backup of data" },
+      { "id": "b", "text": "A data structure to speed up queries" },
+      { "id": "c", "text": "A type of constraint" },
+      { "id": "d", "text": "A foreign key" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An index is a data structure that improves the speed of data retrieval operations on a database table.",
+    "difficulty": "easy",
+    "topics": ["indexing", "performance"]
+  },
+  {
+    "id": 5,
+    "question": "What does DDL stand for in SQL?",
+    "options": [
+      { "id": "a", "text": "Data Definition Language" },
+      { "id": "b", "text": "Data Delete Language" },
+      { "id": "c", "text": "Database Design Language" },
+      { "id": "d", "text": "Data Description Logic" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "DDL (Data Definition Language) includes commands like CREATE, ALTER, DROP that define or modify database schema.",
+    "difficulty": "easy",
+    "topics": ["sql", "ddl", "basics"]
+  },
+  {
+    "id": 6,
+    "question": "What is a foreign key?",
+    "options": [
+      { "id": "a", "text": "A key from another country's database" },
+      { "id": "b", "text": "A field that links to the primary key of another table" },
+      { "id": "c", "text": "A duplicate primary key" },
+      { "id": "d", "text": "An index key" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A foreign key is a column in one table that references the primary key of another table, establishing a relationship.",
+    "difficulty": "easy",
+    "topics": ["keys", "relationships"]
+  },
+  {
+    "id": 7,
+    "question": "Which SQL statement is used to retrieve data from a database?",
+    "options": [
+      { "id": "a", "text": "GET" },
+      { "id": "b", "text": "OPEN" },
+      { "id": "c", "text": "SELECT" },
+      { "id": "d", "text": "EXTRACT" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The SELECT statement is used to query and retrieve data from one or more database tables.",
+    "difficulty": "easy",
+    "topics": ["sql", "dml", "basics"]
+  },
+  {
+    "id": 8,
+    "question": "What does NULL mean in a database?",
+    "options": [
+      { "id": "a", "text": "Zero" },
+      { "id": "b", "text": "An empty string" },
+      { "id": "c", "text": "Absence of a value / unknown" },
+      { "id": "d", "text": "False" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "NULL represents the absence of a value or an unknown value. It is different from zero or an empty string.",
+    "difficulty": "easy",
+    "topics": ["basics", "null"]
+  },
+  {
+    "id": 9,
+    "question": "What is a database schema?",
+    "options": [
+      { "id": "a", "text": "The actual data stored in tables" },
+      { "id": "b", "text": "The logical structure/blueprint of the database" },
+      { "id": "c", "text": "A backup file" },
+      { "id": "d", "text": "A query result" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A database schema defines the logical structure: tables, columns, data types, relationships, and constraints—without the actual data.",
+    "difficulty": "easy",
+    "topics": ["basics", "schema"]
+  },
+  {
+    "id": 10,
+    "question": "Which command adds a new row to a table?",
+    "options": [
+      { "id": "a", "text": "ADD" },
+      { "id": "b", "text": "INSERT INTO" },
+      { "id": "c", "text": "PUSH" },
+      { "id": "d", "text": "APPEND" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "INSERT INTO is the SQL DML command used to insert one or more new rows into a table.",
+    "difficulty": "easy",
+    "topics": ["dml", "sql", "basics"]
+  }
+]

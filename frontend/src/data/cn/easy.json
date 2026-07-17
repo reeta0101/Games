@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "What does IP stand for in networking?",
+    "options": [
+      { "id": "a", "text": "Internet Protocol" },
+      { "id": "b", "text": "Internal Process" },
+      { "id": "c", "text": "Internet Port" },
+      { "id": "d", "text": "Interface Protocol" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "IP stands for Internet Protocol, the fundamental protocol for routing packets across interconnected networks.",
+    "difficulty": "easy",
+    "topics": ["basics", "ip"]
+  },
+  {
+    "id": 2,
+    "question": "Which layer of the OSI model handles routing?",
+    "options": [
+      { "id": "a", "text": "Data Link Layer" },
+      { "id": "b", "text": "Network Layer" },
+      { "id": "c", "text": "Transport Layer" },
+      { "id": "d", "text": "Session Layer" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The Network Layer (Layer 3) is responsible for logical addressing and routing packets between networks.",
+    "difficulty": "easy",
+    "topics": ["osi-model", "routing"]
+  },
+  {
+    "id": 3,
+    "question": "What is a MAC address?",
+    "options": [
+      { "id": "a", "text": "A logical address assigned by a router" },
+      { "id": "b", "text": "A unique physical hardware address on a network interface" },
+      { "id": "c", "text": "An IP address" },
+      { "id": "d", "text": "A port number" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "MAC (Media Access Control) address is a 48-bit unique identifier burned into every network interface card (NIC).",
+    "difficulty": "easy",
+    "topics": ["data-link", "addressing"]
+  },
+  {
+    "id": 4,
+    "question": "How many layers are in the OSI model?",
+    "options": [
+      { "id": "a", "text": "4" },
+      { "id": "b", "text": "5" },
+      { "id": "c", "text": "6" },
+      { "id": "d", "text": "7" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "The OSI model has 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application.",
+    "difficulty": "easy",
+    "topics": ["osi-model", "basics"]
+  },
+  {
+    "id": 5,
+    "question": "What is the purpose of DNS?",
+    "options": [
+      { "id": "a", "text": "Encrypt data in transit" },
+      { "id": "b", "text": "Translate domain names to IP addresses" },
+      { "id": "c", "text": "Route IP packets" },
+      { "id": "d", "text": "Store website files" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "DNS (Domain Name System) translates human-readable domain names (e.g., google.com) into machine-readable IP addresses.",
+    "difficulty": "easy",
+    "topics": ["dns", "application-layer"]
+  },
+  {
+    "id": 6,
+    "question": "Which protocol is used for secure web browsing?",
+    "options": [
+      { "id": "a", "text": "HTTP" },
+      { "id": "b", "text": "FTP" },
+      { "id": "c", "text": "HTTPS" },
+      { "id": "d", "text": "SMTP" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "HTTPS (HTTP Secure) uses TLS/SSL encryption to protect data exchanged between a browser and web server.",
+    "difficulty": "easy",
+    "topics": ["protocols", "security"]
+  },
+  {
+    "id": 7,
+    "question": "What is a firewall?",
+    "options": [
+      { "id": "a", "text": "A type of computer virus" },
+      { "id": "b", "text": "A security system that monitors and controls network traffic" },
+      { "id": "c", "text": "A routing protocol" },
+      { "id": "d", "text": "A type of network cable" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A firewall monitors incoming/outgoing network traffic and blocks or allows it based on a defined security rule set.",
+    "difficulty": "easy",
+    "topics": ["security", "network-security"]
+  },
+  {
+    "id": 8,
+    "question": "Which port does HTTP use by default?",
+    "options": [
+      { "id": "a", "text": "21" },
+      { "id": "b", "text": "25" },
+      { "id": "c", "text": "80" },
+      { "id": "d", "text": "443" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "HTTP uses port 80 by default. HTTPS uses port 443, FTP uses 21, and SMTP uses 25.",
+    "difficulty": "easy",
+    "topics": ["protocols", "ports", "basics"]
+  },
+  {
+    "id": 9,
+    "question": "What device connects multiple devices in a network and operates at Layer 2?",
+    "options": [
+      { "id": "a", "text": "Router" },
+      { "id": "b", "text": "Hub" },
+      { "id": "c", "text": "Switch" },
+      { "id": "d", "text": "Repeater" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A switch operates at the Data Link Layer (Layer 2), forwarding frames based on MAC addresses to the correct port—unlike a hub which broadcasts to all ports.",
+    "difficulty": "easy",
+    "topics": ["data-link", "devices", "basics"]
+  },
+  {
+    "id": 10,
+    "question": "What does DHCP do?",
+    "options": [
+      { "id": "a", "text": "Encrypts network packets" },
+      { "id": "b", "text": "Automatically assigns IP addresses to devices on a network" },
+      { "id": "c", "text": "Routes packets between networks" },
+      { "id": "d", "text": "Resolves domain names" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses, subnet masks, gateways, and DNS servers to network clients.",
+    "difficulty": "easy",
+    "topics": ["dhcp", "ip-addressing", "basics"]
+  }
+]

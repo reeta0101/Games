@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "Which normal form eliminates transitive dependency?",
+    "options": [
+      { "id": "a", "text": "1NF" },
+      { "id": "b", "text": "2NF" },
+      { "id": "c", "text": "3NF" },
+      { "id": "d", "text": "BCNF" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Third Normal Form (3NF) eliminates transitive dependencies on the primary key.",
+    "difficulty": "medium",
+    "topics": ["normalization", "3nf"]
+  },
+  {
+    "id": 2,
+    "question": "Which JOIN returns all rows when there is a match in either table?",
+    "options": [
+      { "id": "a", "text": "INNER JOIN" },
+      { "id": "b", "text": "LEFT JOIN" },
+      { "id": "c", "text": "RIGHT JOIN" },
+      { "id": "d", "text": "FULL OUTER JOIN" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "FULL OUTER JOIN returns all rows from both tables, with NULLs where there is no match.",
+    "difficulty": "medium",
+    "topics": ["joins", "sql"]
+  },
+  {
+    "id": 3,
+    "question": "What is ACID in database transactions?",
+    "options": [
+      { "id": "a", "text": "A programming language" },
+      { "id": "b", "text": "Atomicity, Consistency, Isolation, Durability" },
+      { "id": "c", "text": "A type of database" },
+      { "id": "d", "text": "A query optimization technique" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "ACID ensures reliable transactions: Atomicity (all-or-nothing), Consistency (valid state), Isolation (independent), Durability (persisted).",
+    "difficulty": "medium",
+    "topics": ["transactions", "acid"]
+  },
+  {
+    "id": 4,
+    "question": "Which clause is used to filter groups in SQL?",
+    "options": [
+      { "id": "a", "text": "WHERE" },
+      { "id": "b", "text": "HAVING" },
+      { "id": "c", "text": "GROUP BY" },
+      { "id": "d", "text": "ORDER BY" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "HAVING filters groups after GROUP BY. WHERE filters individual rows before grouping.",
+    "difficulty": "medium",
+    "topics": ["sql", "aggregation"]
+  },
+  {
+    "id": 5,
+    "question": "What is the difference between DELETE and TRUNCATE?",
+    "options": [
+      { "id": "a", "text": "No difference" },
+      { "id": "b", "text": "DELETE can have WHERE clause; TRUNCATE removes all rows faster" },
+      { "id": "c", "text": "TRUNCATE is slower" },
+      { "id": "d", "text": "DELETE removes table structure" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "DELETE can selectively remove rows with WHERE and is logged per row; TRUNCATE removes all rows, is faster, and cannot be rolled back in many DBs.",
+    "difficulty": "medium",
+    "topics": ["dml", "sql"]
+  },
+  {
+    "id": 6,
+    "question": "What is a VIEW in SQL?",
+    "options": [
+      { "id": "a", "text": "A physical table" },
+      { "id": "b", "text": "A virtual table based on a SELECT query" },
+      { "id": "c", "text": "An index on multiple columns" },
+      { "id": "d", "text": "A stored procedure" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A VIEW is a virtual table defined by a stored SELECT query. It does not store data itself but provides a reusable abstraction.",
+    "difficulty": "medium",
+    "topics": ["views", "sql"]
+  },
+  {
+    "id": 7,
+    "question": "What does a UNIQUE constraint ensure?",
+    "options": [
+      { "id": "a", "text": "No NULL values in the column" },
+      { "id": "b", "text": "All values in the column are distinct" },
+      { "id": "c", "text": "The column is the primary key" },
+      { "id": "d", "text": "Values are auto-incremented" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "UNIQUE ensures no two rows have the same value in the constrained column(s), unlike PRIMARY KEY it allows NULLs (in most DBs).",
+    "difficulty": "medium",
+    "topics": ["constraints", "sql"]
+  },
+  {
+    "id": 8,
+    "question": "Which type of relationship uses a junction/bridge table?",
+    "options": [
+      { "id": "a", "text": "One-to-One" },
+      { "id": "b", "text": "One-to-Many" },
+      { "id": "c", "text": "Many-to-Many" },
+      { "id": "d", "text": "Self-referencing" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Many-to-Many relationships require a junction (bridge/associative) table that holds foreign keys from both related tables.",
+    "difficulty": "medium",
+    "topics": ["relationships", "er-model"]
+  },
+  {
+    "id": 9,
+    "question": "What is a stored procedure?",
+    "options": [
+      { "id": "a", "text": "A type of database index" },
+      { "id": "b", "text": "A precompiled set of SQL statements stored in the database" },
+      { "id": "c", "text": "A backup mechanism" },
+      { "id": "d", "text": "A read-only query" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A stored procedure is a precompiled collection of SQL statements saved in the database, callable by name to perform operations.",
+    "difficulty": "medium",
+    "topics": ["stored-procedures", "sql"]
+  },
+  {
+    "id": 10,
+    "question": "What is the purpose of the GROUP BY clause?",
+    "options": [
+      { "id": "a", "text": "Sort result rows" },
+      { "id": "b", "text": "Filter rows based on condition" },
+      { "id": "c", "text": "Group rows with same values for aggregate functions" },
+      { "id": "d", "text": "Join multiple tables" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "GROUP BY groups rows that share a value so aggregate functions (COUNT, SUM, AVG, MAX, MIN) can be applied to each group.",
+    "difficulty": "medium",
+    "topics": ["sql", "aggregation"]
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "What are the four pillars of OOP?",
+    "options": [
+      { "id": "a", "text": "Variables, Functions, Classes, Objects" },
+      { "id": "b", "text": "Encapsulation, Abstraction, Inheritance, Polymorphism" },
+      { "id": "c", "text": "Arrays, Loops, Conditions, Methods" },
+      { "id": "d", "text": "Public, Private, Protected, Static" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The four pillars of OOP are: Encapsulation (data hiding), Abstraction (hiding complexity), Inheritance (reusing code), and Polymorphism (multiple forms).",
+    "difficulty": "easy",
+    "topics": ["basics", "pillars"]
+  },
+  {
+    "id": 2,
+    "question": "What is encapsulation in OOP?",
+    "options": [
+      { "id": "a", "text": "Hiding implementation details and bundling data with methods" },
+      { "id": "b", "text": "Creating multiple forms of a method" },
+      { "id": "c", "text": "Inheriting from parent class" },
+      { "id": "d", "text": "Creating objects from a class" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Encapsulation bundles data (fields) and methods into a single unit (class), while restricting direct access to internal state using access modifiers.",
+    "difficulty": "easy",
+    "topics": ["encapsulation", "pillars"]
+  },
+  {
+    "id": 3,
+    "question": "What is method overloading?",
+    "options": [
+      { "id": "a", "text": "Methods with same name but different parameters (signatures) in the same class" },
+      { "id": "b", "text": "Redefining a parent class method in a child class" },
+      { "id": "c", "text": "Creating abstract methods" },
+      { "id": "d", "text": "Making methods static" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Method overloading allows the same method name with different parameter lists in the same class — resolved at compile time (static polymorphism).",
+    "difficulty": "easy",
+    "topics": ["polymorphism", "methods"]
+  },
+  {
+    "id": 4,
+    "question": "What is inheritance in OOP?",
+    "options": [
+      { "id": "a", "text": "Creating new objects from scratch" },
+      { "id": "b", "text": "A class acquiring properties and behaviours of another class" },
+      { "id": "c", "text": "Hiding internal data" },
+      { "id": "d", "text": "Creating interfaces" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Inheritance lets a child (subclass) inherit fields and methods from a parent (superclass), promoting code reuse and a hierarchical relationship.",
+    "difficulty": "easy",
+    "topics": ["inheritance", "pillars"]
+  },
+  {
+    "id": 5,
+    "question": "What is polymorphism?",
+    "options": [
+      { "id": "a", "text": "One interface, multiple implementations" },
+      { "id": "b", "text": "Hiding internal data" },
+      { "id": "c", "text": "Creating constructors" },
+      { "id": "d", "text": "Memory management" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Polymorphism allows objects of different types to be treated as instances of the same type through a shared interface, enabling different behaviours for the same operation.",
+    "difficulty": "easy",
+    "topics": ["polymorphism", "pillars"]
+  },
+  {
+    "id": 6,
+    "question": "What is a constructor in OOP?",
+    "options": [
+      { "id": "a", "text": "A method that destroys objects" },
+      { "id": "b", "text": "A special method automatically called when an object is created" },
+      { "id": "c", "text": "A static method" },
+      { "id": "d", "text": "A private method for data access" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A constructor initialises an object's state when it is instantiated. It has the same name as the class and no explicit return type.",
+    "difficulty": "easy",
+    "topics": ["constructors", "basics"]
+  },
+  {
+    "id": 7,
+    "question": "What is method overriding?",
+    "options": [
+      { "id": "a", "text": "Same method name with different parameter list" },
+      { "id": "b", "text": "Redefining a parent class method in a child class" },
+      { "id": "c", "text": "Creating static methods" },
+      { "id": "d", "text": "Creating constructors" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Method overriding allows a subclass to provide its own implementation of a method defined in its superclass, resolved at runtime (dynamic polymorphism).",
+    "difficulty": "easy",
+    "topics": ["polymorphism", "inheritance"]
+  },
+  {
+    "id": 8,
+    "question": "What does the 'this' keyword refer to in OOP?",
+    "options": [
+      { "id": "a", "text": "To create a new object" },
+      { "id": "b", "text": "To refer to the current instance of the class" },
+      { "id": "c", "text": "To inherit from a parent class" },
+      { "id": "d", "text": "To create static methods" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'this' refers to the current object instance, used to distinguish instance variables from local variables with the same name.",
+    "difficulty": "easy",
+    "topics": ["basics", "keywords"]
+  },
+  {
+    "id": 9,
+    "question": "What is a class in OOP?",
+    "options": [
+      { "id": "a", "text": "An instance of an object" },
+      { "id": "b", "text": "A blueprint or template for creating objects" },
+      { "id": "c", "text": "A function that returns objects" },
+      { "id": "d", "text": "A type of loop" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A class is a blueprint that defines attributes (fields) and behaviours (methods) for objects. Objects are instances created from a class.",
+    "difficulty": "easy",
+    "topics": ["basics", "class-object"]
+  },
+  {
+    "id": 10,
+    "question": "What is abstraction in OOP?",
+    "options": [
+      { "id": "a", "text": "Bundling data and methods together" },
+      { "id": "b", "text": "Hiding complex implementation and showing only essential features" },
+      { "id": "c", "text": "Inheriting parent class behaviour" },
+      { "id": "d", "text": "Having multiple methods with the same name" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Abstraction hides internal complexity and exposes only a clean interface. It is achieved using abstract classes and interfaces.",
+    "difficulty": "easy",
+    "topics": ["abstraction", "pillars"]
+  }
+]

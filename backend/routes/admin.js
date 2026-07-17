@@ -4,6 +4,7 @@ import AdminSettings from '../models/AdminSettings.js';
 import Feedback from '../models/Feedback.js';
 import Score from '../models/Score.js';
 import ActiveVisitor from '../models/ActiveVisitor.js';
+import QuestionVote from '../models/QuestionVote.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
@@ -175,6 +176,32 @@ router.delete('/feedback/:id', async (req, res) => {
   } catch (err) {
     console.error('Delete feedback error:', err.message);
     res.status(500).json({ error: 'Failed to delete feedback.' });
+  }
+});
+
+// GET /api/admin/votes — aggregated question vote summary
+router.get('/votes', async (req, res) => {
+  try {
+    const summary = await QuestionVote.aggregate([
+      {
+        $group: {
+          _id: '$questionId',
+          subject: { $first: '$subject' },
+          difficulty: { $first: '$difficulty' },
+          questionText: { $first: '$questionText' },
+          upVotes: { $sum: { $cond: [{ $eq: ['$vote', 'up'] }, 1, 0] } },
+          downVotes: { $sum: { $cond: [{ $eq: ['$vote', 'down'] }, 1, 0] } },
+          totalVotes: { $sum: 1 },
+          lastVoted: { $max: '$createdAt' },
+        }
+      },
+      { $sort: { totalVotes: -1 } },
+      { $limit: 200 }
+    ]);
+    res.json({ votes: summary });
+  } catch (err) {
+    console.error('Admin votes error:', err.message);
+    res.status(500).json({ error: 'Failed to fetch votes.' });
   }
 });
 

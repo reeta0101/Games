@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "question": "What is the key difference between CSMA/CD and CSMA/CA?",
+    "options": [
+      { "id": "a", "text": "CSMA/CD is used in wireless; CSMA/CA in wired Ethernet" },
+      { "id": "b", "text": "CSMA/CD detects collisions after they occur; CSMA/CA tries to avoid them beforehand" },
+      { "id": "c", "text": "CSMA/CA uses token passing; CSMA/CD uses polling" },
+      { "id": "d", "text": "There is no functional difference between the two" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "CSMA/CD (wired Ethernet) detects a collision and retransmits. CSMA/CA (802.11 Wi-Fi) uses RTS/CTS and random back-off to avoid collisions proactively.",
+    "difficulty": "hard",
+    "topics": ["data-link", "media-access", "csma"]
+  },
+  {
+    "id": 2,
+    "question": "How many usable host addresses are in a /28 subnet?",
+    "options": [
+      { "id": "a", "text": "16" },
+      { "id": "b", "text": "14" },
+      { "id": "c", "text": "30" },
+      { "id": "d", "text": "32" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A /28 leaves 4 host bits → 2^4 = 16 total addresses. Subtract 1 network address and 1 broadcast = 14 usable host addresses.",
+    "difficulty": "hard",
+    "topics": ["subnetting", "ip-addressing", "ipv4"]
+  },
+  {
+    "id": 3,
+    "question": "Which BGP attribute is checked FIRST during best-path selection on Cisco routers?",
+    "options": [
+      { "id": "a", "text": "MED (Multi-Exit Discriminator)" },
+      { "id": "b", "text": "Local Preference" },
+      { "id": "c", "text": "Weight (Cisco-proprietary)" },
+      { "id": "d", "text": "AS Path Length" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "On Cisco routers, Weight (highest wins) is the first BGP attribute checked. It is Cisco-proprietary and local to the router—not advertised to neighbors.",
+    "difficulty": "hard",
+    "topics": ["routing", "bgp", "path-selection"]
+  },
+  {
+    "id": 4,
+    "question": "What does the sliding window protocol primarily achieve in TCP?",
+    "options": [
+      { "id": "a", "text": "Encryption of data segments" },
+      { "id": "b", "text": "Flow control — allowing multiple unacknowledged segments in flight" },
+      { "id": "c", "text": "IP fragmentation and reassembly" },
+      { "id": "d", "text": "DNS caching duration control" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The sliding window lets a sender transmit multiple segments before waiting for an ACK, maximizing throughput and providing flow control so the receiver is not overwhelmed.",
+    "difficulty": "hard",
+    "topics": ["tcp", "flow-control", "sliding-window"]
+  },
+  {
+    "id": 5,
+    "question": "Which attack exploits ARP's lack of authentication?",
+    "options": [
+      { "id": "a", "text": "SYN Flood" },
+      { "id": "b", "text": "DNS Amplification" },
+      { "id": "c", "text": "ARP Poisoning (ARP Spoofing)" },
+      { "id": "d", "text": "BGP Hijacking" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "ARP Poisoning sends forged ARP replies to associate the attacker's MAC with a legitimate IP, redirecting traffic through the attacker for man-in-the-middle attacks.",
+    "difficulty": "hard",
+    "topics": ["security", "arp", "network-attacks"]
+  },
+  {
+    "id": 6,
+    "question": "In OSPF, what is the role of the Designated Router (DR)?",
+    "options": [
+      { "id": "a", "text": "To act as the default gateway for all hosts on the segment" },
+      { "id": "b", "text": "To reduce LSA flooding by acting as a central adjacency point on broadcast networks" },
+      { "id": "c", "text": "To distribute DHCP leases across subnets" },
+      { "id": "d", "text": "To encrypt all OSPF Hello packets" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "On multi-access networks (e.g., Ethernet), OSPF elects a DR and BDR. All other routers form adjacency only with DR/BDR, reducing LSA flooding from O(n²) to O(n).",
+    "difficulty": "hard",
+    "topics": ["routing", "ospf", "link-state"]
+  },
+  {
+    "id": 7,
+    "question": "What is the purpose of the TTL field in an IP packet?",
+    "options": [
+      { "id": "a", "text": "To specify DNS cache duration" },
+      { "id": "b", "text": "To prevent routing loops by limiting the packet's lifetime" },
+      { "id": "c", "text": "To indicate QoS priority" },
+      { "id": "d", "text": "To store the packet creation timestamp" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Each router decrements TTL by 1. When TTL reaches 0, the packet is discarded and ICMP 'Time Exceeded' is sent to the source, preventing infinite routing loops.",
+    "difficulty": "hard",
+    "topics": ["ip", "ipv4", "routing"]
+  },
+  {
+    "id": 8,
+    "question": "In TLS 1.3, which key exchange mechanism was removed compared to TLS 1.2?",
+    "options": [
+      { "id": "a", "text": "ECDHE (Elliptic Curve Diffie-Hellman Ephemeral)" },
+      { "id": "b", "text": "Static RSA key exchange" },
+      { "id": "c", "text": "DHE (Diffie-Hellman Ephemeral)" },
+      { "id": "d", "text": "X25519 key exchange" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "TLS 1.3 removed static RSA key exchange to enforce Perfect Forward Secrecy. Only ephemeral methods (ECDHE, DHE) are permitted.",
+    "difficulty": "hard",
+    "topics": ["security", "tls", "cryptography"]
+  },
+  {
+    "id": 9,
+    "question": "What IPv4 address range is reserved for multicast?",
+    "options": [
+      { "id": "a", "text": "224.0.0.0 – 239.255.255.255 (Class D)" },
+      { "id": "b", "text": "192.168.0.0 – 192.168.255.255" },
+      { "id": "c", "text": "172.16.0.0 – 172.31.255.255" },
+      { "id": "d", "text": "240.0.0.0 – 255.255.255.254 (Class E)" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Class D (224.0.0.0–239.255.255.255) is reserved for multicast groups. Packets are delivered to all hosts that have joined the group—unlike broadcast (all) or unicast (one).",
+    "difficulty": "hard",
+    "topics": ["ip-addressing", "multicast", "ipv4"]
+  },
+  {
+    "id": 10,
+    "question": "After a TCP timeout event, which congestion control phase does TCP enter?",
+    "options": [
+      { "id": "a", "text": "Congestion Avoidance — halving the congestion window" },
+      { "id": "b", "text": "Fast Recovery — retransmitting only the lost segment" },
+      { "id": "c", "text": "Slow Start — resetting cwnd to 1 MSS and halving ssthresh" },
+      { "id": "d", "text": "Fast Retransmit — doubling the congestion window immediately" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "On timeout, TCP assumes severe congestion: ssthresh = cwnd/2, cwnd = 1 MSS, and Slow Start restarts, doubling cwnd each RTT until ssthresh is reached.",
+    "difficulty": "hard",
+    "topics": ["tcp", "congestion-control", "slow-start"]
+  },
+  {
+    "id": 11,
+    "question": "What is the difference between distance-vector and link-state routing protocols?",
+    "options": [
+      { "id": "a", "text": "Distance-vector shares complete topology; link-state shares only neighbor info" },
+      { "id": "b", "text": "Distance-vector shares routing table with neighbors; link-state floods entire topology to all routers" },
+      { "id": "c", "text": "Link-state is slower to converge than distance-vector" },
+      { "id": "d", "text": "Distance-vector is used only in IPv6 networks" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Distance-vector (e.g., RIP) exchanges routing tables with neighbors — prone to count-to-infinity. Link-state (e.g., OSPF) floods LSAs so every router builds the full topology map using Dijkstra's algorithm.",
+    "difficulty": "hard",
+    "topics": ["routing", "distance-vector", "link-state", "ospf"]
+  },
+  {
+    "id": 12,
+    "question": "What is a TCP SYN flood attack?",
+    "options": [
+      { "id": "a", "text": "Sending massive UDP packets to exhaust bandwidth" },
+      { "id": "b", "text": "Exploiting TCP handshake by sending many SYN packets without completing the handshake, exhausting server resources" },
+      { "id": "c", "text": "Flooding DNS servers with recursive queries" },
+      { "id": "d", "text": "Cracking TCP encryption keys through brute force" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In a SYN flood (DDoS), the attacker sends many SYN packets with spoofed source IPs. The server allocates half-open connections waiting for ACKs that never arrive, exhausting its connection table.",
+    "difficulty": "hard",
+    "topics": ["security", "tcp", "network-attacks", "dos"]
+  }
+]

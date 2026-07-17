@@ -103,6 +103,9 @@ export default function AdminDashboard() {
 
   const [users, setUsers] = useState([]);
   const [feedbackList, setFeedbackList] = useState([]);
+  const [questionVotes, setQuestionVotes] = useState([]);
+  const [votesFilter, setVotesFilter] = useState('all'); // 'all' | 'issues' | 'liked'
+  const [votesSearch, setVotesSearch] = useState('');
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [deleteTarget, setDeleteTarget] = useState(null);
@@ -167,6 +170,20 @@ export default function AdminDashboard() {
     }
   }, [adminUser]);
 
+  const fetchVotes = useCallback(async () => {
+    try {
+      const res = await fetch(`${API_BASE}/admin/votes`, {
+        headers: { 'Authorization': `Bearer ${adminUser?.token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setQuestionVotes(data.votes || []);
+      }
+    } catch (err) {
+      console.error('Failed to fetch votes:', err);
+    }
+  }, [adminUser]);
+
   const deleteFeedback = async (id) => {
     if (!window.confirm("Delete this feedback?")) return;
     try {
@@ -204,6 +221,7 @@ export default function AdminDashboard() {
       fetchUsers();
       fetchFeedback();
       fetchStats();
+      fetchVotes();
       
       // Auto-refresh stats every 30 seconds
       const statsInterval = setInterval(() => {
@@ -212,7 +230,7 @@ export default function AdminDashboard() {
       
       return () => clearInterval(statsInterval);
     }
-  }, [isAdmin, fetchUsers, fetchFeedback, fetchStats]);
+  }, [isAdmin, fetchUsers, fetchFeedback, fetchStats, fetchVotes]);
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -693,6 +711,200 @@ export default function AdminDashboard() {
                  </div>
                ))
             )}
+          </div>
+        </section>
+
+        {/* ── Question Votes Section ── */}
+        <section
+          className="mt-6 animate-fade-in-up rounded-3xl border border-white/10 p-4 sm:p-5"
+          style={{
+            animationDelay: "0.13s",
+            background: "linear-gradient(135deg, rgba(16,185,129,0.06), rgba(245,158,11,0.04)), rgba(8,13,24,0.72)",
+            boxShadow: "0 24px 80px rgba(2,6,23,0.35)",
+            backdropFilter: "blur(20px)",
+          }}
+        >
+          {/* Header */}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between mb-5">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400/80">User Feedback</p>
+              <h2 className="mt-2 text-2xl font-black text-white sm:text-3xl">
+                Question Votes
+                <span className="ml-3 inline-flex items-center rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-sm font-bold text-emerald-300">
+                  {questionVotes.length}
+                </span>
+              </h2>
+              <p className="mt-1 text-xs text-slate-500">Questions users thumbs-up (👍 helpful) or thumbs-down (👎 reported issue)</p>
+            </div>
+            <button
+              onClick={fetchVotes}
+              className="touch-target shrink-0 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-white/10"
+              type="button"
+            >
+              🔄 Refresh
+            </button>
+          </div>
+
+          {/* Filter + Search bar */}
+          <div className="flex flex-wrap gap-3 mb-5">
+            {[
+              { key: 'all', label: '📊 All', count: questionVotes.length },
+              { key: 'issues', label: '👎 Issues', count: questionVotes.filter(v => v.downVotes > 0).length },
+              { key: 'liked', label: '👍 Liked', count: questionVotes.filter(v => v.upVotes > 0).length },
+            ].map(f => (
+              <button
+                key={f.key}
+                onClick={() => setVotesFilter(f.key)}
+                className={`px-4 py-2 rounded-xl text-xs font-bold border transition-all ${
+                  votesFilter === f.key
+                    ? 'bg-amber-400/15 border-amber-400/40 text-amber-300'
+                    : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/8'
+                }`}
+              >
+                {f.label} ({f.count})
+              </button>
+            ))}
+            <input
+              type="text"
+              placeholder="Search questions..."
+              value={votesSearch}
+              onChange={e => setVotesSearch(e.target.value)}
+              className="flex-1 min-w-[180px] rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-xs text-white outline-none placeholder:text-slate-600 focus:border-amber-400/50"
+            />
+          </div>
+
+          {/* Summary stat cards */}
+          {questionVotes.length > 0 && (
+            <div className="grid grid-cols-3 gap-3 mb-5">
+              {[
+                {
+                  label: 'Total Votes',
+                  value: questionVotes.reduce((s, v) => s + v.totalVotes, 0),
+                  color: '#a78bfa',
+                  icon: '🗳️',
+                },
+                {
+                  label: 'Thumbs Up',
+                  value: questionVotes.reduce((s, v) => s + v.upVotes, 0),
+                  color: '#10b981',
+                  icon: '👍',
+                },
+                {
+                  label: 'Issues Reported',
+                  value: questionVotes.reduce((s, v) => s + v.downVotes, 0),
+                  color: '#ef4444',
+                  icon: '👎',
+                },
+              ].map(s => (
+                <div key={s.label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-center">
+                  <div className="text-2xl mb-1">{s.icon}</div>
+                  <div className="text-xl font-black tabular-nums" style={{ color: s.color }}>{s.value}</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 uppercase tracking-wide">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Questions list */}
+          <div className="space-y-3">
+            {questionVotes.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.03] p-10 text-center">
+                <div className="text-4xl mb-3">🗳️</div>
+                <p className="text-white font-bold mb-1">No votes yet</p>
+                <p className="text-slate-500 text-sm">When users vote on questions, they'll appear here.</p>
+              </div>
+            ) : (() => {
+              // Filter and search
+              let filtered = questionVotes;
+              if (votesFilter === 'issues') filtered = filtered.filter(v => v.downVotes > 0);
+              if (votesFilter === 'liked') filtered = filtered.filter(v => v.upVotes > 0);
+              if (votesSearch.trim()) {
+                const q = votesSearch.trim().toLowerCase();
+                filtered = filtered.filter(v =>
+                  (v.questionText || '').toLowerCase().includes(q) ||
+                  (v.subject || '').toLowerCase().includes(q)
+                );
+              }
+
+              if (filtered.length === 0) {
+                return (
+                  <div className="rounded-2xl border border-dashed border-white/10 bg-white/[0.03] p-8 text-center text-slate-400 text-sm">
+                    No questions match the current filter.
+                  </div>
+                );
+              }
+
+              return filtered.map(item => {
+                const scoreRatio = item.totalVotes > 0 ? item.upVotes / item.totalVotes : 0;
+                const scoreColor = scoreRatio >= 0.7 ? '#10b981' : scoreRatio >= 0.4 ? '#f59e0b' : '#ef4444';
+                const diffColors = { easy: '#10b981', medium: '#f59e0b', hard: '#ef4444', unknown: '#6b7280' };
+                const diffColor = diffColors[item.difficulty] || '#6b7280';
+
+                return (
+                  <div
+                    key={item._id}
+                    className="rounded-2xl border border-white/8 bg-white/[0.035] p-4 transition hover:border-emerald-400/20 hover:bg-white/[0.055]"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-3">
+                      {/* Left: question info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          {/* Subject badge */}
+                          <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-300 border border-blue-500/25">
+                            {item.subject || 'unknown'}
+                          </span>
+                          {/* Difficulty badge */}
+                          <span
+                            className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg border"
+                            style={{ color: diffColor, background: `${diffColor}15`, borderColor: `${diffColor}30` }}
+                          >
+                            {item.difficulty === 'easy' ? '🟢' : item.difficulty === 'medium' ? '🟡' : '🔴'} {item.difficulty}
+                          </span>
+                          {/* Score ratio */}
+                          <span
+                            className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                            style={{ color: scoreColor, background: `${scoreColor}15`, border: `1px solid ${scoreColor}30` }}
+                          >
+                            {Math.round(scoreRatio * 100)}% positive
+                          </span>
+                        </div>
+                        <p className="text-sm text-white font-semibold leading-snug line-clamp-2">
+                          {item.questionText || item._id}
+                        </p>
+                        <p className="text-xs text-slate-500 mt-1">
+                          Last voted: {item.lastVoted ? new Date(item.lastVoted).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
+                        </p>
+                      </div>
+
+                      {/* Right: vote counts */}
+                      <div className="flex items-center gap-3 shrink-0">
+                        <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-green-500/10 border border-green-500/20">
+                          <span className="text-base">👍</span>
+                          <span className="text-lg font-black text-green-400 tabular-nums">{item.upVotes}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-500/10 border border-red-500/20">
+                          <span className="text-base">👎</span>
+                          <span className="text-lg font-black text-red-400 tabular-nums">{item.downVotes}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Vote bar */}
+                    {item.totalVotes > 0 && (
+                      <div className="mt-3 rounded-full overflow-hidden h-1.5 bg-white/5">
+                        <div
+                          className="h-full rounded-full transition-all"
+                          style={{
+                            width: `${Math.round(scoreRatio * 100)}%`,
+                            background: `linear-gradient(90deg, ${scoreColor}, ${scoreColor}bb)`,
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              });
+            })()}
           </div>
         </section>
 

@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "question": "What is a deadlock in DBMS?",
+    "options": [
+      { "id": "a", "text": "When database crashes" },
+      { "id": "b", "text": "When two transactions wait for each other indefinitely" },
+      { "id": "c", "text": "When query takes too long" },
+      { "id": "d", "text": "When table is locked by DBA" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Deadlock occurs when two or more transactions each hold a lock and wait for the other to release theirs — an infinite circular wait.",
+    "difficulty": "hard",
+    "topics": ["concurrency", "transactions"]
+  },
+  {
+    "id": 2,
+    "question": "In two-phase locking (2PL), what happens during the shrinking phase?",
+    "options": [
+      { "id": "a", "text": "Transactions acquire all needed locks before releasing any" },
+      { "id": "b", "text": "Transactions can only release locks, not acquire new ones" },
+      { "id": "c", "text": "Transactions can acquire and release locks simultaneously" },
+      { "id": "d", "text": "Only shared locks are released; exclusive locks are retained" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In 2PL's shrinking phase a transaction may only release locks—acquiring new locks is forbidden. This guarantees conflict-serializability.",
+    "difficulty": "hard",
+    "topics": ["concurrency", "locking", "2pl"]
+  },
+  {
+    "id": 3,
+    "question": "Which isolation level allows non-repeatable reads but prevents dirty reads?",
+    "options": [
+      { "id": "a", "text": "Read Uncommitted" },
+      { "id": "b", "text": "Read Committed" },
+      { "id": "c", "text": "Repeatable Read" },
+      { "id": "d", "text": "Serializable" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Read Committed prevents dirty reads (reading uncommitted data) but allows non-repeatable reads (same row may differ between two reads in a transaction).",
+    "difficulty": "hard",
+    "topics": ["transactions", "isolation", "concurrency"]
+  },
+  {
+    "id": 4,
+    "question": "What distinguishes BCNF from 3NF?",
+    "options": [
+      { "id": "a", "text": "BCNF eliminates all partial dependencies" },
+      { "id": "b", "text": "BCNF requires every determinant to be a superkey, even if 3NF is satisfied" },
+      { "id": "c", "text": "BCNF allows transitive dependencies unlike 3NF" },
+      { "id": "d", "text": "BCNF permits multi-valued dependencies" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "BCNF is stricter: every determinant X in X→Y must be a superkey. In 3NF, Y may be a prime attribute (part of a candidate key), which BCNF forbids.",
+    "difficulty": "hard",
+    "topics": ["normalization", "bcnf", "functional-dependencies"]
+  },
+  {
+    "id": 5,
+    "question": "Which relational algebra operator returns tuples appearing in either of two union-compatible relations?",
+    "options": [
+      { "id": "a", "text": "Natural Join (⋈)" },
+      { "id": "b", "text": "Difference (−)" },
+      { "id": "c", "text": "Union (∪)" },
+      { "id": "d", "text": "Intersection (∩)" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Union (∪) returns all tuples in R ∪ S, eliminating duplicates. Both relations must be union-compatible (same arity and compatible attribute domains).",
+    "difficulty": "hard",
+    "topics": ["relational-algebra", "set-operations"]
+  },
+  {
+    "id": 6,
+    "question": "What is a phantom read in database transactions?",
+    "options": [
+      { "id": "a", "text": "Reading uncommitted data from another transaction" },
+      { "id": "b", "text": "Getting different row sets for the same query due to concurrent inserts/deletes" },
+      { "id": "c", "text": "A read that returns no rows" },
+      { "id": "d", "text": "Reading data from a deleted table" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A phantom read occurs when a transaction re-executes a range query and finds new or missing rows inserted/deleted by another committed transaction since the first read.",
+    "difficulty": "hard",
+    "topics": ["transactions", "isolation", "phantom-read"]
+  },
+  {
+    "id": 7,
+    "question": "Why are B+ trees preferred over B-trees for database index structures?",
+    "options": [
+      { "id": "a", "text": "B+ trees store all data only in leaf nodes, enabling efficient range queries via linked leaves" },
+      { "id": "b", "text": "B+ trees always have lower height than B-trees" },
+      { "id": "c", "text": "B+ trees do not support duplicate keys" },
+      { "id": "d", "text": "B+ trees use hash-based page splitting" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "In a B+ tree, all data records are at leaf nodes linked in a linked list, enabling fast sequential range scans without tree traversal for each record.",
+    "difficulty": "hard",
+    "topics": ["indexing", "b-plus-tree", "performance"]
+  },
+  {
+    "id": 8,
+    "question": "In the ARIES recovery algorithm, what is the purpose of a CLR (Compensation Log Record)?",
+    "options": [
+      { "id": "a", "text": "To record committed transactions for forward recovery" },
+      { "id": "b", "text": "To undo changes made by aborted transactions and ensure idempotency during redo" },
+      { "id": "c", "text": "To checkpoint the buffer pool periodically" },
+      { "id": "d", "text": "To track dirty pages in the buffer pool" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "CLRs are written when undoing an update during rollback. On a subsequent crash, CLRs are redone (not undone), making the undo process idempotent.",
+    "difficulty": "hard",
+    "topics": ["recovery", "aries", "logging"]
+  },
+  {
+    "id": 9,
+    "question": "Which SQL window function assigns consecutive ranks with NO gaps for tied rows?",
+    "options": [
+      { "id": "a", "text": "RANK()" },
+      { "id": "b", "text": "ROW_NUMBER()" },
+      { "id": "c", "text": "DENSE_RANK()" },
+      { "id": "d", "text": "NTILE()" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "DENSE_RANK() gives tied rows the same rank and the next rank is incremented by exactly 1 (no gaps). RANK() skips numbers after a tie.",
+    "difficulty": "hard",
+    "topics": ["sql", "window-functions", "ranking"]
+  },
+  {
+    "id": 10,
+    "question": "What does the CAP theorem state for distributed databases?",
+    "options": [
+      { "id": "a", "text": "Consistency, Availability, and Partition tolerance can all be simultaneously guaranteed" },
+      { "id": "b", "text": "A distributed system can guarantee at most two of: Consistency, Availability, Partition tolerance" },
+      { "id": "c", "text": "Partition tolerance is optional if the network is reliable" },
+      { "id": "d", "text": "ACID properties replace CAP in distributed systems" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "CAP theorem: during a network partition a distributed system must sacrifice either Consistency (CP) or Availability (AP)—all three cannot be simultaneously guaranteed.",
+    "difficulty": "hard",
+    "topics": ["distributed-db", "cap-theorem", "consistency"]
+  },
+  {
+    "id": 11,
+    "question": "What is the difference between a clustered and a non-clustered index?",
+    "options": [
+      { "id": "a", "text": "Clustered index sorts and stores row data physically; non-clustered index stores a separate structure pointing to rows" },
+      { "id": "b", "text": "Non-clustered index is faster than clustered for all queries" },
+      { "id": "c", "text": "A table can have multiple clustered indexes" },
+      { "id": "d", "text": "Clustered indexes cannot be used on primary keys" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A clustered index determines the physical storage order of rows (one per table). A non-clustered index is a separate structure with pointers to the actual data rows.",
+    "difficulty": "hard",
+    "topics": ["indexing", "clustered-index", "performance"]
+  },
+  {
+    "id": 12,
+    "question": "Which concurrency control anomaly can occur even at the Repeatable Read isolation level?",
+    "options": [
+      { "id": "a", "text": "Dirty read" },
+      { "id": "b", "text": "Non-repeatable read" },
+      { "id": "c", "text": "Phantom read" },
+      { "id": "d", "text": "Lost update" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Repeatable Read prevents dirty and non-repeatable reads by locking read rows, but phantom reads (new rows added by concurrent transactions) can still occur unless Serializable isolation is used.",
+    "difficulty": "hard",
+    "topics": ["isolation", "concurrency", "phantom-read"]
+  }
+]

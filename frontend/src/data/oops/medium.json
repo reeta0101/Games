@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "What is the difference between an abstract class and an interface?",
+    "options": [
+      { "id": "a", "text": "No difference at all" },
+      { "id": "b", "text": "Abstract class can have implementation and state; interface defines only a contract" },
+      { "id": "c", "text": "Interface is faster at runtime" },
+      { "id": "d", "text": "Abstract class is deprecated in modern languages" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An abstract class can have fields, constructors, and concrete methods. An interface (traditionally) declares only method signatures; a class can implement multiple interfaces but extend only one abstract class.",
+    "difficulty": "medium",
+    "topics": ["abstraction", "interface"]
+  },
+  {
+    "id": 2,
+    "question": "What does the 'S' in SOLID principles stand for?",
+    "options": [
+      { "id": "a", "text": "Simple Responsibility Principle" },
+      { "id": "b", "text": "Single Responsibility Principle" },
+      { "id": "c", "text": "Static Responsibility Principle" },
+      { "id": "d", "text": "Structured Responsibility Principle" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Single Responsibility Principle: a class should have only one reason to change, meaning it should have only one job or responsibility.",
+    "difficulty": "medium",
+    "topics": ["solid", "design-principles"]
+  },
+  {
+    "id": 3,
+    "question": "What is the difference between composition and aggregation in OOP?",
+    "options": [
+      { "id": "a", "text": "Both are identical — they are alternate names for the same concept" },
+      { "id": "b", "text": "Composition implies a strong ownership (child cannot exist without parent); aggregation implies a weak relationship (child can exist independently)" },
+      { "id": "c", "text": "Aggregation is stronger than composition" },
+      { "id": "d", "text": "Composition is used only in functional programming" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In composition, the contained object's lifecycle depends on the container (e.g., Room dies with House). In aggregation, the object can exist independently (e.g., Student can exist without Department).",
+    "difficulty": "medium",
+    "topics": ["relationships", "composition", "aggregation"]
+  },
+  {
+    "id": 4,
+    "question": "What is a static method in OOP?",
+    "options": [
+      { "id": "a", "text": "A method that can only be called on objects, not classes" },
+      { "id": "b", "text": "A method that belongs to the class itself rather than any instance, callable without creating an object" },
+      { "id": "c", "text": "A method that cannot be overridden" },
+      { "id": "d", "text": "A method that runs in a separate thread" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Static methods belong to the class, not instances. They can be called via ClassName.method() without creating an object, and cannot access instance-level (non-static) fields or 'this'.",
+    "difficulty": "medium",
+    "topics": ["static", "methods", "basics"]
+  },
+  {
+    "id": 5,
+    "question": "What is the purpose of the 'super' keyword?",
+    "options": [
+      { "id": "a", "text": "To create a new superclass" },
+      { "id": "b", "text": "To call a parent class constructor or method from a subclass" },
+      { "id": "c", "text": "To declare a class as abstract" },
+      { "id": "d", "text": "To prevent method overriding" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'super' references the immediate parent class. It can call the parent constructor (super()) or parent methods (super.methodName()), commonly used in overriding to extend (not replace) parent behaviour.",
+    "difficulty": "medium",
+    "topics": ["inheritance", "keywords"]
+  },
+  {
+    "id": 6,
+    "question": "What is an access modifier and what are the common types?",
+    "options": [
+      { "id": "a", "text": "A keyword that changes a variable's data type; types: int, float, string, bool" },
+      { "id": "b", "text": "A keyword that controls visibility of class members; types: public, private, protected, (package/default)" },
+      { "id": "c", "text": "A modifier that makes objects immutable; types: final, const, readonly" },
+      { "id": "d", "text": "A way to define the return type of a method" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Access modifiers control the scope and visibility of class members: public (everywhere), private (same class only), protected (same class + subclasses), and package/default (same package).",
+    "difficulty": "medium",
+    "topics": ["encapsulation", "access-modifiers"]
+  },
+  {
+    "id": 7,
+    "question": "What is an anonymous class in Java/C#?",
+    "options": [
+      { "id": "a", "text": "A class with no fields or methods" },
+      { "id": "b", "text": "An inline class defined without a name, usually to implement an interface or extend a class on the fly" },
+      { "id": "c", "text": "A class that cannot have a constructor" },
+      { "id": "d", "text": "A deprecated feature removed in Java 8" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An anonymous class is declared and instantiated in a single expression. It is used to provide a one-time implementation of an interface or abstract class without formally naming the class.",
+    "difficulty": "medium",
+    "topics": ["classes", "java", "anonymous"]
+  },
+  {
+    "id": 8,
+    "question": "What is the difference between an interface and an abstract class regarding instantiation?",
+    "options": [
+      { "id": "a", "text": "Both can be instantiated directly" },
+      { "id": "b", "text": "Neither can be instantiated directly; both must be subclassed or implemented" },
+      { "id": "c", "text": "Only interfaces can be instantiated" },
+      { "id": "d", "text": "Abstract classes can be instantiated; interfaces cannot" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Neither abstract classes nor interfaces can be instantiated directly. You must create a concrete subclass (for abstract classes) or an implementing class (for interfaces) and instantiate that.",
+    "difficulty": "medium",
+    "topics": ["abstraction", "interface", "class-object"]
+  },
+  {
+    "id": 9,
+    "question": "What is an inner class (nested class) in OOP?",
+    "options": [
+      { "id": "a", "text": "A class declared inside another class, with access to the outer class members" },
+      { "id": "b", "text": "A class defined inside a method without a name" },
+      { "id": "c", "text": "A subclass of the current class" },
+      { "id": "d", "text": "A class with only static members" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "An inner (nested) class is defined within another class. Non-static inner classes can access the enclosing class's instance members, providing logical grouping and encapsulation.",
+    "difficulty": "medium",
+    "topics": ["classes", "nested-class"]
+  },
+  {
+    "id": 10,
+    "question": "What is the difference between early binding and late binding?",
+    "options": [
+      { "id": "a", "text": "Early binding happens at runtime; late binding at compile time" },
+      { "id": "b", "text": "Early binding resolves method calls at compile time; late binding resolves at runtime via the vtable" },
+      { "id": "c", "text": "Both are the same; the names just differ by language" },
+      { "id": "d", "text": "Late binding is only used in functional programming" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Early binding (static dispatch): the compiler determines which method to call (e.g., overloading). Late binding (dynamic dispatch): the runtime uses the object's actual type and vtable to resolve virtual method calls (e.g., overriding).",
+    "difficulty": "medium",
+    "topics": ["polymorphism", "binding", "vtable"]
+  }
+]

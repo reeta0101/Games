@@ -1,9 +1,55 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCheckCircle, FaTimesCircle, FaChevronRight, FaBookmark, FaRegBookmark, FaClock } from 'react-icons/fa';
+import { FaCheckCircle, FaTimesCircle, FaChevronRight, FaBookmark, FaRegBookmark, FaClock, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import useKeyboard from '../hooks/useKeyboard';
 import useSound from '../hooks/useSound';
 import useTimer from '../hooks/useTimer';
+
+const API_BASE = `${import.meta.env.VITE_API_URL || ''}/api`;
+
+// Persistent bookmarks stored in localStorage
+const BOOKMARK_KEY = 'quiz_bookmarks';
+
+function getBookmarks() {
+  try {
+    return JSON.parse(localStorage.getItem(BOOKMARK_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function toggleBookmarkStorage(question, subject) {
+  const bookmarks = getBookmarks();
+  const key = `${subject}_${question.id}`;
+  const exists = bookmarks.findIndex(b => b.key === key);
+  if (exists >= 0) {
+    bookmarks.splice(exists, 1);
+  } else {
+    bookmarks.unshift({
+      key,
+      subject,
+      difficulty: question.difficulty || 'unknown',
+      questionId: question.id,
+      questionText: question.question,
+      options: question.options,
+      correctOptionId: question.correctOptionId,
+      explanation: question.explanation || '',
+      savedAt: new Date().toISOString(),
+    });
+  }
+  localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bookmarks));
+  return bookmarks;
+}
+
+// Get user session identifier (anonymous ID stored in localStorage)
+function getUserId() {
+  let uid = localStorage.getItem('quiz_uid');
+  if (!uid) {
+    uid = 'anon_' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+    localStorage.setItem('quiz_uid', uid);
+  }
+  return uid;
+}
 
 const Quiz = ({
   question,
@@ -20,12 +66,54 @@ const Quiz = ({
   soundEnabled = true,
   savedSelection = null,
   quizMode = 'practice',
-  testSubmitted = false
+  testSubmitted = false,
+  subject = '',
 }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showNext, setShowNext] = useState(false);
   const { playSound } = useSound(soundEnabled);
+
+  // Vote state
+  const [myVote, setMyVote] = useState(null);       // 'up' | 'down' | null
+  const [upCount, setUpCount] = useState(0);
+  const [downCount, setDownCount] = useState(0);
+  const [voteLoading, setVoteLoading] = useState(false);
+
+  // Bookmark (persistent)
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const questionKey = question?.id ? `${subject}_${question.id}` : null;
+
+  // Load vote + bookmark state when question changes
+  useEffect(() => {
+    if (!question?.id) return;
+
+    // Restore bookmark state from localStorage
+    const bookmarks = getBookmarks();
+    setIsBookmarked(bookmarks.some(b => b.key === questionKey));
+
+    // Restore vote from localStorage (offline fallback)
+    const localVotes = JSON.parse(localStorage.getItem('quiz_votes') || '{}');
+    const localVote = localVotes[questionKey] || null;
+    setMyVote(localVote);
+    setUpCount(0);
+    setDownCount(0);
+
+    // Try to fetch live vote counts from backend
+    const uid = getUserId();
+    const qId = `${subject}_${question.id}`;
+    fetch(`${API_BASE}/votes/question/${encodeURIComponent(qId)}?userIdentifier=${uid}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data) {
+          setUpCount(data.upCount || 0);
+          setDownCount(data.downCount || 0);
+          if (data.myVote) setMyVote(data.myVote);
+        }
+      })
+      .catch(() => { /* silently ignore if offline */ });
+  }, [question?.id, subject]);
 
   const handleTimeUp = useCallback(() => {
     if (!isAnswered) {
@@ -39,7 +127,6 @@ const Quiz = ({
   const timer = useTimer(timerDuration, handleTimeUp);
 
   useEffect(() => {
-    // If we have a saved selection, restore it immediately
     if (savedSelection) {
       setSelectedOption(savedSelection);
       setIsAnswered(true);
@@ -94,16 +181,82 @@ const Quiz = ({
     onMark: onToggleMark,
   });
 
+  // Handle vote
+  const handleVote = useCallback(async (voteType) => {
+    if (voteLoading || !question?.id) return;
+    const newVote = myVote === voteType ? null : voteType; // toggle off if same
+    setVoteLoading(true);
+
+    const uid = getUserId();
+    const qId = `${subject}_${question.id}`;
+
+    // Optimistic UI update
+    const prevVote = myVote;
+    setMyVote(newVote);
+    if (newVote === 'up') {
+      setUpCount(c => c + 1);
+      if (prevVote === 'down') setDownCount(c => Math.max(0, c - 1));
+    } else if (newVote === 'down') {
+      setDownCount(c => c + 1);
+      if (prevVote === 'up') setUpCount(c => Math.max(0, c - 1));
+    } else {
+      // Toggled off
+      if (prevVote === 'up') setUpCount(c => Math.max(0, c - 1));
+      if (prevVote === 'down') setDownCount(c => Math.max(0, c - 1));
+    }
+
+    // Save to localStorage (offline fallback)
+    const localVotes = JSON.parse(localStorage.getItem('quiz_votes') || '{}');
+    const qKey = `${subject}_${question.id}`;
+    if (newVote) {
+      localVotes[qKey] = newVote;
+    } else {
+      delete localVotes[qKey];
+    }
+    localStorage.setItem('quiz_votes', JSON.stringify(localVotes));
+
+    // POST to backend (if toggle-off, still send null to remove)
+    if (newVote) {
+      try {
+        const res = await fetch(`${API_BASE}/votes`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            questionId: qId,
+            subject: subject || 'unknown',
+            difficulty: question.difficulty || 'unknown',
+            questionText: question.question?.slice(0, 150) || '',
+            vote: newVote,
+            userIdentifier: uid,
+          }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setUpCount(data.upCount || 0);
+          setDownCount(data.downCount || 0);
+        }
+      } catch { /* offline - optimistic update remains */ }
+    }
+
+    setVoteLoading(false);
+  }, [myVote, voteLoading, question, subject]);
+
+  // Handle persistent bookmark
+  const handleBookmark = useCallback(() => {
+    playSound('click');
+    toggleBookmarkStorage(question, subject);
+    const bookmarks = getBookmarks();
+    setIsBookmarked(bookmarks.some(b => b.key === questionKey));
+    // Also call parent onToggleMark if provided (for in-session nav dots)
+    if (onToggleMark) onToggleMark();
+  }, [question, subject, questionKey, playSound, onToggleMark]);
+
   const getOptionClass = (optionId) => {
     if (!isAnswered) return '';
-
-    // In test mode, don't reveal correct/wrong until submitted
     if (quizMode === 'test' && !testSubmitted) {
       if (selectedOption === optionId) return 'selected';
       return '';
     }
-
-    // Practice mode or test submitted - show correct/wrong
     if (optionId === question.correctOptionId) return 'correct';
     if (selectedOption === optionId) return 'wrong';
     return 'disabled';
@@ -144,13 +297,15 @@ const Quiz = ({
             </div>
           )}
         </div>
+
+        {/* Right side: Bookmark button */}
         <button
-          className={`mark-btn ${isMarked ? 'marked' : ''}`}
-          onClick={() => { playSound('click'); onToggleMark && onToggleMark(); }}
-          aria-label={isMarked ? 'Remove bookmark' : 'Bookmark question'}
+          className={`mark-btn ${isBookmarked ? 'marked' : ''}`}
+          onClick={handleBookmark}
+          aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark question'}
         >
-          {isMarked ? <FaBookmark size={12} /> : <FaRegBookmark size={12} />}
-          <span>{isMarked ? 'Bookmarked' : 'Bookmark'}</span>
+          {isBookmarked ? <FaBookmark size={12} /> : <FaRegBookmark size={12} />}
+          <span>{isBookmarked ? 'Saved' : 'Bookmark'}</span>
           <span className="kbd hidden md:inline">M</span>
         </button>
       </div>
@@ -226,7 +381,7 @@ const Quiz = ({
         ))}
       </div>
 
-      {/* Explanation card - hidden in test mode until submitted */}
+      {/* Explanation card */}
       <AnimatePresence>
         {isAnswered && question.explanation && (quizMode === 'practice' || testSubmitted) && (
           <motion.div
@@ -241,13 +396,76 @@ const Quiz = ({
               <div className="flex-1">
                 <strong className="block mb-2 text-blue-400">Explanation</strong>
                 <span className="text-slate-300 leading-relaxed">{question.explanation}</span>
-                {/* Code snippet if available */}
                 {question.codeSnippet && (
                   <div className="code-snippet mt-3">
                     <code>{question.codeSnippet}</code>
                   </div>
                 )}
               </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── VOTE + FEEDBACK BAR ── */}
+      <AnimatePresence>
+        {(isAnswered && (quizMode === 'practice' || testSubmitted)) && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-5 flex items-center justify-between gap-3 rounded-xl px-4 py-3"
+            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+          >
+            <span className="text-xs text-slate-500 font-medium hidden sm:block">Was this question helpful?</span>
+
+            <div className="flex items-center gap-2 ml-auto">
+              {/* Thumbs Up */}
+              <button
+                onClick={() => handleVote('up')}
+                disabled={voteLoading}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 ${
+                  myVote === 'up'
+                    ? 'bg-green-500/25 text-green-400 border border-green-500/40 scale-105'
+                    : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-green-500/15 hover:text-green-400 hover:border-green-500/30'
+                }`}
+                title="Good question"
+                aria-label="Vote up - good question"
+              >
+                <FaThumbsUp size={12} />
+                <span>{upCount > 0 ? upCount : ''}</span>
+              </button>
+
+              {/* Thumbs Down */}
+              <button
+                onClick={() => handleVote('down')}
+                disabled={voteLoading}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 ${
+                  myVote === 'down'
+                    ? 'bg-red-500/25 text-red-400 border border-red-500/40 scale-105'
+                    : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-red-500/15 hover:text-red-400 hover:border-red-500/30'
+                }`}
+                title="Report issue / wrong question"
+                aria-label="Vote down - report issue"
+              >
+                <FaThumbsDown size={12} />
+                <span>{downCount > 0 ? downCount : ''}</span>
+              </button>
+
+              {/* Vote confirmation */}
+              <AnimatePresence>
+                {myVote && (
+                  <motion.span
+                    initial={{ opacity: 0, x: -5 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0 }}
+                    className={`text-[10px] font-bold ${myVote === 'up' ? 'text-green-400' : 'text-red-400'}`}
+                  >
+                    {myVote === 'up' ? '✓ Liked' : '✓ Reported'}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         )}

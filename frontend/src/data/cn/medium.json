@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "question": "What is the difference between TCP and UDP?",
+    "options": [
+      { "id": "a", "text": "TCP is faster than UDP" },
+      { "id": "b", "text": "TCP is connection-oriented and reliable; UDP is connectionless and faster" },
+      { "id": "c", "text": "UDP is more reliable than TCP" },
+      { "id": "d", "text": "There is no functional difference" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "TCP ensures reliable, ordered delivery using acknowledgments. UDP is connectionless with no delivery guarantees — ideal for streaming or gaming where speed matters.",
+    "difficulty": "medium",
+    "topics": ["protocols", "tcp-udp"]
+  },
+  {
+    "id": 2,
+    "question": "What is subnetting used for?",
+    "options": [
+      { "id": "a", "text": "To increase internet speed" },
+      { "id": "b", "text": "To divide a large network into smaller sub-networks" },
+      { "id": "c", "text": "To encrypt network data" },
+      { "id": "d", "text": "To back up network data" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Subnetting divides an IP network into smaller subnetworks for better performance, security, and efficient IP address management.",
+    "difficulty": "medium",
+    "topics": ["ip-addressing", "subnetting"]
+  },
+  {
+    "id": 3,
+    "question": "What is the TCP three-way handshake sequence?",
+    "options": [
+      { "id": "a", "text": "SYN → SYN-ACK → ACK" },
+      { "id": "b", "text": "ACK → SYN → FIN" },
+      { "id": "c", "text": "FIN → ACK → RST" },
+      { "id": "d", "text": "SYN → FIN → ACK" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "TCP connection setup uses: SYN (client initiates), SYN-ACK (server acknowledges and synchronizes), ACK (client confirms). This three-way handshake establishes a reliable connection.",
+    "difficulty": "medium",
+    "topics": ["tcp", "protocols"]
+  },
+  {
+    "id": 4,
+    "question": "What is NAT (Network Address Translation)?",
+    "options": [
+      { "id": "a", "text": "A protocol for encrypting IP packets" },
+      { "id": "b", "text": "A method to map private IPs to a public IP for internet access" },
+      { "id": "c", "text": "A routing algorithm" },
+      { "id": "d", "text": "A type of firewall" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "NAT translates private IP addresses within a LAN to a single public IP address for outbound internet communication, conserving public IPv4 addresses.",
+    "difficulty": "medium",
+    "topics": ["nat", "ip-addressing", "routing"]
+  },
+  {
+    "id": 5,
+    "question": "What is the purpose of ARP (Address Resolution Protocol)?",
+    "options": [
+      { "id": "a", "text": "Assign dynamic IP addresses" },
+      { "id": "b", "text": "Map an IP address to a MAC address within a local network" },
+      { "id": "c", "text": "Encrypt data packets" },
+      { "id": "d", "text": "Resolve domain names to IP addresses" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "ARP maps a known Layer 3 (IP) address to the corresponding Layer 2 (MAC) address on the same network segment so frames can be delivered.",
+    "difficulty": "medium",
+    "topics": ["arp", "data-link", "addressing"]
+  },
+  {
+    "id": 6,
+    "question": "What is the difference between a hub and a switch?",
+    "options": [
+      { "id": "a", "text": "Hub sends data to all ports; switch sends data only to the destination port based on MAC" },
+      { "id": "b", "text": "Switch sends data to all ports; hub sends to the correct port only" },
+      { "id": "c", "text": "Hub works at Layer 3; switch works at Layer 2" },
+      { "id": "d", "text": "There is no difference" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A hub broadcasts to all ports (collision domain). A switch uses a MAC address table to forward frames only to the intended destination port, reducing collisions.",
+    "difficulty": "medium",
+    "topics": ["data-link", "devices"]
+  },
+  {
+    "id": 7,
+    "question": "What is the function of the Transport Layer (Layer 4) in the OSI model?",
+    "options": [
+      { "id": "a", "text": "Physical transmission of bits" },
+      { "id": "b", "text": "Routing packets between networks" },
+      { "id": "c", "text": "End-to-end communication, flow control, and error recovery" },
+      { "id": "d", "text": "Formatting and encryption of data" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Layer 4 (Transport) provides end-to-end data transfer, segmentation, flow control, and error recovery through protocols like TCP and UDP.",
+    "difficulty": "medium",
+    "topics": ["osi-model", "transport-layer"]
+  },
+  {
+    "id": 8,
+    "question": "What does ICMP stand for and what is it primarily used for?",
+    "options": [
+      { "id": "a", "text": "Internet Control Message Protocol — used for error reporting and diagnostics (e.g., ping)" },
+      { "id": "b", "text": "Internet Cache Management Protocol — used for web caching" },
+      { "id": "c", "text": "Internal Communication Message Protocol — used for LAN messaging" },
+      { "id": "d", "text": "IP Control Multicast Protocol — used for multicast routing" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "ICMP is used for diagnostic and control purposes — e.g., ping (echo request/reply) and traceroute use ICMP. It operates at the Network Layer.",
+    "difficulty": "medium",
+    "topics": ["icmp", "protocols", "diagnostics"]
+  },
+  {
+    "id": 9,
+    "question": "What is the difference between a router and a switch?",
+    "options": [
+      { "id": "a", "text": "Router operates at Layer 2 using MAC addresses; switch operates at Layer 3 using IP" },
+      { "id": "b", "text": "Router connects different networks using IP; switch connects devices within the same network using MAC" },
+      { "id": "c", "text": "Router and switch perform identical functions" },
+      { "id": "d", "text": "Switch is used for WAN connectivity; router is used for LAN" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A router operates at Layer 3 to connect different IP networks. A switch operates at Layer 2 to connect devices within the same LAN using MAC addresses.",
+    "difficulty": "medium",
+    "topics": ["devices", "routing", "data-link"]
+  },
+  {
+    "id": 10,
+    "question": "What is the classless inter-domain routing (CIDR) notation /24 equivalent to?",
+    "options": [
+      { "id": "a", "text": "Subnet mask 255.0.0.0" },
+      { "id": "b", "text": "Subnet mask 255.255.0.0" },
+      { "id": "c", "text": "Subnet mask 255.255.255.0" },
+      { "id": "d", "text": "Subnet mask 255.255.255.128" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "/24 means 24 network bits. In binary: 11111111.11111111.11111111.00000000 = 255.255.255.0. This allows 254 usable host addresses.",
+    "difficulty": "medium",
+    "topics": ["subnetting", "cidr", "ip-addressing"]
+  }
+]

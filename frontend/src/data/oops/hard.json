@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "question": "What is the Liskov Substitution Principle (LSP)?",
+    "options": [
+      { "id": "a", "text": "A class should have only one reason to change" },
+      { "id": "b", "text": "Objects of a superclass must be replaceable with objects of a subclass without breaking the program" },
+      { "id": "c", "text": "High-level modules should not depend on low-level modules" },
+      { "id": "d", "text": "A class should depend on abstractions, not concretions" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "LSP: subtypes must be substitutable for their base types. If class S extends T, any code using T should work correctly with S — no strengthened preconditions or weakened postconditions.",
+    "difficulty": "hard",
+    "topics": ["solid", "lsp", "design-principles"]
+  },
+  {
+    "id": 2,
+    "question": "What is the diamond problem in multiple inheritance?",
+    "options": [
+      { "id": "a", "text": "A compilation error caused by circular imports" },
+      { "id": "b", "text": "Ambiguity when D inherits from B and C which both inherit from A — D gets two copies of A's interface" },
+      { "id": "c", "text": "Memory fragmentation during object allocation" },
+      { "id": "d", "text": "Stack overflow from recursive constructors" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The diamond problem: D inherits B and C, both inheriting A — D has ambiguous access to A's members. Java avoids it by disallowing multiple class inheritance. C++ resolves it with virtual inheritance.",
+    "difficulty": "hard",
+    "topics": ["inheritance", "diamond-problem", "multiple-inheritance"]
+  },
+  {
+    "id": 3,
+    "question": "Which design pattern ensures exactly one instance of a class exists and provides a global access point?",
+    "options": [
+      { "id": "a", "text": "Factory Method" },
+      { "id": "b", "text": "Observer" },
+      { "id": "c", "text": "Singleton" },
+      { "id": "d", "text": "Prototype" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Singleton restricts instantiation to a single object using a private constructor and a static getInstance() method. It is used for shared resources like config managers or connection pools.",
+    "difficulty": "hard",
+    "topics": ["design-patterns", "singleton", "creational"]
+  },
+  {
+    "id": 4,
+    "question": "What is object slicing (C++)?",
+    "options": [
+      { "id": "a", "text": "Splitting an object's fields across multiple classes" },
+      { "id": "b", "text": "Losing the derived class portion when a derived object is assigned to a base class object by value" },
+      { "id": "c", "text": "Dividing an array of objects into sub-arrays" },
+      { "id": "d", "text": "Cloning an object without copying its private members" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "When a derived object is copy-assigned to a base class variable by value, the extra derived-class data is sliced off, leaving only the base part. Pointers and references prevent slicing.",
+    "difficulty": "hard",
+    "topics": ["inheritance", "object-slicing", "cpp"]
+  },
+  {
+    "id": 5,
+    "question": "What is the Open/Closed Principle (OCP)?",
+    "options": [
+      { "id": "a", "text": "A module should be open for modification and closed for extension" },
+      { "id": "b", "text": "A module should be open for extension but closed for modification" },
+      { "id": "c", "text": "Classes should expose all their data to subclasses" },
+      { "id": "d", "text": "A class should close all dependencies to external modules" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "OCP: software entities should be extendable (open for extension) without needing source code changes (closed for modification), typically via inheritance or the Strategy pattern.",
+    "difficulty": "hard",
+    "topics": ["solid", "ocp", "design-principles"]
+  },
+  {
+    "id": 6,
+    "question": "Why is a virtual destructor needed in C++?",
+    "options": [
+      { "id": "a", "text": "To prevent the object from being destroyed at all" },
+      { "id": "b", "text": "To ensure the derived class destructor is called when deleting through a base class pointer" },
+      { "id": "c", "text": "To automatically free all memory allocated inside the class" },
+      { "id": "d", "text": "To call the parent class constructor in sequence" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Without a virtual destructor, 'delete basePtr' (where basePtr points to a derived object) only calls the base destructor, leaking derived resources. Virtual destructor ensures the vtable dispatches the full destructor chain.",
+    "difficulty": "hard",
+    "topics": ["inheritance", "destructor", "cpp", "polymorphism"]
+  },
+  {
+    "id": 7,
+    "question": "What is the Dependency Inversion Principle (DIP)?",
+    "options": [
+      { "id": "a", "text": "High-level modules should not depend on low-level modules; both should depend on abstractions" },
+      { "id": "b", "text": "Dependencies should only be injected via constructors" },
+      { "id": "c", "text": "Concrete classes should inherit from other concrete classes" },
+      { "id": "d", "text": "Each class should invert its access modifiers" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "DIP: high-level policy modules and low-level implementation modules should both depend on abstractions (interfaces), not on each other. Abstractions should not depend on details.",
+    "difficulty": "hard",
+    "topics": ["solid", "dip", "design-principles"]
+  },
+  {
+    "id": 8,
+    "question": "What is the Interface Segregation Principle (ISP)?",
+    "options": [
+      { "id": "a", "text": "A class should implement all methods defined in every interface" },
+      { "id": "b", "text": "Clients should not be forced to depend on interfaces they do not use — prefer many small interfaces over one large one" },
+      { "id": "c", "text": "Interfaces should only contain static methods" },
+      { "id": "d", "text": "An interface must always extend another interface" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "ISP prevents fat interfaces. Instead of one monolithic interface, create focused interfaces so clients only implement what they actually need, reducing coupling.",
+    "difficulty": "hard",
+    "topics": ["solid", "isp", "design-principles"]
+  },
+  {
+    "id": 9,
+    "question": "What is the difference between high cohesion and low coupling — and why is the combination desirable?",
+    "options": [
+      { "id": "a", "text": "High coupling and low cohesion for maximum reusability" },
+      { "id": "b", "text": "High cohesion (focused responsibilities) and low coupling (minimal dependencies) produce maintainable, testable, modular code" },
+      { "id": "c", "text": "Low cohesion and high coupling for tightly integrated systems" },
+      { "id": "d", "text": "Both cohesion and coupling should be equally balanced" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "High cohesion: a module focuses on one thing. Low coupling: modules are independent of each other. Together they make code easier to understand, test, reuse, and change without ripple effects.",
+    "difficulty": "hard",
+    "topics": ["design-principles", "cohesion", "coupling"]
+  },
+  {
+    "id": 10,
+    "question": "What is the difference between compile-time polymorphism and runtime polymorphism?",
+    "options": [
+      { "id": "a", "text": "Compile-time uses overriding; runtime uses overloading" },
+      { "id": "b", "text": "Compile-time resolves method calls at compile time (overloading); runtime resolves via vtable at execution (overriding)" },
+      { "id": "c", "text": "Both are identical — the terms are interchangeable" },
+      { "id": "d", "text": "Runtime polymorphism is only available in scripting languages" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Compile-time (static) polymorphism is resolved by the compiler — e.g., method overloading. Runtime (dynamic) polymorphism uses the vtable to dispatch the correct overridden method at execution.",
+    "difficulty": "hard",
+    "topics": ["polymorphism", "vtable", "binding"]
+  },
+  {
+    "id": 11,
+    "question": "What is the Observer design pattern?",
+    "options": [
+      { "id": "a", "text": "A pattern ensuring a class has only one instance" },
+      { "id": "b", "text": "A pattern where an object (subject) notifies a list of dependents (observers) automatically on state change" },
+      { "id": "c", "text": "A pattern for building complex objects step-by-step" },
+      { "id": "d", "text": "A pattern for converting an interface into another" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Observer defines a one-to-many dependency: when the Subject changes state, all registered Observers are notified and updated automatically. Used in event systems and MVC architectures.",
+    "difficulty": "hard",
+    "topics": ["design-patterns", "observer", "behavioral"]
+  },
+  {
+    "id": 12,
+    "question": "What is a pure virtual function in C++ and what does it create?",
+    "options": [
+      { "id": "a", "text": "A function declared with 'virtual' that has an empty body" },
+      { "id": "b", "text": "A function declared as 'virtual void f() = 0;' that makes its class abstract and forces derived classes to override it" },
+      { "id": "c", "text": "A static function that cannot be overridden" },
+      { "id": "d", "text": "A function that runs without any class context" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A pure virtual function (= 0) has no base-class definition and makes the class abstract (cannot be instantiated). Every concrete subclass must provide its own implementation.",
+    "difficulty": "hard",
+    "topics": ["abstraction", "virtual-functions", "cpp"]
+  }
+]

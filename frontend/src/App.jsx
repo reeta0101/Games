@@ -66,6 +66,7 @@ import FootballGame from "./pages/FootballGame";
 import ChessGame from "./pages/ChessGame";
 import SimonSays from "./pages/SimonSays";
 import GamesPage from "./pages/GamesPage";
+import SnakeGame from "./pages/SnakeGame";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import AboutPage from "./pages/AboutPage";
@@ -990,6 +991,7 @@ function ArcadeLayout() {
             <Route path="/penalty-shootout" element={<FootballGame />} />
             <Route path="/chess" element={<ChessGame />} />
             <Route path="/games" element={<GamesPage />} />
+            <Route path="/snake" element={<SnakeGame />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/about" element={<AboutPage />} />

@@ -56,6 +56,15 @@ export default function GamesPage() {
       color: "from-yellow-400 to-orange-500",
       shadow: "shadow-[0_0_15px_rgba(250,204,21,0.2)]",
     },
+    {
+      to: "/snake",
+      title: "Snake",
+      description:
+        "The classic retro Snake game. Eat the apples, grow longer, and don't bite yourself!",
+      icon: "🐍🍎",
+      color: "from-green-500 to-lime-400",
+      shadow: "shadow-[0_0_15px_rgba(34,197,94,0.2)]",
+    },
   ];
 
   return (

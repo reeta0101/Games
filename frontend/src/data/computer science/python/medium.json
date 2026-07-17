@@ -1,0 +1,1455 @@
+[
+  {
+    "id": 1,
+    "question": "Which operator is used for exponentiation in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "^"
+      },
+      {
+        "id": "b",
+        "text": "**"
+      },
+      {
+        "id": "c",
+        "text": "//"
+      },
+      {
+        "id": "d",
+        "text": "%"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The '**' operator is used for exponentiation. For example, 2**3 equals 8.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is a dictionary in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An ordered, immutable collection"
+      },
+      {
+        "id": "b",
+        "text": "An unordered collection of key-value pairs"
+      },
+      {
+        "id": "c",
+        "text": "A list of strings"
+      },
+      {
+        "id": "d",
+        "text": "A mathematical set"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A dictionary is a built-in data type that stores data in key-value pairs.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "data-structures"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Which keyword is used to handle exceptions in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "catch"
+      },
+      {
+        "id": "b",
+        "text": "except"
+      },
+      {
+        "id": "c",
+        "text": "error"
+      },
+      {
+        "id": "d",
+        "text": "handle"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In Python, exceptions are caught using the 'except' block, typically following a 'try' block.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "exceptions"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What does 'self' represent in a Python class method?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The class itself"
+      },
+      {
+        "id": "b",
+        "text": "The instance of the class"
+      },
+      {
+        "id": "c",
+        "text": "The parent class"
+      },
+      {
+        "id": "d",
+        "text": "A static variable"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'self' refers to the instance of the class on which the method is called. It's automatically passed as the first argument to instance methods.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Which of the following is used to handle exceptions in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "try/except"
+      },
+      {
+        "id": "b",
+        "text": "try/catch"
+      },
+      {
+        "id": "c",
+        "text": "try/finally"
+      },
+      {
+        "id": "d",
+        "text": "catch/throw"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Python uses try/except blocks to handle exceptions. The 'except' block catches exceptions raised in the 'try' block.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "exceptions"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What does the 'with' statement do in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Creates a new variable scope"
+      },
+      {
+        "id": "b",
+        "text": "Automatically manages resources (context manager)"
+      },
+      {
+        "id": "c",
+        "text": "Imports a module"
+      },
+      {
+        "id": "d",
+        "text": "Defines a class"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The 'with' statement is used with context managers to automatically handle resource setup and cleanup (e.g., file handling).",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "context-managers"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What is a set in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "An ordered collection of unique elements"
+      },
+      {
+        "id": "b",
+        "text": "An unordered collection of unique elements"
+      },
+      {
+        "id": "c",
+        "text": "A key-value pair collection"
+      },
+      {
+        "id": "d",
+        "text": "An immutable list"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A set is an unordered collection of unique elements. It automatically removes duplicates and doesn't maintain insertion order (in Python < 3.7).",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "data-structures"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What does 'list.sort()' return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A new sorted list"
+      },
+      {
+        "id": "b",
+        "text": "None (sorts in place)"
+      },
+      {
+        "id": "c",
+        "text": "The number of elements"
+      },
+      {
+        "id": "d",
+        "text": "True/False"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "list.sort() sorts the list in place and returns None. Use sorted(list) to get a new sorted list.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What is the difference between 'is' and '==' in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No difference"
+      },
+      {
+        "id": "b",
+        "text": "'is' checks identity, '==' checks equality"
+      },
+      {
+        "id": "c",
+        "text": "'is' checks equality, '==' checks identity"
+      },
+      {
+        "id": "d",
+        "text": "'is' is for strings only"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'is' checks if two variables refer to the same object in memory (identity). '==' checks if the values are equal.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What does the 'enumerate()' function do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Counts elements in a list"
+      },
+      {
+        "id": "b",
+        "text": "Returns index-value pairs from an iterable"
+      },
+      {
+        "id": "c",
+        "text": "Creates a list from a range"
+      },
+      {
+        "id": "d",
+        "text": "Sorts a list"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "enumerate(iterable) returns an iterator of tuples containing (index, value) for each element in the iterable.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What does the 'zip()' function do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Compresses files"
+      },
+      {
+        "id": "b",
+        "text": "Combines multiple iterables element-wise into tuples"
+      },
+      {
+        "id": "c",
+        "text": "Creates a zip file"
+      },
+      {
+        "id": "d",
+        "text": "Zips two strings together"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "zip() takes multiple iterables and returns an iterator of tuples, where the i-th tuple contains the i-th element from each iterable.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which keyword is used to inherit from a parent class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "extends"
+      },
+      {
+        "id": "b",
+        "text": "inherits"
+      },
+      {
+        "id": "c",
+        "text": "class Child(Parent):"
+      },
+      {
+        "id": "d",
+        "text": "super()"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In Python, inheritance is specified by putting the parent class in parentheses after the child class name: class Child(Parent):",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What does 'super()' do in a child class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Calls the parent class constructor"
+      },
+      {
+        "id": "b",
+        "text": "Creates a new instance"
+      },
+      {
+        "id": "c",
+        "text": "Deletes the parent class"
+      },
+      {
+        "id": "d",
+        "text": "Imports the parent module"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "super() returns a proxy object that delegates method calls to the parent class. Commonly used to call parent's __init__.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What does the 'map()' function do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Creates a dictionary"
+      },
+      {
+        "id": "b",
+        "text": "Applies a function to each item in an iterable"
+      },
+      {
+        "id": "c",
+        "text": "Maps keys to values"
+      },
+      {
+        "id": "d",
+        "text": "Filters elements"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "map(function, iterable) applies the function to each item in the iterable and returns an iterator of the results.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "functional"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What does the 'filter()' function do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Applies a function to each element"
+      },
+      {
+        "id": "b",
+        "text": "Returns elements for which a function returns True"
+      },
+      {
+        "id": "c",
+        "text": "Removes duplicates"
+      },
+      {
+        "id": "d",
+        "text": "Sorts elements"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "filter(function, iterable) returns an iterator containing only elements for which the function returns True.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "functional"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What is a list comprehension?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A way to create lists using a compact syntax"
+      },
+      {
+        "id": "b",
+        "text": "A method to understand lists"
+      },
+      {
+        "id": "c",
+        "text": "A list of comprehensions"
+      },
+      {
+        "id": "d",
+        "text": "A comment about lists"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "List comprehensions provide a concise way to create lists: [expression for item in iterable if condition].",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "list-comprehension"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What does '__name__ == \"__main__\"' check?",
+    "options": [
+      {
+        "id": "a",
+        "text": "If the script is being run directly"
+      },
+      {
+        "id": "b",
+        "text": "If the module is imported"
+      },
+      {
+        "id": "c",
+        "text": "If the class is main"
+      },
+      {
+        "id": "d",
+        "text": "If the function is main"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "When a Python file is run directly, __name__ is set to '__main__'. When imported, it's set to the module name. This allows code to run only when executed directly.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "modules"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What does 'json.dumps()' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Loads JSON from a file"
+      },
+      {
+        "id": "b",
+        "text": "Converts a Python object to a JSON string"
+      },
+      {
+        "id": "c",
+        "text": "Parses a JSON string"
+      },
+      {
+        "id": "d",
+        "text": "Dumps JSON to console"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "json.dumps(obj) serializes a Python object to a JSON formatted string. json.loads() does the reverse (parses JSON string).",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "json"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What does the 'collections' module provide?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Basic data types"
+      },
+      {
+        "id": "b",
+        "text": "Specialized container datatypes like Counter, defaultdict, OrderedDict"
+      },
+      {
+        "id": "c",
+        "text": "Collection of modules"
+      },
+      {
+        "id": "d",
+        "text": "Garbage collection"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The collections module provides specialized container datatypes: Counter, defaultdict, OrderedDict, namedtuple, deque, ChainMap, etc.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "modules",
+      "collections"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What does 'typing' module provide?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Type checking at runtime"
+      },
+      {
+        "id": "b",
+        "text": "Type hints for static analysis"
+      },
+      {
+        "id": "c",
+        "text": "Type conversion functions"
+      },
+      {
+        "id": "d",
+        "text": "Type inference"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The typing module provides type hints (List, Dict, Optional, Union, etc.) for static type checkers like mypy. Python doesn't enforce types at runtime.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "typing"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What is 'Optional[X]' equivalent to?",
+    "options": [
+      {
+        "id": "a",
+        "text": "X | None"
+      },
+      {
+        "id": "b",
+        "text": "X or None"
+      },
+      {
+        "id": "c",
+        "text": "Union[X, None]"
+      },
+      {
+        "id": "d",
+        "text": "Both a and c"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Optional[X] is a shorthand for Union[X, None] (or X | None in Python 3.10+), indicating a value can be of type X or None.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "typing"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "What is the output of 'print({**{'a': 1}, **{'b': 2}})'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "{'a': 1, 'b': 2}"
+      },
+      {
+        "id": "b",
+        "text": "{'a': 1, 'b': 2, 'a': 1}"
+      },
+      {
+        "id": "c",
+        "text": "Error"
+      },
+      {
+        "id": "d",
+        "text": "[{'a': 1}, {'b': 2}]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dictionary unpacking with ** merges dictionaries. {'a': 1} and {'b': 2} are merged into {'a': 1, 'b': 2}.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "dictionaries"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What does the 'dataclasses' module provide?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Database classes"
+      },
+      {
+        "id": "b",
+        "text": "A decorator to auto-generate __init__, __repr__, __eq__ for data classes"
+      },
+      {
+        "id": "c",
+        "text": "Data structure classes"
+      },
+      {
+        "id": "d",
+        "text": "Class for data validation"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "@dataclass decorator automatically generates __init__, __repr__, __eq__, and other methods based on class fields, reducing boilerplate.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "dataclasses"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What is the output of 'print([x for x in range(5) if x % 2 == 0])'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[0, 2, 4]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 3]"
+      },
+      {
+        "id": "c",
+        "text": "[0, 1, 2, 3, 4]"
+      },
+      {
+        "id": "d",
+        "text": "[2, 4]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "List comprehension with condition: range(5) gives 0,1,2,3,4. Even numbers (x % 2 == 0) are 0, 2, 4.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "list-comprehension"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What does 'dict.setdefault(key, default)' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Returns value if key exists, otherwise sets key to default and returns default"
+      },
+      {
+        "id": "b",
+        "text": "Always sets key to default"
+      },
+      {
+        "id": "c",
+        "text": "Returns default if key exists"
+      },
+      {
+        "id": "d",
+        "text": "Deletes key if not found"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "setdefault(key, default) returns the value for key if it exists. If not, inserts key with default value and returns default.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "dictionaries"
+    ]
+  },
+  {
+    "id": 26,
+    "question": "What is the difference between 'append()' and 'extend()' for lists?",
+    "options": [
+      {
+        "id": "a",
+        "text": "append() adds single element, extend() adds multiple elements from iterable"
+      },
+      {
+        "id": "b",
+        "text": "append() adds multiple, extend() adds single"
+      },
+      {
+        "id": "c",
+        "text": "No difference"
+      },
+      {
+        "id": "d",
+        "text": "append() returns new list, extend() modifies in place"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "append(x) adds x as a single element. extend(iterable) adds each element of the iterable. Both modify in place and return None.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What does 'functools.reduce()' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Applies function cumulatively to items, reducing to single value"
+      },
+      {
+        "id": "b",
+        "text": "Reduces memory usage"
+      },
+      {
+        "id": "c",
+        "text": "Removes duplicates"
+      },
+      {
+        "id": "d",
+        "text": "Sorts elements"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "reduce(function, iterable) applies function cumulatively: reduce(lambda x,y: x+y, [1,2,3]) = ((1+2)+3) = 6.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "functional",
+      "functools"
+    ]
+  },
+  {
+    "id": 28,
+    "question": "What is a 'defaultdict'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A dict with default values for missing keys"
+      },
+      {
+        "id": "b",
+        "text": "A dictionary with default sorting"
+      },
+      {
+        "id": "c",
+        "text": "A dict that only accepts default types"
+      },
+      {
+        "id": "d",
+        "text": "A dictionary with default size"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "defaultdict(default_factory) returns a dict-like object that provides a default value for missing keys using the factory function.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "collections"
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What does 'itertools.chain()' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Chains multiple iterables into a single iterator"
+      },
+      {
+        "id": "b",
+        "text": "Creates a chain of functions"
+      },
+      {
+        "id": "c",
+        "text": "Links list elements"
+      },
+      {
+        "id": "d",
+        "text": "Chains dictionary keys"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "chain(*iterables) makes an iterator that returns elements from the first iterable until exhausted, then proceeds to the next.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "itertools"
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is the output of 'print(list(map(lambda x: x*2, [1, 2, 3])))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[2, 4, 6]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "c",
+        "text": "[1, 4, 9]"
+      },
+      {
+        "id": "d",
+        "text": "[3, 4, 5]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "map applies lambda x: x*2 to each element: 1*2=2, 2*2=4, 3*2=6. Result: [2, 4, 6].",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "functional"
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What does 'property' decorator do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Makes a method accessible like an attribute"
+      },
+      {
+        "id": "b",
+        "text": "Creates a class property"
+      },
+      {
+        "id": "c",
+        "text": "Defines a static property"
+      },
+      {
+        "id": "d",
+        "text": "Makes a method private"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "@property allows a method to be accessed like an attribute (without parentheses), enabling getter/setter behavior.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "oop",
+      "decorators"
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What is the difference between 'classmethod' and 'staticmethod'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "classmethod receives class as first arg, staticmethod receives neither class nor instance"
+      },
+      {
+        "id": "b",
+        "text": "classmethod is for class variables, staticmethod for instance variables"
+      },
+      {
+        "id": "c",
+        "text": "staticmethod is faster"
+      },
+      {
+        "id": "d",
+        "text": "No difference"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "@classmethod receives the class (cls) as first argument. @staticmethod receives neither class nor instance - behaves like a regular function.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What does '__slots__' do in a class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Restricts allowed attributes, saves memory"
+      },
+      {
+        "id": "b",
+        "text": "Defines class slots for inheritance"
+      },
+      {
+        "id": "c",
+        "text": "Creates slot methods"
+      },
+      {
+        "id": "d",
+        "text": "Enables dynamic attributes"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "__slots__ = ['attr1', 'attr2'] restricts instance attributes to only those listed, preventing __dict__ creation and saving memory.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What is the output of 'print({x: x**2 for x in range(3)})'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "{0: 0, 1: 1, 2: 4}"
+      },
+      {
+        "id": "b",
+        "text": "{0: 1, 1: 2, 2: 3}"
+      },
+      {
+        "id": "c",
+        "text": "[0, 1, 4]"
+      },
+      {
+        "id": "d",
+        "text": "{0, 1, 4}"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Dictionary comprehension: {x: x**2 for x in range(3)} creates {0: 0, 1: 1, 2: 4}.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "dict-comprehension"
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What does 'collections.namedtuple' create?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A tuple subclass with named fields"
+      },
+      {
+        "id": "b",
+        "text": "A named tuple function"
+      },
+      {
+        "id": "c",
+        "text": "A dictionary with tuple keys"
+      },
+      {
+        "id": "d",
+        "text": "A tuple of names"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "namedtuple('Point', ['x', 'y']) creates a tuple subclass where fields are accessible by name: p.x, p.y.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "collections"
+    ]
+  },
+  {
+    "id": 36,
+    "question": "What is the output of 'print([i for i in range(10) if i % 3 == 0])'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[0, 3, 6, 9]"
+      },
+      {
+        "id": "b",
+        "text": "[3, 6, 9]"
+      },
+      {
+        "id": "c",
+        "text": "[0, 3, 6]"
+      },
+      {
+        "id": "d",
+        "text": "[1, 4, 7]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "List comprehension with filter: range(10) = 0-9. Multiples of 3: 0, 3, 6, 9.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "list-comprehension"
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What does 'itertools.groupby()' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Groups consecutive elements by key function"
+      },
+      {
+        "id": "b",
+        "text": "Groups all elements by value"
+      },
+      {
+        "id": "c",
+        "text": "Creates groups of equal size"
+      },
+      {
+        "id": "d",
+        "text": "Groups dictionary keys"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "groupby(iterable, key) yields (key, group) for each contiguous block of items with the same key. Input must be sorted by key for grouping all equal items.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "itertools"
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What is the output of 'print(list(filter(lambda x: x > 2, [1, 2, 3, 4])))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[3, 4]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 2]"
+      },
+      {
+        "id": "c",
+        "text": "[1, 2, 3, 4]"
+      },
+      {
+        "id": "d",
+        "text": "[]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "filter keeps elements where lambda returns True. x > 2 is True for 3 and 4 only.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "functional"
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What does 'contextlib.contextmanager' decorator do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Creates a context manager from a generator function"
+      },
+      {
+        "id": "b",
+        "text": "Manages context variables"
+      },
+      {
+        "id": "c",
+        "text": "Creates a class context manager"
+      },
+      {
+        "id": "d",
+        "text": "Handles exceptions in context"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "@contextmanager lets you write a generator function that yields once, creating a context manager without a class.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "context-managers"
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What is the output of 'print(sum(range(4)))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "6"
+      },
+      {
+        "id": "b",
+        "text": "10"
+      },
+      {
+        "id": "c",
+        "text": "4"
+      },
+      {
+        "id": "d",
+        "text": "3"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "range(4) = 0, 1, 2, 3. sum = 0+1+2+3 = 6.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What does 'operator.itemgetter(1)' return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that gets index 1 from its argument"
+      },
+      {
+        "id": "b",
+        "text": "The item at index 1"
+      },
+      {
+        "id": "c",
+        "text": "A getter for item 1"
+      },
+      {
+        "id": "d",
+        "text": "The first item"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "itemgetter(1) returns a callable that fetches index 1: itemgetter(1)([a,b,c]) = b. Useful for sorting: sorted(list, key=itemgetter(1)).",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "operator"
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What is the output of 'print(sorted([3, 1, 4, 1, 5], reverse=True))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[5, 4, 3, 1, 1]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 1, 3, 4, 5]"
+      },
+      {
+        "id": "c",
+        "text": "[5, 4, 3, 2, 1]"
+      },
+      {
+        "id": "d",
+        "text": "[3, 1, 4, 1, 5]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "sorted() with reverse=True returns a new list sorted in descending order: [5, 4, 3, 1, 1].",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What does 'functools.partial' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Creates a new function with some arguments pre-filled"
+      },
+      {
+        "id": "b",
+        "text": "Partially applies a decorator"
+      },
+      {
+        "id": "c",
+        "text": "Creates a partial class"
+      },
+      {
+        "id": "d",
+        "text": "Partially evaluates a function"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "partial(func, *args, **keywords) returns a new callable with some arguments fixed. partial(int, base=2) creates a binary-to-int converter.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "functools"
+    ]
+  },
+  {
+    "id": 44,
+    "question": "What is the output of 'print([x*y for x in [1,2] for y in [3,4]])'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[3, 4, 6, 8]"
+      },
+      {
+        "id": "b",
+        "text": "[3, 6, 4, 8]"
+      },
+      {
+        "id": "c",
+        "text": "[1, 2, 3, 4]"
+      },
+      {
+        "id": "d",
+        "text": "[12, 12]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Nested list comprehension: for x in [1,2], for y in [3,4] gives pairs (1,3), (1,4), (2,3), (2,4). Products: 3, 4, 6, 8.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "list-comprehension"
+    ]
+  },
+  {
+    "id": 45,
+    "question": "What does 'collections.deque' provide?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Double-ended queue with O(1) append/pop from both ends"
+      },
+      {
+        "id": "b",
+        "text": "A queue with default values"
+      },
+      {
+        "id": "c",
+        "text": "A sorted queue"
+      },
+      {
+        "id": "d",
+        "text": "A queue for threads only"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "deque (double-ended queue) supports fast appends/pops from both ends. list has O(n) pop(0), deque has O(1).",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "collections"
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What is the output of 'print(any([False, False, True]))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "True"
+      },
+      {
+        "id": "b",
+        "text": "False"
+      },
+      {
+        "id": "c",
+        "text": "True, False, True"
+      },
+      {
+        "id": "d",
+        "text": "Error"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "any() returns True if at least one element is truthy. The list has True at index 2.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What does 'inspect.signature(func)' return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A Signature object representing the function's parameters"
+      },
+      {
+        "id": "b",
+        "text": "The function's source code"
+      },
+      {
+        "id": "c",
+        "text": "The function's return type"
+      },
+      {
+        "id": "d",
+        "text": "The function's docstring"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "inspect.signature() returns a Signature object with parameter information (names, defaults, annotations). Useful for introspection.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "inspect"
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What is the output of 'print([i for i, _ in enumerate(['a', 'b', 'c'])])'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[0, 1, 2]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "c",
+        "text": "['a', 'b', 'c']"
+      },
+      {
+        "id": "d",
+        "text": "[(0, 'a'), (1, 'b'), (2, 'c')]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "enumerate yields (index, value). List comprehension extracts just the index: [0, 1, 2].",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What does 'pathlib.Path' provide?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Object-oriented filesystem paths"
+      },
+      {
+        "id": "b",
+        "text": "A path string formatter"
+      },
+      {
+        "id": "c",
+        "text": "A path validator"
+      },
+      {
+        "id": "d",
+        "text": "A path shortener"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "pathlib.Path provides an object-oriented interface for filesystem paths with methods like .read_text(), .write_text(), .exists(), .mkdir().",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "pathlib"
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What is the output of 'print(\"hello\".center(10, \"-\"))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "--hello---"
+      },
+      {
+        "id": "b",
+        "text": "---hello--"
+      },
+      {
+        "id": "c",
+        "text": "--hello--"
+      },
+      {
+        "id": "d",
+        "text": "hello-----"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "center(width, fillchar) centers the string in a field of given width. 'hello' (5 chars) in width 10: 2 left, 3 right = '--hello---'.",
+    "difficulty": "medium",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  }
+]

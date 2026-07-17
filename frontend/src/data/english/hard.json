@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "Choose the correct synonym for 'PERSPICACIOUS':",
+    "options": [
+      { "id": "a", "text": "Obtuse" },
+      { "id": "b", "text": "Shrewd" },
+      { "id": "c", "text": "Ignorant" },
+      { "id": "d", "text": "Naive" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Perspicacious' means having a ready insight into things; shrewd. 'Shrewd' is a direct synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 2,
+    "question": "Choose the correct antonym for 'INDEFATIGABLE':",
+    "options": [
+      { "id": "a", "text": "Tireless" },
+      { "id": "b", "text": "Weary" },
+      { "id": "c", "text": "Energetic" },
+      { "id": "d", "text": "Vigorous" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Indefatigable' means persisting tirelessly. 'Weary' means tired - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 3,
+    "question": "Fill in the blank: 'Not until the meeting ended ______ the truth come out.'",
+    "options": [
+      { "id": "a", "text": "did" },
+      { "id": "b", "text": "does" },
+      { "id": "c", "text": "had" },
+      { "id": "d", "text": "has" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after negative adverbial 'Not until': 'Not until the meeting ended did the truth come out.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 4,
+    "question": "Identify the error: 'Had he not been so careless, he would not have lost his job.'",
+    "options": [
+      { "id": "a", "text": "Had he not been" },
+      { "id": "b", "text": "so careless" },
+      { "id": "c", "text": "he would not have lost" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "This is a correct third conditional sentence with inversion: 'Had he not been...' = 'If he had not been...'",
+    "difficulty": "hard",
+    "topics": ["conditionals", "error-spotting"]
+  },
+  {
+    "id": 5,
+    "question": "Choose the correct synonym for 'OBDURATE':",
+    "options": [
+      { "id": "a", "text": "Flexible" },
+      { "id": "b", "text": "Stubborn" },
+      { "id": "c", "text": "Yielding" },
+      { "id": "d", "text": "Compliant" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Obdurate' means stubbornly refusing to change one's opinion. 'Stubborn' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 6,
+    "question": "Choose the correct antonym for 'SANGUINE':",
+    "options": [
+      { "id": "a", "text": "Optimistic" },
+      { "id": "b", "text": "Hopeful" },
+      { "id": "c", "text": "Pessimistic" },
+      { "id": "d", "text": "Confident" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Sanguine' means optimistic or positive. 'Pessimistic' is the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 7,
+    "question": "Fill in the blank: 'Rarely ______ such a beautiful sunset.'",
+    "options": [
+      { "id": "a", "text": "I have seen" },
+      { "id": "b", "text": "have I seen" },
+      { "id": "c", "text": "I saw" },
+      { "id": "d", "text": "did I see" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Inversion after negative adverbial 'Rarely': 'Rarely have I seen such a beautiful sunset.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 8,
+    "question": "Identify the error: 'The professor, along with his students, are attending the conference.'",
+    "options": [
+      { "id": "a", "text": "The professor" },
+      { "id": "b", "text": "along with his students" },
+      { "id": "c", "text": "are attending" },
+      { "id": "d", "text": "the conference" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Along with' doesn't change the subject number. The subject is 'professor' (singular), so use 'is attending'.",
+    "difficulty": "hard",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 9,
+    "question": "Choose the correct synonym for 'PUSILLANIMOUS':",
+    "options": [
+      { "id": "a", "text": "Brave" },
+      { "id": "b", "text": "Cowardly" },
+      { "id": "c", "text": "Courageous" },
+      { "id": "d", "text": "Valiant" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Pusillanimous' means showing a lack of courage. 'Cowardly' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 10,
+    "question": "Choose the correct antonym for 'MUNIFICENT':",
+    "options": [
+      { "id": "a", "text": "Generous" },
+      { "id": "b", "text": "Lavish" },
+      { "id": "c", "text": "Stingy" },
+      { "id": "d", "text": "Bountiful" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Munificent' means very generous. 'Stingy' means unwilling to give - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 11,
+    "question": "Fill in the blank: 'So ______ the news that she fainted.'",
+    "options": [
+      { "id": "a", "text": "shocking was" },
+      { "id": "b", "text": "was shocking" },
+      { "id": "c", "text": "shocking is" },
+      { "id": "d", "text": "is shocking" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion with 'So + adjective': 'So shocking was the news that she fainted.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 12,
+    "question": "Identify the error: 'Neither of the two candidates are qualified for the position.'",
+    "options": [
+      { "id": "a", "text": "Neither of the two candidates" },
+      { "id": "b", "text": "are qualified" },
+      { "id": "c", "text": "for the position" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Neither' is singular. Use 'is qualified', not 'are qualified'.",
+    "difficulty": "hard",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 13,
+    "question": "Choose the correct synonym for 'RECONDITE':",
+    "options": [
+      { "id": "a", "text": "Simple" },
+      { "id": "b", "text": "Obscure" },
+      { "id": "c", "text": "Clear" },
+      { "id": "d", "text": "Obvious" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Recondite' means little known; abstruse. 'Obscure' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 14,
+    "question": "Choose the correct antonym for 'PROFLIGATE':",
+    "options": [
+      { "id": "a", "text": "Wasteful" },
+      { "id": "b", "text": "Extravagant" },
+      { "id": "c", "text": "Frugal" },
+      { "id": "d", "text": "Dissolute" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Profligate' means recklessly wasteful. 'Frugal' means economical - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 15,
+    "question": "Fill in the blank: 'Only after the investigation ______ the truth revealed.'",
+    "options": [
+      { "id": "a", "text": "was" },
+      { "id": "b", "text": "were" },
+      { "id": "c", "text": "is" },
+      { "id": "d", "text": "are" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after 'Only after': 'Only after the investigation was the truth revealed.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 16,
+    "question": "Identify the error: 'The committee have reached their decision.'",
+    "options": [
+      { "id": "a", "text": "The committee" },
+      { "id": "b", "text": "have reached" },
+      { "id": "c", "text": "their decision" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "In British English, collective nouns can take plural verbs when emphasizing individual members. This is acceptable.",
+    "difficulty": "hard",
+    "topics": ["collective-nouns", "error-spotting"]
+  },
+  {
+    "id": 17,
+    "question": "Choose the correct synonym for 'SOLIPSISM':",
+    "options": [
+      { "id": "a", "text": "Egoism" },
+      { "id": "b", "text": "Altruism" },
+      { "id": "c", "text": "Empathy" },
+      { "id": "d", "text": "Compassion" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Solipsism' is the philosophical idea that only one's own mind is sure to exist. 'Egoism' is related in meaning.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 18,
+    "question": "Choose the correct antonym for 'INSIDIOUS':",
+    "options": [
+      { "id": "a", "text": "Treacherous" },
+      { "id": "b", "text": "Deceitful" },
+      { "id": "c", "text": "Overt" },
+      { "id": "d", "text": "Cunning" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Insidious' means proceeding in a gradual, subtle way with harmful effects. 'Overt' means done openly - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 19,
+    "question": "Fill in the blank: 'Were I ______ you, I would not hesitate.'",
+    "options": [
+      { "id": "a", "text": "in the place of" },
+      { "id": "b", "text": "to be" },
+      { "id": "c", "text": "were" },
+      { "id": "d", "text": "am" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Inversion in conditional: 'Were I to be you...' = 'If I were you...' (More formal).",
+    "difficulty": "hard",
+    "topics": ["conditionals", "advanced-grammar"]
+  },
+  {
+    "id": 20,
+    "question": "Identify the error: 'Each and every student have to submit the assignment.'",
+    "options": [
+      { "id": "a", "text": "Each and every student" },
+      { "id": "b", "text": "have to submit" },
+      { "id": "c", "text": "the assignment" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Each and every' takes singular verb: 'Each and every student has to submit...'",
+    "difficulty": "hard",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 21,
+    "question": "Choose the correct synonym for 'TERGIVERSATION':",
+    "options": [
+      { "id": "a", "text": "Evasion" },
+      { "id": "b", "text": "Honesty" },
+      { "id": "c", "text": "Directness" },
+      { "id": "d", "text": "Candor" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Tergiversation' means evasion of straightforward action or clear statement. 'Evasion' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 22,
+    "question": "Choose the correct antonym for 'VITUPERATIVE':",
+    "options": [
+      { "id": "a", "text": "Abusive" },
+      { "id": "b", "text": "Complimentary" },
+      { "id": "c", "text": "Scathing" },
+      { "id": "d", "text": "Vitriolic" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Vituperative' means bitter and abusive. 'Complimentary' means expressing praise - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 23,
+    "question": "Fill in the blank: 'Such ______ the force of the wind that trees were uprooted.'",
+    "options": [
+      { "id": "a", "text": "was" },
+      { "id": "b", "text": "were" },
+      { "id": "c", "text": "is" },
+      { "id": "d", "text": "are" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion with 'Such + be': 'Such was the force of the wind that trees were uprooted.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 24,
+    "question": "Identify the error: 'The data shows that the hypothesis are correct.'",
+    "options": [
+      { "id": "a", "text": "The data shows" },
+      { "id": "b", "text": "that the hypothesis" },
+      { "id": "c", "text": "are correct" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Hypothesis' is singular; plural is 'hypotheses'. Should be 'the hypothesis is correct' or 'the hypotheses are correct'.",
+    "difficulty": "hard",
+    "topics": ["plurals", "error-spotting"]
+  },
+  {
+    "id": 25,
+    "question": "Choose the correct synonym for 'ULTERIOR':",
+    "options": [
+      { "id": "a", "text": "Hidden" },
+      { "id": "b", "text": "Open" },
+      { "id": "c", "text": "Obvious" },
+      { "id": "d", "text": "Explicit" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Ulterior' means existing beyond what is obvious; hidden. 'Hidden' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 26,
+    "question": "Choose the correct antonym for 'WISTFUL':",
+    "options": [
+      { "id": "a", "text": "Yearning" },
+      { "id": "b", "text": "Nostalgic" },
+      { "id": "c", "text": "Content" },
+      { "id": "d", "text": "Melancholic" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Wistful' means having a feeling of vague or regretful longing. 'Content' means satisfied - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 27,
+    "question": "Fill in the blank: 'Little ______ he know about the surprise party.'",
+    "options": [
+      { "id": "a", "text": "did" },
+      { "id": "b", "text": "does" },
+      { "id": "c", "text": "had" },
+      { "id": "d", "text": "has" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after negative adverbial 'Little': 'Little did he know about the surprise party.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 28,
+    "question": "Identify the error: 'Not only he is intelligent but also hardworking.'",
+    "options": [
+      { "id": "a", "text": "Not only he is intelligent" },
+      { "id": "b", "text": "but also hardworking" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "Not only he is" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "With 'Not only' at start, use inversion: 'Not only is he intelligent but also hardworking.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "error-spotting"]
+  },
+  {
+    "id": 29,
+    "question": "Choose the correct synonym for 'VACILLATE':",
+    "options": [
+      { "id": "a", "text": "Decide" },
+      { "id": "b", "text": "Waver" },
+      { "id": "c", "text": "Resolve" },
+      { "id": "d", "text": "Determine" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Vacillate' means to alternate or waver between different opinions. 'Waver' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 30,
+    "question": "Choose the correct antonym for 'XYLOPHAGOUS':",
+    "options": [
+      { "id": "a", "text": "Wood-eating" },
+      { "id": "b", "text": "Herbivorous" },
+      { "id": "c", "text": "Carnivorous" },
+      { "id": "d", "text": "Non-wood-eating" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Xylophagous' means feeding on wood. 'Non-wood-eating' is the opposite concept.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 31,
+    "question": "Fill in the blank: 'Hardly ______ the train left when the accident occurred.'",
+    "options": [
+      { "id": "a", "text": "had" },
+      { "id": "b", "text": "has" },
+      { "id": "c", "text": "did" },
+      { "id": "d", "text": "does" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after 'Hardly': 'Hardly had the train left when the accident occurred.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 32,
+    "question": "Identify the error: 'The majority of the committee is in favor of the proposal.'",
+    "options": [
+      { "id": "a", "text": "The majority of the committee" },
+      { "id": "b", "text": "is in favor" },
+      { "id": "c", "text": "of the proposal" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'The majority of' with a collective noun can take singular or plural verb. 'Is' is acceptable here.",
+    "difficulty": "hard",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 33,
+    "question": "Choose the correct synonym for 'ZEALOT':",
+    "options": [
+      { "id": "a", "text": "Fanatic" },
+      { "id": "b", "text": "Moderate" },
+      { "id": "c", "text": "Indifferent" },
+      { "id": "d", "text": "Apathetic" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Zealot' means a person who is fanatical and uncompromising in pursuit of their ideals. 'Fanatic' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 34,
+    "question": "Choose the correct antonym for 'ABSTEMIOUS':",
+    "options": [
+      { "id": "a", "text": "Temperate" },
+      { "id": "b", "text": "Moderate" },
+      { "id": "c", "text": "Gluttonous" },
+      { "id": "d", "text": "Restrained" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Abstemious' means not self-indulgent, especially with food and drink. 'Gluttonous' means excessively greedy - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 35,
+    "question": "Fill in the blank: 'No sooner ______ the bell rang than the students rushed out.'",
+    "options": [
+      { "id": "a", "text": "had" },
+      { "id": "b", "text": "has" },
+      { "id": "c", "text": "did" },
+      { "id": "d", "text": "does" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after 'No sooner': 'No sooner had the bell rung than the students rushed out.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 36,
+    "question": "Identify the error: 'One of the most intelligent student who has ever lived.'",
+    "options": [
+      { "id": "a", "text": "One of the most intelligent student" },
+      { "id": "b", "text": "who has ever lived" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "One of the most" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "After 'one of the', use plural noun: 'One of the most intelligent students who has ever lived.'",
+    "difficulty": "hard",
+    "topics": ["plurals", "error-spotting"]
+  },
+  {
+    "id": 37,
+    "question": "Choose the correct synonym for 'CACOPHONY':",
+    "options": [
+      { "id": "a", "text": "Harmony" },
+      { "id": "b", "text": "Discord" },
+      { "id": "c", "text": "Melody" },
+      { "id": "d", "text": "Symphony" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Cacophony' means a harsh, discordant mixture of sounds. 'Discord' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 38,
+    "question": "Choose the correct antonym for 'DEARTH':",
+    "options": [
+      { "id": "a", "text": "Scarcity" },
+      { "id": "b", "text": "Shortage" },
+      { "id": "c", "text": "Abundance" },
+      { "id": "d", "text": "Lack" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Dearth' means a scarcity or lack of something. 'Abundance' means a very large quantity - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 39,
+    "question": "Fill in the blank: 'Seldom ______ we see such talent in one person.'",
+    "options": [
+      { "id": "a", "text": "do" },
+      { "id": "b", "text": "does" },
+      { "id": "c", "text": "did" },
+      { "id": "d", "text": "have" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after negative adverbial 'Seldom': 'Seldom do we see such talent in one person.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 40,
+    "question": "Identify the error: 'The number of people who was invited is fifty.'",
+    "options": [
+      { "id": "a", "text": "The number of people" },
+      { "id": "b", "text": "who was invited" },
+      { "id": "c", "text": "is fifty" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Who' refers to 'people' (plural), so use 'were invited', not 'was invited'.",
+    "difficulty": "hard",
+    "topics": ["relative-clauses", "error-spotting"]
+  },
+  {
+    "id": 41,
+    "question": "Choose the correct synonym for 'EQUIVOCATE':",
+    "options": [
+      { "id": "a", "text": "Prevaricate" },
+      { "id": "b", "text": "Clarify" },
+      { "id": "c", "text": "State clearly" },
+      { "id": "d", "text": "Affirm" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Equivocate' means to use ambiguous language to conceal the truth. 'Prevaricate' means to speak evasively - a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 42,
+    "question": "Choose the correct antonym for 'FECUND':",
+    "options": [
+      { "id": "a", "text": "Fertile" },
+      { "id": "b", "text": "Productive" },
+      { "id": "c", "text": "Barren" },
+      { "id": "d", "text": "Prolific" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Fecund' means producing abundant vegetation or offspring. 'Barren' means unable to produce - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 43,
+    "question": "Fill in the blank: 'Only by working hard ______ you succeed.'",
+    "options": [
+      { "id": "a", "text": "can" },
+      { "id": "b", "text": "will" },
+      { "id": "c", "text": "do" },
+      { "id": "d", "text": "shall" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after 'Only by': 'Only by working hard can you succeed.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 44,
+    "question": "Identify the error: 'The team, as well as the coach, are excited about the victory.'",
+    "options": [
+      { "id": "a", "text": "The team" },
+      { "id": "b", "text": "as well as the coach" },
+      { "id": "c", "text": "are excited" },
+      { "id": "d", "text": "about the victory" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'As well as' doesn't change subject number. Subject is 'team' (singular), so use 'is excited'.",
+    "difficulty": "hard",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 45,
+    "question": "Choose the correct synonym for 'GARRULOUS':",
+    "options": [
+      { "id": "a", "text": "Taciturn" },
+      { "id": "b", "text": "Loquacious" },
+      { "id": "c", "text": "Reticent" },
+      { "id": "d", "text": "Silent" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Garrulous' means excessively talkative. 'Loquacious' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 46,
+    "question": "Choose the correct antonym for 'HAPHAZARD':",
+    "options": [
+      { "id": "a", "text": "Random" },
+      { "id": "b", "text": "Systematic" },
+      { "id": "c", "text": "Chaotic" },
+      { "id": "d", "text": "Disorganized" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Haphazard' means lacking any obvious principle of organization. 'Systematic' means done according to a system - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 47,
+    "question": "Fill in the blank: 'Not only ______ he late, but he also forgot his books.'",
+    "options": [
+      { "id": "a", "text": "was" },
+      { "id": "b", "text": "is" },
+      { "id": "c", "text": "were" },
+      { "id": "d", "text": "are" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Inversion after 'Not only': 'Not only was he late, but he also forgot his books.'",
+    "difficulty": "hard",
+    "topics": ["inversion", "advanced-grammar"]
+  },
+  {
+    "id": 48,
+    "question": "Identify the error: 'Many a man has lost his life in the war.'",
+    "options": [
+      { "id": "a", "text": "Many a man" },
+      { "id": "b", "text": "has lost" },
+      { "id": "c", "text": "his life" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Many a' takes singular verb and singular pronoun. 'Many a man has lost his life' is correct.",
+    "difficulty": "hard",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 49,
+    "question": "Choose the correct synonym for 'INEXORABLE':",
+    "options": [
+      { "id": "a", "text": "Relentless" },
+      { "id": "b", "text": "Yielding" },
+      { "id": "c", "text": "Flexible" },
+      { "id": "d", "text": "Merciful" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Inexorable' means impossible to stop or prevent. 'Relentless' is a synonym.",
+    "difficulty": "hard",
+    "topics": ["synonyms", "advanced-vocabulary"]
+  },
+  {
+    "id": 50,
+    "question": "Choose the correct antonym for 'JEJUNE':",
+    "options": [
+      { "id": "a", "text": "Insipid" },
+      { "id": "b", "text": "Sophisticated" },
+      { "id": "c", "text": "Naive" },
+      { "id": "d", "text": "Simplistic" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Jejune' means naive, simplistic, or superficial. 'Sophisticated' means complex and refined - the opposite.",
+    "difficulty": "hard",
+    "topics": ["antonyms", "advanced-vocabulary"]
+  }
+]

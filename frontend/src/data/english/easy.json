@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "Choose the correct synonym for 'HAPPY':",
+    "options": [
+      { "id": "a", "text": "Sad" },
+      { "id": "b", "text": "Joyful" },
+      { "id": "c", "text": "Angry" },
+      { "id": "d", "text": "Tired" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Happy' means feeling or showing pleasure. 'Joyful' is a direct synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 2,
+    "question": "Choose the correct antonym for 'HOT':",
+    "options": [
+      { "id": "a", "text": "Warm" },
+      { "id": "b", "text": "Cold" },
+      { "id": "c", "text": "Boiling" },
+      { "id": "d", "text": "Heated" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Hot' means having a high temperature. 'Cold' is the direct opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 3,
+    "question": "Fill in the blank: 'She is ______ honest person.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Honest' starts with a silent 'h', so it begins with a vowel sound. Use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 4,
+    "question": "Identify the error: 'He don't like coffee.'",
+    "options": [
+      { "id": "a", "text": "He don't" },
+      { "id": "b", "text": "like coffee" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "He don't like" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'He' is third person singular, so it should be 'doesn't' not 'don't'.",
+    "difficulty": "easy",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 5,
+    "question": "Choose the correct synonym for 'BIG':",
+    "options": [
+      { "id": "a", "text": "Small" },
+      { "id": "b", "text": "Large" },
+      { "id": "c", "text": "Tiny" },
+      { "id": "d", "text": "Little" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Big' means of considerable size. 'Large' is a direct synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 6,
+    "question": "Choose the correct antonym for 'FAST':",
+    "options": [
+      { "id": "a", "text": "Quick" },
+      { "id": "b", "text": "Slow" },
+      { "id": "c", "text": "Rapid" },
+      { "id": "d", "text": "Speedy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Fast' means moving at high speed. 'Slow' is the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 7,
+    "question": "Fill in the blank: 'I have ______ apple.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Apple' starts with a vowel sound, so use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 8,
+    "question": "Identify the error: 'She go to school every day.'",
+    "options": [
+      { "id": "a", "text": "She go" },
+      { "id": "b", "text": "to school" },
+      { "id": "c", "text": "every day" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'She' is third person singular, so the verb should be 'goes'.",
+    "difficulty": "easy",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 9,
+    "question": "Choose the correct synonym for 'SMART':",
+    "options": [
+      { "id": "a", "text": "Intelligent" },
+      { "id": "b", "text": "Foolish" },
+      { "id": "c", "text": "Slow" },
+      { "id": "d", "text": "Dull" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Smart' means having or showing quick intelligence. 'Intelligent' is a synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 10,
+    "question": "Choose the correct antonym for 'HAPPY':",
+    "options": [
+      { "id": "a", "text": "Sad" },
+      { "id": "b", "text": "Glad" },
+      { "id": "c", "text": "Cheerful" },
+      { "id": "d", "text": "Joyful" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Happy' means feeling pleasure. 'Sad' is the opposite emotion.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 11,
+    "question": "Fill in the blank: '______ honest man is respected by all.'",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "An" },
+      { "id": "c", "text": "The" },
+      { "id": "d", "text": "No article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Honest' begins with a vowel sound (silent h), so 'an' is correct.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 12,
+    "question": "Identify the error: 'The childs are playing in the park.'",
+    "options": [
+      { "id": "a", "text": "The childs" },
+      { "id": "b", "text": "are playing" },
+      { "id": "c", "text": "in the park" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The plural of 'child' is 'children', not 'childs'.",
+    "difficulty": "easy",
+    "topics": ["plurals", "error-spotting"]
+  },
+  {
+    "id": 13,
+    "question": "Choose the correct synonym for 'EASY':",
+    "options": [
+      { "id": "a", "text": "Difficult" },
+      { "id": "b", "text": "Simple" },
+      { "id": "c", "text": "Hard" },
+      { "id": "d", "text": "Complex" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Easy' means not difficult. 'Simple' is a direct synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 14,
+    "question": "Choose the correct antonym for 'LIGHT':",
+    "options": [
+      { "id": "a", "text": "Bright" },
+      { "id": "b", "text": "Heavy" },
+      { "id": "c", "text": "Dark" },
+      { "id": "d", "text": "Pale" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Light' (as in illumination) opposite is 'dark'. 'Heavy' is opposite of light weight.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 15,
+    "question": "Fill in the blank: 'He is ______ European.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'European' starts with a 'yu' sound (consonant sound), so use 'a'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 16,
+    "question": "Identify the error: 'Each of the boys have a book.'",
+    "options": [
+      { "id": "a", "text": "Each of the boys" },
+      { "id": "b", "text": "have a book" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "Each of the" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Each' is singular, so the verb should be 'has', not 'have'.",
+    "difficulty": "easy",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 17,
+    "question": "Choose the correct synonym for 'BEAUTIFUL':",
+    "options": [
+      { "id": "a", "text": "Ugly" },
+      { "id": "b", "text": "Pretty" },
+      { "id": "c", "text": "Plain" },
+      { "id": "d", "text": "Awful" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Beautiful' means pleasing to the senses. 'Pretty' is a synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 18,
+    "question": "Choose the correct antonym for 'YOUNG':",
+    "options": [
+      { "id": "a", "text": "Old" },
+      { "id": "b", "text": "New" },
+      { "id": "c", "text": "Fresh" },
+      { "id": "d", "text": "Modern" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Young' means having lived for a short time. 'Old' is the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 19,
+    "question": "Fill in the blank: '______ apple a day keeps the doctor away.'",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "An" },
+      { "id": "c", "text": "The" },
+      { "id": "d", "text": "No article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Apple' starts with a vowel sound, so 'an' is correct.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 20,
+    "question": "Identify the error: 'She is more taller than her sister.'",
+    "options": [
+      { "id": "a", "text": "She is more" },
+      { "id": "b", "text": "taller than" },
+      { "id": "c", "text": "her sister" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Don't use 'more' with comparative adjectives ending in -er. Just 'taller' is correct.",
+    "difficulty": "easy",
+    "topics": ["comparatives", "error-spotting"]
+  },
+  {
+    "id": 21,
+    "question": "Choose the correct synonym for 'ANGRY':",
+    "options": [
+      { "id": "a", "text": "Calm" },
+      { "id": "b", "text": "Furious" },
+      { "id": "c", "text": "Peaceful" },
+      { "id": "d", "text": "Happy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Angry' means feeling strong displeasure. 'Furious' is a stronger synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 22,
+    "question": "Choose the correct antonym for 'RICH':",
+    "options": [
+      { "id": "a", "text": "Wealthy" },
+      { "id": "b", "text": "Poor" },
+      { "id": "c", "text": "Affluent" },
+      { "id": "d", "text": "Prosperous" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Rich' means having a lot of money. 'Poor' is the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 23,
+    "question": "Fill in the blank: 'It is ______ honor to meet you.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Honor' starts with a silent 'h', so it begins with a vowel sound. Use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 24,
+    "question": "Identify the error: 'The news are very good today.'",
+    "options": [
+      { "id": "a", "text": "The news" },
+      { "id": "b", "text": "are very good" },
+      { "id": "c", "text": "today" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'News' is an uncountable noun and takes a singular verb: 'The news is...'",
+    "difficulty": "easy",
+    "topics": ["uncountable-nouns", "error-spotting"]
+  },
+  {
+    "id": 25,
+    "question": "Choose the correct synonym for 'DIFFICULT':",
+    "options": [
+      { "id": "a", "text": "Easy" },
+      { "id": "b", "text": "Hard" },
+      { "id": "c", "text": "Simple" },
+      { "id": "d", "text": "Effortless" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Difficult' means not easy. 'Hard' is a direct synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 26,
+    "question": "Choose the correct antonym for 'CLEAN':",
+    "options": [
+      { "id": "a", "text": "Dirty" },
+      { "id": "b", "text": "Pure" },
+      { "id": "c", "text": "Neat" },
+      { "id": "d", "text": "Tidy" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Clean' means free from dirt. 'Dirty' is the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 27,
+    "question": "Fill in the blank: '______ honest person always tells the truth.'",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "An" },
+      { "id": "c", "text": "The" },
+      { "id": "d", "text": "No article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Honest' has a silent 'h', so it starts with a vowel sound. Use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 28,
+    "question": "Identify the error: 'My friend and me went to the movie.'",
+    "options": [
+      { "id": "a", "text": "My friend and me" },
+      { "id": "b", "text": "went to the movie" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "My friend and" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Use 'I' not 'me' as subject: 'My friend and I went...'",
+    "difficulty": "easy",
+    "topics": ["pronouns", "error-spotting"]
+  },
+  {
+    "id": 29,
+    "question": "Choose the correct synonym for 'SMALL':",
+    "options": [
+      { "id": "a", "text": "Big" },
+      { "id": "b", "text": "Tiny" },
+      { "id": "c", "text": "Large" },
+      { "id": "d", "text": "Huge" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Small' means little in size. 'Tiny' is a synonym meaning very small.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 30,
+    "question": "Choose the correct antonym for 'STRONG':",
+    "options": [
+      { "id": "a", "text": "Powerful" },
+      { "id": "b", "text": "Weak" },
+      { "id": "c", "text": "Mighty" },
+      { "id": "d", "text": "Tough" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Strong' means having great power. 'Weak' is the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 31,
+    "question": "Fill in the blank: 'He is ______ university student.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'University' starts with a 'yu' consonant sound, so use 'a'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 32,
+    "question": "Identify the error: 'The furnitures in this room are old.'",
+    "options": [
+      { "id": "a", "text": "The furnitures" },
+      { "id": "b", "text": "in this room" },
+      { "id": "c", "text": "are old" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Furniture' is an uncountable noun and has no plural form.",
+    "difficulty": "easy",
+    "topics": ["uncountable-nouns", "error-spotting"]
+  },
+  {
+    "id": 33,
+    "question": "Choose the correct synonym for 'FAST':",
+    "options": [
+      { "id": "a", "text": "Slow" },
+      { "id": "b", "text": "Quick" },
+      { "id": "c", "text": "Lazy" },
+      { "id": "d", "text": "Late" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Fast' means moving quickly. 'Quick' is a synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 34,
+    "question": "Choose the correct antonym for 'DAY':",
+    "options": [
+      { "id": "a", "text": "Night" },
+      { "id": "b", "text": "Morning" },
+      { "id": "c", "text": "Evening" },
+      { "id": "d", "text": "Noon" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Day' is the time of light. 'Night' is the time of darkness - the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 35,
+    "question": "Fill in the blank: 'She wants to become ______ engineer.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Engineer' starts with a vowel sound, so use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 36,
+    "question": "Identify the error: 'He don't know the answer.'",
+    "options": [
+      { "id": "a", "text": "He don't" },
+      { "id": "b", "text": "know the answer" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "He don't know" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'He' is third person singular, so use 'doesn't' not 'don't'.",
+    "difficulty": "easy",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 37,
+    "question": "Choose the correct synonym for 'HAPPY':",
+    "options": [
+      { "id": "a", "text": "Sad" },
+      { "id": "b", "text": "Cheerful" },
+      { "id": "c", "text": "Unhappy" },
+      { "id": "d", "text": "Gloomy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Happy' means feeling pleasure. 'Cheerful' is a synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 38,
+    "question": "Choose the correct antonym for 'OPEN':",
+    "options": [
+      { "id": "a", "text": "Closed" },
+      { "id": "b", "text": "Shut" },
+      { "id": "c", "text": "Locked" },
+      { "id": "d", "text": "All of the above" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Open' means not closed. 'Closed', 'shut', and 'locked' are all antonyms.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 39,
+    "question": "Fill in the blank: '______ umbrella is useful in rain.'",
+    "options": [
+      { "id": "a", "text": "A" },
+      { "id": "b", "text": "An" },
+      { "id": "c", "text": "The" },
+      { "id": "d", "text": "No article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Umbrella' starts with a vowel sound, so use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 40,
+    "question": "Identify the error: 'One of my friend is coming.'",
+    "options": [
+      { "id": "a", "text": "One of my friend" },
+      { "id": "b", "text": "is coming" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "One of my" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "After 'one of', use plural noun: 'One of my friends is coming.'",
+    "difficulty": "easy",
+    "topics": ["plurals", "error-spotting"]
+  },
+  {
+    "id": 41,
+    "question": "Choose the correct synonym for 'COLD':",
+    "options": [
+      { "id": "a", "text": "Hot" },
+      { "id": "b", "text": "Cool" },
+      { "id": "c", "text": "Warm" },
+      { "id": "d", "text": "Boiling" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Cold' means low temperature. 'Cool' is a synonym (moderately cold).",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 42,
+    "question": "Choose the correct antonym for 'BLACK':",
+    "options": [
+      { "id": "a", "text": "White" },
+      { "id": "b", "text": "Dark" },
+      { "id": "c", "text": "Grey" },
+      { "id": "d", "text": "Blue" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Black' is the darkest color. 'White' is the lightest - the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 43,
+    "question": "Fill in the blank: 'It was ______ unforgettable experience.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Unforgettable' starts with a vowel sound, so use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 44,
+    "question": "Identify the error: 'The scissors is on the table.'",
+    "options": [
+      { "id": "a", "text": "The scissors" },
+      { "id": "b", "text": "is on the table" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "The scissors is" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Scissors' is a plural noun (like pants, glasses). Use 'are' not 'is'.",
+    "difficulty": "easy",
+    "topics": ["plural-nouns", "error-spotting"]
+  },
+  {
+    "id": 45,
+    "question": "Choose the correct synonym for 'BEGIN':",
+    "options": [
+      { "id": "a", "text": "End" },
+      { "id": "b", "text": "Start" },
+      { "id": "c", "text": "Finish" },
+      { "id": "d", "text": "Stop" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Begin' means to start something. 'Start' is a direct synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 46,
+    "question": "Choose the correct antonym for 'FULL':",
+    "options": [
+      { "id": "a", "text": "Empty" },
+      { "id": "b", "text": "Complete" },
+      { "id": "c", "text": "Whole" },
+      { "id": "d", "text": "Total" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Full' means containing as much as possible. 'Empty' means containing nothing.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 47,
+    "question": "Fill in the blank: 'He is ______ MLA from our district.'",
+    "options": [
+      { "id": "a", "text": "a" },
+      { "id": "b", "text": "an" },
+      { "id": "c", "text": "the" },
+      { "id": "d", "text": "no article" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'MLA' is pronounced 'em-el-ay' starting with a vowel sound. Use 'an'.",
+    "difficulty": "easy",
+    "topics": ["articles", "grammar"]
+  },
+  {
+    "id": 48,
+    "question": "Identify the error: 'She is senior than me.'",
+    "options": [
+      { "id": "a", "text": "She is senior" },
+      { "id": "b", "text": "than me" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "She is" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Senior' takes 'to', not 'than': 'She is senior to me.'",
+    "difficulty": "easy",
+    "topics": ["comparatives", "error-spotting"]
+  },
+  {
+    "id": 49,
+    "question": "Choose the correct synonym for 'END':",
+    "options": [
+      { "id": "a", "text": "Begin" },
+      { "id": "b", "text": "Start" },
+      { "id": "c", "text": "Finish" },
+      { "id": "d", "text": "Commence" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'End' means to finish or terminate. 'Finish' is a synonym.",
+    "difficulty": "easy",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 50,
+    "question": "Choose the correct antonym for 'WIN':",
+    "options": [
+      { "id": "a", "text": "Lose" },
+      { "id": "b", "text": "Gain" },
+      { "id": "c", "text": "Earn" },
+      { "id": "d", "text": "Achieve" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Win' means to be victorious. 'Lose' is the opposite.",
+    "difficulty": "easy",
+    "topics": ["antonyms", "vocabulary"]
+  }
+]

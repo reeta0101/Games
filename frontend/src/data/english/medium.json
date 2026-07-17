@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "Choose the correct synonym for 'EPHEMERAL':",
+    "options": [
+      { "id": "a", "text": "Eternal" },
+      { "id": "b", "text": "Transient" },
+      { "id": "c", "text": "Permanent" },
+      { "id": "d", "text": "Enduring" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Ephemeral' means lasting for a very short time. 'Transient' is a synonym meaning temporary.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 2,
+    "question": "Choose the correct antonym for 'LOQUACIOUS':",
+    "options": [
+      { "id": "a", "text": "Talkative" },
+      { "id": "b", "text": "Verbose" },
+      { "id": "c", "text": "Reticent" },
+      { "id": "d", "text": "Garrulous" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Loquacious' means talkative. 'Reticent' means reserved or reluctant to speak - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 3,
+    "question": "Fill in the blank: 'The committee ______ divided in their opinions.'",
+    "options": [
+      { "id": "a", "text": "is" },
+      { "id": "b", "text": "are" },
+      { "id": "c", "text": "was" },
+      { "id": "d", "text": "were" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "When emphasizing individual members of a collective noun, use plural verb: 'The committee are divided.'",
+    "difficulty": "medium",
+    "topics": ["collective-nouns", "grammar"]
+  },
+  {
+    "id": 4,
+    "question": "Identify the error: 'Neither the teacher nor the students was present.'",
+    "options": [
+      { "id": "a", "text": "Neither the teacher" },
+      { "id": "b", "text": "nor the students" },
+      { "id": "c", "text": "was present" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "With 'neither...nor', verb agrees with the nearer subject. 'Students' is plural, so use 'were present'.",
+    "difficulty": "medium",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 5,
+    "question": "Choose the correct synonym for 'UBIQUITOUS':",
+    "options": [
+      { "id": "a", "text": "Rare" },
+      { "id": "b", "text": "Omnipresent" },
+      { "id": "c", "text": "Scarce" },
+      { "id": "d", "text": "Unique" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Ubiquitous' means present everywhere. 'Omnipresent' is a direct synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 6,
+    "question": "Choose the correct antonym for 'BENEVOLENT':",
+    "options": [
+      { "id": "a", "text": "Kind" },
+      { "id": "b", "text": "Malevolent" },
+      { "id": "c", "text": "Generous" },
+      { "id": "d", "text": "Charitable" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Benevolent' means well-meaning and kindly. 'Malevolent' means having evil intent - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 7,
+    "question": "Fill in the blank: 'Not only ______ late, but he also forgot his homework.'",
+    "options": [
+      { "id": "a", "text": "he was" },
+      { "id": "b", "text": "was he" },
+      { "id": "c", "text": "he is" },
+      { "id": "d", "text": "is he" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "With 'not only' at the beginning, use inversion: 'Not only was he late...'",
+    "difficulty": "medium",
+    "topics": ["inversion", "grammar"]
+  },
+  {
+    "id": 8,
+    "question": "Identify the error: 'Each of the students have submitted their assignment.'",
+    "options": [
+      { "id": "a", "text": "Each of the students" },
+      { "id": "b", "text": "have submitted" },
+      { "id": "c", "text": "their assignment" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Each' is singular, so use 'has submitted'. Also 'their' should be 'his/her' for formal grammar.",
+    "difficulty": "medium",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 9,
+    "question": "Choose the correct synonym for 'PRAGMATIC':",
+    "options": [
+      { "id": "a", "text": "Idealistic" },
+      { "id": "b", "text": "Practical" },
+      { "id": "c", "text": "Theoretical" },
+      { "id": "d", "text": "Abstract" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Pragmatic' means dealing with things sensibly and realistically. 'Practical' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 10,
+    "question": "Choose the correct antonym for 'FRUGAL':",
+    "options": [
+      { "id": "a", "text": "Thrifty" },
+      { "id": "b", "text": "Economical" },
+      { "id": "c", "text": "Extravagant" },
+      { "id": "d", "text": "Sparing" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Frugal' means sparing or economical. 'Extravagant' means spending excessively - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 11,
+    "question": "Fill in the blank: 'Had I known the truth, I ______ told you.'",
+    "options": [
+      { "id": "a", "text": "would" },
+      { "id": "b", "text": "would have" },
+      { "id": "c", "text": "will" },
+      { "id": "d", "text": "will have" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Third conditional: 'Had I known..., I would have told you.' (Past perfect in if-clause, would have + past participle in main clause).",
+    "difficulty": "medium",
+    "topics": ["conditionals", "grammar"]
+  },
+  {
+    "id": 12,
+    "question": "Identify the error: 'The data was analyzed carefully.'",
+    "options": [
+      { "id": "a", "text": "The data" },
+      { "id": "b", "text": "was analyzed" },
+      { "id": "c", "text": "carefully" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Data' can be treated as singular (common in modern usage) or plural. 'Was analyzed' is acceptable.",
+    "difficulty": "medium",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 13,
+    "question": "Choose the correct synonym for 'AMBIVALENT':",
+    "options": [
+      { "id": "a", "text": "Certain" },
+      { "id": "b", "text": "Decisive" },
+      { "id": "c", "text": "Uncertain" },
+      { "id": "d", "text": "Confident" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Ambivalent' means having mixed feelings or contradictory ideas. 'Uncertain' captures this meaning.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 14,
+    "question": "Choose the correct antonym for 'OPAQUE':",
+    "options": [
+      { "id": "a", "text": "Transparent" },
+      { "id": "b", "text": "Cloudy" },
+      { "id": "c", "text": "Murky" },
+      { "id": "d", "text": "Obscure" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Opaque' means not able to be seen through. 'Transparent' means allowing light to pass through - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 15,
+    "question": "Fill in the blank: 'The manager insisted that the report ______ submitted by Friday.'",
+    "options": [
+      { "id": "a", "text": "is" },
+      { "id": "b", "text": "be" },
+      { "id": "c", "text": "was" },
+      { "id": "d", "text": "were" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "After 'insisted that', use subjunctive mood: 'that the report be submitted'.",
+    "difficulty": "medium",
+    "topics": ["subjunctive", "grammar"]
+  },
+  {
+    "id": 16,
+    "question": "Identify the error: 'Scarcely had he arrived than the phone rang.'",
+    "options": [
+      { "id": "a", "text": "Scarcely had he arrived" },
+      { "id": "b", "text": "than the phone rang" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "Scarcely had he" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Scarcely' pairs with 'when', not 'than': 'Scarcely had he arrived when the phone rang.'",
+    "difficulty": "medium",
+    "topics": ["correlative-conjunctions", "error-spotting"]
+  },
+  {
+    "id": 17,
+    "question": "Choose the correct synonym for 'CANDID':",
+    "options": [
+      { "id": "a", "text": "Deceptive" },
+      { "id": "b", "text": "Frank" },
+      { "id": "c", "text": "Guarded" },
+      { "id": "d", "text": "Evasive" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Candid' means truthful and straightforward. 'Frank' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 18,
+    "question": "Choose the correct antonym for 'METICULOUS':",
+    "options": [
+      { "id": "a", "text": "Careful" },
+      { "id": "b", "text": "Precise" },
+      { "id": "c", "text": "Careless" },
+      { "id": "d", "text": "Thorough" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Meticulous' means showing great attention to detail. 'Careless' is the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 19,
+    "question": "Fill in the blank: 'By the time you arrive, I ______ finished the work.'",
+    "options": [
+      { "id": "a", "text": "will" },
+      { "id": "b", "text": "will have" },
+      { "id": "c", "text": "have" },
+      { "id": "d", "text": "had" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Future perfect: 'By the time you arrive, I will have finished the work.'",
+    "difficulty": "medium",
+    "topics": ["tenses", "grammar"]
+  },
+  {
+    "id": 20,
+    "question": "Identify the error: 'The team are playing well today.'",
+    "options": [
+      { "id": "a", "text": "The team" },
+      { "id": "b", "text": "are playing" },
+      { "id": "c", "text": "well today" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "In British English, collective nouns like 'team' can take plural verbs when emphasizing individual members. This is acceptable.",
+    "difficulty": "medium",
+    "topics": ["collective-nouns", "error-spotting"]
+  },
+  {
+    "id": 21,
+    "question": "Choose the correct synonym for 'EPITOME':",
+    "options": [
+      { "id": "a", "text": "Summary" },
+      { "id": "b", "text": "Perfect example" },
+      { "id": "c", "text": "Opposite" },
+      { "id": "d", "text": "Beginning" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Epitome' means a perfect or typical example of something. 'Perfect example' is the meaning.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 22,
+    "question": "Choose the correct antonym for 'PROLIFIC':",
+    "options": [
+      { "id": "a", "text": "Productive" },
+      { "id": "b", "text": "Fruitful" },
+      { "id": "c", "text": "Barren" },
+      { "id": "d", "text": "Creative" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Prolific' means producing much fruit or many works. 'Barren' means unproductive - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 23,
+    "question": "Fill in the blank: 'I wish I ______ there yesterday.'",
+    "options": [
+      { "id": "a", "text": "was" },
+      { "id": "b", "text": "were" },
+      { "id": "c", "text": "had been" },
+      { "id": "d", "text": "am" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Wish about past: 'I wish I had been there yesterday.' (Past perfect after wish for past regret).",
+    "difficulty": "medium",
+    "topics": ["wish-clauses", "grammar"]
+  },
+  {
+    "id": 24,
+    "question": "Identify the error: 'No sooner did he leave when it started raining.'",
+    "options": [
+      { "id": "a", "text": "No sooner did he leave" },
+      { "id": "b", "text": "when it started raining" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "No sooner did he" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'No sooner' pairs with 'than', not 'when': 'No sooner did he leave than it started raining.'",
+    "difficulty": "medium",
+    "topics": ["correlative-conjunctions", "error-spotting"]
+  },
+  {
+    "id": 25,
+    "question": "Choose the correct synonym for 'VORACIOUS':",
+    "options": [
+      { "id": "a", "text": "Insatiable" },
+      { "id": "b", "text": "Satisfied" },
+      { "id": "c", "text": "Full" },
+      { "id": "d", "text": "Moderate" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Voracious' means wanting or devouring great quantities. 'Insatiable' means impossible to satisfy - a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 26,
+    "question": "Choose the correct antonym for 'TACITURN':",
+    "options": [
+      { "id": "a", "text": "Silent" },
+      { "id": "b", "text": "Reserved" },
+      { "id": "c", "text": "Talkative" },
+      { "id": "d", "text": "Quiet" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Taciturn' means reserved or uncommunicative. 'Talkative' is the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 27,
+    "question": "Fill in the blank: 'The teacher made the students ______ the exercise again.'",
+    "options": [
+      { "id": "a", "text": "to do" },
+      { "id": "b", "text": "do" },
+      { "id": "c", "text": "doing" },
+      { "id": "d", "text": "done" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "After 'make' (causative), use bare infinitive without 'to': 'made the students do'.",
+    "difficulty": "medium",
+    "topics": ["causative-verbs", "grammar"]
+  },
+  {
+    "id": 28,
+    "question": "Identify the error: 'He is one of the students who has passed the exam.'",
+    "options": [
+      { "id": "a", "text": "He is one of the students" },
+      { "id": "b", "text": "who has passed" },
+      { "id": "c", "text": "the exam" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Who' refers to 'students' (plural), so use plural verb: 'who have passed'.",
+    "difficulty": "medium",
+    "topics": ["relative-clauses", "error-spotting"]
+  },
+  {
+    "id": 29,
+    "question": "Choose the correct synonym for 'SAGACIOUS':",
+    "options": [
+      { "id": "a", "text": "Foolish" },
+      { "id": "b", "text": "Wise" },
+      { "id": "c", "text": "Ignorant" },
+      { "id": "d", "text": "Simple" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Sagacious' means having keen mental discernment and good judgment. 'Wise' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 30,
+    "question": "Choose the correct antonym for 'INDUSTRIOUS':",
+    "options": [
+      { "id": "a", "text": "Hardworking" },
+      { "id": "b", "text": "Diligent" },
+      { "id": "c", "text": "Lazy" },
+      { "id": "d", "text": "Busy" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Industrious' means diligent and hardworking. 'Lazy' is the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 31,
+    "question": "Fill in the blank: 'It is high time we ______ home.'",
+    "options": [
+      { "id": "a", "text": "go" },
+      { "id": "b", "text": "went" },
+      { "id": "c", "text": "gone" },
+      { "id": "d", "text": "going" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'It is high time' takes past tense (subjunctive): 'It is high time we went home.'",
+    "difficulty": "medium",
+    "topics": ["subjunctive", "grammar"]
+  },
+  {
+    "id": 32,
+    "question": "Identify the error: 'The number of students are increasing.'",
+    "options": [
+      { "id": "a", "text": "The number of students" },
+      { "id": "b", "text": "are increasing" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "The number of" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'The number of' takes singular verb: 'The number of students is increasing.' ('A number of' takes plural).",
+    "difficulty": "medium",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 33,
+    "question": "Choose the correct synonym for 'CAPRICIOUS':",
+    "options": [
+      { "id": "a", "text": "Predictable" },
+      { "id": "b", "text": "Whimsical" },
+      { "id": "c", "text": "Steady" },
+      { "id": "d", "text": "Constant" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Capricious' means given to sudden changes of mood. 'Whimsical' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 34,
+    "question": "Choose the correct antonym for 'VERBOSE':",
+    "options": [
+      { "id": "a", "text": "Wordy" },
+      { "id": "b", "text": "Concise" },
+      { "id": "c", "text": "Lengthy" },
+      { "id": "d", "text": "Detailed" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Verbose' means using more words than needed. 'Concise' means brief and to the point - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 35,
+    "question": "Fill in the blank: 'If I ______ you, I would accept the offer.'",
+    "options": [
+      { "id": "a", "text": "am" },
+      { "id": "b", "text": "was" },
+      { "id": "c", "text": "were" },
+      { "id": "d", "text": "be" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Second conditional: 'If I were you...' (Subjunctive 'were' for all persons in hypothetical situations).",
+    "difficulty": "medium",
+    "topics": ["conditionals", "grammar"]
+  },
+  {
+    "id": 36,
+    "question": "Identify the error: 'Many a student have failed the test.'",
+    "options": [
+      { "id": "a", "text": "Many a student" },
+      { "id": "b", "text": "have failed" },
+      { "id": "c", "text": "the test" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Many a' takes singular verb: 'Many a student has failed the test.'",
+    "difficulty": "medium",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 37,
+    "question": "Choose the correct synonym for 'OBSTINATE':",
+    "options": [
+      { "id": "a", "text": "Flexible" },
+      { "id": "b", "text": "Stubborn" },
+      { "id": "c", "text": "Yielding" },
+      { "id": "d", "text": "Compliant" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Obstinate' means stubbornly refusing to change. 'Stubborn' is a direct synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 38,
+    "question": "Choose the correct antonym for 'AUSTERE':",
+    "options": [
+      { "id": "a", "text": "Severe" },
+      { "id": "b", "text": "Strict" },
+      { "id": "c", "text": "Lavish" },
+      { "id": "d", "text": "Stern" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Austere' means severe or strict in manner. 'Lavish' means elaborate and luxurious - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 39,
+    "question": "Fill in the blank: 'The book ______ on the table belongs to me.'",
+    "options": [
+      { "id": "a", "text": "lying" },
+      { "id": "b", "text": "laying" },
+      { "id": "c", "text": "lied" },
+      { "id": "d", "text": "laid" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Lie' (intransitive) - present participle 'lying'. 'The book lying on the table...' (The book is lying there).",
+    "difficulty": "medium",
+    "topics": ["participles", "grammar"]
+  },
+  {
+    "id": 40,
+    "question": "Identify the error: 'He is the tallest of the two brothers.'",
+    "options": [
+      { "id": "a", "text": "He is the tallest" },
+      { "id": "b", "text": "of the two brothers" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "He is the" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "For two people, use comparative 'taller', not superlative 'tallest': 'He is the taller of the two brothers.'",
+    "difficulty": "medium",
+    "topics": ["comparatives-superlatives", "error-spotting"]
+  },
+  {
+    "id": 41,
+    "question": "Choose the correct synonym for 'PLACID':",
+    "options": [
+      { "id": "a", "text": "Turbulent" },
+      { "id": "b", "text": "Calm" },
+      { "id": "c", "text": "Agitated" },
+      { "id": "d", "text": "Stormy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Placid' means calm and peaceful. 'Calm' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 42,
+    "question": "Choose the correct antonym for 'GREGARIOUS':",
+    "options": [
+      { "id": "a", "text": "Sociable" },
+      { "id": "b", "text": "Outgoing" },
+      { "id": "c", "text": "Introverted" },
+      { "id": "d", "text": "Friendly" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Gregarious' means fond of company, sociable. 'Introverted' means shy and reserved - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 43,
+    "question": "Fill in the blank: 'I would rather you ______ the truth.'",
+    "options": [
+      { "id": "a", "text": "tell" },
+      { "id": "b", "text": "told" },
+      { "id": "c", "text": "telling" },
+      { "id": "d", "text": "to tell" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Would rather' + subject + past tense: 'I would rather you told the truth.'",
+    "difficulty": "medium",
+    "topics": ["would-rather", "grammar"]
+  },
+  {
+    "id": 44,
+    "question": "Identify the error: 'The wages of sin is death.'",
+    "options": [
+      { "id": "a", "text": "The wages of sin" },
+      { "id": "b", "text": "is death" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "The wages of" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "This is a famous biblical quote. 'Wages' here is treated as singular concept. 'The wages of sin is death' is correct.",
+    "difficulty": "medium",
+    "topics": ["subject-verb-agreement", "error-spotting"]
+  },
+  {
+    "id": 45,
+    "question": "Choose the correct synonym for 'INSIPID':",
+    "options": [
+      { "id": "a", "text": "Tasty" },
+      { "id": "b", "text": "Bland" },
+      { "id": "c", "text": "Flavorful" },
+      { "id": "d", "text": "Spicy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Insipid' means lacking flavor or interest. 'Bland' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 46,
+    "question": "Choose the correct antonym for 'EPHEMERAL':",
+    "options": [
+      { "id": "a", "text": "Transient" },
+      { "id": "b", "text": "Fleeting" },
+      { "id": "c", "text": "Eternal" },
+      { "id": "d", "text": "Momentary" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Ephemeral' means short-lived. 'Eternal' means lasting forever - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  },
+  {
+    "id": 47,
+    "question": "Fill in the blank: 'He speaks ______ he knows everything.'",
+    "options": [
+      { "id": "a", "text": "as if" },
+      { "id": "b", "text": "as though" },
+      { "id": "c", "text": "like" },
+      { "id": "d", "text": "both a and b" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Both 'as if' and 'as though' are correct for hypothetical comparisons: 'He speaks as if/as though he knows everything.'",
+    "difficulty": "medium",
+    "topics": ["conjunctions", "grammar"]
+  },
+  {
+    "id": 48,
+    "question": "Identify the error: 'One should respect his parents.'",
+    "options": [
+      { "id": "a", "text": "One should respect" },
+      { "id": "b", "text": "his parents" },
+      { "id": "c", "text": "No error" },
+      { "id": "d", "text": "One should" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "When using 'one', the possessive should be 'one's': 'One should respect one's parents.'",
+    "difficulty": "medium",
+    "topics": ["pronouns", "error-spotting"]
+  },
+  {
+    "id": 49,
+    "question": "Choose the correct synonym for 'MUNDANE':",
+    "options": [
+      { "id": "a", "text": "Extraordinary" },
+      { "id": "b", "text": "Ordinary" },
+      { "id": "c", "text": "Miraculous" },
+      { "id": "d", "text": "Supernatural" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Mundane' means lacking interest or excitement; dull. 'Ordinary' is a synonym.",
+    "difficulty": "medium",
+    "topics": ["synonyms", "vocabulary"]
+  },
+  {
+    "id": 50,
+    "question": "Choose the correct antonym for 'RELUCTANT':",
+    "options": [
+      { "id": "a", "text": "Unwilling" },
+      { "id": "b", "text": "Hesitant" },
+      { "id": "c", "text": "Eager" },
+      { "id": "d", "text": "Disinclined" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Reluctant' means unwilling and hesitant. 'Eager' means keen and enthusiastic - the opposite.",
+    "difficulty": "medium",
+    "topics": ["antonyms", "vocabulary"]
+  }
+]

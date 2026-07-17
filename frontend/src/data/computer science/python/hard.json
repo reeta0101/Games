@@ -1,0 +1,1515 @@
+[
+  {
+    "id": 1,
+    "question": "What is a lambda function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that runs asynchronously"
+      },
+      {
+        "id": "b",
+        "text": "A small anonymous function defined with the 'lambda' keyword"
+      },
+      {
+        "id": "c",
+        "text": "A built-in math function"
+      },
+      {
+        "id": "d",
+        "text": "A function that returns a generator"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A lambda function is a small, anonymous function that can take any number of arguments but can only have one expression.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "functions"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What does the '__init__' method do in a Python class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "It destroys the object"
+      },
+      {
+        "id": "b",
+        "text": "It initializes a new instance of a class (constructor)"
+      },
+      {
+        "id": "c",
+        "text": "It prints the object"
+      },
+      {
+        "id": "d",
+        "text": "It imports a module"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The '__init__' method is automatically called when a new object of a class is created. It acts as the constructor.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is a generator in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that returns a list"
+      },
+      {
+        "id": "b",
+        "text": "A function that yields values one at a time using 'yield'"
+      },
+      {
+        "id": "c",
+        "text": "A class that generates objects"
+      },
+      {
+        "id": "d",
+        "text": "A built-in function"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A generator is a function that uses 'yield' to produce a sequence of values lazily, one at a time, instead of computing all at once.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "generators"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is a decorator in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that modifies another function's behavior"
+      },
+      {
+        "id": "b",
+        "text": "A class decorator"
+      },
+      {
+        "id": "c",
+        "text": "A design pattern for UI"
+      },
+      {
+        "id": "d",
+        "text": "A type of comment"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A decorator is a function that takes another function and extends its behavior without explicitly modifying it. Used with @decorator syntax.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "decorators"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is the difference between a shallow copy and deep copy?",
+    "options": [
+      {
+        "id": "a",
+        "text": "No difference"
+      },
+      {
+        "id": "b",
+        "text": "Shallow copy copies references, deep copy copies objects recursively"
+      },
+      {
+        "id": "c",
+        "text": "Shallow copy is faster but uses more memory"
+      },
+      {
+        "id": "d",
+        "text": "Deep copy only works for lists"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Shallow copy creates a new object but references the same nested objects. Deep copy creates new objects recursively for all nested objects. Use copy.copy() and copy.deepcopy().",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "copy"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What is a context manager?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A manager for context variables"
+      },
+      {
+        "id": "b",
+        "text": "An object that defines __enter__ and __exit__ methods for use with 'with' statement"
+      },
+      {
+        "id": "c",
+        "text": "A memory manager"
+      },
+      {
+        "id": "d",
+        "text": "A thread manager"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A context manager is an object that implements __enter__ and __exit__ methods, allowing it to be used with the 'with' statement for resource management.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "context-managers"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What does 'async def' define?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A synchronous function"
+      },
+      {
+        "id": "b",
+        "text": "An asynchronous function (coroutine)"
+      },
+      {
+        "id": "c",
+        "text": "A class method"
+      },
+      {
+        "id": "d",
+        "text": "A static method"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "async def defines a coroutine function that can be paused and resumed. Used with await for asynchronous programming.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "async"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the purpose of 'await' keyword?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Waits for a thread to finish"
+      },
+      {
+        "id": "b",
+        "text": "Pauses an async function until a coroutine completes"
+      },
+      {
+        "id": "c",
+        "text": "Waits for user input"
+      },
+      {
+        "id": "d",
+        "text": "Delays execution"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "await pauses the execution of an async function until the awaited coroutine/future completes, then returns its result.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "async"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What does 'functools.lru_cache' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Caches the least recently used items"
+      },
+      {
+        "id": "b",
+        "text": "Memoizes function results (caches return values)"
+      },
+      {
+        "id": "c",
+        "text": "Manages memory cache"
+      },
+      {
+        "id": "d",
+        "text": "Clears cache automatically"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "@lru_cache decorator memoizes function calls, caching return values for given arguments to avoid recomputation.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "decorators",
+      "functools"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What is the difference between __str__ and __repr__?",
+    "options": [
+      {
+        "id": "a",
+        "text": "__str__ is for developers, __repr__ is for users"
+      },
+      {
+        "id": "b",
+        "text": "__str__ is for users, __repr__ is for developers (unambiguous)"
+      },
+      {
+        "id": "c",
+        "text": "They are identical"
+      },
+      {
+        "id": "d",
+        "text": "__str__ is for classes, __repr__ is for functions"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "__str__ returns a readable string for end users. __repr__ returns an unambiguous string for developers, ideally one that could recreate the object.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What is the MRO (Method Resolution Order) in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The order in which methods are resolved in multiple inheritance"
+      },
+      {
+        "id": "b",
+        "text": "The order of module imports"
+      },
+      {
+        "id": "c",
+        "text": "The order of function calls"
+      },
+      {
+        "id": "d",
+        "text": "The order of attribute access"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "MRO determines the order in which base classes are searched when looking for a method in multiple inheritance. Python uses C3 linearization algorithm.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "inheritance"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "What is a metaclass in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A class that inherits from another class"
+      },
+      {
+        "id": "b",
+        "text": "A class whose instances are classes"
+      },
+      {
+        "id": "c",
+        "text": "A class with only static methods"
+      },
+      {
+        "id": "d",
+        "text": "A class that cannot be instantiated"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A metaclass is a class of a class. It defines how a class behaves. type is the default metaclass. Metaclasses allow customization of class creation.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "metaclasses",
+      "oop"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What does the @property decorator do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Makes a method read-only"
+      },
+      {
+        "id": "b",
+        "text": "Allows a method to be accessed like an attribute"
+      },
+      {
+        "id": "c",
+        "text": "Creates a class property"
+      },
+      {
+        "id": "d",
+        "text": "Defines a static property"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "@property allows a method to be accessed like an attribute (without parentheses). It enables getter/setter/deleter behavior for controlled attribute access.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "properties"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What is the difference between __new__ and __init__?",
+    "options": [
+      {
+        "id": "a",
+        "text": "__new__ creates the instance, __init__ initializes it"
+      },
+      {
+        "id": "b",
+        "text": "__init__ creates the instance, __new__ initializes it"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "__new__ is for classes, __init__ is for objects"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "__new__ is a static method that creates and returns a new instance. __init__ initializes the already-created instance. __new__ is called before __init__.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What is a descriptor in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that describes a class"
+      },
+      {
+        "id": "b",
+        "text": "An object that defines __get__, __set__, or __delete__ to control attribute access"
+      },
+      {
+        "id": "c",
+        "text": "A type hint for variables"
+      },
+      {
+        "id": "d",
+        "text": "A documentation string"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A descriptor is an object that implements __get__, __set__, or __delete__ to customize attribute access. Properties, classmethods, and staticmethods are implemented using descriptors.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "descriptors",
+      "oop"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What is the GIL (Global Interpreter Lock)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A lock that prevents multiple threads from executing Python bytecode simultaneously"
+      },
+      {
+        "id": "b",
+        "text": "A global variable lock"
+      },
+      {
+        "id": "c",
+        "text": "A garbage collection lock"
+      },
+      {
+        "id": "d",
+        "text": "A file I/O lock"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The GIL is a mutex that allows only one thread to execute Python bytecode at a time. It limits true parallelism in CPU-bound multi-threaded programs but simplifies CPython implementation.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "threading",
+      "gil"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What is the difference between multiprocessing and threading in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Threading uses multiple processes, multiprocessing uses multiple threads"
+      },
+      {
+        "id": "b",
+        "text": "Multiprocessing bypasses GIL by using separate processes, threading is limited by GIL"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "Threading is faster for CPU-bound tasks"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Multiprocessing creates separate Python processes, each with its own GIL, enabling true parallelism for CPU-bound tasks. Threading shares the same GIL, so only one thread executes Python bytecode at a time.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "multiprocessing",
+      "threading",
+      "gil"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What is a closure in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that closes over a file"
+      },
+      {
+        "id": "b",
+        "text": "A function that captures and remembers variables from its enclosing scope"
+      },
+      {
+        "id": "c",
+        "text": "A class that wraps another class"
+      },
+      {
+        "id": "d",
+        "text": "A way to close a program"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A closure is a function that retains access to variables from its enclosing lexical scope even after the outer function has finished executing. The inner function \"closes over\" the free variables.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "closures",
+      "functions"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What is the purpose of __slots__ in a Python class?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To define class methods"
+      },
+      {
+        "id": "b",
+        "text": "To restrict the attributes that instances can have and save memory"
+      },
+      {
+        "id": "c",
+        "text": "To create slots for threading"
+      },
+      {
+        "id": "d",
+        "text": "To define inheritance slots"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "__slots__ reserves space for only the listed attributes, preventing creation of __dict__ for each instance. This saves memory and prevents dynamic attribute addition.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "memory"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What is monkey patching in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Patching code at runtime by modifying classes or modules"
+      },
+      {
+        "id": "b",
+        "text": "A testing framework"
+      },
+      {
+        "id": "c",
+        "text": "A way to patch files"
+      },
+      {
+        "id": "d",
+        "text": "A monkey-themed decorator"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Monkey patching is dynamically modifying a class or module at runtime. It can be useful for testing or fixing bugs but should be used carefully as it can make code harder to understand.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "monkey-patching",
+      "testing"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What is the difference between is and == in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "is checks identity (same object), == checks equality (same value)"
+      },
+      {
+        "id": "b",
+        "text": "== checks identity, is checks equality"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "is is for strings, == is for numbers"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "is checks if two references point to the exact same object in memory (identity). == checks if two objects have the same value (equality). For small integers and strings, Python caches objects so is may return True unexpectedly.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "operators",
+      "identity"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "What is a memory view in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A view of memory usage"
+      },
+      {
+        "id": "b",
+        "text": "A way to access the internal data of an object without copying (using buffer protocol)"
+      },
+      {
+        "id": "c",
+        "text": "A memory profiler"
+      },
+      {
+        "id": "d",
+        "text": "A virtual memory manager"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "memoryview allows direct access to an object's internal data (buffer protocol) without copying. Useful for efficient manipulation of large binary data like images or arrays.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "memory",
+      "buffer-protocol"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What is the purpose of __getattr__ vs __getattribute__?",
+    "options": [
+      {
+        "id": "a",
+        "text": "__getattr__ is called for all attribute access, __getattribute__ only for missing attributes"
+      },
+      {
+        "id": "b",
+        "text": "__getattribute__ is called for all attribute access, __getattr__ only for missing attributes"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "__getattr__ is for classes, __getattribute__ is for instances"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "__getattribute__ is called for every attribute access. __getattr__ is only called when the attribute is not found through normal lookup. Use __getattr__ for dynamic attributes, __getattribute__ for intercepting all access.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "attributes"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "What is a class method vs static method?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Class method gets class as first arg, static method gets no implicit first arg"
+      },
+      {
+        "id": "b",
+        "text": "Static method gets class as first arg, class method gets no implicit arg"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "Class method is for inheritance, static method is not"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "@classmethod receives the class (cls) as first argument, useful for factory methods. @staticmethod receives no implicit first argument, behaves like a regular function but belongs to the class namespace.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "methods"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What is the purpose of the functools.lru_cache decorator?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To cache the least recently used items in a dictionary"
+      },
+      {
+        "id": "b",
+        "text": "To memoize function results with a least-recently-used eviction policy"
+      },
+      {
+        "id": "c",
+        "text": "To cache file reads"
+      },
+      {
+        "id": "d",
+        "text": "To limit recursion depth"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "@lru_cache memoizes function results, caching up to maxsize entries. When cache is full, least recently used entries are evicted. Great for expensive pure functions with repeated calls.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "functools",
+      "caching",
+      "optimization"
+    ]
+  },
+  {
+    "id": 26,
+    "question": "What is the difference between a list comprehension and a generator expression?",
+    "options": [
+      {
+        "id": "a",
+        "text": "List comprehension uses [], generator uses () and yields lazily"
+      },
+      {
+        "id": "b",
+        "text": "Generator uses [], list comprehension uses ()"
+      },
+      {
+        "id": "c",
+        "text": "They are identical"
+      },
+      {
+        "id": "d",
+        "text": "List comprehension is faster for all cases"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "List comprehension [x for x in iterable] creates a full list in memory. Generator expression (x for x in iterable) creates a generator object that yields items lazily, saving memory for large sequences.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "generators",
+      "comprehensions",
+      "memory"
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What is the purpose of the __call__ method?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To call a class"
+      },
+      {
+        "id": "b",
+        "text": "To make instances callable like functions"
+      },
+      {
+        "id": "c",
+        "text": "To call parent class methods"
+      },
+      {
+        "id": "d",
+        "text": "To call destructors"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Defining __call__ on a class makes its instances callable (like functions). obj() invokes obj.__call__(). Useful for creating function-like objects with state (functors).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "callable"
+    ]
+  },
+  {
+    "id": 28,
+    "question": "What is the difference between deepcopy and pickle for object serialization?",
+    "options": [
+      {
+        "id": "a",
+        "text": "deepcopy is for in-memory copying, pickle is for serialization to bytes"
+      },
+      {
+        "id": "b",
+        "text": "pickle is faster"
+      },
+      {
+        "id": "c",
+        "text": "deepcopy uses pickle internally"
+      },
+      {
+        "id": "d",
+        "text": "They are the same"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "deepcopy creates a new in-memory copy of an object graph. pickle serializes objects to a byte stream for storage/transmission. deepcopy is for cloning; pickle is for persistence.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "copy",
+      "pickle",
+      "serialization"
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What is a weak reference in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A reference that prevents garbage collection"
+      },
+      {
+        "id": "b",
+        "text": "A reference that does not prevent garbage collection of the referent"
+      },
+      {
+        "id": "c",
+        "text": "A reference to a weak object"
+      },
+      {
+        "id": "d",
+        "text": "A reference with low priority"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A weak reference (weakref.ref) allows referencing an object without preventing its garbage collection. Useful for caches, observer patterns, and avoiding circular references.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "weakref",
+      "garbage-collection",
+      "memory"
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is the purpose of __getstate__ and __setstate__?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To get and set object state for pickling/custom serialization"
+      },
+      {
+        "id": "b",
+        "text": "To get and set class attributes"
+      },
+      {
+        "id": "c",
+        "text": "To manage instance state in __init__"
+      },
+      {
+        "id": "d",
+        "text": "To handle exceptions"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "__getstate__ returns the object state for pickling. __setstate__ restores state when unpickling. Allows customizing what gets serialized (e.g., excluding file handles, connections).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "pickle",
+      "serialization"
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What is the difference between asyncio.gather and asyncio.wait?",
+    "options": [
+      {
+        "id": "a",
+        "text": "gather returns results in order, wait returns done/pending sets"
+      },
+      {
+        "id": "b",
+        "text": "wait returns results in order, gather returns done/pending sets"
+      },
+      {
+        "id": "c",
+        "text": "They are identical"
+      },
+      {
+        "id": "d",
+        "text": "gather is for threads, wait is for processes"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "asyncio.gather runs awaitables concurrently and returns results in the same order as input. asyncio.wait returns two sets (done, pending) and gives more control over completion conditions (FIRST_COMPLETED, ALL_COMPLETED, etc.).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "asyncio",
+      "concurrency"
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What is a coroutine in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A function that runs in a separate thread"
+      },
+      {
+        "id": "b",
+        "text": "A function defined with async def that can be paused and resumed with await"
+      },
+      {
+        "id": "c",
+        "text": "A generator function"
+      },
+      {
+        "id": "d",
+        "text": "A class method"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A coroutine is a function defined with async def. It can be paused at await expressions and resumed later. Coroutines are the foundation of asyncio asynchronous programming.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "asyncio",
+      "coroutines"
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What is the purpose of the typing module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To type faster"
+      },
+      {
+        "id": "b",
+        "text": "To provide type hints for static analysis and IDE support"
+      },
+      {
+        "id": "c",
+        "text": "To enforce types at runtime"
+      },
+      {
+        "id": "d",
+        "text": "To create custom types"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The typing module provides type hints (List, Dict, Optional, Union, Generic, etc.) for static type checkers like mypy and IDEs. Python does not enforce types at runtime (except with tools like pydantic).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "typing",
+      "type-hints",
+      "static-analysis"
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What is a Protocol in Python typing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A network protocol"
+      },
+      {
+        "id": "b",
+        "text": "A way to define structural subtyping (duck typing) for static type checking"
+      },
+      {
+        "id": "c",
+        "text": "A class inheritance protocol"
+      },
+      {
+        "id": "d",
+        "text": "A communication protocol"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Protocol (from typing_extensions or typing in 3.8+) enables structural subtyping. A class implements a protocol if it has the required methods/attributes, without explicit inheritance. Enables duck typing with static checking.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "typing",
+      "protocols",
+      "structural-subtyping"
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is the difference between TypeVar and Generic?",
+    "options": [
+      {
+        "id": "a",
+        "text": "TypeVar defines a type variable, Generic creates a generic class using type variables"
+      },
+      {
+        "id": "b",
+        "text": "Generic defines a type variable, TypeVar creates a generic class"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "TypeVar is for functions, Generic is for classes"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "TypeVar creates a type variable (e.g., T = TypeVar('T')). Generic[T] makes a class generic over T. Together they enable reusable, type-safe generic classes like List[T], Dict[K, V].",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "typing",
+      "generics",
+      "typevar"
+    ]
+  },
+  {
+    "id": 36,
+    "question": "What is the purpose of __init_subclass__?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To initialize subclass instances"
+      },
+      {
+        "id": "b",
+        "text": "To customize class creation when a class is subclassed"
+      },
+      {
+        "id": "c",
+        "text": "To initialize parent class"
+      },
+      {
+        "id": "d",
+        "text": "To create abstract methods"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "__init_subclass__ is a class method called automatically when a class is subclassed. It allows the parent class to customize or validate subclasses (e.g., registering plugins, enforcing attributes).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "metaprogramming"
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What is the difference between abstract base classes (ABC) and protocols?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ABC uses nominal subtyping (inheritance), Protocol uses structural subtyping"
+      },
+      {
+        "id": "b",
+        "text": "Protocol uses nominal subtyping, ABC uses structural"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "ABC is for runtime, Protocol is for compile time only"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "ABC (from abc module) requires explicit inheritance (nominal subtyping). Protocol (from typing) checks structure only (structural subtyping/duck typing). ABC enforces at runtime; Protocol is for static checking.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "abc",
+      "protocols",
+      "typing",
+      "subtyping"
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What is the purpose of the dataclasses module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To create database classes"
+      },
+      {
+        "id": "b",
+        "text": "To automatically generate __init__, __repr__, __eq__ for data-holding classes"
+      },
+      {
+        "id": "c",
+        "text": "To create abstract classes"
+      },
+      {
+        "id": "d",
+        "text": "To handle data serialization"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "@dataclass decorator auto-generates __init__, __repr__, __eq__, and other methods based on class annotations. Reduces boilerplate for classes that primarily hold data. Supports field(), default_factory, frozen, etc.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "dataclasses",
+      "boilerplate"
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What is the difference between @dataclass and @dataclass(frozen=True)?",
+    "options": [
+      {
+        "id": "a",
+        "text": "frozen=True makes the class immutable (instances cannot be modified after creation)"
+      },
+      {
+        "id": "b",
+        "text": "frozen=True makes the class faster"
+      },
+      {
+        "id": "c",
+        "text": "frozen=True prevents inheritance"
+      },
+      {
+        "id": "d",
+        "text": "They are the same"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "frozen=True makes dataclass instances immutable by setting __setattr__ and __delattr__ to raise FrozenInstanceError. Useful for hashable, thread-safe data objects.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "dataclasses",
+      "immutability"
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What is the purpose of contextvars module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To manage context managers"
+      },
+      {
+        "id": "b",
+        "text": "To provide context-local storage for async code (like thread-local but for async tasks)"
+      },
+      {
+        "id": "c",
+        "text": "To manage variable scope"
+      },
+      {
+        "id": "d",
+        "text": "To create virtual environments"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "contextvars provides ContextVar objects for context-local state in async code. Unlike thread-local storage, context variables work correctly with asyncio tasks and can be copied/isolated per task.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "asyncio",
+      "contextvars",
+      "concurrency"
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What is the difference between a regular function and a generator function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Generator function uses yield, returns a generator object; regular function uses return"
+      },
+      {
+        "id": "b",
+        "text": "Regular function uses yield, generator uses return"
+      },
+      {
+        "id": "c",
+        "text": "They are the same"
+      },
+      {
+        "id": "d",
+        "text": "Generator functions are always async"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A generator function contains yield and returns a generator iterator when called. It pauses at each yield and resumes on next(). A regular function runs to completion and returns a single value.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "generators",
+      "yield"
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What is the purpose of the itertools module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To iterate over files"
+      },
+      {
+        "id": "b",
+        "text": "To provide fast, memory-efficient tools for working with iterators (combinations, permutations, chain, cycle, etc.)"
+      },
+      {
+        "id": "c",
+        "text": "To create iterators from lists"
+      },
+      {
+        "id": "d",
+        "text": "To handle iteration errors"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "itertools provides functions for efficient iterator manipulation: infinite iterators (count, cycle, repeat), combinatoric iterators (product, permutations, combinations), and terminating iterators (chain, islice, takewhile, etc.).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "itertools",
+      "iterators",
+      "combinatorics"
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What is the difference between map, filter, and reduce?",
+    "options": [
+      {
+        "id": "a",
+        "text": "map transforms each element, filter selects elements, reduce combines elements into a single value"
+      },
+      {
+        "id": "b",
+        "text": "map filters, filter maps, reduces transforms"
+      },
+      {
+        "id": "c",
+        "text": "They are all the same"
+      },
+      {
+        "id": "d",
+        "text": "map is for lists, filter for dicts, reduce for sets"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "map(func, iterable) applies func to each item. filter(func, iterable) keeps items where func returns True. reduce(func, iterable) cumulatively applies func to reduce to a single value (from functools).",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "functional",
+      "map",
+      "filter",
+      "reduce"
+    ]
+  },
+  {
+    "id": 44,
+    "question": "What is the purpose of the collections module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To collect garbage"
+      },
+      {
+        "id": "b",
+        "text": "To provide specialized container datatypes (namedtuple, deque, Counter, defaultdict, OrderedDict, etc.)"
+      },
+      {
+        "id": "c",
+        "text": "To collect user input"
+      },
+      {
+        "id": "d",
+        "text": "To manage module imports"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "collections provides high-performance container types: namedtuple (lightweight immutable records), deque (double-ended queue), Counter (multiset), defaultdict (dict with default factory), OrderedDict (insertion-order preserving), ChainMap, etc.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "collections",
+      "data-structures"
+    ]
+  },
+  {
+    "id": 45,
+    "question": "What is a namedtuple and when would you use it?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A tuple with named fields, lightweight immutable record alternative to class"
+      },
+      {
+        "id": "b",
+        "text": "A tuple with a name"
+      },
+      {
+        "id": "c",
+        "text": "A named tuple function"
+      },
+      {
+        "id": "d",
+        "text": "A tuple that can be modified"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "namedtuple creates a tuple subclass with named fields accessible by attribute (obj.field) or index. Immutable, memory-efficient, self-documenting. Good for simple data records where a full class is overkill.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "collections",
+      "namedtuple",
+      "data-structures"
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What is the difference between deque and list for queue operations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "deque has O(1) append/pop from both ends, list has O(n) pop(0)"
+      },
+      {
+        "id": "b",
+        "text": "list is faster for all operations"
+      },
+      {
+        "id": "c",
+        "text": "They have the same performance"
+      },
+      {
+        "id": "d",
+        "text": "deque only works with integers"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "collections.deque is optimized for O(1) append/pop from both ends. list.pop(0) is O(n) because all elements must shift. Use deque for queues, stacks, and sliding windows.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "collections",
+      "deque",
+      "performance",
+      "data-structures"
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What is the purpose of the functools.partial function?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To partially apply a function (fix some arguments), returning a new callable"
+      },
+      {
+        "id": "b",
+        "text": "To partially execute a function"
+      },
+      {
+        "id": "c",
+        "text": "To create a partial class"
+      },
+      {
+        "id": "d",
+        "text": "To partially import a module"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "functools.partial(func, *args, **keywords) returns a new callable that calls func with the provided args/keywords pre-filled. Useful for creating specialized functions from general ones, callbacks with preset arguments.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "functools",
+      "partial",
+      "functional-programming"
+    ]
+  },
+  {
+    "id": 48,
+    "question": "What is the difference between __eq__ and __hash__?",
+    "options": [
+      {
+        "id": "a",
+        "text": "__eq__ checks equality, __hash__ returns hash value; objects equal must have same hash"
+      },
+      {
+        "id": "b",
+        "text": "__hash__ checks equality, __eq__ returns hash"
+      },
+      {
+        "id": "c",
+        "text": "They are unrelated"
+      },
+      {
+        "id": "d",
+        "text": "__eq__ is for lists, __hash__ is for dicts"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "__eq__ defines equality comparison. __hash__ returns an integer hash. If you define __eq__, you should define __hash__ to maintain the invariant: equal objects must have equal hashes. By default, __eq__ uses identity, __hash__ uses id().",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "oop",
+      "hash",
+      "equality",
+      "dict-keys"
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What is the purpose of the inspect module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To inspect HTML"
+      },
+      {
+        "id": "b",
+        "text": "To introspect live objects (get source, signature, members, etc.) at runtime"
+      },
+      {
+        "id": "c",
+        "text": "To inspect network traffic"
+      },
+      {
+        "id": "d",
+        "text": "To inspect file permissions"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "inspect provides functions to examine live objects: get source code (getsource), signature (signature), members (getmembers), class hierarchy (getmro), frame info, etc. Useful for debugging, documentation generation, and dynamic code.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "inspect",
+      "introspection",
+      "debugging"
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What is the difference between a shallow copy and deep copy of a nested list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Shallow copy copies references to nested objects, deep copy recursively copies all nested objects"
+      },
+      {
+        "id": "b",
+        "text": "Deep copy copies references, shallow copy copies objects"
+      },
+      {
+        "id": "c",
+        "text": "They are the same for nested lists"
+      },
+      {
+        "id": "d",
+        "text": "Shallow copy is faster but uses more memory"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Shallow copy (copy.copy or list[:]) creates a new list but nested objects are shared references. Deep copy (copy.deepcopy) recursively creates new copies of all nested objects. Modifying nested items in shallow copy affects original.",
+    "difficulty": "hard",
+    "topics": [
+      "python",
+      "copy",
+      "deepcopy",
+      "shallow-copy",
+      "nested-objects"
+    ]
+  }
+]

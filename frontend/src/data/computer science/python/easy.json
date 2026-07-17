@@ -1,0 +1,1453 @@
+[
+  {
+    "id": 1,
+    "question": "Which of the following is a mutable data type in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Tuple"
+      },
+      {
+        "id": "b",
+        "text": "String"
+      },
+      {
+        "id": "c",
+        "text": "List"
+      },
+      {
+        "id": "d",
+        "text": "Integer"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Lists in Python are mutable, meaning their elements can be changed after creation. Tuples, strings, and integers are immutable.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "data-types"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is the output of 'print(type([]))' in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "<class 'array'>"
+      },
+      {
+        "id": "b",
+        "text": "<class 'list'>"
+      },
+      {
+        "id": "c",
+        "text": "<class 'dict'>"
+      },
+      {
+        "id": "d",
+        "text": "<class 'tuple'>"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The expression '[]' creates an empty list, so its type is <class 'list'>.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "types"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "How do you create a function in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "def my_function():"
+      },
+      {
+        "id": "b",
+        "text": "function my_function():"
+      },
+      {
+        "id": "c",
+        "text": "create my_function():"
+      },
+      {
+        "id": "d",
+        "text": "func my_function():"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "In Python, the 'def' keyword is used to define a function.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "functions"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the correct file extension for Python files?",
+    "options": [
+      {
+        "id": "a",
+        "text": ".pt"
+      },
+      {
+        "id": "b",
+        "text": ".pyt"
+      },
+      {
+        "id": "c",
+        "text": ".py"
+      },
+      {
+        "id": "d",
+        "text": ".python"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Python source files typically use the '.py' extension.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "basics"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What does the 'len()' function do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Returns the type of an object"
+      },
+      {
+        "id": "b",
+        "text": "Returns the number of items in an object"
+      },
+      {
+        "id": "c",
+        "text": "Converts a string to lowercase"
+      },
+      {
+        "id": "d",
+        "text": "Finds the largest item"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The 'len()' function returns the number of items (length) in an object like a string, list, or dictionary.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What is the output of 'print(3 // 2)' in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1.5"
+      },
+      {
+        "id": "b",
+        "text": "1"
+      },
+      {
+        "id": "c",
+        "text": "2"
+      },
+      {
+        "id": "d",
+        "text": "1.0"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The '//' operator performs floor division, returning the largest integer less than or equal to the result. 3 // 2 = 1.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Which of the following creates a tuple in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "b",
+        "text": "{1, 2, 3}"
+      },
+      {
+        "id": "c",
+        "text": "(1, 2, 3)"
+      },
+      {
+        "id": "d",
+        "text": "{'a': 1, 'b': 2}"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Tuples are created using parentheses (). Lists use [], sets use {}, and dictionaries use {key: value}.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "data-types"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What does the 'range(5)' function produce?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[1, 2, 3, 4, 5]"
+      },
+      {
+        "id": "b",
+        "text": "[0, 1, 2, 3, 4]"
+      },
+      {
+        "id": "c",
+        "text": "[1, 2, 3, 4]"
+      },
+      {
+        "id": "d",
+        "text": "[0, 1, 2, 3, 4, 5]"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "range(5) generates numbers from 0 to 4 (5 numbers total). It starts at 0 by default and stops before the given number.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which method adds an element to the end of a list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "add()"
+      },
+      {
+        "id": "b",
+        "text": "append()"
+      },
+      {
+        "id": "c",
+        "text": "insert()"
+      },
+      {
+        "id": "d",
+        "text": "extend()"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The append() method adds a single element to the end of a list. insert() adds at a specific index, and extend() adds multiple elements.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What is the output of 'print([1, 2, 3] + [4, 5])'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[1, 2, 3, 4, 5]"
+      },
+      {
+        "id": "b",
+        "text": "[[1, 2, 3], [4, 5]]"
+      },
+      {
+        "id": "c",
+        "text": "[5, 7]"
+      },
+      {
+        "id": "d",
+        "text": "Error"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The + operator concatenates two lists, creating a new list with all elements from both.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Which keyword is used to define a class in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "class"
+      },
+      {
+        "id": "b",
+        "text": "define"
+      },
+      {
+        "id": "c",
+        "text": "struct"
+      },
+      {
+        "id": "d",
+        "text": "object"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The 'class' keyword is used to define a new class in Python.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "oop"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which method removes and returns the last element of a list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "remove()"
+      },
+      {
+        "id": "b",
+        "text": "pop()"
+      },
+      {
+        "id": "c",
+        "text": "delete()"
+      },
+      {
+        "id": "d",
+        "text": "discard()"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The pop() method removes and returns the last element (or element at specified index). remove() removes by value, discard() is for sets.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "What is the output of 'print(\"hello\" * 3)'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "hellohellohello"
+      },
+      {
+        "id": "b",
+        "text": "hello hello hello"
+      },
+      {
+        "id": "c",
+        "text": "hello3"
+      },
+      {
+        "id": "d",
+        "text": "Error"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Multiplying a string by an integer repeats the string that many times.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which operator checks if a value exists in a sequence?",
+    "options": [
+      {
+        "id": "a",
+        "text": "=="
+      },
+      {
+        "id": "b",
+        "text": "in"
+      },
+      {
+        "id": "c",
+        "text": "contains"
+      },
+      {
+        "id": "d",
+        "text": "has"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The 'in' operator checks for membership in a sequence (list, tuple, string, set, dict keys).",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Which method is used to read a file's entire content as a string?",
+    "options": [
+      {
+        "id": "a",
+        "text": "read()"
+      },
+      {
+        "id": "b",
+        "text": "readline()"
+      },
+      {
+        "id": "c",
+        "text": "readlines()"
+      },
+      {
+        "id": "d",
+        "text": "readall()"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "file.read() reads the entire file content as a single string. readline() reads one line, readlines() returns a list of lines.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "file-io"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "What is the output of 'print(bool([]))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "True"
+      },
+      {
+        "id": "b",
+        "text": "False"
+      },
+      {
+        "id": "c",
+        "text": "[]"
+      },
+      {
+        "id": "d",
+        "text": "Error"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Empty sequences (lists, tuples, strings, dicts, sets) are falsy in Python. bool([]) returns False.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "booleans"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "What is the output of '[x**2 for x in range(3)]'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[0, 1, 4]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 4, 9]"
+      },
+      {
+        "id": "c",
+        "text": "[0, 1, 2]"
+      },
+      {
+        "id": "d",
+        "text": "[1, 2, 3]"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "range(3) gives 0, 1, 2. Squaring each: 0\u00b2=0, 1\u00b2=1, 2\u00b2=4. Result: [0, 1, 4].",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "list-comprehension"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Which module provides regular expression support?",
+    "options": [
+      {
+        "id": "a",
+        "text": "regex"
+      },
+      {
+        "id": "b",
+        "text": "re"
+      },
+      {
+        "id": "c",
+        "text": "regexp"
+      },
+      {
+        "id": "d",
+        "text": "pattern"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The 're' module provides regular expression matching operations in Python.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "modules",
+      "regex"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "What is the output of 'print(type(()))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "<class 'list'>"
+      },
+      {
+        "id": "b",
+        "text": "<class 'tuple'>"
+      },
+      {
+        "id": "c",
+        "text": "<class 'dict'>"
+      },
+      {
+        "id": "d",
+        "text": "<class 'set'>"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "() creates an empty tuple, so its type is <class 'tuple'>.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "types"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "Which of the following is an immutable data type?",
+    "options": [
+      {
+        "id": "a",
+        "text": "List"
+      },
+      {
+        "id": "b",
+        "text": "Dictionary"
+      },
+      {
+        "id": "c",
+        "text": "Set"
+      },
+      {
+        "id": "d",
+        "text": "Tuple"
+      }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Tuples are immutable - their elements cannot be changed after creation. Lists, dictionaries, and sets are mutable.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "data-types"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What does 'print(\"Python\"[1:4])' output?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Pyt"
+      },
+      {
+        "id": "b",
+        "text": "yth"
+      },
+      {
+        "id": "c",
+        "text": "ytho"
+      },
+      {
+        "id": "d",
+        "text": "Py"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "String slicing [1:4] returns characters from index 1 to 3 (4 is exclusive). 'Python'[1:4] = 'yth'.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "How do you create an empty set in Python?",
+    "options": [
+      {
+        "id": "a",
+        "text": "{}"
+      },
+      {
+        "id": "b",
+        "text": "set()"
+      },
+      {
+        "id": "c",
+        "text": "[]"
+      },
+      {
+        "id": "d",
+        "text": "()"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "{} creates an empty dictionary. set() creates an empty set. Use {1, 2, 3} for a set with elements.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "sets"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What is the output of 'print(10 % 3)'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3"
+      },
+      {
+        "id": "b",
+        "text": "1"
+      },
+      {
+        "id": "c",
+        "text": "3.33"
+      },
+      {
+        "id": "d",
+        "text": "0"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "% is the modulo operator, returning the remainder of division. 10 % 3 = 1 (since 3*3=9, remainder 1).",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "Which keyword is used to define a function that returns a generator?",
+    "options": [
+      {
+        "id": "a",
+        "text": "return"
+      },
+      {
+        "id": "b",
+        "text": "yield"
+      },
+      {
+        "id": "c",
+        "text": "generate"
+      },
+      {
+        "id": "d",
+        "text": "next"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The 'yield' keyword makes a function a generator, allowing it to produce values one at a time.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "generators"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What does 'len(\"hello\")' return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "4"
+      },
+      {
+        "id": "b",
+        "text": "5"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "Error"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "len() returns the number of characters in a string. 'hello' has 5 characters.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 26,
+    "question": "Which method converts a string to uppercase?",
+    "options": [
+      {
+        "id": "a",
+        "text": "upper()"
+      },
+      {
+        "id": "b",
+        "text": "uppercase()"
+      },
+      {
+        "id": "c",
+        "text": "toUpper()"
+      },
+      {
+        "id": "d",
+        "text": "capitalize()"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "str.upper() returns a copy of the string with all characters converted to uppercase.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What is the output of 'print([1, 2, 3] * 2)'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[1, 2, 3, 1, 2, 3]"
+      },
+      {
+        "id": "b",
+        "text": "[2, 4, 6]"
+      },
+      {
+        "id": "c",
+        "text": "[1, 2, 3, 2]"
+      },
+      {
+        "id": "d",
+        "text": "Error"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Multiplying a list by an integer repeats the list that many times.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Which of the following creates a dictionary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "b",
+        "text": "{1, 2, 3}"
+      },
+      {
+        "id": "c",
+        "text": "{'a': 1, 'b': 2}"
+      },
+      {
+        "id": "d",
+        "text": "(1, 2, 3)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dictionaries are created with curly braces containing key-value pairs: {key: value}.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "dictionaries"
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What does 'dict.get(key, default)' return if key is not found?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Raises KeyError"
+      },
+      {
+        "id": "b",
+        "text": "Returns default value"
+      },
+      {
+        "id": "c",
+        "text": "Returns None"
+      },
+      {
+        "id": "d",
+        "text": "Returns empty string"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "dict.get(key, default) returns the value for key if it exists, otherwise returns the default value (or None if not specified).",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "dictionaries"
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is the output of 'print(2 ** 3 ** 2)'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "64"
+      },
+      {
+        "id": "b",
+        "text": "512"
+      },
+      {
+        "id": "c",
+        "text": "256"
+      },
+      {
+        "id": "d",
+        "text": "128"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Exponentiation is right-associative: 2 ** (3 ** 2) = 2 ** 9 = 512.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 31,
+    "question": "Which statement is used to skip the rest of the current loop iteration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "break"
+      },
+      {
+        "id": "b",
+        "text": "continue"
+      },
+      {
+        "id": "c",
+        "text": "pass"
+      },
+      {
+        "id": "d",
+        "text": "skip"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "continue skips the remaining code in the current loop iteration and moves to the next iteration.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "loops"
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What does 'pass' statement do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Exits the loop"
+      },
+      {
+        "id": "b",
+        "text": "Skips to next iteration"
+      },
+      {
+        "id": "c",
+        "text": "Does nothing (placeholder)"
+      },
+      {
+        "id": "d",
+        "text": "Returns from function"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "pass is a null operation - it does nothing. Used as a placeholder where syntax requires a statement.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "basics"
+    ]
+  },
+  {
+    "id": 33,
+    "question": "How do you check if a key exists in a dictionary?",
+    "options": [
+      {
+        "id": "a",
+        "text": "key in dict"
+      },
+      {
+        "id": "b",
+        "text": "dict.has(key)"
+      },
+      {
+        "id": "c",
+        "text": "dict.contains(key)"
+      },
+      {
+        "id": "d",
+        "text": "dict.exists(key)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The 'in' operator checks if a key exists in a dictionary: 'key in dict' returns True/False.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "dictionaries"
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What is the output of 'print(\"hello\".capitalize())'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "HELLO"
+      },
+      {
+        "id": "b",
+        "text": "Hello"
+      },
+      {
+        "id": "c",
+        "text": "hello"
+      },
+      {
+        "id": "d",
+        "text": "hELLO"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "capitalize() returns a copy of the string with the first character uppercase and the rest lowercase.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  },
+  {
+    "id": 35,
+    "question": "Which function returns the largest item in an iterable?",
+    "options": [
+      {
+        "id": "a",
+        "text": "max()"
+      },
+      {
+        "id": "b",
+        "text": "largest()"
+      },
+      {
+        "id": "c",
+        "text": "max_value()"
+      },
+      {
+        "id": "d",
+        "text": "top()"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "max(iterable) returns the largest item. min() returns the smallest.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 36,
+    "question": "What does 'list.reverse()' do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Returns a new reversed list"
+      },
+      {
+        "id": "b",
+        "text": "Reverses the list in place"
+      },
+      {
+        "id": "c",
+        "text": "Sorts the list in descending order"
+      },
+      {
+        "id": "d",
+        "text": "Returns the last element"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "list.reverse() reverses the list in place and returns None. Use reversed(list) or list[::-1] for a new reversed list.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What is the output of 'print(3 > 2 > 1)'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "True"
+      },
+      {
+        "id": "b",
+        "text": "False"
+      },
+      {
+        "id": "c",
+        "text": "Error"
+      },
+      {
+        "id": "d",
+        "text": "1"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Python supports chained comparisons: 3 > 2 > 1 is equivalent to (3 > 2) and (2 > 1), which is True.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 38,
+    "question": "Which method removes all items from a list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "clear()"
+      },
+      {
+        "id": "b",
+        "text": "empty()"
+      },
+      {
+        "id": "c",
+        "text": "remove_all()"
+      },
+      {
+        "id": "d",
+        "text": "delete()"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "list.clear() removes all items from the list, making it empty.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "lists"
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What does 'isinstance(obj, type)' return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "True if obj is an instance of type"
+      },
+      {
+        "id": "b",
+        "text": "The type of obj"
+      },
+      {
+        "id": "c",
+        "text": "A new instance of type"
+      },
+      {
+        "id": "d",
+        "text": "The class name"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "isinstance(obj, type) returns True if obj is an instance of type (or a subclass), False otherwise.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 40,
+    "question": "How do you create a frozenset?",
+    "options": [
+      {
+        "id": "a",
+        "text": "frozenset([1, 2, 3])"
+      },
+      {
+        "id": "b",
+        "text": "{1, 2, 3}.freeze()"
+      },
+      {
+        "id": "c",
+        "text": "set.frozen([1, 2, 3])"
+      },
+      {
+        "id": "d",
+        "text": "frozen({1, 2, 3})"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "frozenset(iterable) creates an immutable set. It can be used as a dictionary key since it's hashable.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "sets"
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What is the output of 'print(\"a\" in \"abc\")'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "True"
+      },
+      {
+        "id": "b",
+        "text": "False"
+      },
+      {
+        "id": "c",
+        "text": "0"
+      },
+      {
+        "id": "d",
+        "text": "1"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The 'in' operator checks if a substring exists in a string. 'a' is in 'abc', so it returns True.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  },
+  {
+    "id": 42,
+    "question": "Which method splits a string into a list?",
+    "options": [
+      {
+        "id": "a",
+        "text": "split()"
+      },
+      {
+        "id": "b",
+        "text": "separate()"
+      },
+      {
+        "id": "c",
+        "text": "break()"
+      },
+      {
+        "id": "d",
+        "text": "divide()"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "str.split(separator) splits a string into a list of substrings based on the separator (default whitespace).",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What does 'enumerate()' return?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A list of elements"
+      },
+      {
+        "id": "b",
+        "text": "An iterator of (index, value) pairs"
+      },
+      {
+        "id": "c",
+        "text": "A dictionary"
+      },
+      {
+        "id": "d",
+        "text": "A set"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "enumerate(iterable) returns an iterator yielding (index, value) tuples for each element.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "built-in"
+    ]
+  },
+  {
+    "id": 44,
+    "question": "What is the output of 'print([x for x in range(3)])'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "[0, 1, 2]"
+      },
+      {
+        "id": "b",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "c",
+        "text": "[0, 1, 2, 3]"
+      },
+      {
+        "id": "d",
+        "text": "range(0, 3)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "List comprehension [x for x in range(3)] creates a list from the range: [0, 1, 2].",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "list-comprehension"
+    ]
+  },
+  {
+    "id": 45,
+    "question": "How do you import a specific function from a module?",
+    "options": [
+      {
+        "id": "a",
+        "text": "from module import function"
+      },
+      {
+        "id": "b",
+        "text": "import module.function"
+      },
+      {
+        "id": "c",
+        "text": "import function from module"
+      },
+      {
+        "id": "d",
+        "text": "module.import(function)"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "from module import function imports only the specified function into the current namespace.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "modules"
+    ]
+  },
+  {
+    "id": 46,
+    "question": "What does 'global' keyword do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Declares a variable as global"
+      },
+      {
+        "id": "b",
+        "text": "Creates a global variable"
+      },
+      {
+        "id": "c",
+        "text": "Imports a global module"
+      },
+      {
+        "id": "d",
+        "text": "Makes a function global"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "global declares that a variable inside a function refers to the global variable, not a local one.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "scope"
+    ]
+  },
+  {
+    "id": 47,
+    "question": "What is the output of 'print(type({}))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "<class 'set'>"
+      },
+      {
+        "id": "b",
+        "text": "<class 'dict'>"
+      },
+      {
+        "id": "c",
+        "text": "<class 'list'>"
+      },
+      {
+        "id": "d",
+        "text": "<class 'tuple'>"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "{} creates an empty dictionary. Use set() for an empty set.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "types"
+    ]
+  },
+  {
+    "id": 48,
+    "question": "Which operator performs floor division?",
+    "options": [
+      {
+        "id": "a",
+        "text": "/"
+      },
+      {
+        "id": "b",
+        "text": "//"
+      },
+      {
+        "id": "c",
+        "text": "%"
+      },
+      {
+        "id": "d",
+        "text": "**"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "// is the floor division operator, returning the largest integer less than or equal to the division result.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "operators"
+    ]
+  },
+  {
+    "id": 49,
+    "question": "What does 'del' statement do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Deletes a variable or item"
+      },
+      {
+        "id": "b",
+        "text": "Deletes a function"
+      },
+      {
+        "id": "c",
+        "text": "Deletes a module"
+      },
+      {
+        "id": "d",
+        "text": "Deletes a class"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "del removes a variable, list item, dictionary key, or attribute. It doesn't call __del__ directly.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "basics"
+    ]
+  },
+  {
+    "id": 50,
+    "question": "What is the output of 'print(\"hello\".replace(\"l\", \"x\"))'?",
+    "options": [
+      {
+        "id": "a",
+        "text": "hexxo"
+      },
+      {
+        "id": "b",
+        "text": "hexlo"
+      },
+      {
+        "id": "c",
+        "text": "hexxo"
+      },
+      {
+        "id": "d",
+        "text": "hello"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "str.replace(old, new) replaces all occurrences of old with new. 'hello'.replace('l', 'x') = 'hexxo'.",
+    "difficulty": "easy",
+    "topics": [
+      "python",
+      "strings"
+    ]
+  }
+]

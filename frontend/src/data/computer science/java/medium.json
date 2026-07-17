@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "What is the difference between == and equals() for String comparison?",
+    "options": [
+      { "id": "a", "text": "== compares content, equals() compares references" },
+      { "id": "b", "text": "== compares references, equals() compares content" },
+      { "id": "c", "text": "Both compare content" },
+      { "id": "d", "text": "Both compare references" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "== checks if two references point to the same object in memory. equals() checks if the string content is the same. Always use equals() for string content comparison.",
+    "difficulty": "medium",
+    "topics": ["java", "strings", "comparison"]
+  },
+  {
+    "id": 2,
+    "question": "What is the output of: String s1 = new String(\"hello\"); String s2 = new String(\"hello\"); System.out.println(s1 == s2);",
+    "options": [
+      { "id": "a", "text": "true" },
+      { "id": "b", "text": "false" },
+      { "id": "c", "text": "Compile error" },
+      { "id": "d", "text": "Runtime error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "new String() creates a new object in heap memory each time. s1 and s2 are different objects, so == returns false. Use s1.equals(s2) for content comparison.",
+    "difficulty": "medium",
+    "topics": ["java", "strings", "memory", "object-creation"]
+  },
+  {
+    "id": 3,
+    "question": "What is the String Pool in Java?",
+    "options": [
+      { "id": "a", "text": "A collection of all String objects in memory" },
+      { "id": "b", "text": "A special memory area where String literals are stored for reuse" },
+      { "id": "c", "text": "A pool of StringBuilder objects" },
+      { "id": "d", "text": "A thread pool for string operations" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "String Pool (String Intern Pool) stores String literals. When you use a literal like \"hello\", Java checks the pool first. If it exists, it returns the reference. This saves memory by reusing identical strings.",
+    "difficulty": "medium",
+    "topics": ["java", "string-pool", "memory-management"]
+  },
+  {
+    "id": 4,
+    "question": "What is the difference between StringBuilder and StringBuffer?",
+    "options": [
+      { "id": "a", "text": "StringBuilder is synchronized, StringBuffer is not" },
+      { "id": "b", "text": "StringBuffer is synchronized, StringBuilder is not" },
+      { "id": "c", "text": "StringBuilder is immutable, StringBuffer is mutable" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "StringBuffer is thread-safe (synchronized methods). StringBuilder is not synchronized, making it faster for single-threaded use. Both are mutable. Use StringBuilder unless thread safety is needed.",
+    "difficulty": "medium",
+    "topics": ["java", "stringbuilder", "stringbuffer", "thread-safety"]
+  },
+  {
+    "id": 5,
+    "question": "What is method overloading in Java?",
+    "options": [
+      { "id": "a", "text": "Defining a method in subclass with same signature as parent" },
+      { "id": "b", "text": "Multiple methods with same name but different parameters in same class" },
+      { "id": "c", "text": "Calling a method recursively" },
+      { "id": "d", "text": "Overriding a static method" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Method overloading: same method name, different parameter list (number, type, or order). Return type alone doesn't count. Resolved at compile time (static binding).",
+    "difficulty": "medium",
+    "topics": ["java", "overloading", "polymorphism"]
+  },
+  {
+    "id": 6,
+    "question": "What is method overriding in Java?",
+    "options": [
+      { "id": "a", "text": "Multiple methods with same name but different parameters" },
+      { "id": "b", "text": "Subclass provides specific implementation of parent class method" },
+      { "id": "c", "text": "Changing method return type only" },
+      { "id": "d", "text": "Making a method static" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Method overriding: subclass defines a method with same signature (name, parameters) as parent. Runtime polymorphism (dynamic binding). @Override annotation recommended. Cannot override static/final/private methods.",
+    "difficulty": "medium",
+    "topics": ["java", "overriding", "polymorphism", "inheritance"]
+  },
+  {
+    "id": 7,
+    "question": "Can you override a static method in Java?",
+    "options": [
+      { "id": "a", "text": "Yes, like any other method" },
+      { "id": "b", "text": "No, static methods belong to class, not instance" },
+      { "id": "c", "text": "Only if marked with @Override" },
+      { "id": "d", "text": "Only in abstract classes" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Static methods cannot be overridden. They are class-level, not instance-level. If subclass defines same static method, it's method hiding, not overriding. The method called depends on reference type, not object type.",
+    "difficulty": "medium",
+    "topics": ["java", "static", "overriding", "method-hiding"]
+  },
+  {
+    "id": 8,
+    "question": "What is the difference between abstract class and interface?",
+    "options": [
+      { "id": "a", "text": "Abstract class can have constructors, interface cannot" },
+      { "id": "b", "text": "Interface can have default methods (Java 8+), abstract class cannot" },
+      { "id": "c", "text": "A class can extend multiple abstract classes but implement only one interface" },
+      { "id": "d", "text": "Abstract class can have instance variables, interface variables are static final" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Key differences: Abstract class can have instance variables, constructors, any access modifiers. Interface variables are implicitly public static final. Class extends one abstract class but implements multiple interfaces. Both can have abstract/default/static methods (Java 8+).",
+    "difficulty": "medium",
+    "topics": ["java", "abstract-class", "interface", "oop"]
+  },
+  {
+    "id": 9,
+    "question": "What is the diamond problem in Java?",
+    "options": [
+      { "id": "a", "text": "Multiple inheritance ambiguity when a class implements two interfaces with same default method" },
+      { "id": "b", "text": "A class extending two abstract classes" },
+      { "id": "c", "text": "Interface extending two interfaces with same method" },
+      { "id": "d", "text": "Abstract class implementing two interfaces" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Diamond problem: Class implements two interfaces with same default method. Java 8+ requires explicit override to resolve ambiguity: Interface.super.method(). Before Java 8, interfaces had no implementation so no diamond problem.",
+    "difficulty": "medium",
+    "topics": ["java", "diamond-problem", "interfaces", "default-methods"]
+  },
+  {
+    "id": 10,
+    "question": "What is the purpose of the 'final' keyword on a method?",
+    "options": [
+      { "id": "a", "text": "Method cannot be overloaded" },
+      { "id": "b", "text": "Method cannot be overridden in subclass" },
+      { "id": "c", "text": "Method must be implemented by subclass" },
+      { "id": "d", "text": "Method is static" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "final method cannot be overridden by subclasses. Used to prevent modification of core behavior. Private methods are implicitly final. Static methods are also implicitly final (cannot be overridden, only hidden).",
+    "difficulty": "medium",
+    "topics": ["java", "final", "methods", "inheritance"]
+  },
+  {
+    "id": 11,
+    "question": "What is a functional interface in Java?",
+    "options": [
+      { "id": "a", "text": "An interface with only static methods" },
+      { "id": "b", "text": "An interface with exactly one abstract method" },
+      { "id": "c", "text": "An interface that extends Function" },
+      { "id": "d", "text": "An interface with default methods only" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Functional interface = exactly one abstract method (SAM - Single Abstract Method). Can have multiple default/static methods. Used with lambda expressions. @FunctionalInterface annotation validates this. Examples: Runnable, Comparable, Consumer, Predicate.",
+    "difficulty": "medium",
+    "topics": ["java", "functional-interface", "lambda", "java8"]
+  },
+  {
+    "id": 12,
+    "question": "What is a lambda expression in Java?",
+    "options": [
+      { "id": "a", "text": "A way to create anonymous classes with less syntax" },
+      { "id": "b", "text": "A new type of loop" },
+      { "id": "c", "text": "A method reference" },
+      { "id": "d", "text": "A stream operation" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lambda expression: concise way to represent a functional interface instance. Syntax: (params) -> { body }. Replaces anonymous inner classes for functional interfaces. Enables functional programming style.",
+    "difficulty": "medium",
+    "topics": ["java", "lambda", "functional-programming", "java8"]
+  },
+  {
+    "id": 13,
+    "question": "What is the difference between Collection and Collections?",
+    "options": [
+      { "id": "a", "text": "Collection is an interface, Collections is a utility class" },
+      { "id": "b", "text": "Collections is an interface, Collection is a class" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "Collection is for lists, Collections is for sets" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Collection (interface) - root of collection hierarchy (List, Set, Queue). Collections (class) - utility class with static methods (sort, shuffle, reverse, synchronized wrappers, etc.).",
+    "difficulty": "medium",
+    "topics": ["java", "collections", "collection-interface", "utility-class"]
+  },
+  {
+    "id": 14,
+    "question": "What is the difference between ArrayList and LinkedList?",
+    "options": [
+      { "id": "a", "text": "ArrayList uses array, LinkedList uses doubly linked list" },
+      { "id": "b", "text": "ArrayList is synchronized, LinkedList is not" },
+      { "id": "c", "text": "LinkedList allows random access, ArrayList does not" },
+      { "id": "d", "text": "ArrayList implements Set, LinkedList implements List" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "ArrayList: backed by dynamic array, O(1) random access, O(n) insertion/deletion in middle. LinkedList: doubly linked list, O(1) insertion/deletion at ends, O(n) random access. Both implement List, allow duplicates, not synchronized.",
+    "difficulty": "medium",
+    "topics": ["java", "arraylist", "linkedlist", "collections", "performance"]
+  },
+  {
+    "id": 15,
+    "question": "What is the difference between HashSet and TreeSet?",
+    "options": [
+      { "id": "a", "text": "HashSet is ordered, TreeSet is not" },
+      { "id": "b", "text": "TreeSet maintains sorted order, HashSet does not guarantee order" },
+      { "id": "c", "text": "HashSet allows duplicates, TreeSet does not" },
+      { "id": "d", "text": "TreeSet is faster for all operations" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "HashSet: backed by HashMap, O(1) average, no ordering. TreeSet: backed by TreeMap (Red-Black tree), O(log n), maintains natural ordering or custom Comparator. Both implement Set (no duplicates).",
+    "difficulty": "medium",
+    "topics": ["java", "hashset", "treeset", "collections", "ordering"]
+  },
+  {
+    "id": 16,
+    "question": "What is the difference between HashMap and Hashtable?",
+    "options": [
+      { "id": "a", "text": "HashMap is synchronized, Hashtable is not" },
+      { "id": "b", "text": "Hashtable is synchronized, HashMap is not" },
+      { "id": "c", "text": "HashMap doesn't allow null keys, Hashtable does" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Hashtable: synchronized (thread-safe), legacy class, doesn't allow null keys/values. HashMap: not synchronized, allows one null key and multiple null values, better performance. Use ConcurrentHashMap for thread-safe Map in modern Java.",
+    "difficulty": "medium",
+    "topics": ["java", "hashmap", "hashtable", "collections", "thread-safety"]
+  },
+  {
+    "id": 17,
+    "question": "What is the load factor in HashMap?",
+    "options": [
+      { "id": "a", "text": "The ratio of size to capacity when resizing occurs" },
+      { "id": "b", "text": "The initial capacity of the map" },
+      { "id": "c", "text": "The number of buckets" },
+      { "id": "d", "text": "The hash function quality" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Load factor (default 0.75) = threshold for resizing. When size > capacity * loadFactor, HashMap resizes (doubles capacity). Higher load factor = more memory efficient but slower lookups. Lower = faster but more memory.",
+    "difficulty": "medium",
+    "topics": ["java", "hashmap", "load-factor", "resizing", "performance"]
+  },
+  {
+    "id": 18,
+    "question": "What happens when two keys have the same hashCode in HashMap?",
+    "options": [
+      { "id": "a", "text": "One overwrites the other" },
+      { "id": "b", "text": "They are stored in the same bucket (linked list/tree)" },
+      { "id": "c", "text": "Exception is thrown" },
+      { "id": "d", "text": "HashMap ignores the second key" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Hash collision: same hashCode → same bucket. HashMap stores entries as linked list (or tree in Java 8+ if >8 entries). Uses equals() to find correct key. Good hashCode distribution minimizes collisions.",
+    "difficulty": "medium",
+    "topics": ["java", "hashmap", "hash-collision", "hashcode", "equals"]
+  },
+  {
+    "id": 19,
+    "question": "What is the contract between equals() and hashCode()?",
+    "options": [
+      { "id": "a", "text": "If equals() is true, hashCode() must be equal" },
+      { "id": "b", "text": "If hashCode() is equal, equals() must be true" },
+      { "id": "c", "text": "They are unrelated" },
+      { "id": "d", "text": "Both must be overridden together always" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Contract: 1) If a.equals(b) then a.hashCode() == b.hashCode(). 2) If a.hashCode() == b.hashCode(), a.equals(b) may be true or false (collisions allowed). Must override both together for use in hash-based collections.",
+    "difficulty": "medium",
+    "topics": ["java", "equals", "hashcode", "contract", "collections"]
+  },
+  {
+    "id": 20,
+    "question": "What is the difference between fail-fast and fail-safe iterators?",
+    "options": [
+      { "id": "a", "text": "Fail-fast throws exception on concurrent modification, fail-safe does not" },
+      { "id": "b", "text": "Fail-safe throws exception, fail-fast does not" },
+      { "id": "c", "text": "Fail-fast is for arrays, fail-safe for collections" },
+      { "id": "d", "text": "They are the same" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Fail-fast (ArrayList, HashMap): detects structural modification during iteration, throws ConcurrentModificationException. Fail-safe (ConcurrentHashMap, CopyOnWriteArrayList): iterates over copy/snapshot, no exception. Fail-fast uses modCount.",
+    "difficulty": "medium",
+    "topics": ["java", "iterators", "fail-fast", "fail-safe", "concurrency"]
+  },
+  {
+    "id": 21,
+    "question": "What is the purpose of the 'transient' keyword?",
+    "options": [
+      { "id": "a", "text": "Makes a variable thread-safe" },
+      { "id": "b", "text": "Excludes a field from serialization" },
+      { "id": "c", "text": "Makes a variable constant" },
+      { "id": "d", "text": "Allows a variable to be accessed from static context" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "transient fields are skipped during serialization. When deserialized, they get default values (null, 0, false). Useful for sensitive data (passwords), derived fields, or non-serializable objects.",
+    "difficulty": "medium",
+    "topics": ["java", "transient", "serialization"]
+  },
+  {
+    "id": 22,
+    "question": "What is the difference between Serializable and Externalizable?",
+    "options": [
+      { "id": "a", "text": "Serializable is an interface, Externalizable is a class" },
+      { "id": "b", "text": "Externalizable gives full control over serialization process" },
+      { "id": "c", "text": "Serializable is faster" },
+      { "id": "d", "text": "Externalizable is deprecated" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Serializable: marker interface, automatic serialization (default). Externalizable: extends Serializable, requires implementing writeExternal/readExternal for custom serialization logic. More control, more code. Externalizable must have public no-arg constructor.",
+    "difficulty": "medium",
+    "topics": ["java", "serialization", "externalizable", "serializable"]
+  },
+  {
+    "id": 23,
+    "question": "What is a deadlock in Java multithreading?",
+    "options": [
+      { "id": "a", "text": "A thread waiting indefinitely for a lock" },
+      { "id": "b", "text": "Two or more threads blocked forever, each waiting for the other's lock" },
+      { "id": "c", "text": "A thread consuming 100% CPU" },
+      { "id": "d", "text": "A thread that has finished execution" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Deadlock: Thread A holds Lock 1, needs Lock 2. Thread B holds Lock 2, needs Lock 1. Both wait forever. Four conditions: mutual exclusion, hold-and-wait, no preemption, circular wait. Prevention: lock ordering, timeout, tryLock.",
+    "difficulty": "medium",
+    "topics": ["java", "multithreading", "deadlock", "concurrency"]
+  },
+  {
+    "id": 24,
+    "question": "What is the difference between wait(), notify(), and notifyAll()?",
+    "options": [
+      { "id": "a", "text": "wait() releases lock, notify() wakes one thread, notifyAll() wakes all waiting threads" },
+      { "id": "b", "text": "wait() acquires lock, notify() releases lock" },
+      { "id": "c", "text": "They are all the same" },
+      { "id": "d", "text": "wait() is for threads, notify() is for processes" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "wait(): current thread releases lock and waits. notify(): wakes one waiting thread (random). notifyAll(): wakes all waiting threads. Must be called from synchronized context. Woken threads compete for lock.",
+    "difficulty": "medium",
+    "topics": ["java", "wait", "notify", "multithreading", "synchronization"]
+  },
+  {
+    "id": 25,
+    "question": "What is the purpose of the 'volatile' keyword?",
+    "options": [
+      { "id": "a", "text": "Makes a variable thread-safe for compound operations" },
+      { "id": "b", "text": "Ensures visibility of changes across threads" },
+      { "id": "c", "text": "Makes a variable immutable" },
+      { "id": "d", "text": "Prevents a variable from being serialized" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "volatile: guarantees visibility (changes visible to all threads immediately) and prevents instruction reordering. Does NOT provide atomicity for compound operations (i++). Use AtomicInteger or synchronized for atomicity.",
+    "difficulty": "medium",
+    "topics": ["java", "volatile", "multithreading", "visibility", "memory-model"]
+  },
+  {
+    "id": 26,
+    "question": "What is the difference between synchronized method and synchronized block?",
+    "options": [
+      { "id": "a", "text": "Synchronized method locks on class, block locks on object" },
+      { "id": "b", "text": "Synchronized block allows finer control over lock scope and object" },
+      { "id": "c", "text": "Synchronized method is faster" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Synchronized method: locks on 'this' (instance) or Class (static), entire method. Synchronized block: specify lock object, smaller critical section, better performance. Block preferred for granularity.",
+    "difficulty": "medium",
+    "topics": ["java", "synchronized", "locks", "multithreading"]
+  },
+  {
+    "id": 27,
+    "question": "What is a ReentrantLock?",
+    "options": [
+      { "id": "a", "text": "A lock that can be acquired multiple times by the same thread" },
+      { "id": "b", "text": "A lock that prevents reentrancy" },
+      { "id": "c", "text": "A lock for read-only operations" },
+      { "id": "d", "text": "A lock that automatically releases after timeout" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "ReentrantLock: same thread can acquire lock multiple times (reentrant). Must release same number of times. More flexible than synchronized: tryLock(), lockInterruptibly(), fairness policy, condition variables. From java.util.concurrent.locks.",
+    "difficulty": "medium",
+    "topics": ["java", "reentrantlock", "concurrency", "locks"]
+  },
+  {
+    "id": 28,
+    "question": "What is the difference between CountDownLatch and CyclicBarrier?",
+    "options": [
+      { "id": "a", "text": "CountDownLatch is reusable, CyclicBarrier is not" },
+      { "id": "b", "text": "CyclicBarrier is reusable, CountDownLatch is not" },
+      { "id": "c", "text": "Both are reusable" },
+      { "id": "d", "text": "Both are single-use" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "CountDownLatch: one-time use, count down to zero, await() blocks until zero. CyclicBarrier: reusable, fixed number of threads wait at barrier, then all released, barrier resets. CyclicBarrier has optional barrier action.",
+    "difficulty": "medium",
+    "topics": ["java", "countdownlatch", "cyclicbarrier", "concurrency"]
+  },
+  {
+    "id": 29,
+    "question": "What is the purpose of the ForkJoinPool?",
+    "options": [
+      { "id": "a", "text": "To manage database connections" },
+      { "id": "b", "text": "To execute divide-and-conquer tasks using work-stealing" },
+      { "id": "c", "text": "To handle HTTP requests" },
+      { "id": "d", "text": "To manage thread lifecycle" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "ForkJoinPool: specialized ExecutorService for ForkJoinTask (RecursiveTask, RecursiveAction). Uses work-stealing algorithm: idle threads steal tasks from busy threads' queues. Ideal for recursive divide-and-conquer algorithms (parallel streams use it).",
+    "difficulty": "medium",
+    "topics": ["java", "forkjoinpool", "work-stealing", "parallel-streams", "concurrency"]
+  },
+  {
+    "id": 30,
+    "question": "What is the difference between Runnable and Callable?",
+    "options": [
+      { "id": "a", "text": "Runnable returns a value, Callable does not" },
+      { "id": "b", "text": "Callable returns a value and can throw checked exception, Runnable does not" },
+      { "id": "c", "text": "Runnable is for threads, Callable is for processes" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Runnable: void run(), no return, no checked exceptions. Callable<V>: V call() throws Exception, returns result. Used with ExecutorService.submit() returning Future. Future.get() retrieves result or throws ExecutionException.",
+    "difficulty": "medium",
+    "topics": ["java", "runnable", "callable", "future", "executorservice"]
+  },
+  {
+    "id": 31,
+    "question": "What is a Future in Java?",
+    "options": [
+      { "id": "a", "text": "A class representing a past computation" },
+      { "id": "b", "text": "A handle to an asynchronous computation result" },
+      { "id": "c", "text": "A date in the future" },
+      { "id": "d", "text": "A promise to run code later" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Future represents result of async computation. Methods: get() (blocks until done), cancel(), isDone(), isCancelled(). Returned by ExecutorService.submit(). CompletableFuture (Java 8+) adds chaining, composition, exception handling.",
+    "difficulty": "medium",
+    "topics": ["java", "future", "completablefuture", "async", "executorservice"]
+  },
+  {
+    "id": 32,
+    "question": "What is the difference between Checked and Unchecked exceptions?",
+    "options": [
+      { "id": "a", "text": "Checked exceptions are caught at runtime, unchecked at compile time" },
+      { "id": "b", "text": "Checked exceptions must be declared or caught, unchecked do not" },
+      { "id": "c", "text": "Checked exceptions extend RuntimeException, unchecked extend Exception" },
+      { "id": "d", "text": "There is no difference" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Checked (Exception subclasses except RuntimeException): compiler enforces try-catch or throws declaration. Unchecked (RuntimeException, Error): no compiler enforcement. Checked for recoverable conditions, unchecked for programming errors.",
+    "difficulty": "medium",
+    "topics": ["java", "exceptions", "checked", "unchecked", "exception-handling"]
+  },
+  {
+    "id": 33,
+    "question": "What is the purpose of the 'finally' block?",
+    "options": [
+      { "id": "a", "text": "To catch exceptions" },
+      { "id": "b", "text": "To execute code regardless of exception occurrence" },
+      { "id": "c", "text": "To throw exceptions" },
+      { "id": "d", "text": "To define custom exceptions" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "finally block executes always (after try/catch), even if exception thrown, return executed, or catch rethrows. Used for cleanup (close resources). Exception: System.exit(), infinite loop, JVM crash. try-with-resources (Java 7+) preferred for AutoCloseable.",
+    "difficulty": "medium",
+    "topics": ["java", "finally", "exception-handling", "resource-management"]
+  },
+  {
+    "id": 34,
+    "question": "What is try-with-resources in Java?",
+    "options": [
+      { "id": "a", "text": "A way to catch multiple exceptions" },
+      { "id": "b", "text": "Automatic resource management for AutoCloseable objects" },
+      { "id": "c", "text": "A new type of loop" },
+      { "id": "d", "text": "A way to create custom exceptions" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "try-with-resources: declares resources in try(...), automatically closes them (in reverse order) at end. Resources must implement AutoCloseable. Cleaner than finally. Suppressed exceptions available via getSuppressed(). Java 7+.",
+    "difficulty": "medium",
+    "topics": ["java", "try-with-resources", "autocloseable", "resource-management", "java7"]
+  },
+  {
+    "id": 35,
+    "question": "What is the difference between throw and throws?",
+    "options": [
+      { "id": "a", "text": "throw declares exceptions, throws throws them" },
+      { "id": "b", "text": "throw throws an exception instance, throws declares exceptions in method signature" },
+      { "id": "c", "text": "They are synonyms" },
+      { "id": "d", "text": "throw is for checked, throws for unchecked" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "throw: actually throws an exception instance (throw new Exception()). throws: declares exceptions method might throw in signature (method() throws IOException). throws is for checked exceptions documentation.",
+    "difficulty": "medium",
+    "topics": ["java", "throw", "throws", "exceptions", "method-signature"]
+  },
+  {
+    "id": 36,
+    "question": "What is the purpose of the 'assert' keyword?",
+    "options": [
+      { "id": "a", "text": "To throw exceptions in production" },
+      { "id": "b", "text": "To test assumptions during development (disabled by default)" },
+      { "id": "c", "text": "To assert thread safety" },
+      { "id": "d", "text": "To validate user input" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "assert: checks boolean condition, throws AssertionError if false. Disabled by default (java -ea to enable). For internal invariants/debugging, not for input validation or production error handling. Syntax: assert condition; or assert condition : message;",
+    "difficulty": "medium",
+    "topics": ["java", "assert", "debugging", "testing"]
+  },
+  {
+    "id": 37,
+    "question": "What is the difference between Path and File in Java NIO?",
+    "options": [
+      { "id": "a", "text": "File is newer, Path is legacy" },
+      { "id": "b", "text": "Path is from NIO.2 (Java 7+), more powerful; File is legacy IO" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "Path is for URLs, File is for local files" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "File (java.io): legacy, limited, no symbolic link support, throws checked exceptions. Path (java.nio.file): NIO.2, immutable, better API (resolve, relativize, Files utility), supports symbolic links, attributes, watch service. Preferred for new code.",
+    "difficulty": "medium",
+    "topics": ["java", "nio", "path", "file", "io", "java7"]
+  },
+  {
+    "id": 38,
+    "question": "What is the Files.walk() method used for?",
+    "options": [
+      { "id": "a", "text": "To delete a directory tree" },
+      { "id": "b", "text": "To traverse a file tree as a Stream<Path>" },
+      { "id": "c", "text": "To copy files" },
+      { "id": "d", "text": "To compress files" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Files.walk(startPath) returns Stream<Path> for depth-first traversal. Lazy evaluation. Use with try-with-resources. Files.walkFileTree() for more control (pre/post visit). Files.find() for filtered search.",
+    "difficulty": "medium",
+    "topics": ["java", "nio", "files", "stream", "file-traversal"]
+  },
+  {
+    "id": 39,
+    "question": "What is the difference between Stream and Collection?",
+    "options": [
+      { "id": "a", "text": "Stream stores elements, Collection does not" },
+      { "id": "b", "text": "Collection stores elements, Stream is a pipeline for processing" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "Stream is for parallel only" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Collection: in-memory data structure storing elements. Stream: sequence of elements from source, supports aggregate operations (filter, map, reduce), no storage, single-use, lazy evaluation. Stream operations: intermediate (lazy) and terminal (eager).",
+    "difficulty": "medium",
+    "topics": ["java", "streams", "collections", "functional-programming", "java8"]
+  },
+  {
+    "id": 40,
+    "question": "What are intermediate and terminal operations in Stream?",
+    "options": [
+      { "id": "a", "text": "Intermediate returns Stream, terminal returns result/void" },
+      { "id": "b", "text": "Intermediate returns result, terminal returns Stream" },
+      { "id": "c", "text": "Both return Stream" },
+      { "id": "d", "text": "Both return result" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Intermediate (lazy): filter, map, flatMap, distinct, sorted, peek, limit, skip - return new Stream, chained. Terminal (eager): forEach, collect, reduce, count, min, max, findFirst, anyMatch, allMatch, noneMatch - produce result/side-effect, consume stream.",
+    "difficulty": "medium",
+    "topics": ["java", "streams", "intermediate", "terminal", "lazy", "eager"]
+  },
+  {
+    "id": 41,
+    "question": "What is the difference between map() and flatMap() in Stream?",
+    "options": [
+      { "id": "a", "text": "map flattens, flatMap maps" },
+      { "id": "b", "text": "map transforms each element to one element, flatMap transforms to Stream and flattens" },
+      { "id": "c", "text": "They are identical" },
+      { "id": "d", "text": "map is for primitives, flatMap for objects" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "map: Function<T, R> - one input → one output. flatMap: Function<T, Stream<R>> - one input → stream of outputs, then flattened. Use flatMap for nested collections, Optional, or when one element produces multiple.",
+    "difficulty": "medium",
+    "topics": ["java", "streams", "map", "flatmap", "transformation"]
+  },
+  {
+    "id": 42,
+    "question": "What is the purpose of Collectors.groupingBy()?",
+    "options": [
+      { "id": "a", "text": "To sort elements" },
+      { "id": "b", "text": "To group elements by a classifier function into a Map" },
+      { "id": "c", "text": "To filter elements" },
+      { "id": "d", "text": "To count elements" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "groupingBy(classifier): returns Collector grouping elements by classifier function result. Returns Map<K, List<T>>. Variants: downstream collector (e.g., counting(), mapping()), concurrent version. Similar to SQL GROUP BY.",
+    "difficulty": "medium",
+    "topics": ["java", "streams", "collectors", "groupingby", "collect"]
+  },
+  {
+    "id": 43,
+    "question": "What is the difference between Optional.of() and Optional.ofNullable()?",
+    "options": [
+      { "id": "a", "text": "of() allows null, ofNullable() does not" },
+      { "id": "b", "text": "of() throws NPE if null, ofNullable() returns empty Optional" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "of() is for primitives, ofNullable() for objects" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Optional.of(value): requires non-null, throws NullPointerException if null. Optional.ofNullable(value): accepts null, returns Optional.empty() if null. Use ofNullable when value might be null. Optional.empty() for explicit empty.",
+    "difficulty": "medium",
+    "topics": ["java", "optional", "null-safety", "java8"]
+  },
+  {
+    "id": 44,
+    "question": "What is a method reference in Java?",
+    "options": [
+      { "id": "a", "text": "A reference to a class" },
+      { "id": "b", "text": "A shorthand syntax for lambda calling a specific method" },
+      { "id": "c", "text": "A way to reference a variable" },
+      { "id": "d", "text": "A reference to an interface" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Method reference (::) is compact lambda for calling existing method. Types: Static (Class::method), Instance (obj::method), Constructor (Class::new), Arbitrary object (Class::instanceMethod). Equivalent lambda: x -> Class.method(x).",
+    "difficulty": "medium",
+    "topics": ["java", "method-reference", "lambda", "java8", "syntax"]
+  },
+  {
+    "id": 45,
+    "question": "What is the difference between Predicate, Function, Consumer, and Supplier?",
+    "options": [
+      { "id": "a", "text": "They are all the same" },
+      { "id": "b", "text": "Predicate: T→boolean, Function: T→R, Consumer: T→void, Supplier: ()→T" },
+      { "id": "c", "text": "Predicate returns void, Consumer returns boolean" },
+      { "id": "d", "text": "Function takes two arguments" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Core functional interfaces (java.util.function): Predicate<T> (test→boolean), Function<T,R> (apply→R), Consumer<T> (accept→void), Supplier<T> (get→T). Also: BiPredicate, BiFunction, BiConsumer, UnaryOperator, BinaryOperator. Primitive specializations exist (IntPredicate, etc.).",
+    "difficulty": "medium",
+    "topics": ["java", "functional-interfaces", "predicate", "function", "consumer", "supplier", "java8"]
+  },
+  {
+    "id": 46,
+    "question": "What is the purpose of @FunctionalInterface annotation?",
+    "options": [
+      { "id": "a", "text": "To make an interface runnable" },
+      { "id": "b", "text": "To enforce single abstract method at compile time" },
+      { "id": "b", "text": "To make an interface serializable" },
+      { "id": "c", "text": "To enable lambda expressions for any interface" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "@FunctionalInterface: optional annotation that causes compiler error if interface doesn't have exactly one abstract method. Documents intent, prevents accidental addition of abstract methods. Not required for lambda compatibility (any SAM interface works).",
+    "difficulty": "medium",
+    "topics": ["java", "functionalinterface", "annotation", "lambda", "java8"]
+  },
+  {
+    "id": 47,
+    "question": "What is the difference between Comparable and Comparator?",
+    "options": [
+      { "id": "a", "text": "Comparable is for natural ordering, Comparator for custom ordering" },
+      { "id": "b", "text": "Comparator is for natural ordering, Comparable for custom" },
+      { "id": "c", "text": "They are identical" },
+      { "id": "d", "text": "Comparable is an interface, Comparator is a class" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Comparable<T>: interface with compareTo(T) - defines natural ordering (single, intrinsic). Comparator<T>: interface with compare(T,T) - external, multiple orderings possible. Use Comparable for default sort, Comparator for custom/alternate sorts. Both used in Collections.sort(), TreeSet, TreeMap.",
+    "difficulty": "medium",
+    "topics": ["java", "comparable", "comparator", "sorting", "ordering"]
+  },
+  {
+    "id": 48,
+    "question": "What is the purpose of the 'default' keyword in interfaces (Java 8+)?",
+    "options": [
+      { "id": "a", "text": "To make a method optional to implement" },
+      { "id": "b", "text": "To provide a default implementation for interface methods" },
+      { "id": "c", "text": "To make a method static" },
+      { "id": "d", "text": "To mark a method as deprecated" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "default methods: provide implementation in interface, can be overridden. Enables interface evolution without breaking implementing classes. Multiple inheritance of behavior. If two interfaces have same default method, class must override. Static methods in interfaces also allowed (Java 8+).",
+    "difficulty": "medium",
+    "topics": ["java", "default-methods", "interfaces", "java8", "interface-evolution"]
+  },
+  {
+    "id": 49,
+    "question": "What is the difference between Stack and Queue?",
+    "options": [
+      { "id": "a", "text": "Stack is FIFO, Queue is LIFO" },
+      { "id": "b", "text": "Stack is LIFO, Queue is FIFO" },
+      { "id": "c", "text": "Both are FIFO" },
+      { "id": "d", "text": "Both are LIFO" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Stack: Last-In-First-Out (push/pop/peek). Queue: First-In-First-Out (offer/poll/peek). Deque: double-ended queue (both). Stack extends Vector (legacy). Use ArrayDeque for stack/queue (not synchronized). PriorityQueue: ordered by priority.",
+    "difficulty": "medium",
+    "topics": ["java", "stack", "queue", "deque", "collections", "data-structures"]
+  },
+  {
+    "id": 50,
+    "question": "What is the purpose of the 'strictfp' keyword?",
+    "options": [
+      { "id": "a", "text": "To make floating-point calculations platform-independent" },
+      { "id": "b", "text": "To make a method final" },
+      { "id": "c", "text": "To enforce strict type checking" },
+      { "id": "d", "text": "To optimize floating-point performance" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "strictfp: ensures floating-point (float/double) calculations follow IEEE 754 strictly, producing identical results across platforms. Without it, JVM may use extended precision (e.g., x87 80-bit). Can apply to class, interface, or method. Rarely needed.",
+    "difficulty": "medium",
+    "topics": ["java", "strictfp", "floating-point", "ieee754", "portability"]
+  }
+]

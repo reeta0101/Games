@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "What is the difference between the JVM, JRE, and JDK?",
+    "options": [
+      { "id": "a", "text": "They are all the same thing" },
+      { "id": "b", "text": "JVM runs bytecode, JRE = JVM + libraries, JDK = JRE + development tools" },
+      { "id": "c", "text": "JDK runs bytecode, JRE compiles code, JVM is the library" },
+      { "id": "d", "text": "JRE is for development, JDK is for running" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JVM (Java Virtual Machine): executes bytecode. JRE (Java Runtime Environment): JVM + standard libraries (rt.jar) for running apps. JDK (Java Development Kit): JRE + compiler (javac), debugger, tools for development.",
+    "difficulty": "hard",
+    "topics": ["java", "jvm", "jre", "jdk", "architecture"]
+  },
+  {
+    "id": 2,
+    "question": "What is the Java Memory Model (JMM) and what does it guarantee?",
+    "options": [
+      { "id": "a", "text": "It defines how threads interact through memory, guaranteeing visibility and ordering" },
+      { "id": "b", "text": "It defines garbage collection algorithms" },
+      { "id": "c", "text": "It defines class loading mechanism" },
+      { "id": "d", "text": "It defines bytecode verification rules" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "JMM specifies how threads interact via shared memory. Guarantees: visibility (volatile, synchronized, final), ordering (happens-before), atomicity (for single variables). Defines legal executions for concurrent programs. Critical for correct multithreading.",
+    "difficulty": "hard",
+    "topics": ["java", "jmm", "memory-model", "concurrency", "happens-before"]
+  },
+  {
+    "id": 3,
+    "question": "What is the happens-before relationship in JMM?",
+    "options": [
+      { "id": "a", "text": "A guarantee that one action is visible to and ordered before another" },
+      { "id": "b", "text": "A rule that methods execute in declaration order" },
+      { "id": "c", "text": "A rule for garbage collection order" },
+      { "id": "d", "text": "A rule for class initialization order" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Happens-before: if action A happens-before B, then A's results are visible to B, and A is ordered before B. Sources: program order, monitor lock (unlock hb lock), volatile write hb volatile read, thread start hb thread actions, thread actions hb join, transitive closure.",
+    "difficulty": "hard",
+    "topics": ["java", "jmm", "happens-before", "concurrency", "visibility"]
+  },
+  {
+    "id": 4,
+    "question": "What are the different garbage collectors in HotSpot JVM?",
+    "options": [
+      { "id": "a", "text": "Serial, Parallel, CMS, G1, ZGC, Shenandoah" },
+      { "id": "b", "text": "Mark-Sweep, Mark-Compact, Copying, Generational" },
+      { "id": "c", "text": "Young, Old, Permanent, Metaspace" },
+      { "id": "d", "text": "Eden, Survivor, Tenured, PermGen" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "HotSpot GCs: Serial (single-threaded), Parallel (throughput), CMS (Concurrent Mark Sweep - low latency, deprecated), G1 (Garbage First - balanced), ZGC (Z Garbage Collector - ultra-low latency, scalable), Shenandoah (low pause, concurrent compaction). Each targets different workloads.",
+    "difficulty": "hard",
+    "topics": ["java", "gc", "garbage-collection", "jvm", "zgc", "shenandoah", "g1"]
+  },
+  {
+    "id": 5,
+    "question": "How does G1 Garbage Collector work?",
+    "options": [
+      { "id": "a", "text": "Divides heap into regions, collects garbage-first regions concurrently" },
+      { "id": "b", "text": "Uses a single thread for all GC work" },
+      { "id": "c", "text": "Only collects young generation" },
+      { "id": "d", "text": "Compacts entire heap in one pause" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "G1: heap divided into ~2000 regions (1-32MB). Tracks live data per region. Young GC: evacuates young regions. Mixed GC: collects young + some old regions (garbage-first). Concurrent marking phase. Predictable pause times. Default in Java 9+.",
+    "difficulty": "hard",
+    "topics": ["java", "g1gc", "garbage-collection", "jvm", "regions"]
+  },
+  {
+    "id": 6,
+    "question": "What is the difference between ZGC and Shenandoah?",
+    "options": [
+      { "id": "a", "text": "ZGC uses colored pointers, Shenandoah uses Brooks pointers" },
+      { "id": "b", "text": "ZGC is for small heaps, Shenandoah for large" },
+      { "id": "c", "text": "Shenandoah is concurrent, ZGC is not" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Both are ultra-low-latency concurrent compacting GCs. ZGC: colored pointers (metadata in pointer bits), load barriers. Shenandoah: Brooks pointers (forwarding pointer in object header), load barriers. ZGC: simpler, better for huge heaps (16TB+). Shenandoah: more mature, better for smaller heaps.",
+    "difficulty": "hard",
+    "topics": ["java", "zgc", "shenandoah", "garbage-collection", "low-latency"]
+  },
+  {
+    "id": 7,
+    "question": "What is the JVM class loading mechanism?",
+    "options": [
+      { "id": "a", "text": "Classes loaded on demand by ClassLoader hierarchy (Bootstrap → Extension → Application)" },
+      { "id": "b", "text": "All classes loaded at startup" },
+      { "id": "c", "text": "Classes loaded alphabetically" },
+      { "id": "d", "text": "Classes loaded by thread priority" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Class loading: lazy, on first use. Hierarchy: Bootstrap (rt.jar, native), Platform/Extension (standard extensions), Application/System (classpath). Delegation model: parent first, then self. Custom ClassLoaders can break delegation. Phases: Load → Link (Verify, Prepare, Resolve) → Initialize.",
+    "difficulty": "hard",
+    "topics": ["java", "classloading", "classloader", "jvm", "delegation"]
+  },
+  {
+    "id": 8,
+    "question": "What is the difference between PermGen and Metaspace?",
+    "options": [
+      { "id": "a", "text": "PermGen is in heap, Metaspace is in native memory" },
+      { "id": "b", "text": "PermGen is in native memory, Metaspace is in heap" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "PermGen was removed in Java 7" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "PermGen (Java 7-): fixed size, in heap, stored class metadata, interned strings. Metaspace (Java 8+): in native memory, auto-resizes, stores class metadata only (strings moved to heap). Eliminates PermGen OOM. Configured with -XX:MetaspaceSize, -XX:MaxMetaspaceSize.",
+    "difficulty": "hard",
+    "topics": ["java", "permgen", "metaspace", "jvm", "memory", "java8"]
+  },
+  {
+    "id": 9,
+    "question": "What is the Java Module System (JPMS) introduced in Java 9?",
+    "options": [
+      { "id": "a", "text": "A new build tool like Maven" },
+      { "id": "b", "text": "A system for modularizing applications with module-info.java" },
+      { "id": "c", "text": "A new garbage collector" },
+      { "id": "d", "text": "A replacement for JAR files" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JPMS (Project Jigsaw): modules declare dependencies (requires), export packages (exports), use services (uses/provides). module-info.java defines module. Strong encapsulation: internal packages not accessible unless opened. JDK itself modularized. Improves security, maintainability, performance.",
+    "difficulty": "hard",
+    "topics": ["java", "jpms", "modules", "java9", "module-info", "encapsulation"]
+  },
+  {
+    "id": 10,
+    "question": "What is the difference between 'requires', 'exports', 'opens', and 'provides' in module-info.java?",
+    "options": [
+      { "id": "a", "text": "They are all the same" },
+      { "id": "b", "text": "requires: dependency, exports: API packages, opens: reflection access, provides: service implementation" },
+      { "id": "c", "text": "requires: exports packages, exports: requires dependency" },
+      { "id": "d", "text": "opens: dependency, provides: reflection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "requires: declares module dependency. exports: makes packages public API. opens: allows deep reflection (private access) at runtime. provides ... with: registers service implementation. uses: declares service usage. open module: opens all packages for reflection.",
+    "difficulty": "hard",
+    "topics": ["java", "jpms", "module-info", "requires", "exports", "opens", "services"]
+  },
+  {
+    "id": 11,
+    "question": "What is the JVM bytecode verification process?",
+    "options": [
+      { "id": "a", "text": "Checks syntax of Java source code" },
+      { "id": "b", "text": "Validates bytecode for type safety, stack consistency, access control before execution" },
+      { "id": "c", "text": "Optimizes bytecode for performance" },
+      { "id": "d", "text": "Compiles bytecode to machine code" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Bytecode verifier: ensures type safety (no stack overflow/underflow, correct types), access control (private/public), initialization (superclass called), final constraints. Runs during class loading (linking phase). Prevents malicious/corrupt bytecode. Can be disabled (-Xverify:none) but unsafe.",
+    "difficulty": "hard",
+    "topics": ["java", "bytecode", "verification", "jvm", "classloading", "security"]
+  },
+  {
+    "id": 12,
+    "question": "What is JIT compilation and how does it work in HotSpot?",
+    "options": [
+      { "id": "a", "text": "Compiles Java source to bytecode at runtime" },
+      { "id": "b", "text": "Compiles hot bytecode to native machine code at runtime for performance" },
+      { "id": "c", "text": "Compiles bytecode ahead of time" },
+      { "id": "d", "text": "Interprets bytecode line by line" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JIT (Just-In-Time): HotSpot monitors execution, identifies hot methods (counters), compiles them to native code. Tiered compilation: C1 (client, fast startup), C2 (server, aggressive optimization). Deoptimization if assumptions invalid. Code cache stores compiled code. GraalVM uses Graal compiler.",
+    "difficulty": "hard",
+    "topics": ["java", "jit", "hotspot", "compilation", "tiered", "c1", "c2", "graal"]
+  },
+  {
+    "id": 13,
+    "question": "What is escape analysis in JIT compilation?",
+    "options": [
+      { "id": "a", "text": "Analyzing which exceptions can escape a method" },
+      { "id": "b", "text": "Determining if an object's scope is limited to a thread/method for optimization" },
+      { "id": "c", "text": "Analyzing memory leaks" },
+      { "id": "d", "text": "Checking if threads can escape" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Escape analysis: determines if object escapes method/thread. If not: scalar replacement (fields in registers), stack allocation (no heap), lock elision (remove synchronized). Enabled by default (-XX:+DoEscapeAnalysis). Major optimization for short-lived objects.",
+    "difficulty": "hard",
+    "topics": ["java", "escape-analysis", "jit", "optimization", "scalar-replacement", "lock-elision"]
+  },
+  {
+    "id": 14,
+    "question": "What are Safepoints in JVM?",
+    "options": [
+      { "id": "a", "text": "Points where GC can safely stop all threads" },
+      { "id": "b", "text": "Points where JIT compilation occurs" },
+      { "id": "c", "text": "Points where class loading happens" },
+      { "id": "d", "text": "Points where exceptions are thrown" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Safepoints: locations where thread state is known (no partial updates), allowing VM operations (GC, deoptimization, bias revocation). Threads poll at safepoints (backward branches, method exits). Long-running loops without safepoints cause GC latency. -XX:+PrintSafepointStatistics.",
+    "difficulty": "hard",
+    "topics": ["java", "safepoints", "jvm", "gc", "thread-suspension"]
+  },
+  {
+    "id": 15,
+    "question": "What is the difference between biased locking, lightweight locking, and heavyweight locking?",
+    "options": [
+      { "id": "a", "text": "They are different GC algorithms" },
+      { "id": "b", "text": "Lock optimization levels: biased (single thread), lightweight (CAS), heavyweight (OS mutex)" },
+      { "id": "c", "text": "They are different class loading strategies" },
+      { "id": "d", "text": "They are JIT compilation levels" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Lock inflation: Biased (thread owns, no CAS, revoked on contention), Lightweight (CAS on mark word, spinning), Heavyweight (OS mutex, park/unpark). Object header mark word encodes state. Biased locking deprecated in Java 15, removed in Java 18.",
+    "difficulty": "hard",
+    "topics": ["java", "locking", "biased", "lightweight", "heavyweight", "synchronization", "mark-word"]
+  },
+  {
+    "id": 16,
+    "question": "What is the purpose of the 'invokedynamic' bytecode instruction?",
+    "options": [
+      { "id": "a", "text": "To invoke static methods dynamically" },
+      { "id": "b", "text": "To support dynamic languages and lambda expressions on JVM" },
+      { "id": "c", "text": "To dynamically load classes" },
+      { "id": "d", "text": "To invoke constructors dynamically" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "invokedynamic (Java 7+): enables dynamic method linkage. Bootstrap method returns CallSite with MethodHandle. Used for: lambda expressions (LambdaMetafactory), dynamic languages (JRuby, Nashorn), method references. More flexible than invokevirtual. Key for JVM language support.",
+    "difficulty": "hard",
+    "topics": ["java", "invokedynamic", "bytecode", "lambda", "methodhandle", "java7"]
+  },
+  {
+    "id": 17,
+    "question": "What are MethodHandles and how do they differ from reflection?",
+    "options": [
+      { "id": "a", "text": "MethodHandles are slower than reflection" },
+      { "id": "b", "text": "MethodHandles are typed, faster, support composition; reflection is string-based, slower" },
+      { "id": "c", "text": "They are identical" },
+      { "id": "d", "text": "MethodHandles only work for static methods" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "MethodHandle (java.lang.invoke): typed reference to method/constructor/field. Direct execution, supports composition (filter, transform, fold), access checking at creation. Reflection: string-based, access check per call, slower. MethodHandles used by invokedynamic, lambdas. VarHandles for fields/arrays.",
+    "difficulty": "hard",
+    "topics": ["java", "methodhandle", "reflection", "invokedynamic", "varhandle", "java7"]
+  },
+  {
+    "id": 18,
+    "question": "What is the GraalVM and how does it differ from HotSpot?",
+    "options": [
+      { "id": "a", "text": "GraalVM is a JavaScript engine" },
+      { "id": "b", "text": "GraalVM: polyglot VM, Graal compiler (Java-based JIT), native-image AOT compilation" },
+      { "id": "c", "text": "GraalVM is just a different GC" },
+      { "id": "d", "text": "GraalVM is the same as HotSpot" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "GraalVM: polyglot runtime (Java, JS, Python, Ruby, R, WASM). Graal compiler: JIT written in Java (replaces C2). Native Image: AOT compilation to standalone executable (fast startup, low memory). Truffle framework for language implementation. Can run on HotSpot (Graal JIT) or as native.",
+    "difficulty": "hard",
+    "topics": ["java", "graalvm", "native-image", "aot", "polyglot", "truffle", "graal-compiler"]
+  },
+  {
+    "id": 19,
+    "question": "What is the difference between AOT and JIT compilation?",
+    "options": [
+      { "id": "a", "text": "AOT compiles at runtime, JIT compiles ahead of time" },
+      { "id": "b", "text": "AOT compiles ahead of time to native code, JIT compiles at runtime" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "AOT is only for C++, JIT for Java" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "AOT (Ahead-Of-Time): compile to native binary before execution (GraalVM Native Image, Excelsior JET). Fast startup, no warmup, smaller memory. JIT: compiles hot code at runtime with profiling info. Better peak performance, adaptive. Trade-off: AOT for serverless/CLI, JIT for long-running servers.",
+    "difficulty": "hard",
+    "topics": ["java", "aot", "jit", "native-image", "compilation", "startup", "warmup"]
+  },
+  {
+    "id": 20,
+    "question": "What is the Java Flight Recorder (JFR) and Java Mission Control (JMC)?",
+    "options": [
+      { "id": "a", "text": "Tools for compiling Java code" },
+      { "id": "b", "text": "JFR: low-overhead profiling/event recording; JMC: GUI for analyzing JFR data" },
+      { "id": "c", "text": "Tools for memory leak detection only" },
+      { "id": "d", "text": "Tools for bytecode verification" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JFR: built-in profiling (events: GC, threads, locks, CPU, allocations). Low overhead (~1%). Continuous recording. JMC: GUI to analyze recordings, visualize latency, allocations, hot methods. Open source since JDK 11. Essential for production diagnostics.",
+    "difficulty": "hard",
+    "topics": ["java", "jfr", "jmc", "profiling", "diagnostics", "production", "jdk11"]
+  },
+  {
+    "id": 21,
+    "question": "What is the purpose of the 'Unsafe' class in Java?",
+    "options": [
+      { "id": "a", "text": "To provide safe memory access" },
+      { "id": "b", "text": "Low-level operations: direct memory, CAS, thread parking, class loading (internal use)" },
+      { "id": "c", "text": "To handle unsafe exceptions" },
+      { "id": "d", "text": "To disable security manager" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "sun.misc.Unsafe: internal JVM access. allocateMemory/freeMemory (off-heap), compareAndSwap* (CAS for atomics), park/unpark (thread parking), defineClass, arrayBaseOffset. Used by Netty, Cassandra, Kafka, java.util.concurrent. Not public API. VarHandles (Java 9+) provide supported alternative.",
+    "difficulty": "hard",
+    "topics": ["java", "unsafe", "off-heap", "cas", "direct-memory", "internals", "varhandles"]
+  },
+  {
+    "id": 22,
+    "question": "What is the difference between heap and off-heap memory?",
+    "options": [
+      { "id": "a", "text": "Heap is managed by GC, off-heap is manually managed (direct buffers, Unsafe)" },
+      { "id": "b", "text": "Off-heap is managed by GC, heap is not" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "Heap is for objects, off-heap is for primitives only" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Heap: GC-managed, objects, subject to GC pauses. Off-heap: direct ByteBuffer (ByteBuffer.allocateDirect), Unsafe.allocateMemory, native memory. Not GC'd, manual management, avoids GC pressure, used for large caches, serialization, zero-copy I/O. Risk: leaks, OOM.",
+    "difficulty": "hard",
+    "topics": ["java", "off-heap", "direct-buffer", "unsafe", "memory-management", "gc"]
+  },
+  {
+    "id": 23,
+    "question": "What is the purpose of the 'final' field semantics in JMM?",
+    "options": [
+      { "id": "a", "text": "Final fields cannot be changed after construction" },
+      { "id": "b", "text": "Guarantees safe publication: final fields visible to other threads without synchronization if constructor completes normally" },
+      { "id": "c", "text": "Final fields are stored in PermGen" },
+      { "id": "d", "text": "Final fields are optimized by JIT only" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JMM final field semantics: freeze action at end of constructor. Guarantees: if object reference is safely published, all threads see correct final field values (no reordering). Requires: no 'this' escape during construction. Critical for immutable objects. Without: need volatile/synchronized.",
+    "difficulty": "hard",
+    "topics": ["java", "jmm", "final-fields", "safe-publication", "immutability", "constructor"]
+  },
+  {
+    "id": 24,
+    "question": "What is the Double-Checked Locking pattern and why is it broken without volatile?",
+    "options": [
+      { "id": "a", "text": "A pattern for lazy initialization that works without volatile" },
+      { "id": "b", "text": "Lazy init with two null checks; broken without volatile due to reordering (write reference before constructor completes)" },
+      { "id": "c", "text": "A pattern for double locking" },
+      { "id": "d", "text": "A pattern that requires two locks" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "DCL: check null, synchronized, check null, create. Without volatile: write of reference can reorder before constructor writes (JMM allows). Other thread sees non-null but partially constructed object. Fix: volatile on instance field. Better: static holder class or enum singleton.",
+    "difficulty": "hard",
+    "topics": ["java", "double-checked-locking", "volatile", "singleton", "jmm", "reordering"]
+  },
+  {
+    "id": 25,
+    "question": "What is the ABA problem in lock-free programming?",
+    "options": [
+      { "id": "a", "text": "A thread reads A, then B, then A again, thinking nothing changed" },
+      { "id": "b", "text": "A deadlock between two threads" },
+      { "id": "c", "text": "A memory leak in atomic operations" },
+      { "id": "d", "text": "A race condition in synchronized blocks" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "ABA: Thread 1 reads value A. Thread 2 changes A→B→A. Thread 1 CAS succeeds (sees A), but state changed. Problem for lock-free structures. Solutions: AtomicStampedReference (version/timestamp), AtomicMarkableReference (boolean tag), hazard pointers, epoch-based reclamation.",
+    "difficulty": "hard",
+    "topics": ["java", "aba-problem", "lock-free", "cas", "atomicstampedreference", "concurrency"]
+  },
+  {
+    "id": 26,
+    "question": "What is the difference between StampedLock and ReentrantReadWriteLock?",
+    "options": [
+      { "id": "a", "text": "StampedLock is slower" },
+      { "id": "b", "text": "StampedLock supports optimistic reading (no lock), RWLock does not" },
+      { "id": "c", "text": "RWLock supports optimistic reading" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "StampedLock (Java 8+): three modes - write (exclusive), read (shared), optimistic read (no lock, validate with stamp). Optimistic read: tryOptimisticRead(), validate(stamp). If validation fails, fallback to read lock. Not reentrant. Better for read-heavy, low-contention. RWLock: only read/write, reentrant.",
+    "difficulty": "hard",
+    "topics": ["java", "stampedlock", "rwlock", "optimistic-locking", "concurrency", "java8"]
+  },
+  {
+    "id": 27,
+    "question": "What is the purpose of the 'VarHandle' API introduced in Java 9?",
+    "options": [
+      { "id": "a", "text": "To handle variables in a type-safe way with memory ordering guarantees" },
+      { "id": "b", "text": "To replace all variables with handles" },
+      { "id": "c", "text": "To create variable-length arrays" },
+      { "id": "d", "text": "To handle varargs" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "VarHandle (java.lang.invoke): typed, safe replacement for Unsafe. Access modes: plain, volatile (acquire/release), opaque, acquire/release. Supports fields, array elements, off-heap. Atomic operations: compareAndSet, getAndAdd. Memory ordering: full fence, acquire/release. Used for high-performance concurrent data structures.",
+    "difficulty": "hard",
+    "topics": ["java", "varhandle", "java9", "memory-ordering", "unsafe-replacement", "concurrency"]
+  },
+  {
+    "id": 28,
+    "question": "What is the difference between 'acquire', 'release', 'volatile', and 'plain' memory ordering in VarHandle?",
+    "options": [
+      { "id": "a", "text": "They are all the same" },
+      { "id": "b", "text": "plain: no ordering; opaque: atomic but no ordering; acquire/release: one-way barriers; volatile: full fence (acquire+release)" },
+      { "id": "c", "text": "volatile is weakest, plain is strongest" },
+      { "id": "d", "text": "acquire/release are for locks only" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "VarHandle access modes (weakest to strongest): plain (no ordering, not atomic), opaque (atomic, no ordering), acquire (load barrier - subsequent ops not reordered before), release (store barrier - prior ops not reordered after), volatile (acquire+release, full fence). Choose weakest correct mode for performance.",
+    "difficulty": "hard",
+    "topics": ["java", "varhandle", "memory-ordering", "acquire", "release", "volatile", "opaque", "plain"]
+  },
+  {
+    "id": 29,
+    "question": "What is the purpose of the 'CompletableFuture' API and how does it differ from Future?",
+    "options": [
+      { "id": "a", "text": "CompletableFuture is deprecated" },
+      { "id": "b", "text": "CompletableFuture supports composition, chaining, exception handling, async callbacks; Future only blocks on get()" },
+      { "id": "c", "text": "Future supports composition, CompletableFuture does not" },
+      { "id": "d", "text": "They are identical" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Future: only get() (blocking), cancel(), isDone(). CompletableFuture (Java 8+): thenApply, thenCompose, thenCombine, allOf, anyOf, exceptionally, handle, whenComplete. Non-blocking composition. Completes manually (complete, completeExceptionally). Implements CompletionStage. Essential for reactive async pipelines.",
+    "difficulty": "hard",
+    "topics": ["java", "completablefuture", "future", "async", "composition", "completionstage", "java8"]
+  },
+  {
+    "id": 30,
+    "question": "What is the Reactor pattern and how does it relate to Java NIO?",
+    "options": [
+      { "id": "a", "text": "A pattern for nuclear reactors" },
+      { "id": "b", "text": "Event-driven pattern: single thread handles multiple channels via Selector (Java NIO)" },
+      { "id": "c", "text": "A pattern for reactive streams only" },
+      { "id": "d", "text": "A GC algorithm" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Reactor pattern: demultiplexes events (Selector), dispatches to handlers. Single-threaded event loop (or thread pool). Java NIO: Selector.select() blocks until channels ready. Netty, Vert.x, Spring WebFlux use this. Avoids thread-per-connection. Proactor pattern: async completion notification (IOCP, io_uring).",
+    "difficulty": "hard",
+    "topics": ["java", "reactor-pattern", "nio", "selector", "event-loop", "netty", "webflux"]
+  },
+  {
+    "id": 31,
+    "question": "What is the difference between 'synchronized' and 'Lock' in terms of JVM implementation?",
+    "options": [
+      { "id": "a", "text": "Lock is implemented in JVM, synchronized in Java" },
+      { "id": "b", "text": "synchronized: JVM intrinsic (monitorenter/monitorexit), Lock: Java-level (AQS, CAS)" },
+      { "id": "c", "text": "They are implemented identically" },
+      { "id": "d", "text": "Lock uses OS mutex, synchronized uses CAS" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "synchronized: bytecode instructions (monitorenter/monitorexit), JVM-managed, supports biased/lightweight/heavyweight inflation, automatic unlock on exception. Lock (ReentrantLock): AQS (AbstractQueuedSynchronizer) + CAS, explicit lock/unlock, tryLock, interruptible, fair/non-fair, condition variables. Lock more flexible, synchronized simpler.",
+    "difficulty": "hard",
+    "topics": ["java", "synchronized", "lock", "aqs", "monitor", "jvm", "cas"]
+  },
+  {
+    "id": 32,
+    "question": "What is the AbstractQueuedSynchronizer (AQS) and how does it work?",
+    "options": [
+      { "id": "a", "text": "A queue for garbage collection" },
+      { "id": "b", "text": "Framework for building locks: state + CLH queue + CAS for state changes" },
+      { "id": "c", "text": "A class for async queue" },
+      { "id": "d", "text": "A synchronized queue implementation" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "AQS (java.util.concurrent.locks): base for ReentrantLock, Semaphore, CountDownLatch, etc. State (int) + CLH queue (Node: thread, waitStatus, prev/next). acquire/release use CAS on state. tryAcquire/tryRelease implemented by subclass. ConditionObject for wait/notify. Efficient, scalable.",
+    "difficulty": "hard",
+    "topics": ["java", "aqs", "clh-queue", "cas", "locks", "reentrantlock", "semaphore"]
+  },
+  {
+    "id": 33,
+    "question": "What is the difference between 'parallel streams' and 'parallel collections' in Java?",
+    "options": [
+      { "id": "a", "text": "They are the same" },
+      { "id": "b", "text": "Parallel streams use ForkJoinPool.commonPool(), parallel collections don't exist (only parallelSort)" },
+      { "id": "c", "text": "Parallel collections use thread pools, streams don't" },
+      { "id": "d", "text": "Parallel streams are for I/O, collections for CPU" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Parallel streams: stream.parallel() uses ForkJoinPool.commonPool() (shared JVM-wide). Arrays.parallelSort() also uses it. No 'parallel collections' - collections are data structures. Parallel streams: good for CPU-bound, embarrassingly parallel. Avoid for I/O, blocking, or shared pool contention. Custom thread pool via ForkJoinPool.submit().",
+    "difficulty": "hard",
+    "topics": ["java", "parallel-streams", "forkjoinpool", "commonpool", "parallelsort", "java8"]
+  },
+  {
+    "id": 34,
+    "question": "What is the purpose of the 'CompletableFuture.completeAsync' method?",
+    "options": [
+      { "id": "a", "text": "To complete a future synchronously" },
+      { "id": "b", "text": "To complete a future asynchronously using a supplied executor" },
+      { "id": "c", "text": "To cancel a future" },
+      { "id": "d", "text": "To combine two futures" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "completeAsync(Supplier, Executor): runs supplier async on executor, completes future with result. Unlike thenApplyAsync (chains on existing future), this creates/completes a new future. Useful for bridging callback APIs. Java 9+. completeAsync(Supplier) uses commonPool.",
+    "difficulty": "hard",
+    "topics": ["java", "completablefuture", "completeasync", "async", "executor", "java9"]
+  },
+  {
+    "id": 35,
+    "question": "What is the 'Memory Layout' of a Java object in HotSpot?",
+    "options": [
+      { "id": "a", "text": "Header (mark word, klass pointer) + instance fields + padding" },
+      { "id": "b", "text": "Fields only" },
+      { "id": "c", "text": "Header + methods + fields" },
+      { "id": "d", "text": "Methods + fields + header" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "HotSpot object layout (64-bit): Mark Word (8 bytes: hash, age, lock state, biased thread), Klass Pointer (8 bytes: class metadata, compressed oops = 4 bytes), Instance Fields (aligned, grouped by type for padding), Padding (to 8-byte boundary). Arrays: header + length + elements. -XX:+PrintObjectLayout.",
+    "difficulty": "hard",
+    "topics": ["java", "object-layout", "mark-word", "klass-pointer", "compressed-oops", "hotspot", "memory"]
+  },
+  {
+    "id": 36,
+    "question": "What are Compressed OOPs and when are they used?",
+    "options": [
+      { "id": "a", "text": "Compressed object pointers: 32-bit references in 64-bit JVM for heaps < 32GB" },
+      { "id": "b", "text": "Compressed garbage collection" },
+      { "id": "c", "text": "Compressed bytecode" },
+      { "id": "d", "text": "Compressed strings" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Compressed OOPs (Ordinary Object Pointers): 64-bit JVM uses 32-bit refs (with base + shift) for heaps ≤ 32GB (default). Saves memory (4 vs 8 bytes per ref), better cache. Enabled by default (-XX:+UseCompressedOops). Above 32GB: disabled. Zero-based compressed oops for < 4GB.",
+    "difficulty": "hard",
+    "topics": ["java", "compressed-oops", "64-bit", "heap", "memory", "oops", "jvm"]
+  },
+  {
+    "id": 37,
+    "question": "What is the 'String Deduplication' feature in G1 GC?",
+    "options": [
+      { "id": "a", "text": "Removes duplicate String objects during GC" },
+      { "id": "b", "text": "Deduplicates String literals at compile time" },
+      { "id": "c", "text": "Compresses String storage" },
+      { "id": "d", "text": "Removes unused String constants" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "String Deduplication (G1, Java 8u20+): during GC, identifies Strings with identical char[] content, points them to same char[] array. Reduces memory (Strings often 20-30% of heap). Enabled: -XX:+UseStringDeduplication. Works with G1 only. Concurrent phase. Hash table tracks seen char[].",
+    "difficulty": "hard",
+    "topics": ["java", "string-deduplication", "g1gc", "gc", "memory-optimization", "java8"]
+  },
+  {
+    "id": 38,
+    "question": "What is the difference between 'Serial GC' and 'Parallel GC'?",
+    "options": [
+      { "id": "a", "text": "Serial uses one thread, Parallel uses multiple threads for GC" },
+      { "id": "b", "text": "Parallel uses one thread, Serial uses multiple" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "Serial is for young gen, Parallel for old gen" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Serial GC: single thread for both young and old (stop-the-world). Low overhead, good for small heaps, single-core, client apps. Parallel GC (Throughput Collector): multiple threads for young and old (Java 8+). Maximizes throughput, longer pauses. Default for server-class machines in Java 8. -XX:+UseSerialGC, -XX:+UseParallelGC.",
+    "difficulty": "hard",
+    "topics": ["java", "serial-gc", "parallel-gc", "throughput", "gc", "jvm"]
+  },
+  {
+    "id": 39,
+    "question": "What is the 'CMS' garbage collector and why was it deprecated?",
+    "options": [
+      { "id": "a", "text": "Concurrent Mark Sweep: low pause, but fragmentation, floating garbage, deprecated in Java 9, removed in Java 14" },
+      { "id": "b", "text": "Compact Mark Sweep: high pause, removed in Java 8" },
+      { "id": "c", "text": "Concurrent Memory System: replaced by G1" },
+      { "id": "d", "text": "It was never deprecated" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "CMS (Concurrent Mark Sweep): concurrent marking/sweeping, low pause. Issues: fragmentation (no compaction), floating garbage (new garbage during concurrent phase), promotion failure, CPU intensive. Deprecated Java 9, removed Java 14. Replaced by G1, ZGC, Shenandoah. -XX:+UseConcMarkSweepGC.",
+    "difficulty": "hard",
+    "topics": ["java", "cms-gc", "garbage-collection", "deprecated", "fragmentation", "g1gc"]
+  },
+  {
+    "id": 40,
+    "question": "What is the 'Epsilon' garbage collector?",
+    "options": [
+      { "id": "a", "text": "A high-performance GC" },
+      { "id": "b", "text": "A no-op GC: allocates memory but never reclaims (for testing, short-lived apps)" },
+      { "id": "c", "text": "A GC for epsilon-sized heaps" },
+      { "id": "d", "text": "An experimental GC" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Epsilon GC (Java 11+): no-op garbage collector. Allocates memory, never collects. Use cases: performance testing (baseline), short-lived jobs (batch, tests), memory pressure testing, last-drop latency. -XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC. Heap exhausted → OOM.",
+    "difficulty": "hard",
+    "topics": ["java", "epsilon-gc", "no-op-gc", "testing", "java11", "experimental"]
+  },
+  {
+    "id": 41,
+    "question": "What is the purpose of 'JVM TI' (JVM Tool Interface)?",
+    "options": [
+      { "id": "a", "text": "To compile Java code" },
+      { "id": "b", "text": "Native API for tools: profilers, debuggers, coverage, monitoring (JVMTI agents)" },
+      { "id": "c", "text": "To manage JVM threads" },
+      { "id": "d", "text": "To load classes" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JVMTI (JVM Tool Interface): native C/C++ API for tool development. Events: method entry/exit, GC, thread start/end, monitor, class load. Capabilities: bytecode instrumentation, heap iteration, stack sampling. Used by: YourKit, JProfiler, VisualVM, Java Flight Recorder, debuggers. Loaded as agent (-agentlib).",
+    "difficulty": "hard",
+    "topics": ["java", "jvmti", "jvmt", "profiling", "debugging", "instrumentation", "agents"]
+  },
+  {
+    "id": 42,
+    "question": "What is 'Java Agent' and 'Instrumentation' API?",
+    "options": [
+      { "id": "a", "text": "A secret agent for Java" },
+      { "id": "b", "text": "Agent: JAR with premain/agentmain; Instrumentation: redefine/retransform classes at runtime" },
+      { "id": "c", "text": "A security agent" },
+      { "id": "d", "text": "A build tool" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Java Agent: JAR with Premain-Class (startup) or Agentmain-Class (attach). Instrumentation API: addTransformer(ClassFileTransformer), redefineClasses, retransformClasses, getAllLoadedClasses. Bytecode manipulation at load/retransform time. Used by: APM (New Relic, Datadog), mocking (Mockito), profiling, hot reload. -javaagent:path.jar.",
+    "difficulty": "hard",
+    "topics": ["java", "java-agent", "instrumentation", "premain", "agentmain", "classfiletransformer", "bytecode-manipulation"]
+  },
+  {
+    "id": 43,
+    "question": "What is the 'Byte Buddy' library used for?",
+    "options": [
+      { "id": "a", "text": "To create byte arrays" },
+      { "id": "b", "text": "Runtime code generation: create classes, intercept methods, implement proxies without bytecode knowledge" },
+      { "id": "c", "text": "To parse bytecode" },
+      { "id": "d", "text": "To compile Java to bytecode" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Byte Buddy: high-level API for runtime class generation/manipulation. DSL for defining classes, methods, annotations. Method interception (advice), subclassing, rebase. Used by: Mockito, Spring, Hibernate, Jackson. Simpler than ASM/Javassist. No bytecode knowledge needed. AgentBuilder for Java agents.",
+    "difficulty": "hard",
+    "topics": ["java", "byte-buddy", "runtime-code-generation", "bytecode-manipulation", "mockito", "spring"]
+  },
+  {
+    "id": 44,
+    "question": "What is the difference between 'Heap Dump' and 'Thread Dump'?",
+    "options": [
+      { "id": "a", "text": "Heap dump shows threads, thread dump shows objects" },
+      { "id": "b", "text": "Heap dump: snapshot of all objects (memory); Thread dump: snapshot of all threads (stack traces)" },
+      { "id": "c", "text": "They are the same" },
+      { "id": "d", "text": "Heap dump is for GC, thread dump for JIT" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Heap dump (hprof): all live objects, sizes, references. Analyze: memory leaks, retention paths, dominator tree. Tools: jmap, jcmd, VisualVM, MAT. Thread dump: all thread stack traces, lock info, deadlock detection. Tools: jstack, jcmd, kill -3. Both essential for production diagnostics.",
+    "difficulty": "hard",
+    "topics": ["java", "heap-dump", "thread-dump", "diagnostics", "jmap", "jstack", "mat", "memory-leak"]
+  },
+  {
+    "id": 45,
+    "question": "What is the 'JDK Flight Recorder' event model?",
+    "options": [
+      { "id": "a", "text": "Events are only for GC" },
+      { "id": "b", "text": "Hierarchical events: Instant (point), Duration (interval), Requestable (on-demand), with fields, stack traces, timestamps" },
+      { "id": "c", "text": "Events are simple strings" },
+      { "id": "d", "text": "Only custom events" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "JFR events: Instant (timestamp only - allocation, exception), Duration (start/end - GC, compilation, socket), Requestable (on-demand - heap summary). Fields: primitives, strings, threads, classes. Stack traces configurable. Categories: GC, Thread, Lock, IO, Compiler. Custom events via @Event annotation (Java 14+).",
+    "difficulty": "hard",
+    "topics": ["java", "jfr", "events", "instant", "duration", "requestable", "profiling", "custom-events"]
+  },
+  {
+    "id": 46,
+    "question": "What is 'Project Loom' and virtual threads?",
+    "options": [
+      { "id": "a", "text": "A new GC algorithm" },
+      { "id": "b", "text": "Virtual threads: lightweight user-mode threads (Java 19+ preview, 21+ GA), millions possible, scheduled by JVM not OS" },
+      { "id": "c", "text": "A new module system" },
+      { "id": "d", "text": "A new compiler" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Project Loom: virtual threads (fibers) - lightweight, JVM-managed (not 1:1 OS thread). Millions possible. Park on blocking I/O (yield carrier thread). Carrier threads = ForkJoinPool. Structured concurrency (StructuredTaskScope). Scoped values. Transparent: existing blocking code (sockets, JDBC) becomes non-blocking. Java 21 GA.",
+    "difficulty": "hard",
+    "topics": ["java", "project-loom", "virtual-threads", "fibers", "structured-concurrency", "java21", "carrier-threads"]
+  },
+  {
+    "id": 47,
+    "question": "What is the difference between 'platform threads' and 'virtual threads'?",
+    "options": [
+      { "id": "a", "text": "Platform threads are lighter" },
+      { "id": "b", "text": "Platform threads = OS threads (1:1), expensive; Virtual threads = JVM-managed, cheap, millions, share carrier threads" },
+      { "id": "c", "text": "Virtual threads are OS threads" },
+      { "id": "d", "text": "They are the same" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Platform thread: 1:1 OS thread, ~1MB stack, limited (~1000s), context switch expensive. Virtual thread: user-mode, ~few KB stack (grows), millions, scheduled on carrier threads (ForkJoinPool). Virtual thread parks on blocking I/O (yields carrier). Thread.ofVirtual().start(). Thread.Builder. No code changes for blocking APIs.",
+    "difficulty": "hard",
+    "topics": ["java", "platform-threads", "virtual-threads", "carrier-threads", "forkjoinpool", "java21", "loom"]
+  },
+  {
+    "id": 48,
+    "question": "What is 'Structured Concurrency' in Project Loom?",
+    "options": [
+      { "id": "a", "text": "A way to structure code" },
+      { "id": "b", "text": "StructuredTaskScope: treats multiple subtasks as single unit, auto-cancels on failure, ensures all complete" },
+      { "id": "c", "text": "A new syntax for try-catch" },
+      { "id": "d", "text": "A thread pool" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "StructuredTaskScope (Java 19+ preview, 21+): fork subtasks, join all, handle failures. ShutdownOnFailure: cancel all on first exception. ShutdownOnSuccess: cancel all on first success. Ensures no orphaned tasks, clear ownership, automatic cleanup. Replaces ExecutorService + Future patterns. ScopedValue for context propagation.",
+    "difficulty": "hard",
+    "topics": ["java", "structured-concurrency", "structuredtaskscope", "virtual-threads", "java21", "scoped-value"]
+  },
+  {
+    "id": 49,
+    "question": "What is the 'Foreign Function & Memory API' (Project Panama)?",
+    "options": [
+      { "id": "a", "text": "API for foreign languages" },
+      { "id": "b", "text": "Safe, efficient access to native memory and functions without JNI (Java 19+ preview, 21+ GA)" },
+      { "id": "c", "text": "API for memory management" },
+      { "id": "d", "text": "API for file I/O" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "FFM API (Project Panama): replaces JNI. MemorySegment (native/heap), MemoryLayout, Arena (lifecycle), Linker (native calls), SymbolLookup. Type-safe, bounds-checked, no native code needed. JExtract generates bindings from C headers. Performance near JNI. java.lang.foreign, java.lang.invoke.",
+    "difficulty": "hard",
+    "topics": ["java", "panama", "ffm", "foreign-function-memory", "jni-replacement", "memorysegment", "linker", "java21"]
+  },
+  {
+    "id": 50,
+    "question": "What is the 'Vector API' (Project Panama) for?",
+    "options": [
+      { "id": "a", "text": "Creating vector graphics" },
+      { "id": "b", "text": "Expressing SIMD computations that compile to optimal hardware vector instructions (incubator)" },
+      { "id": "c", "text": "Managing vector databases" },
+      { "id": "d", "text": "Mathematical vectors only" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Vector API (incubator, Java 16+): Vector<E> abstracts SIMD (Single Instruction Multiple Data). Operations: add, mul, fma, reduce, lane-wise. JIT compiles to AVX/SSE/NEON. Species: VectorSpecies<E> (shape: 128/256/512-bit). Loop vectorization. Performance portability. Used in: ML, crypto, media, scientific computing.",
+    "difficulty": "hard",
+    "topics": ["java", "vector-api", "simd", "panama", "avx", "sse", "incubator", "performance", "jit"]
+  }
+]

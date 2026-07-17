@@ -18,7 +18,6 @@ export default function AuthPage({ mode = "login" }) {
     name: "",
     username: "",
     email: "",
-    instagram: "",
     password: "",
     confirmPassword: "",
   });
@@ -65,11 +64,10 @@ export default function AuthPage({ mode = "login" }) {
           return;
         }
 
-        const instagram = formData.instagram.trim();
         const res = await fetch(`${API_BASE}/auth/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, username, email, password, instagram }),
+          body: JSON.stringify({ name, username, email, password }),
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Registration failed.");
@@ -210,23 +208,7 @@ export default function AuthPage({ mode = "login" }) {
                 </label>
               )}
 
-              {isSignup && (
-                <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-slate-300">
-                    Instagram username <span className="text-slate-500 font-normal">(optional)</span>
-                  </span>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">@</span>
-                    <input
-                      name="instagram"
-                      value={formData.instagram}
-                      onChange={handleChange}
-                      placeholder="your_instagram"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 pl-8 pr-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#E1306C]/60 focus:bg-white/8"
-                    />
-                  </div>
-                </label>
-              )}
+
 
               {/* Login method toggle — only on login */}
               {!isSignup && (

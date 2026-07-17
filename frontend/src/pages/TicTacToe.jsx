@@ -20,7 +20,6 @@ export default function TicTacToe() {
   const [gameMode, setGameMode] = useState("classic"); // classic, infinite
   const [score, setScore] = useState({ me: 0, opponent: 0 });
   const [playMode, setPlayMode] = useState("computer"); // 'computer' or 'local'
-  const [playMode, setPlayMode] = useState("computer"); // 'computer' or 'local'
   
   // Track move history for infinite mode
   const [xMoves, setXMoves] = useState([]); // indices

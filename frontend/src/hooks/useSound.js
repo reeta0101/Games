@@ -1,5 +1,10 @@
 import { useCallback, useRef } from 'react';
 
+const fireworkAudio = typeof Audio !== 'undefined' ? new Audio('/sounds/fireworks.wav') : null;
+if (fireworkAudio) {
+    fireworkAudio.volume = 0.6;
+}
+
 export const useSound = (enabled = true) => {
     const audioContextRef = useRef(null);
 
@@ -67,9 +72,10 @@ export const useSound = (enabled = true) => {
 
             case 'firework':
                 try {
-                    const audio = new Audio('/sounds/fireworks.wav');
-                    audio.volume = 0.6;
-                    audio.play().catch(e => console.log('Audio play failed:', e));
+                    if (fireworkAudio) {
+                        fireworkAudio.currentTime = 0;
+                        fireworkAudio.play().catch(e => console.log('Audio play failed:', e));
+                    }
                 } catch (e) {
                     console.error('Error playing firework sound:', e);
                 }

@@ -598,5 +598,245 @@
     ],
     "correctOptionId": "a",
     "explanation": "The idiom 'to have an axe to grind' means to have a selfish motive or a personal reason for doing something."
+  },
+  {
+    "id": 51,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'ABANDON'",
+    "options": [
+      { "id": "a", "text": "Forsake" },
+      { "id": "b", "text": "Keep" },
+      { "id": "c", "text": "Cherish" },
+      { "id": "d", "text": "Enlarge" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Abandon' means to cease to support or look after (someone); to desert. 'Forsake' is a direct synonym."
+  },
+  {
+    "id": 52,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'LUCID'",
+    "options": [
+      { "id": "a", "text": "Confusing" },
+      { "id": "b", "text": "Clear" },
+      { "id": "c", "text": "Ambiguous" },
+      { "id": "d", "text": "Dark" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Lucid' means expressed clearly; easy to understand."
+  },
+  {
+    "id": 53,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'BENIGN'",
+    "options": [
+      { "id": "a", "text": "Hostile" },
+      { "id": "b", "text": "Harsh" },
+      { "id": "c", "text": "Gentle" },
+      { "id": "d", "text": "Malignant" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Benign' means gentle, kindly, or not harmful in effect."
+  },
+  {
+    "id": 54,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'CANDID'",
+    "options": [
+      { "id": "a", "text": "Deceitful" },
+      { "id": "b", "text": "Frank" },
+      { "id": "c", "text": "Secretive" },
+      { "id": "d", "text": "Shy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Candid' means truthful and straightforward; frank."
+  },
+  {
+    "id": 55,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'MITIGATE'",
+    "options": [
+      { "id": "a", "text": "Aggravate" },
+      { "id": "b", "text": "Alleviate" },
+      { "id": "c", "text": "Intensify" },
+      { "id": "d", "text": "Increase" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Mitigate' means make less severe, serious, or painful. 'Alleviate' is a direct synonym."
+  },
+  {
+    "id": 56,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'OBSCURE'",
+    "options": [
+      { "id": "a", "text": "Prominent" },
+      { "id": "b", "text": "Hidden" },
+      { "id": "c", "text": "Clear" },
+      { "id": "d", "text": "Famous" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Obscure' means not discovered or known about; uncertain or hidden."
+  },
+  {
+    "id": 57,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'PRUDENT'",
+    "options": [
+      { "id": "a", "text": "Careless" },
+      { "id": "b", "text": "Wise" },
+      { "id": "c", "text": "Reckless" },
+      { "id": "d", "text": "Foolish" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Prudent' means acting with or showing care and thought for the future; wise."
+  },
+  {
+    "id": 58,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'RUTHLESS'",
+    "options": [
+      { "id": "a", "text": "Merciless" },
+      { "id": "b", "text": "Compassionate" },
+      { "id": "c", "text": "Sympathetic" },
+      { "id": "d", "text": "Kind" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Ruthless' means having or showing no pity or compassion for others."
+  },
+  {
+    "id": 59,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'TENACIOUS'",
+    "options": [
+      { "id": "a", "text": "Weak" },
+      { "id": "b", "text": "Yielding" },
+      { "id": "c", "text": "Persistent" },
+      { "id": "d", "text": "Fragile" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Tenacious' means tending to keep a firm hold of something; clinging or adhering closely; persistent."
+  },
+  {
+    "id": 60,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'ZEALOUS'",
+    "options": [
+      { "id": "a", "text": "Apathetic" },
+      { "id": "b", "text": "Enthusiastic" },
+      { "id": "c", "text": "Indifferent" },
+      { "id": "d", "text": "Lazy" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Zealous' means showing great energy or enthusiasm in pursuit of a cause or an objective."
+  },
+  {
+    "id": 61,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'EPHEMERAL'",
+    "options": [
+      { "id": "a", "text": "Short-lived" },
+      { "id": "b", "text": "Permanent" },
+      { "id": "c", "text": "Transient" },
+      { "id": "d", "text": "Brief" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Ephemeral' means lasting for a very short time. 'Permanent' is its direct opposite."
+  },
+  {
+    "id": 62,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'ARROGANT'",
+    "options": [
+      { "id": "a", "text": "Humble" },
+      { "id": "b", "text": "Proud" },
+      { "id": "c", "text": "Conceited" },
+      { "id": "d", "text": "Boastful" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Arrogant' means having or revealing an exaggerated sense of one's own importance or abilities. 'Humble' is the antonym."
+  },
+  {
+    "id": 63,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'DILIGENT'",
+    "options": [
+      { "id": "a", "text": "Hardworking" },
+      { "id": "b", "text": "Industrious" },
+      { "id": "c", "text": "Lazy" },
+      { "id": "d", "text": "Active" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Diligent' means having or showing care and conscientiousness in one's work or duties. 'Lazy' is the antonym."
+  },
+  {
+    "id": 64,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'FRAIL'",
+    "options": [
+      { "id": "a", "text": "Weak" },
+      { "id": "b", "text": "Fragile" },
+      { "id": "c", "text": "Delicate" },
+      { "id": "d", "text": "Strong" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Frail' means weak and delicate. 'Strong' is its direct opposite."
+  },
+  {
+    "id": 65,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'PROFOUND'",
+    "options": [
+      { "id": "a", "text": "Deep" },
+      { "id": "b", "text": "Superficial" },
+      { "id": "c", "text": "Intense" },
+      { "id": "d", "text": "Extreme" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Profound' means very great or intense, or showing great knowledge or insight. 'Superficial' is its antonym."
+  },
+  {
+    "id": 66,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'ABUNDANT'",
+    "options": [
+      { "id": "a", "text": "Plentiful" },
+      { "id": "b", "text": "Scarce" },
+      { "id": "c", "text": "Ample" },
+      { "id": "d", "text": "Copious" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Abundant' means existing or available in large quantities; plentiful. 'Scarce' is its antonym."
+  },
+  {
+    "id": 67,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'GREGARIOUS'",
+    "options": [
+      { "id": "a", "text": "Sociable" },
+      { "id": "b", "text": "Introverted" },
+      { "id": "c", "text": "Friendly" },
+      { "id": "d", "text": "Outgoing" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Gregarious' refers to a person fond of company; sociable. 'Introverted' is the opposite."
+  },
+  {
+    "id": 68,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'GENUINE'",
+    "options": [
+      { "id": "a", "text": "Authentic" },
+      { "id": "b", "text": "Real" },
+      { "id": "c", "text": "Fake" },
+      { "id": "d", "text": "Sincere" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Genuine' means truly what something is said to be; authentic. 'Fake' is the antonym."
+  },
+  {
+    "id": 69,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'STATIC'",
+    "options": [
+      { "id": "a", "text": "Stationary" },
+      { "id": "b", "text": "Dynamic" },
+      { "id": "c", "text": "Fixed" },
+      { "id": "d", "text": "Unchanging" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Static' means lacking in movement, action, or change. 'Dynamic' means characterized by constant change, activity, or progress."
+  },
+  {
+    "id": 70,
+    "question": "Antonyms (Opposite):\n\nChoose the exact opposite of the word 'VAGUE'",
+    "options": [
+      { "id": "a", "text": "Unclear" },
+      { "id": "b", "text": "Indefinite" },
+      { "id": "c", "text": "Precise" },
+      { "id": "d", "text": "Blurry" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Vague' means of uncertain, indefinite, or unclear character or meaning. 'Precise' is its direct opposite."
   }
 ]

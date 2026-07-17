@@ -155,6 +155,48 @@ const SUBJECT_META = {
     label: "Spot the Error",
     group: "english",
   },
+  "active-voice": {
+    icon: "🗣️",
+    accent: "#06b6d4",
+    label: "Active Voice",
+    group: "english",
+    comingSoon: true,
+  },
+  "passive-voice": {
+    icon: "🔄",
+    accent: "#0891b2",
+    label: "Passive Voice",
+    group: "english",
+    comingSoon: true,
+  },
+  "direct-indirect": {
+    icon: "💬",
+    accent: "#0e7490",
+    label: "Direct & Indirect",
+    group: "english",
+    comingSoon: true,
+  },
+  tenses: {
+    icon: "⏱️",
+    accent: "#155e75",
+    label: "Tenses",
+    group: "english",
+    comingSoon: true,
+  },
+  prepositions: {
+    icon: "📍",
+    accent: "#164e63",
+    label: "Prepositions",
+    group: "english",
+    comingSoon: true,
+  },
+  conjunctions: {
+    icon: "🔗",
+    accent: "#0c4a6e",
+    label: "Conjunctions",
+    group: "english",
+    comingSoon: true,
+  },
 };
 
 const GROUP_LABELS = {
@@ -821,14 +863,17 @@ export default function TestPage() {
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {cats.map((category, i) => {
                     const meta = getMeta(category.id);
+                    const isComingSoon = meta.comingSoon === true;
                     return (
                       <motion.div
                         key={category.id}
                         initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.04, duration: 0.3 }}
-                        onClick={() => openModal(category)}
-                        className="interactive-lift group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0f] p-5 shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-all hover:border-white/15 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)] cursor-pointer"
+                        onClick={() =>
+                          isComingSoon ? null : openModal(category)
+                        }
+                        className={`interactive-lift group relative flex flex-col overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0f] p-5 shadow-[0_8px_20px_rgba(0,0,0,0.2)] transition-all hover:border-white/15 hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)] ${isComingSoon ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
                       >
                         {/* Hover glow */}
                         <div
@@ -837,6 +882,15 @@ export default function TestPage() {
                             background: `radial-gradient(circle at 30% 20%, ${meta.accent}12, transparent 65%)`,
                           }}
                         />
+
+                        {/* Coming Soon Badge */}
+                        {isComingSoon && (
+                          <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                            <div className="bg-gradient-to-r from-amber-500/90 to-orange-500/90 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg animate-pulse border border-amber-400/50">
+                              🚧 Coming Soon
+                            </div>
+                          </div>
+                        )}
 
                         {/* Top row: icon + difficulty pills */}
                         <div className="relative flex items-start justify-between">
@@ -884,9 +938,11 @@ export default function TestPage() {
                             {category.displayName}
                           </h3>
                           <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                            {category.hasDifficultySplit
-                              ? "Easy · Medium · Hard · Mixed"
-                              : "Question dataset"}
+                            {isComingSoon
+                              ? "Coming soon..."
+                              : category.hasDifficultySplit
+                                ? "Easy · Medium · Hard · Mixed"
+                                : "Question dataset"}
                           </p>
                         </div>
 
@@ -894,15 +950,17 @@ export default function TestPage() {
                         <div className="relative mt-5 flex items-center justify-between border-t border-white/5 pt-4">
                           <span
                             className="text-[10px] font-bold uppercase tracking-[0.18em]"
-                            style={{ color: meta.accent }}
+                            style={{
+                              color: isComingSoon ? "#f59e0b" : meta.accent,
+                            }}
                           >
-                            Start
+                            {isComingSoon ? "Notify Me" : "Start"}
                           </span>
                           <span
                             className="opacity-50 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 text-sm"
                             style={{ color: meta.accent }}
                           >
-                            →
+                            {isComingSoon ? "🔔" : "→"}
                           </span>
                         </div>
                       </motion.div>

@@ -1,0 +1,118 @@
+[
+  {
+    "id": 3,
+    "question": "Which scheduling algorithm may cause starvation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Round Robin"
+      },
+      {
+        "id": "b",
+        "text": "FCFS"
+      },
+      {
+        "id": "c",
+        "text": "Priority Scheduling"
+      },
+      {
+        "id": "d",
+        "text": "Both a and b"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Priority Scheduling can cause starvation as low-priority processes may never execute.",
+    "difficulty": "medium",
+    "topics": [
+      "scheduling",
+      "cpu-scheduling"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is virtual memory?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Physical RAM"
+      },
+      {
+        "id": "b",
+        "text": "Hard disk space used as RAM extension"
+      },
+      {
+        "id": "c",
+        "text": "Cache memory"
+      },
+      {
+        "id": "d",
+        "text": "ROM"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Virtual memory uses disk space to extend physical memory, allowing larger programs to run.",
+    "difficulty": "medium",
+    "topics": [
+      "memory-management",
+      "virtual-memory"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What is a semaphore?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A type of virus"
+      },
+      {
+        "id": "b",
+        "text": "A synchronization tool"
+      },
+      {
+        "id": "c",
+        "text": "A memory unit"
+      },
+      {
+        "id": "d",
+        "text": "A scheduling algorithm"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A semaphore is a synchronization primitive used to control access to shared resources.",
+    "difficulty": "medium",
+    "topics": [
+      "synchronization",
+      "concurrency"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the purpose of paging?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To organize files"
+      },
+      {
+        "id": "b",
+        "text": "To eliminate external fragmentation"
+      },
+      {
+        "id": "c",
+        "text": "To speed up CPU"
+      },
+      {
+        "id": "d",
+        "text": "To manage I/O devices"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Paging divides memory into fixed-size pages, eliminating external fragmentation.",
+    "difficulty": "medium",
+    "topics": [
+      "memory-management",
+      "paging"
+    ]
+  }
+]

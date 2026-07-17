@@ -1,0 +1,176 @@
+[
+  {
+    "id": 3,
+    "question": "What is the worst-case time complexity of QuickSort?",
+    "options": [
+      {
+        "id": "a",
+        "text": "O(n log n)"
+      },
+      {
+        "id": "b",
+        "text": "O(n)"
+      },
+      {
+        "id": "c",
+        "text": "O(n²)"
+      },
+      {
+        "id": "d",
+        "text": "O(log n)"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "QuickSort has O(n²) worst case when the pivot is always the smallest or largest element.",
+    "difficulty": "medium",
+    "topics": [
+      "sorting",
+      "time-complexity"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Which algorithm is used for finding the shortest path in a weighted graph?",
+    "options": [
+      {
+        "id": "a",
+        "text": "DFS"
+      },
+      {
+        "id": "b",
+        "text": "BFS"
+      },
+      {
+        "id": "c",
+        "text": "Dijkstra's Algorithm"
+      },
+      {
+        "id": "d",
+        "text": "Bubble Sort"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dijkstra's algorithm finds the shortest path from a source to all vertices in a weighted graph.",
+    "difficulty": "medium",
+    "topics": [
+      "graphs",
+      "shortest-path"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the space complexity of merge sort?",
+    "options": [
+      {
+        "id": "a",
+        "text": "O(1)"
+      },
+      {
+        "id": "b",
+        "text": "O(n)"
+      },
+      {
+        "id": "c",
+        "text": "O(log n)"
+      },
+      {
+        "id": "d",
+        "text": "O(n log n)"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Merge sort requires O(n) auxiliary space for the temporary arrays during merging.",
+    "difficulty": "medium",
+    "topics": [
+      "sorting",
+      "space-complexity"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which data structure is best for implementing a priority queue?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Array"
+      },
+      {
+        "id": "b",
+        "text": "Linked List"
+      },
+      {
+        "id": "c",
+        "text": "Heap"
+      },
+      {
+        "id": "d",
+        "text": "Stack"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Heap provides efficient O(log n) insertion and O(1) access to the highest priority element.",
+    "difficulty": "medium",
+    "topics": [
+      "heap",
+      "queue"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What is dynamic programming?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Programming at runtime"
+      },
+      {
+        "id": "b",
+        "text": "Breaking problems into overlapping subproblems"
+      },
+      {
+        "id": "c",
+        "text": "Object-oriented programming"
+      },
+      {
+        "id": "d",
+        "text": "Parallel programming"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Dynamic Programming solves complex problems by breaking them into overlapping subproblems and storing results.",
+    "difficulty": "medium",
+    "topics": [
+      "dp",
+      "algorithms"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Which of the following is NOT a stable sorting algorithm?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Merge Sort"
+      },
+      {
+        "id": "b",
+        "text": "Bubble Sort"
+      },
+      {
+        "id": "c",
+        "text": "Quick Sort"
+      },
+      {
+        "id": "d",
+        "text": "Insertion Sort"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Quick Sort is not stable as equal elements may change their relative order during partitioning.",
+    "difficulty": "medium",
+    "topics": [
+      "sorting",
+      "algorithms"
+    ]
+  }
+]

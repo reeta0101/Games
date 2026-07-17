@@ -1,0 +1,89 @@
+[
+  {
+    "id": 1,
+    "question": "What is the main function of an operating system?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Run applications only"
+      },
+      {
+        "id": "b",
+        "text": "Manage hardware and software resources"
+      },
+      {
+        "id": "c",
+        "text": "Connect to internet"
+      },
+      {
+        "id": "d",
+        "text": "Store files only"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "An OS manages computer hardware, software resources, and provides common services for programs.",
+    "difficulty": "easy",
+    "topics": [
+      "basics",
+      "introduction"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is a process in operating systems?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A program on disk"
+      },
+      {
+        "id": "b",
+        "text": "A program in execution"
+      },
+      {
+        "id": "c",
+        "text": "A file"
+      },
+      {
+        "id": "d",
+        "text": "A thread"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "A process is a program in execution, including program code, current activity, and resources.",
+    "difficulty": "easy",
+    "topics": [
+      "processes",
+      "basics"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What is a context switch?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Switching between users"
+      },
+      {
+        "id": "b",
+        "text": "Saving and restoring process state"
+      },
+      {
+        "id": "c",
+        "text": "Changing screen resolution"
+      },
+      {
+        "id": "d",
+        "text": "Switching network connections"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Context switch saves the state of the current process and restores the state of another process.",
+    "difficulty": "easy",
+    "topics": [
+      "processes",
+      "scheduling"
+    ]
+  }
+]

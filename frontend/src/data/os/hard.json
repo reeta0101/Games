@@ -1,0 +1,89 @@
+[
+  {
+    "id": 5,
+    "question": "What is thrashing in OS?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Fast execution"
+      },
+      {
+        "id": "b",
+        "text": "High page fault rate causing system slowdown"
+      },
+      {
+        "id": "c",
+        "text": "Disk failure"
+      },
+      {
+        "id": "d",
+        "text": "CPU overheating"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Thrashing occurs when the system spends more time swapping pages than executing processes.",
+    "difficulty": "hard",
+    "topics": [
+      "virtual-memory",
+      "paging"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What are the necessary conditions for deadlock?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mutual exclusion only"
+      },
+      {
+        "id": "b",
+        "text": "Mutual exclusion, Hold & Wait, No preemption, Circular wait"
+      },
+      {
+        "id": "c",
+        "text": "Starvation and blocking"
+      },
+      {
+        "id": "d",
+        "text": "Priority inversion"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "All four conditions must hold simultaneously for a deadlock to occur.",
+    "difficulty": "hard",
+    "topics": [
+      "deadlock",
+      "synchronization"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What is the Banker's algorithm used for?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Memory allocation"
+      },
+      {
+        "id": "b",
+        "text": "Deadlock avoidance"
+      },
+      {
+        "id": "c",
+        "text": "CPU scheduling"
+      },
+      {
+        "id": "d",
+        "text": "File management"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Banker's algorithm is used for deadlock avoidance by checking if resource allocation leaves system in safe state.",
+    "difficulty": "hard",
+    "topics": [
+      "deadlock",
+      "algorithms"
+    ]
+  }
+]

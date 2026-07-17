@@ -1,0 +1,31 @@
+[
+  {
+    "id": 14,
+    "question": "Which algorithm technique does the Knapsack problem typically use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Greedy"
+      },
+      {
+        "id": "b",
+        "text": "Dynamic Programming"
+      },
+      {
+        "id": "c",
+        "text": "Divide and Conquer"
+      },
+      {
+        "id": "d",
+        "text": "Backtracking"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The 0/1 Knapsack problem is solved optimally using Dynamic Programming.",
+    "difficulty": "hard",
+    "topics": [
+      "dp",
+      "algorithms"
+    ]
+  }
+]

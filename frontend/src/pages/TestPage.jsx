@@ -265,7 +265,7 @@ export default function TestPage() {
     const diffLabel = DIFF_CONFIG.find((d) => d.key === activeDifficulty);
     const groupInfo = GROUP_LABELS[meta.group] || { label: "General", icon: "📚", color: "#10b981" };
     return (
-      <div className="w-full h-[calc(100dvh-64px)] flex flex-col bg-[#0f172a]">
+      <div className="fixed inset-0 z-[100] w-full h-[100dvh] flex flex-col bg-[#0f172a] overflow-hidden">
         <div className="p-3 sm:p-4 flex flex-row justify-between items-center gap-3 border-b border-slate-700/60 bg-[#0a0f1a]/90 backdrop-blur sticky top-0 z-20">
           <button
             onClick={handleBack}

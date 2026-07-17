@@ -299,8 +299,9 @@ function getMeta(id) {
 /* ══════════════════════════════════════════════
    MAIN COMPONENT
 ══════════════════════════════════════════════ */
-export default function TestPage() {
+export default function ExamsPage() {
   /* ─── Quiz state ─── */
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [quizData, setQuizData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -355,9 +356,21 @@ export default function TestPage() {
 
   /* ─── Filtered list based on active tab ─── */
   const visibleCategories = useMemo(() => {
-    if (activeGroup === "all") return allCategories;
-    return allCategories.filter((c) => c.group === activeGroup);
-  }, [allCategories, activeGroup]);
+    let cats = allCategories;
+    if (activeGroup !== "all") {
+      cats = cats.filter((c) => c.group === activeGroup);
+    }
+    const query = searchTerm.trim().toLowerCase();
+    if (query) {
+      cats = cats.filter(
+        (c) =>
+          c.displayName.toLowerCase().includes(query) ||
+          c.id.toLowerCase().includes(query) ||
+          c.group.toLowerCase().includes(query)
+      );
+    }
+    return cats;
+  }, [allCategories, activeGroup, searchTerm]);
 
   /* ─── Group counts for tab badges ─── */
   const groupCounts = useMemo(() => {
@@ -758,9 +771,18 @@ export default function TestPage() {
         <h1 className="mt-1 text-4xl font-black text-white sm:text-5xl">
           All Exams
         </h1>
-        <p className="mt-2 text-sm text-slate-400">
+        <p className="mt-2 text-sm text-slate-400 mb-6">
           Select a subject · choose difficulty · choose mode
         </p>
+        <div className="max-w-md relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
+          <input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search exams..."
+            className="w-full rounded-2xl border border-white/10 bg-black/24 pl-12 pr-4 py-3 text-sm text-white outline-none transition focus:border-[#40e0f0]/60 focus:bg-black/30"
+          />
+        </div>
       </div>
 
       {/* ── Category Tab Bar ── */}
@@ -822,12 +844,19 @@ export default function TestPage() {
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
         >
-          {Object.entries(groupedVisible).map(([groupKey, cats]) => {
-            const grp = GROUP_LABELS[groupKey] || {
-              label: groupKey,
-              icon: "📂",
-              color: "#6366f1",
-            };
+          {Object.keys(groupedVisible).length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-4xl mb-4">🔎</div>
+              <h2 className="text-xl font-bold text-white">No exams found</h2>
+              <p className="text-slate-400 text-sm mt-2">Try a different search term.</p>
+            </div>
+          ) : (
+            Object.entries(groupedVisible).map(([groupKey, cats]) => {
+              const grp = GROUP_LABELS[groupKey] || {
+                label: groupKey,
+                icon: "📂",
+                color: "#6366f1",
+              };
             return (
               <div key={groupKey} className="mb-10">
                 {/* Section heading (only in "All" view) */}
@@ -969,7 +998,7 @@ export default function TestPage() {
                 </div>
               </div>
             );
-          })}
+          }))}
         </motion.div>
       </AnimatePresence>
     </main>

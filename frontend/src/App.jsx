@@ -15,7 +15,7 @@ import AuthPage from "./pages/AuthPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFoundPage from "./pages/NotFoundPage";
-import TestPage from "./pages/TestPage";
+import ExamsPage from "./pages/ExamsPage";
 import QuizzesPage from "./pages/QuizzesPage";
 import AlphabetQuiz from "./pages/AlphabetQuiz";
 import SquareQuiz from "./pages/SquareQuiz";
@@ -977,7 +977,7 @@ function ArcadeLayout() {
             />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/quizzes" element={<QuizzesPage />} />
-            <Route path="/test-page" element={<TestPage />} />
+            <Route path="/exams" element={<ExamsPage />} />
             <Route path="/friends" element={<FriendsPage />} />
             <Route path="/lobby" element={<LobbyPage />} />
             <Route path="/challenge" element={<ChallengePage />} />

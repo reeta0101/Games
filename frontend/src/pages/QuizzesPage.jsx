@@ -1,8 +1,19 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GAME_MODES, CATEGORIES } from "../utils/gameConstants";
 
 export default function QuizzesPage() {
+  const [searchTerm, setSearchTerm] = useState("");
   const categories = CATEGORIES.filter(c => c.label !== "All");
+
+  const query = searchTerm.trim().toLowerCase();
+  const filteredGames = GAME_MODES.filter((game) => {
+    if (!query) return true;
+    return [game.title, game.badge, game.category, game.summary, game.details, game.intro]
+      .join(" ")
+      .toLowerCase()
+      .includes(query);
+  });
 
   return (
     <main className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
@@ -14,15 +25,31 @@ export default function QuizzesPage() {
         <h1 className="mt-2 text-4xl font-black text-white sm:text-5xl">
           All Quizzes
         </h1>
-        <p className="mt-3 text-sm text-slate-400 tracking-[0.15em]">
+        <p className="mt-3 text-sm text-slate-400 tracking-[0.15em] mb-6">
           Browse our collection of quizzes by category
         </p>
+        <div className="max-w-md mx-auto relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
+          <input
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search quizzes..."
+            className="w-full rounded-2xl border border-white/10 bg-black/24 pl-12 pr-4 py-3 text-sm text-white outline-none transition focus:border-[#40e0f0]/60 focus:bg-black/30"
+          />
+        </div>
       </div>
 
       <div className="space-y-16">
-        {categories.map((category, idx) => {
-          const gamesInCategory = GAME_MODES.filter((g) => g.category === category.label);
-          if (gamesInCategory.length === 0) return null;
+        {filteredGames.length === 0 ? (
+          <div className="text-center py-12">
+            <div className="text-4xl mb-4">🔎</div>
+            <h2 className="text-xl font-bold text-white">No quizzes found</h2>
+            <p className="text-slate-400 text-sm mt-2">Try a different search term.</p>
+          </div>
+        ) : (
+          categories.map((category, idx) => {
+            const gamesInCategory = filteredGames.filter((g) => g.category === category.label);
+            if (gamesInCategory.length === 0) return null;
 
           return (
             <section 

@@ -5,7 +5,7 @@ import { useAudioContext } from "../contexts/AudioContext";
 
 const NAV_LINKS = [
   { to: "/quizzes", label: "Quizzes" },
-  { to: "/test-page", label: "Exams" },
+  { to: "/exams", label: "Exams" },
   { to: "/games", label: "Games" },
   { to: "/lobby", label: "Challenges" },
   { to: "/leaderboard", label: "Rank" },
@@ -192,6 +192,11 @@ export default function Navbar({
 
           {/* Mobile right side */}
           <div className="flex sm:hidden items-center gap-2">
+            {currentUser && currentUser.name && (
+              <span className="text-sm font-bold text-white truncate max-w-[80px]">
+                {currentUser.name.split(" ")[0]}
+              </span>
+            )}
             <button
               onClick={onToggleTheme}
               className="touch-target rounded-xl border border-white/8 bg-white/[0.03] px-3 text-sm font-semibold text-slate-300 transition hover:bg-white/8 hover:text-white"

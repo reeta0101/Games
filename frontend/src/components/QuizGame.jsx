@@ -62,6 +62,9 @@ export default function QuizGame({ game }) {
   // Difficulty
   const [difficulty, setDifficulty] = useState(challenge?.difficulty || "intermediate");
 
+  // Range
+  const [selectedRange, setSelectedRange] = useState(() => game.ranges ? game.ranges[game.ranges.length - 1].key : null);
+
   // Audio hook
   const { playCorrect, playWrong, playStreak, playGameOver } = useAudio();
 
@@ -266,7 +269,7 @@ export default function QuizGame({ game }) {
 
   const nextQuestion = useCallback(function nextQ() {
     clearTimers();
-    const question = game.generateQuestion();
+    const question = game.generateQuestion({ range: selectedRange });
     setCurrentQuestion(question);
     setQuestionNum((v) => v + 1);
     setIsAnswered(false);
@@ -320,7 +323,7 @@ export default function QuizGame({ game }) {
         }
       }
     }, 50);
-  }, [clearTimers, endGame, game, activeTimeLimit, challenge, socket, currentUser, guestName, score, correctAnswers, wrongAnswers]);
+  }, [clearTimers, endGame, game, activeTimeLimit, challenge, socket, currentUser, guestName, score, correctAnswers, wrongAnswers, selectedRange]);
 
   const startGame = useCallback(() => {
     clearTimers();
@@ -697,6 +700,36 @@ export default function QuizGame({ game }) {
                   );
                 })}
               </div>
+
+              {game.ranges && (
+                <div className="mt-6">
+                  <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-slate-500">
+                    Select Range
+                  </p>
+                  <div className="grid grid-cols-3 gap-3">
+                    {game.ranges.map((r) => {
+                      const active = selectedRange === r.key;
+                      return (
+                        <button
+                          key={r.key}
+                          onClick={() => setSelectedRange(r.key)}
+                          aria-pressed={active}
+                          className={`interactive-lift rounded-2xl border p-3 text-center transition duration-200 ${
+                            active
+                              ? "border-[#f0e040]/60 bg-[#f0e040]/12 shadow-[0_0_22px_rgba(240,224,64,0.13)]"
+                              : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.06]"
+                          }`}
+                          type="button"
+                        >
+                          <span className={`text-sm font-black uppercase tracking-[0.1em] ${active ? "text-white" : "text-slate-400"}`}>
+                            {r.label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               <div className="mt-6 grid gap-3 sm:grid-cols-3">
                 <button

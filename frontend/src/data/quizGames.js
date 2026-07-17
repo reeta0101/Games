@@ -751,14 +751,20 @@ export const quizGames = {
     cardBadge: "Quant",
     cardTitle: "Square Quiz",
     cardDescription: "Squares of numbers from 1 to 100.",
+    ranges: [
+      { key: "20", label: "1 to 20" },
+      { key: "50", label: "1 to 50" },
+      { key: "100", label: "1 to 100" }
+    ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 5000) / 3000;
       if (elapsedSec < third) return 12;
       if (elapsedSec < third * 2) return 8;
       return 4;
     },
-    generateQuestion: () => {
-      const num = Math.floor(Math.random() * 100) + 1;
+    generateQuestion: (options = {}) => {
+      const max = options.range ? parseInt(options.range, 10) : 100;
+      const num = Math.floor(Math.random() * max) + 1;
       const correct = num * num;
 
       return {

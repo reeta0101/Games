@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "Identify the part of speech of the underlined word: 'The **extremely** talented musician performed.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Extremely' modifies the adjective 'talented', telling to what degree. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 2,
+    "question": "Identify the part of speech of the underlined word: 'She is **herself** a doctor.'",
+    "options": [
+      { "id": "a", "text": "Personal pronoun" },
+      { "id": "b", "text": "Reflexive pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Relative pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Herself' refers back to the subject 'she'. It is a reflexive pronoun used for emphasis.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 3,
+    "question": "Identify the part of speech of the underlined word: '**Which** book is yours?'",
+    "options": [
+      { "id": "a", "text": "Relative pronoun" },
+      { "id": "b", "text": "Interrogative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Indefinite pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Which' asks a question about a specific choice. It is an interrogative pronoun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 4,
+    "question": "Identify the part of speech of the underlined word: 'The man **who** called is here.'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Personal pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Who' introduces a relative clause describing 'the man'. It is a relative pronoun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 5,
+    "question": "Identify the part of speech of the underlined word: '**This** is my pen.'",
+    "options": [
+      { "id": "a", "text": "Personal pronoun" },
+      { "id": "b", "text": "Demonstrative pronoun" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Interrogative pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'This' points to a specific thing. It is a demonstrative pronoun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 6,
+    "question": "Identify the part of speech of the underlined word: '**Some** are born great.'",
+    "options": [
+      { "id": "a", "text": "Personal pronoun" },
+      { "id": "b", "text": "Indefinite pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Relative pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Some' refers to an unspecified number of people. It is an indefinite pronoun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 7,
+    "question": "Identify the part of speech of the underlined word: 'He **himself** did it.'",
+    "options": [
+      { "id": "a", "text": "Personal pronoun" },
+      { "id": "b", "text": "Reflexive pronoun" },
+      { "id": "c", "text": "Emphatic pronoun" },
+      { "id": "d", "text": "Relative pronoun" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Himself' emphasizes the subject 'he'. It is an emphatic pronoun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 8,
+    "question": "Identify the part of speech of the underlined word: 'The **more** you read, the **more** you learn.'",
+    "options": [
+      { "id": "a", "text": "Adjective / Adverb" },
+      { "id": "b", "text": "Adverb / Adverb" },
+      { "id": "c", "text": "Adjective / Adjective" },
+      { "id": "d", "text": "Noun / Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Both 'more' modify verbs ('read', 'learn'), functioning as adverbs of degree.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 9,
+    "question": "Identify the part of speech of the underlined word: 'She arrived **before** noon.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Before' is followed by a noun 'noon', showing time relationship. It is a preposition.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 10,
+    "question": "Identify the part of speech of the underlined word: 'She arrived **before** the meeting started.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Before' connects two clauses ('She arrived' and 'the meeting started'). It is a conjunction.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 11,
+    "question": "Identify the part of speech of the underlined word: 'He has **not** come **yet**.'",
+    "options": [
+      { "id": "a", "text": "Adverb / Adverb" },
+      { "id": "b", "text": "Adverb / Conjunction" },
+      { "id": "c", "text": "Conjunction / Adverb" },
+      { "id": "d", "text": "Preposition / Adverb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Not' negates the verb 'has come'. 'Yet' modifies the verb phrase. Both are adverbs.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 12,
+    "question": "Identify the part of speech of the underlined word: 'The **elder** brother is tall.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Noun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Elder' describes the noun 'brother'. It is an adjective (comparative form of old).",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 13,
+    "question": "Identify the part of speech of the underlined word: 'He is the **eldest** son.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Noun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Eldest' describes the noun 'son'. It is an adjective (superlative form of old).",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 14,
+    "question": "Identify the part of speech of the underlined word: '**Running** water is fresh.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Participle" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Running' describes 'water' and is formed from a verb. It is a present participle functioning as an adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "participles"]
+  },
+  {
+    "id": 15,
+    "question": "Identify the part of speech of the underlined word: '**Swimming** is good exercise.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Participle" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Swimming' acts as the subject of the sentence. It is a gerund (verb + -ing functioning as noun).",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "gerunds"]
+  },
+  {
+    "id": 16,
+    "question": "Identify the part of speech of the underlined word: 'I like **reading** books.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Participle" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Reading' is the object of 'like'. It is a gerund functioning as a noun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "gerunds"]
+  },
+  {
+    "id": 17,
+    "question": "Identify the part of speech of the underlined word: 'The **broken** window was fixed.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Past participle" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Broken' describes 'window' and is the past participle of 'break'. It functions as an adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "participles"]
+  },
+  {
+    "id": 18,
+    "question": "Identify the part of speech of the underlined word: 'He kept **walking**.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Present participle" },
+      { "id": "d", "text": "Infinitive" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Walking' follows 'kept' and shows continuous action. It is a present participle.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "participles"]
+  },
+  {
+    "id": 19,
+    "question": "Identify the part of speech of the underlined word: 'To **err** is human.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Infinitive" },
+      { "id": "d", "text": "Participle" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'To err' is the subject of the sentence. It is an infinitive functioning as a noun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "infinitives"]
+  },
+  {
+    "id": 20,
+    "question": "Identify the part of speech of the underlined word: 'I want **to go**.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Gerund" },
+      { "id": "c", "text": "Infinitive" },
+      { "id": "d", "text": "Participle" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'To go' is the object of 'want'. It is an infinitive functioning as a noun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "infinitives"]
+  },
+  {
+    "id": 21,
+    "question": "Identify the part of speech of the underlined word: '**Neither** of them came.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Neither' stands for 'not either one' and functions as a pronoun here.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 22,
+    "question": "Identify the part of speech of the underlined word: '**Either** you go or I go.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Either...or' connects two clauses. It is a correlative conjunction.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 23,
+    "question": "Identify the part of speech of the underlined word: 'He is **both** tall and strong.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Both...and' connects two adjectives. It is a correlative conjunction.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 24,
+    "question": "Identify the part of speech of the underlined word: '**Not only** he came **but also** brought gifts.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Preposition" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Not only...but also' connects two clauses. It is a correlative conjunction.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 25,
+    "question": "Identify the part of speech of the underlined word: 'The **rich** should help the **poor**.'",
+    "options": [
+      { "id": "a", "text": "Adjective / Adjective" },
+      { "id": "b", "text": "Noun / Noun" },
+      { "id": "c", "text": "Adjective / Noun" },
+      { "id": "d", "text": "Noun / Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'The rich' and 'the poor' function as nouns (groups of people). Adjectives used as nouns.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 26,
+    "question": "Identify the part of speech of the underlined word: '**Since** morning, he is waiting.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Since' is followed by a noun 'morning', showing time. It is a preposition.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 27,
+    "question": "Identify the part of speech of the underlined word: '**Since** he came, I am happy.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Since' connects two clauses ('he came' and 'I am happy'). It is a conjunction.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 28,
+    "question": "Identify the part of speech of the underlined word: 'He has **since** left.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Since' modifies the verb 'left', telling when. It is an adverb of time.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 29,
+    "question": "Identify the part of speech of the underlined word: '**After** the rain, the sun shone.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'After' is followed by a noun 'the rain'. It is a preposition.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 30,
+    "question": "Identify the part of speech of the underlined word: '**After** he left, she cried.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'After' connects two clauses ('he left' and 'she cried'). It is a conjunction.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 31,
+    "question": "Identify the part of speech of the underlined word: 'He came **after**.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'After' modifies the verb 'came', telling when. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 32,
+    "question": "Identify the part of speech of the underlined word: 'The **up** train is late.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Up' describes the noun 'train'. It is an adjective here.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 33,
+    "question": "Identify the part of speech of the underlined word: 'Prices **went up**.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Up' modifies the verb 'went', telling direction. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 34,
+    "question": "Identify the part of speech of the underlined word: 'He **up** and left.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Up' functions as a verb here (colloquial), meaning 'got up'.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 35,
+    "question": "Identify the part of speech of the underlined word: '**Little** did he know.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Little' modifies the verb 'did know', meaning 'not at all'. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 36,
+    "question": "Identify the part of speech of the underlined word: 'A **little** knowledge is dangerous.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Little' describes the noun 'knowledge'. It is an adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 37,
+    "question": "Identify the part of speech of the underlined word: 'He cares **little** for money.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Little' modifies the verb 'cares', telling how much. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 38,
+    "question": "Identify the part of speech of the underlined word: '**Much** water is wasted.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Much' describes the uncountable noun 'water'. It is an adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 39,
+    "question": "Identify the part of speech of the underlined word: 'He talks **too much**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Much' modifies the verb 'talks', telling how much. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 40,
+    "question": "Identify the part of speech of the underlined word: '**Enough** food was served.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Enough' describes the noun 'food'. It is an adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 41,
+    "question": "Identify the part of speech of the underlined word: 'He is **old enough** to vote.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Pronoun" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Enough' modifies the adjective 'old', telling to what degree. It is an adverb.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 42,
+    "question": "Identify the part of speech of the underlined word: '**What** a beautiful day!'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Exclamatory adjective" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Demonstrative pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'What' expresses strong emotion and modifies 'day'. It is an exclamatory adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 43,
+    "question": "Identify the part of speech of the underlined word: '**Which** way did he go?'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Interrogative adjective" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Demonstrative adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Which' modifies the noun 'way' and asks a question. It is an interrogative adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 44,
+    "question": "Identify the part of speech of the underlined word: '**Whose** book is this?'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Interrogative adjective" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Possessive pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Whose' modifies the noun 'book' and asks a question. It is an interrogative adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 45,
+    "question": "Identify the part of speech of the underlined word: '**Each** student got a prize.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Each' modifies the noun 'student'. It is a distributive adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 46,
+    "question": "Identify the part of speech of the underlined word: '**Each** of them got a prize.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Each' stands alone as the subject. It is a distributive pronoun.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 47,
+    "question": "Identify the part of speech of the underlined word: '**Every** child likes sweets.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Every' modifies the noun 'child'. It is a distributive adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 48,
+    "question": "Identify the part of speech of the underlined word: '**Either** road leads there.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Conjunction" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Either' modifies the noun 'road'. It is a distributive adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 49,
+    "question": "Identify the part of speech of the underlined word: '**Neither** answer is correct.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Conjunction" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Neither' modifies the noun 'answer'. It is a distributive adjective.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 50,
+    "question": "Identify the part of speech of the underlined word: 'He **daily** walks five miles.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Daily' modifies the verb 'walks', telling how often. It is an adverb of frequency.",
+    "difficulty": "medium",
+    "topics": ["parts-of-speech", "adverbs"]
+  }
+]

@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "Identify the part of speech of the underlined word: 'The **quick** brown fox jumps.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Quick' describes the noun 'fox', so it is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 2,
+    "question": "Identify the part of speech of the underlined word: 'She runs **fast**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Fast' modifies the verb 'runs', telling how she runs. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 3,
+    "question": "Identify the part of speech of the underlined word: '**Wow!** That's amazing.'",
+    "options": [
+      { "id": "a", "text": "Interjection" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Wow!' expresses sudden emotion. It is an interjection.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 4,
+    "question": "Identify the part of speech of the underlined word: 'The cat sat **on** the mat.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'On' shows the relationship between 'sat' and 'the mat'. It is a preposition.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 5,
+    "question": "Identify the part of speech of the underlined word: '**He** is my brother.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'He' replaces a noun (a person's name). It is a pronoun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 6,
+    "question": "Identify the part of speech of the underlined word: 'The **beautiful** flower bloomed.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Beautiful' describes the noun 'flower'. It is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 7,
+    "question": "Identify the part of speech of the underlined word: 'They **play** football.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Play' shows the action performed by 'they'. It is a verb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 8,
+    "question": "Identify the part of speech of the underlined word: '**And** she left.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Interjection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'And' connects words or clauses. It is a conjunction.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 9,
+    "question": "Identify the part of speech of the underlined word: 'The **dog** barked loudly.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Dog' names an animal. It is a noun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 10,
+    "question": "Identify the part of speech of the underlined word: 'She spoke **softly**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Softly' modifies the verb 'spoke', telling how she spoke. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 11,
+    "question": "Identify the part of speech of the underlined word: '**Oh!** I didn't see you.'",
+    "options": [
+      { "id": "a", "text": "Interjection" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Oh!' expresses surprise. It is an interjection.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 12,
+    "question": "Identify the part of speech of the underlined word: 'The book is **under** the table.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Under' shows the position of the book relative to the table. It is a preposition.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 13,
+    "question": "Identify the part of speech of the underlined word: '**She** loves music.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'She' replaces a female person's name. It is a pronoun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 14,
+    "question": "Identify the part of speech of the underlined word: 'The **red** car is fast.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Red' describes the noun 'car'. It is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 15,
+    "question": "Identify the part of speech of the underlined word: 'Birds **fly** high.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Fly' shows the action of birds. It is a verb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 16,
+    "question": "Identify the part of speech of the underlined word: '**But** he stayed.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Interjection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'But' connects contrasting ideas. It is a conjunction.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 17,
+    "question": "Identify the part of speech of the underlined word: 'The **teacher** taught well.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Teacher' names a person. It is a noun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 18,
+    "question": "Identify the part of speech of the underlined word: 'He ran **quickly**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Quickly' modifies the verb 'ran', telling how he ran. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 19,
+    "question": "Identify the part of speech of the underlined word: '**Alas!** He is dead.'",
+    "options": [
+      { "id": "a", "text": "Interjection" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Alas!' expresses grief. It is an interjection.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 20,
+    "question": "Identify the part of speech of the underlined word: 'The pen is **on** the desk.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'On' shows the position of the pen relative to the desk. It is a preposition.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 21,
+    "question": "Identify the part of speech of the underlined word: '**It** is raining.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'It' replaces a thing or situation. It is a pronoun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 22,
+    "question": "Identify the part of speech of the underlined word: 'A **happy** child smiles.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Happy' describes the noun 'child'. It is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 23,
+    "question": "Identify the part of speech of the underlined word: 'We **eat** rice.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Eat' shows the action performed by 'we'. It is a verb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 24,
+    "question": "Identify the part of speech of the underlined word: '**Or** you can wait.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Interjection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Or' presents an alternative. It is a conjunction.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 25,
+    "question": "Identify the part of speech of the underlined word: 'The **sun** shines.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Sun' names a celestial body. It is a noun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 26,
+    "question": "Identify the part of speech of the underlined word: 'She sings **sweetly**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Sweetly' modifies the verb 'sings', telling how she sings. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 27,
+    "question": "Identify the part of speech of the underlined word: '**Hurrah!** We won.'",
+    "options": [
+      { "id": "a", "text": "Interjection" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Hurrah!' expresses joy. It is an interjection.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 28,
+    "question": "Identify the part of speech of the underlined word: 'The cat is **under** the bed.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Under' shows the position of the cat relative to the bed. It is a preposition.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 29,
+    "question": "Identify the part of speech of the underlined word: '**They** are friends.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'They' replaces the names of people. It is a pronoun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 30,
+    "question": "Identify the part of speech of the underlined word: 'The **old** man walked.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Old' describes the noun 'man'. It is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 31,
+    "question": "Identify the part of speech of the underlined word: 'Fish **swim**.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Swim' shows the action of fish. It is a verb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 32,
+    "question": "Identify the part of speech of the underlined word: '**Because** it rained, we stayed.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Interjection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Because' connects the reason with the result. It is a conjunction.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 33,
+    "question": "Identify the part of speech of the underlined word: 'The **flower** is pretty.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Flower' names a plant. It is a noun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 34,
+    "question": "Identify the part of speech of the underlined word: 'He works **hard**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Hard' modifies the verb 'works', telling how he works. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 35,
+    "question": "Identify the part of speech of the underlined word: '**Ouch!** That hurts.'",
+    "options": [
+      { "id": "a", "text": "Interjection" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Ouch!' expresses pain. It is an interjection.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 36,
+    "question": "Identify the part of speech of the underlined word: 'The keys are **in** the bag.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'In' shows the location of the keys relative to the bag. It is a preposition.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 37,
+    "question": "Identify the part of speech of the underlined word: '**We** study English.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'We' replaces the names of the speakers. It is a pronoun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 38,
+    "question": "Identify the part of speech of the underlined word: 'A **large** elephant walked.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Large' describes the noun 'elephant'. It is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 39,
+    "question": "Identify the part of speech of the underlined word: 'Children **play**.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Play' shows the action of children. It is a verb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 40,
+    "question": "Identify the part of speech of the underlined word: '**So** he went home.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Interjection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'So' connects the reason with the result. It is a conjunction.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 41,
+    "question": "Identify the part of speech of the underlined word: 'The **book** is new.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Book' names an object. It is a noun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 42,
+    "question": "Identify the part of speech of the underlined word: 'She danced **gracefully**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Gracefully' modifies the verb 'danced', telling how she danced. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 43,
+    "question": "Identify the part of speech of the underlined word: '**Wow!** What a view.'",
+    "options": [
+      { "id": "a", "text": "Interjection" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Wow!' expresses amazement. It is an interjection.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 44,
+    "question": "Identify the part of speech of the underlined word: 'The bird is **on** the branch.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'On' shows the position of the bird relative to the branch. It is a preposition.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 45,
+    "question": "Identify the part of speech of the underlined word: '**I** am happy.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Pronoun" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'I' refers to the speaker. It is a pronoun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 46,
+    "question": "Identify the part of speech of the underlined word: 'The **blue** sky is clear.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Blue' describes the noun 'sky'. It is an adjective.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 47,
+    "question": "Identify the part of speech of the underlined word: 'Dogs **bark**.'",
+    "options": [
+      { "id": "a", "text": "Noun" },
+      { "id": "b", "text": "Verb" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Bark' shows the action of dogs. It is a verb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "verbs"]
+  },
+  {
+    "id": 48,
+    "question": "Identify the part of speech of the underlined word: '**Yet** he tries.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Interjection" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Yet' connects contrasting ideas. It is a conjunction.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 49,
+    "question": "Identify the part of speech of the underlined word: 'The **car** stopped.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Car' names a vehicle. It is a noun.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 50,
+    "question": "Identify the part of speech of the underlined word: 'He speaks **clearly**.'",
+    "options": [
+      { "id": "a", "text": "Adjective" },
+      { "id": "b", "text": "Adverb" },
+      { "id": "c", "text": "Verb" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Clearly' modifies the verb 'speaks', telling how he speaks. It is an adverb.",
+    "difficulty": "easy",
+    "topics": ["parts-of-speech", "adverbs"]
+  }
+]

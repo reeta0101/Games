@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "question": "Identify the part of speech of the underlined word: 'The **then** president addressed the nation.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Conjunction" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Then' modifies the noun 'president', meaning 'at that time'. It functions as an adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 2,
+    "question": "Identify the part of speech of the underlined word: 'He did it **then**.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Noun" },
+      { "id": "d", "text": "Conjunction" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Then' modifies the verb 'did', telling when. It is an adverb of time.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 3,
+    "question": "Identify the part of speech of the underlined word: '**Then** he left.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Preposition" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Then' modifies the verb 'left', indicating sequence. It is an adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 4,
+    "question": "Identify the part of speech of the underlined word: 'If you go, **then** I will stay.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Preposition" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Then' connects the conditional clause to the main clause. It functions as a conjunction.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 5,
+    "question": "Identify the part of speech of the underlined word: 'The **above** sentence is wrong.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Above' modifies the noun 'sentence'. It is an adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 6,
+    "question": "Identify the part of speech of the underlined word: 'The example **above** is clear.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Above' modifies the verb 'is' (understood), telling where. It is an adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 7,
+    "question": "Identify the part of speech of the underlined word: 'He lives **above** the shop.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Above' is followed by a noun 'the shop', showing position. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 8,
+    "question": "Identify the part of speech of the underlined word: 'The **below** list is complete.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Below' modifies the noun 'list'. It is an adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 9,
+    "question": "Identify the part of speech of the underlined word: 'See the diagram **below**.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Below' modifies the verb 'see' (understood), telling where. It is an adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 10,
+    "question": "Identify the part of speech of the underlined word: 'The valley **below** is beautiful.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Adjective" },
+      { "id": "c", "text": "Preposition" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Below' modifies the noun 'valley' from a post-position. It functions as an adverb/adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 11,
+    "question": "Identify the part of speech of the underlined word: '**Inside**, it was warm.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Inside' modifies the verb 'was', telling where. It is an adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 12,
+    "question": "Identify the part of speech of the underlined word: 'The **inside** of the box is empty.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Inside' is the subject of the sentence, preceded by 'the'. It is a noun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 13,
+    "question": "Identify the part of speech of the underlined word: 'He went **inside** the house.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Inside' is followed by a noun 'the house', showing position. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 14,
+    "question": "Identify the part of speech of the underlined word: 'The **outside** walls are painted.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Outside' modifies the noun 'walls'. It is an adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 15,
+    "question": "Identify the part of speech of the underlined word: 'He waited **outside**.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Outside' modifies the verb 'waited', telling where. It is an adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 16,
+    "question": "Identify the part of speech of the underlined word: 'The **past** is gone.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "d",
+    "explanation": "'Past' is the subject, preceded by 'the'. It is a noun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "nouns"]
+  },
+  {
+    "id": 17,
+    "question": "Identify the part of speech of the underlined word: 'In **past** years, it was different.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Past' modifies the noun 'years'. It is an adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 18,
+    "question": "Identify the part of speech of the underlined word: 'He walked **past** the door.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Noun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Past' is followed by a noun 'the door', showing movement. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 19,
+    "question": "Identify the part of speech of the underlined word: 'The weeks **past** were busy.'",
+    "options": [
+      { "id": "a", "text": "Adverb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adjective" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Past' modifies the noun 'weeks' from a post-position. It functions as an adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 20,
+    "question": "Identify the part of speech of the underlined word: '**Since** when have you been here?'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Since' modifies the adverb 'when', telling from what time. It is an adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 21,
+    "question": "Identify the part of speech of the underlined word: 'He is **like** his father.'",
+    "options": [
+      { "id": "a", "text": "Verb" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Like' is followed by a noun 'his father', showing resemblance. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 22,
+    "question": "Identify the part of speech of the underlined word: 'He walks **like** his father **does**.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Verb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Like' connects two clauses ('He walks' and 'his father does'). It is a conjunction.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 23,
+    "question": "Identify the part of speech of the underlined word: 'A man **like** him is rare.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Like' is followed by a pronoun 'him', showing resemblance. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 24,
+    "question": "Identify the part of speech of the underlined word: '**As** you sow, so shall you reap.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'As' connects two clauses ('you sow' and 'so shall you reap'). It is a conjunction.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 25,
+    "question": "Identify the part of speech of the underlined word: 'He works **as** a teacher.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'As' is followed by a noun phrase 'a teacher', showing role. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 26,
+    "question": "Identify the part of speech of the underlined word: '**As** he was tired, he slept.'",
+    "options": [
+      { "id": "a", "text": "Preposition" },
+      { "id": "b", "text": "Conjunction" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'As' connects two clauses ('he was tired' and 'he slept'). It is a conjunction.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 27,
+    "question": "Identify the part of speech of the underlined word: '**But** for your help, I would fail.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'But for' means 'except for'. 'But' is followed by a noun phrase. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 28,
+    "question": "Identify the part of speech of the underlined word: 'He tried **but** failed.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'But' connects two clauses ('He tried' and 'failed'). It is a coordinating conjunction.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 29,
+    "question": "Identify the part of speech of the underlined word: 'All **but** him agreed.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Adverb" },
+      { "id": "d", "text": "Adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'But' means 'except' and is followed by a pronoun 'him'. It is a preposition.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "prepositions"]
+  },
+  {
+    "id": 30,
+    "question": "Identify the part of speech of the underlined word: 'There is **none** but likes him.'",
+    "options": [
+      { "id": "a", "text": "Conjunction" },
+      { "id": "b", "text": "Preposition" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'But' here means 'who...not' and introduces a relative clause. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 31,
+    "question": "Identify the part of speech of the underlined word: '**That** he is honest is known.'",
+    "options": [
+      { "id": "a", "text": "Demonstrative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'That' introduces a noun clause functioning as subject. It is a conjunction (subordinating).",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 32,
+    "question": "Identify the part of speech of the underlined word: 'He said **that** he would come.'",
+    "options": [
+      { "id": "a", "text": "Demonstrative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'That' introduces a noun clause as object of 'said'. It is a conjunction.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "conjunctions"]
+  },
+  {
+    "id": 33,
+    "question": "Identify the part of speech of the underlined word: 'The book **that** I read was good.'",
+    "options": [
+      { "id": "a", "text": "Demonstrative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'That' refers to 'book' and introduces a relative clause. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 34,
+    "question": "Identify the part of speech of the underlined word: '**That** is my book.'",
+    "options": [
+      { "id": "a", "text": "Demonstrative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'That' points to a specific thing and stands alone. It is a demonstrative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 35,
+    "question": "Identify the part of speech of the underlined word: '**That** book is mine.'",
+    "options": [
+      { "id": "a", "text": "Demonstrative pronoun" },
+      { "id": "b", "text": "Demonstrative adjective" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Conjunction" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'That' modifies the noun 'book' and points to it. It is a demonstrative adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 36,
+    "question": "Identify the part of speech of the underlined word: 'He is **so** tired **that** he cannot walk.'",
+    "options": [
+      { "id": "a", "text": "Adverb / Conjunction" },
+      { "id": "b", "text": "Adverb / Relative pronoun" },
+      { "id": "c", "text": "Conjunction / Conjunction" },
+      { "id": "d", "text": "Adverb / Adverb" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'So' modifies 'tired' (adverb of degree). 'That' introduces a result clause (conjunction).",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs", "conjunctions"]
+  },
+  {
+    "id": 37,
+    "question": "Identify the part of speech of the underlined word: '**What** cannot be cured must be endured.'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'What' means 'that which' and introduces a noun clause as subject. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 38,
+    "question": "Identify the part of speech of the underlined word: '**What** he said is true.'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'What' means 'that which' and introduces a noun clause. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 39,
+    "question": "Identify the part of speech of the underlined word: '**What**! Are you serious?'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Interjection" },
+      { "id": "d", "text": "Adverb" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'What' expresses surprise/emotion. It is an interjection.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "interjections"]
+  },
+  {
+    "id": 40,
+    "question": "Identify the part of speech of the underlined word: '**Who** knows the answer?'",
+    "options": [
+      { "id": "a", "text": "Relative pronoun" },
+      { "id": "b", "text": "Interrogative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Personal pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Who' asks a question and stands alone. It is an interrogative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 41,
+    "question": "Identify the part of speech of the underlined word: 'The man **who** called is here.'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Personal pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Who' refers to 'man' and introduces a relative clause. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 42,
+    "question": "Identify the part of speech of the underlined word: '**Who** do you think will win?'",
+    "options": [
+      { "id": "a", "text": "Relative pronoun" },
+      { "id": "b", "text": "Interrogative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Personal pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Who' asks a question (subject of 'will win'). It is an interrogative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 43,
+    "question": "Identify the part of speech of the underlined word: 'He is **who** he is.'",
+    "options": [
+      { "id": "a", "text": "Relative pronoun" },
+      { "id": "b", "text": "Interrogative pronoun" },
+      { "id": "c", "text": "Personal pronoun" },
+      { "id": "d", "text": "Demonstrative pronoun" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Who' introduces a noun clause as complement. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 44,
+    "question": "Identify the part of speech of the underlined word: '**Which** of these is yours?'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Interrogative adjective" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Which' asks a question and stands alone (of these). It is an interrogative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 45,
+    "question": "Identify the part of speech of the underlined word: 'The book **which** I bought is new.'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Relative pronoun" },
+      { "id": "c", "text": "Demonstrative pronoun" },
+      { "id": "d", "text": "Interrogative adjective" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Which' refers to 'book' and introduces a relative clause. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 46,
+    "question": "Identify the part of speech of the underlined word: '**Whose** car is this?'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Interrogative adjective" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Possessive pronoun" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Whose' modifies the noun 'car' and asks a question. It is an interrogative adjective.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adjectives"]
+  },
+  {
+    "id": 47,
+    "question": "Identify the part of speech of the underlined word: 'The man **whose** car was stolen is here.'",
+    "options": [
+      { "id": "a", "text": "Interrogative pronoun" },
+      { "id": "b", "text": "Interrogative adjective" },
+      { "id": "c", "text": "Relative pronoun" },
+      { "id": "d", "text": "Possessive pronoun" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Whose' refers to 'man' and introduces a relative clause showing possession. It is a relative pronoun.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "pronouns"]
+  },
+  {
+    "id": 48,
+    "question": "Identify the part of speech of the underlined word: '**How** did you do it?'",
+    "options": [
+      { "id": "a", "text": "Interrogative adverb" },
+      { "id": "b", "text": "Relative adverb" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Preposition" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'How' asks about manner. It is an interrogative adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 49,
+    "question": "Identify the part of speech of the underlined word: 'This is **how** it works.'",
+    "options": [
+      { "id": "a", "text": "Interrogative adverb" },
+      { "id": "b", "text": "Relative adverb" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Preposition" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'How' introduces a noun clause as complement. It is a relative adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  },
+  {
+    "id": 50,
+    "question": "Identify the part of speech of the underlined word: '**Why** he did it is unknown.'",
+    "options": [
+      { "id": "a", "text": "Interrogative adverb" },
+      { "id": "b", "text": "Relative adverb" },
+      { "id": "c", "text": "Conjunction" },
+      { "id": "d", "text": "Preposition" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Why' introduces a noun clause as subject. It is a relative adverb.",
+    "difficulty": "hard",
+    "topics": ["parts-of-speech", "adverbs"]
+  }
+]

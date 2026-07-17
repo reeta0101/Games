@@ -297,16 +297,51 @@ const Quiz = ({
           )}
         </div>
 
-        {/* Right side: Bookmark button */}
-        <button
-          className={`mark-btn ${isBookmarked ? 'marked' : ''}`}
-          onClick={handleBookmark}
-          aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark question'}
-        >
-          {isBookmarked ? <FaBookmark size={12} /> : <FaRegBookmark size={12} />}
-          <span>{isBookmarked ? 'Saved' : 'Bookmark'}</span>
-          <span className="kbd hidden md:inline">M</span>
-        </button>
+        {/* Right side: Votes & Bookmark */}
+        <div className="flex items-center gap-2 flex-wrap justify-end">
+          {/* Thumbs Up */}
+          <button
+            onClick={() => handleVote('up')}
+            disabled={voteLoading}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 ${
+              myVote === 'up'
+                ? 'bg-green-500/25 text-green-400 border border-green-500/40 scale-105'
+                : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-green-500/15 hover:text-green-400 hover:border-green-500/30'
+            }`}
+            title="Good question"
+            aria-label="Vote up - good question"
+          >
+            <FaThumbsUp size={12} />
+            <span>{upCount > 0 ? upCount : ''}</span>
+          </button>
+
+          {/* Thumbs Down */}
+          <button
+            onClick={() => handleVote('down')}
+            disabled={voteLoading}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 ${
+              myVote === 'down'
+                ? 'bg-red-500/25 text-red-400 border border-red-500/40 scale-105'
+                : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-red-500/15 hover:text-red-400 hover:border-red-500/30'
+            }`}
+            title="Report issue / wrong question"
+            aria-label="Vote down - report issue"
+          >
+            <FaThumbsDown size={12} />
+            <span>{downCount > 0 ? downCount : ''}</span>
+          </button>
+
+          {/* Bookmark button */}
+          <button
+            className={`mark-btn ${isBookmarked ? 'marked' : ''}`}
+            onClick={handleBookmark}
+            aria-label={isBookmarked ? 'Remove bookmark' : 'Bookmark question'}
+          >
+            {isBookmarked ? <FaBookmark size={12} /> : <FaRegBookmark size={12} />}
+            <span>{isBookmarked ? 'Saved' : 'Bookmark'}</span>
+            <span className="kbd hidden md:inline">M</span>
+          </button>
+        </div>
       </div>
 
       <h5 className="mb-6 leading-relaxed font-semibold text-white" style={{ fontSize: '1.15rem', letterSpacing: '-0.01em' }}>
@@ -406,69 +441,7 @@ const Quiz = ({
         )}
       </AnimatePresence>
 
-      {/* ── VOTE + FEEDBACK BAR ── */}
-      <AnimatePresence>
-        {(isAnswered && (quizMode === 'practice' || testSubmitted)) && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-5 flex items-center justify-between gap-3 rounded-xl px-4 py-3"
-            style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
-          >
-            <span className="text-xs text-slate-500 font-medium hidden sm:block">Was this question helpful?</span>
 
-            <div className="flex items-center gap-2 ml-auto">
-              {/* Thumbs Up */}
-              <button
-                onClick={() => handleVote('up')}
-                disabled={voteLoading}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 ${
-                  myVote === 'up'
-                    ? 'bg-green-500/25 text-green-400 border border-green-500/40 scale-105'
-                    : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-green-500/15 hover:text-green-400 hover:border-green-500/30'
-                }`}
-                title="Good question"
-                aria-label="Vote up - good question"
-              >
-                <FaThumbsUp size={12} />
-                <span>{upCount > 0 ? upCount : ''}</span>
-              </button>
-
-              {/* Thumbs Down */}
-              <button
-                onClick={() => handleVote('down')}
-                disabled={voteLoading}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 ${
-                  myVote === 'down'
-                    ? 'bg-red-500/25 text-red-400 border border-red-500/40 scale-105'
-                    : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-red-500/15 hover:text-red-400 hover:border-red-500/30'
-                }`}
-                title="Report issue / wrong question"
-                aria-label="Vote down - report issue"
-              >
-                <FaThumbsDown size={12} />
-                <span>{downCount > 0 ? downCount : ''}</span>
-              </button>
-
-              {/* Vote confirmation */}
-              <AnimatePresence>
-                {myVote && (
-                  <motion.span
-                    initial={{ opacity: 0, x: -5 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0 }}
-                    className={`text-[10px] font-bold ${myVote === 'up' ? 'text-green-400' : 'text-red-400'}`}
-                  >
-                    {myVote === 'up' ? '✓ Liked' : '✓ Reported'}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Next button */}
       <AnimatePresence>

@@ -754,7 +754,8 @@ export const quizGames = {
     ranges: [
       { key: "20", label: "1 to 20" },
       { key: "50", label: "1 to 50" },
-      { key: "100", label: "1 to 100" }
+      { key: "100", label: "1 to 100" },
+      { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 5000) / 3000;
@@ -763,8 +764,15 @@ export const quizGames = {
       return 4;
     },
     generateQuestion: (options = {}) => {
-      const max = options.range ? parseInt(options.range, 10) : 100;
-      const num = Math.floor(Math.random() * max) + 1;
+      let min = 1;
+      let max = 100;
+      if (options.range === "custom") {
+        min = options.customRange?.min || 1;
+        max = options.customRange?.max || 100;
+      } else if (options.range) {
+        max = parseInt(options.range, 10);
+      }
+      const num = Math.floor(Math.random() * (max - min + 1)) + min;
       const correct = num * num;
 
       return {
@@ -848,14 +856,32 @@ export const quizGames = {
     cardBadge: "Chemistry",
     cardTitle: "Element → (Atomic Number, Atomic Weight)",
     cardDescription: "Match elements to their atomic number and weight.",
+    ranges: [
+      { key: "50", label: "Elements 1-50" },
+      { key: "118", label: "Elements 1-118" },
+      { key: "custom", label: "Custom", isCustom: true }
+    ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 6000) / 3000;
       if (elapsedSec < third) return 12;
       if (elapsedSec < third * 2) return 8;
       return 4;
     },
-    generateQuestion: () => {
-      const element = periodicElements[Math.floor(Math.random() * periodicElements.length)];
+    generateQuestion: (options = {}) => {
+      let min = 1;
+      let max = 118;
+      if (options.range === "custom") {
+        min = Math.max(1, options.customRange?.min || 1);
+        max = Math.min(118, Math.max(min, options.customRange?.max || 118));
+      } else if (options.range) {
+        max = parseInt(options.range, 10);
+      }
+      
+      const validElements = periodicElements.filter(e => e.atomicNumber >= min && e.atomicNumber <= max);
+      const element = validElements.length > 0
+        ? validElements[Math.floor(Math.random() * validElements.length)]
+        : periodicElements[0];
+
       const correct = formatPeriodicOption(element);
 
       return {
@@ -879,14 +905,31 @@ export const quizGames = {
     cardBadge: "Chemistry",
     cardTitle: "Element Name → Element Symbol",
     cardDescription: "Name to symbol — C, Fe, Au, and more.",
+    ranges: [
+      { key: "50", label: "Elements 1-50" },
+      { key: "118", label: "Elements 1-118" },
+      { key: "custom", label: "Custom", isCustom: true }
+    ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 6000) / 3000;
       if (elapsedSec < third) return 12;
       if (elapsedSec < third * 2) return 8;
       return 4;
     },
-    generateQuestion: () => {
-      const element = periodicElements[Math.floor(Math.random() * periodicElements.length)];
+    generateQuestion: (options = {}) => {
+      let min = 1;
+      let max = 118;
+      if (options.range === "custom") {
+        min = Math.max(1, options.customRange?.min || 1);
+        max = Math.min(118, Math.max(min, options.customRange?.max || 118));
+      } else if (options.range) {
+        max = parseInt(options.range, 10);
+      }
+      
+      const validElements = periodicElements.filter(e => e.atomicNumber >= min && e.atomicNumber <= max);
+      const element = validElements.length > 0
+        ? validElements[Math.floor(Math.random() * validElements.length)]
+        : periodicElements[0];
 
       return {
         display: element.name,
@@ -909,14 +952,28 @@ export const quizGames = {
     cardBadge: "Quant",
     cardTitle: "Cube Quiz",
     cardDescription: "Cubes of numbers from 1 to 30.",
+    ranges: [
+      { key: "10", label: "1 to 10" },
+      { key: "20", label: "1 to 20" },
+      { key: "30", label: "1 to 30" },
+      { key: "custom", label: "Custom", isCustom: true }
+    ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 6000) / 3000;
       if (elapsedSec < third) return 12;
       if (elapsedSec < third * 2) return 8;
       return 4;
     },
-    generateQuestion: () => {
-      const num = Math.floor(Math.random() * 30) + 1;
+    generateQuestion: (options = {}) => {
+      let min = 1;
+      let max = 30;
+      if (options.range === "custom") {
+        min = options.customRange?.min || 1;
+        max = options.customRange?.max || 30;
+      } else if (options.range) {
+        max = parseInt(options.range, 10);
+      }
+      const num = Math.floor(Math.random() * (max - min + 1)) + min;
       const correct = num * num * num;
 
       return {
@@ -1003,18 +1060,33 @@ export const quizGames = {
     cardBadge: "Quant",
     cardTitle: "Prime Number Quiz",
     cardDescription: "Find the prime number in each set.",
+    ranges: [
+      { key: "50", label: "2 to 50" },
+      { key: "100", label: "2 to 100" },
+      { key: "200", label: "2 to 200" },
+      { key: "custom", label: "Custom", isCustom: true }
+    ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 6000) / 3000;
       if (elapsedSec < third) return 12;
       if (elapsedSec < third * 2) return 8;
       return 4;
     },
-    generateQuestion: () => {
-      const prime = getRandomPrime(2, 100);
+    generateQuestion: (options = {}) => {
+      let min = 2;
+      let max = 100;
+      if (options.range === "custom") {
+        min = Math.max(2, options.customRange?.min || 2);
+        max = Math.max(min, options.customRange?.max || 100);
+      } else if (options.range) {
+        max = parseInt(options.range, 10);
+      }
+
+      const prime = getRandomPrime(min, max);
       const composites = new Set();
 
       while (composites.size < 3) {
-        const candidate = Math.floor(Math.random() * 98) + 2;
+        const candidate = Math.floor(Math.random() * (max - min + 1)) + min;
         if (!isPrime(candidate) && candidate !== prime) {
           composites.add(candidate);
         }

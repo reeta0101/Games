@@ -64,6 +64,8 @@ export default function QuizGame({ game }) {
 
   // Range
   const [selectedRange, setSelectedRange] = useState(() => game.ranges ? game.ranges[game.ranges.length - 1].key : null);
+  const [customMin, setCustomMin] = useState(1);
+  const [customMax, setCustomMax] = useState(100);
 
   // Audio hook
   const { playCorrect, playWrong, playStreak, playGameOver } = useAudio();
@@ -269,7 +271,10 @@ export default function QuizGame({ game }) {
 
   const nextQuestion = useCallback(function nextQ() {
     clearTimers();
-    const question = game.generateQuestion({ range: selectedRange });
+    const question = game.generateQuestion({ 
+      range: selectedRange,
+      customRange: { min: customMin, max: customMax }
+    });
     setCurrentQuestion(question);
     setQuestionNum((v) => v + 1);
     setIsAnswered(false);
@@ -323,7 +328,7 @@ export default function QuizGame({ game }) {
         }
       }
     }, 50);
-  }, [clearTimers, endGame, game, activeTimeLimit, challenge, socket, currentUser, guestName, score, correctAnswers, wrongAnswers, selectedRange]);
+  }, [clearTimers, endGame, game, activeTimeLimit, challenge, socket, currentUser, guestName, score, correctAnswers, wrongAnswers, selectedRange, customMin, customMax]);
 
   const startGame = useCallback(() => {
     clearTimers();
@@ -728,6 +733,19 @@ export default function QuizGame({ game }) {
                       );
                     })}
                   </div>
+                  
+                  {selectedRange === "custom" && (
+                    <div className="mt-3 grid grid-cols-2 gap-3">
+                      <label className="block">
+                        <span className="mb-1 block text-xs font-semibold text-slate-400">Min (from)</span>
+                        <input type="number" value={customMin} onChange={e => setCustomMin(Number(e.target.value))} className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-white outline-none focus:border-[#f0e040]/60" />
+                      </label>
+                      <label className="block">
+                        <span className="mb-1 block text-xs font-semibold text-slate-400">Max (to)</span>
+                        <input type="number" value={customMax} onChange={e => setCustomMax(Number(e.target.value))} className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2 text-white outline-none focus:border-[#f0e040]/60" />
+                      </label>
+                    </div>
+                  )}
                 </div>
               )}
 

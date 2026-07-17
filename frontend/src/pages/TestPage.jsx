@@ -42,6 +42,14 @@ const CATEGORIES = [
     bg: "rgba(16,185,129,0.12)",
     border: "rgba(16,185,129,0.35)",
   },
+  {
+    key: "english",
+    label: "English",
+    icon: "📖",
+    color: "#f43f5e",
+    bg: "rgba(244,63,94,0.12)",
+    border: "rgba(244,63,94,0.35)",
+  },
 ];
 
 /* ──────────────────────────────────────────────
@@ -66,16 +74,21 @@ const SUBJECT_META = {
 
   // ── General ───────────────────────────────
   aptitude:               { icon: "🧮", accent: "#eab308", label: "Aptitude",              group: "general" },
-  english:                { icon: "📖", accent: "#f43f5e", label: "English",                group: "general" },
   "biology-exam":         { icon: "🧬", accent: "#84cc16", label: "Biology Exam",           group: "general" },
   "general-knowledge-exam":{ icon: "🌍", accent: "#d97706", label: "GK Exam",              group: "general" },
   quizdata:               { icon: "📋", accent: "#6366f1", label: "Quiz Data",              group: "general" },
+
+  // ── English ───────────────────────────────
+  synonyms:               { icon: "📝", accent: "#0ea5e9", label: "Synonyms",               group: "english" },
+  antonyms:               { icon: "🔄", accent: "#8b5cf6", label: "Antonyms",               group: "english" },
+  pos:                    { icon: "🧩", accent: "#10b981", label: "Parts of Speech",        group: "english" },
 };
 
 const GROUP_LABELS = {
   cs:      { label: "Computer Science", icon: "💻", color: "#3b82f6" },
   company: { label: "Company",          icon: "🏢", color: "#f59e0b" },
   general: { label: "General",          icon: "📚", color: "#10b981" },
+  english: { label: "English",          icon: "📖", color: "#f43f5e" },
 };
 
 const DIFFICULTY_NAMES = ["easy", "medium", "hard"];

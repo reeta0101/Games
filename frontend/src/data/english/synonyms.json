@@ -1,0 +1,242 @@
+[
+  {
+    "id": 51,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'ABANDON'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Forsake"
+      },
+      {
+        "id": "b",
+        "text": "Keep"
+      },
+      {
+        "id": "c",
+        "text": "Cherish"
+      },
+      {
+        "id": "d",
+        "text": "Enlarge"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Abandon' means to cease to support or look after (someone); to desert. 'Forsake' is a direct synonym."
+  },
+  {
+    "id": 52,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'LUCID'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Confusing"
+      },
+      {
+        "id": "b",
+        "text": "Clear"
+      },
+      {
+        "id": "c",
+        "text": "Ambiguous"
+      },
+      {
+        "id": "d",
+        "text": "Dark"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Lucid' means expressed clearly; easy to understand."
+  },
+  {
+    "id": 53,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'BENIGN'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Hostile"
+      },
+      {
+        "id": "b",
+        "text": "Harsh"
+      },
+      {
+        "id": "c",
+        "text": "Gentle"
+      },
+      {
+        "id": "d",
+        "text": "Malignant"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Benign' means gentle, kindly, or not harmful in effect."
+  },
+  {
+    "id": 54,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'CANDID'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Deceitful"
+      },
+      {
+        "id": "b",
+        "text": "Frank"
+      },
+      {
+        "id": "c",
+        "text": "Secretive"
+      },
+      {
+        "id": "d",
+        "text": "Shy"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Candid' means truthful and straightforward; frank."
+  },
+  {
+    "id": 55,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'MITIGATE'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Aggravate"
+      },
+      {
+        "id": "b",
+        "text": "Alleviate"
+      },
+      {
+        "id": "c",
+        "text": "Intensify"
+      },
+      {
+        "id": "d",
+        "text": "Increase"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Mitigate' means make less severe, serious, or painful. 'Alleviate' is a direct synonym."
+  },
+  {
+    "id": 56,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'OBSCURE'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Prominent"
+      },
+      {
+        "id": "b",
+        "text": "Hidden"
+      },
+      {
+        "id": "c",
+        "text": "Clear"
+      },
+      {
+        "id": "d",
+        "text": "Famous"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Obscure' means not discovered or known about; uncertain or hidden."
+  },
+  {
+    "id": 57,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'PRUDENT'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Careless"
+      },
+      {
+        "id": "b",
+        "text": "Wise"
+      },
+      {
+        "id": "c",
+        "text": "Reckless"
+      },
+      {
+        "id": "d",
+        "text": "Foolish"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Prudent' means acting with or showing care and thought for the future; wise."
+  },
+  {
+    "id": 58,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'RUTHLESS'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Merciless"
+      },
+      {
+        "id": "b",
+        "text": "Compassionate"
+      },
+      {
+        "id": "c",
+        "text": "Sympathetic"
+      },
+      {
+        "id": "d",
+        "text": "Kind"
+      }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Ruthless' means having or showing no pity or compassion for others."
+  },
+  {
+    "id": 59,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'TENACIOUS'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Weak"
+      },
+      {
+        "id": "b",
+        "text": "Yielding"
+      },
+      {
+        "id": "c",
+        "text": "Persistent"
+      },
+      {
+        "id": "d",
+        "text": "Fragile"
+      }
+    ],
+    "correctOptionId": "c",
+    "explanation": "'Tenacious' means tending to keep a firm hold of something; clinging or adhering closely; persistent."
+  },
+  {
+    "id": 60,
+    "question": "Synonyms:\n\nChoose the exact synonym of the word 'ZEALOUS'",
+    "options": [
+      {
+        "id": "a",
+        "text": "Apathetic"
+      },
+      {
+        "id": "b",
+        "text": "Enthusiastic"
+      },
+      {
+        "id": "c",
+        "text": "Indifferent"
+      },
+      {
+        "id": "d",
+        "text": "Lazy"
+      }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Zealous' means showing great energy or enthusiasm in pursuit of a cause or an objective."
+  }
+]

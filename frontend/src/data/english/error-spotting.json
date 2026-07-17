@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "question": "Find the error in the sentence: 'She do not understand the instructions given by the teacher.'",
+    "options": [
+      { "id": "a", "text": "She do not" },
+      { "id": "b", "text": "understand the" },
+      { "id": "c", "text": "instructions given" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'She' is a third-person singular subject, so it should take 'does not' instead of 'do not'."
+  },
+  {
+    "id": 2,
+    "question": "Find the error in the sentence: 'One of the boys have forgotten his book.'",
+    "options": [
+      { "id": "a", "text": "One of the boys" },
+      { "id": "b", "text": "have forgotten" },
+      { "id": "c", "text": "his book" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The subject is 'One', which is singular, so the verb should be 'has' instead of 'have'."
+  },
+  {
+    "id": 3,
+    "question": "Find the error in the sentence: 'Neither the manager nor the employees was aware of the new policy.'",
+    "options": [
+      { "id": "a", "text": "Neither the manager" },
+      { "id": "b", "text": "nor the employees" },
+      { "id": "c", "text": "was aware of" },
+      { "id": "d", "text": "the new policy" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "When using 'neither...nor', the verb agrees with the noun closer to it. 'employees' is plural, so it should be 'were aware of'."
+  },
+  {
+    "id": 4,
+    "question": "Find the error in the sentence: 'I am looking forward to meet you at the event.'",
+    "options": [
+      { "id": "a", "text": "I am looking forward" },
+      { "id": "b", "text": "to meet you" },
+      { "id": "c", "text": "at the event" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The phrase 'looking forward to' is followed by a gerund (-ing form). It should be 'to meeting you'."
+  },
+  {
+    "id": 5,
+    "question": "Find the error in the sentence: 'Although he worked hard, but he could not secure a passing grade.'",
+    "options": [
+      { "id": "a", "text": "Although he worked hard" },
+      { "id": "b", "text": "but he could not" },
+      { "id": "c", "text": "secure a passing grade" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The conjunction 'Although' is not followed by 'but'. The correct phrasing removes 'but'."
+  },
+  {
+    "id": 6,
+    "question": "Find the error in the sentence: 'She is more smarter than her younger sister.'",
+    "options": [
+      { "id": "a", "text": "She is" },
+      { "id": "b", "text": "more smarter" },
+      { "id": "c", "text": "than her younger sister" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Using 'more' with 'smarter' creates a double comparative. It should simply be 'smarter'."
+  },
+  {
+    "id": 7,
+    "question": "Find the error in the sentence: 'The committee have decided to approve the proposal.'",
+    "options": [
+      { "id": "a", "text": "The committee" },
+      { "id": "b", "text": "have decided" },
+      { "id": "c", "text": "to approve the proposal" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "In American English, a collective noun like 'committee' acting as a single unit takes a singular verb: 'has decided'."
+  },
+  {
+    "id": 8,
+    "question": "Find the error in the sentence: 'If I was you, I would not accept that offer.'",
+    "options": [
+      { "id": "a", "text": "If I was you" },
+      { "id": "b", "text": "I would not" },
+      { "id": "c", "text": "accept that offer" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "For hypothetical situations (subjunctive mood), use 'were' instead of 'was': 'If I were you'."
+  },
+  {
+    "id": 9,
+    "question": "Find the error in the sentence: 'He goes to school by foot every morning.'",
+    "options": [
+      { "id": "a", "text": "He goes to school" },
+      { "id": "b", "text": "by foot" },
+      { "id": "c", "text": "every morning" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The correct idiom is 'on foot', not 'by foot'."
+  },
+  {
+    "id": 10,
+    "question": "Find the error in the sentence: 'There is many reasons why people choose to exercise daily.'",
+    "options": [
+      { "id": "a", "text": "There is" },
+      { "id": "b", "text": "many reasons why" },
+      { "id": "c", "text": "people choose to exercise daily" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "'Reasons' is plural, so the verb should be 'are': 'There are many reasons'."
+  },
+  {
+    "id": 11,
+    "question": "Find the error in the sentence: 'Scarcely had he reached the station than the train left.'",
+    "options": [
+      { "id": "a", "text": "Scarcely had he" },
+      { "id": "b", "text": "reached the station" },
+      { "id": "c", "text": "than the train left" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The conjunction 'scarcely' pairs with 'when', not 'than'. It should be 'when the train left'."
+  },
+  {
+    "id": 12,
+    "question": "Find the error in the sentence: 'Each of the students are required to submit an essay.'",
+    "options": [
+      { "id": "a", "text": "Each of the students" },
+      { "id": "b", "text": "are required" },
+      { "id": "c", "text": "to submit an essay" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "'Each' is a singular pronoun, so it must be followed by a singular verb: 'is required'."
+  },
+  {
+    "id": 13,
+    "question": "Find the error in the sentence: 'I have visited Paris two years ago.'",
+    "options": [
+      { "id": "a", "text": "I have visited" },
+      { "id": "b", "text": "Paris" },
+      { "id": "c", "text": "two years ago" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Specific time in the past ('two years ago') requires simple past tense: 'I visited', not present perfect."
+  },
+  {
+    "id": 14,
+    "question": "Find the error in the sentence: 'She prefers tea than coffee in the morning.'",
+    "options": [
+      { "id": "a", "text": "She prefers" },
+      { "id": "b", "text": "tea than coffee" },
+      { "id": "c", "text": "in the morning" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The verb 'prefer' is followed by 'to', not 'than': 'prefers tea to coffee'."
+  },
+  {
+    "id": 15,
+    "question": "Find the error in the sentence: 'He didn't gave me any information regarding the meeting.'",
+    "options": [
+      { "id": "a", "text": "He didn't gave me" },
+      { "id": "b", "text": "any information" },
+      { "id": "c", "text": "regarding the meeting" },
+      { "id": "d", "text": "No error" }
+    ],
+    "correctOptionId": "a",
+    "explanation": "After 'did' or 'didn't', the base form of the verb is used: 'didn't give'."
+  }
+]

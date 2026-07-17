@@ -82,6 +82,7 @@ const SUBJECT_META = {
   synonyms:               { icon: "📝", accent: "#0ea5e9", label: "Synonyms",               group: "english" },
   antonyms:               { icon: "🔄", accent: "#8b5cf6", label: "Antonyms",               group: "english" },
   pos:                    { icon: "🧩", accent: "#10b981", label: "Parts of Speech",        group: "english" },
+  "error-spotting":       { icon: "🔍", accent: "#f59e0b", label: "Spot the Error",         group: "english" },
 };
 
 const GROUP_LABELS = {

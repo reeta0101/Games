@@ -151,6 +151,8 @@ const Quiz = ({
     const isCorrect = optionId === question.correctOptionId;
     if (!isCorrect) {
       playSound('wrong');
+    } else if (quizMode === 'practice') {
+      playSound('firework');
     }
 
     if (isChatMode) {
@@ -159,7 +161,7 @@ const Quiz = ({
     } else {
       setTimeout(() => handleAnswerOptionClick(isCorrect, optionId), 300);
     }
-  }, [isAnswered, question.correctOptionId, isChatMode, handleAnswerOptionClick, playSound, timer]);
+  }, [isAnswered, question.correctOptionId, isChatMode, handleAnswerOptionClick, playSound, timer, quizMode]);
 
   const handleNextClick = useCallback(() => {
     if (onNext && (showNext || isAnswered)) {

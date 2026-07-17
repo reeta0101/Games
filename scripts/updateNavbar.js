@@ -1,106 +1,18 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import ChangePasswordModal from "./ChangePasswordModal";
-import { useAudioContext } from "../contexts/AudioContext";
+const fs = require('fs');
+const path = require('path');
 
-const NAV_LINKS = [
-  { to: "/quizzes", label: "Quizzes" },
-  { to: "/exams", label: "Exams" },
-  { to: "/games", label: "Games" },
-  { to: "/lobby", label: "Challenges" },
-  { to: "/leaderboard", label: "Rank" },
-];
+const navbarPath = path.join(__dirname, '../frontend/src/components/Navbar.jsx');
+let content = fs.readFileSync(navbarPath, 'utf-8');
 
-export default function Navbar({
-  currentUser,
-  location,
-  onToggleTheme,
-  onLogout,
-}) {
-  const isActive = (path) => location.pathname === path;
-  const initial = currentUser?.name?.trim()?.charAt(0)?.toUpperCase() || "G";
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
-  const { isMuted, toggleMute } = useAudioContext();
+const rightSideAndDrawerStart = content.indexOf('{/* Right side — desktop */}');
+const drawerEnd = content.indexOf('</header>');
 
-  // Mobile menu state
-  const [mobileOpen, setMobileOpen] = useState(false);
-  // Desktop profile dropdown state (click-based for mobile compatibility)
-  const [profileOpen, setProfileOpen] = useState(false);
-  const profileRef = useRef(null);
-  const mobileMenuRef = useRef(null);
+if (rightSideAndDrawerStart === -1 || drawerEnd === -1) {
+  console.error('Could not find boundaries');
+  process.exit(1);
+}
 
-  // Close profile dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(e) {
-      if (profileRef.current && !profileRef.current.contains(e.target)) {
-        setProfileOpen(false);
-      }
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(e.target) &&
-        !e.target.closest("[data-hamburger]")
-      ) {
-        setMobileOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, []);
-
-  // Close mobile menu on route change
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMobileOpen(false);
-    setProfileOpen(false);
-  }, [location.pathname]);
-
-  return (
-    <>
-      <header className="sticky top-0 z-20 border-b border-white/5 bg-[#020617]/70 backdrop-blur-xl shadow-lg">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <Link
-            to="/"
-            className="group inline-flex min-h-11 items-center gap-3 rounded-xl pr-2"
-            aria-label="Study Arcade home"
-          >
-            <span className="flex h-10 items-center rounded-xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/20 to-blue-500/10 px-3 text-xs font-black tracking-[0.32em] text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all duration-300 group-hover:border-cyan-400/60 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-              STUDY
-            </span>
-            <span className="text-sm font-bold tracking-[0.14em] text-slate-300 transition group-hover:text-white drop-shadow-md">
-              arcade
-            </span>
-          </Link>
-
-          {/* Desktop nav links */}
-          <nav
-            className="hidden sm:flex items-center gap-1 rounded-2xl border border-white/5 bg-slate-900/50 p-1 backdrop-blur-md shadow-inner"
-            aria-label="Primary navigation"
-          >
-            {NAV_LINKS.map((item) => {
-              const active = isActive(item.to);
-              return (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  aria-current={active ? "page" : undefined}
-                  className={`touch-target inline-flex items-center justify-center rounded-xl px-5 py-2 text-sm font-medium transition-all duration-300 ${
-                    active
-                      ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white shadow-lg border border-white/10"
-                      : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Right side (Desktop & Mobile combined) */}
+const replacement = `{/* Right side (Desktop & Mobile combined) */}
           <div className="flex items-center gap-2">
             {/* Desktop Login/Signup */}
             {!currentUser && (
@@ -237,11 +149,11 @@ export default function Navbar({
                       to={item.to}
                       onClick={() => setMobileOpen(false)}
                       aria-current={active ? "page" : undefined}
-                      className={`flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium transition ${
+                      className={\`flex w-full items-center rounded-xl px-4 py-3 text-sm font-medium transition \${
                         active
                           ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border border-white/10"
                           : "text-slate-300 hover:bg-white/5 hover:text-white"
-                      }`}
+                      }\`}
                     >
                       {item.label}
                     </Link>
@@ -268,16 +180,8 @@ export default function Navbar({
             </div>
           </div>
         )}
-      </header>
+      `;
 
-      {/* Change Password Modal */}
-      {showPasswordModal && currentUser && (
-        <ChangePasswordModal
-          user={currentUser}
-          onClose={() => setShowPasswordModal(false)}
-          onLogout={onLogout}
-        />
-      )}
-    </>
-  );
-}
+const newContent = content.substring(0, rightSideAndDrawerStart) + replacement + content.substring(drawerEnd);
+fs.writeFileSync(navbarPath, newContent);
+console.log('Navbar updated successfully!');

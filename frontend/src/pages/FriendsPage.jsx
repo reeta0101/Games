@@ -165,10 +165,10 @@ export default function FriendsPage() {
   ];
 
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-4xl flex-col gap-8 px-3 py-8 sm:px-6 sm:py-10 relative">
+    <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-4xl flex-col gap-6 sm:gap-8 px-3 py-6 pb-24 sm:px-6 sm:py-10 sm:pb-10 relative">
       <div className="text-center">
-        <h1 className="text-4xl font-black text-white sm:text-5xl tracking-tight">Connections</h1>
-        <p className="mt-2 text-slate-400">Manage your friends, pending requests, and discover new players.</p>
+        <h1 className="text-3xl font-black text-white sm:text-5xl tracking-tight">Connections</h1>
+        <p className="mt-2 text-sm sm:text-base text-slate-400">Manage your friends, pending requests, and discover new players.</p>
       </div>
 
       {/* Tab Bar — scrollable on mobile */}
@@ -199,7 +199,7 @@ export default function FriendsPage() {
       </div>
 
       {/* Content Area */}
-      <section className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl sm:p-8 min-h-[400px]">
+      <section className="rounded-[2rem] sm:rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-8 shadow-2xl backdrop-blur-xl min-h-[400px]">
         
         {/* Friends Tab */}
         {activeTab === 'friends' && (
@@ -228,7 +228,7 @@ export default function FriendsPage() {
                     </div>
                     <button 
                       onClick={() => openChallengeModal(friend)}
-                      className="rounded-full bg-[#f0e040]/10 text-[#f0e040] border border-[#f0e040]/30 px-5 py-2 text-xs font-black uppercase tracking-[0.1em] hover:bg-[#f0e040]/20 transition shadow-lg w-full sm:w-auto"
+                      className="rounded-xl sm:rounded-full bg-[#f0e040]/10 text-[#f0e040] border border-[#f0e040]/30 px-5 py-2.5 sm:py-2 text-xs font-black uppercase tracking-[0.1em] hover:bg-[#f0e040]/20 transition shadow-lg w-full sm:w-auto"
                     >
                       Challenge ⚔️
                     </button>
@@ -256,13 +256,13 @@ export default function FriendsPage() {
                     <div className="flex gap-2">
                       <button 
                         onClick={() => acceptRequest(req.username)}
-                        className="flex-1 sm:flex-none rounded-xl bg-[#40f080]/20 text-[#40f080] border border-[#40f080]/30 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] hover:bg-[#40f080]/30 transition"
+                        className="flex-1 sm:flex-none rounded-xl bg-[#40f080]/20 text-[#40f080] border border-[#40f080]/30 px-4 py-3 sm:py-2 text-xs font-bold uppercase tracking-[0.1em] hover:bg-[#40f080]/30 transition"
                       >
                         Accept
                       </button>
                       <button 
                         onClick={() => rejectRequest(req.username)}
-                        className="flex-1 sm:flex-none rounded-xl bg-slate-500/20 text-slate-300 border border-slate-500/30 px-4 py-2 text-xs font-bold uppercase tracking-[0.1em] hover:bg-slate-500/40 transition"
+                        className="flex-1 sm:flex-none rounded-xl bg-slate-500/20 text-slate-300 border border-slate-500/30 px-4 py-3 sm:py-2 text-xs font-bold uppercase tracking-[0.1em] hover:bg-slate-500/40 transition"
                       >
                         Decline
                       </button>
@@ -397,7 +397,7 @@ export default function FriendsPage() {
 
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Game Duration</label>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-2 sm:flex gap-2">
                   {[0, 30, 60, 120].map(time => (
                     <button
                       key={time}
@@ -416,7 +416,7 @@ export default function FriendsPage() {
 
               <div>
                 <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Wrongs Acceptable?</label>
-                <div className="flex gap-2">
+                <div className="grid grid-cols-1 sm:flex gap-2">
                   <button
                     onClick={() => setChallengeWrongs(true)}
                     className={`flex-1 rounded-xl border py-3 text-sm font-black transition ${
@@ -441,7 +441,7 @@ export default function FriendsPage() {
               </div>
             </div>
 
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => setShowChallengeModal(false)}
                 className="flex-1 rounded-xl border border-white/10 bg-white/5 py-3 text-xs font-bold uppercase tracking-widest text-slate-400 hover:bg-white/10 transition"

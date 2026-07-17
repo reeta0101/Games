@@ -1,9 +1,23 @@
 import { useCallback, useRef } from 'react';
 
-const fireworkAudio = typeof Audio !== 'undefined' ? new Audio('/sounds/fireworks.mp3') : null;
-if (fireworkAudio) {
-    fireworkAudio.volume = 0.6;
-}
+let fireworkBuffer = null;
+let isPreloading = false;
+
+const preloadFirework = async () => {
+    if (isPreloading || typeof window === 'undefined') return;
+    isPreloading = true;
+    try {
+        const response = await fetch('/sounds/fireworks.mp3');
+        const arrayBuffer = await response.arrayBuffer();
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioContext();
+        fireworkBuffer = await ctx.decodeAudioData(arrayBuffer);
+    } catch (e) {
+        console.error('Failed to preload firework:', e);
+    }
+};
+
+preloadFirework();
 
 export const useSound = (enabled = true) => {
     const audioContextRef = useRef(null);
@@ -71,20 +85,28 @@ export const useSound = (enabled = true) => {
                 break;
 
             case 'firework':
-                try {
-                    if (fireworkAudio) {
-                        fireworkAudio.currentTime = 0;
-                        fireworkAudio.play().catch(e => console.log('Audio play failed:', e));
+                if (fireworkBuffer) {
+                    try {
+                        const ctx = getAudioContext();
+                        const source = ctx.createBufferSource();
+                        source.buffer = fireworkBuffer;
+                        
+                        const gainNode = ctx.createGain();
+                        gainNode.gain.value = 0.6;
+                        
+                        source.connect(gainNode);
+                        gainNode.connect(ctx.destination);
+                        source.start(0);
+                    } catch (e) {
+                        console.error('Error playing firework buffer:', e);
                     }
-                } catch (e) {
-                    console.error('Error playing firework sound:', e);
                 }
                 break;
 
             default:
                 break;
         }
-    }, [enabled, playTone]);
+    }, [enabled, playTone, getAudioContext]);
 
     return { playSound };
 };

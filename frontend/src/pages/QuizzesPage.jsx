@@ -126,7 +126,8 @@ export default function QuizzesPage() {
               </div>
             </section>
           );
-        })}
+          })
+        )}
       </div>
     </main>
   );

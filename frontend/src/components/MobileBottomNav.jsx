@@ -95,7 +95,7 @@ export default function MobileBottomNav() {
               <div className={`mb-1 transition-transform duration-200 ${active ? "scale-110 drop-shadow-[0_0_8px_rgba(64,224,240,0.5)]" : "group-hover:scale-110"}`}>
                 {item.icon}
               </div>
-              <span className="text-[9px] sm:text-[10px] tracking-tight sm:tracking-wide font-bold uppercase truncate w-full text-center">{item.label}</span>
+              <span className="block w-full text-center text-[9px] sm:text-[10px] tracking-tight sm:tracking-wide font-bold uppercase truncate">{item.label}</span>
             </Link>
           );
         })}

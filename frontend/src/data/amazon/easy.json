@@ -1,0 +1,72 @@
+[
+    {
+        "id": "amz-e-1",
+        "question": "What is the time complexity of finding an element in a hash table (average case)?",
+        "options": [
+            { "id": "a", "text": "O(n)" },
+            { "id": "b", "text": "O(log n)" },
+            { "id": "c", "text": "O(1)" },
+            { "id": "d", "text": "O(n²)" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Hash tables provide O(1) average case lookup using hash functions for direct access.",
+        "difficulty": "easy",
+        "topics": ["hashing", "data-structures"]
+    },
+    {
+        "id": "amz-e-2",
+        "question": "What is the purpose of the 'final' keyword in Java?",
+        "options": [
+            { "id": "a", "text": "Makes variable thread-safe" },
+            { "id": "b", "text": "Prevents modification, inheritance, or overriding" },
+            { "id": "c", "text": "Improves performance" },
+            { "id": "d", "text": "Creates static variables" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "final prevents variable reassignment, method overriding, or class inheritance.",
+        "difficulty": "easy",
+        "topics": ["java", "keywords"]
+    },
+    {
+        "id": "amz-e-3",
+        "question": "Which design pattern ensures only one instance of a class exists?",
+        "options": [
+            { "id": "a", "text": "Factory" },
+            { "id": "b", "text": "Observer" },
+            { "id": "c", "text": "Singleton" },
+            { "id": "d", "text": "Strategy" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "Singleton pattern ensures a class has only one instance with a global access point.",
+        "difficulty": "easy",
+        "topics": ["design-patterns", "singleton"]
+    },
+    {
+        "id": "amz-e-4",
+        "question": "What is the output of: [1,2,3] + [4,5,6] in Python?",
+        "options": [
+            { "id": "a", "text": "[5, 7, 9]" },
+            { "id": "b", "text": "[1, 2, 3, 4, 5, 6]" },
+            { "id": "c", "text": "Error" },
+            { "id": "d", "text": "[[1,2,3], [4,5,6]]" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "In Python, + operator concatenates lists: [1,2,3] + [4,5,6] = [1,2,3,4,5,6].",
+        "difficulty": "easy",
+        "topics": ["python", "lists"]
+    },
+    {
+        "id": "amz-e-5",
+        "question": "Which of the following is typically a characteristic of a NoSQL database compared to a relational database?",
+        "options": [
+            { "id": "a", "text": "Strict schema enforcement" },
+            { "id": "b", "text": "ACID compliance by default on all operations" },
+            { "id": "c", "text": "Flexible schema and easier horizontal scaling" },
+            { "id": "d", "text": "Uses SQL as the primary query language" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "NoSQL databases typically offer flexible schemas and are designed to scale out horizontally.",
+        "difficulty": "easy",
+        "topics": ["databases", "nosql"]
+    }
+]

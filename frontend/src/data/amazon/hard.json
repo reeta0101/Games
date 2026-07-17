@@ -1,0 +1,72 @@
+[
+    {
+        "id": "amz-h-1",
+        "question": "Design a system to handle 1 million concurrent users. Which architecture pattern would you most likely use?",
+        "options": [
+            { "id": "a", "text": "Monolithic" },
+            { "id": "b", "text": "Microservices with horizontal scaling" },
+            { "id": "c", "text": "Single server with high RAM" },
+            { "id": "d", "text": "Desktop application" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Microservices with horizontal scaling allows distributing load across many servers for high concurrency.",
+        "difficulty": "hard",
+        "topics": ["system-design", "scaling"]
+    },
+    {
+        "id": "amz-h-2",
+        "question": "What is eventual consistency in distributed databases?",
+        "options": [
+            { "id": "a", "text": "All nodes always have same data immediately" },
+            { "id": "b", "text": "Given enough time without new updates, all nodes will have the same data" },
+            { "id": "c", "text": "Data is never consistent across nodes" },
+            { "id": "d", "text": "Only one node has the correct data" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Eventual consistency guarantees that all replicas will converge to the same value eventually if no new updates are made.",
+        "difficulty": "hard",
+        "topics": ["distributed-systems", "consistency"]
+    },
+    {
+        "id": "amz-h-3",
+        "question": "According to the CAP Theorem, a distributed system can only provide two out of three guarantees. Which of the following is NOT one of those guarantees?",
+        "options": [
+            { "id": "a", "text": "Consistency" },
+            { "id": "b", "text": "Availability" },
+            { "id": "c", "text": "Performance" },
+            { "id": "d", "text": "Partition Tolerance" }
+        ],
+        "correctOptionId": "c",
+        "explanation": "CAP stands for Consistency, Availability, and Partition Tolerance.",
+        "difficulty": "hard",
+        "topics": ["system-design", "cap-theorem"]
+    },
+    {
+        "id": "amz-h-4",
+        "question": "Which algorithm is commonly used in distributed systems (like DynamoDB or Cassandra) to distribute data evenly across a cluster of nodes when nodes are frequently added or removed?",
+        "options": [
+            { "id": "a", "text": "Round Robin" },
+            { "id": "b", "text": "Consistent Hashing" },
+            { "id": "c", "text": "Modulo Hashing (N % Nodes)" },
+            { "id": "d", "text": "Dijkstra's Algorithm" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Consistent hashing minimizes the number of keys that need to be remapped when a node is added or removed from the cluster.",
+        "difficulty": "hard",
+        "topics": ["distributed-systems", "hashing"]
+    },
+    {
+        "id": "amz-h-5",
+        "question": "In a highly concurrent system, which of the following is used to prevent the 'Thundering Herd' problem when a cache expires?",
+        "options": [
+            { "id": "a", "text": "Load balancing" },
+            { "id": "b", "text": "Cache jitter (adding randomness to TTL)" },
+            { "id": "c", "text": "Horizontal scaling" },
+            { "id": "d", "text": "Increasing cache size" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Adding jitter (randomness) to cache TTL prevents many keys from expiring at the exact same time, thus spreading out the database queries.",
+        "difficulty": "hard",
+        "topics": ["caching", "system-design"]
+    }
+]

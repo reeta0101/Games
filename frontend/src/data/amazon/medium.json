@@ -1,0 +1,72 @@
+[
+    {
+        "id": "amz-m-1",
+        "question": "In a graph with cycles, which traversal will cause an infinite loop without proper handling?",
+        "options": [
+            { "id": "a", "text": "Binary search" },
+            { "id": "b", "text": "BFS without visited tracking" },
+            { "id": "c", "text": "Merge sort" },
+            { "id": "d", "text": "Quick sort" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "BFS/DFS without tracking visited nodes will revisit the same nodes infinitely in cyclic graphs.",
+        "difficulty": "medium",
+        "topics": ["graphs", "traversal"]
+    },
+    {
+        "id": "amz-m-2",
+        "question": "What is the space complexity of recursive Fibonacci without memoization?",
+        "options": [
+            { "id": "a", "text": "O(1)" },
+            { "id": "b", "text": "O(n)" },
+            { "id": "c", "text": "O(2^n)" },
+            { "id": "d", "text": "O(log n)" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Stack depth is O(n) as maximum recursion depth equals n for Fibonacci.",
+        "difficulty": "medium",
+        "topics": ["recursion", "space-complexity"]
+    },
+    {
+        "id": "amz-m-3",
+        "question": "What is the primary difference between a process and a thread?",
+        "options": [
+            { "id": "a", "text": "No difference" },
+            { "id": "b", "text": "Threads share memory, processes have separate memory" },
+            { "id": "c", "text": "Processes are faster" },
+            { "id": "d", "text": "Threads cannot communicate" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "Threads share the same memory space within a process; processes have isolated memory.",
+        "difficulty": "medium",
+        "topics": ["os", "concurrency"]
+    },
+    {
+        "id": "amz-m-4",
+        "question": "What is the purpose of an API Gateway in microservices architecture?",
+        "options": [
+            { "id": "a", "text": "Store database records" },
+            { "id": "b", "text": "Single entry point for all client requests" },
+            { "id": "c", "text": "Compile the microservice code" },
+            { "id": "d", "text": "Host the frontend UI" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "API Gateway acts as a single entry point, handling routing, authentication, and rate limiting.",
+        "difficulty": "medium",
+        "topics": ["microservices", "architecture"]
+    },
+    {
+        "id": "amz-m-5",
+        "question": "Which data structure is most optimal for implementing an LRU (Least Recently Used) cache?",
+        "options": [
+            { "id": "a", "text": "Array and Binary Search Tree" },
+            { "id": "b", "text": "Hash Map and Doubly Linked List" },
+            { "id": "c", "text": "Stack and Queue" },
+            { "id": "d", "text": "Singly Linked List only" }
+        ],
+        "correctOptionId": "b",
+        "explanation": "A Hash Map provides O(1) lookup, while a Doubly Linked List allows O(1) removal and insertion to maintain the order.",
+        "difficulty": "medium",
+        "topics": ["data-structures", "caching"]
+    }
+]

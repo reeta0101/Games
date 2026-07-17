@@ -81,21 +81,21 @@ export default function MobileBottomNav() {
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 sm:hidden bg-[#07101d]/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-      <div className="grid h-full max-w-lg grid-cols-6 mx-auto font-medium px-1">
+      <div className="flex justify-around items-center h-full max-w-lg mx-auto font-medium px-1">
         {navItems.map((item) => {
           const active = isActive(item.to);
           return (
             <Link
               key={item.label}
               to={item.to}
-              className={`inline-flex flex-col items-center justify-center px-2 group ${
+              className={`flex flex-col items-center justify-center flex-1 min-w-0 group ${
                 active ? "text-[#40e0f0]" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <div className={`mb-1 transition-transform duration-200 ${active ? "scale-110 drop-shadow-[0_0_8px_rgba(64,224,240,0.5)]" : "group-hover:scale-110"}`}>
                 {item.icon}
               </div>
-              <span className="text-[9px] tracking-wide font-bold uppercase">{item.label}</span>
+              <span className="text-[9px] sm:text-[10px] tracking-tight sm:tracking-wide font-bold uppercase truncate w-full text-center">{item.label}</span>
             </Link>
           );
         })}

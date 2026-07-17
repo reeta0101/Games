@@ -215,7 +215,7 @@ function AllGameLeaderboards() {
       </div>
 
       {/* Difficulty tabs */}
-      <div className="mb-5 flex gap-2">
+      <div className="mb-5 flex flex-wrap gap-2">
         {DIFF_TABS.map((d) => (
           <button
             key={d.key}
@@ -404,17 +404,17 @@ function HomePage({ currentUser }) {
               </div>
 
               {/* Row 3: Buttons */}
-              <div className="lg:col-span-2 flex flex-wrap gap-3 pt-2">
+              <div className="lg:col-span-2 flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
                 <Link
                   to={featuredGame.path}
-                  className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)] whitespace-nowrap flex-1 sm:flex-none"
+                  className="touch-target inline-flex items-center justify-center gap-2 rounded-2xl border border-[#40e0f0]/40 bg-[#40e0f0]/14 px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[#40e0f0] shadow-[0_18px_40px_rgba(64,224,240,0.12)] transition hover:bg-[#40e0f0]/22 hover:shadow-[0_18px_50px_rgba(64,224,240,0.2)] flex-1 sm:flex-none text-center"
                 >
                   <span className="text-base">▶</span>
                   Start {featuredGame.title}
                 </Link>
                 <a
                   href="#quiz-library"
-                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8 whitespace-nowrap flex-1 sm:flex-none"
+                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8 flex-1 sm:flex-none text-center"
                 >
                   Browse quizzes
                 </a>
@@ -443,11 +443,11 @@ function HomePage({ currentUser }) {
                   key={item.label}
                   className="rounded-2xl border border-white/8 bg-black/18 p-5 transition hover:border-white/15 hover:bg-black/25 overflow-hidden"
                 >
-                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500 whitespace-nowrap">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
                     <span className="mr-1.5">{item.icon}</span>
                     {item.label}
                   </p>
-                  <p className="mt-1 text-sm font-bold text-white whitespace-nowrap">
+                  <p className="mt-1 text-sm font-bold text-white">
                     {item.value}
                   </p>
                 </div>
@@ -478,7 +478,7 @@ function HomePage({ currentUser }) {
                     Create a free account to track your progress.
                   </p>
                 </div>
-                <div className="flex shrink-0 gap-2">
+                <div className="flex flex-wrap gap-2 mt-3 sm:mt-0">
                   <Link
                     to="/signup"
                     className="touch-target inline-flex items-center justify-center rounded-2xl border border-[#40e0f0]/50 bg-[#40e0f0]/15 px-5 py-2.5 text-sm font-black text-[#40e0f0] transition hover:bg-[#40e0f0]/25"
@@ -538,15 +538,15 @@ function HomePage({ currentUser }) {
               ].map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl border border-white/8 bg-white/[0.035] p-3 text-center transition hover:border-white/15 hover:bg-white/[0.06]"
+                  className="rounded-2xl border border-white/8 bg-white/[0.035] p-2 sm:p-3 text-center transition hover:border-white/15 hover:bg-white/[0.06] overflow-hidden"
                 >
                   <div
-                    className="text-2xl font-black tabular-nums animate-counter-pop"
+                    className="text-xl sm:text-2xl font-black tabular-nums animate-counter-pop truncate"
                     style={{ color: s.accent, animationDelay: s.delay }}
                   >
                     {s.value}
                   </div>
-                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  <div className="mt-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 truncate">
                     {s.label}
                   </div>
                 </div>
@@ -920,7 +920,7 @@ function ArcadeLayout() {
   }
 
   return (
-    <div className="min-h-screen text-slate-100">
+    <div className="min-h-screen text-slate-100 overflow-x-hidden max-w-[100vw]">
       <ArcadeBackground />
       <div className="relative z-10">
         <Navbar

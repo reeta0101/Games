@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react';
 
-const fireworkAudio = typeof Audio !== 'undefined' ? new Audio('/sounds/fireworks.wav') : null;
+const fireworkAudio = typeof Audio !== 'undefined' ? new Audio('/sounds/fireworks.mp3') : null;
 if (fireworkAudio) {
     fireworkAudio.volume = 0.6;
 }

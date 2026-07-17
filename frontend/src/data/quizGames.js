@@ -1067,10 +1067,10 @@ export const quizGames = {
     cardTitle: "Prime Number Quiz",
     cardDescription: "Find the prime number in each set.",
     ranges: [
-      { key: "25", label: "25%" },
-      { key: "50", label: "50%" },
-      { key: "75", label: "75%" },
-      { key: "100", label: "100%" },
+      { key: "250", label: "25%" },
+      { key: "500", label: "50%" },
+      { key: "750", label: "75%" },
+      { key: "1000", label: "100%" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
@@ -1081,10 +1081,10 @@ export const quizGames = {
     },
     generateQuestion: (options = {}) => {
       let min = 2;
-      let max = 100;
+      let max = 1000;
       if (options.range === "custom") {
         min = Math.max(2, options.customRange?.min || 2);
-        max = Math.max(min, options.customRange?.max || 100);
+        max = Math.max(min, options.customRange?.max || 1000);
       } else if (options.range) {
         max = parseInt(options.range, 10);
       }
@@ -1120,14 +1120,30 @@ export const quizGames = {
     cardBadge: "Classics",
     cardTitle: "Roman Numerals Quiz",
     cardDescription: "Decode numerals from I to C.",
+    ranges: [
+      { key: "25", label: "25%" },
+      { key: "50", label: "50%" },
+      { key: "75", label: "75%" },
+      { key: "100", label: "100%" },
+      { key: "custom", label: "Custom", isCustom: true }
+    ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
       const third = (timeLimitMs || 6000) / 3000;
       if (elapsedSec < third) return 12;
       if (elapsedSec < third * 2) return 8;
       return 4;
     },
-    generateQuestion: () => {
-      const value = Math.floor(Math.random() * 100) + 1;
+    generateQuestion: (options = {}) => {
+      let min = 1;
+      let max = 100;
+      if (options.range === "custom") {
+        min = Math.max(1, options.customRange?.min || 1);
+        max = Math.max(min, options.customRange?.max || 100);
+      } else if (options.range) {
+        max = parseInt(options.range, 10);
+      }
+      
+      const value = Math.floor(Math.random() * (max - min + 1)) + min;
       const correct = value;
       const roman = toRoman(value);
 

@@ -18,6 +18,11 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
     const [testSubmitted, setTestSubmitted] = useState(false);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const [showResultDetail, setShowResultDetail] = useState(false);
+    
+    // Feedback form state
+    const [reportingId, setReportingId] = useState(null);
+    const [reportText, setReportText] = useState('');
+    const [reportedIds, setReportedIds] = useState(new Set());
     const triggerConfetti = () => {
         confetti({
             particleCount: 100,
@@ -387,6 +392,54 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
                                         <p className="text-xs text-blue-300 mt-2 pl-2 border-l-2 border-blue-500">
                                             💡 {q.explanation}
                                         </p>
+                                    )}
+                                    
+                                    {/* Feedback / Report button */}
+                                    <div className="mt-4 flex justify-end">
+                                        {!reportedIds.has(q.id) ? (
+                                            <button 
+                                                onClick={() => { setReportingId(q.id); setReportText(''); }}
+                                                className="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
+                                            >
+                                                🚩 Report Issue
+                                            </button>
+                                        ) : (
+                                            <span className="text-xs text-green-400 flex items-center gap-1">
+                                                ✓ Feedback submitted
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    {/* Report Form */}
+                                    {reportingId === q.id && !reportedIds.has(q.id) && (
+                                        <div className="mt-2 bg-black/20 p-3 rounded-lg border border-white/10">
+                                            <p className="text-xs font-semibold text-slate-300 mb-2">What's wrong with this question?</p>
+                                            <textarea 
+                                                value={reportText}
+                                                onChange={e => setReportText(e.target.value)}
+                                                className="w-full bg-white/5 border border-white/10 rounded-md p-2 text-xs text-white focus:outline-none focus:border-blue-500 mb-2"
+                                                rows={2}
+                                                placeholder="E.g. The correct answer is outdated, typos, etc."
+                                            />
+                                            <div className="flex justify-end gap-2">
+                                                <button 
+                                                    onClick={() => setReportingId(null)}
+                                                    className="px-3 py-1 rounded text-xs text-slate-400 hover:bg-white/10"
+                                                >
+                                                    Cancel
+                                                </button>
+                                                <button 
+                                                    onClick={() => {
+                                                        setReportedIds(prev => new Set(prev).add(q.id));
+                                                        setReportingId(null);
+                                                    }}
+                                                    className="px-3 py-1 rounded text-xs bg-blue-600 text-white hover:bg-blue-500 font-semibold"
+                                                    disabled={!reportText.trim()}
+                                                >
+                                                    Submit Feedback
+                                                </button>
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                             ))}

@@ -130,7 +130,7 @@ export default function Leaderboard() {
             <button
               key={l.key}
               onClick={() => setSelectedLevel(l.key)}
-              className={`shrink-0 flex-1 min-w-[6rem] rounded-xl border py-3 px-3 text-xs font-bold uppercase tracking-[0.15em] transition duration-200 hover:-translate-y-0.5 snap-start ${
+              className={`shrink-0 min-w-[6rem] whitespace-nowrap rounded-xl border py-3 px-4 text-xs font-bold uppercase tracking-[0.15em] transition duration-200 hover:-translate-y-0.5 snap-start ${
                 selectedLevel === l.key
                   ? "border-[#f0e040]/50 bg-[#f0e040]/10 text-[#f0e040] shadow-[0_0_16px_rgba(240,224,64,0.1)]"
                   : "border-white/8 bg-white/[0.03] text-slate-400 hover:bg-white/[0.06]"

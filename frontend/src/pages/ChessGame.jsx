@@ -327,19 +327,7 @@ export default function ChessGame() {
         </p>
       </div>
 
-      {!isMultiplayer && (
-        <div className="flex gap-2 justify-center mb-6 w-full max-w-[500px]">
-          {TIME_MODES.map((mode, idx) => (
-            <button
-              key={mode.label}
-              onClick={() => handleModeChange(idx)}
-              className={`flex-1 py-2 px-2 text-xs font-bold uppercase tracking-widest rounded-xl transition ${activeModeIndex === idx ? 'bg-[#40e0f0]/20 text-[#40e0f0] border border-[#40e0f0]/50 shadow-[0_0_10px_rgba(64,224,240,0.2)]' : 'bg-black/20 text-slate-400 border border-white/10 hover:bg-white/5'}`}
-            >
-              {mode.label}
-            </button>
-          ))}
-        </div>
-      )}
+
 
       <div className="w-full max-w-[500px] mb-8">
         {/* Opponent Timer / Info */}
@@ -371,20 +359,35 @@ export default function ChessGame() {
         </div>
       </div>
 
-      <div className="flex gap-4 w-full max-w-md">
-        <button
-          onClick={resetGame}
-          className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-600 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition disabled:opacity-50"
-          disabled={!playersReady}
-        >
-          {game.isGameOver() || (initialTimeLimit > 0 && (whiteTime <= 0 || blackTime <= 0)) ? "Play Again" : "Reset Board"}
-        </button>
-        <button
-          onClick={() => navigate("/games")}
-          className="flex-1 rounded-2xl bg-white/5 border border-white/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300 hover:bg-white/10 transition"
-        >
-          Games Menu
-        </button>
+      <div className="flex flex-col gap-4 w-full max-w-[500px]">
+        {!isMultiplayer && (
+          <div className="flex gap-2 justify-center">
+            {TIME_MODES.map((mode, idx) => (
+              <button
+                key={mode.label}
+                onClick={() => handleModeChange(idx)}
+                className={`flex-1 py-3 px-2 text-xs font-bold uppercase tracking-widest rounded-xl transition ${activeModeIndex === idx ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10'}`}
+              >
+                {mode.label}
+              </button>
+            ))}
+          </div>
+        )}
+        <div className="flex gap-4">
+          <button
+            onClick={resetGame}
+            className="flex-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-600 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition disabled:opacity-50"
+            disabled={!playersReady}
+          >
+            {game.isGameOver() || (initialTimeLimit > 0 && (whiteTime <= 0 || blackTime <= 0)) ? "Play Again" : "Reset Board"}
+          </button>
+          <button
+            onClick={() => navigate("/games")}
+            className="flex-1 rounded-2xl bg-white/5 border border-white/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300 hover:bg-white/10 transition"
+          >
+            Games Menu
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export default function TicTacToe() {
   const [winner, setWinner] = useState(null);
   const [gameMode, setGameMode] = useState("classic"); // classic, infinite
   const [score, setScore] = useState({ me: 0, opponent: 0 });
-  const [setupPhase, setSetupPhase] = useState(isMultiplayer ? false : true);
+  const [playMode, setPlayMode] = useState("computer"); // 'computer' or 'local'
   const [playMode, setPlayMode] = useState("computer"); // 'computer' or 'local'
   
   // Track move history for infinite mode
@@ -309,9 +309,8 @@ export default function TicTacToe() {
     }
   };
 
-  // Single player mode: trigger AI if it's AI's turn
   useEffect(() => {
-    if (!isMultiplayer && playMode === "computer" && gameStatus === "playing" && !setupPhase) {
+    if (!isMultiplayer && playMode === "computer" && gameStatus === "playing") {
       const aiTurn = (xIsNext && singlePlayerSymbol === "O") || (!xIsNext && singlePlayerSymbol === "X");
       if (aiTurn) {
         const timer = setTimeout(() => {
@@ -321,7 +320,7 @@ export default function TicTacToe() {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol, playMode, setupPhase]);
+  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol, playMode]);
 
   // Multiplayer Socket Setup
   useEffect(() => {
@@ -423,39 +422,7 @@ export default function TicTacToe() {
     }
   };
 
-  if (setupPhase) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-2">Tic Tac Toe</h1>
-          <p className="text-lg font-bold text-slate-300">Choose your opponent</p>
-        </div>
 
-        <div className="bg-[#0f172a]/80 border border-white/10 p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-sm w-full flex flex-col gap-4">
-          <button 
-            onClick={() => { setPlayMode("computer"); setSetupPhase(false); }}
-            className="flex items-center justify-center gap-3 w-full rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-400 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
-          >
-            <span className="text-2xl">🤖</span> Vs Computer
-          </button>
-          
-          <button 
-            onClick={() => { setPlayMode("local"); setSetupPhase(false); }}
-            className="flex items-center justify-center gap-3 w-full rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
-          >
-            <span className="text-2xl">👥</span> Pass & Play
-          </button>
-
-          <button 
-            onClick={() => navigate('/lobby')}
-            className="flex items-center justify-center gap-3 w-full rounded-2xl bg-gradient-to-r from-orange-500 to-rose-500 py-4 text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
-          >
-            <span className="text-2xl">🌍</span> Play Online
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
@@ -495,17 +462,7 @@ export default function TicTacToe() {
         </div>
 
         <div className="grid grid-cols-3 gap-3 mb-8 bg-slate-900/50 p-4 rounded-3xl relative border border-white/5 shadow-inner">
-          {board.every(c => c === null) && (
-            <div className="absolute -top-12 left-0 right-0 flex justify-center z-10">
-              <button 
-                onClick={toggleMode}
-                className="bg-[#1e293b] hover:bg-[#334155] border border-white/10 px-5 py-2 rounded-full text-xs font-black text-slate-300 transition-all duration-300 uppercase tracking-widest flex items-center gap-2 shadow-lg hover:shadow-cyan-500/20"
-              >
-                Mode: <span className={gameMode === 'infinite' ? 'text-purple-400 drop-shadow-[0_0_5px_rgba(192,132,252,0.5)]' : 'text-[#40e0f0] drop-shadow-[0_0_5px_rgba(64,224,240,0.5)]'}>{gameMode}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"/></svg>
-              </button>
-            </div>
-          )}
+
 
           {board.map((cell, i) => {
             const isFadingX = gameMode === "infinite" && cell === "X" && xMoves.length === 3 && xMoves[0] === i;
@@ -537,19 +494,43 @@ export default function TicTacToe() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <button
-            onClick={resetGame}
-            className="w-full rounded-2xl bg-gradient-to-r from-[#f0e040] to-orange-400 py-4 text-sm font-black uppercase tracking-[0.2em] text-black shadow-lg hover:scale-[1.02] transition"
-          >
-            {isMultiplayer ? "Request Restart" : "Play Again"}
-          </button>
+          {!isMultiplayer && (
+            <div className="flex gap-4">
+              <button
+                onClick={() => {
+                  setPlayMode(prev => prev === "computer" ? "local" : "computer");
+                  resetGame();
+                }}
+                className="flex-1 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
+              >
+                {playMode === "computer" ? "Vs AI" : "Pass & Play"}
+              </button>
+              
+              <button
+                onClick={toggleMode}
+                disabled={!board.every(c => c === null)}
+                className="flex-1 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Mode: {gameMode}
+              </button>
+            </div>
+          )}
           
-          <button
-            onClick={() => navigate(isMultiplayer ? `/lobby?room=${roomId}` : "/")}
-            className="w-full rounded-2xl bg-white/5 border border-white/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300 hover:bg-white/10 transition"
-          >
-            {isMultiplayer ? "Back to Lobby" : "Menu"}
-          </button>
+          <div className="flex gap-4">
+            <button
+              onClick={resetGame}
+              className="flex-1 rounded-2xl bg-gradient-to-r from-[#f0e040] to-orange-400 py-4 text-sm font-black uppercase tracking-[0.2em] text-black shadow-lg hover:scale-[1.02] transition"
+            >
+              {isMultiplayer ? "Request Restart" : "Restart"}
+            </button>
+            
+            <button
+              onClick={() => navigate(isMultiplayer ? `/lobby?room=${roomId}` : "/games")}
+              className="flex-1 rounded-2xl bg-white/5 border border-white/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300 hover:bg-white/10 transition"
+            >
+              {isMultiplayer ? "Lobby" : "Menu"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

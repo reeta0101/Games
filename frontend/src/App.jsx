@@ -325,7 +325,12 @@ function HomePage({ currentUser }) {
     });
   }, [activeCategory, searchTerm]);
 
-  const featuredGame = filteredGames[0] || GAME_MODES[0];
+  const featuredGame = useMemo(() => {
+    if (searchTerm || activeCategory !== "All") {
+      return filteredGames[0] || GAME_MODES[0];
+    }
+    return GAME_MODES.find(g => g.id === "stateCapital") || GAME_MODES[0];
+  }, [filteredGames, searchTerm, activeCategory]);
   // Recently played — read from localStorage, map to GAME_MODES objects
   const recentlyPlayed = useMemo(() => {
     const recent = getRecentGames(); // [{ id, playedAt }]
@@ -418,6 +423,12 @@ function HomePage({ currentUser }) {
                 >
                   Browse quizzes
                 </a>
+                <Link
+                  to="/exams"
+                  className="touch-target inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-slate-200 transition hover:bg-white/8 flex-1 sm:flex-none text-center"
+                >
+                  Browse exams
+                </Link>
               </div>
             </div>
 

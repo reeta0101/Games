@@ -63,7 +63,7 @@ const SUBJECT_META = {
   dsa:              { icon: "⚡", accent: "#f59e0b", label: "DSA",                  group: "cs" },
   os:               { icon: "🖥️", accent: "#ec4899", label: "Operating Systems",   group: "cs" },
   "system-design":  { icon: "🏗️", accent: "#06b6d4", label: "System Design",       group: "cs" },
-  coding:           { icon: "💾", accent: "#14b8a6", label: "Coding",               group: "cs" },
+  python:           { icon: "🐍", accent: "#3b82f6", label: "Python",               group: "cs" },
 
   // ── Company ───────────────────────────────
   amazon:           { icon: "🛒", accent: "#f97316", label: "Amazon",               group: "company" },

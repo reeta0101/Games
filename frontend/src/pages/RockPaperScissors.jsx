@@ -28,6 +28,22 @@ export default function RockPaperScissors() {
   const [opponentName, setOpponentName] = useState("Opponent");
   const [opponentReady, setOpponentReady] = useState(false);
 
+  const determineWinner = (mine, theirs) => {
+    if (mine === theirs) {
+      setResult("draw");
+    } else if (
+      (mine === "rock" && theirs === "scissors") ||
+      (mine === "paper" && theirs === "rock") ||
+      (mine === "scissors" && theirs === "paper")
+    ) {
+      setResult("win");
+      setScore(s => ({ ...s, me: s.me + 1 }));
+    } else {
+      setResult("lose");
+      setScore(s => ({ ...s, opponent: s.opponent + 1 }));
+    }
+  };
+
   useEffect(() => {
     if (isMultiplayer && socket && currentUser) {
       socket.emit("rps_join", { roomId, username: currentUser.username });
@@ -71,21 +87,7 @@ export default function RockPaperScissors() {
     }
   }, [isMultiplayer, socket, roomId, currentUser]);
 
-  const determineWinner = (mine, theirs) => {
-    if (mine === theirs) {
-      setResult("draw");
-    } else if (
-      (mine === "rock" && theirs === "scissors") ||
-      (mine === "paper" && theirs === "rock") ||
-      (mine === "scissors" && theirs === "paper")
-    ) {
-      setResult("win");
-      setScore(s => ({ ...s, me: s.me + 1 }));
-    } else {
-      setResult("lose");
-      setScore(s => ({ ...s, opponent: s.opponent + 1 }));
-    }
-  };
+
 
   const handleChoice = (choiceId) => {
     if (myChoice) return;

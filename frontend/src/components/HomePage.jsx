@@ -1,9 +1,8 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    FaFire, FaCheckCircle, FaClock, FaBook, FaLaptopCode,
+    FaFire, FaCheckCircle, FaBook, FaLaptopCode,
     FaUserTie, FaFileAlt, FaBuilding, FaGraduationCap, FaArrowRight,
-    FaCalendarCheck, FaLightbulb, FaTrophy
+    FaCalendarCheck, FaLightbulb
 } from 'react-icons/fa';
 
 const quickLinks = [

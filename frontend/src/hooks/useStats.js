@@ -29,6 +29,7 @@ const useStats = () => {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
                 const parsed = JSON.parse(saved);
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setStats(prev => ({ ...prev, ...parsed }));
             }
         } catch (err) {
@@ -170,7 +171,7 @@ const useStats = () => {
     // Get weak topics (below 70% accuracy, min 3 attempts)
     const getWeakTopics = useCallback(() => {
         return Object.entries(stats.topicStats)
-            .filter(([_, data]) => data.total >= 3)
+            .filter(([, data]) => data.total >= 3)
             .map(([topic, data]) => ({
                 topic,
                 accuracy: Math.round((data.correct / data.total) * 100),

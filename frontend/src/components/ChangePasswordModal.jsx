@@ -40,7 +40,7 @@ export default function ChangePasswordModal({ user, onClose, onLogout }) {
           onLogout();
         }, 2000);
       }
-    } catch (err) {
+    } catch {
       setError("Server error. Please try again later.");
     } finally {
       setIsSubmitting(false);

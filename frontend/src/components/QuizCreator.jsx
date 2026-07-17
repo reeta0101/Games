@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FaCode, FaCheck, FaExclamationTriangle, FaMagic, FaCopy, FaSave, FaSpinner, FaLightbulb } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const QuizCreator = ({ currentData, onUpdateData, isDarkMode, activeCategory, savingState }) => {
+const QuizCreator = ({ currentData, onUpdateData, activeCategory, savingState }) => {
     const [jsonInput, setJsonInput] = useState(JSON.stringify(currentData || [], null, 2));
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
@@ -13,6 +13,7 @@ const QuizCreator = ({ currentData, onUpdateData, isDarkMode, activeCategory, sa
 
     useEffect(() => {
         const newJson = JSON.stringify(currentData || [], null, 2);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setJsonInput(newJson);
         setLineCount(newJson.split('\n').length);
         setError(null);
@@ -58,7 +59,7 @@ const QuizCreator = ({ currentData, onUpdateData, isDarkMode, activeCategory, sa
             const parsed = JSON.parse(jsonInput);
             setJsonInput(JSON.stringify(parsed, null, 2));
             setError(null);
-        } catch (err) {
+        } catch {
             setError('Invalid JSON - cannot format');
         }
     };

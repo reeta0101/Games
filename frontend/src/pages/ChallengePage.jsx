@@ -21,6 +21,7 @@ export default function ChallengePage() {
     if (foundGame) {
       // Handle the fact that some GAME_MODES elements use `id` and some might use `key`. 
       // The leaderboard mostly uses `game.key`, so in App.jsx GAME_MODES actually has `id`. Let's set both.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setGame(foundGame);
     }
   }, [gameId]);

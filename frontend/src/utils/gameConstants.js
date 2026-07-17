@@ -558,13 +558,16 @@ export function recordRecentGame(gameId) {
       RECENT_MAX,
     );
     localStorage.setItem(RECENT_KEY, JSON.stringify(updated));
-  } catch {}
+  } catch {
+    /* ignore */
+  }
 }
 
 export function getRecentGames() {
   try {
     return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]");
   } catch {
+    /* ignore */
     return [];
   }
 }

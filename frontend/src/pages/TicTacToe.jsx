@@ -36,71 +36,6 @@ export default function TicTacToe() {
   const [opponentName, setOpponentName] = useState("Opponent");
   const [playersReady, setPlayersReady] = useState(false);
 
-  // Single player mode: trigger AI if it's AI's turn
-  useEffect(() => {
-    if (!isMultiplayer && playMode === "computer" && gameStatus === "playing" && !setupPhase) {
-      const aiTurn = (xIsNext && singlePlayerSymbol === "O") || (!xIsNext && singlePlayerSymbol === "X");
-      if (aiTurn) {
-        const timer = setTimeout(() => {
-          makeAIMove(board);
-        }, 600); // Small delay for AI
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol, playMode, setupPhase]);
-
-  // Multiplayer Socket Setup
-  useEffect(() => {
-    if (isMultiplayer && socket && currentUser) {
-      socket.emit("ttt_join", { roomId, username: currentUser.username });
-
-      const onInit = (data) => {
-        // data: { playerX, playerO }
-        if (data.playerX === currentUser.username) {
-          setMySymbol("X");
-          setOpponentName(data.playerOName || "Opponent");
-        } else {
-          setMySymbol("O");
-          setOpponentName(data.playerXName || "Opponent");
-        }
-        setPlayersReady(true);
-      };
-
-      const onMove = (data) => {
-        setBoard(data.board);
-        setXIsNext(data.xIsNext);
-        if (data.gameMode) setGameMode(data.gameMode);
-        if (data.xMoves) setXMoves(data.xMoves);
-        if (data.oMoves) setOMoves(data.oMoves);
-        checkWin(data.board);
-      };
-
-      const onModeChange = (newMode) => {
-        setGameMode(newMode);
-      };
-
-      const onReset = () => {
-        setBoard(Array(9).fill(null));
-        setXIsNext(true);
-        setGameStatus("playing");
-        setWinner(null);
-        setXMoves([]);
-        setOMoves([]);
-      };
-
-      socket.on("ttt_init", onInit);
-      socket.on("ttt_move", onMove);
-      socket.on("ttt_mode_change", onModeChange);
-      socket.on("ttt_reset", onReset);
-
-      return () => {
-        socket.off("ttt_init", onInit);
-        socket.off("ttt_move", onMove);
-        socket.off("ttt_mode_change", onModeChange);
-        socket.off("ttt_reset", onReset);
-      };
-    }
-  }, [isMultiplayer, socket, roomId, currentUser]);
 
   const checkWin = useCallback((squares) => {
     const lines = [
@@ -373,6 +308,74 @@ export default function TicTacToe() {
       checkWin(newBoard);
     }
   };
+
+  // Single player mode: trigger AI if it's AI's turn
+  useEffect(() => {
+    if (!isMultiplayer && playMode === "computer" && gameStatus === "playing" && !setupPhase) {
+      const aiTurn = (xIsNext && singlePlayerSymbol === "O") || (!xIsNext && singlePlayerSymbol === "X");
+      if (aiTurn) {
+        const timer = setTimeout(() => {
+          makeAIMove(board);
+        }, 600); // Small delay for AI
+        return () => clearTimeout(timer);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [xIsNext, board, gameStatus, isMultiplayer, singlePlayerSymbol, playMode, setupPhase]);
+
+  // Multiplayer Socket Setup
+  useEffect(() => {
+    if (isMultiplayer && socket && currentUser) {
+      socket.emit("ttt_join", { roomId, username: currentUser.username });
+
+      const onInit = (data) => {
+        // data: { playerX, playerO }
+        if (data.playerX === currentUser.username) {
+          setMySymbol("X");
+          setOpponentName(data.playerOName || "Opponent");
+        } else {
+          setMySymbol("O");
+          setOpponentName(data.playerXName || "Opponent");
+        }
+        setPlayersReady(true);
+      };
+
+      const onMove = (data) => {
+        setBoard(data.board);
+        setXIsNext(data.xIsNext);
+        if (data.gameMode) setGameMode(data.gameMode);
+        if (data.xMoves) setXMoves(data.xMoves);
+        if (data.oMoves) setOMoves(data.oMoves);
+        checkWin(data.board);
+      };
+
+      const onModeChange = (newMode) => {
+        setGameMode(newMode);
+      };
+
+      const onReset = () => {
+        setBoard(Array(9).fill(null));
+        setXIsNext(true);
+        setGameStatus("playing");
+        setWinner(null);
+        setXMoves([]);
+        setOMoves([]);
+      };
+
+      socket.on("ttt_init", onInit);
+      socket.on("ttt_move", onMove);
+      socket.on("ttt_mode_change", onModeChange);
+      socket.on("ttt_reset", onReset);
+
+      return () => {
+        socket.off("ttt_init", onInit);
+        socket.off("ttt_move", onMove);
+        socket.off("ttt_mode_change", onModeChange);
+        socket.off("ttt_reset", onReset);
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMultiplayer, socket, roomId, currentUser]);
 
   const resetGame = () => {
     if (isMultiplayer) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Editor from '@monaco-editor/react';
 import { FaPlay, FaLightbulb, FaCheckCircle, FaTimesCircle, FaCode, FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -96,12 +96,13 @@ const CodingChallenges = ({ isDarkMode }) => {
 
         try {
             // Create function from code
-            const fn = new Function('return ' + code)();
+            new Function('return ' + code)();
 
             // Run test cases
             const results = selectedChallenge.testCases.map(test => {
                 try {
-                    const result = eval(code + '\n' + test.input);
+                    const runner = new Function('return (' + code + '\\n' + test.input + ')');
+                    const result = runner();
                     const resultStr = JSON.stringify(result);
                     const passed = resultStr === test.expected;
                     return { ...test, result: resultStr, passed };

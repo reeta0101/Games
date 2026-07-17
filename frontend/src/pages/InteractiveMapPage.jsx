@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import indiaMap from '@svg-maps/india';
 import { Tooltip } from 'react-tooltip';
 

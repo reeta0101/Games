@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const GlobalSocketContext = createContext(null);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useGlobalSocket = () => useContext(GlobalSocketContext);
 
 export const GlobalSocketProvider = ({ children }) => {
@@ -18,6 +19,7 @@ export const GlobalSocketProvider = ({ children }) => {
     if (!currentUser) {
       if (socket) {
         socket.disconnect();
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSocket(null);
       }
       return;
@@ -44,6 +46,7 @@ export const GlobalSocketProvider = ({ children }) => {
     return () => {
       newSocket.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   const handleAcceptChallenge = () => {

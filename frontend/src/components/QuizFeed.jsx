@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import Quiz from './Quiz';
@@ -18,6 +18,13 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
     const [testSubmitted, setTestSubmitted] = useState(false);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const [showResultDetail, setShowResultDetail] = useState(false);
+    const triggerConfetti = () => {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    };
 
     // Format time as MM:SS
     const formatTime = (seconds) => {
@@ -30,50 +37,6 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
     useEffect(() => {
         testAnswersRef.current = testAnswers;
     }, [testAnswers]);
-
-    // Test timer countdown
-    useEffect(() => {
-        if (!testConfig?.active || testConfig?.timeRemaining <= 0) return;
-
-        const interval = setInterval(() => {
-            setTestConfig(prev => {
-                if (prev.timeRemaining <= 1) {
-                    // Time's up - auto submit using ref to avoid stale closure
-                    handleSubmitTest(testAnswersRef.current);
-                    return { ...prev, timeRemaining: 0, active: false };
-                }
-                return { ...prev, timeRemaining: prev.timeRemaining - 1 };
-            });
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, [testConfig?.active]);
-
-    // Reset when quizData changes
-    useEffect(() => {
-        if (quizData && quizData.length > 0) {
-            setActiveQuestions([quizData[0]]);
-            setCurrentQuestionIndex(0);
-        } else {
-            setActiveQuestions([]);
-            setCurrentQuestionIndex(0);
-        }
-        setScore(0);
-        setQuizCompleted(false);
-        setCanAdvance(false);
-        setAnsweredIds(new Set());
-        setMarkedIds(new Set());
-        setTestAnswers({});
-        testAnswersRef.current = {};
-        setTestSubmitted(false);
-        setShowResultDetail(false);
-        // Track first question as visited
-        if (quizData && quizData.length > 0 && quizData[0]?.id) {
-            setVisitedIds(new Set([quizData[0].id]));
-        } else {
-            setVisitedIds(new Set());
-        }
-    }, [quizData]);
 
     // Handle test submission - accepts optional answers param to avoid stale closure
     const handleSubmitTest = (answersParam) => {
@@ -97,6 +60,54 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
         }
         triggerConfetti();
     };
+
+    // Test timer countdown
+    useEffect(() => {
+        if (!testConfig?.active || testConfig?.timeRemaining <= 0) return;
+
+        const interval = setInterval(() => {
+            setTestConfig(prev => {
+                if (prev.timeRemaining <= 1) {
+                    // Time's up - auto submit using ref to avoid stale closure
+                    handleSubmitTest(testAnswersRef.current);
+                    return { ...prev, timeRemaining: 0, active: false };
+                }
+                return { ...prev, timeRemaining: prev.timeRemaining - 1 };
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [testConfig?.active]);
+
+    // Reset when quizData changes
+    useEffect(() => {
+        if (quizData && quizData.length > 0) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setActiveQuestions([quizData[0]]);
+            setCurrentQuestionIndex(0);
+        } else {
+            setActiveQuestions([]);
+            setCurrentQuestionIndex(0);
+        }
+        setScore(0);
+        setQuizCompleted(false);
+        setCanAdvance(false);
+        setAnsweredIds(new Set());
+        setMarkedIds(new Set());
+        setTestAnswers({});
+        testAnswersRef.current = {};
+        setTestSubmitted(false);
+        setShowResultDetail(false);
+        // Track first question as visited
+        if (quizData && quizData.length > 0 && quizData[0]?.id) {
+            setVisitedIds(new Set([quizData[0].id]));
+        } else {
+            setVisitedIds(new Set());
+        }
+    }, [quizData]);
+
+
 
     const handleAnswer = (isCorrect, optionId) => {
         const currentQuestion = quizData[currentQuestionIndex];
@@ -212,14 +223,6 @@ const QuizFeed = ({ quizData, isDarkMode, isLoading, error, quizMode = 'practice
                 return next;
             });
         }
-    };
-
-    const triggerConfetti = () => {
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
     };
 
     const progress = quizData.length ? ((currentQuestionIndex + 1) / quizData.length) * 100 : 0;

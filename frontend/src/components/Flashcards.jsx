@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaRedo, FaChevronLeft, FaChevronRight, FaLightbulb, FaCheck } from 'react-icons/fa';
 
 const flashcardsData = {
@@ -75,7 +75,7 @@ const flashcardsData = {
     }
 };
 
-const Flashcards = ({ isDarkMode }) => {
+const Flashcards = () => {
     const [selectedDeck, setSelectedDeck] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isFlipped, setIsFlipped] = useState(false);

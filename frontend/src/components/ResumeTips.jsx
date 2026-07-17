@@ -1,8 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFileAlt, FaBriefcase, FaGraduationCap, FaExclamationTriangle, FaCheckCircle, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaFileAlt, FaBriefcase, FaGraduationCap, FaExclamationTriangle, FaCheckCircle, FaGithub } from 'react-icons/fa';
 
-const ResumeTips = ({ isDarkMode }) => {
+const ResumeTips = () => {
     const sections = [
         {
             icon: <FaFileAlt className="text-info" />,

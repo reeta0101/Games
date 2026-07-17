@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FaChartLine, FaFire, FaClock, FaCheckCircle, FaExclamationTriangle, FaTrophy, FaRedo } from 'react-icons/fa';
 

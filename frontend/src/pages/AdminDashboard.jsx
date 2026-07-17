@@ -218,6 +218,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     if (isAdmin) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchUsers();
       fetchFeedback();
       fetchStats();

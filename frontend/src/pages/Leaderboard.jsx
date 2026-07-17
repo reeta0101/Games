@@ -62,6 +62,7 @@ export default function Leaderboard() {
 
   useEffect(() => {
     let mounted = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     getLeaderboard(selectedGame, selectedLevel, 20)
       .then(data => {
@@ -213,7 +214,7 @@ export default function Leaderboard() {
                       <span>·</span>
                       <span>{entry.questions || "?"}Q</span>
                       <span>·</span>
-                      <span>{getTimeAgo(entry.createdAt || entry.timestamp || Date.now())}</span>
+                      <span>{getTimeAgo(entry.createdAt || entry.timestamp || 0)}</span>
                     </div>
                   </div>
 

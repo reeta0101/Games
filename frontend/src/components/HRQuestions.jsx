@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronDown, FaChevronUp, FaLightbulb, FaCommentDots } from 'react-icons/fa';
 
@@ -77,7 +77,7 @@ const hrQuestions = [
     }
 ];
 
-const HRQuestions = ({ isDarkMode }) => {
+const HRQuestions = () => {
     const [expandedId, setExpandedId] = useState(null);
     const [showAnswer, setShowAnswer] = useState({});
 

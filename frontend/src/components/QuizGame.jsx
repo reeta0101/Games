@@ -2,12 +2,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import GameReader from "./GameReader";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import useSound from "../hooks/useSound";
 import { useAudio } from "../hooks/useAudio";
 import { useGlobalSocket } from "../contexts/GlobalSocketContext";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import { recordRecentGame } from "../utils/gameConstants";
-import { io } from "socket.io-client";
 import {
   getLeaderboard,
   saveScore,
@@ -174,7 +172,7 @@ export default function QuizGame({ game }) {
         });
       }
     },
-    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers, socket, currentUser],
+    [buildFinalMessage, clearTimers, score, guestName, game.key, difficulty, questionNum, challenge?.roomId, correctAnswers, wrongAnswers, socket, currentUser, playGameOver],
   );
 
   useEffect(() => {
@@ -266,7 +264,7 @@ export default function QuizGame({ game }) {
     }
   }, [liveLobbyState, screen, isAnswered, challenge, guestName, endGame, clearTimers]);
 
-  const nextQuestion = useCallback(() => {
+  const nextQuestion = useCallback(function nextQ() {
     clearTimers();
     const question = game.generateQuestion();
     setCurrentQuestion(question);
@@ -308,7 +306,7 @@ export default function QuizGame({ game }) {
             });
           }
           
-          advanceTimeoutRef.current = setTimeout(() => nextQuestion(), 1200);
+          advanceTimeoutRef.current = setTimeout(() => nextQ(), 1200);
         } else {
           setFeedbackText("⏱ Time's up — Game Over!");
           setFeedbackTone("danger");
@@ -376,7 +374,7 @@ export default function QuizGame({ game }) {
     
     setScreen("game");
     nextQuestion();
-  }, [clearTimers, game.key, isGlobalChallenge, challenge?.timeLimit, nextQuestion, endGame]);
+  }, [clearTimers, game.key, isGlobalChallenge, challenge?.timeLimit, challenge?.syncStartTime, nextQuestion, endGame]);
 
   // Auto-start game if coming from a live lobby
   useEffect(() => {
@@ -393,7 +391,7 @@ export default function QuizGame({ game }) {
       clearTimers();
       setIsAnswered(true);
 
-      let elapsed = 0;
+      let elapsed;
       if (!isGlobalChallenge) {
         elapsed = activeTimeLimit / 1000 - timeLeft;
       } else {
@@ -468,7 +466,7 @@ export default function QuizGame({ game }) {
         endTimeoutRef.current = setTimeout(() => endGame("wrong", score), 1400);
       }
     },
-    [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit, isGlobalChallenge, challenge, socket, currentUser, guestName, correctAnswers, wrongAnswers],
+    [currentQuestion, endGame, clearTimers, game, isAnswered, nextQuestion, screen, score, streak, timeLeft, activeTimeLimit, isGlobalChallenge, challenge, socket, currentUser, guestName, correctAnswers, wrongAnswers, playCorrect, playStreak, playWrong],
   );
 
   // Keyboard handler
@@ -816,7 +814,6 @@ export default function QuizGame({ game }) {
 
                       return rankedPlayers.map((p, i) => {
                         const isMe = p.username === (currentUser?.username || guestName);
-                        const isTie = rankedPlayers.filter(rp => rp.finalScore === p.finalScore).length > 1;
                         const medal = p.rank === 1 ? '👑' : p.rank;
                         return (
                         <div key={i} className={`grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border px-3 py-2.5 transition ${

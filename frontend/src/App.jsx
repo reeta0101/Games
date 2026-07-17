@@ -71,11 +71,10 @@ import TermsPage from "./pages/TermsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import MobileBottomNav from "./components/MobileBottomNav";
-import { MODE_LABELS, getLeaderboard, getTimeAgo } from "./utils/leaderboard";
+import { MODE_LABELS, getLeaderboard } from "./utils/leaderboard";
 import {
   GAME_MODES,
   CATEGORIES,
-  recordRecentGame,
   getRecentGames,
 } from "./utils/gameConstants";
 import Analytics from "./components/Analytics";
@@ -111,6 +110,7 @@ function GameLeaderboardCard({ game, activeDiff }) {
 
   useEffect(() => {
     let mounted = true;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     getLeaderboard(game.id, activeDiff, 5)
       .then((data) => {

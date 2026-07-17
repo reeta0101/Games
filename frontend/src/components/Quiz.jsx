@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheckCircle, FaTimesCircle, FaChevronRight, FaBookmark, FaRegBookmark, FaClock, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import useKeyboard from '../hooks/useKeyboard';
@@ -54,12 +54,9 @@ function getUserId() {
 const Quiz = ({
   question,
   questionNumber,
-  totalQuestions,
   handleAnswerOptionClick,
   isChatMode = false,
-  isDarkMode = true,
   onNext,
-  isMarked = false,
   onToggleMark,
   timerEnabled = false,
   timerDuration = 30,
@@ -91,6 +88,7 @@ const Quiz = ({
 
     // Restore bookmark state from localStorage
     const bookmarks = getBookmarks();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsBookmarked(bookmarks.some(b => b.key === questionKey));
 
     // Restore vote from localStorage (offline fallback)
@@ -113,7 +111,7 @@ const Quiz = ({
         }
       })
       .catch(() => { /* silently ignore if offline */ });
-  }, [question?.id, subject]);
+  }, [question?.id, subject, questionKey]);
 
   const handleTimeUp = useCallback(() => {
     if (!isAnswered) {
@@ -128,6 +126,7 @@ const Quiz = ({
 
   useEffect(() => {
     if (savedSelection) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedOption(savedSelection);
       setIsAnswered(true);
       setShowNext(true);
@@ -141,7 +140,7 @@ const Quiz = ({
         timer.start();
       }
     }
-  }, [question, savedSelection]);
+  }, [question, savedSelection, timer, timerDuration, timerEnabled]);
 
   const onOptionClick = useCallback((optionId) => {
     if (isAnswered) return;

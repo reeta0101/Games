@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaRedo, FaRandom, FaPause, FaStepForward } from 'react-icons/fa';
+import { FaPlay, FaRandom, FaPause } from 'react-icons/fa';
 
-const AlgorithmVisualizer = ({ isDarkMode }) => {
+const AlgorithmVisualizer = () => {
     const [array, setArray] = useState([]);
     const [isSorting, setIsSorting] = useState(false);
     const [algorithm, setAlgorithm] = useState('bubble');
@@ -13,10 +13,6 @@ const AlgorithmVisualizer = ({ isDarkMode }) => {
     const [sorted, setSorted] = useState([]); // Indices that are sorted
 
     const stopSortingRef = useRef(false);
-
-    useEffect(() => {
-        generateArray();
-    }, [arraySize]);
 
     const generateArray = () => {
         if (isSorting) return;
@@ -30,6 +26,12 @@ const AlgorithmVisualizer = ({ isDarkMode }) => {
         setComparing([]);
         setSwapping([]);
     };
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        generateArray();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [arraySize]);
 
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -46,11 +48,9 @@ const AlgorithmVisualizer = ({ isDarkMode }) => {
         } // Add more algorithms here
 
         if (!stopSortingRef.current) {
-            setSorted(prev => {
-                const allIndices = [];
-                for (let i = 0; i < array.length; i++) allIndices.push(i);
-                return allIndices;
-            });
+            const allIndices = [];
+            for (let i = 0; i < array.length; i++) allIndices.push(i);
+            setSorted(allIndices);
         }
         setIsSorting(false);
         setComparing([]);

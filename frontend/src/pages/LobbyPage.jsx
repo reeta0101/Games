@@ -76,6 +76,7 @@ export default function LobbyPage() {
 
   useEffect(() => {
     if (!currentUser) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoadingFriends(true);
     fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/friends/${currentUser.username}`)
       .then(res => res.json())
@@ -105,6 +106,7 @@ export default function LobbyPage() {
         settings: { gameId, difficulty, challengeMode, timeLimit }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameId, difficulty, challengeMode, timeLimit]);
 
   const joinOrCreateRoom = (e) => {
@@ -142,8 +144,10 @@ export default function LobbyPage() {
 
   useEffect(() => {
     if (searchParams.get("room") && !inRoom && currentUser && socket) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       joinOrCreateRoom();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, currentUser, socket]);
 
   const createRandomRoom = () => {

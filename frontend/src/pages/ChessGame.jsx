@@ -37,7 +37,7 @@ export default function ChessGame() {
     : TIME_MODES[activeModeIndex].increment;
 
   const [game, setGame] = useState(new Chess());
-  const [board, setBoard] = useState(game.board());
+  const [, setBoard] = useState(game.board());
   const [selectedSquare, setSelectedSquare] = useState(null);
   const [validMoves, setValidMoves] = useState([]);
   const [status, setStatus] = useState("White's Turn");
@@ -89,6 +89,7 @@ export default function ChessGame() {
     if (initialTimeLimit === 0) return; // No time limit
     if (game.isGameOver() || whiteTime <= 0 || blackTime <= 0 || !playersReady) {
       if (timerRef.current) clearInterval(timerRef.current);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       updateStatus();
       return;
     }

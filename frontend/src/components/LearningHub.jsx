@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FaBook, FaChevronRight, FaClock, FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -17,7 +17,7 @@ const learningPaths = [
     dataSciencePath
 ];
 
-const LearningHub = ({ isDarkMode }) => {
+const LearningHub = () => {
     const [selectedPath, setSelectedPath] = useState(null);
     const [selectedModule, setSelectedModule] = useState(null);
     const [selectedLesson, setSelectedLesson] = useState(null);
@@ -143,7 +143,7 @@ const LearningHub = ({ isDarkMode }) => {
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
-                                code({ node, inline, className, children, ...props }) {
+                                code({ inline, children, ...props }) {
                                     return inline ? (
                                         <code className="inline-code" {...props}>{children}</code>
                                     ) : (

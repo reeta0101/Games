@@ -8,13 +8,9 @@ import {
   getLeaderboard,
   saveScore,
   getUserHighScores,
-  getTimeAgo,
-  DIFFICULTIES,
-  MODE_LABELS,
   DIFF_LABELS,
 } from "../utils/leaderboard";
 import { useGlobalSocket } from "../contexts/GlobalSocketContext";
-import { io } from "socket.io-client";
 
 const COLORS = [
   {
@@ -107,7 +103,7 @@ export default function SimonSays() {
     DIFFICULTY_OPTIONS[1];
 
   // Audio hook
-  const { playCorrect, playWrong, playStreak, playGameOver } = useAudio();
+  const { playCorrect, playWrong, playGameOver } = useAudio();
 
   // Screens: guest → difficulty → game → end
   const [screen, setScreen] = useState(() => {
@@ -134,17 +130,11 @@ export default function SimonSays() {
   const [top5, setTop5] = useState([]);
   const [personalBest, setPersonalBest] = useState(0);
   const [loadingScores, setLoadingScores] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   // Multiplayer
-  const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [correctAnswers] = useState(0);
+  const [wrongAnswers] = useState(0);
   const { socket } = useGlobalSocket();
-  const [liveLobbyState, setLiveLobbyState] = useState(null);
-  const [serverGameOver, setServerGameOver] = useState(false);
-
-  const activeTimeLimit = DIFFICULTIES[difficulty].timeMs;
-  const isGlobalChallenge = !!challenge?.timeLimit;
 
   const clearTimers = useCallback(() => {
     if (timerRef.current) {
@@ -175,7 +165,9 @@ export default function SimonSays() {
       gainNode.gain.exponentialRampToValueAtTime(0.01, now + duration / 1000);
       oscillator.start(now);
       oscillator.stop(now + duration / 1000);
-    } catch (e) {}
+    } catch {
+      /* ignore */
+    }
   }, []);
 
   const flashColor = useCallback(
@@ -216,52 +208,7 @@ export default function SimonSays() {
     setSequence((prev) => [...prev, newColor]);
   }, []);
 
-  const handleColorPress = useCallback(
-    (colorId) => {
-      if (isPlayingSequence || isGameOver) return;
 
-      flashColor(colorId);
-      setUserSequence((prev) => [...prev, colorId]);
-
-      const currentIndex = userSequence.length;
-      if (sequence[currentIndex] !== colorId) {
-        // Wrong!
-        playWrong();
-        setFeedbackText("Wrong! 💥");
-        setFeedbackTone("wrong");
-        setTimeout(() => endGame("wrong"), 800);
-        return;
-      }
-
-      // Correct so far
-      playCorrect();
-
-      if (userSequence.length + 1 === sequence.length) {
-        // Completed the sequence!
-        const pointsEarned = level * 10;
-        setScore((prev) => prev + pointsEarned);
-        setFeedbackText(`Level ${level}! +${pointsEarned} pts`);
-        setFeedbackTone("correct");
-        setLevel((prev) => prev + 1);
-
-        setTimeout(() => {
-          addToSequence();
-        }, 1200);
-      }
-    },
-    [
-      isPlayingSequence,
-      isGameOver,
-      userSequence,
-      sequence,
-      level,
-      flashColor,
-      playCorrect,
-      playWrong,
-      addToSequence,
-      playSequence,
-    ],
-  );
 
   const buildFinalMessage = useCallback(
     (reason, currentScore) => {
@@ -321,12 +268,59 @@ export default function SimonSays() {
       guestName,
       difficulty,
       level,
-      challenge?.roomId,
+      challenge,
       correctAnswers,
       wrongAnswers,
       socket,
       currentUser,
       playGameOver,
+    ],
+  );
+
+  const handleColorPress = useCallback(
+    (colorId) => {
+      if (isPlayingSequence || isGameOver) return;
+
+      flashColor(colorId);
+      setUserSequence((prev) => [...prev, colorId]);
+
+      const currentIndex = userSequence.length;
+      if (sequence[currentIndex] !== colorId) {
+        // Wrong!
+        playWrong();
+        setFeedbackText("Wrong! 💥");
+        setFeedbackTone("wrong");
+        setTimeout(() => endGame("wrong"), 800);
+        return;
+      }
+
+      // Correct so far
+      playCorrect();
+
+      if (userSequence.length + 1 === sequence.length) {
+        // Completed the sequence!
+        const pointsEarned = level * 10;
+        setScore((prev) => prev + pointsEarned);
+        setFeedbackText(`Level ${level}! +${pointsEarned} pts`);
+        setFeedbackTone("correct");
+        setLevel((prev) => prev + 1);
+
+        setTimeout(() => {
+          addToSequence();
+        }, 1200);
+      }
+    },
+    [
+      isPlayingSequence,
+      isGameOver,
+      userSequence,
+      sequence,
+      level,
+      flashColor,
+      playCorrect,
+      playWrong,
+      addToSequence,
+      endGame,
     ],
   );
 
@@ -348,6 +342,7 @@ export default function SimonSays() {
 
   useEffect(() => {
     if (sequence.length > 0 && !isGameOver) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       playSequence();
     }
   }, [sequence, isGameOver, playSequence]);
@@ -373,6 +368,7 @@ export default function SimonSays() {
   // Load leaderboard when game ends
   useEffect(() => {
     if (screen === "end") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoadingScores(true);
       getLeaderboard("simon_says", difficulty, 5).then((data) => {
         setTop5(data);
@@ -389,15 +385,15 @@ export default function SimonSays() {
         user: { username: currentUser.username, name: currentUser.name },
       });
 
-      const onLobbyState = (state) => {
-        setLiveLobbyState(state);
+      const onLobbyState = () => {
+        // ...
       };
-      const onGameStarted = (settings) => {
+      const onGameStarted = () => {
         setScreen("game");
         startGame();
       };
       const onGameOver = () => {
-        setServerGameOver(true);
+        // ...
       };
 
       socket.on("lobby_state", onLobbyState);

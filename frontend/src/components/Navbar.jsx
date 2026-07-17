@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 import ChangePasswordModal from "./ChangePasswordModal";
 import { useAudioContext } from "../contexts/AudioContext";
@@ -21,7 +20,6 @@ export default function Navbar({
 }) {
   const isActive = (path) => location.pathname === path;
   const initial = currentUser?.name?.trim()?.charAt(0)?.toUpperCase() || "G";
-  const isAdmin = useSelector((state) => state.auth.isAdmin);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const { isMuted, toggleMute } = useAudioContext();
 
@@ -56,6 +54,7 @@ export default function Navbar({
 
   // Close mobile menu on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
     setProfileOpen(false);
   }, [location.pathname]);

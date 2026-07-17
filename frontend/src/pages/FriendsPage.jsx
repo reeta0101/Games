@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -39,15 +39,7 @@ export default function FriendsPage() {
   const [challengeWrongs, setChallengeWrongs] = useState(true); // true means acceptable
   const [copiedLink, setCopiedLink] = useState(false);
 
-  useEffect(() => {
-    if (!currentUser) {
-      navigate("/login");
-      return;
-    }
-    fetchAllData();
-  }, [currentUser, navigate]);
-
-  const fetchAllData = async () => {
+  const fetchAllData = useCallback(async () => {
     setIsLoading(true);
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
@@ -62,12 +54,21 @@ export default function FriendsPage() {
       setReceivedRequests(friendsRes.data.friendRequests || []);
       setSentRequests(sentRequestsRes.data || []);
       setAllUsers(allUsersRes.data || []);
-    } catch (err) {
-      console.error("Error fetching friends data", err);
+    } catch {
+      console.error("Error fetching friends data");
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchAllData();
+  }, [currentUser, navigate, fetchAllData]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -83,7 +84,7 @@ export default function FriendsPage() {
       } else {
         setAllUsers(res.data);
       }
-    } catch (err) {
+    } catch {
       setSearchMessage("Error searching users.");
     } finally {
       setIsSearching(false);

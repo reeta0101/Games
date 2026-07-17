@@ -2083,17 +2083,6 @@ export const stateDances = [
   { state: "Lakshadweep", dance: "Lava" },
 ];
 
-function generateStateDanceOptions(correct) {
-  const allDances = stateDances.map((s) => s.dance);
-  const options = new Set([correct]);
-  const pool = shuffleArray(allDances.filter((d) => d !== correct));
-  for (const d of pool) {
-    if (options.size >= 4) break;
-    options.add(d);
-  }
-  return shuffleArray(Array.from(options));
-}
-
 // Extend quizGames with stateDance
 Object.assign(quizGames, {
   stateDance: {

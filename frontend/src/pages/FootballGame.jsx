@@ -36,16 +36,13 @@ const ZONE_2D_POSITIONS = {
 
 export default function FootballGame() {
   const navigate = useNavigate();
-  const fieldRef = useRef(null);
   const ballRef = useRef(null);
   const gkRef = useRef(null);
-  const particlesRef = useRef([]);
   const animationFrameRef = useRef(null);
 
   const [score, setScore] = useState({ me: 0, opponent: 0 });
   const [round, setRound] = useState(1);
   // Rounds 1-5: Player is Striker, Rounds 6-10: Player is Goalkeeper
-  const isMyTurn = round <= 5;
   const [gameStatus, setGameStatus] = useState("playing");
   const [animating, setAnimating] = useState(false);
 
@@ -72,6 +69,7 @@ export default function FootballGame() {
       opacity: Math.random() * 0.5 + 0.1,
       delay: Math.random() * 5,
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFieldParticles(particles);
   }, []);
 
@@ -1273,7 +1271,6 @@ export default function FootballGame() {
                     position: "absolute",
                     bottom: "10%",
                     left: "50%",
-                    transform: "translateX(-50%) translateZ(1px)",
                     width: "35%",
                     height: "35%",
                     background: "#1f2937",

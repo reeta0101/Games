@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AudioContext = createContext();
 
@@ -23,6 +23,7 @@ export function AudioProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAudioContext() {
   return useContext(AudioContext);
 }

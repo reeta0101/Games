@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import TestGameReader from "./TestGameReader";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCookie, setCookie, GUEST_COOKIE_NAME } from "../utils/cookies";
 import { recordRecentGame } from "../utils/gameConstants";
@@ -256,6 +256,7 @@ export default function TestQuizGame({ game, customData }) {
   // Fetch scores when end screen mounts
   useEffect(() => {
     if (screen === "end") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoadingScores(true);
       Promise.all([
         getLeaderboard(game.key, difficulty, 5),
@@ -567,7 +568,7 @@ export default function TestQuizGame({ game, customData }) {
                           {entry.name}{isMe && ' ← you'}
                         </div>
                         <div className="text-[10px] uppercase tracking-[0.15em] text-slate-500">
-                          {entry.questions || '?'}Q · {getTimeAgo(entry.createdAt || entry.timestamp || Date.now())}
+                          {entry.questions || '?'}Q · {getTimeAgo(entry.createdAt || entry.timestamp || 0)}
                         </div>
                       </div>
                       <div className={`text-xl font-black ${isMe ? 'text-[#40e0f0]' : 'text-slate-200'}`}>

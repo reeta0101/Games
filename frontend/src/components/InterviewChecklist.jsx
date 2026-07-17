@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaCheck, FaSquare, FaCheckSquare, FaClock, FaCalendarAlt } from 'react-icons/fa';
+import { FaSquare, FaCheckSquare, FaClock, FaCalendarAlt } from 'react-icons/fa';
 
 const checklistData = {
     weekBefore: {
@@ -63,7 +63,7 @@ const checklistData = {
     }
 };
 
-const InterviewChecklist = ({ isDarkMode }) => {
+const InterviewChecklist = () => {
     const [completed, setCompleted] = useState(() => {
         const saved = localStorage.getItem('interviewChecklist');
         return saved ? JSON.parse(saved) : [];

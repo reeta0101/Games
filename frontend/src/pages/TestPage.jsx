@@ -259,6 +259,19 @@ export default function TestPage() {
     closeModal();
   };
 
+  /* ─── Selection grid ─── */
+  const groupedVisible = useMemo(() => {
+    if (activeGroup !== "all") return { [activeGroup]: visibleCategories };
+    // Group by category
+    const groups = {};
+    visibleCategories.forEach((cat) => {
+      const g = cat.group || "general";
+      if (!groups[g]) groups[g] = [];
+      groups[g].push(cat);
+    });
+    return groups;
+  }, [activeGroup, visibleCategories]);
+
   /* ─── Active quiz view ─── */
   if (selectedCategory) {
     const meta = getMeta(selectedCategory);
@@ -313,18 +326,7 @@ export default function TestPage() {
     );
   }
 
-  /* ─── Selection grid ─── */
-  const groupedVisible = useMemo(() => {
-    if (activeGroup !== "all") return { [activeGroup]: visibleCategories };
-    // Group by category
-    const groups = {};
-    visibleCategories.forEach((cat) => {
-      const g = cat.group || "general";
-      if (!groups[g]) groups[g] = [];
-      groups[g].push(cat);
-    });
-    return groups;
-  }, [activeGroup, visibleCategories]);
+
 
   return (
     <main className="mx-auto max-w-7xl px-4 pb-24 pt-8 sm:px-6 lg:px-8 relative z-10">

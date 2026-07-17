@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBuilding, FaLightbulb, FaQuestionCircle, FaChevronRight } from 'react-icons/fa';
 
@@ -178,7 +178,7 @@ const interviewGuides = [
     }
 ];
 
-const InterviewGuides = ({ isDarkMode }) => {
+const InterviewGuides = () => {
     const [selectedCompany, setSelectedCompany] = useState(interviewGuides[0]);
 
     return (

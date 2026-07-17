@@ -85,6 +85,7 @@ export const MODE_LABELS = {
   indianNational: 'IND Symbols',
   famousBattles: 'Battles',
   simon_says: 'Simon',
+  indiaMap: 'India Map',
 };
 
 export const DIFF_LABELS = {

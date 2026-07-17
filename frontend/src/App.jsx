@@ -59,6 +59,7 @@ import FriendsPage from "./pages/FriendsPage";
 import LobbyPage from "./pages/LobbyPage";
 import { GlobalSocketProvider } from "./contexts/GlobalSocketContext";
 import InteractiveMapPage from "./pages/InteractiveMapPage";
+import IndiaMapQuiz from "./pages/IndiaMapQuiz";
 import ProfilePage from "./pages/ProfilePage";
 import TicTacToe from "./pages/TicTacToe";
 import RockPaperScissors from "./pages/RockPaperScissors";
@@ -981,6 +982,7 @@ function ArcadeLayout() {
             <Route path="/lobby" element={<LobbyPage />} />
             <Route path="/challenge" element={<ChallengePage />} />
             <Route path="/map" element={<InteractiveMapPage />} />
+            <Route path="/india-map" element={<IndiaMapQuiz />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/tic-tac-toe" element={<TicTacToe />} />
             <Route path="/simon-says" element={<SimonSays />} />

@@ -6,10 +6,9 @@ import { useAudioContext } from "../contexts/AudioContext";
 const NAV_LINKS = [
   { to: "/quizzes", label: "Quizzes" },
   { to: "/test-page", label: "Exams" },
-  { to: "/leaderboard", label: "Leaderboard" },
+  { to: "/games", label: "Games" },
   { to: "/lobby", label: "Challenges" },
-  { to: "/map", label: "Maps" },
-  { to: "/games", label: "Games" }
+  { to: "/leaderboard", label: "Rank" },
 ];
 
 export default function Navbar({

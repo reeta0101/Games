@@ -34,12 +34,15 @@ export default function MobileBottomNav() {
       )
     },
     {
-      to: "/leaderboard",
-      label: "Rank",
+      to: "/games",
+      label: "Games",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="8" r="6" />
-          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+          <rect x="2" y="6" width="20" height="12" rx="2" />
+          <path d="M6 12h4" />
+          <path d="M8 10v4" />
+          <circle cx="15" cy="13" r="1" fill="currentColor" />
+          <circle cx="18" cy="11" r="1" fill="currentColor" />
         </svg>
       )
     },
@@ -54,26 +57,12 @@ export default function MobileBottomNav() {
       )
     },
     {
-      to: "/map",
-      label: "Maps",
+      to: "/leaderboard",
+      label: "Rank",
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
-          <line x1="9" y1="3" x2="9" y2="18" />
-          <line x1="15" y1="6" x2="15" y2="21" />
-        </svg>
-      )
-    },
-    {
-      to: "/games",
-      label: "Games",
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="6" width="20" height="12" rx="2" />
-          <path d="M6 12h4" />
-          <path d="M8 10v4" />
-          <circle cx="15" cy="13" r="1" fill="currentColor" />
-          <circle cx="18" cy="11" r="1" fill="currentColor" />
+          <circle cx="12" cy="8" r="6" />
+          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
         </svg>
       )
     }
@@ -81,22 +70,21 @@ export default function MobileBottomNav() {
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 sm:hidden bg-[#07101d]/95 backdrop-blur-xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-      <div className="flex items-center h-full mx-auto font-medium px-0 overflow-x-auto no-scrollbar">
+      <div className="flex justify-around items-center h-full max-w-lg mx-auto font-medium px-1">
         {navItems.map((item) => {
           const active = isActive(item.to);
           return (
             <Link
               key={item.label}
               to={item.to}
-              className={`flex flex-col items-center justify-center shrink-0 min-w-[3.5rem] w-full max-w-[5rem] py-1 group ${
+              className={`flex flex-col items-center justify-center flex-1 min-w-0 group ${
                 active ? "text-[#40e0f0]" : "text-slate-400 hover:text-slate-200"
               }`}
-              style={{ flex: '1 0 0%' }}
             >
               <div className={`mb-0.5 transition-transform duration-200 ${active ? "scale-110 drop-shadow-[0_0_8px_rgba(64,224,240,0.5)]" : "group-hover:scale-110"}`}>
                 {item.icon}
               </div>
-              <span className="block w-full text-center text-[8px] tracking-tight font-bold uppercase leading-tight truncate px-0.5">{item.label}</span>
+              <span className="block w-full text-center text-[9px] tracking-tight font-bold uppercase leading-tight truncate px-0.5">{item.label}</span>
             </Link>
           );
         })}

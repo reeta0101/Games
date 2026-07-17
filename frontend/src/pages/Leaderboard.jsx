@@ -42,6 +42,7 @@ const GAMES = [
   { key: "indianNational", label: "Indian National Symbols", accent: "#f97316", icon: "🇮🇳", path: "/indian-national" },
   { key: "famousBattles", label: "Famous Battles → Year", accent: "#dc2626", icon: "⚔️", path: "/famous-battles" },
   { key: "compoundFormula", label: "Compound → Formula", accent: "#ec4899", icon: "H₂O", path: "/compound-formula" },
+  { key: "indiaMap",        label: "India Map Quiz",       accent: "#38bdf8", icon: "🗺️", path: "/india-map" },
 ];
 
 const LEVELS = [

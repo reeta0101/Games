@@ -418,25 +418,25 @@ export default function TicTacToe() {
   if (setupPhase) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-2">Tic Tac Toe</h1>
+        <div className="text-center mb-1">
+          <h1 className="text-xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-0.5">Tic Tac Toe</h1>
           <p className="text-lg font-bold text-slate-300">Game Setup</p>
         </div>
         
-        <div className="bg-[#0f172a]/80 border border-white/10 p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-md w-full animate-fade-in-up">
-          <div className="space-y-6">
+        <div className="bg-[#0f172a]/80 border border-white/10 p-3 sm:p-5 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-[280px] sm:max-w-sm w-full animate-fade-in-up">
+          <div className="space-y-3 sm:space-y-4">
             <div>
               <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-3 text-center">Opponent</label>
               <div className="flex gap-3">
                 <button
                   onClick={() => setPlayMode("computer")}
-                  className={`flex-1 rounded-2xl py-4 text-sm font-black transition ${playMode === "computer" ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
+                  className={`flex-1 rounded-2xl py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black transition ${playMode === "computer" ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
                 >
                   Vs Computer
                 </button>
                 <button
                   onClick={() => setPlayMode("local")}
-                  className={`flex-1 rounded-2xl py-4 text-sm font-black transition ${playMode === "local" ? "bg-purple-500/20 text-purple-400 border border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
+                  className={`flex-1 rounded-2xl py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black transition ${playMode === "local" ? "bg-purple-500/20 text-purple-400 border border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
                 >
                   Pass & Play
                 </button>
@@ -448,13 +448,13 @@ export default function TicTacToe() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setGameMode("classic")}
-                  className={`flex-1 rounded-2xl py-4 text-sm font-black transition ${gameMode === "classic" ? "bg-blue-500/20 text-blue-400 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
+                  className={`flex-1 rounded-2xl py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black transition ${gameMode === "classic" ? "bg-blue-500/20 text-blue-400 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
                 >
                   Classic
                 </button>
                 <button
                   onClick={() => setGameMode("infinite")}
-                  className={`flex-1 rounded-2xl py-4 text-sm font-black transition ${gameMode === "infinite" ? "bg-pink-500/20 text-pink-400 border border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
+                  className={`flex-1 rounded-2xl py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black transition ${gameMode === "infinite" ? "bg-pink-500/20 text-pink-400 border border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.2)]" : "bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"}`}
                 >
                   Infinite
                 </button>
@@ -462,19 +462,19 @@ export default function TicTacToe() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="mt-4 sm:mt-6 flex flex-col gap-2">
             <button
               onClick={() => {
                  setSetupPhase(false);
                  resetGame();
               }}
-              className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 py-4 text-sm font-black uppercase tracking-widest text-slate-950 hover:brightness-110 transition shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+              className="w-full rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-950 hover:brightness-110 transition shadow-[0_0_20px_rgba(34,211,238,0.3)]"
             >
               Start Game
             </button>
             <button
               onClick={() => navigate("/games")}
-              className="w-full rounded-2xl bg-white/5 py-4 text-sm font-black uppercase tracking-widest text-slate-400 hover:bg-white/10 hover:text-white transition border border-white/10"
+              className="w-full rounded-2xl bg-white/5 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 hover:bg-white/10 hover:text-white transition border border-white/10"
             >
               Back to Menu
             </button>
@@ -486,14 +486,14 @@ export default function TicTacToe() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-120px)] py-10 px-4">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-2">Tic Tac Toe</h1>
+      <div className="text-center mb-1 sm:mb-2">
+        <h1 className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#40e0f0] to-blue-500 mb-0.5">Tic Tac Toe</h1>
         <p className="text-lg font-bold text-slate-300">
           {isMultiplayer ? `Vs ${opponentName}` : playMode === "computer" ? "Vs Computer" : "Pass & Play"}
         </p>
       </div>
 
-      <div className="flex justify-between w-full max-w-md mb-8 text-white text-xl font-black bg-[#0f172a] px-8 py-4 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(64,224,240,0.15)]">
+      <div className="flex justify-between w-full max-w-[280px] sm:max-w-[380px] mb-2 sm:mb-3 text-white font-black bg-[#0f172a] px-3 py-1.5 sm:px-6 sm:py-2 rounded-2xl sm:rounded-3xl border border-white/10 shadow-[0_0_20px_rgba(64,224,240,0.15)]">
         <div className="text-center">
           <p className="text-[10px] uppercase tracking-widest text-[#40e0f0] mb-1">
             {isMultiplayer ? `You (${mySymbol})` : playMode === "computer" ? `You (${singlePlayerSymbol})` : 'Player X'}
@@ -512,16 +512,16 @@ export default function TicTacToe() {
         </div>
       </div>
 
-      <div className="bg-[#0f172a]/80 border border-white/10 p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-md w-full relative">
-        <div className="mb-6 text-center h-8">
-          <p className={`text-xl font-black uppercase tracking-widest transition-all duration-300 ${
+      <div className="bg-[#0f172a]/80 border border-white/10 p-2.5 sm:p-4 rounded-2xl shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-2xl max-w-[280px] sm:max-w-[380px] w-full relative">
+        <div className="mb-1 sm:mb-3 text-center h-5 sm:h-6">
+          <p className={`text-xs sm:text-base font-black uppercase tracking-widest transition-all duration-300 ${
             gameStatus === "won" ? (winner === (isMultiplayer ? mySymbol : singlePlayerSymbol) ? "text-[#40f080] scale-110 drop-shadow-[0_0_10px_rgba(64,240,128,0.5)]" : "text-rose-400 scale-110 drop-shadow-[0_0_10px_rgba(240,64,96,0.5)]") : "text-slate-300"
           }`}>
             {getStatusMessage()}
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mb-8 bg-slate-900/50 p-4 rounded-3xl relative border border-white/5 shadow-inner">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 mb-2 sm:mb-4 bg-slate-900/50 p-2 sm:p-3 rounded-xl sm:rounded-2xl relative border border-white/5 shadow-inner">
 
 
           {board.map((cell, i) => {
@@ -533,7 +533,7 @@ export default function TicTacToe() {
               <button
                 key={i}
                 onClick={() => handleClick(i)}
-                className={`aspect-square bg-[#0f172a] rounded-2xl flex items-center justify-center text-7xl transition-all duration-300 disabled:cursor-not-allowed border border-white/5 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] overflow-hidden relative group
+                className={`aspect-square bg-[#0f172a] rounded-xl flex items-center justify-center text-4xl sm:text-6xl transition-all duration-300 disabled:cursor-not-allowed border border-white/5 shadow-[inset_0_0_15px_rgba(0,0,0,0.5)] overflow-hidden relative group
                   ${cell === null && gameStatus === "playing" ? 'hover:bg-[#1e293b] hover:shadow-[inset_0_0_15px_rgba(255,255,255,0.05)]' : ''}
                   ${isFading ? 'animate-pulse bg-red-950/40 border-red-500/30 shadow-[inset_0_0_30px_rgba(255,0,0,0.2)]' : ''}
                   ${gameStatus === "won" && cell === winner ? 'bg-white/10 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)]' : ''}
@@ -553,27 +553,27 @@ export default function TicTacToe() {
           })}
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1.5 sm:gap-3">
           {!isMultiplayer && (
             <button
               onClick={() => setSetupPhase(true)}
-              className="w-full rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
+              className="w-full rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-white shadow-lg hover:scale-[1.02] transition"
             >
               Change Settings
             </button>
           )}
           
-          <div className="flex gap-4">
+          <div className="flex gap-1.5 sm:gap-3">
             <button
               onClick={resetGame}
-              className="flex-1 rounded-2xl bg-gradient-to-r from-[#f0e040] to-orange-400 py-4 text-sm font-black uppercase tracking-[0.2em] text-black shadow-lg hover:scale-[1.02] transition"
+              className="flex-1 rounded-xl bg-gradient-to-r from-[#f0e040] to-orange-400 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-black shadow-lg hover:scale-[1.02] transition"
             >
               {isMultiplayer ? "Request Restart" : "Restart"}
             </button>
             
             <button
               onClick={() => navigate(isMultiplayer ? `/lobby?room=${roomId}` : "/games")}
-              className="flex-1 rounded-2xl bg-white/5 border border-white/10 py-4 text-sm font-black uppercase tracking-[0.2em] text-slate-300 hover:bg-white/10 transition"
+              className="flex-1 rounded-xl bg-white/5 border border-white/10 py-1.5 sm:py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-slate-300 hover:bg-white/10 transition"
             >
               {isMultiplayer ? "Lobby" : "Menu"}
             </button>

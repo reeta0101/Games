@@ -63,7 +63,7 @@ import IndiaMapQuiz from "./pages/IndiaMapQuiz";
 import ProfilePage from "./pages/ProfilePage";
 import TicTacToe from "./pages/TicTacToe";
 import RockPaperScissors from "./pages/RockPaperScissors";
-import FootballGame from "./pages/FootballGame";
+import PenaltyShootout from "./pages/PenaltyShootout";
 import ChessGame from "./pages/ChessGame";
 import SimonSays from "./pages/SimonSays";
 import GamesPage from "./pages/GamesPage";
@@ -1001,7 +1001,7 @@ function ArcadeLayout() {
               path="/rock-paper-scissors"
               element={<RockPaperScissors />}
             />
-            <Route path="/penalty-shootout" element={<FootballGame />} />
+            <Route path="/penalty-shootout" element={<PenaltyShootout />} />
             <Route path="/chess" element={<ChessGame />} />
             <Route path="/games" element={<GamesPage />} />
             <Route path="/snake" element={<SnakeGame />} />

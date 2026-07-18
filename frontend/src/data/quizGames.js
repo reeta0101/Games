@@ -752,10 +752,10 @@ export const quizGames = {
     cardTitle: "Square Quiz",
     cardDescription: "Squares of numbers from 1 to 100.",
     ranges: [
-      { key: "25", label: "25%" },
-      { key: "50", label: "50%" },
-      { key: "75", label: "75%" },
-      { key: "100", label: "100%" },
+      { key: "25", label: "1 to 25" },
+      { key: "50", label: "1 to 50" },
+      { key: "75", label: "1 to 75" },
+      { key: "100", label: "1 to 100" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
@@ -858,10 +858,10 @@ export const quizGames = {
     cardTitle: "Element → (Atomic Number, Atomic Weight)",
     cardDescription: "Match elements to their atomic number and weight.",
     ranges: [
-      { key: "30", label: "25%" },
-      { key: "59", label: "50%" },
-      { key: "89", label: "75%" },
-      { key: "118", label: "100%" },
+      { key: "30", label: "1 to 30" },
+      { key: "59", label: "1 to 59" },
+      { key: "89", label: "1 to 89" },
+      { key: "118", label: "1 to 118" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
@@ -909,10 +909,10 @@ export const quizGames = {
     cardTitle: "Element Name → Element Symbol",
     cardDescription: "Name to symbol — C, Fe, Au, and more.",
     ranges: [
-      { key: "30", label: "25%" },
-      { key: "59", label: "50%" },
-      { key: "89", label: "75%" },
-      { key: "118", label: "100%" },
+      { key: "30", label: "1 to 30" },
+      { key: "59", label: "1 to 59" },
+      { key: "89", label: "1 to 89" },
+      { key: "118", label: "1 to 118" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
@@ -958,10 +958,10 @@ export const quizGames = {
     cardTitle: "Cube Quiz",
     cardDescription: "Cubes of numbers from 1 to 30.",
     ranges: [
-      { key: "10", label: "25%" },
-      { key: "20", label: "50%" },
-      { key: "30", label: "75%" },
-      { key: "40", label: "100%" },
+      { key: "10", label: "1 to 10" },
+      { key: "20", label: "1 to 20" },
+      { key: "30", label: "1 to 30" },
+      { key: "40", label: "1 to 40" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
@@ -1067,10 +1067,10 @@ export const quizGames = {
     cardTitle: "Prime Number Quiz",
     cardDescription: "Find the prime number in each set.",
     ranges: [
-      { key: "250", label: "25%" },
-      { key: "500", label: "50%" },
-      { key: "750", label: "75%" },
-      { key: "1000", label: "100%" },
+      { key: "250", label: "1 to 250" },
+      { key: "500", label: "1 to 500" },
+      { key: "750", label: "1 to 750" },
+      { key: "1000", label: "1 to 1000" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {
@@ -1121,10 +1121,10 @@ export const quizGames = {
     cardTitle: "Roman Numerals Quiz",
     cardDescription: "Decode numerals from I to C.",
     ranges: [
-      { key: "25", label: "25%" },
-      { key: "50", label: "50%" },
-      { key: "75", label: "75%" },
-      { key: "100", label: "100%" },
+      { key: "25", label: "1 to 25" },
+      { key: "50", label: "1 to 50" },
+      { key: "75", label: "1 to 75" },
+      { key: "100", label: "1 to 100" },
       { key: "custom", label: "Custom", isCustom: true }
     ],
     getScorePoints: (elapsedSec, timeLimitMs) => {

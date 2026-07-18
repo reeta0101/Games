@@ -63,7 +63,12 @@ export default function QuizGame({ game }) {
   const [difficulty, setDifficulty] = useState(challenge?.difficulty || "intermediate");
 
   // Range
-  const [selectedRange, setSelectedRange] = useState(() => game.ranges ? game.ranges[game.ranges.length - 1].key : null);
+  const [selectedRange, setSelectedRange] = useState(() => {
+    if (!game.ranges) return null;
+    return game.ranges[game.ranges.length - 1].isCustom 
+      ? game.ranges[game.ranges.length - 2].key 
+      : game.ranges[game.ranges.length - 1].key;
+  });
   const [customMin, setCustomMin] = useState(1);
   const [customMax, setCustomMax] = useState(100);
 
@@ -281,6 +286,9 @@ export default function QuizGame({ game }) {
     setFeedbackText("");
     setFeedbackTone("neutral");
     setResultState({ selected: null, correct: null });
+    
+    // Ensure we start at the top of the question, especially if previous options were long
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
     setTimeLeft(activeTimeLimit / 1000);
     const startedAt = Date.now();
@@ -391,6 +399,13 @@ export default function QuizGame({ game }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Ensure scroll to top when game starts or new question loads
+  useEffect(() => {
+    if (screen === "game") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [screen, questionNum]);
 
   const handleChoice = useCallback(
     (choice) => {
@@ -634,42 +649,44 @@ export default function QuizGame({ game }) {
   // ════════════════════════════════════════
   if (screen === "difficulty") {
     return (
-      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <section className="surface w-full overflow-hidden rounded-3xl p-5 animate-soft-pop sm:p-8">
-          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <main className="mx-auto flex min-h-[calc(100vh-120px)] max-w-5xl items-center px-3 py-4 sm:px-6 sm:py-10 lg:px-8">
+        <section className="surface w-full overflow-hidden rounded-2xl p-4 animate-soft-pop sm:rounded-3xl sm:p-8">
+          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center sm:gap-8">
             <div>
-              <div className="mb-3 text-xs uppercase tracking-[0.24em] text-slate-500">
+              <div className="hidden sm:block mb-3 text-xs uppercase tracking-[0.24em] text-slate-500">
                 Player <span className="text-[#f0e040]">{guestName}</span>
               </div>
-              <div className="text-5xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl">
-                {game.bigLetter}
+              <div className="flex items-center gap-3 sm:block">
+                <div className="text-3xl font-black uppercase tracking-[0.16em] text-white sm:text-6xl">
+                  {game.bigLetter}
+                </div>
+                <h1 className="text-xl font-black text-white sm:mt-4 sm:text-5xl">
+                  {game.title}
+                </h1>
               </div>
-              <h1 className="mt-4 text-3xl font-black text-white sm:text-5xl">
-                {game.title}
-              </h1>
-              <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+              <p className="hidden sm:block mt-4 text-base leading-7 text-slate-300 sm:text-lg">
                 {game.intro}
               </p>
 
-              <div className="mt-5 rounded-2xl border border-white/8 bg-black/20 p-4">
+              <div className="mt-3 rounded-xl border border-white/8 bg-black/20 p-2.5 sm:mt-5 sm:rounded-2xl sm:p-4">
                 <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-slate-500">
                   Scoring
                 </p>
-                <p className="mt-2 text-sm leading-6 text-slate-300">
+                <p className="mt-1 text-xs leading-5 text-slate-300 sm:mt-2 sm:text-sm sm:leading-6">
                   {game.rules}
                 </p>
-                <p className="mt-2 text-xs leading-5 text-slate-500">
+                <p className="mt-1 text-[9px] leading-4 text-slate-500 sm:mt-2 sm:text-xs sm:leading-5">
                   {game.reference}
                 </p>
               </div>
             </div>
 
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.28em] text-slate-500">
+              <p className="hidden sm:block text-sm font-bold uppercase tracking-[0.28em] text-slate-500">
                 Select difficulty
               </p>
 
-              <div className="mt-4 grid gap-3">
+              <div className="mt-3 grid gap-3 sm:mt-4">
                 {DIFFICULTY_OPTIONS.map((d) => {
                   const active = difficulty === d.key;
 
@@ -678,25 +695,25 @@ export default function QuizGame({ game }) {
                       key={d.key}
                       onClick={() => setDifficulty(d.key)}
                       aria-pressed={active}
-                      className={`interactive-lift rounded-2xl border p-4 text-left transition duration-200 ${
+                      className={`interactive-lift rounded-xl border p-3 text-left transition duration-200 sm:rounded-2xl sm:p-4 ${
                         active
                           ? "border-[#f0e040]/60 bg-[#f0e040]/12 shadow-[0_0_22px_rgba(240,224,64,0.13)]"
                           : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.06]"
                       }`}
                       type="button"
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <div className="text-3xl">{d.icon}</div>
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
-                            <span className="text-sm font-black uppercase tracking-[0.2em] text-white">
+                            <span className="text-xs font-black uppercase tracking-[0.2em] text-white sm:text-sm">
                               {d.label}
                             </span>
                             <span className="rounded-full bg-black/24 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400">
                               {d.time}
                             </span>
                           </div>
-                          <p className="mt-1 text-xs leading-5 text-slate-500">
+                          <p className="mt-1 text-[10px] leading-4 text-slate-500 sm:text-xs sm:leading-5">
                             {d.note}
                           </p>
                         </div>
@@ -707,11 +724,11 @@ export default function QuizGame({ game }) {
               </div>
 
               {game.ranges && (
-                <div className="mt-6">
-                  <p className="mb-3 text-sm font-bold uppercase tracking-[0.28em] text-slate-500">
+                <div className="mt-3 sm:mt-6">
+                  <p className="hidden sm:block mb-3 text-sm font-bold uppercase tracking-[0.28em] text-slate-500">
                     Select Range
                   </p>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
                     {game.ranges.map((r) => {
                       const active = selectedRange === r.key;
                       return (
@@ -719,14 +736,14 @@ export default function QuizGame({ game }) {
                           key={r.key}
                           onClick={() => setSelectedRange(r.key)}
                           aria-pressed={active}
-                          className={`interactive-lift rounded-2xl border p-3 text-center transition duration-200 ${
+                          className={`interactive-lift rounded-xl border p-2.5 text-center transition duration-200 sm:rounded-2xl sm:p-3 ${
                             active
                               ? "border-[#f0e040]/60 bg-[#f0e040]/12 shadow-[0_0_22px_rgba(240,224,64,0.13)]"
                               : "border-white/10 bg-white/[0.04] hover:border-white/20 hover:bg-white/[0.06]"
                           }`}
                           type="button"
                         >
-                          <span className={`text-sm font-black uppercase tracking-[0.1em] ${active ? "text-white" : "text-slate-400"}`}>
+                          <span className={`text-[10px] font-black uppercase tracking-[0.1em] sm:text-sm ${active ? "text-white" : "text-slate-400"}`}>
                             {r.label}
                           </span>
                         </button>
@@ -749,40 +766,39 @@ export default function QuizGame({ game }) {
                 </div>
               )}
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <div className="mt-4 grid gap-3 sm:mt-6 sm:grid-cols-2">
                 <button
                   onClick={startGame}
-                  className="touch-target rounded-2xl border border-[#f0e040]/60 bg-[#f0e040]/12 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#f0e040] transition hover:bg-[#f0e040]/22 sm:col-span-2"
+                  className="touch-target rounded-xl border border-[#f0e040]/60 bg-[#f0e040]/12 px-4 py-3.5 text-sm font-black uppercase tracking-[0.2em] text-[#f0e040] transition hover:bg-[#f0e040]/22 sm:rounded-2xl sm:px-5 sm:col-span-2"
                   type="button"
                 >
                   Start quiz
                 </button>
-                <button
-                  onClick={() => {
-                    setReadReturnScreen("difficulty");
-                    setScreen("read");
-                  }}
-                  className="touch-target rounded-2xl border border-[#40e0f0]/35 bg-[#40e0f0]/10 px-5 py-3 text-sm font-bold uppercase tracking-[0.2em] text-[#40e0f0] transition hover:bg-[#40e0f0]/18"
-                  type="button"
-                >
-                  Read
-                </button>
-              </div>
-
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                <button
-                  onClick={() => navigate("/")}
-                  className="touch-target w-full rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-slate-400 transition hover:bg-white/10 hover:text-white"
-                  type="button"
-                >
-                  Back to library
-                </button>
+                <div className="grid grid-cols-2 gap-3 sm:contents">
+                  <button
+                    onClick={() => {
+                      setReadReturnScreen("difficulty");
+                      setScreen("read");
+                    }}
+                    className="touch-target rounded-xl border border-[#40e0f0]/35 bg-[#40e0f0]/10 px-2 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#40e0f0] transition hover:bg-[#40e0f0]/18 sm:rounded-2xl sm:px-5 sm:text-sm"
+                    type="button"
+                  >
+                    Read
+                  </button>
+                  <button
+                    onClick={() => navigate("/")}
+                    className="touch-target rounded-xl border border-white/12 bg-white/[0.04] px-2 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 transition hover:bg-white/10 hover:text-white sm:rounded-2xl sm:px-5 sm:text-xs sm:tracking-[0.22em]"
+                    type="button"
+                  >
+                    Menu
+                  </button>
+                </div>
                 <button
                   onClick={() => navigate(`/lobby?gameId=${game.key}`)}
-                  className="touch-target w-full rounded-2xl border border-[#f04060]/30 bg-[#f04060]/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.22em] text-[#f04060] transition hover:bg-[#f04060]/20"
+                  className="touch-target rounded-xl border border-[#f04060]/30 bg-[#f04060]/10 px-2 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#f04060] transition hover:bg-[#f04060]/20 sm:col-span-2 sm:rounded-2xl sm:px-5 sm:text-xs sm:tracking-[0.22em]"
                   type="button"
                 >
-                  Challenge Friend
+                  Vs Friend
                 </button>
               </div>
             </div>

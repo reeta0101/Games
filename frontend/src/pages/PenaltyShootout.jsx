@@ -47,7 +47,6 @@ export default function PenaltyShootout() {
 
   const getDynamicPositions = () => {
     const pW = pitchSize.width;
-    const pH = pitchSize.height;
 
     // Real world anchor: 1 yard
     // We display 24 yards of width to make the Goal large (1/3 of screen) while keeping exact 1:1 realism.
@@ -106,6 +105,17 @@ export default function PenaltyShootout() {
   const [dustParticles, setDustParticles] = useState([]);
   const [showFlashes, setShowFlashes] = useState(false);
   const [activeTarget, setActiveTarget] = useState(null);
+
+  const [flashes] = useState(() => {
+    return Array.from({ length: 30 }).map((_, i) => ({
+      id: i,
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      width: `${Math.random() * 200 + 50}px`,
+      height: `${Math.random() * 200 + 50}px`,
+      delay: `${Math.random() * 2.5}s`,
+    }));
+  });
 
   // Camera Shake
   const triggerCameraShake = useCallback(() => {
@@ -408,7 +418,7 @@ export default function PenaltyShootout() {
       };
       animateBall();
     }, shotDelay);
-  }, [gameStatus, animating, round, score, checkWin, spawnConfetti, triggerCameraShake, ZONE_POS, GK_POS]);
+  }, [gameStatus, animating, round, score, checkWin, spawnConfetti, triggerCameraShake, ZONE_POS, GK_POS, layout.yard, spawnDust]);
 
   const resetGame = () => {
     setScore({ me: 0, opponent: 0 });
@@ -494,18 +504,18 @@ export default function PenaltyShootout() {
       {/* Stadium Camera Flashes */}
       {showFlashes && (
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-          {Array.from({ length: 30 }).map((_, i) => (
+          {flashes.map((flash) => (
             <div 
-              key={i}
+              key={flash.id}
               className="absolute rounded-full mix-blend-overlay"
               style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                width: `${Math.random() * 200 + 50}px`,
-                height: `${Math.random() * 200 + 50}px`,
+                top: flash.top,
+                left: flash.left,
+                width: flash.width,
+                height: flash.height,
                 background: 'radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(200,220,255,0) 70%)',
                 animation: `flashBurst 0.3s ease-out forwards`,
-                animationDelay: `${Math.random() * 2.5}s`,
+                animationDelay: flash.delay,
                 opacity: 0,
               }}
             ></div>
